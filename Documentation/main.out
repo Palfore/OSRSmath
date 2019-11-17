@@ -1,0 +1,16 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Damage}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Maximum Hit}{section.2}% 3
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Magic}{subsection.2.1}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Accuracy}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.3}{Average Damage}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.4}{Health after n Attacks}{section.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.4.1}{Approximate Solutions}{subsection.2.4}% 8
+\BOOKMARK [3][-]{subsubsection.2.4.2}{Comparisons}{subsection.2.4}% 9
+\BOOKMARK [2][-]{subsection.2.5}{Experience and Damage Per Second}{section.2}% 10
+\BOOKMARK [1][-]{section.3}{Nightmare Zone}{}% 11
+\BOOKMARK [2][-]{subsection.3.1}{Validation}{section.3}% 12
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Potions \046 Dharok}{subsection.3.1}% 13
+\BOOKMARK [2][-]{subsection.3.2}{Optimization}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{Improvements}{}% 15
+\BOOKMARK [1][-]{section*.4}{Appendices}{}% 16

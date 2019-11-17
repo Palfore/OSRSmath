@@ -1,0 +1,19 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.25)  17 NOV 2019 10:21
+entering extended mode
+**main.tex
+
+! Emergency stop.
+<*> main.tex
+            
+*** (job aborted, file error in nonstop mode)
+
+ 
+Here is how much of TeX's memory you used:
+ 2 strings out of 492897
+ 14 string characters out of 3123754
+ 56921 words of memory out of 3000000
+ 4021 multiletter control sequences out of 15000+200000
+ 3640 words of font info for 14 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 0i,0n,0p,1b,6s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!
