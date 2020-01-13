@@ -1,0 +1,499 @@
+{
+    "axe": [
+        {
+            "name": "Chop",
+            "style": "Slash",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Hack",
+            "style": "Slash",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Smash",
+            "style": "Crush",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Block",
+            "style": "Slash",
+            "bonus": "Defensive"
+        }
+    ],
+    "blunt": [
+        {
+            "name": "Pound",
+            "style": "Crush",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Pummel",
+            "style": "Crush",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Block",
+            "style": "Crush",
+            "bonus": "Defensive"
+        }
+    ],
+    "bulwark": [
+        {
+            "name": "Pummel",
+            "style": "Crush",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Block",
+            "style": "None",
+            "bonus": "None"
+        }
+    ],
+    "claws": [
+        {
+            "name": "Chop",
+            "style": "Slash",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Slash",
+            "style": "Slash",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Lunge",
+            "style": "Stab",
+            "bonus": "Controlled"
+        },
+        {
+            "name": "Block",
+            "style": "Slash",
+            "bonus": "Defensive"
+        }
+    ],
+    "polearm": [
+        {
+            "name": "Jab",
+            "style": "Stab",
+            "bonus": "Controlled"
+        },
+        {
+            "name": "Swipe",
+            "style": "Slash",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Fend",
+            "style": "Stab",
+            "bonus": "Defensive"
+        }
+    ],
+    "pickaxe": [
+        {
+            "name": "Spike",
+            "style": "Stab",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Impale",
+            "style": "Stab",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Smash",
+            "style": "Crush",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Block",
+            "style": "Stab",
+            "bonus": "Defensive"
+        }
+    ],
+    "scythe": [
+        {
+            "name": "Reap",
+            "style": "Slash",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Chop",
+            "style": "Slash",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Jab",
+            "style": "Crush",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Block",
+            "style": "Slash",
+            "bonus": "Defensive"
+        }
+    ],
+    "hacksword": [
+        {
+            "name": "Chop",
+            "style": "Slash",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Slash",
+            "style": "Slash",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Lunge",
+            "style": "Stab",
+            "bonus": "Controlled"
+        },
+        {
+            "name": "Block",
+            "style": "Slash",
+            "bonus": "Defensive"
+        }
+    ],
+    "spear": [
+        {
+            "name": "Lunge",
+            "style": "Stab",
+            "bonus": "Controlled"
+        },
+        {
+            "name": "Swipe",
+            "style": "Slash",
+            "bonus": "Controlled"
+        },
+        {
+            "name": "Pound",
+            "style": "Crush",
+            "bonus": "Controlled"
+        },
+        {
+            "name": "Block",
+            "style": "Stab",
+            "bonus": "Defensive"
+        }
+    ],
+    "spiked": [
+        {
+            "name": "Pound",
+            "style": "Crush",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Pummel",
+            "style": "Crush",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Spike",
+            "style": "Stab",
+            "bonus": "Controlled"
+        },
+        {
+            "name": "Block",
+            "style": "Crush",
+            "bonus": "Defensive"
+        }
+    ],
+    "stabsword": [
+        {
+            "name": "Stab",
+            "style": "Stab",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Lunge",
+            "style": "Stab",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Slash",
+            "style": "Slash",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Block",
+            "style": "Stab",
+            "bonus": "Defensive"
+        }
+    ],
+    "heavysword": [
+        {
+            "name": "Chop",
+            "style": "Slash",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Slash",
+            "style": "Slash",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Smash",
+            "style": "Crush",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Block",
+            "style": "Slash",
+            "bonus": "Defensive"
+        }
+    ],
+    "whip": [
+        {
+            "name": "Flick",
+            "style": "Slash",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Lash",
+            "style": "Slash",
+            "bonus": "Controlled"
+        },
+        {
+            "name": "Deflect",
+            "style": "Slash",
+            "bonus": "Defensive"
+        }
+    ],
+    "bow": [
+        {
+            "name": "Accurate",
+            "style": "Ranged",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Rapid",
+            "style": "Ranged",
+            "bonus": "Rapid"
+        },
+        {
+            "name": "Longrange",
+            "style": "Ranged",
+            "bonus": "Longrange"
+        }
+    ],
+    "grenade": [
+        {
+            "name": "Short fuse",
+            "style": "Ranged",
+            "bonus": "Short fuse"
+        },
+        {
+            "name": "Medium fuse",
+            "style": "Ranged",
+            "bonus": "Medium fuse"
+        },
+        {
+            "name": "Long fuse",
+            "style": "Ranged",
+            "bonus": "Long fuse"
+        }
+    ],
+    "crossbow": [
+        {
+            "name": "Accurate",
+            "style": "Ranged",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Rapid",
+            "style": "Ranged",
+            "bonus": "Rapid"
+        },
+        {
+            "name": "Longrange",
+            "style": "Ranged",
+            "bonus": "Longrange"
+        }
+    ],
+    "thrown": [
+        {
+            "name": "Accurate",
+            "style": "Ranged",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Rapid",
+            "style": "Ranged",
+            "bonus": "Rapid"
+        },
+        {
+            "name": "Longrange",
+            "style": "Ranged",
+            "bonus": "Longrange"
+        }
+    ],
+    "staff": [
+        {
+            "name": "Bash",
+            "style": "Crush",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Pound",
+            "style": "Crush",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Focus",
+            "style": "Crush",
+            "bonus": "Defensive"
+        },
+        {
+            "name": "Spell",
+            "style": "Magic",
+            "bonus": "Magic"
+        },
+        {
+            "name": "Spell (Defensive)",
+            "style": "Magic",
+            "bonus": "Magic"
+        }
+    ],
+    "staff bladed": [
+        {
+            "name": "Jab",
+            "style": "Stab",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Swipe",
+            "style": "Slash",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Fend",
+            "style": "Crush",
+            "bonus": "Defensive"
+        },
+        {
+            "name": "Spell",
+            "style": "Magic",
+            "bonus": "Magic"
+        },
+        {
+            "name": "Spell (Defensive)",
+            "style": "Magic",
+            "bonus": "Magic"
+        }
+    ],
+    "staff selfpowering": [
+        {
+            "name": "Accurate",
+            "style": "Magic",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Accurate",
+            "style": "Magic",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Longrange",
+            "style": "Magic",
+            "bonus": "Longrange"
+        }
+    ],
+    "banner": [
+        {
+            "name": "Lunge",
+            "style": "Stab",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Swipe",
+            "style": "Slash",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Pound",
+            "style": "Crush",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Block",
+            "style": "Stab",
+            "bonus": "Defensive"
+        }
+    ],
+    "blaster": [
+        {
+            "name": "Explosive",
+            "style": null,
+            "bonus": null
+        },
+        {
+            "name": "Flamer",
+            "style": null,
+            "bonus": null
+        }
+    ],
+    "gun": [
+        {
+            "name": "Aim and Fire",
+            "style": "None",
+            "bonus": "None"
+        },
+        {
+            "name": "Kick",
+            "style": "Crush",
+            "bonus": "Aggressive"
+        }
+    ],
+    "polestaff": [
+        {
+            "name": "Bash",
+            "style": "Crush",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Pound",
+            "style": "Crush",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Block",
+            "style": "Crush",
+            "bonus": "Defensive"
+        }
+    ],
+    "flamer": [
+        {
+            "name": "Scorch",
+            "style": "Slash",
+            "bonus": "Strength"
+        },
+        {
+            "name": "Flare",
+            "style": "Ranged",
+            "bonus": "Ranged"
+        },
+        {
+            "name": "Blaze",
+            "style": "Magic",
+            "bonus": "Magic"
+        }
+    ],
+    "unarmed": [
+        {
+            "name": "Punch",
+            "style": "Crush",
+            "bonus": "Accurate"
+        },
+        {
+            "name": "Kick",
+            "style": "Crush",
+            "bonus": "Aggressive"
+        },
+        {
+            "name": "Block",
+            "style": "Crush",
+            "bonus": "Defensive"
+        }
+    ]
+}
