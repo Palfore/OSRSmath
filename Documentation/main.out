@@ -9,8 +9,14 @@
 \BOOKMARK [3][-]{subsubsection.2.4.2}{Comparisons}{subsection.2.4}% 9
 \BOOKMARK [2][-]{subsection.2.5}{Experience and Damage Per Second}{section.2}% 10
 \BOOKMARK [1][-]{section.3}{Nightmare Zone}{}% 11
-\BOOKMARK [2][-]{subsection.3.1}{Validation}{section.3}% 12
-\BOOKMARK [3][-]{subsubsection.3.1.1}{Potions \046 Dharok}{subsection.3.1}% 13
-\BOOKMARK [2][-]{subsection.3.2}{Optimization}{section.3}% 14
-\BOOKMARK [1][-]{section.4}{Improvements}{}% 15
-\BOOKMARK [1][-]{section*.4}{Appendices}{}% 16
+\BOOKMARK [2][-]{subsection.3.1}{Experimental Considerations}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.2}{Validation}{section.3}% 13
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Time-Dependent Boosts}{subsection.3.2}% 14
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Comparisons}{subsection.3.2}% 15
+\BOOKMARK [2][-]{subsection.3.3}{Optimization}{section.3}% 16
+\BOOKMARK [1][-]{section.4}{Improvements}{}% 17
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 18
+\BOOKMARK [1][-]{appendix.A}{Average Damage}{}% 19
+\BOOKMARK [2][-]{subsection.A.1}{Power Reduction}{appendix.A}% 20
+\BOOKMARK [2][-]{subsection.A.2}{Simplifying}{appendix.A}% 21
+\BOOKMARK [1][-]{appendix.B}{Analytic Form Attempt}{}% 22

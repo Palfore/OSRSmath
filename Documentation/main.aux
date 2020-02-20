@@ -16,39 +16,54 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Damage}{1}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Maximum Hit}{1}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}Magic}{2}{subsubsection.2.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Accuracy}{2}{subsection.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Average Damage}{2}{subsection.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Health after $n$ Attacks}{3}{subsection.2.4}\protected@file@percent }
-\newlabel{eq:h_crude}{{20}{4}{Health after $n$ Attacks}{equation.2.20}{}}
-\newlabel{eq:recur}{{29}{4}{Health after $n$ Attacks}{equation.2.29}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1}Approximate Solutions}{5}{subsubsection.2.4.1}\protected@file@percent }
-\newlabel{eq:recursive_h}{{43}{6}{Approximate Solutions}{equation.2.43}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2}Comparisons}{6}{subsubsection.2.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Experience and Damage Per Second}{6}{subsection.2.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces A comparison between different models. The crude model does not consider any overkill influence and therefore considers Eq.\nobreakspace  {}\ref  {eq:h_crude} to hold everywhere. The recursive model is that described in Eq.\nobreakspace  {}\ref  {eq:recursive_h} which best accounts for overkill. Finally the simulation model is calculated by simulating many fights and averaging the results, within the standard error this is the true solution. On the left, the expected turns to kill (specifically number of successful hits) which shows a steep increase as the max hit drops further below the initial health. All three models \textit  {appear} quite similar, however this is an artifact of scale. On the right, the percent relative error with respect to the simulations are shown. The noise is evident and occurs due to the difficulty of efficiently simulating the required number of fights (which justifies attempting to get analytic solutions!). In addition, we see that the error is highest for high max hits, and low initial health often reaching over 10\% in this domain. This makes sense since this is where overkill is expected. The recursive method typically has under half the error of the crude method. Furthermore, the error is unbounded in the crude case, whereas the recursive solution has a global maximum.\relax }}{7}{figure.caption.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Damage}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Maximum Hit}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}Magic}{3}{subsubsection.2.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Accuracy}{3}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Average Damage}{3}{subsection.2.3}\protected@file@percent }
+\newlabel{sec:average_damage}{{2.3}{3}{Average Damage}{subsection.2.3}{}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:comparison}{{1}{7}{A comparison between different models. The crude model does not consider any overkill influence and therefore considers Eq.~\ref {eq:h_crude} to hold everywhere. The recursive model is that described in Eq.~\ref {eq:recursive_h} which best accounts for overkill. Finally the simulation model is calculated by simulating many fights and averaging the results, within the standard error this is the true solution. On the left, the expected turns to kill (specifically number of successful hits) which shows a steep increase as the max hit drops further below the initial health. All three models \textit {appear} quite similar, however this is an artifact of scale. On the right, the percent relative error with respect to the simulations are shown. The noise is evident and occurs due to the difficulty of efficiently simulating the required number of fights (which justifies attempting to get analytic solutions!). In addition, we see that the error is highest for high max hits, and low initial health often reaching over 10\% in this domain. This makes sense since this is where overkill is expected. The recursive method typically has under half the error of the crude method. Furthermore, the error is unbounded in the crude case, whereas the recursive solution has a global maximum.\relax }{figure.caption.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Nightmare Zone}{7}{section.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A player (bottom-right) fighting against four bosses in the NMZ. Three of the bosses at this time happened to be the same, however each bosses is expected to occur with equal probability.\relax }}{8}{figure.caption.2}\protected@file@percent }
-\newlabel{fig:nmz}{{2}{8}{A player (bottom-right) fighting against four bosses in the NMZ. Three of the bosses at this time happened to be the same, however each bosses is expected to occur with equal probability.\relax }{figure.caption.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The main setup used for validation. Certain tests used Dharok's greataxe as the weapon, instead of the dragon scimitar (shown).\relax }}{8}{figure.caption.3}\protected@file@percent }
-\newlabel{fig:setup}{{3}{8}{The main setup used for validation. Certain tests used Dharok's greataxe as the weapon, instead of the dragon scimitar (shown).\relax }{figure.caption.3}{}}
+\newlabel{fig:accuracy}{{1a}{5}{Player accuracy as a function of the player's maximum accuracy roll and opponent's maximum defense roll. The black line is the piecewise boundary.\relax }{figure.caption.1}{}}
+\newlabel{sub@fig:accuracy}{{a}{5}{Player accuracy as a function of the player's maximum accuracy roll and opponent's maximum defense roll. The black line is the piecewise boundary.\relax }{figure.caption.1}{}}
+\newlabel{fig:average_d}{{1b}{5}{The average damage of an attack with a maximum hit of $M$ on an opponent with $h$ health. The black line is the piecewise boundary.\relax }{figure.caption.1}{}}
+\newlabel{sub@fig:average_d}{{b}{5}{The average damage of an attack with a maximum hit of $M$ on an opponent with $h$ health. The black line is the piecewise boundary.\relax }{figure.caption.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Health after $n$ Attacks}{5}{subsection.2.4}\protected@file@percent }
+\newlabel{eq:h_crude}{{24}{5}{Health after $n$ Attacks}{equation.2.24}{}}
+\newlabel{eq:recur}{{33}{6}{Health after $n$ Attacks}{equation.2.33}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1}Approximate Solutions}{6}{subsubsection.2.4.1}\protected@file@percent }
+\newlabel{eq:recursive_h}{{47}{7}{Approximate Solutions}{equation.2.47}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2}Comparisons}{7}{subsubsection.2.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  A comparison between different models. The crude model does not consider the effects of overkill. The recursive model is that described in Eq.\nobreakspace  {}\ref  {eq:recursive_h} which best accounts for overkill. The Bitt-Nuke model averages the effect of overkill and attempt to handle it. Finally the simulation model is calculated by simulating many fights and averaging the results, within the standard error this is the true solution. On the left, the expected turns to kill (specifically number of successful hits). All three models \textit  {appear} quite similar, however this is an artifact of scale. On the right, the percent relative error with respect to the simulations are shown. The noise is evident and occurs due to the difficulty of efficiently simulating the required number of fights (which justifies attempting to get analytic solutions!). The peak error is the region in which overkill is expected to occur. The average error of the recursive method is 4.94 with a variance of 22.6, while the Bitt-Nuke method has an average of 10.57 and a variance of 302.7! \relax }}{8}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:comparison}{{2}{8}{A comparison between different models. The crude model does not consider the effects of overkill. The recursive model is that described in Eq.~\ref {eq:recursive_h} which best accounts for overkill. The Bitt-Nuke model averages the effect of overkill and attempt to handle it. Finally the simulation model is calculated by simulating many fights and averaging the results, within the standard error this is the true solution. On the left, the expected turns to kill (specifically number of successful hits). All three models \textit {appear} quite similar, however this is an artifact of scale. On the right, the percent relative error with respect to the simulations are shown. The noise is evident and occurs due to the difficulty of efficiently simulating the required number of fights (which justifies attempting to get analytic solutions!). The peak error is the region in which overkill is expected to occur. The average error of the recursive method is 4.94 with a variance of 22.6, while the Bitt-Nuke method has an average of 10.57 and a variance of 302.7! \relax }{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Experience and Damage Per Second}{8}{subsection.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Nightmare Zone}{8}{section.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces A player (bottom-right) fighting against four bosses in the NMZ. Three of the bosses at this time happened to be the same, however each boss is expected to occur with equal probability.\relax }}{9}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:nmz}{{3}{9}{A player (bottom-right) fighting against four bosses in the NMZ. Three of the bosses at this time happened to be the same, however each boss is expected to occur with equal probability.\relax }{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Experimental Considerations}{9}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Validation}{9}{subsection.3.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces The top table shows the effect on experience rates when certain factors are properly considered. Multiplicative factors means that that the ratio between two different rates are independent of these quantities, non-multiplicative factors appear inside the particular method which in general would not cancel. The bottom table relates how overkill is considered to the over/under prediction of experience rates. The properties with the largest influence decrease the experience rate. So the methods which well-approximate overkill are upper bounds. Those that over estimate it are lose lower bounds since otherwise they would be upper bounds so this additional decrease may or may not put it below the true expectation.\relax }}{10}{table.caption.4}\protected@file@percent }
+\newlabel{table:considerations}{{1}{10}{The top table shows the effect on experience rates when certain factors are properly considered. Multiplicative factors means that that the ratio between two different rates are independent of these quantities, non-multiplicative factors appear inside the particular method which in general would not cancel. The bottom table relates how overkill is considered to the over/under prediction of experience rates. The properties with the largest influence decrease the experience rate. So the methods which well-approximate overkill are upper bounds. Those that over estimate it are lose lower bounds since otherwise they would be upper bounds so this additional decrease may or may not put it below the true expectation.\relax }{table.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  The main setup used for validation. Due to the nature of testing, some health, strength, and combat levels were gained, but were properly taken into account. \relax }}{10}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:setup}{{4}{10}{The main setup used for validation. Due to the nature of testing, some health, strength, and combat levels were gained, but were properly taken into account. \relax }{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Time-Dependent Boosts}{10}{subsubsection.3.2.1}\protected@file@percent }
 \gdef \LT@i {\LT@entry 
-    {1}{57.83333pt}\LT@entry 
-    {1}{57.43333pt}\LT@entry 
-    {1}{57.43333pt}\LT@entry 
-    {1}{57.43333pt}\LT@entry 
-    {1}{57.43333pt}\LT@entry 
-    {1}{57.43333pt}\LT@entry 
+    {1}{63.78297pt}\LT@entry 
+    {1}{63.38298pt}\LT@entry 
+    {1}{63.38298pt}\LT@entry 
+    {1}{63.38298pt}\LT@entry 
+    {1}{63.38298pt}\LT@entry 
+    {1}{63.38298pt}\LT@entry 
     {1}{0.0pt}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Validation}{9}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Potions \& Dharok}{9}{subsubsection.3.1.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces  Experience per hour calculated according to different methods, for a few setups (percent errors from the actual gameplay are given in parenthesis). Easy or Hard corresponds to the boss difficulty which only increases their offensive capability and their health, which offers a good probe for the models, and this only modifies one relevant parameter. Two weapons were tested the dragon scimitar (a standard training weapon), and the Dharok's greataxe which has a health (and therefore time) dependent bonus. Finally, the gameplay time for the actual measurement is also stated. Since the largest (still small) source of errors in all models (constant combat, and health sustaining (absorptions potions)) negatively impact experience rates, we expect the models to be tight upper bounds on the actual gameplay experience. A relatively generous error on the actual experience is 1k. \relax }}{10}{table.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Optimization}{10}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Improvements}{10}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{Appendices}{11}{section*.4}\protected@file@percent }
-\newlabel{eq:sum_n+1th_term}{{48}{11}{Improvements}{equation.1..48}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Comparisons}{11}{subsubsection.3.2.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Experience per hour predictions from different methods. Potions and Easy or Hard bosses which correspond to the boss difficulty (which only increases health and offensive capability) are varied. Each method reports two values, the xp/h [in kilo-xp] and the signed percent difference from the game play. Green coloring indicates there is agreement within error, red is used otherwise. The bracketed quantities are the relative error of the reported rate. Max hits are given as a range when potions are used. Data collection periods are also given in hours.\relax }}{11}{table.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Optimization}{12}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Improvements}{12}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{12}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A}Average Damage}{13}{appendix.A}\protected@file@percent }
+\newlabel{eq:app-average-damage-original}{{56}{13}{Average Damage}{equation.A.56}{}}
+\newlabel{eq:app-average-damage-bracket}{{62}{13}{Average Damage}{equation.A.62}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Power Reduction}{13}{subsection.A.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Simplifying}{15}{subsection.A.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}Analytic Form Attempt}{16}{appendix.B}\protected@file@percent }
+\newlabel{eq:sum_n+1th_term}{{93}{16}{Analytic Form Attempt}{equation.B.93}{}}

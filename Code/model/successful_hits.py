@@ -30,8 +30,7 @@ class BitterKoekje_Nukelawe:
 	# Nukelawe Contribution: https://imgur.com/aykEahg
 	# BitterKoekje: https://docs.google.com/spreadsheets/d/1xCztykHho5R2Ce_vAGowLCja8HFMHJrjqHok9r2Q13Y/edit#gid=124277451
 	# (I think) The issue with this calculation is that it doesn't consider that the
-	# ``average damage' occurs in different amounts. So the experience rates can
-	# be treated using this average.
+	# ``average damage' occurs in different amounts. So the experience rates can't be treated using this average.
 
 	def h(self, n, h_0, m):
 		raise NotYetImplemented("BitterKoekje_Nukelawe h(n) is not implemented")
@@ -99,7 +98,7 @@ class Simulation:
 	""" Simulates N kills to experimentally approximate the required functions.
 		@warning Due to inaccurate negative health handling,
 			h(n; h_0, m) should not be trusted when h < m. """
-	DEFAULT_N = 10_000
+	DEFAULT_N = 1000
 
 	def __init__(self, N=DEFAULT_N):
 		self.N = N
@@ -163,24 +162,26 @@ if __name__ == '__main__':
 
 
 	ax.set_zlabel("Percent Error")
-	#print("Sim")
-	#sim = [[ Simulation().hinv(1, h, m) for m in x] for h in y]
+	print("Sim")
+	sim = [[ Simulation().hinv(1, h, m) for m in x] for h in y]
 	#print(len(sim), len(sim[0]))
 
-	#print("Recur")
-	#Z = np.array([np.array([((1 - Recursive().hinv(1, h, m) / sim[h-h_min][m-m_min]))*100 for m in x]) for h in y])
-	#surf = ax.plot_wireframe(X, Y, Z, color='black', linewidth=0.3, label="Recursive Error")
-
-	Z = np.array([np.array([((1 - Recursive().hinv(1, h, m) / BitterKoekje_Nukelawe().hinv(1, h, m)))*100 for m in x]) for h in y])
+	print("Recur")
+	Z = np.array([np.array([(abs(1 - Recursive().hinv(1, h, m) / sim[h-h_min][m-m_min]))*100 for m in x]) for h in y])
 	surf = ax.plot_wireframe(X, Y, Z, color='black', linewidth=0.3, label="Recursive Error")
+	print(np.average(Z), np.var(Z), np.max(Z), np.min(Z))
+	# Z = np.array([np.array([((1 - Recursive().hinv(1, h, m) / BitterKoekje_Nukelawe().hinv(1, h, m)))*100 for m in x]) for h in y])
+	# surf = ax.plot_wireframe(X, Y, Z, color='black', linewidth=0.3, label="Recursive Error")
 
-	#print("Crude")
-	#Z = np.array([np.array([((1 - Crude().hinv(1, h, m) / sim[h-h_min][m-m_min]))*100 for m in x]) for h in y])
-	#surf = ax.plot_wireframe(X, Y, Z, color='red', linewidth=0.3, label="Crude Error")
+	print("Crude")
+	Z = np.array([np.array([(abs(1 - Crude().hinv(1, h, m) / sim[h-h_min][m-m_min]))*100 for m in x]) for h in y])
+	surf = ax.plot_wireframe(X, Y, Z, color='red', linewidth=0.3, label="Crude Error")
+	print(np.average(Z), np.var(Z), np.max(Z), np.min(Z))
 
-	#print("Bitt-Nuke")
-	#Z = np.array([np.array([((1 - BitterKoekje_Nukelawe().hinv(1, h, m) / sim[h-h_min][m-m_min]))*100 for m in x]) for h in y])
-	#surf = ax.plot_wireframe(X, Y, Z, color='blue', linewidth=0.3, label="Bitt-Nuke Error")
+	print("Bitt-Nuke")
+	Z = np.array([np.array([(abs(1 - BitterKoekje_Nukelawe().hinv(1, h, m) / sim[h-h_min][m-m_min]))*100 for m in x]) for h in y])
+	surf = ax.plot_wireframe(X, Y, Z, color='blue', linewidth=0.3, label="Bitt-Nuke Error")
+	print(np.average(Z), np.var(Z), np.max(Z), np.min(Z))
 
 	plt.xlabel("Max Hit")
 	plt.ylabel("Initial Health")

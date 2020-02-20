@@ -1,0 +1,22 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Damage}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Maximum Hit}{2}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Magic}{3}{subsubsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.2}Accuracy}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Average Damage}{3}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Health after $n$ Attacks}{5}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Approximate Solutions}{6}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Comparisons}{7}{subsubsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.5}Experience and Damage Per Second}{8}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Nightmare Zone}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Experimental Considerations}{9}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Validation}{9}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Time-Dependent Boosts}{10}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Comparisons}{11}{subsubsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.3}Optimization}{12}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Improvements}{12}{section.4}%
+\contentsline {section}{\numberline {5}Conclusion}{12}{section.5}%
+\contentsline {section}{\numberline {A}Average Damage}{13}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Power Reduction}{13}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Simplifying}{15}{subsection.A.2}%
+\contentsline {section}{\numberline {B}Analytic Form Attempt}{16}{appendix.B}%
