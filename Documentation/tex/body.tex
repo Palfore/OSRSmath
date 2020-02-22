@@ -8,7 +8,7 @@
 	\section{Damage}
 		The \href{https://oldschool.runescape.wiki/w/Maximum_hit}{official Wiki page} provides a very good review of maximum hit mechanics. For completion we will provide a brief summary. For some reason, it does not contain information about accuracy calculations. These are can be found (unofficially) from \href{https://www.osrsbox.com/blog/2019/01/22/calculating-melee-dps-in-osrs/}{osrsbox} (which references \href{https://docs.google.com/spreadsheets/d/1wzy1VxNWEAAc0FQyDAdpiFggAfn5U6RGPp2CisAHZW8/edit#gid=158500257}{DPS calculator by Bitterkoekje}, the \href{https://web.archive.org/web/20190905124128/http://webcache.googleusercontent.com/search?q=cache:http://services.runescape.com/m=forum/forums.ws?317,318,712,65587452}{forum post} of which has been archived), \href{https://www.reddit.com/r/2007scape/comments/40bvk6/accuracy_and_exphr_combat_formula/}{MachOSRS} (reddit), and \href{https://www.reddit.com/r/2007scape/comments/5lrty0/math_inside_corrected_accuracy_formula/}{[deleted]} (reddit).  Following this, we will take care to accurately determine the number of hits required to kill an opponent, followed by experience rate calculations. Related calculations have been performed by \href{https://www.reddit.com/r/2007scape/comments/4d6l7j/effects_of_overkill_on_dps/}{Nukelawe}, which discusses the impact of overkill on expected damage, which is often neglected in damage calculations. However we will justify that the application of this formula is not properly accounted for and we will instead provide an more accurate method.
 		\subsection{Maximum Hit}
-			There are three combat styles in the game: Melee, ranged, and magic. The former two are quite similar, while the latter is slightly more involved. We will let $m$ will denote the player's maximum hit (for whatever combat style). In general, there are 5 bonuses that a player can obtain to boost their maximum hit. These are bonuses from: potions, prayer, other, style, and special attack. These will be referred to as: $B^\text{pot}$, $B^\text{pray}$, $B^\text{other}$, $B^\text{style}$, $B^\text{SA}$, respectively. For non-magic styles, an effective damage level is defined as
+			There are three combat styles in the game: melee, ranged, and magic. The former two are quite similar, while the latter is slightly more involved. In general, there are 5 bonuses that a player can obtain to boost their maximum hit. These are bonuses from: potions, prayer, other, style, and special attack. These will be referred to as: $B^\text{pot}$, $B^\text{pray}$, $B^\text{other}$, $B^\text{style}$, $B^\text{SA}$, respectively. For non-magic styles, an effective damage level is defined as
 			\begin{align}
 				L^\text{eff} \equiv \left \lfloor \left(L + B^\text{pot} \right)B^\text{pray}B^\text{other} \right \rfloor + B^\text{style},
 			\end{align}
@@ -25,11 +25,11 @@
 
  			For melee, the \texttt{Keras} and \texttt{Saradomin Sword} are exceptions to this (see the wiki). For ranged, it should be noted that \texttt{bolt} effects only have probabilities of activating (and therefore increasing $M$). For future considerations, this could be handled by defining an effective or average max hit: $\langle M \rangle = P M$, where $P$ is the probability of activation. Additionally, some sources state that some equipment which would be categorized under ``other'' bonuses such as the \texttt{Slayer helmet} actually use $\left \lfloor D^\text{base} B^\text{SA}B^\text{other}\right \rfloor$ and so act as a multiplier instead of its expected placement. This is not stated on the wiki, but appears to be correct.
 			\subsubsection{Magic}
-				The base damage for a magic spell is given according to that spell. For magic, only multiplicative bonuses are obtainable. For a single bonus is given by,
+				The base damage for a magic spell is fixed and only multiplicative bonuses are obtainable. A single bonus yields a max hit of,
 				\begin{align}
 					M = D^\text{base}E^\text{str},
 				\end{align}
-				where now $E^\text{str}$ is the multiplicative magic damage bonus (think ``magic strength''). In general, these effects stack, but intermediate flooring calculations can impact the max hit (again see the wiki). \texttt{Charge}, \texttt{Magic dart}, \texttt{Salamanders}, and \texttt{Trident of the seas/swamp} have alternate calculations.
+				where now $E^\text{str}$ is the multiplicative magic damage bonus (think ``magic strength''). In general, these effects stack, but intermediate flooring calculations can impact the max hit (check the wiki for ordering). \texttt{Charge}, \texttt{Magic dart}, \texttt{Salamanders}, and \texttt{Trident of the seas/swamp} have alternate calculations.
 		\subsection{Accuracy}
 			$A$ will denote the player's probability of a successful hit (called accuracy). This attribute depends on both the player and the opponents stats. For all three combat styles, the attacker rolls an attack role, while the defender rolls a defensive roll. First effective levels are calculated,
 			\begin{align}
@@ -152,19 +152,19 @@
 				h_{m+1} &= h_{m} - \frac{h_m}{2}\left(2 - \frac{h_m + 1}{M+1}\right) \\
 				&= h_{m} - h_m + \frac{h_m}{2}\frac{h_m + 1}{M+1} \\
 				&= \frac{h_m^2 + h_m}{2(M+1)} \\
-				h_{m+1} &= \gamma (h_m^2 + h_m),\,\,\,h_0 = M, \label{eq:recur}
+				h_{m+1} &= \gamma (h_m^2 + h_m), \label{eq:recur}
 			\end{align}
-			where $\gamma\equiv1 / 2(M+1)$. This type of recurrence relation is called a \href{http://mathworld.wolfram.com/QuadraticMap.html}{Quadratic Map}, and unfortunately it has no closed form solution in general. Some work is shown in the appendix to attempt to simplify it, but no final form was realized. For the sake of completeness, we will call the solution to Eq.~\ref{eq:recur} $f(M; f_0)$. At this point we're left with,
+			where $\gamma\equiv1 / 2(M+1)$. This type of recurrence relation is called a \href{http://mathworld.wolfram.com/QuadraticMap.html}{Quadratic Map}, and unfortunately it has no closed form solution in general. Some work is shown in the appendix to attempt to simplify it, but no final form was realized. For the sake of completeness, we will call the solution to Eq.~\ref{eq:recur} $f(m; M, f_0)$. At this point we're left with,
 			\begin{align}
 					h(n; h_0, M) &=  \begin{cases}
 					h_0 - \frac{1}{2}nM &\text{else if $n \le L$} \\
-					f(n - L; M) &\text{otherwise}.
+					f(n - L; M, M) &\text{otherwise}.
 				\end{cases}
 			\end{align}
 			In general, we are more interested in the number of iterations that is required to kill an opponent which is the inverse of this function, $n=h^{-1}(h; h_0, M)$. However, since the recurrence relation cannot be solved analytically, we cannot obtain a general expression for this. We could numerically compute this result. However remember that we are dealing with \emph{expectation values} or averages. This means it is totally possible for the inverted function to say ``The opponents health will be 18 in 4.5 iterations, on average''. This is a problem because our recursive equation can only increment the iteration by one (and we can only start at $f_0$)! In the next section, we will look at an approximation that will allow us to handle non-integer expectations.
 
 		\subsubsection{Approximate Solutions}
-			Despite not being able to find a closed-form solution for Eq.~\ref{eq:recur}, we can look for approximate solutions. Although it's rare, there are a few quadratic recurrence relations that \textbf{do} have solutions. There are two relevant cases, one where a constant term is introduced, or ones where the linear term is removed. Since increasing $n$ (and therefore iterations) results in smaller and smaller $h_n$, it suggests that adding constant terms will heavily skew the results in this region. Removing the linear term is still not ideal since its contribution increases relative to the quadratic term, in the low $h_n$ limit (when this recursive case is required). However this should be less significant and we'll find that it does pretty well! In this case, our recursive relation becomes,
+			Despite not being able to find a closed-form solution for Eq.~\ref{eq:recur}, we can look for approximate solutions. Although it's rare, there are a few quadratic recurrence relations that \textbf{do} have solutions. There are two relevant cases, ones where a constant term is introduced, or ones where the linear term is removed. Since increasing $n$ (and therefore iterations) results in smaller and smaller $h_n$, it suggests that adding constant terms will heavily skew the results in this region. Removing the linear term is still not ideal since its contribution increases relative to the quadratic term, in the low $h_n$ limit (when this recursive case is required). However this should be less significant and we'll find that it does pretty well! In this case, our recursive relation becomes,
 			\begin{align}
 				h_{m+1} = \gamma h_m^2.
 			\end{align}
@@ -194,7 +194,7 @@
 					h(n; h_0, M) &=  \begin{cases}
 					h_0 - \frac{1}{2}nM &\text{if $n \le L$} \\
 					\frac{1}{\gamma}\left(\frac{1}{2} - \gamma\right)^{2^{n-L}} &\text{if $n - L < 1$}\\
-					f\left(n - L; \frac{1}{\gamma}\left(\frac{1}{2} - \gamma\right)^{2^{n-L}}\right) &\text{otherwise}\\
+					f\left(n - L; M, \frac{1}{\gamma}\left(\frac{1}{2} - \gamma\right)^{2^{n-L}}\right) &\text{otherwise}\\
 				\end{cases}\\
 				\text{where, }\gamma = &\frac{1}{2(M+1)}\text{ and } L = 2\left(\frac{h_0}{M} - 1\right).\nonumber
 			\end{empheq}
@@ -202,7 +202,7 @@
 
 
 			\subsubsection{Comparisons}
-				We have seen several methods for calculating expected kill iterations. We can now compare these models to numerically simulated fights as in Fig.~(\ref{fig:comparison}). Regardless of the model, the turns to kill grows quickly when the max hit is low compared to the initial health of the opponent (as expected). The models deviate the most from the simulations when the initial health is low, and when the max hit is high. Both the crude method and the Bitt-Nuke method are have unbounded errors, while the Recursive method actually has a maximum near $(h, M) \approx (25, 80)$. Thus the recursive method is not only more accurate (less error), it also holds in more cases. 
+				We have seen several methods for calculating expected kill iterations. We can now compare these models to numerically simulated fights as in Fig.~(\ref{fig:comparison}). Regardless of the model, the turns to kill grows quickly when the max hit is low compared to the initial health of the opponent (as expected). The models deviate the most from the simulations when the initial health is low, and when the max hit is high. Both the crude method and the Bitt-Nuke method have unbounded errors, while the Recursive method actually has a maximum near $(h, M) \approx (25, 80)$. Thus the recursive method is not only more accurate (less error), it also holds in more cases. 
 				%This is expected to improve accuracy by about 1-5\% depending on the fighters (remember that the benefit of this scales over periods of weeks \& months!).
 				% For max melee, this saves 11 hours!
 
@@ -221,12 +221,12 @@
 						% \label{fig:sub2}
 					\end{subfigure}
 					\caption{
-						A comparison between different models. The crude model does not consider the effects of overkill. The recursive model is that described in Eq.~\ref{eq:recursive_h} which best accounts for overkill. The Bitt-Nuke model averages the effect of overkill and attempt to handle it. Finally the simulation model is calculated by simulating many fights and averaging the results, within the standard error this is the true solution. On the left, the expected turns to kill (specifically number of successful hits). All three models \textit{appear} quite similar, however this is an artifact of scale. On the right, the percent relative error with respect to the simulations are shown. The noise is evident and occurs due to the difficulty of efficiently simulating the required number of fights (which justifies attempting to get analytic solutions!). The peak error is the region in which overkill is expected to occur. The average error of the recursive method is 4.94 with a variance of 22.6, while the Bitt-Nuke method has an average of 10.57 and a variance of 302.7!
+						A comparison between different models. The crude model does not consider the effects of overkill. The recursive model is that described in Eq.~\ref{eq:recursive_h} which best accounts for overkill. The Bitt-Nuke model averages the effect of overkill. The true value can be evaluated by simulating many fights and averaging the results. To get high precision this is a very expensive evaluation. On the left, the expected number of successful hits required for a kill is shown. All three models \textit{appear} quite similar, however this is an artifact of scale. On the right, the percent relative error with respect to the simulations are shown. The noise is evident and occurs due to the difficulty of efficiently simulating the required number of fights. The peak error is the region in which overkill is expected to occur. The average error of the recursive method is 4.94\% with a standard deviation of 4.8\%, while the Bitt-Nuke method has an average of 10.57\% and a standard deviation of 17.4\%.
 					}\label{fig:comparison}
 				\end{figure}
 
 		\subsection{Experience and Damage Per Second}
-			We saw that by inverting the damage per attack equation, Eq.~(\ref{eq:recursive_h}), we could determine the average number of successful attacks required to kill an opponent based on the max hit and starting health. To extend this to number of \textit{total} attacks we have to introduce accuracy, $a\in[0, 1]$. For the health per turn, $h(n)$, we simply note that $h(n)\to h(na)$ will appropriately reduce the number of ``effective turns''. Similarly, for turns to kill, $h^{-1}(1)=n\to n/a$ appropriately extends the number of turns expected. So multiplying and dividing easily accounts for accuracy.
+			We saw that by inverting the damage per attack equation, Eq.~(\ref{eq:recursive_h}), we could determine the average number of successful attacks required to kill an opponent based on the max hit and starting health. To extend this to number of \textit{total} attacks we have to introduce accuracy, $a\in[0, 1]$. For the health per turn, $h(n)$, we simply note that $h(n)\to h(na)$ will appropriately reduce the number of ``effective turns''. Similarly, for turns to kill, $h^{-1}(1)=n\to n/a$ appropriately extends the number of turns expected. So multiplying and dividing easily accounts for accuracy. 
 
 			This can further be extended to time to kill by considering the time it takes for each attack. Let $s$ be the \textcolor{red}{attack speed (in attacks per second)}, then $n/(as)$ is the required time to kill an opponent. While the health at a given time, $t$ is $h(tas)$. This is a good time to note that the error shown in Fig.~(\ref{fig:comparison}) is unchanged since these multiplicative factors cancel out in the relative error calculation.
 
