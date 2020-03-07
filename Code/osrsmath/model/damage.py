@@ -2,13 +2,7 @@
 	combat levels and boosts for the various combat styles.
 
 	@todo: Add ranged and magic
-
-	Note: Several calculations assume that the 'other' multipler occurs to the base
-	        damage (instead of in the effective level calculation) this seems weird to
-	        me since it modifies the effective_level calculation.
-	        @see max_attack_roll_alternate vs max_attack_roll
 """
-
 
 from math import floor
 
@@ -35,6 +29,8 @@ class Melee:
 	def accuracy(self, max_attacker_roll, max_defender_roll):
 		A_max = max_attacker_roll
 		D_max = max_defender_roll
+		assert A_max >= 0
+		assert D_max >= 0
 		if A_max >= D_max:
 			return 1 - 0.5 * (D_max + 2) / (A_max + 1)
 		else:

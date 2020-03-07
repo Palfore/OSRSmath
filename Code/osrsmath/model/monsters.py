@@ -18,13 +18,14 @@ import requests
 import json
 import os
 
-from . import damage
+import osrsmath.config as config
+import osrsmath.model.damage as damage
 
 MONSTER_LIST_BASE_URL = "https://raw.githubusercontent.com/osrsbox/osrsbox-db/master/docs"
 
 def get_monster_data(force_update=False):
 	file_name = f'monsters-complete.json'
-	file_path = os.path.join('data', file_name)
+	file_path = os.path.join(config.DATA_PATH, file_name)
 	if not os.path.exists(file_path) or force_update:
 		r = requests.get(os.path.join(MONSTER_LIST_BASE_URL, file_name))
 		with open(file_path, 'w') as f:
@@ -159,7 +160,7 @@ if __name__ == '__main__':
 	# print(m, A, D, a)
 
 	# Use this to check you have the correct id for the monster you want.
-	defender = Monster.from_id(8042)
+	defender = Monster.from_id(6393)
 	pprint(defender.levels)
 	pprint(defender.stats)
 	pprint(defender.other)

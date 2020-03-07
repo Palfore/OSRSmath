@@ -1,7 +1,7 @@
-from model.monsters import Monster, get_monster_data
-from model.player import Player, get_equipment_data
-from model.rates import experience_per_hour
-from model import successful_hits
+from osrsmath.model.monsters import Monster, get_monster_data
+from osrsmath.model.player import Player, get_equipment_data
+from osrsmath.model.rates import experience_per_hour
+from osrsmath.model import successful_hits
 from pprint import pprint
 import numpy as np
 
@@ -53,6 +53,7 @@ if __name__ == '__main__':
 
 
 	def eval_fitness(individual):
+		""" Can't handle very negative attack bonuses (-100). """
 		attacker = individual['equipment']
 		attacker.combat_style = list(attacker.get_stances().keys())[0]
 		attackers_attack_type = attacker.get_stances()[attacker.combat_style]['attack_type']

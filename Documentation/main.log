@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.13)  22 FEB 2020 14:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.13)  7 MAR 2020 12:36
 entering extended mode
 **./main.tex
 (main.tex
@@ -1266,12 +1266,12 @@ been already used, duplicate ignored
                    \relax 
 l.4 	\newpage
               [1] [2] [3]
-<img/Accuracy-crop.pdf, id=184, 612.2875pt x 344.28625pt>
+<img/Accuracy-crop.pdf, id=185, 612.2875pt x 344.28625pt>
 File: img/Accuracy-crop.pdf Graphic file (type pdf)
 <use img/Accuracy-crop.pdf>
 Package pdftex.def Info: img/Accuracy-crop.pdf  used on input line 100.
 (pdftex.def)             Requested size: 171.31288pt x 96.32594pt.
-<img/average_d-crop.pdf, id=185, 719.68875pt x 330.23375pt>
+<img/average_d-crop.pdf, id=186, 719.68875pt x 330.23375pt>
 File: img/average_d-crop.pdf Graphic file (type pdf)
 <use img/average_d-crop.pdf>
 Package pdftex.def Info: img/average_d-crop.pdf  used on input line 107.
@@ -1290,18 +1290,18 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 pdfTeX warning: pdflatex (file ./img/average_d-crop.pdf): PDF inclusion: multip
 le pdfs with page group included in a single page
 >] [6]
-<img/h2k_h2.png, id=295, 966.61125pt x 470.50781pt>
+<img/h2k_h2.png, id=296, 966.61125pt x 470.50781pt>
 File: img/h2k_h2.png Graphic file (type png)
 <use img/h2k_h2.png>
 Package pdftex.def Info: img/h2k_h2.png  used on input line 213.
 (pdftex.def)             Requested size: 190.34894pt x 92.64966pt.
-<img/error.png, id=297, 956.07187pt x 473.51906pt>
+<img/error.png, id=298, 956.07187pt x 473.51906pt>
 File: img/error.png Graphic file (type png)
 <use img/error.png>
 Package pdftex.def Info: img/error.png  used on input line 219.
 (pdftex.def)             Requested size: 190.34894pt x 94.27583pt.
  [7]
-<img/NMZ.png, id=322, 202.95825pt x 149.358pt>
+<img/NMZ.png, id=323, 202.95825pt x 149.358pt>
 File: img/NMZ.png Graphic file (type png)
 <use img/NMZ.png>
 Package pdftex.def Info: img/NMZ.png  used on input line 243.
@@ -1316,7 +1316,7 @@ Overfull \hbox (9.31395pt too wide) in paragraph at lines 254--262
  [][] 
  []
 
-<img/Details.png, id=334, 749.80125pt x 371.13657pt>
+<img/Details.png, id=335, 749.80125pt x 371.13657pt>
 File: img/Details.png Graphic file (type png)
 <use img/Details.png>
 Package pdftex.def Info: img/Details.png  used on input line 278.
@@ -1451,11 +1451,68 @@ Underfull \hbox (badness 10000) in paragraph at lines 322--322
 []|\OT1/cmr/m/n/10 74.9$\OMS/cmsy/m/n/10 $\OT1/cmr/m/n/10 0.9
  []
 
-[11] [12] [13] [14] [15] [16]
+[11]
+<img/training_scheme.pdf, id=355, 203.2413pt x 260.1469pt>
+File: img/training_scheme.pdf Graphic file (type pdf)
+<use img/training_scheme.pdf>
+Package pdftex.def Info: img/training_scheme.pdf  used on input line 333.
+(pdftex.def)             Requested size: 152.27682pt x 194.91518pt.
+ [12 <./img/training_scheme.pdf>]
+<img/levels_recur.pdf, id=379, 959.0229pt x 346.89601pt>
+File: img/levels_recur.pdf Graphic file (type pdf)
+<use img/levels_recur.pdf>
+Package pdftex.def Info: img/levels_recur.pdf  used on input line 353.
+(pdftex.def)             Requested size: 380.69788pt x 137.70789pt.
+<img/levels_recur_60_90.pdf, id=380, 964.0818pt x 346.896pt>
+File: img/levels_recur_60_90.pdf Graphic file (type pdf)
+<use img/levels_recur_60_90.pdf>
+Package pdftex.def Info: img/levels_recur_60_90.pdf  used on input line 356.
+(pdftex.def)             Requested size: 380.69788pt x 136.98271pt.
+<img/levels_recur_10_10.pdf, id=381, 1118.01686pt x 346.89601pt>
+File: img/levels_recur_10_10.pdf Graphic file (type pdf)
+<use img/levels_recur_10_10.pdf>
+Package pdftex.def Info: img/levels_recur_10_10.pdf  used on input line 359.
+(pdftex.def)             Requested size: 380.69788pt x 118.12305pt.
+
+! Misplaced alignment tab character &.
+<argument> ...ey reach the right side (99 attack &
+                                                   strength). Three schemes ...
+l.364 			}
+          \label{fig:levels_recur}
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Misplaced alignment tab character &.
+<argument> ...ey reach the right side (99 attack &
+                                                   strength). Three schemes ...
+l.364 			}
+          \label{fig:levels_recur}
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+<img/fig_time.pdf, id=382, 668.4975pt x 476.78125pt>
+File: img/fig_time.pdf Graphic file (type pdf)
+<use img/fig_time.pdf>
+Package pdftex.def Info: img/fig_time.pdf  used on input line 370.
+(pdftex.def)             Requested size: 380.69788pt x 271.52805pt.
+[13 <./img/levels_recur.pdf> <./img/levels_recur_60_90.pdf> <./img/levels_recur
+_10_10.pdf
+
+pdfTeX warning: pdflatex (file ./img/levels_recur_10_10.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+>] [14 <./img/fig_time.pdf>] [15] [16] [17] [18] [19]
 ! Missing { inserted.
 <to be read again> 
                    \begingroup 
-l.518 			\end{align}
+l.566 			\end{align}
                     
 A left brace was mandatory here, so I've put one in.
 You might want to delete and/or insert some corrections
@@ -1465,7 +1522,7 @@ so that I will find a matching right brace soon.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.518 			\end{align}
+l.566 			\end{align}
                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1476,7 +1533,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing { inserted.
 <to be read again> 
                    \begingroup 
-l.518 			\end{align}
+l.566 			\end{align}
                     
 A left brace was mandatory here, so I've put one in.
 You might want to delete and/or insert some corrections
@@ -1486,7 +1543,7 @@ so that I will find a matching right brace soon.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.518 			\end{align}
+l.566 			\end{align}
                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1494,21 +1551,21 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-) [17]
+) [20]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 12.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 12.
  (main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 12.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 12.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 697C26B76616739C9A7C2494056C10FF;1367.
+(rerunfilecheck)             Checksum: D02BC85208DE06B943C64F5DE399857D;1353.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 12.
  ) 
 Here is how much of TeX's memory you used:
- 24078 strings out of 492483
- 438893 string characters out of 3130503
+ 24120 strings out of 492483
+ 439904 string characters out of 3130503
  717199 words of memory out of 3000000
- 27737 multiletter control sequences out of 15000+200000
+ 27765 multiletter control sequences out of 15000+200000
  15434 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,23n,94p,1602b,825s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1538,9 +1595,9 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX
 ublic/amsfonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/la
 txfont/line10.pfb>
-Output written on main.pdf (18 pages, 3603485 bytes).
+Output written on main.pdf (21 pages, 3676798 bytes).
 PDF statistics:
- 559 PDF objects out of 1000 (max. 8388607)
- 148 named destinations out of 1000 (max. 500000)
- 219 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 670 PDF objects out of 1000 (max. 8388607)
+ 157 named destinations out of 1000 (max. 500000)
+ 244 words of extra memory for PDF output out of 10000 (max. 10000000)
 

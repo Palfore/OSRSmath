@@ -3,7 +3,7 @@
 	\tableofcontents
 	\newpage
 	\section{Introduction}
-		Oldschool Runescape is a MMORPG which features combat. In combat, players are awarded experience for damage dealt to their opponents (often called monsters). After a certain amount of experience is gained the player may level up, improving the abilities in combat. The mechanics of combat involve accuracy, maximum damage, attack speed, among other details. There have been several attempts to quantify the experience rates according to a player's, and their opponent's levels and equipment. Although they are quite accurate, there are additional corrections that can be applied. Additionally extensions to more complex fighting scenarios has not been performed. We will be specifically considering applications to the Nightmare Zone, a common method of training combat. This game is played with long term investments and considerations in mind, as many achievements are achieved over periods of months or even years. In this sense, even minor optimizations can result in real-world savings for the player. Furthermore, a codebase accompanies this article which allows for more advanced use of the derived formulas (such as in optimization problems). These are the central motivations for this study (and its fun!).
+		Oldschool Runescape is a MMORPG which features combat. In combat, players are awarded experience for damage dealt to their opponents (often called monsters). After a certain amount of experience is gained the player may level up, improving the abilities in combat. The mechanics of combat involve accuracy, maximum damage, attack speed, among other details. There have been several attempts to quantify the experience rates according to a player's, and their opponent's levels and equipment. Although they are quite accurate, there are additional corrections that can be applied. Additionally extensions to more complex fighting scenarios has not been performed. We will be specifically considering applications to the Nightmare Zone, a common method of training combat. This game is played with long term investments and considerations in mind, as many achievements are achieved over periods of months or even years. In this sense, even minor optimizations can result in real-world savings for the player. Furthermore, the codebase that accompanies this article can be found at: \url{https://github.com/Palfore/OSRS-Combat}. This allows for more advanced use of the derived formulas (such as in optimization problems).
 
 	\section{Damage}
 		The \href{https://oldschool.runescape.wiki/w/Maximum_hit}{official Wiki page} provides a very good review of maximum hit mechanics. For completion we will provide a brief summary. For some reason, it does not contain information about accuracy calculations. These are can be found (unofficially) from \href{https://www.osrsbox.com/blog/2019/01/22/calculating-melee-dps-in-osrs/}{osrsbox} (which references \href{https://docs.google.com/spreadsheets/d/1wzy1VxNWEAAc0FQyDAdpiFggAfn5U6RGPp2CisAHZW8/edit#gid=158500257}{DPS calculator by Bitterkoekje}, the \href{https://web.archive.org/web/20190905124128/http://webcache.googleusercontent.com/search?q=cache:http://services.runescape.com/m=forum/forums.ws?317,318,712,65587452}{forum post} of which has been archived), \href{https://www.reddit.com/r/2007scape/comments/40bvk6/accuracy_and_exphr_combat_formula/}{MachOSRS} (reddit), and \href{https://www.reddit.com/r/2007scape/comments/5lrty0/math_inside_corrected_accuracy_formula/}{[deleted]} (reddit).  Following this, we will take care to accurately determine the number of hits required to kill an opponent, followed by experience rate calculations. Related calculations have been performed by \href{https://www.reddit.com/r/2007scape/comments/4d6l7j/effects_of_overkill_on_dps/}{Nukelawe}, which discusses the impact of overkill on expected damage, which is often neglected in damage calculations. However we will justify that the application of this formula is not properly accounted for and we will instead provide an more accurate method.
@@ -202,7 +202,7 @@
 
 
 			\subsubsection{Comparisons}
-				We have seen several methods for calculating expected kill iterations. We can now compare these models to numerically simulated fights as in Fig.~(\ref{fig:comparison}). Regardless of the model, the turns to kill grows quickly when the max hit is low compared to the initial health of the opponent (as expected). The models deviate the most from the simulations when the initial health is low, and when the max hit is high. Both the crude method and the Bitt-Nuke method have unbounded errors, while the Recursive method actually has a maximum near $(h, M) \approx (25, 80)$. Thus the recursive method is not only more accurate (less error), it also holds in more cases. 
+				We have seen several methods for calculating expected kill iterations. We can now compare these models to numerically simulated fights as in Fig.~(\ref{fig:comparison}). Regardless of the model, the turns to kill grows quickly when the max hit is low compared to the initial health of the opponent (as expected). The models deviate the most from the simulations when the initial health is low, and when the max hit is high. Both the crude method and the Bitt-Nuke method have unbounded errors, while the Recursive method actually has a maximum near $(h, M) \approx (25, 80)$. Thus the recursive method is not only more accurate (less error), it also holds in more cases.
 				%This is expected to improve accuracy by about 1-5\% depending on the fighters (remember that the benefit of this scales over periods of weeks \& months!).
 				% For max melee, this saves 11 hours!
 
@@ -226,7 +226,7 @@
 				\end{figure}
 
 		\subsection{Experience and Damage Per Second}
-			We saw that by inverting the damage per attack equation, Eq.~(\ref{eq:recursive_h}), we could determine the average number of successful attacks required to kill an opponent based on the max hit and starting health. To extend this to number of \textit{total} attacks we have to introduce accuracy, $a\in[0, 1]$. For the health per turn, $h(n)$, we simply note that $h(n)\to h(na)$ will appropriately reduce the number of ``effective turns''. Similarly, for turns to kill, $h^{-1}(1)=n\to n/a$ appropriately extends the number of turns expected. So multiplying and dividing easily accounts for accuracy. 
+			We saw that by inverting the damage per attack equation, Eq.~(\ref{eq:recursive_h}), we could determine the average number of successful attacks required to kill an opponent based on the max hit and starting health. To extend this to number of \textit{total} attacks we have to introduce accuracy, $a\in[0, 1]$. For the health per turn, $h(n)$, we simply note that $h(n)\to h(na)$ will appropriately reduce the number of ``effective turns''. Similarly, for turns to kill, $h^{-1}(1)=n\to n/a$ appropriately extends the number of turns expected. So multiplying and dividing easily accounts for accuracy.
 
 			This can further be extended to time to kill by considering the time it takes for each attack. Let $s$ be the \textcolor{red}{attack speed (in attacks per second)}, then $n/(as)$ is the required time to kill an opponent. While the health at a given time, $t$ is $h(tas)$. This is a good time to note that the error shown in Fig.~(\ref{fig:comparison}) is unchanged since these multiplicative factors cancel out in the relative error calculation.
 
@@ -324,8 +324,56 @@
 
 			Bitt-Nuke over-considers low end which lowers estimate, but it can't be known if this lowering beats the unaccounted for non-constant combat. Which may explain why it was occasionally under-estimated results, while the Recursive method was always expected to be a upper-bound. This means that with additional corrections, the Recursive model will perform better than Bitt-Nuke, although as reported this seems effect isn't strong.
 
-		\subsection{Optimization}
-			In the NMZ, we can consider the player's opponents, and equipment as parameters to an optimization problem. This could also consider equipment cost. 
+	\section{Optimization}
+		% In the NMZ, we can consider the player's opponents, and equipment as parameters to an optimization problem. This could also consider equipment cost.
+		We will try to find the most efficient ordering to level up melee combat skills to maximize efficiency. For simplicity, we will fix equipment, and NMZ opponents. Let's start at $(\text{attack}, \text{strength}) = (a, s)$ and end at $(A, S)$. Defense is not considered since it does not increase experience rates (apart from less interruption required from sustaining health). The first question is should we obtain $(a+1, s)$ or $(a, s+1)$. This question can be asked recursively, producing a tree-like structure of possible training schemes as depicted in Fig.~\ref{fig:training_scheme}. Each downward path is a possible way to get to the target levels.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=.4\linewidth]{img/training_scheme.pdf}
+			\caption{
+				The possible ways to train from 60 attack and strength to 99 attack and strength. Branching to the left represents training an attack level, and to the right is strength. At a point, 99 is reached along the edge and the tree cannot grow out anymore and eventually collapses to the desired levels.
+			}\label{fig:training_scheme}
+		\end{figure}
+
+		The optimization task then becomes how do we traverse from the top of this tree-like structure to the bottom most efficiently? We can assign a \emph{cost} to each edge in this graph corresponding to the time it takes to level up. The experience required to level up to a given level, $x$ is:
+		\begin{equation}
+			\xi(x) = \frac{\left \lfloor x - 1 + 300\times 2^\frac{(x-1)}{7} \right \rfloor}{4}
+		\end{equation}
+		The time to level attack or strength is given respectively by,
+		\begin{align}
+			t^{\text{attack}} &= \xi(a) / \langle E(a, s; \text{attack}) \rangle \\
+			t^{\text{strength}} &= \xi(s) / \langle E(a, s; \text{strength}) \rangle,
+		\end{align}
+		where we explicitly show that the experience per hour, E depends on the attack style (due to the combat bonus). The above two equations give the cost for branching to the left, and right, respectively. There is a relatively simple pattern to generate the children of any row. Building the whole tree has a \textcolor{red}{$\mathcal{O}( (A-a)(S-s) )$ time-complexity}, making this a feasible operation. The sum of costs (times) along any path is the time it takes to complete the leveling. Minimizing this corresponds to the family of problems called shortest path problems. Our particular problem is solving the single-source directed graph with non-negative weightings. This can be solved using the \href{https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm}{Dijkstra Algorithm} in quadratic time. A Python library \href{https://pypi.org/project/Dijkstar/}{Dijkstra} implements this. So this problem is solved in two parts: 1) Construct graph, 2) Apply Dijkstra. A few solutions are shown in Fig.~\ref{fig:levels_recur}. There is occasional switching, but ultimately strength is maximized first, followed by attack.
+
+		\begin{figure}[H]
+			\centering
+			\begin{subfigure}{\textwidth}
+				\includegraphics[width=\linewidth]{img/levels_recur.pdf}
+			\end{subfigure}
+			\begin{subfigure}{\textwidth}
+				\includegraphics[width=\linewidth]{img/levels_recur_60_90.pdf}
+			\end{subfigure}
+			\begin{subfigure}{\textwidth}
+				\includegraphics[width=\linewidth]{img/levels_recur_10_10.pdf}
+			\end{subfigure}
+			\caption{
+				The most efficient training is obtained by following these training schemes. Starting on the left, the player should train attack (green) or strength (red) until they reach the right side (99 attack & strength).
+				Three schemes are shown for different starting levels: (60, 60), (60, 90), and (10, 10). The latter is unrealistic since 60 attack is required to wield the dragon scimitar used in these calculations, but this shows the long term behavior. Additionally, for each scheme calculations using or not using potions is shown.
+			}\label{fig:levels_recur}
+		\end{figure}
+
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\linewidth]{img/fig_time.pdf}
+			\caption{
+				Following the optimal training scheme (using potions) starting from (60, 60), the training time for each level is plotted until the player arrives at (99, 99).
+			}\label{fig:time}
+		\end{figure}
+
+		Taking one of these schemes, like $(60, 60)\to(99, 99)$ using potions, we can calculate the actual time required to move to each next ``strip'' in Fig.~\ref{fig:levels_recur}, as done in Fig.~\ref{fig:time}. Strength is often trained first resulting in training times that are higher earlier on. Because of this, training is switched to attack. There are actually two competing effects at play. Attack has a small bonus to dps, but is often a lower level and is therefore easier to obtain. Conversely, strength has a large bonus, but quickly becomes too time-expensive to train before any benefit is received, so briefly attack is trained. After 99 strength is obtained $~$$60$ levels, attack is the only thing left to train until max. If the scheme was to alternate levels between attack and strength, the curve would be a single curve, but this staggered scheme results the prominent bifurcation.
 
 	\section{Improvements}
 		Health regeneration. Analytic solution? Constant Combat (acts as reduced weapon speed so multiplicative). Health Sustainability. The last two shouldn't impact rankings since they are multiplicative and independent of the calculation method. Based on this, we can say that exact rankings is more important than exact approximations for practical purposes. Is the treatment $h=1$ for a kill valid for all methods? Since crude and Bitterkoekje can get to 0? I've seen (enemy) hp go up in under a minute. There must be a global timer, not just every 60s after you drop below max health.
@@ -521,3 +569,54 @@
 
 
 \end{document}
+
+
+
+% \documentclass[tikz, margin=0mm]{standalone}
+% % a more complicated graph using tkz-graph
+% % depending on the actual graph this could be partially automated
+% % with tikz \for loops
+% \usepackage{tkz-graph}
+% \usetikzlibrary{calc}
+% \renewcommand*{\EdgeLineWidth}{0.15pt}
+
+% \begin{document}
+% \begin{tikzpicture}
+%     \GraphInit[vstyle=Empty]
+%         \Vertex[x=1,y=5-2,L={60, 60}]{X}
+%         \Vertex[x=0,y=5-3,L={61, 60}]{A}
+%         \Vertex[x=2,y=5-3,L={60, 61}]{B}
+%         \Vertex[x=-1,y=5-4,L={62, 60}]{C}
+%         \Vertex[x=1,y=5-4,L={61, 61}]{D}
+%         \Vertex[x=3,y=5-4,L={60, 62}]{E}
+
+%         \Vertex[x=-2,y=5-5,L={63, 60}]{F}
+%         \Vertex[x=0,y=5-5,L={62, 61}]{G}
+%         \Vertex[x=2,y=5-5,L={61, 62}]{H}
+%         \Vertex[x=4,y=5-5,L={60, 63}]{I}
+%     \Edges(A,X,B)
+%     \Edges(C,A,D,B,E)
+%     \Edges(F,C,G,D,H,E,I)
+
+%     \node at (1, -1) {\Huge \ldots};
+
+%     \GraphInit[vstyle=Empty]
+%         \Vertex[x=1,y=-3+-2,L={99, 99}]{X}
+
+%         \Vertex[x=0,y=-1+-3,L={99, 98}]{A}
+%         \Vertex[x=2,y=-1+-3,L={98, 99}]{B}
+
+%         \Vertex[x=-1,y=1+-4,L={99, 97}]{C}
+%         \Vertex[x=1,y=1+-4,L={98, 98}]{D}
+%         \Vertex[x=3,y=1+-4,L={97, 99}]{E}
+
+%         \Vertex[x=-2,y=3+-5,L={99, 96}]{F}
+%         \Vertex[x=0,y=3+-5,L={98, 97}]{G}
+%         \Vertex[x=2,y=3+-5,L={97, 98}]{H}
+%         \Vertex[x=4,y=3+-5,L={96, 99}]{I}
+%     \Edges(A,X,B)
+%     \Edges(C,A,D,B,E)
+%     \Edges(F,C,G,D,H,E,I)
+
+% \end{tikzpicture}
+% \end{document}

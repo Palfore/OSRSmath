@@ -13,10 +13,10 @@
 \contentsline {subsection}{\numberline {3.2}Validation}{9}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Time-Dependent Boosts}{10}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Comparisons}{11}{subsubsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.3}Optimization}{12}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Improvements}{12}{section.4}%
-\contentsline {section}{\numberline {5}Conclusion}{12}{section.5}%
-\contentsline {section}{\numberline {A}Average Damage}{13}{appendix.A}%
-\contentsline {subsection}{\numberline {A.1}Power Reduction}{13}{subsection.A.1}%
-\contentsline {subsection}{\numberline {A.2}Simplifying}{15}{subsection.A.2}%
-\contentsline {section}{\numberline {B}Analytic Form Attempt}{16}{appendix.B}%
+\contentsline {section}{\numberline {4}Optimization}{12}{section.4}%
+\contentsline {section}{\numberline {5}Improvements}{14}{section.5}%
+\contentsline {section}{\numberline {6}Conclusion}{14}{section.6}%
+\contentsline {section}{\numberline {A}Average Damage}{16}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Power Reduction}{16}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Simplifying}{18}{subsection.A.2}%
+\contentsline {section}{\numberline {B}Analytic Form Attempt}{19}{appendix.B}%

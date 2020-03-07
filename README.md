@@ -1,11 +1,6 @@
 # The Mathematics and Optimization of OSRS Combat
 
-## Purpose
-The purpose of this project is to accurately model [Old School Runescape](https://oldschool.runescape.com/) combat. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. Many attempts have been made to model combat, but certain details and high level treatment are often avoided. In addition to this, the tools that have been built by the community, focus on ease of access, which limits their ability to solve more complex tasks. An common example of this, letting players compare two sets of gear, but being able to determine optimal setups. This project aims to solve by of these by using a relatively high level mathematical description coupled with a clear and easy to use codebase.
+The purpose of this project is to accurately model [Old School Runescape](https://oldschool.runescape.com/) mechanics in order to optimize or analyze game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. In particular, many attempts have been made to model combat, but certain details and high level treatment are often avoided. In addition to this, the tools that have been built by the community, focus on ease of access, which limits their ability to solve more complex tasks. An common example of this, is letting players compare two sets of gear, but being able to determine optimal setups. This project aims to solve this by using a relatively high level mathematical description coupled with a clear and easy to use codebase.
 
-## Technologies
-The document is written in Latex, and the code is written in Python 3.6.
-The [OSRS-box](https://pypi.org/project/osrsbox/) python library is used for their data files.
+Additionally, coherent and comprehensive documentation doesn't really exist regarding the math behind osrs. This project provides a [document](https://github.com/Palfore/OSRS-Combat/blob/master/Documentation/main.pdf) (`Documentaion/main.pdf`) that attempts to fill this gap. More details on [the code](https://github.com/Palfore/OSRS-Combat/tree/master/osrsmath) can be found at `osrsmath/README.md`.
 
-## Usage
-Several files have a main function which typically generates some figure, or numbers used in the text. However, there is no primary "start" at this point, since this is largely the start of a library.

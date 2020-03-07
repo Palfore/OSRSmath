@@ -6,10 +6,10 @@ from pprint import pprint
 import numpy as np
 import copy
 
-def get_player(equipment_data=None, strength=86):
+def get_player(equipment_data=None, attack=70, strength=86):
 	if equipment_data is None:
 		equipment_data = get_equipment_data()
-	attacker = Player({'attack': 70, 'strength': strength, 'defence': 70, 'prayer': 56, 'hitpoints': 79, 'magic': 71, 'ranged': 70})
+	attacker = Player({'attack': attack, 'strength': strength, 'defence': 70, 'prayer': 56, 'hitpoints': 79, 'magic': 71, 'ranged': 70})
 	attacker.equip_by_name("Dragon Scimitar", equipment_data)
 	attacker.equip_by_name("Dharok's helm", equipment_data)
 	attacker.equip_by_name("Dharok's platebody", equipment_data)
@@ -71,9 +71,10 @@ def time_dependent_model_xp(attacker, model, defender_ids, min_att_boost):
 	# ie I drink a super combat potion every time my attack falls below attack_level+min_att_boost.
 	attacker = copy.deepcopy(attacker)
 	a = attacker.levels['attack']
+	s = attacker.levels['strength']
 	ds = boosts.super_potion(s)
 	da = boosts.super_potion(a)
-	
+
 	xp = 0
 	for t in range(da-min_att_boost+1):
 		attacker.levels['attack'] = a + da - t
@@ -97,7 +98,7 @@ if __name__ == '__main__':
 	attacker = get_player(equipment_data, strength=90)  # 89, 90, 91
 	print(f"M in [{attacker.get_max_hit(0, 1, 1, 1)}..{attacker.get_max_hit(boosts.super_potion(attacker.levels['strength']), 1, 1, 1)}]")
 
-	
+
 	# Determine Experience Rates
 	difficulty = 'hard-potions'
 	defenders = get_opponents(monster_data)[difficulty.split('-')[0]]
@@ -118,7 +119,7 @@ if __name__ == '__main__':
 		print(f"Total experimental time ({diff}):", sum(times))
 	print()
 
-	
+
 	#####################################
 	xp = {}
 	models = ['Crude', 'Recursive', 'Simulation', "BitterKoekje_Nukelawe"]

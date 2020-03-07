@@ -23,7 +23,7 @@ A = np.vectorize(Acc)(a, d)
 
 plt.xlabel("$M$")
 plt.ylabel("$h$")
-ax.set_zlabel("$\left \langle D \\right \\rangle$", rotation=90)
+ax.set_zlabel(R"$\left \langle D \\right \\rangle$", rotation=90)
 # plt.zticks(rotation=90)
 surf = ax.plot_surface(a, d, A, cmap=cm.coolwarm)
 

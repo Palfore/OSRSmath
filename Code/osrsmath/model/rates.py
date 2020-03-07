@@ -2,7 +2,7 @@
 	The method for successful hit calculation can be chosen, and the
 	weapon speed modifies the calculation appropriately. """
 
-from . import hits
+import osrsmath.model.hits as hits
 
 def health_at_time(t, h_0, m, a, s, method):
 	""" Returns the health of the opponent after a given time (in seconds).
