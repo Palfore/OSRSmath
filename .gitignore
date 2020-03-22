@@ -1,0 +1,11 @@
+# Distribution Files
+Code/build
+Code/dist
+Code/osrsmath.egg-info
+
+# Python Output
+*.pyc
+
+# Latex Output
+*.aux
+*.log

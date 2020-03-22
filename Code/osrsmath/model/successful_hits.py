@@ -10,7 +10,7 @@
 	@todo: Determine and add bitter's equation.
 """
 
-from math import ceil, floor, log
+from math import ceil, floor, log, sqrt
 import matplotlib.pyplot as plt
 import scipy.optimize
 import numpy as np
@@ -23,29 +23,44 @@ class Crude:
 		return h_0 - n*m/2
 
 	def hinv(self, h, h_0, m):
-		assert h <= h_0
 		return 2 * (h_0 - h) / m
 
-class BitterKoekje_Nukelawe:
+class Average:
 	# Nukelawe Contribution: https://imgur.com/aykEahg
 	# BitterKoekje: https://docs.google.com/spreadsheets/d/1xCztykHho5R2Ce_vAGowLCja8HFMHJrjqHok9r2Q13Y/edit#gid=124277451
 	# (I think) The issue with this calculation is that it doesn't consider that the
 	# ``average damage' occurs in different amounts. So the experience rates can't be treated using this average.
 
-	def h(self, n, h_0, m):
-		raise NotYetImplemented("BitterKoekje_Nukelawe h(n) is not implemented")
-
-	def hinv(self, h, h_0, m):
-		""" Note: This was extracted by backtracking through the spreadsheets,
-				the experience_per_hour function, and comparing to the imgur. """
-		assert h <= h_0
-		# assert h == 1, "The BitterKoekje_Nukelawe equation uses the average damage over the lifetime of the opponent.\n"+\
-						# "Thus is only supports h=1 (the final health of the opponent)."
-		g = min(m, h_0)  # Note h is not used since the <damage> is calculated over the full hp.
-		avg_d = g*(g+1) * (  # Nukelawe
-			(h_0 + m + 1) / (2*h_0*(m + 1)) - 2*(2*g + 1) / (6*h_0*(m+1))
+	@staticmethod
+	def expected_kill_time(h_0, m):
+		# Only considers h_0->0.
+		if h_0 < 1e-8:
+			return 0
+		g = min(m, h_0)
+		avg_d = ( g*(g+1) / (h_0*(m+1)) ) * (
+			0.5*(m+h_0+1) - (1/3)*(2*g + 1)
 		)
 		return h_0 / avg_d
+
+	def h(self, n, h_0, m):
+		# raise NotImplementedError
+		if h_0 <= m:
+			a = -n/3
+			b = m*n - 2*(m + 1)
+			c = n*(m + 1/3)
+		else:
+			a = -1
+			b = m*n/2
+			c = (1 - m) * m*n/6
+
+		delta = (b**2) - (4*a*c)
+		solution1 = (-b - sqrt(delta)) / (2*a)
+		solution2 = (-b + sqrt(delta)) / (2*a)
+		print('>>>', solution1, solution2)
+		return h_0 - solution1  # not sure if should use 1 or 2
+
+	def hinv(self, h, h_0, m):
+		return self.expected_kill_time(h_0, m) - self.expected_kill_time(h, m)
 
 class Approximate:
 	""" This method considers overkill, but ignores a linear term in
@@ -59,6 +74,7 @@ class Approximate:
 			return 1 / gamma * (0.5 - gamma)**(2**(n-L))
 
 	def hinv(self, h, h_0, m):
+		raise NotImplementedError("Not sure the log is correct")
 		assert h <= h_0
 		g = 0.5 / (m + 1)
 		L = 2*(h_0 / m - 1)
@@ -70,35 +86,45 @@ class Approximate:
 class Recursive:
 	""" This is the most accurate method, which includes all terms, but approximates
 		the initial health for the second case (h < m) to accommodate non-integers. """
+	def __init__(self):
+		self.num_calls = 0
+
 	def h(self, n, h_0, m):
 		L = 2 * (h_0 / m - 1)
 		if n <= L:
 			return h_0 - n*m / 2
 		else:
 			gamma = 0.5/(m + 1)
-			return Recursive.f(n-L, gamma, m)
+			return self.f(n-L, gamma, m)
 
 	def hinv(self, h, h_0, m):
 		assert h <= h_0
 		starting_guess = Crude().hinv(h, h_0, m)
-		return scipy.optimize.newton(
-			lambda n: abs(h - self.h(n, h_0, m)),
-			x0=starting_guess, maxiter=100
-		)
+		try:
+			answer= scipy.optimize.newton(
+				lambda n: h - self.h(n, h_0, m),
+				x0=starting_guess, maxiter=1000
+			)
+			# print(self.num_calls, h, h_0, m)
+			return answer
+		except Exception as e:
+			print(e, h, h_0, m)
+			# raise e
+			return 0
 
-	@staticmethod
-	def f(n, gamma, f_0):
+	def f(self, n, gamma, f_0):
 		''' Satisfies f(n) = gamma( f(n-1)^2 + f(n-1) ), subject to f(n) = f_0 '''
+		self.num_calls += 1
 		if n < 1:
 			return 1 / gamma * (gamma*f_0)**(2**n)
-		f_n = Recursive.f(n-1, gamma, f_0)
+		f_n = self.f(n-1, gamma, f_0)
 		return gamma*(f_n**2 + f_n)
 
 class Simulation:
 	""" Simulates N kills to experimentally approximate the required functions.
 		@warning Due to inaccurate negative health handling,
 			h(n; h_0, m) should not be trusted when h < m. """
-	DEFAULT_N = 1000
+	DEFAULT_N = 10_000
 
 	def __init__(self, N=DEFAULT_N):
 		self.N = N
@@ -124,64 +150,130 @@ class Simulation:
 		return h_n / self.N
 
 	def hinv(self, h, h_0, m):
+		if m == 1:  # Debugging
+			print(f"h_0={h_0}")
 		assert h <= h_0
 		hits = 0
 		for i in range(self.N):
-			c = 0
-			h = h_0
-			while h >= 1:
-				h -= np.random.uniform(0, m)
-				c += 1
-			hits += c
+			h_i = h_0
+			while h_i > h:
+				h_i -= np.random.random_integers(0, m)
+				hits += 1
 		return hits / self.N
 
+
+
+
+## Multi-processing boiler plate
+from multiprocessing import Pool
+_func = None
+def worker_init(func):
+  global _func
+  _func = func
+def worker(x):
+  return _func(x)
+def xmap(func, iterable, processes=None):
+  with Pool(processes, initializer=worker_init, initargs=(func,)) as p:
+    return p.map(worker, iterable)
+
+
 if __name__ == '__main__':
+	from pprint import pprint
+	import inspect
+	import os
+	import json
+
+	N = 1_00_000
+	dataset_name = f"../Data/simulations/simulation.{N}.dat"
+	if not os.path.exists(dataset_name):
+		print("Creating Dataset")
+		dataset = {
+			"N": N,
+			"source": inspect.getsource(Simulation(N).hinv),
+			"data": {
+				str(h): {
+					str(m): hinv  for m, hinv in xmap(lambda m: (str(m), Simulation(N).hinv(0, h, m)), x, processes=12)
+				} for h in y
+			}
+		}
+		print("Saving Dataset")
+		with open(dataset_name, 'w') as f:
+			json.dump(dataset, f)
+	print("Loading in Dataset")
+	sim = json.load(open(dataset_name))['data']
+
+
+	##############################################
 	from mpl_toolkits.mplot3d import Axes3D
 	from matplotlib import cm
 	import sys
 
-	# sys.setrecursionlimit(5000)
-	m_min, m_max = (10, 110)
-	h_min, h_max = (10, 255)
-
-	fig = plt.figure()
-	ax = fig.gca(projection='3d')
+	m_min, m_max = (1, 110)
+	h_min, h_max = (1, 255)
 	x = np.array(range(m_min, m_max+1))
 	y = np.array(range(h_min, h_max+1))
 	X, Y = np.meshgrid(x, y)
+
+	# https://stackoverflow.com/questions/268272/getting-key-with-maximum-value-in-dictionary
+
+	colors = {
+		"Crude": "red",
+		"Average": "orange",
+		"Recursive": "black",
+		"MarkovChainApprox": "green",
+		"MarkovChain": "blue",
+	}
+	import operator
+	Z = np.array([np.array([
+		list(colors).index(
+			min({
+				n: abs(1 - getattr(sys.modules[__name__], n)().hinv(0.5 if n == "Recursive" else 0, h, m) / sim[str(h)][str(m)] ) for n in colors
+			}.items(), key=operator.itemgetter(1))[0]
+		)
+	for m in x]) for h in y])
+
+	import matplotlib as mpl
+
+	ax = plt.gca()
+	cmap = mpl.colors.ListedColormap(list(colors.values()))
+
+	import matplotlib.colors as clrs
+	boundaries = [-0.5] + [list(colors).index(c) + 0.5 for c in colors]
+	norm = clrs.BoundaryNorm(boundaries, cmap.N, clip=True)
+
+	plt.pcolor(Z, cmap=cmap, norm=norm)
+	cb = plt.colorbar()
+
+
+	cb.set_ticks([list(colors).index(c) for c in colors])
+	cb.set_ticklabels(list(colors.keys()))
+
+	plt.ylabel("$h_0$")
+	plt.xlabel("M")
+	plt.show()
+	exit()
+
+
+	fig = plt.figure()
+	ax = fig.gca(projection='3d')
+	ax.set_zlabel("Percent Error")
 
 	# ax.set_zlabel("Turns to kill")
 	# Z = np.array([np.array([Simulation().hinv(1, h, m) for m in x]) for h in y])
 	# ax.plot_wireframe(X, Y, Z, color='red', label="Simulation")
 
-	# Z = np.array([np.array([Recursive().hinv(1, h, m) for m in x]) for h in y])
-	# ax.plot_wireframe(X, Y, Z, color='black', label="Recursive")
+	def plot_error(label, color, inverse):
+		""" inverse: hinv(h, m) """
+		print(label)
+		Z = np.array([np.array([(abs(1 - inverse(h, m) / sim[str(h)][str(m)] ))*100 for m in x]) for h in y])
+		surf = ax.plot_wireframe(X, Y, Z, color=color, linewidth=0.9, label=f"{label}")
+		print(np.average(Z), np.var(Z), np.max(Z), np.min(Z))
 
-	# Z = np.array([np.array([Crude().hinv(1, h, m) for m in x]) for h in y])
-	# ax.plot_wireframe(X, Y, Z, color='green', label="Crude")
-
-
-	ax.set_zlabel("Percent Error")
-	print("Sim")
-	sim = [[ Simulation().hinv(1, h, m) for m in x] for h in y]
-	#print(len(sim), len(sim[0]))
-
-	print("Recur")
-	Z = np.array([np.array([(abs(1 - Recursive().hinv(1, h, m) / sim[h-h_min][m-m_min]))*100 for m in x]) for h in y])
-	surf = ax.plot_wireframe(X, Y, Z, color='black', linewidth=0.3, label="Recursive Error")
-	print(np.average(Z), np.var(Z), np.max(Z), np.min(Z))
-	# Z = np.array([np.array([((1 - Recursive().hinv(1, h, m) / BitterKoekje_Nukelawe().hinv(1, h, m)))*100 for m in x]) for h in y])
-	# surf = ax.plot_wireframe(X, Y, Z, color='black', linewidth=0.3, label="Recursive Error")
-
-	print("Crude")
-	Z = np.array([np.array([(abs(1 - Crude().hinv(1, h, m) / sim[h-h_min][m-m_min]))*100 for m in x]) for h in y])
-	surf = ax.plot_wireframe(X, Y, Z, color='red', linewidth=0.3, label="Crude Error")
-	print(np.average(Z), np.var(Z), np.max(Z), np.min(Z))
-
-	print("Bitt-Nuke")
-	Z = np.array([np.array([(abs(1 - BitterKoekje_Nukelawe().hinv(1, h, m) / sim[h-h_min][m-m_min]))*100 for m in x]) for h in y])
-	surf = ax.plot_wireframe(X, Y, Z, color='blue', linewidth=0.3, label="Bitt-Nuke Error")
-	print(np.average(Z), np.var(Z), np.max(Z), np.min(Z))
+	plot_error("Recursive", "black", lambda h, m: Recursive().hinv(1, h, m))
+	# plot_error("Crude", "red", lambda h, m: Crude().hinv(0, h, m))
+	plot_error("Average", "orange", lambda h, m: Average().hinv(0, h, m))
+	plot_error("MarkovChain", "blue", lambda h, m: MarkovChain().hinv(0, h, m))
+	plot_error("MarkovChainApprox", "green", lambda h, m: MarkovChainApprox().hinv(0, h, m))
 
 	plt.xlabel("Max Hit")
 	plt.ylabel("Initial Health")

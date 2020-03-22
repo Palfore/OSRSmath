@@ -32,7 +32,7 @@ def experience_per_hour(h_0, m, a, s, e, method):
 		@param s The attack speed of the attacker.
 		@param e The experience awarded per damage.
 		@param method The calculation method. @see successful_hits.py. """
-	return e * h_0 / time_until_health(1, h_0, m, a, s, method) * 60*60
+	return e * h_0 / time_until_health(0, h_0, m, a, s, method) * 60*60
 
 def time_until_experience(E, h_0, m, a, s, e, method):
 	""" Returns the experience per hour during a fight.
@@ -46,7 +46,7 @@ def time_until_experience(E, h_0, m, a, s, e, method):
 		@warning Note these are expected calculation, so only large values of E
 			will be accurate. But then the player should note that if they level up
 			these values will change. """
-	return E * time_until_health(1, h_0, m, a, s, method) / (e * h_0 * 60*60)
+	return E * time_until_health(0, h_0, m, a, s, method) / (e * h_0 * 60*60)
 
 if __name__ == '__main__':
 	import successful_hits

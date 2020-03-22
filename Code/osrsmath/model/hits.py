@@ -23,6 +23,4 @@ def attacks_until_health(h, h_0, m, a, method):
 		@param method The calculation method. @see successful_hits.py. """
 	tolerance = 1e-12
 	assert tolerance <= a <= 1, a
-	if a < tolerance:
-		return np.inf
 	return method.hinv(h, h_0, m) / a

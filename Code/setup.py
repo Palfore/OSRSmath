@@ -1,8 +1,31 @@
 # Useful development commands:
+# Install locally pip install -e osrsmath .
 # rm -rf dist/ build/ osrsmath.egg-info/ && python3 setup.py sdist bdist_wheel
 # python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 # pip install --extra-index-url=https://test.pypi.org/simple/ osrsmath==0.1.5
 # pip freeze | xargs pip uninstall -y
+
+# On linux sub system (lss) for windows add this to get graphics (matplotlib) support
+# sudo apt-get install python3-tk
+
+# On lss, install latex compiler (https://miktex.org/howto/install-miktex-unx)
+# sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D6BC243565B2087BC3F897C9277A7293F59E4889
+# echo "deb http://miktex.org/download/ubuntu bionic universe" | sudo tee /etc/apt/sources.list.d/miktex.list
+# sudo apt-get update
+# sudo apt-get install miktex
+# miktexsetup
+# miktexsetup finish
+# initexmf --set-config-value [MPM]AutoInstall=1
+
+# INSTEAD of this, just use lualatex. The below procedure worked on windows, but not lss
+# To increase memory capacity of latex to compile large tree diagrams
+# without a default editor (?) its in home/.miktex/texmfs/config/miktex/config/pdflatex.ini
+# Find the locations of your vim or nano editor using "whereis vim" or "whereis nano"
+# initexmf --edit-config-file=pdflatex
+# main_memory=10000000  # Add this line!
+# initexmf --dump=pdflatex
+# pdflatex tree.tex
+
 from setuptools import setup, find_packages
 
 with open('README.md') as f:

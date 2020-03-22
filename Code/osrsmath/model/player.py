@@ -17,60 +17,21 @@ import osrsmath.model.damage as damage
 SLOT_BASE_URL = "https://raw.githubusercontent.com/osrsbox/osrsbox-db/master/docs/items-json-slot"
 SLOTS = ['2h', 'ammo', 'body', 'cape', 'feet', 'hands', 'head', 'legs', 'neck', 'ring', 'shield', 'weapon']
 
-def get_equipment_slot_data(slot, force_update=False):
-	file_name = f'items-{slot}.json'
-	file_path = os.path.join(config.DATA_PATH, file_name)
-	if not os.path.exists(file_path) or force_update:
-		r = requests.get(os.path.join(SLOT_BASE_URL, file_name))
+class PlayerBuilder:
+	def __init__(self, stats, equipment_data=None):
+		self.player = Player(stats)
+		self.equipment_data = get_equipment_data() if equipment_data is None else equipment_data
 
-		with open(file_path, 'w') as f:
-			f.write(r.text)
+	def equip(self, equipment):
+		if type(equipment) == str:
+			self.player.equip_by_name(equipment, self.equipment_data)
+		else:
+			for e in equipment:
+				self.player.equip_by_name(e, self.equipment_data)
+		return self
 
-	with open(file_path, 'r') as f:
-		return json.load(f)
-
-def get_equipment_data(force_update=False):
-	data = {}
-	for slot in SLOTS:
-		data[slot] = get_equipment_slot_data(slot)
-	return data
-
-def get_equipment_by_id(id, slot=None, equipment_data=None):
-	if equipment_data is None:
-		equipment_data = get_equipment_data()
-
-	for equipment_slot, equipment_slot_data in equipment_data.items():
-		if slot is not None and (equipment_slot != slot):
-			continue
-		for item_id, data in equipment_slot_data.items():
-			if item_id == id:
-				return data
-	raise ValueError(f"Equipment with id {id} could not be found.")
-
-def get_equipment_by_name(name, slot=None, equipment_data=None):
-	if equipment_data is None:
-		equipment_data = get_equipment_data()
-	for equipment_slot, equipment_slot_data in equipment_data.items():
-		if slot is not None and (equipment_slot != slot):
-			continue
-		for item_id, data in equipment_slot_data.items():
-			if name.lower() == data['name'].lower():
-				return data
-	raise ValueError(f"Equipment with name {name} could not be found.")
-
-def filter_equipment(data):
-	if data is None:
-		return None
-	if not all((data['equipable_by_player'], data['equipable'], )):
-		# raise ValueError(f"Equipment not equipable by player: {data['name']}, {data['id']}\n{data}")
-		return None
-	filtered_data = {'name': data['name'], 'id': data['id']}
-	filtered_data.update(data['equipment'])
-	if data['weapon'] is not None:
-		filtered_data.update(data['weapon'])
-		filtered_data['attack_speed'] *= 0.6  # Convert attack_speed into [attacks/second]
-	filtered_data['weight'] = data['weight'] if data['weight'] is not None else 0.0
-	return filtered_data
+	def get(self):
+		return self.player
 
 class Player:
 	def __init__(self, levels):
@@ -87,13 +48,20 @@ class Player:
 	def equip_by_name(self, name, equipment_data=None):
 		self.equip(filter_equipment(get_equipment_by_name(name, slot=None, equipment_data=equipment_data)))
 
+	def print(self):
+		padding = max(len(slot) for slot in self.gear.keys())
+		for slot, equipment in self.gear.items():
+			print(f"{slot:{padding}}: {equipment['name']}")
+		print(self.levels)
+		print(', '.join([f"[{k}: {v['attack_type']}, {v['experience']}]" for k, v in self.get_stances().items()]))
+
 	def equip(self, equipment):
 		slot = equipment['slot']
 		if slot == '2h':
 			self.unequip('weapon')
 			self.unequip('shield')
 			slot = 'weapon'
-		elif slot == 'shield' and self.gear['weapon']['slot'] == '2h':
+		elif slot == 'shield' and (self.gear['weapon'] and self.gear['weapon']['slot'] == '2h'):
 			self.unequip('weapon')
 		assert slot != '2h'
 		self.gear[slot] = equipment
@@ -168,6 +136,65 @@ class Player:
 	@staticmethod
 	def get_accuracy(attack_roll, opponent_defence_roll):
 		return damage.Melee().accuracy(attack_roll, opponent_defence_roll)
+
+
+
+def get_equipment_slot_data(slot, force_update=False):
+	file_name = f'items-{slot}.json'
+	file_path = os.path.join(config.DATA_PATH, file_name)
+	if not os.path.exists(file_path) or force_update:
+		r = requests.get(os.path.join(SLOT_BASE_URL, file_name))
+
+		with open(file_path, 'w') as f:
+			f.write(r.text)
+
+	with open(file_path, 'r') as f:
+		return json.load(f)
+
+def get_equipment_data(force_update=False):
+	data = {}
+	for slot in SLOTS:
+		data[slot] = get_equipment_slot_data(slot, force_update=force_update)
+	return data
+
+def get_equipment_by_id(id, slot=None, equipment_data=None):
+	if equipment_data is None:
+		equipment_data = get_equipment_data()
+
+	for equipment_slot, equipment_slot_data in equipment_data.items():
+		if slot is not None and (equipment_slot != slot):
+			continue
+		for item_id, data in equipment_slot_data.items():
+			if item_id == id:
+				return data
+	raise ValueError(f"Equipment with id {id} could not be found.")
+
+def get_equipment_by_name(name, slot=None, equipment_data=None):
+	if slot:
+		assert slot in SLOTS, f"slot is {slot} but must be one of: {SLOTS}"
+	if equipment_data is None:
+		equipment_data = get_equipment_data()
+	for equipment_slot, equipment_slot_data in equipment_data.items():
+		if slot is not None and (equipment_slot != slot):
+			continue
+		for item_id, data in equipment_slot_data.items():
+			if name.lower() == data['name'].lower():
+				return data
+	raise ValueError(f"Equipment with name {name} could not be found.")
+
+def filter_equipment(data):
+	if data is None:
+		return None
+	if not all((data['equipable_by_player'], data['equipable'], )):
+		# raise ValueError(f"Equipment not equipable by player: {data['name']}, {data['id']}\n{data}")
+		return None
+	filtered_data = {'name': data['name'], 'id': data['id']}
+	filtered_data.update(data['equipment'])
+	if data['weapon'] is not None:
+		filtered_data.update(data['weapon'])
+		filtered_data['attack_speed'] *= 0.6  # Convert attack_speed into [attacks/second]
+	filtered_data['weight'] = data['weight'] if data['weight'] is not None else 0.0
+	return filtered_data
 
 if __name__ == '__main__':
 	from monsters import Monster

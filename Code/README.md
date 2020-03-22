@@ -14,6 +14,7 @@ At this point in time, they don't currently provide interfaces, so you would hav
 
 ## Installing
 
+### Python
 To get the code, simply run
 ``` pip install osrsmath ```
 
@@ -23,9 +24,9 @@ To check that everything is working, in the command line run
 python -m osrsmath.apps.path
 ```
 If your environment supports graphical displays, you should get an image like:
-![Image of Training Scheme](Results/training_schemes/recur_60_60.png)
+![Image of Training Scheme](https://raw.githubusercontent.com/Palfore/OSRS-Combat/master/Code/Results/training_schemes/recur_60_60.png)
 
-otherwise you should at least get the saved image in the current directory.
+Otherwise you should at least get the saved image in the current directory.
 
 
 Alternatively, since at the moment there is not interface to access the apps, you may wish instead to download the code files, run the setup script, and explore from there:
@@ -35,6 +36,25 @@ Alternatively, since at the moment there is not interface to access the apps, yo
 	python setup.py -e .
 ```
 Then edit `/apps/path.py` (for example), and run `python /apps/path.py`.
+
+
+### Latex
+
+To compile the latex documents (developers only):
+
+`sudo apt-get install texlive-full`
+
+
+## TODO
+
+1. Add Tests
+2. Path App
+	1. Determine Algorithm Complexity of Path App.
+	6. Improve the algorithm speed. There are several properties of the particular Graph type that allow faster shortest time evaluations.
+	2. Solve Shared Experience Problem. This is import to consider controlled attack styles, most notably for the Abyssal Whip. This significantly complicates the problem since the tree structure is no longer the same tree, and vertices can form along edges of the old tree.
+	3. Solve Equipment Optimize Problem. This essentially does a brute force search through all equipment combinations at each edge to determine the fastest setup for that edge. There are millions of combinations, so a clever search would be required to reduce the cost i.e. Berserker Ring should never be considered due to the imbued version. This however likely gets very complex when the shared experience problem is added in, since the tree setup would change for different equipment setups.
+	4. Summarize Methods and Results
+	5. Add README for usable apps.
 
 ## Running the tests
 
