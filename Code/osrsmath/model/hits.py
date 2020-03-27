@@ -25,7 +25,7 @@ def attacks_until_health(h, h_0, M, a, model):
 	assert tolerance <= a <= 1, a
 	return model.hinv(h, h_0, M) / a
 
-def attacks_until_kill(h_0, M, a, model):
+def attacks_to_kill(h_0, M, a, model):
 	""" Calculates the number of turns to get an opponent to a given health.
 		@param h_0 The initial health of the opponent.
 		@param M The max hit of the attacker.
