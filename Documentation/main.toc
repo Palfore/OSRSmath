@@ -8,32 +8,32 @@
 \contentsline {section}{\numberline {2.1}Crude Model}{9}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Health after $n$ attacks}{9}{subsection.2.1.1}%
 \contentsline {subsection}{\numberline {2.1.2}Attacks until $h$ health}{9}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2.2}Nukelawe}{9}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Health after $n$ attacks}{9}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Attacks until $h$ health}{10}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.2}Average}{9}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Average Damage}{9}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Attacks to kill}{10}{subsection.2.2.2}%
 \contentsline {section}{\numberline {2.3}Recursive Model}{10}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Expected Damage per Hit}{10}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Health after $n$ attacks}{11}{subsection.2.3.2}%
-\contentsline {subsubsection}{Approximate Solution}{13}{equation.2.3.32}%
+\contentsline {subsubsection}{Approximate Solution}{13}{equation.2.3.33}%
 \contentsline {subsection}{\numberline {2.3.3}Attacks until $h$ health}{14}{subsection.2.3.3}%
 \contentsline {section}{\numberline {2.4}Approximately Analytic Recursion}{14}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Health after $n$ attacks}{14}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Attacks until $h$ health}{14}{subsection.2.4.2}%
-\contentsline {section}{\numberline {2.5}Health Regeneration}{14}{section.2.5}%
+\contentsline {subsection}{\numberline {2.4.2}Attacks until $h$ health}{15}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Health Regeneration}{15}{section.2.5}%
 \contentsline {section}{\numberline {2.6}Comparisons}{16}{section.2.6}%
-\contentsline {chapter}{\numberline {3}Nightmare Zone}{17}{chapter.3}%
-\contentsline {subsection}{\numberline {3.0.1}Experimental Considerations}{17}{subsection.3.0.1}%
-\contentsline {subsection}{\numberline {3.0.2}Validation}{17}{subsection.3.0.2}%
-\contentsline {subsubsection}{Time-Dependent Boosts}{19}{figure.caption.6}%
-\contentsline {subsubsection}{Comparisons}{19}{equation.3.0.1}%
-\contentsline {part}{II\hspace {1em}Optimization}{21}{part.2}%
-\contentsline {chapter}{\numberline {4}Optimal Equipment}{22}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Optimal Training Order}{23}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Improvements}{27}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Conclusion}{28}{chapter.7}%
-\contentsline {chapter}{Appendices}{29}{section*.10}%
-\contentsline {chapter}{\numberline {A}Average Damage}{30}{appendix.1.A}%
-\contentsline {section}{\numberline {A.1}Power Reduction}{31}{section.1.A.1}%
-\contentsline {section}{\numberline {A.2}Simplifying}{32}{section.1.A.2}%
-\contentsline {chapter}{\numberline {B}Analytic Form Attempt}{33}{appendix.1.B}%
-\contentsline {chapter}{\numberline {C}Recursive Approximation Justification}{35}{appendix.1.C}%
+\contentsline {chapter}{\numberline {3}Nightmare Zone}{19}{chapter.3}%
+\contentsline {subsection}{\numberline {3.0.1}Experimental Considerations}{19}{subsection.3.0.1}%
+\contentsline {subsection}{\numberline {3.0.2}Validation}{19}{subsection.3.0.2}%
+\contentsline {subsubsection}{Time-Dependent Boosts}{21}{figure.caption.9}%
+\contentsline {subsubsection}{Comparisons}{21}{equation.3.0.1}%
+\contentsline {part}{II\hspace {1em}Optimization}{23}{part.2}%
+\contentsline {chapter}{\numberline {4}Optimal Equipment}{24}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Optimal Training Order}{25}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Improvements}{29}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Conclusion}{30}{chapter.7}%
+\contentsline {chapter}{Appendices}{31}{section*.13}%
+\contentsline {chapter}{\numberline {A}Average Damage}{32}{appendix.1.A}%
+\contentsline {section}{\numberline {A.1}Power Reduction}{33}{section.1.A.1}%
+\contentsline {section}{\numberline {A.2}Simplifying}{34}{section.1.A.2}%
+\contentsline {chapter}{\numberline {B}Recursive Analytic Solution Attempt}{35}{appendix.1.B}%
+\contentsline {chapter}{\numberline {C}Recursive Approximation Justification}{37}{appendix.1.C}%

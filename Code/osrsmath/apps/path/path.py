@@ -1,3 +1,6 @@
+from jsoncomment import JsonComment
+from osrsmath.apps.optimize import get_sets, get_best_set
+from osrsmath.model.experience import combat_level
 from osrsmath.model.monsters import Monster
 from osrsmath.model.player import PlayerBuilder, get_equipment_data
 from osrsmath.model.experience import get_time_to_level, time_dependent_model_xp
@@ -106,7 +109,6 @@ class Tree:
 				continue
 			seen.append(init_levels)
 			c = self.get_children(init_levels)
-			# print(list(zip([init_levels]*len(c), c)))
 			children.extend(list(zip([init_levels]*len(c), c)))
 		return children
 
@@ -130,25 +132,46 @@ class Tree:
 			if hasattr(equipment, '__call__'):
 				equipment = equipment(old_a, old_s, old_d)
 			player = PlayerBuilder({"attack": old_a, "strength": old_s, 'defence': old_d}, equipment_data).equip(equipment).get()
+			t = float('inf')
+			optimal_stance = (None, None)
+			for name, stance in player.get_stances().items():
+				if stance['experience'] == training_skill:
+					player.combat_style = stance['combat_style']
+					level_time = get_time_to_level(player, training_skill, boost_function(player), defenders)
+					if level_time < t:
+						t = level_time
+						optimal_stance = (player.combat_style, time_dependent_model_xp(boost_function(player), defenders))
+
+			assert optimal_stance is not (None, None)
+			return f(parent), f(child), (t, {
+				'stance': optimal_stance[0],
+				'xp_rate': optimal_stance[1],
+				'equipment': equipment,
+			})
 		else:
-			raise NotImplementedError("Equipment optimization isn't ready yet.")
+			data = JsonComment().loadf("../../results/part_III/optimize/settings.json")
+			player_stats = data['player_stats']
+			player_stats.update({"attack": old_a, "strength": old_s, 'defence': old_d})
+			player_stats.update({'cmb': combat_level(player_stats)})
 
-		t = float('inf')
-		optimal_stance = (None, None)
-		for name, stance in player.get_stances().items():
-			if stance['experience'] == training_skill:
-				player.combat_style = stance['combat_style']
-				level_time = get_time_to_level(player, training_skill, boost_function(player), defenders)
-				if level_time < t:
-					t = level_time
-					optimal_stance = (player.combat_style, time_dependent_model_xp(boost_function(player), defenders, 'Recursive'))
+			sets = get_sets(training_skill, defenders, player_stats, data['ignore'], data['adjustments'], equipment_data)
+			sets = [{ slot: eq for slot, eq in s if eq is not None} for s in sets]
 
-		assert optimal_stance is not (None, None)
-		return f(parent), f(child), (t, {
-			'stance': optimal_stance[0],
-			'xp_rate': optimal_stance[1],
-			'equipment': equipment,
-		})
+			best_equipment, best_xp_rate, best_stance = get_best_set(
+				player_stats, training_skill, boost_function,
+				defenders, sets, include_shared_xp=False
+			)
+			pprint({"attack": old_a, "strength": old_s, 'defence': old_d,
+				"weapon": best_equipment["weapon"] if "weapon" in best_equipment else best_equipment["2h"]
+			})
+			player = PlayerBuilder(player_stats, equipment_data).equip(list(best_equipment.values())).get()
+			player.combat_style = best_stance
+			t = get_time_to_level(player, training_skill, boost_function(player), defenders)
+			return f(parent), f(child), (t, {
+				'stance': best_stance,
+				'xp_rate': best_xp_rate,
+				'equipment': best_equipment,
+			})
 
 def get_solution(tree, boost_function, defenders, equipment_data, equipment=None, start=None, end=None):
 	start = start if start else tree.start
@@ -159,23 +182,9 @@ def get_solution(tree, boost_function, defenders, equipment_data, equipment=None
 	cost_dict = {(tuple(int(x) for x in p.split('-')), tuple(int(x) for x in c.split('-'))): t for p, c, (t, _) in nodes}
 	[graph.add_edge(*node) for node in nodes]
 
-	# print(cost_dict)
-	def h(u, v, e, prev_e):
-		p = []
-		sa, ss, sd = [int(x) for x in v.split('-')]
-		ea, es, ed = end
-		for s in range(ss, es+1):
-			p.append((sa, s, sd))
-		for a in range(sa+1, ea+1):
-			p.append((a, es, sd))
-		for d in range(sd+1, ed+1):
-			p.append((ea, es, d))
-
-		return sum(cost_dict[(p[i], p[i+1])] for i in range(len(p) - 1))
-
 	return find_path(graph, '-'.join(str(s) for s in start), '-'.join(str(e) for e in end),
-		cost_func=lambda u, v, edge, prev_edge: edge[0],
-		heuristic_func=h)
+		cost_func=lambda u, v, edge, prev_edge: edge[0]
+	)
 
 from collections import namedtuple
 PathInfo = namedtuple('PathInfo', ('nodes', 'edges', 'costs', 'total_cost'))
@@ -272,7 +281,6 @@ class Solver:
 		print(self.get_path_costs(chain)[-1])
 		self.best_path = chain
 		return self.get()
-
 
 	def get(self):
 		path = ['-'.join(str(x) for x in node) for node in self.best_path]

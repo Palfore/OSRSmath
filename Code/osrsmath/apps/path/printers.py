@@ -46,7 +46,6 @@ class SchemePrinter:
 		for axis, (name, (start, end, scheme)) in zip(axes, self.schemes):
 			axis.set_title(name, loc='center')
 			axis.set_yticklabels([])
-			axis.set_yticklabels([])
 			axis.tick_params(axis='y', which='both', left=False, right=False, labelbottom=False)
 			axis.set_xticklabels([start, str(end)])
 			axis.set_xticks([0, len(scheme)])
@@ -56,6 +55,8 @@ class SchemePrinter:
 		plt.tight_layout()
 		if file_name:
 			plt.savefig(f"{file_name}.pdf")
+			os.system(f"pdfcrop {file_name}.pdf")
+			os.rename(f"{file_name}-crop.pdf", f"{file_name}.pdf")
 		plt.show()
 
 class TreePrinter:
@@ -170,11 +171,16 @@ class TreePrinter:
 				self.add_path(solution_path, color)
 
 	def add_path(self, solution_path, color='black', thickness='6', circle_start=True, circle_end=True):
-		equipment = []
+		equipment = {}
+		seen_equipment = set()
 		path_latex = []
 		for i, (node, (_, details)) in enumerate(zip(solution_path.nodes, solution_path.edges)):
-			diff = set(details['equipment']) ^ set(equipment)
-			if diff:
+			diff = set(details['equipment'].items()) ^ set(equipment.items())
+			new = [e for e in equipment.values() if e not in seen_equipment]
+			if new:
+				[seen_equipment.add(e) for e in new]
+				self.mark_level(self.unformat(node), color='green')
+			elif diff:
 				equipment = details['equipment']
 				self.mark_level(self.unformat(node), color='blue')
 			a = self.format(*self._to_vertex(*self.unformat(solution_path.nodes[i])))

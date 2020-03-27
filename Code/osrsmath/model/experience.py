@@ -3,6 +3,13 @@ from osrsmath.model.rates import experience_per_hour
 from osrsmath.model.player import Player
 from math import floor
 
+def combat_level(stats):
+	base = 0.25 * (stats['defence'] + stats['hitpoints'] + floor(stats['prayer'] / 2))
+	melee = 0.325 * (stats['attack'] + stats['strength'])
+	ranged = 0.325 * floor(3*stats['ranged']/2)
+	mage = 0.325 * floor(3*stats['magic']/2)
+	return floor(base + max(melee, ranged, mage))
+
 def experience_till_next_level(level):
 	assert level >= 2, level
 	x = level - 1
@@ -20,7 +27,7 @@ def level_by_experience(experience):
 			return level
 	assert False, f"Calculation Error"
 
-def average_xp(attacker, max_hit, max_attack_roll, attack_speed, defenders: dict, model='Recursive'):
+def average_xp(attacker, max_hit, max_attack_roll, attack_speed, defenders: dict, model='MarkovChain'):
 	""" Returns the xp/h averaged across all defenders, given the attack is in a constant state. """
 	average = 0
 	attackers_attack_type = attacker.get_stances()[attacker.combat_style]['attack_type']
@@ -32,7 +39,7 @@ def average_xp(attacker, max_hit, max_attack_roll, attack_speed, defenders: dict
 	average /= len(defenders)
 	return average
 
-def time_dependent_model_xp(states: list, defenders: dict, model='Recursive'):
+def time_dependent_model_xp(states: list, defenders: dict, model='MarkovChain'):
 	""" Returns the xp/h averaged across all defenders, given that the attacker is in a time-dependent state.
 		This then performs that average across all states. """
 	xp_h = 0
@@ -44,7 +51,7 @@ def time_dependent_model_xp(states: list, defenders: dict, model='Recursive'):
 
 def get_time_to_level(player, training_skill, states, defenders):
 	""" get_time_to_level(player 'attack', BoostingSchemes(player).overload(), opponents) """
-	return experience_till_next_level(player.levels[training_skill] + 1) / time_dependent_model_xp(states, defenders, 'Recursive')
+	return experience_till_next_level(player.levels[training_skill] + 1) / time_dependent_model_xp(states, defenders, 'MarkovChain')
 
 if __name__ == '__main__':
 	from osrsmath.model.player import PlayerBuilder

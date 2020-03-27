@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.19)  22 MAR 2020 00:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.19)  24 MAR 2020 20:52
 entering extended mode
 **./main.tex
 (main.tex
@@ -1098,7 +1098,7 @@ tex (main.tocpdfTeX warning (ext4): destination with the same identifier (name{
 page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.39 ...oximation Justification}{36}{appendix.1.C}
+l.39 ...oximation Justification}{37}{appendix.1.C}
                                                   % [1])
 \tf@toc=\write5
 \openout5 = `main.toc'.
@@ -1110,7 +1110,7 @@ Chapter 1.
 [5
 
 ]
-<../Code/osrsmath/results/part_I/Accuracy.pdf, id=264, 732.7375pt x 461.725pt>
+<../Code/osrsmath/results/part_I/Accuracy.pdf, id=263, 732.7375pt x 461.725pt>
 File: ../Code/osrsmath/results/part_I/Accuracy.pdf Graphic file (type pdf)
 <use ../Code/osrsmath/results/part_I/Accuracy.pdf>
 Package pdftex.def Info: ../Code/osrsmath/results/part_I/Accuracy.pdf  used on 
@@ -1143,67 +1143,50 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 110.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 117.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 117.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 127.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 127.
-
 [9]
-<../Code/osrsmath/results/part_II/average_damage.pdf, id=345, 842.14626pt x 474
+<../Code/osrsmath/results/part_II/average_damage.pdf, id=343, 842.14626pt x 474
 .77374pt>
 File: ../Code/osrsmath/results/part_II/average_damage.pdf Graphic file (type pd
 f)
 <use ../Code/osrsmath/results/part_II/average_damage.pdf>
 Package pdftex.def Info: ../Code/osrsmath/results/part_II/average_damage.pdf  u
-sed on input line 174.
+sed on input line 178.
 (pdftex.def)             Requested size: 380.69788pt x 214.6242pt.
  [10]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 192.
+(hyperref)                removing `math shift' on input line 196.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 192.
+(hyperref)                removing `math shift' on input line 196.
 
-[11 <../Code/osrsmath/results/part_II/average_damage.pdf>] [12]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 268.
-
+[11 <../Code/osrsmath/results/part_II/average_damage.pdf>] [12] [13]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 268.
-
-[13]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 284.
+(hyperref)                removing `math shift' on input line 272.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 284.
+(hyperref)                removing `math shift' on input line 272.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 293.
+(hyperref)                removing `math shift' on input line 288.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 293.
+(hyperref)                removing `math shift' on input line 288.
 
-[14]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 297.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 297.
+
+[14] [15]
 
 ! Package xcolor Error: Undefined color `mygray'.
 
@@ -1211,7 +1194,7 @@ See the xcolor package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.342 def 
+l.346 def 
           time_to_kill_regen(h_0):
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1223,7 +1206,7 @@ See the xcolor package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.343 	
+l.347 	
        h = (*$h_0$*)
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1235,7 +1218,7 @@ See the xcolor package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.344 	
+l.348 	
        t = 0
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1247,7 +1230,7 @@ See the xcolor package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.345 	
+l.349 	
        (*$h^*$*) = health_after(-(*$T_R$*), 0)
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1255,7 +1238,7 @@ If that doesn't work, type  X <return>  to quit.
 ! Missing { inserted.
 <to be read again> 
                    \def 
-l.345 	(*$h^*$
+l.349 	(*$h^*$
               *) = health_after(-(*$T_R$*), 0)
 A left brace was mandatory here, so I've put one in.
 You might want to delete and/or insert some corrections
@@ -1265,7 +1248,7 @@ so that I will find a matching right brace soon.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.345 	(*$h^*$
+l.349 	(*$h^*$
               *) = health_after(-(*$T_R$*), 0)
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1280,7 +1263,7 @@ See the xcolor package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.346 	
+l.350 	
        while h (*$\ge$*) (*$h^*$*):
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1288,7 +1271,7 @@ If that doesn't work, type  X <return>  to quit.
 ! Missing { inserted.
 <to be read again> 
                    \def 
-l.346 	while h (*$\ge$*) (*$h^*$
+l.350 	while h (*$\ge$*) (*$h^*$
                                 *):
 A left brace was mandatory here, so I've put one in.
 You might want to delete and/or insert some corrections
@@ -1298,7 +1281,7 @@ so that I will find a matching right brace soon.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.346 	while h (*$\ge$*) (*$h^*$
+l.350 	while h (*$\ge$*) (*$h^*$
                                 *):
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1313,7 +1296,7 @@ See the xcolor package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.347 	
+l.351 	
        	h = health_after((*$T_R$*), h) + 1
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1325,7 +1308,7 @@ See the xcolor package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.348 	
+l.352 	
        	t += (*$T_R$*)
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1337,215 +1320,246 @@ See the xcolor package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.349 	
+l.353 	
        return t + time_to_kill(h)\end{lstlisting}
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[15]
-<img/h2k_h2.png, id=486, 966.61125pt x 470.50781pt>
-File: img/h2k_h2.png Graphic file (type png)
-<use img/h2k_h2.png>
-Package pdftex.def Info: img/h2k_h2.png  used on input line 371.
-(pdftex.def)             Requested size: 190.34894pt x 92.64966pt.
-<img/error.png, id=488, 956.07187pt x 473.51906pt>
-File: img/error.png Graphic file (type png)
-<use img/error.png>
-Package pdftex.def Info: img/error.png  used on input line 377.
-(pdftex.def)             Requested size: 190.34894pt x 94.27583pt.
- [16 <./img/h2k_h2.png> <./img/error.png>]
+[16]
+<../Code/osrsmath/results/part_II/turns_to_kill.pdf, id=501, 889.3225pt x 456.7
+0625pt>
+File: ../Code/osrsmath/results/part_II/turns_to_kill.pdf Graphic file (type pdf
+)
+<use ../Code/osrsmath/results/part_II/turns_to_kill.pdf>
+Package pdftex.def Info: ../Code/osrsmath/results/part_II/turns_to_kill.pdf  us
+ed on input line 392.
+(pdftex.def)             Requested size: 190.34894pt x 97.75089pt.
+<../Code/osrsmath/results/part_II/turns_to_kill_zoom.pdf, id=502, 889.3225pt x 
+450.68375pt>
+File: ../Code/osrsmath/results/part_II/turns_to_kill_zoom.pdf Graphic file (typ
+e pdf)
+<use ../Code/osrsmath/results/part_II/turns_to_kill_zoom.pdf>
+Package pdftex.def Info: ../Code/osrsmath/results/part_II/turns_to_kill_zoom.pd
+f  used on input line 396.
+(pdftex.def)             Requested size: 190.34894pt x 96.46187pt.
+<../Code/osrsmath/results/part_II/errors.pdf, id=503, 926.46124pt x 446.66875pt
+>
+File: ../Code/osrsmath/results/part_II/errors.pdf Graphic file (type pdf)
+<use ../Code/osrsmath/results/part_II/errors.pdf>
+Package pdftex.def Info: ../Code/osrsmath/results/part_II/errors.pdf  used on i
+nput line 405.
+(pdftex.def)             Requested size: 380.69788pt x 183.5443pt.
+<../Code/osrsmath/results/part_II/best_model.pdf, id=504, 1066.98625pt x 352.31
+625pt>
+File: ../Code/osrsmath/results/part_II/best_model.pdf Graphic file (type pdf)
+<use ../Code/osrsmath/results/part_II/best_model.pdf>
+Package pdftex.def Info: ../Code/osrsmath/results/part_II/best_model.pdf  used 
+on input line 413.
+(pdftex.def)             Requested size: 380.69788pt x 125.7048pt.
+ [17 <../Code/osrsmath/results/part_II/turns_to_kill.pdf> <../Code/osrsmath/res
+ults/part_II/turns_to_kill_zoom.pdf
+
+pdfTeX warning: pdflatex (file ../Code/osrsmath/results/part_II/turns_to_kill_z
+oom.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
+e
+>] [18 <../Code/osrsmath/results/part_II/errors.pdf> <../Code/osrsmath/results/
+part_II/best_model.pdf
+
+pdfTeX warning: pdflatex (file ../Code/osrsmath/results/part_II/best_model.pdf)
+: PDF inclusion: multiple pdfs with page group included in a single page
+>]
 Chapter 3.
-<img/NMZ.png, id=505, 202.95825pt x 149.358pt>
+<img/NMZ.png, id=667, 202.95825pt x 149.358pt>
 File: img/NMZ.png Graphic file (type png)
 <use img/NMZ.png>
-Package pdftex.def Info: img/NMZ.png  used on input line 391.
+Package pdftex.def Info: img/NMZ.png  used on input line 423.
 (pdftex.def)             Requested size: 380.69788pt x 280.18456pt.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 398.
+(hyperref)                than one, level fixed on input line 430.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 400.
+               Default added (so using `tbp') on input line 432.
 
 
-Overfull \hbox (9.31395pt too wide) in paragraph at lines 402--410
+Overfull \hbox (9.31395pt too wide) in paragraph at lines 434--442
  [][] 
  []
 
-<img/Details.png, id=508, 749.80125pt x 371.13657pt>
+<img/Details.png, id=671, 749.80125pt x 371.13657pt>
 File: img/Details.png Graphic file (type png)
 <use img/Details.png>
-Package pdftex.def Info: img/Details.png  used on input line 426.
+Package pdftex.def Info: img/Details.png  used on input line 458.
 (pdftex.def)             Requested size: 380.69788pt x 188.439pt.
-[17
+[19
 
-] [18 <./img/NMZ.png>]
-Overfull \hbox (2.4431pt too wide) in paragraph at lines 470--470
+] [20 <./img/NMZ.png>]
+Overfull \hbox (2.4431pt too wide) in paragraph at lines 502--502
 []|\OT1/cmr/bx/n/10 Simulation| 
  []
 
 
-Overfull \hbox (0.65837pt too wide) in paragraph at lines 470--470
+Overfull \hbox (0.65837pt too wide) in paragraph at lines 502--502
 []|\OT1/cmr/bx/n/10 GamePlay| 
  []
 
 
-Overfull \hbox (25.69148pt too wide) in paragraph at lines 470--470
+Overfull \hbox (25.69148pt too wide) in paragraph at lines 502--502
 []|$[]$| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 66.9
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 59.1
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 58.5
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 56.7
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 58.1$\OMS/cmsy/m/n/10 $\OT1/cmr/m/n/10 0.6
  []
 
 
-Overfull \hbox (25.69148pt too wide) in paragraph at lines 470--470
+Overfull \hbox (25.69148pt too wide) in paragraph at lines 502--502
 []|$[]$| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 68.7
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 65.6
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 65.5
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 65.0
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 64.5$\OMS/cmsy/m/n/10 $\OT1/cmr/m/n/10 0.4
  []
 
 
-Overfull \hbox (25.69148pt too wide) in paragraph at lines 470--470
+Overfull \hbox (25.69148pt too wide) in paragraph at lines 502--502
 []|$[]$| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 79.8
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 68.6
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 68.3
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 65.7
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 67.5$\OMS/cmsy/m/n/10 $\OT1/cmr/m/n/10 1.0
  []
 
 
-Overfull \hbox (25.69148pt too wide) in paragraph at lines 470--470
+Overfull \hbox (25.69148pt too wide) in paragraph at lines 502--502
 []|$[]$| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 79.6
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 75.3
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 75.2
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 74.7
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--470
+Underfull \hbox (badness 10000) in paragraph at lines 502--502
 []|\OT1/cmr/m/n/10 74.9$\OMS/cmsy/m/n/10 $\OT1/cmr/m/n/10 0.9
  []
 
-[19 <./img/Details.png>] [20] [21
+[21 <./img/Details.png>] [22] [23
 
 ]
 Chapter 4.
-[22
+[24
 
 ]
 Chapter 5.
-<img/training_scheme.pdf, id=541, 203.2413pt x 260.1469pt>
+<img/training_scheme.pdf, id=704, 203.2413pt x 260.1469pt>
 File: img/training_scheme.pdf Graphic file (type pdf)
 <use img/training_scheme.pdf>
-Package pdftex.def Info: img/training_scheme.pdf  used on input line 483.
+Package pdftex.def Info: img/training_scheme.pdf  used on input line 515.
 (pdftex.def)             Requested size: 152.27682pt x 194.91518pt.
-[23
+[25
 
  <./img/training_scheme.pdf>]
-<img/levels_recur.pdf, id=562, 959.0229pt x 346.89601pt>
+<img/levels_recur.pdf, id=725, 959.0229pt x 346.89601pt>
 File: img/levels_recur.pdf Graphic file (type pdf)
 <use img/levels_recur.pdf>
-Package pdftex.def Info: img/levels_recur.pdf  used on input line 503.
+Package pdftex.def Info: img/levels_recur.pdf  used on input line 535.
 (pdftex.def)             Requested size: 380.69788pt x 137.70789pt.
-<img/levels_recur_60_90.pdf, id=563, 964.0818pt x 346.896pt>
+<img/levels_recur_60_90.pdf, id=726, 964.0818pt x 346.896pt>
 File: img/levels_recur_60_90.pdf Graphic file (type pdf)
 <use img/levels_recur_60_90.pdf>
-Package pdftex.def Info: img/levels_recur_60_90.pdf  used on input line 506.
+Package pdftex.def Info: img/levels_recur_60_90.pdf  used on input line 538.
 (pdftex.def)             Requested size: 380.69788pt x 136.98271pt.
-<img/levels_recur_10_10.pdf, id=564, 1118.01686pt x 346.89601pt>
+<img/levels_recur_10_10.pdf, id=727, 1118.01686pt x 346.89601pt>
 File: img/levels_recur_10_10.pdf Graphic file (type pdf)
 <use img/levels_recur_10_10.pdf>
-Package pdftex.def Info: img/levels_recur_10_10.pdf  used on input line 509.
+Package pdftex.def Info: img/levels_recur_10_10.pdf  used on input line 541.
 (pdftex.def)             Requested size: 380.69788pt x 118.12305pt.
 
 ! Misplaced alignment tab character &.
 <argument> ...ey reach the right side (99 attack &
                                                    strength). Three schemes ...
-l.514 			}
+l.546 			}
           \label{fig:levels_recur}
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1557,7 +1571,7 @@ might try typing `S' now just to see what is salvageable.
 ! Misplaced alignment tab character &.
 <argument> ...ey reach the right side (99 attack &
                                                    strength). Three schemes ...
-l.514 			}
+l.546 			}
           \label{fig:levels_recur}
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1566,41 +1580,41 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-[24]
-<img/fig_time.pdf, id=573, 668.4975pt x 476.78125pt>
+[26]
+<img/fig_time.pdf, id=735, 668.4975pt x 476.78125pt>
 File: img/fig_time.pdf Graphic file (type pdf)
 <use img/fig_time.pdf>
-Package pdftex.def Info: img/fig_time.pdf  used on input line 520.
+Package pdftex.def Info: img/fig_time.pdf  used on input line 552.
 (pdftex.def)             Requested size: 380.69788pt x 271.52805pt.
- [25 <./img/levels_recur.pdf> <./img/levels_recur_60_90.pdf> <./img/levels_recu
+ [27 <./img/levels_recur.pdf> <./img/levels_recur_60_90.pdf> <./img/levels_recu
 r_10_10.pdf
 
 pdfTeX warning: pdflatex (file ./img/levels_recur_10_10.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
->] [26 <./img/fig_time.pdf>]
+>] [28 <./img/fig_time.pdf>]
 Chapter 6.
-[27
+[29
 
 ]
 Chapter 7.
-[28
+[30
 
-] [29
+] [31
 
 
 ]
 Appendix A.
-[30
+[32
 
-] [31] [32]
+] [33] [34]
 Appendix B.
-[33
+[35
 
 ]
 ! Missing { inserted.
 <to be read again> 
                    \begingroup 
-l.709 			\end{align}
+l.741 			\end{align}
                     
 A left brace was mandatory here, so I've put one in.
 You might want to delete and/or insert some corrections
@@ -1610,7 +1624,7 @@ so that I will find a matching right brace soon.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.709 			\end{align}
+l.741 			\end{align}
                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1621,7 +1635,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing { inserted.
 <to be read again> 
                    \begingroup 
-l.709 			\end{align}
+l.741 			\end{align}
                     
 A left brace was mandatory here, so I've put one in.
 You might want to delete and/or insert some corrections
@@ -1631,7 +1645,7 @@ so that I will find a matching right brace soon.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.709 			\end{align}
+l.741 			\end{align}
                     
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1639,64 +1653,58 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-[34]
+[36]
 Appendix C.
-[35
+[37
 
-]) [36]
+]) [38]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 12.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 12.
  (main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 12.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 12.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 19B240E38BFA4DFA8C65840757091ADE;2266.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+(rerunfilecheck)             Checksum: AF9D84D17EE919603EA111EA040D8FFE;2264.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 12.
  ) 
 Here is how much of TeX's memory you used:
- 24244 strings out of 480934
- 441272 string characters out of 2909146
- 898112 words of memory out of 10000000
- 39328 multiletter control sequences out of 15000+200000
- 545643 words of font info for 73 fonts, out of 3000000 for 9000
+ 24262 strings out of 480934
+ 442395 string characters out of 2909146
+ 896115 words of memory out of 10000000
+ 39339 multiletter control sequences out of 15000+200000
+ 545291 words of font info for 72 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,23n,94p,1602b,1547s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 68i,23n,94p,2090b,1547s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cmextra/cmex7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmmi5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
-y8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><
-C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Progra
-m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files/
-MiKTeX 2.9/fonts/type1/public/amsfonts/latxfont/line10.pfb>
-Output written on main.pdf (37 pages, 3838350 bytes).
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmmi5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb><C:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmt
+i10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/latxfont/line10.pfb>
+Output written on main.pdf (39 pages, 4248432 bytes).
 PDF statistics:
- 924 PDF objects out of 1000 (max. 8388607)
- 248 named destinations out of 1000 (max. 500000)
- 348 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1081 PDF objects out of 1200 (max. 8388607)
+ 254 named destinations out of 1000 (max. 500000)
+ 358 words of extra memory for PDF output out of 10000 (max. 10000000)
 

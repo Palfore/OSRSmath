@@ -7,9 +7,9 @@
 \BOOKMARK [1][-]{section.2.1}{Crude Model}{chapter.2}% 7
 \BOOKMARK [2][-]{subsection.2.1.1}{Health after n attacks}{section.2.1}% 8
 \BOOKMARK [2][-]{subsection.2.1.2}{Attacks until h health}{section.2.1}% 9
-\BOOKMARK [1][-]{section.2.2}{Nukelawe}{chapter.2}% 10
-\BOOKMARK [2][-]{subsection.2.2.1}{Health after n attacks}{section.2.2}% 11
-\BOOKMARK [2][-]{subsection.2.2.2}{Attacks until h health}{section.2.2}% 12
+\BOOKMARK [1][-]{section.2.2}{Average}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.1}{Average Damage}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.2}{Attacks to kill}{section.2.2}% 12
 \BOOKMARK [1][-]{section.2.3}{Recursive Model}{chapter.2}% 13
 \BOOKMARK [2][-]{subsection.2.3.1}{Expected Damage per Hit}{section.2.3}% 14
 \BOOKMARK [2][-]{subsection.2.3.2}{Health after n attacks}{section.2.3}% 15
@@ -27,9 +27,9 @@
 \BOOKMARK [0][-]{chapter.5}{Optimal Training Order}{part.2}% 27
 \BOOKMARK [0][-]{chapter.6}{Improvements}{part.2}% 28
 \BOOKMARK [0][-]{chapter.7}{Conclusion}{part.2}% 29
-\BOOKMARK [0][-]{section*.10}{Appendices}{part.2}% 30
+\BOOKMARK [0][-]{section*.13}{Appendices}{part.2}% 30
 \BOOKMARK [0][-]{appendix.1.A}{Average Damage}{part.2}% 31
 \BOOKMARK [1][-]{section.1.A.1}{Power Reduction}{appendix.1.A}% 32
 \BOOKMARK [1][-]{section.1.A.2}{Simplifying}{appendix.1.A}% 33
-\BOOKMARK [0][-]{appendix.1.B}{Analytic Form Attempt}{part.2}% 34
+\BOOKMARK [0][-]{appendix.1.B}{Recursive Analytic Solution Attempt}{part.2}% 34
 \BOOKMARK [0][-]{appendix.1.C}{Recursive Approximation Justification}{part.2}% 35

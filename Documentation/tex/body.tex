@@ -113,23 +113,27 @@
 					\Aboxed{n &= (h_0 - h_{n}) \frac{2}{M}}.
 				\end{align}
 				Both of these can be calculated in $\mathcal{O}(1)$ time.
-		\section{Nukelawe}
-			\subsection{Health after $n$ attacks}
-				\href{https://imgur.com/aykEahg}{Nukelawe} presents a derivation that gives the average damage per hit over the opponent's life to be,
+		\section{Average}
+			\subsection{Average Damage}
+				\href{https://imgur.com/aykEahg}{Nukelawe} presents a derivation that gives the average damage per hit over the opponent's life to be. This means a contribution from the overkill region and a contribution from the normal region. This averaging acts as an approximation since adds each hit in the overkill region, however in reality only a couple hits during a fight would occur here. With this, the average damage on a hit is given by:
 				\begin{align}
 					\langle D \rangle_{h_0}^M = \frac{y(y+1)}{h_0(M+1)}\left(\frac{1}{2}{(M+h_0+1)}-\frac{1}{3}(2y+1) \right),
 				\end{align}
-				where $y=\min(h_0, M)$. This makes use of an average over a piecewise function which is an approximation. The Recursive model removes this assumption. However this allows the average damage to be independent of the current health, allowing us to get a similar solution to the Crude case,
-				\begin{align}
-					\Aboxed{h_{n} &= h_0 - n\frac{y(y+1)}{h_0(M+1)}\left(\frac{1}{2}{(M+h_0+1)}-\frac{1}{3}(2y+1) \right)}.
-				\end{align}
+				where $y=\min(h_0, M)$. Since this is an average over the length of a fight, it means that we cannot determine the health after a given number of terms for this model.
 
-			\subsection{Attacks until $h$ health}
-				And again, inverting and simplifying a bit, we get,
+
+				% \begin{align}
+				% 	\Aboxed{h_{n} &= h_0 - n\frac{y(y+1)}{h_0(M+1)}\left(\frac{1}{2}{(M+h_0+1)}-\frac{1}{3}(2y+1) \right)}.
+				% \end{align}
+
+			\subsection{Attacks to kill}
+				Since we know the average damage over the whole fight, we can calculate the number of attacks to kill simply by,
 				\begin{align}
-					\Aboxed{n &= \frac{6h_0(M+1)(h_0 - h_{n})}{ y(y+1)\left(2(M+h_0+1)-2(2y+1) \right)} }.
+					n &= \frac{h_0}{\langle D \rangle} \\
+					&= \frac{h^2_0(M+1)}{y(y+1)}\frac{6}{\left(3M+3h_0+3-4y-2) \right)} \\
+					\Aboxed{n &= \frac{6h^2_0(M+1)}{y(y+1)\left(3M+3h_0-4y+1) \right)}}
 				\end{align}
-				Both of these can be calculated in $\mathcal{O}(1)$ time.
+				This can be calculated in $\mathcal{O}(1)$ time.
 
 		\section{Recursive Model}\label{sec:average_damage}
 			\subsection{Expected Damage per Hit}
@@ -304,7 +308,7 @@
 		% \section{Markov Chain}
 
 		\section{Health Regeneration}
-			We have a function $h(n; a, M, h_0)$ that models the health of the opponent after $n$ total attacks, without regeneration. Based on the weapon attack interval, $T_A$, we can convert to seconds through $t = nT_A$. This leaves us with $h(t/T_A; a, M, h_0)$. These equations cannot solve health regeneration since the health no longer decreases monotonically, and as a result the cases cannot be separated. Let's roll with this restriction and solve the problem within a window where the opponent does not heal. First we will make the assumption that the first regeneration occurs at $t=T_R$, which is the time between regenerations. We will later remove this restriction by averaging the first regeneration over $t\in[0, T_R]$. To reduce clutter, let's remove some explicit parameters and redefine $h$ as $h(t, h_0)$. The health just before the opponent heals is
+			This is a method that considers health regeneration as piecewise averages. We start with one of our models which can give the health of the opponent after $n$ total attacks, $h(n; a, M, h_0)$ (without regeneration). Based on the weapon attack interval, $T_A$, we can convert to seconds through $t = nT_A$. This leaves us with $h(t/T_A; a, M, h_0)$. These equations cannot solve health regeneration since the health no longer decreases monotonically, and as a result the cases cannot be separated. Let's roll with this restriction and solve the problem within a window where the opponent does not heal. First we will make the assumption that the first regeneration occurs at $t=T_R$, which is the time between regenerations. We will later remove this restriction by averaging the first regeneration over $t\in[1, T_R]$. To reduce clutter, let's remove some explicit parameters and redefine $h$ as $h(t, h_0)$. The health just before the opponent heals is
 			\begin{align}
 				h_1 = h(T_R, h_{0}),
 			\end{align}
@@ -360,29 +364,57 @@ def time_to_kill_regen(h_0):
 			Now this has to be numerically inverted to give the time to kill.
 
 		\section{Comparisons}
-			We have seen several methods for calculating expected kill iterations. We can now compare these models to numerically simulated fights as in Fig.~(\ref{fig:comparison}). Regardless of the model, the turns to kill grows quickly when the max hit is low compared to the initial health of the opponent (as expected). The models deviate the most from the simulations when the initial health is low, and when the max hit is high. Both the crude method and the Bitt-Nuke method have unbounded errors, while the Recursive method actually has a maximum near $(h, M) \approx (25, 80)$. Thus the recursive method is not only more accurate (less error), it also holds in more cases.
-			%This is expected to improve accuracy by about 1-5\% depending on the fighters (remember that the benefit of this scales over periods of weeks \& months!).
-			% For max melee, this saves 11 hours!
+			We will only be comparing ``turns to \textit{kill}'' since ``turns to a given health'' is only possible with some models. In addition, since the health regeneration case adds additional complexities for expectedly minor improvements, it also won't be considered here.
+
+			The combat is actually simple to simulate, however because it is a stochastic process that converges slowly getting high precision results is difficult this way. Regardless it can be done over the course of hours or days depending on the desired precision level. Our models can then be compared to these numerically simulated fights as is done in Fig.~(\ref{fig:comparison}). Regardless of the model, the turns to kill grows quickly when the max hit is low compared to the initial health of the opponent as shown in Fig.~\ref{fig:turns_to_kill}. By visual inspection, the time appears to scale roughly linearly with the health of the opponent, and exponentially with decreasing max hits.
+
+			Looking closer at the graphs, the deviations between different models becomes more apparent. We can investigate this further by comparing the \textit{error} between the models' predictions and the simulation. Figure~\ref{fig:comparison} shows a wide variation in performance across these models. Most notably, the crude model performs the worst overall. Both the average and recursive methods have high error peaks, but otherwise do quite well. The Markov Chain model performs essentially perfectly, with it's approximation not falling far behind. Some statistics about the models are shown in Table~\ref{table:model_comp_stats}. Notably, the Markov Chain model has a significantly lower average error, standard deviation, and maximum error than all other models.
+
+			\begin{table}[h]
+			        \centering
+			        \begin{tabular}{ l | c c c c }
+			                Model & Average & Standard Deviation & Maximum & Minimum \\
+			                \hline\hline
+			                Crude & 18.14 & 18.54 & 98.20 & 1.75e-04 \\
+			                Average & 10.29 & 17.92 & 73.00 & 8.85e-06 \\
+			                MarkovChain & 0.06 & 0.06 & 0.62 & 7.35e-07 \\
+			                MarkovChainApprox & 1.56 & 4.82 & 32.73 & 7.35e-07 \\
+			        \end{tabular}
+			        \caption{Error statistics for various models.}
+			        \label{table:model_comp_stats}
+			\end{table}
+
+			Finally, one more interesting comparison to make is seeing which models perform best in which regions. Figure~\ref{fig:best_model} shows a heatmap depicting which models perform the best in which regions. There are several interesting trends that emerge (although their explanations are unknown but likely arbitrary). The comparison between all the models are done in three stages: first the crude, average, and recursive model are compared, then the Markov Chain Approximation is added, and finally all 5 models are compared. This is done since the Markov Chain models dominate, which would prevent us some seeing how the simpler models relate. The Crude model only makes an appearance when $M=1$ since overkill plays no role here and all models agree. The arbitrary ordering of evaluations places the Crude model first (but all models are equally valid here). In the first plot, we see that Average dominates the majority of the domain. However this is slightly mis-leading as the improvement over the Recursive model here is small, whereas in the region where the Recursive model dominates the improvement is substantial. Perhaps a better visualization would interpolate the colors depending on relative improvement. Regardless, in the next plot the Markov Chain Approximation quickly dominates essentially the whole domain. Finally, the last plot shows a battle between both Markov Chain models. However, there are a few details to note here. First there is a ``cut-out'' region at low max hits for which the Markov Chain model could not be evaluated due to numerical overflow in its current implementation. Second, it is strange that the approximation performs similarly well throughout and shares roughly equal domain (although this may be due to simply being such similar estimates). What makes this even more strange though is that a pattern emerges, in which the approximation seems to dominate at \textit{angles} in the domain i.e. lines with slopes that are multiples of $h_0/M$. There is no current explanation for this.
+			\begin{figure}
+				\centering
+				\begin{subfigure}{0.5\linewidth}
+					\centering
+					\includegraphics[width=\linewidth]{../Code/osrsmath/results/part_II/turns_to_kill.pdf}
+				\end{subfigure}%
+				\begin{subfigure}{0.5\linewidth}
+					\centering
+					\includegraphics[width=\linewidth]{../Code/osrsmath/results/part_II/turns_to_kill_zoom.pdf}
+				\end{subfigure}
+				\caption{
+					The number of successful turns to kill an opponent that has $h_0$ health, given that the attacker's max hit is $M$. The MarkovChain (hot colors) and Crude (cool colors) methods are shown. However, due to the scale of the left plot they are indistinguishable. The right plot shows a smaller region which allows for a comparison.
+				}\label{fig:turns_to_kill}
+			\end{figure}
 
 			\begin{figure}
 				\centering
-				\begin{subfigure}{.5\textwidth}
-					\centering
-					\includegraphics[width=\linewidth]{img/h2k_h2.png}
-					\caption{Turns to Kill}
-					% \label{fig:sub1}
-				\end{subfigure}%
-				\begin{subfigure}{.5\textwidth}
-					\centering
-					\includegraphics[width=\linewidth]{img/error.png}
-					\caption{Error from Simulation}
-					% \label{fig:sub2}
-				\end{subfigure}
+				\includegraphics[width=\linewidth]{../Code/osrsmath/results/part_II/errors.pdf}
 				\caption{
-					A comparison between different models. The crude model does not consider the effects of overkill. The recursive model is that described in Eq.~\ref{eq:recursive_h} which best accounts for overkill. The Bitt-Nuke model averages the effect of overkill. The true value can be evaluated by simulating many fights and averaging the results. To get high precision this is a very expensive evaluation. On the left, the expected number of successful hits required for a kill is shown. All three models \textit{appear} quite similar, however this is an artifact of scale. On the right, the percent relative error with respect to the simulations are shown. The noise is evident and occurs due to the difficulty of efficiently simulating the required number of fights. The peak error is the region in which overkill is expected to occur. The average error of the recursive method is 4.94\% with a standard deviation of 4.8\%, while the Bitt-Nuke method has an average of 10.57\% and a standard deviation of 17.4\%.
+					A comparison between different models. The percent relative error with respect to the simulations are shown.
 				}\label{fig:comparison}
 			\end{figure}
 
+			\begin{figure}
+				\centering
+				\includegraphics[width=\linewidth]{../Code/osrsmath/results/part_II/best_model.pdf}
+				\caption{
+					The model which agrees best with simulation, for different initial healths, and maximum hits. The final plot shows a comparison which includes all models. Since the MarkovChain (MC) models have very low errors, they occlude the other details. So, the other plots only include a subset of models. The leftmost only shows Crude, Average, and Recursive. The middle plot additionally includes MarkovChainApprox (MCApprox). Several interesting trends are discussed in the main body.
+				}\label{fig:best_model}
+			\end{figure}
 
 	\chapter{Nightmare Zone}
 		We can now attempt to extend this into an useful application. For practical purposes, the Nightmare Zone (NMZ) is a combat training ground minigame that offers a low intensity, but efficient method of training combat skills. The player enters an arena with several bosses they have previously fought in the main game. At any given time, four (randomly chosen - with replacement) are in combat with the player. Before beginning, the player can decide a minimum of five bosses they would like to re-fight.
@@ -659,7 +691,7 @@ def time_to_kill_regen(h_0):
 					\right]}.
 				\end{align}
 		\newpage
-		\chapter{Analytic Form Attempt}\label{app:analytic_form_attempt}
+		\chapter{Recursive Analytic Solution Attempt}\label{app:analytic_form_attempt}
 			Here we will attempt to derive a more useful form of Eq.~\ref{eq:recur}. We will start with a slightly simpler relation,
 			\begin{align}
 				h_{n+1} &= h_n^2 + h_n.

@@ -61,31 +61,56 @@ if __name__ == '__main__':
 	equipment = choose_equipment(60, 60, 60)
 
 
-	start, end = (90, 90, 99), (99, 99, 99)
 
-	## Timming first solution
+	### Optimal Equipment
 	from timeit import default_timer
-
-
-	for s in range(99, 1, -1):
-		tree = Tree((s, s, s), (99, 99, 99), print_progress=False)
-		start = default_timer()
-		path = get_solution(tree, lambda p: BoostingSchemes(p).overload(), defenders_, equipment_data_, equipment)
-		end = default_timer()
-		print(s, end-start)
-	exit()
+	start = default_timer()
+	tree = Tree((1, 1, 99), (99, 99, 99), print_progress=False)
+	path = get_solution(tree, lambda p: BoostingSchemes(p).overload(), defenders_, equipment_data_, equipment=None)
 	printer = TreePrinter(tree.start, tree.end)
-	printer.add_grid(draw_dots=False, add_text=True)
+	printer.add_grid()
+	printer.add_path(path, 'red')
+	pprint(list(zip(path.nodes, path.edges)), width=140)
+	end = default_timer()
+	current_equipment = {}
+	for n, (t, d) in zip(path.nodes, path.edges):
+		a = set(d['equipment'].items())
+		b = set(current_equipment.items())
+		diff = a - b
+		if diff:
+			print(n, diff)
+		current_equipment = d['equipment']
+	printer.print()
 
-	solver = Solver(tree, lambda p, c: Tree.assign_edge(p, c, lambda p: BoostingSchemes(p).overload(), defenders_, equipment_data_, equipment))
-	# solver.__next__()
-	# printer.add_path(solver.get())
+	print("total_cost:", path.total_cost, "calculated in:", end - start)
+	import sys
+	sys.stdout.write('\a')
+	sys.stdout.flush()
 
-	for solution in solver:
-		pass
-	printer.add_path(solution)
-	printer.print("tree1", clean=True, animate=True)
 	exit()
+
+	start, end = (90, 90, 99), (99, 99, 99)
+	### Timming first solution
+	# from timeit import default_timer
+	# for s in range(99, 1, -1):
+	# 	tree = Tree((s, s, s), (99, 99, 99), print_progress=False)
+	# 	start = default_timer()
+	# 	path = get_solution(tree, lambda p: BoostingSchemes(p).overload(), defenders_, equipment_data_, equipment)
+	# 	end = default_timer()
+	# 	print(s, end-start)
+	# exit()
+	# printer = TreePrinter(tree.start, tree.end)
+	# printer.add_grid(draw_dots=False, add_text=True)
+
+	# solver = Solver(tree, lambda p, c: Tree.assign_edge(p, c, lambda p: BoostingSchemes(p).overload(), defenders_, equipment_data_, equipment))
+	# # solver.__next__()
+	# # printer.add_path(solver.get())
+
+	# for solution in solver:
+	# 	pass
+	# printer.add_path(solution)
+	# printer.print("tree1", clean=True, animate=True)
+	# exit()
 
 	### Comparison of different boosting schemes
 	# compare_paths('tree1', (90, 90, 60), (99, 99, 60), [
