@@ -1,4 +1,3 @@
-""" These function add accuracy into the mix. """
 from osrsmath.model.hits import *
 import unittest
 
@@ -21,8 +20,9 @@ class FakeModel:
 	def turns_to_kill(self, h_0, M):
 		return self.hinv(0, h_0, M)
 
+
 class TestAttacksToKillComparisons(unittest.TestCase):
-	a2k = lambda self, a: attacks_until_kill(100, 30, a, FakeModel())
+	a2k = lambda self, a: attacks_to_kill(100, 30, a, FakeModel())
 	higher = 0.8
 	lower = 0.65
 
@@ -34,6 +34,7 @@ class TestAttacksToKillComparisons(unittest.TestCase):
 
 	def test_accuracy_decreases_turns_to_kill(self):
 		self.assertLess(self.a2k(self.higher), self.a2k(self.lower))
+
 
 class TestAttacksUntilHealthComparisons(unittest.TestCase):
 	a2h = lambda self, a: attacks_until_health(10, 100, 30, a, FakeModel())
@@ -48,6 +49,7 @@ class TestAttacksUntilHealthComparisons(unittest.TestCase):
 
 	def test_accuracy_decreases_turns_to_kill(self):
 		self.assertLess(self.a2h(self.higher), self.a2h(self.lower))
+
 
 class TestHealthAfterAttack(unittest.TestCase):
 	haa = lambda self, a: health_after_attacks(10, 100, 30, a, FakeModel())
