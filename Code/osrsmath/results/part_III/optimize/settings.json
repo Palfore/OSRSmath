@@ -1,7 +1,5 @@
 /* This is the data file that the program will read.
 	There are several things here:
-		training_skill:
-			Must be one of: "attack", "strength", "defence"
 		defenders:
 			The set of opponents you will be fighting. It is best to do this by id since
 			multiple opponents may have the same, but different stats. You can search by id here:
@@ -25,9 +23,9 @@
 	If you see/know about exceptions (things that should be ignored, or be adjusted) then please let me know.
 */
 {
-	"training_skill": "attack",
 	"defenders": {
 		"Count Draynor": ["id", 6332],
+		"Count Draynor2": ["id", 6332],
 	},
 	"player_stats": {
 		"attack": 99,
@@ -55,7 +53,6 @@
 		"Starter sword",
 
 		////// ADD THINGS YOU DO NOT WANT TO CONSIDER BELOW THIS LINE!
-		"Fighter torso",
 		"Infernal max cape", "Fire max cape", "Ardougne max cape", "Infernal cape",
 	],
 	"adjustments": {
@@ -86,6 +83,9 @@
 
 		// Need DT and https://forum.tip.it/topic/79597-desert-treasure-lowest-possible-level/page/2/
 		"Shadow sword": {"attack": 30, "strength": 30, "magic": 51, "ranged": 42},
+
+		// Need DS2
+		"Mythical cape": {"magic": 75, "hitpoints": 50, "prayer": 42, "strength": 50, "cmb": 85, "slayer": 18, "ranged": 30},
 
 		// RFD items are not properly accounted for
 		"Spork": {"attack": 10},

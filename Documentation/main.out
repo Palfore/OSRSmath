@@ -5,24 +5,24 @@
 \BOOKMARK [1][-]{section.1.3}{Experience and Damage Per Second}{chapter.1}% 5
 \BOOKMARK [0][-]{chapter.2}{Models}{part.1}% 6
 \BOOKMARK [1][-]{section.2.1}{Crude Model}{chapter.2}% 7
-\BOOKMARK [2][-]{subsection.2.1.1}{Health after n attacks}{section.2.1}% 8
-\BOOKMARK [2][-]{subsection.2.1.2}{Attacks until h health}{section.2.1}% 9
+\BOOKMARK [2][-]{subsection.2.1.1}{Health after \040attacks}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.2}{Attacks until \040health}{section.2.1}% 9
 \BOOKMARK [1][-]{section.2.2}{Average}{chapter.2}% 10
 \BOOKMARK [2][-]{subsection.2.2.1}{Average Damage}{section.2.2}% 11
 \BOOKMARK [2][-]{subsection.2.2.2}{Attacks to kill}{section.2.2}% 12
 \BOOKMARK [1][-]{section.2.3}{Recursive Model}{chapter.2}% 13
 \BOOKMARK [2][-]{subsection.2.3.1}{Expected Damage per Hit}{section.2.3}% 14
-\BOOKMARK [2][-]{subsection.2.3.2}{Health after n attacks}{section.2.3}% 15
-\BOOKMARK [2][-]{subsection.2.3.3}{Attacks until h health}{section.2.3}% 16
+\BOOKMARK [2][-]{subsection.2.3.2}{Health after \040attacks}{section.2.3}% 15
+\BOOKMARK [2][-]{subsection.2.3.3}{Attacks until \040health}{section.2.3}% 16
 \BOOKMARK [1][-]{section.2.4}{Approximately Analytic Recursion}{chapter.2}% 17
-\BOOKMARK [2][-]{subsection.2.4.1}{Health after n attacks}{section.2.4}% 18
-\BOOKMARK [2][-]{subsection.2.4.2}{Attacks until h health}{section.2.4}% 19
+\BOOKMARK [2][-]{subsection.2.4.1}{Health after \040attacks}{section.2.4}% 18
+\BOOKMARK [2][-]{subsection.2.4.2}{Attacks until \040health}{section.2.4}% 19
 \BOOKMARK [1][-]{section.2.5}{Health Regeneration}{chapter.2}% 20
 \BOOKMARK [1][-]{section.2.6}{Comparisons}{chapter.2}% 21
-\BOOKMARK [0][-]{chapter.3}{Nightmare Zone}{part.1}% 22
-\BOOKMARK [1][-]{subsection.3.0.1}{Experimental Considerations}{chapter.3}% 23
-\BOOKMARK [2][-]{subsection.3.0.2}{Validation}{subsection.3.0.1}% 24
-\BOOKMARK [-1][-]{part.2}{II Optimization}{}% 25
+\BOOKMARK [-1][-]{part.2}{II Applications}{}% 22
+\BOOKMARK [0][-]{chapter.3}{Nightmare Zone}{part.2}% 23
+\BOOKMARK [1][-]{section.3.1}{Experimental Considerations}{chapter.3}% 24
+\BOOKMARK [2][-]{subsection.3.1.1}{Validation}{section.3.1}% 25
 \BOOKMARK [0][-]{chapter.4}{Optimal Equipment}{part.2}% 26
 \BOOKMARK [0][-]{chapter.5}{Optimal Training Order}{part.2}% 27
 \BOOKMARK [0][-]{chapter.6}{Improvements}{part.2}% 28

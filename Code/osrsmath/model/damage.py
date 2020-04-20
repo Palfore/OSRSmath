@@ -1,7 +1,11 @@
 """ This file provides an methods for calculating damage according to equipment bonuses,
-	combat levels and boosts for the various combat styles.
+	combat levels and boosts for the various combat styles. It is possible that the flooring
+	is not accurate. These are very difficult to discover, and I'm not sure if any one has
+	an official source on the flooring order. If anyone does, please contact me or update this.
 
-	@todo: Add ranged and magic
+	In addition, negative attack bonuses are not handled since their implementation is unknown.
+
+	@todo: Add magic
 """
 
 from math import floor
@@ -16,7 +20,17 @@ def average(h, M):
 	else:
 		return (h/2) * (2 - (h + 1) / (M + 1))
 
-class Melee:
+def accuracy(max_attacker_roll, max_defender_roll):
+	A_max = max_attacker_roll
+	D_max = max_defender_roll
+	assert A_max >= 0  # Not sure how to handle negative attack bonuses, clamp?
+	assert D_max >= 0
+	if A_max >= D_max:
+		return 1 - 0.5 * (D_max + 2) / (A_max + 1)
+	else:
+		return A_max / (2 * D_max + 2)
+
+class Standard:
 	def _base_damage(self, E_str, str_level, B_pot, B_pray, B_other, B_style):
 		C = [1.3, 1/10., 1/80., 1/640.]
 		S_eff = effective_level(str_level, B_pot, B_pray, B_other, B_style, 0)
@@ -34,15 +48,10 @@ class Melee:
 		""" B_other gets applied inside floor, multiplier gets applied outside. """
 		M = floor(self._base_damage(E_str, str_level, B_pot, B_pray, B_other, B_style) * B_SA) * multiplier
 		assert M >= 1, [E_str, str_level, B_pot, B_pray, B_other, B_style, B_SA, multiplier]
-		return M
+		return floor(M)
 
-	@staticmethod
-	def accuracy(max_attacker_roll, max_defender_roll):
-		A_max = max_attacker_roll
-		D_max = max_defender_roll
-		assert A_max >= 0
-		assert D_max >= 0
-		if A_max >= D_max:
-			return 1 - 0.5 * (D_max + 2) / (A_max + 1)
-		else:
-			return A_max / (2 * D_max + 2)
+class Melee(Standard):  # Alias
+	pass
+
+class Ranged(Standard):  # Alias
+	pass

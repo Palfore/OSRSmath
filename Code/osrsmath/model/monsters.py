@@ -23,6 +23,88 @@ import osrsmath.model.damage as damage
 
 MONSTER_LIST_BASE_URL = "https://raw.githubusercontent.com/osrsbox/osrsbox-db/master/docs"
 
+class Monster:
+	level_names = [
+		'hitpoints',
+		'attack_level',
+		'strength_level',
+		'defence_level',
+		'ranged_level',
+		'magic_level'
+	]
+	stat_names = [
+		'attack_stab',
+		'attack_slash',
+		'attack_crush',
+		'attack_ranged',
+		'attack_magic',
+
+		'defence_stab',
+		'defence_slash',
+		'defence_crush',
+		'defence_ranged',
+		'defence_magic',
+
+		'melee_strength',
+		'ranged_strength',
+		'magic_damage',
+		'attack_speed'
+	]
+
+	@staticmethod
+	def from_id(id, xp_per_damage=4, monster_data=None):
+		data = filter_monster(get_monster_by_id(id, monster_data))
+
+
+		levels = {level.replace('_level', ''): data[level] for level in Monster.level_names}
+		stats = {stat: data[stat] for stat in Monster.stat_names}
+		monster = Monster(levels, stats)
+		monster.other = {name: data[name] for name in data.keys() if name not in (Monster.level_names+Monster.stat_names)}
+
+		assert len(data['attack_type']) == 1, f"Cannot handle multiple attack types for monster with id {id}"
+		attack_type = data['attack_type'][0]
+
+		# I'm assuming 'melee' means crush, it might be an average or something like that.
+		# This assumption is okay for now, since their offensive capabilities aren't important yet.
+		monster.attack_style = 'crush' if attack_type == 'melee' else attack_type
+		return monster
+
+	def from_name(name, xp_per_damage=4, monster_data=None):
+		id = get_monster_by_name(name, monster_data)['id']
+		return Monster.from_id(id, monster_data)
+
+	def __init__(self, levels, stats, xp_per_damage=4):
+		self.levels = levels
+		self.stats = stats
+		self.xp_per_damage = xp_per_damage
+		self.attack_style = None
+
+	def get_max_hit(self, strength_potion_boost, strength_prayer_boost, strength_other_boost, multiplier, using_special=False):
+		raise NotImplementedError("Max hit for monsters has not been implemented")
+
+	def get_attack_roll(self, attack_potion_boost, attack_prayer_boost, attack_other_boost, multiplier, using_special=False):
+		raise NotImplementedError("Max hit for monsters has not been implemented")
+
+	def get_defence_roll(self, attacker_attack_type):
+		combat_type = {
+			'stab': 'Melee', 'slash': 'Melee', 'crush': 'Melee', 'ranged': 'Ranged', 'magic': 'Magic'
+		}[attacker_attack_type]
+
+		if combat_type in ('Melee', 'Ranged'):
+			return damage.Standard().max_defence_roll(
+				self.stats['defence_' + attacker_attack_type],
+				self.levels['defence'],
+				0, 1, 1, 1, 1
+			)
+		elif combat_type == 'Magic':
+			raise ValueError("Magic is not supported")
+		else:
+			raise ValueError("Could not identify combat type")
+
+	def get_accuracy(self, attack_roll, opponent_defence_roll):
+		return damage.Melee().accuracy(attack_roll, opponent_defence_roll)
+
+
 def get_monster_data(force_update=False):
 	file_name = f'monsters-complete.json'
 	file_path = os.path.join(config.DATA_PATH, file_name)
@@ -66,76 +148,6 @@ def filter_monster(data):
 	filtered_data = {feature: data[feature] for feature in features_to_collect}
 	filtered_data['attack_speed'] *= 0.6  # Convert attack_speed into [attacks/second]
 	return filtered_data
-
-
-class Monster:
-	@staticmethod
-	def from_id(id, monster_data=None):
-		data = filter_monster(get_monster_by_id(id, monster_data))
-
-		level_names = ['attack_level', 'ranged_level', 'strength_level', 'defence_level', 'hitpoints', 'magic_level']
-		stat_names = ['attack_crush', 'attack_magic', 'attack_ranged', 'attack_slash',  'attack_stab',
-				'defence_crush', 'defence_magic', 'defence_ranged', 'defence_slash', 'defence_stab',
-				'melee_strength', 'ranged_strength', 'magic_damage', 'attack_speed']
-
-		levels = {level.replace('_level', ''): data[level] for level in level_names}
-		monster = Monster(levels)
-		monster.stats = {stat: data[stat] for stat in stat_names}
-		monster.other = {name: data[name] for name in data.keys() if name not in (level_names+stat_names)}
-
-		assert len(data['attack_type']) == 1, f"Cannot handle multiple attack types for monster with id {id}"
-		attack_type = data['attack_type'][0]
-
-		# I'm assuming 'melee' means crush, it might be an average or something like that.
-		# This assumption is okay for now, since their offensive capabilities are important yet.
-		monster.attack_style = 'crush' if attack_type == 'melee' else attack_type
-		return monster
-
-	def from_name(name, monster_data=None):
-		id = get_monster_by_name(name, monster_data)['id']
-		return Monster.from_id(id, monster_data)
-
-	def __init__(self, levels):
-		self.levels = levels
-		self.stats = {
-			'attack_stab': 0,
-			'attack_slash': 0,
-			'attack_crush': 0,
-			'attack_magic': 0,
-			'attack_ranged': 0,
-			'defence_stab': 0,
-			'defence_slash': 0,
-			'defence_crush': 0,
-			'defence_magic': 0,
-			'defence_ranged': 0,
-			'melee_strength': 0,
-			'ranged_strength': 0,
-			'magic_damage': 0,
-			'attack_speed': 2.4
-		}
-		self.attack_style = None
-
-	def get_max_hit(self, strength_potion_boost, strength_prayer_boost, strength_other_boost, multiplier, using_special=False):
-		raise NotImplementedError("Max hit for monsters has not been implemented")
-
-	def get_attack_roll(self, attack_potion_boost, attack_prayer_boost, attack_other_boost, multiplier, using_special=False):
-		raise NotImplementedError("Max hit for monsters has not been implemented")
-
-	def get_defence_roll(self, attacker_attack_type, defence_potion_boost, defence_prayer_boost, defence_other_boost, multiplier, using_special=False):
-		assert not using_special, "Special attacks are not yet implemented"
-		# Assumes the opponent is using melee
-		return damage.Melee().max_defence_roll(
-			self.stats['defence_' + attacker_attack_type],
-			self.levels['defence'],
-			0,
-			1,
-			1,
-			1,
-			1,
-		)
-
-	def get_accuracy(self, attack_roll, opponent_defence_roll):
-		return damage.Melee().accuracy(attack_roll, opponent_defence_roll)
 
 
 if __name__ == '__main__':

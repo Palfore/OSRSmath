@@ -1,6 +1,6 @@
 import osrsmath.model.successful_hits as successful_hits
 from osrsmath.model.rates import experience_per_hour
-from osrsmath.model.player import Player
+from osrsmath.model.damage import accuracy
 from math import floor
 
 def combat_level(stats: dict, integer=True):
@@ -15,7 +15,7 @@ def combat_level(stats: dict, integer=True):
 	level = base + max(melee, ranged, mage)
 	return floor(level) if integer else level
 
-def experience_until_next_level(level: int):
+def experience_required_to_level_up_to(level: int):
 	""" Off by at most 1xp. """
 	assert level >= 2, level
 	x = level - 1
@@ -26,30 +26,26 @@ def single_state_xp_rate(attack_style, max_hit, max_attack_roll, attack_speed, d
 	""" Returns the xp/h averaged across all defenders, given the attack is in a constant state. """
 	average = 0
 	for name, defender in defenders.items():
-		D = defender.get_defence_roll(attack_style, 0, 1, 1, 1)
-		a = Player.get_accuracy(max_attack_roll, D)
-		E = experience_per_hour(defender.levels['hitpoints'], max_hit, a, 1 / attack_speed, 4, getattr(successful_hits, model)())
+		D = defender.get_defence_roll(attack_style)
+		a = accuracy(max_attack_roll, D)
+		E = experience_per_hour(defender.levels['hitpoints'], max_hit, a, attack_speed, 4, getattr(successful_hits, model)())
 		average += E
 	average /= len(defenders)
 	return average
 
-def xp_rate(states: list, defenders: dict, model='MarkovChain'):
+def xp_rate(attack_type, attack_speed, states: list, defenders: dict, model='MarkovChain'):
 	""" Returns the xp/h averaged across all defenders, given that the attacker is in a time-dependent state.
 		This then performs that average across all states. """
-	xp_h = 0
-	for attacker in states:
-		max_hit = attacker.get_max_hit(0, 1, 1, 1)
-		A = attacker.get_attack_roll(0, 1, 1, 1)
-		xp_h += single_state_xp_rate(
-			attacker.get_stances()[attacker.combat_style]['attack_type'],
-			max_hit, A, attacker.get_stats()['attack_speed'],
-			defenders, model
+	avg_xp = 0
+	for M, A in states:
+		avg_xp += single_state_xp_rate(
+			attack_type, M, A, attack_speed, defenders, model
 		)
-	return xp_h / len(states)
+	return avg_xp / len(states)
 
-def time_to_level(player, training_skill: str, states: list, defenders: dict, model='MarkovChain'):
+def time_to_level(current_level, experience_rate):
 	""" get_time_to_level(player 'attack', BoostingSchemes(player).overload(), opponents) """
-	return experience_until_next_level(player.levels[training_skill] + 1) / xp_rate(states, defenders, 'MarkovChain')
+	return experience_required_to_level_up_to(current_level + 1) / experience_rate
 
 if __name__ == '__main__':
 	from osrsmath.model.player import PlayerBuilder

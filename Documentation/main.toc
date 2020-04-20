@@ -21,12 +21,12 @@
 \contentsline {subsection}{\numberline {2.4.2}Attacks until $h$ health}{15}{subsection.2.4.2}%
 \contentsline {section}{\numberline {2.5}Health Regeneration}{15}{section.2.5}%
 \contentsline {section}{\numberline {2.6}Comparisons}{16}{section.2.6}%
-\contentsline {chapter}{\numberline {3}Nightmare Zone}{19}{chapter.3}%
-\contentsline {subsection}{\numberline {3.0.1}Experimental Considerations}{19}{subsection.3.0.1}%
-\contentsline {subsection}{\numberline {3.0.2}Validation}{19}{subsection.3.0.2}%
-\contentsline {subsubsection}{Time-Dependent Boosts}{21}{figure.caption.9}%
-\contentsline {subsubsection}{Comparisons}{21}{equation.3.0.1}%
-\contentsline {part}{II\hspace {1em}Optimization}{23}{part.2}%
+\contentsline {part}{II\hspace {1em}Applications}{19}{part.2}%
+\contentsline {chapter}{\numberline {3}Nightmare Zone}{20}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Experimental Considerations}{20}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Validation}{20}{subsection.3.1.1}%
+\contentsline {subsubsection}{Time-Dependent Boosts}{22}{figure.caption.9}%
+\contentsline {subsubsection}{Comparisons}{22}{equation.3.1.1}%
 \contentsline {chapter}{\numberline {4}Optimal Equipment}{24}{chapter.4}%
 \contentsline {chapter}{\numberline {5}Optimal Training Order}{25}{chapter.5}%
 \contentsline {chapter}{\numberline {6}Improvements}{29}{chapter.6}%

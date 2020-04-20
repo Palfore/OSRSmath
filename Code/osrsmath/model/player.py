@@ -13,6 +13,8 @@ import os
 
 import osrsmath.config as config
 import osrsmath.model.damage as damage
+import osrsmath.model.boosts as boosts
+import osrsmath.model.experience as experience
 
 SLOT_BASE_URL = "https://raw.githubusercontent.com/osrsbox/osrsbox-db/master/docs/items-json-slot"
 SLOTS = ['2h', 'ammo', 'body', 'cape', 'feet', 'hands', 'head', 'legs', 'neck', 'ring', 'shield', 'weapon']
@@ -39,22 +41,7 @@ class Player:
 		self.gear = {slot: None for slot in SLOTS if '2h' not in slot}
 		self.combat_style = None
 
-	def get_stances(self):
-		return {stance['combat_style']: stance for stance in self.gear['weapon']['stances']}
-
-	def equip_by_id(self, id, equipment_data=None):
-		self.equip(filter_equipment(get_equipment_by_id(id, slot=None, equipment_data=equipment_data)))
-
-	def equip_by_name(self, name, equipment_data=None):
-		self.equip(filter_equipment(get_equipment_by_name(name, slot=None, equipment_data=equipment_data)))
-
-	def print(self):
-		padding = max(len(slot) for slot in self.gear.keys())
-		for slot, equipment in self.gear.items():
-			print(f"{slot:{padding}}: {equipment['name']}")
-		print(self.levels)
-		print(', '.join([f"[{k}: {v['attack_type']}, {v['experience']}]" for k, v in self.get_stances().items()]))
-
+	### EQUIPMENT ##################################################################################
 	def equip(self, equipment):
 		slot = equipment['slot']
 		if slot == '2h':
@@ -66,13 +53,41 @@ class Player:
 		assert slot != '2h'
 		self.gear[slot] = equipment
 
+	def equip_by_id(self, id, equipment_data=None):
+		self.equip(filter_equipment(get_equipment_by_id(id, slot=None, equipment_data=equipment_data)))
+
+	def equip_by_name(self, name, equipment_data=None):
+		self.equip(filter_equipment(get_equipment_by_name(name, slot=None, equipment_data=equipment_data)))
+
 	def unequip(self, slot):
 		self.gear[slot] = None
+
+	### GETTERS ##################################################################################
+	def get_stances(self):
+		return {stance['combat_style']: stance for stance in self.gear['weapon']['stances']}
+
+	def get_combat_type(self):
+		""" Returns Melee, Ranged, or Magic based on experience gained. """
+		if self.combat_style is None:
+			return None
+		if 'ranged' in self.get_stances()[self.combat_style]['experience']:
+			return 'Ranged'
+		if 'magic' in self.get_stances()[self.combat_style]['experience']:
+			return 'Magic'
+		return {
+			'stab': 'Melee',
+			'slash': 'Melee',
+			'crush': 'Melee',
+		}[self.get_stances()[self.combat_style]['attack_type']]
+
+	def get_equipment_names(self):
+		""" Returns a list of the worn equipment names. """
+		return [e['name'] for e in self.gear.values() if e]
 
 	def get_stats(self):
 		overall = {}
 		for slot, equipment in self.gear.items():
-			assert slot != '2h'
+			assert slot != '2h'  # 2h slot is not used, 2h's go into weapon slot.
 			if equipment is None:
 				continue
 			for stat, value in equipment.items():
@@ -87,56 +102,141 @@ class Player:
 		overall['weapon_type'] = self.gear['weapon']['weapon_type']
 		return overall
 
-	def get_max_hit(self, strength_potion_boost, strength_prayer_boost, strength_other_boost, multipler, using_special=False):
-		assert not using_special, "Special attacks are not implemented"
-		# WARNING: ONLY HANDLES (AND ASSUMES MELEE COMBAT!)
+
+	### DAMAGE ##################################################################################
+	def can_attack(self):
+		pass
+
+	def get_damage_parameters(self):
 		stats = self.get_stats()
 		stances = self.get_stances()
-		return damage.Melee().max_hit(
-			stats['melee_strength'],
-			self.levels['strength'],
-			strength_potion_boost,
-			strength_prayer_boost,
-			strength_other_boost,
-			{'aggressive': 3, 'controlled': 1,}.get(stances[self.combat_style]['attack_style'], 0),
-			1,  # Special attack multiplier
+		if self.get_combat_type() == 'Melee':
+			return {
+				'offensive_equipment_bonus': stats['melee_strength'],
+				'offensive_skill': 'strength',
+				'offensive_stance_bonus': {'aggressive': 3, 'controlled': 1}.get(stances[self.combat_style]['attack_style'], 0),
+				'accuracy_equipment_bonus': stats['attack_' + stances[self.combat_style]['attack_type']],
+				'accuracy_skill': 'attack',
+				'accuracy_stance_bonus': {'accurate': 3, 'controlled':1}.get(stances[self.combat_style]['attack_style'], 0),
+			}
+		elif self.get_combat_type() == 'Ranged':
+			return {
+				'offensive_equipment_bonus': stats['ranged_strength'],
+				'offensive_skill': 'ranged',
+				'offensive_stance_bonus': {'accurate': 3}.get(stances[self.combat_style]['attack_style'], 0),
+				'accuracy_equipment_bonus': stats['attack_ranged'],
+				'accuracy_skill': 'ranged',
+				'accuracy_stance_bonus': {'accurate': 3}.get(stances[self.combat_style]['attack_style'], 0),
+			}
+		elif self.get_combat_type() == 'Magic':
+			raise ValueError("Magic is not supported")
+		else:
+			raise ValueError("Could not identify combat type")
+
+
+	def get_max_hit(self, potion, prayer):
+		dmg = self.get_damage_parameters()
+
+		other = boosts.Equipment.none()
+		other.update(boosts.other(self.get_equipment_names()))
+		special_attack_bonus = 1  # Special attacks are not implemented
+		multipler = 1  # Ignoring flooring order, since there is no official documentation
+		return damage.Standard().max_hit(
+			dmg['offensive_equipment_bonus'],
+			self.levels[dmg['offensive_skill']],
+			potion(self.levels[dmg['offensive_skill']]),
+			prayer(dmg['offensive_skill']),
+			other[dmg['offensive_skill']],
+			dmg['offensive_stance_bonus'],
+			1, multipler
+		)
+
+	def get_attack_roll(self, potion, prayer):
+		dmg = self.get_damage_parameters()
+		stances = self.get_stances()
+
+		other = boosts.Equipment.none()
+		other.update(boosts.other(self.get_equipment_names()))
+		multipler = 1  # Ignoring flooring order, since there is no official documentation
+
+		return damage.Standard().max_attack_roll(
+			dmg['accuracy_equipment_bonus'],
+			self.levels[dmg['accuracy_skill']],
+			potion(self.levels[dmg['accuracy_skill']]),
+			prayer(dmg['accuracy_skill']),
+			other[dmg['accuracy_skill']],
+			dmg['accuracy_stance_bonus'],
 			multipler
 		)
 
-	def get_attack_roll(self, attack_potion_boost, attack_prayer_boost, attack_other_boost, multipler, using_special=False):
+	def get_defence_roll(self, attacker_attack_type, potion, prayer, multipler, using_special=False):
 		assert not using_special, "Special attacks are not implemented"
 		stats = self.get_stats()
 		stances = self.get_stances()
-		attack_type = stances[self.combat_style]['attack_type']
-		return damage.Melee().max_attack_roll(
-			stats['attack_' + stances[self.combat_style]['attack_type']],
-			self.levels['attack'],
-			attack_potion_boost,
-			attack_prayer_boost,
-			attack_other_boost,
-			{'accurate': 3, 'controlled': 1,}.get(stances[self.combat_style]['attack_style'], 0),
-			multipler
-		)
 
-
-	def get_defence_roll(self, attacker_attack_type, defence_potion_boost, defence_prayer_boost, defence_other_boost, multipler, using_special=False):
-		assert not using_special, "Special attacks are not implemented"
-		stats = self.get_stats()
-		stances = self.get_stances()
-		return damage.Melee().max_defence_roll(
-			stats['defence_' + attacker_attack_type],
-			self.levels['defence'],
-			defence_potion_boost,
-			defence_prayer_boost,
-			defence_other_boost,
-			{'defensive': 3, 'controlled': 1,}.get(stances[self.combat_style]['attack_style'], 0),
-			multipler
-		)
+		other = boosts.Equipment.none()
+		other.update(boosts.other(self.get_equipment_names()))
+		multipler = 1  # Ignoring flooring order, since there is no official documentation
+		if self.get_combat_type() in ('Melee', 'Ranged'):
+			return damage.Standard().max_defence_roll(
+				stats['defence_' + attacker_attack_type],
+				self.levels['defence'],
+				potion(self.levels['defence']),
+				prayer('defence'),
+				other['defence'],
+				{'longrange': 3, 'defensive': 3, 'controlled': 1,}.get(stances[self.combat_style]['attack_style'], 0),
+				multipler
+			)
+		elif self.get_combat_type() == 'Magic':
+			raise ValueError("Magic is not supported")
+		else:
+			raise ValueError("Could not identify combat type")
 
 	@staticmethod
 	def get_accuracy(attack_roll, opponent_defence_roll):
-		return damage.Melee().accuracy(attack_roll, opponent_defence_roll)
+		return damage.accuracy(attack_roll, opponent_defence_roll)
 
+	### EXPERIENCE ##################################################################################
+	def xp_rate(self, states, opponents):
+		attack_type = self.get_stances()[self.combat_style]['attack_type']
+		if attack_type is None:
+			attack_type = self.get_combat_type().lower()
+
+		speed_bonus = -0.6 if self.get_stances()[self.combat_style]['boosts'] == "attack speed by 1 tick" else 0
+		return experience.xp_rate(
+			attack_type,
+			self.get_stats()['attack_speed'] + speed_bonus,
+			states, opponents
+		)
+
+	def time_to_level(self, states, opponents):
+		training = self.get_stances()[self.combat_style]['experience']
+		if training == 'shared':
+			raise ValueError("Only direct experience is allowed, not shared")
+
+		return experience.time_to_level(self.levels[training], self.xp_rate(states, opponents))
+
+	### OTHER ##################################################################################
+	def print(self):
+		padding = max(len(slot) for slot in self.gear.keys())
+		print("Levels:")
+		for stat, level in self.levels.items():
+			print(f"\t{stat}: {level}")
+
+		print("Equipment:")
+		for slot, equipment in self.gear.items():
+			print(f"\t{slot:{padding}}: {equipment['name'] if equipment else None}")
+
+		print("Stats:")
+		for stat, value in self.get_stats().items():
+			if stat in ('stances', 'weapon_type'):
+				continue
+			print(f"\t{stat}: {value}")
+
+		print("Attack Stances:", ', '.join([f"[{k}: {v['attack_type']}, {v['experience']}]" for k, v in self.get_stances().items()]))
+		print(f"Currently Using {self.combat_style}", end=' ' if self.combat_style else '\n')
+		if self.combat_style:
+			print(f"which trains {self.get_stances()[self.combat_style]['experience']} ({self.get_combat_type()})")
 
 
 def get_equipment_slot_data(slot, force_update=False):

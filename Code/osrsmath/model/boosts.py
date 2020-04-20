@@ -12,8 +12,17 @@ class Potions:
 	def super(level):
 		return floor(0.15*level + 5)
 
+	@staticmethod
 	def normal(level):
 		return floor(0.10*level + 3)
+
+	@staticmethod
+	def ranging(level):
+		return floor(0.10*level + 4)
+
+	@staticmethod
+	def magic(_=None):
+		return 4
 
 	@staticmethod
 	def none(_=None):
@@ -43,16 +52,46 @@ class Prayers:
 		return multipliers[skill]
 
 	@staticmethod
-	def level3(_=None):
-		return 1.15
+	def level3(skill):
+		x = 1.15
+		multipliers = {
+			'attack': x,
+			'strength': x,
+			'defence': x,
+			'ranged': x,
+			'ranged_strength': x,
+			'magic': x,
+		}
+		assert skill in multipliers
+		return multipliers[skill]
 
 	@staticmethod
-	def level2(_=None):
-		return 1.1
+	def level2(skill):
+		x = 1.1
+		multipliers = {
+			'attack': x,
+			'strength': x,
+			'defence': x,
+			'ranged': x,
+			'ranged_strength': x,
+			'magic': x,
+		}
+		assert skill in multipliers
+		return multipliers[skill]
 
 	@staticmethod
-	def level1(_=None):
-		return 1.05
+	def level1(skill):
+		x = 1.05
+		multipliers = {
+			'attack': x,
+			'strength': x,
+			'defence': x,
+			'ranged': x,
+			'ranged_strength': x,
+			'magic': x,
+		}
+		assert skill in multipliers
+		return multipliers[skill]
 
 	@staticmethod
 	def none(_=None):
@@ -72,51 +111,78 @@ class Prayers:
 	def augury(skill):
 		multipliers = {
 			'magic': 1.25,
-			'magic_strength': 1.25,
 		}
 		assert skill in multipliers
 		return multipliers[skill]
+
+
+
+def other(equipment):
+	equipment = [e.lower() for e in equipment]
+
+	# The order here is important, salve amulet does not stack with black mask
+	# The wiki says "only the salve amulet's bonuses will be applied". Not sure
+	# if this is because its better, or if it always applies regardless of the variant.
+	# Because it's easier to implement, we'll just assume salve takes priority.
+	if 'salve amulet (ei)' in equipment:
+		return Equipment.salve_amulet_i()
+	if 'salve amulet (e)' in equipment:
+		return Equipment.salve_amulet()
+	if 'salve amulet' in equipment:
+		return Equipment.salve_amulet()
+	if 'salve amulet (i)' in equipment:
+		return Equipment.salve_amulet_i()
+
+	if any(e in equipment for e in ('black mask', 'slayer helmet')):
+		return Equipment.black_mask()
+	if any(e in equipment for e in ('black mask (i)', 'slayer helmet (i)')):
+		return Equipment.black_mask_i()
+
+	if all(e in equipment for e in ('void knight gloves', 'void knight top', 'void knight robe')):
+		if 'void melee helm' in equipment:
+			return Equipment.void_melee()
+		elif 'void ranger helm' in equipment:
+			return Equipment.void_ranger()
+		elif 'void mage helm' in equipment:
+			return Equipment.void_mage()
+
+	if all(e in equipment for e in ('void knight gloves', 'elite void top', 'elite void robe')):
+		if 'void melee helm' in equipment:
+			return Equipment.elite_void_melee()
+		elif 'void ranger helm' in equipment:
+			return Equipment.elite_void_ranger()
+		elif 'void mage helm' in equipment:
+			return Equipment.elite_void_mage()
+
+	if all(e in equipment for e in ('obsidian helmet', 'obsidian platebody', 'obsidian platelegs')):
+		if any(e in equipment for e in ('toktz-xil-ek', 'toktz-xil-ak', 'tzhaar-ket-em', 'tzhaar-ket-om', 'tzhaar-ket-om (t)')):
+			return Equipment.obsidian()
+
+	return {}
 
 class Equipment:
 	@staticmethod
-	def void(skill):
-		multipliers = {
-			'strength': 1.10,
-			'attack': 1.10,
-			'ranged': 1.10,
-			'ranged_strength': 1.10,
-			'magic': 1.45,
-			'magic_strength': 1.0,
+	def none():
+		return {
+			'strength': 1,
+			'attack': 1,
+			'defence': 1,
+			'ranged': 1,
+			'ranged_strength': 1,
+			'magic': 1,
+			'magic_strength': 1,
 		}
-		assert skill in multipliers
-		return multipliers[skill]
 
 	@staticmethod
-	def void_elite(skill):
-		multipliers = {
-			'strength': 1.10,
-			'attack': 1.10,
-			'ranged': 1.125,
-			'ranged_strength': 1.125,
-			'magic': 1.45,
-			'magic_strength': 1.025,
-		}
-		assert skill in multipliers
-		return multipliers[skill]
-
-
-	@staticmethod
-	def black_mask(skill):
-		multipliers = {
+	def black_mask():
+		return {
 			'strength': 7/6,
 			'attack': 7/6,
 		}
-		assert skill in multipliers
-		return multipliers[skill]
 
 	@staticmethod
-	def black_mask_i(skill):
-		multipliers = {
+	def black_mask_i():
+		return {
 			'strength': 7/6,
 			'attack': 7/6,
 			'ranged': 1.15,
@@ -124,51 +190,119 @@ class Equipment:
 			'magic': 1.15,
 			'magic_strength': 1.15,
 		}
-		assert skill in multipliers
-		return multipliers[skill]
 
 	@staticmethod
-	def obsidian(skill):
-		multipliers = {
+	def void_melee():
+		return {
+			'strength': 1.1,
+			'attack': 1.1,
+		}
+
+	@staticmethod
+	def void_ranger():
+		return {
+			'ranged': 1.1,
+			'ranged_strength': 1.1,
+		}
+
+	@staticmethod
+	def void_mage():
+		return {
+			'magic': 1.45,
+			'magic_strength': 1,
+		}
+
+	@staticmethod
+	def elite_void_melee():
+		return {
+			'strength': 1.1,
+			'attack': 1.1,
+		}
+
+
+	@staticmethod
+	def elite_void_ranger():
+		return {
+			'ranged': 1.125,
+			'ranged_strength': 1.125,
+		}
+
+
+	@staticmethod
+	def elite_void_mage():
+		return {
+			'magic': 1.45,
+			'magic_strength': 1.025,
+		}
+
+	@staticmethod
+	def salve_amulet():
+		x = 1.15
+		return {
+			'attack': x,
+			'strength': x,
+		}
+
+	@staticmethod
+	def salve_amulet_i():
+		x = 1.15
+		return {
+			'attack': x,
+			'strength': x,
+			'ranged': x,
+			'ranged_strength': x,
+			'magic': x,
+			'magic_strength': x,
+		}
+
+	@staticmethod
+	def salve_amulet_e():
+		x = 1.2
+		return {
+			'attack': x,
+			'strength': x,
+		}
+
+	@staticmethod
+	def salve_amulet_ei():
+		x = 1.2
+		return {
+			'attack': x,
+			'strength': x,
+			'ranged': x,
+			'ranged_strength': x,
+			'magic': x,
+			'magic_strength': x,
+		}
+
+	@staticmethod
+	def obsidian():
+		return {
 			'strength': 1.1,
 			'attack': 1.1,
 		}
 
 class BoostingSchemes:
-	def __init__(self, player):
+	def __init__(self, player, prayer):
 		self.player = player
+		self.prayer = prayer
 
-	def _get_states(attacker, boosts: list):
-		""" @param boost is a list of boosted states. Each element in the list is a dictionary containing the boosted levels. """
-		attacker_states = []
-		for boost in boosts:
-			a = copy.deepcopy(attacker)
-			for skill, bonus in boost.items():
-				a.levels[skill] += bonus
-			attacker_states.append(a)
-		return attacker_states
+	def potion_when_skill_under(self, potion, skill, min_boost, boosted_attributes=('damage', 'accuracy')):
+		""" Drink a {potion} that boosts my {boosted_attributues: Note these are generic names since different combat styles are allowed}.
+			when my {skill} falls below {min_boost}. """
+		max_boost = potion(self.player.levels[skill])
+		if min_boost > max_boost:
+			raise ValueError(f"A min boost of {min_boost} is too high, the {skill} gets a maximum boost of {max_boost}.")
+		return [(
+			self.player.get_max_hit(lambda x: max(0, potion(x) - max_boost + boost) if 'damage' in boosted_attributes else potions.none, self.prayer),
+			self.player.get_attack_roll(lambda y: max(0, potion(y) - max_boost + boost) if 'accuracy' in boosted_attributes else potions.none, self.prayer)
+		) for boost in range(min_boost, max_boost+1)]
 
-
-	def potion_when_skill_under(self, potion, skill, min_boost, boosted_skills=('attack', 'strength', 'defence')):
-		assert skill in boosted_skills, f'skill: "{skill}" must be in boosted_skills: "{boosted_skills}", otherwise it will never change.'
-		boosted_skills = (boosted_skills,) if type(boosted_skills) == str else boosted_skills
-		max_boosts = {skill: potion(self.player.levels[skill]) for skill in boosted_skills}
-		return self._get_states(self.player, [
-			{skill: max(max_boosts[skill] - t, 0) for skill in boosted_skills}
-				for t in range(0, max_boosts[skill] - min_boost + 1)
-		])
-
-	def overload(self):
-		""" Creates a single boosted state. Although 5 combat skills are boosted, if player does not contain them,
-			they will be omitted. """
-		boosted_skills=('attack', 'strength', 'defence', 'magic', 'ranged')
-		return self._get_states(self.player, [
-			{skill: Potions.overload(self.player.levels[skill]) for skill in boosted_skills if skill in self.player.levels}
-		])
-
-	def none(self):
-		return self._get_states(self.player, [{}])
-
+	def constant(self, potion):
+		return [(
+			self.player.get_max_hit(potion, self.prayer),
+			self.player.get_attack_roll(potion, self.prayer)
+		)]
 
 if __name__ == '__main__':
 	from osrsmath.model.player import PlayerBuilder

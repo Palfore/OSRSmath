@@ -1,7 +1,8 @@
+from jsoncomment import JsonComment
 from osrsmath.model.monsters import Monster, get_monster_data
 from osrsmath.model.player import PlayerBuilder, get_equipment_data, get_equipment_by_name
 from osrsmath.model.rates import experience_per_hour
-from osrsmath.model.experience import combat_level, time_dependent_model_xp
+from osrsmath.model.experience import combat_level, xp_rate
 from osrsmath.model.boosts import BoostingSchemes
 from osrsmath.model import successful_hits
 from collections import defaultdict
@@ -9,6 +10,28 @@ from pprint import pprint
 import osrsmath.apps.nmz as nmz
 import numpy as np
 import copy
+
+def load_opponent(search_type, value):
+	if search_type == 'id':
+		return Monster.from_id(value)
+	elif search_type == 'name':
+		return Monster.from_name(value)
+	else:
+		raise ValueError(f'The search type must be either "id" or "name", not {search_type}')
+
+def load(file_name, process_opponents=True):
+	data = JsonComment().loadf(file_name)
+	player_stats = data['player_stats']
+	if process_opponents:
+		defenders = {}
+		for name, (search_type, value) in data['defenders'].items():
+			if process_opponents:
+				defenders[name] = load_opponent(search_type, value)
+	else:
+		defenders = data['defenders']
+	ignore = data['ignore']
+	adjustments = data['adjustments']
+	return player_stats, defenders, ignore, adjustments
 
 def is_only_melee_weapon(weapon):
 	# return all(stance['experience'] in ('strength', 'attack', 'defence', 'shared') for stance in weapon['weapon']['stances'])
@@ -39,16 +62,20 @@ def get_offensive_melee_equipment(equipment_data):
 					offensive_equipment[slot].append(armour)
 	return offensive_equipment
 
-def get_offensive_bonuses(equipment, attack_style):
+def get_offensive_bonuses(equipment, attack_style=None):
 	assert attack_style in ["crush", "slash", "stab"]
 	bonuses = {}
 	if equipment['weapon']:
 		# Use reciprocal since a greater 1/attack_speed is better,
 		# and comparisons are done using >.
 		bonuses.update({'reciprocal_attack_speed': 1/equipment['weapon']['attack_speed']})
-	bonuses.update({stat:value for stat, value in equipment['equipment'].items() if stat in [
-		f"attack_{attack_style}", "melee_strength",
-	]})
+
+	if attack_style:
+		allowed = [f"attack_{attack_style}", "melee_strength"]
+	else:
+		allowed = ["attack_crush", "attack_stab", "attack_slash", "melee_strength"]
+
+	bonuses.update({stat:value for stat, value in equipment['equipment'].items() if stat in allowed})
 	return bonuses
 
 def is_better(A, B):
@@ -71,33 +98,12 @@ def meets_requirements(player_stats, equipment):
 			return False
 	return True
 
-
-def get_best_set(player_stats: dict, training_skill, boosting_function, defenders, sets, include_shared_xp=True):
-	""" Returns the equipment set that provides the highest experience rate for the training_skill.
-		@param player_stats: {'attack': 40, ...}
-		@param training_skill: 'attack'
-		@param sets: [{'cape': 'Fire cape', ...}, {'cape': 'Legends cape', ...}, ...] """
-	best = (None, float('-inf'), None)
-	for s in sets:
-		player = PlayerBuilder(player_stats).equip(s.values()).get()
-
-		# Finds the best stance to train that skill for the given weapon.
-		best_set, best_xp_rate, best_stance = best
-		for name, stance in player.get_stances().items():
-			if stance['experience'] in ([training_skill] + (['shared'] if include_shared_xp else [])):
-				player.combat_style = stance['combat_style']
-				xp = time_dependent_model_xp(boosting_function(player), defenders, 'MarkovChain')
-				# pprint((s, xp))
-				if xp > best_xp_rate:
-					best = (s, xp, player.combat_style)
-	if best[0] == None:
-		raise ValueError(f"There was no way to gain {training_skill} experience given these equipment sets: {sets}")
-	return best
-
-
-def get_sets(training_skill, defenders, player_stats, ignore, adjustments, equipment_data):
+def get_sets(player_stats, defenders, ignore, adjustments, equipment_data=get_equipment_data(), progress_callback=None):
 	reduced_equipment = defaultdict(list)
-	for slot, slot_equipment in get_offensive_melee_equipment(equipment_data).items():
+	items = get_offensive_melee_equipment(equipment_data).items()
+	for i, (slot, slot_equipment) in enumerate(items, 1):
+		if progress_callback:
+			progress_callback(100*i / len(items))
 		requirements = defaultdict(list)
 		for equipment in slot_equipment:
 			if equipment['name'] in ignore:
@@ -106,6 +112,8 @@ def get_sets(training_skill, defenders, player_stats, ignore, adjustments, equip
 				continue
 			if equipment['name'] in adjustments:
 				equipment['equipment']['requirements'] = adjustments[equipment['name']]
+
+			# If you satisfy a requirement, you can make it None, and choose only from that group!
 			if equipment['equipment']['requirements']:
 				if meets_requirements(player_stats, equipment):
 					equipment['equipment']['requirements'] = None
@@ -138,133 +146,41 @@ def get_sets(training_skill, defenders, player_stats, ignore, adjustments, equip
 	reduced_equipment = ([[(slot, e) for e in eqs] for slot, eqs in reduced_equipment.items()])
 	sets = list(itertools.product(*list(reduced_equipment)[:-2]))
 	sets += list(itertools.product(*list(reduced_equipment)[1:]))
-	return sets
+	return [{ slot: eq for slot, eq in s if eq is not None} for s in sets]
 
-if __name__ == '__main__':
-	# Retrieve Data
-	EQD = get_equipment_data()
-	monster_data = get_monster_data()
-	opponents = nmz.get_opponents(monster_data)
 
-	training_skill = 'attack'
-	defenders = {
-		'Count Draynor': Monster.from_id(6332),
-	}
-	ignore = {
-		'Spear', # https://oldschool.runescape.wiki/w/Spear_(Last_Man_Standing)
-		'Corrupted halberd (perfected)', 'Crystal halberd (perfected)',
-		'Corrupted halberd (attuned)', 'Crystal halberd (attuned)',
-		'Corrupted halberd (basic)', 'Crystal halberd (basic)',
-		'Crystal axe (inactive)',
-		'Crystal sceptre',
-		'Starter sword',
+def eval_set(player_stats: dict, training_skill, states, defenders, s, include_shared_xp=True):
+	player = PlayerBuilder(player_stats).equip(s.values()).get()
 
-		'Fighter torso',
-		'Infernal max cape', 'Fire max cape', 'Ardougne max cape', 'Infernal cape',
-	}
-	adjustments = {
-		'Gadderhammer': {'attack': 1},  # Not 30 https://oldschool.runescape.wiki/w/Gadderhammer
+	# Finds the best stance to train that skill for the given weapon.
+	best_set, best_xp_rate, best_stance = best = (None, float('-inf'), None)
+	for name, stance in player.get_stances().items():
+		if stance['experience'] in ([training_skill] + (['shared'] if include_shared_xp else [])):
+			player.combat_style = stance['combat_style']
+			xp = xp_rate(
+				stance['attack_type'],
+				player.get_stats()['attack_speed'],
+				states(player),
+				defenders,
+				'MarkovChain'
+			)
+			if xp > best[1]:
+				best = (s, xp, player.combat_style)
+	return best
 
-		'Fire battlestaff': {'attack': 30, 'magic': 30},
-		'Water battlestaff': {'attack': 30, 'magic': 30},
-		'Air battlestaff': {'attack': 30, 'magic': 30},
-		'Earth battlestaff': {'attack': 30, 'magic': 30},
-		'Battlestaff': {'attack': 30, 'magic': 30},
+def get_best_set(player_stats: dict, training_skill, states, defenders, sets, include_shared_xp=True, progress_callback=None):
+	""" Returns the equipment set that provides the highest experience rate for the training_skill.
+		@param player_stats: {'attack': 40, ...}
+		@param training_skill: 'attack'
+		@param sets: [{'cape': 'Fire cape', ...}, {'cape': 'Legends cape', ...}, ...] """
+	best = (None, float('-inf'), None)
+	for i, s in enumerate(sets, 1):
+		if progress_callback:
+			progress_callback(100*i/len(sets))
+		_, xp, combat_syle = eval_set(player_stats, training_skill, states, defenders, s, include_shared_xp)
+		if xp > best[1]:
+			best = (s, xp, combat_syle)
 
-		'Ivandis flail': {'attack': 40, 'slayer': 38, 'strength': 40, 'magic': 33},
-
-		'3rd age druidic staff': {'prayer': 65, 'attack': 65}, # Typo: payer, is this a bug in-game?
-
-		'Maple blackjack': {'thieving': 30},
-		'Maple blackjack(o)': {'attack': 30, 'thieving': 30},
-		'Maple blackjack(d)': {'defence': 30, 'thieving': 30},
-
-		'Western banner 4': {'ranged': 70, 'magic': 64, 'cmb': 100},
-		'Western banner 3': {'ranged': 70, 'magic': 64, 'attack': 42, 'defence': 42, 'hitpoints': 42, 'prayer': 22, 'strength': 42, 'slayer': 93},
-		'Western banner 2': {'ranged': 30, 'cmb': 70},
-		'Wilderness sword 4': {'magic': 96, 'slayer': 83},
-		'Wilderness sword 3': {'magic': 66, 'slayer': 68},
-		'Wilderness sword 2': {'magic': 60, 'slayer': 50},
-
-		# Need DT and https://forum.tip.it/topic/79597-desert-treasure-lowest-possible-level/page/2/
-		'Shadow sword': {'attack': 30, 'strength': 30, 'magic': 51, 'ranged': 42},
-
-		# RFD items are not properly accounted for
-		'Spork': {'attack': 10},  # RFD completion
-		'Frying pan': {'attack': 20},  # RFD completion
-		'Meat tenderiser': {'attack': 46, 'strength': 47, 'defence': 41},  # RFD completion
-		'Cleaver': {'attack': 46, 'strength': 47, 'defence': 41},  # RFD completion
-		'Spatula': {'attack': 10}, # https://oldschool.runescape.wiki/w/Spatula
-		'Skewer': {'attack': 30},
-		'Rolling pin': {'attack': 40, 'defence': 41},
-		'Katana': {'attack': 40},
-		# There might other reqs for these gloves
-		'Adamant Gloves': {'defence': 13},
-		'Rune gloves': {'defence': 31},
-		'Dragon gloves': {'defence': 41},
-		'Barrows gloves': {'attack': 46, 'strength': 47, 'defence': 41},
-		# https://www.reddit.com/r/2007scape/comments/4gbhzd/barrows_gloves_at_52_cmb/
-		# http://i.imgur.com/RXvHBVS.png
-	}
-
-	player_stats = {
-		'attack': 99,
-		'strength': 99,
-		'defence': 99,
-		'hitpoints': 99,
-		'ranged':99,
-		'magic': 99,
-		'prayer': 99,
-		'slayer': 45,
-		'mining':99,
-		'woodcutting': 99,
-		'thieving': 1,
-		'agility': 50,
-		'fishing': 99,
-	}
-	for i in [1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99]:
-		player_stats.update({
-			'attack': i,
-			'strength': i,
-			'defence': i,
-		})
-		player_stats.update({'cmb': combat_level(player_stats)})
-		# If you satisfy a requirement, you can make it None, and choose only from that group!
-		sets = get_sets(training_skill, defenders, player_stats, ignore, adjustments, EQD)
-		sets = [{ slot: eq for slot, eq in s if eq is not None} for s in sets]
-		# pprint(sets)
-		s, xp, stance = best = get_best_set(player_stats, 'attack', lambda p: BoostingSchemes(p).overload(), defenders, sets)
-
-		costs = {
-			'Gadderhammer': 1_300,
-			'Spiked manacles': 1_170_000,
-			'Regen bracelet': 2_279_005,
-			'Fremennik kilk': 5_332_258,
-			'Amulet of torture': 17_054_112,
-			'Brimstone ring': 4_106_804,
-			'Warrior ring (i)': 42_983,
-			'Black scimitar': 1_435,
-			'Mithril scimitar': 392,
-			'Adamant scimitar': 1_338,
-			'Rune Gloves': 6_500,
-			'Brine sabre': 149_403,
-			'Barrows gloves': 100_000,
-			'Berserker helm': 44_264,
-			'Granite hammer': 831_247,
-			'Obsidian platebody': 1_017_874,
-			'Dragon Boots': 302_179,
-			'Warrior helm': 41_863,
-			'Obsidian platelegs': 821_706,
-			'Berserker ring (i)': 2_804_443,
-			'Dragon scimitar': 59_568,
-			'Bandos chestplate': 20_353_605,
-			'Neitiznot faceguard': 27_312_230 + 51_563,
-			'Bandos tassets': 29_438_824,
-			'Avernic defender': 83_636_792,
-			'Abyssal whip': 2_541_568,
-			'Primordial boots': 32_007_307,
-			'Ferocious gloves': 6_202_804,
-			'Blade of saeldor': 137_764_117,
-		}
-
-		print(i, xp, sum(costs.get(e, 0) for s, e in s.items()))
+	if best[0] == None:
+		raise ValueError(f"There was no way to gain {training_skill} experience given these equipment sets: {sets}")
+	return best
