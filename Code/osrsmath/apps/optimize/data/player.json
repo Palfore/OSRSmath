@@ -1,7 +1,7 @@
 {
-    "attack": "90",
-    "defence": "60",
-    "strength": "1",
+    "attack": "50",
+    "defence": "50",
+    "strength": "50",
     "hitpoints": "94",
     "ranged": "90",
     "prayer": "70",
@@ -22,5 +22,5 @@
     "runecraft": "",
     "hunter": "",
     "construction": "",
-    "cmb": "91"
+    "cmb": "88"
 }

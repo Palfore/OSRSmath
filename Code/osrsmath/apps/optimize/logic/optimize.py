@@ -61,7 +61,7 @@ def get_offensive_melee_equipment(equipment_data):
 	return offensive_equipment
 
 def get_offensive_bonuses(equipment, attack_style=None):
-	assert attack_style in ["crush", "slash", "stab"]
+	assert attack_style in ["crush", "slash", "stab", None]
 	bonuses = {}
 	if equipment['weapon']:
 		# Use reciprocal since a greater 1/attack_speed is better,
@@ -99,17 +99,11 @@ def meets_requirements(player_stats, equipment):
 	return True
 
 
-def get_sets(player_stats, defenders, ignore, adjustments, equipment_data, progress_callback=None, fixed_equipment=None):
-	reduced_equipment = defaultdict(list)
-	items = get_offensive_melee_equipment(equipment_data).items()
-	for i, (slot, slot_equipment) in enumerate(items, 1):
-		if progress_callback:
-			progress_callback(100*i / len(items))
-		requirements = defaultdict(list)
+def get_equipable_gear(gear, player_stats, ignore, adjustments):
+	equipable = defaultdict(list)
+	for i, (slot, slot_equipment) in enumerate(gear.items(), 1):
 		for equipment in slot_equipment:
 			if equipment['name'] in ignore:
-				continue
-			if any([equipment['name'].startswith(s) for s in ('Corrupted', 'Zuriel', 'Statius', 'Vesta')]):
 				continue
 			if equipment['name'] in adjustments:
 				equipment['equipment']['requirements'] = adjustments[equipment['name']]
@@ -120,59 +114,75 @@ def get_sets(player_stats, defenders, ignore, adjustments, equipment_data, progr
 					equipment['equipment']['requirements'] = None
 				else:
 					continue
+			equipable[slot].append(equipment)
+	return equipable
 
-			# https://stackoverflow.com/questions/1600591/using-a-python-dictionary-as-a-key-non-nested
-			reqs = tuple(sorted(equipment['equipment']['requirements'].items())) if equipment['equipment']['requirements'] else None
-			stats = get_offensive_bonuses(equipment, 'slash')
-			if stats not in [s for n, s, _ in requirements[reqs]]:
-				requirements[reqs].append((equipment['name'], stats, equipment))
+def dict_as_key(dictionary):
+	# https://stackoverflow.com/questions/1600591/using-a-python-dictionary-as-a-key-non-nested
+	if not dictionary:
+		return None
+	return tuple(sorted(dictionary.items()))
 
-		final = defaultdict(list)
-		for req, eqs in requirements.items():
-			for e in eqs:
-				# Add so long as not everyone is better than you.
-				if all([not is_better(E, e[1]) for n, E, _ in eqs]):
-					final[req].append(e)
 
-		reduced_equipment[slot] = []
-		for r, es in final.items():
-			assert r is None
-			for e in es:
-				reduced_equipment[slot].append(e[0])
-		if not reduced_equipment[slot]:
-			reduced_equipment[slot].append(None)
+def get_sets(player_stats, defenders, ignore, adjustments, equipment_data, fixed_equipment=None):
+	# Now I think I should seperate the weapon from the equipment, then select equipment based on
+	# training skill & which (slash, stab, crush) can train that skill.
 
-	reduced_equipment = ([[(slot, e) for e in eqs] for slot, eqs in reduced_equipment.items()])
-	sets = list(itertools.product(*list(reduced_equipment)[:-2]))
-	sets += list(itertools.product(*list(reduced_equipment)[1:]))
+	items = get_offensive_melee_equipment(equipment_data)
+	equipable_gear = get_equipable_gear(items, player_stats, ignore, adjustments)
 
-	def create_set_effect(original, required_equipment):
-		non_void = list(filter(lambda n: n[0] not in required_equipment, original))
-		non_void.extend([(n, e) for n, e in required_equipment.items()])
-		return tuple(non_void)
+	reduced_equipment = defaultdict(list)
+	for i, (slot, slot_equipment) in enumerate(equipable_gear.items(), 1):
+		unique_equipment = []
+		# Store the unique offensive profiles
+		for equipment in slot_equipment:
+			stats = get_offensive_bonuses(equipment, 'slash')  # Why is this slash? this should probably be dynamic based on the weapon
 
-	# Adding Void Set
-	void = {'body': 'Void knight top', 'legs': 'Void knight robe', 'hands': 'Void knight gloves', 'head': 'Void melee helm'}
-	if all(meets_requirements(player_stats, get_equipment_by_name(e)) for e in void.values()):
-		sets += list(set(create_set_effect(s, void) for s in sets))
+			# Record equipment if you haven't seen anything with these offensive stats before.
+			if stats not in [s for n, s, _ in unique_equipment]:
+				unique_equipment.append((equipment['name'], stats, equipment))
 
-	# Adding Obsidian Sets
-	obsidian = {'head': 'Obsidian helmet', 'body': 'Obsidian platebody', 'legs': 'Obsidian platelegs', 'neck': 'Berserker necklace'}
-	if all(meets_requirements(player_stats, get_equipment_by_name(e)) for e in obsidian.values()):
-		for weapon in ['Toktz-xil-ek', 'Toktz-xil-ak', 'Tzhaar-ket-em', 'Tzhaar-ket-om', 'Tzhaar-ket-om (t)']:
-			if meets_requirements(player_stats, get_equipment_by_name(weapon)):
-				sets += list(set(create_set_effect(s, {
-					**obsidian, **{'weapon': weapon}
-				}) for s in sets))
+		# Next, we want to search through this to see if any of these unique profiles are factually worse.
+		# Eg: same stats except itemA.slash == 4, itemB.slash == 5, the itemA should be forgotten.
+		# but if itemA.slash == 4, itemA.strength == 10 and item.B == 5, itemB.strength == 9, we can't
+		# know which is better without evaluating, so keep them both.
+		reduced_equipment[slot] = [name for name, equipment_stats, _  in unique_equipment if (# not everyone is better than you.
+			all([not is_better(E, equipment_stats) for n, E, _ in unique_equipment])
+		)]
 
-	obsidian = {'neck': 'Berserker necklace'}
-	if all(meets_requirements(player_stats, get_equipment_by_name(e)) for e in obsidian.values()):
-		for weapon in ['toktz-xil-ek', 'toktz-xil-ak', 'tzhaar-ket-em', 'tzhaar-ket-om', 'tzhaar-ket-om (t)']:
-			if meets_requirements(player_stats, get_equipment_by_name(weapon)):
-				sets += list(set(create_set_effect(s, {
-					**obsidian, **{'weapon': weapon}
-				}) for s in sets))
+	reduced_equipment = [ [(slot, e) for e in eqs] for slot, eqs in reduced_equipment.items()]
+	sets = list(itertools.product(*list(reduced_equipment)[:-2]))  # Ignore last two slots (shield & weapon)
+	sets += list(itertools.product(*list(reduced_equipment)[1:]))  # Ignore first slot (2h)
+
 	return [{ slot: eq for slot, eq in s if eq is not None} for s in sets]
+
+
+# def create_set_effect(original, required_equipment):
+# 		non_void = list(filter(lambda n: n[0] not in required_equipment, original))
+# 		non_void.extend([(n, e) for n, e in required_equipment.items()])
+# 		return tuple(non_void)
+
+# 	# Adding Void Set
+# 	void = {'body': 'Void knight top', 'legs': 'Void knight robe', 'hands': 'Void knight gloves', 'head': 'Void melee helm'}
+# 	if all(meets_requirements(player_stats, get_equipment_by_name(e)) for e in void.values()):
+# 		sets += list(set(create_set_effect(s, void) for s in sets))
+
+# 	# Adding Obsidian Sets
+# 	obsidian = {'head': 'Obsidian helmet', 'body': 'Obsidian platebody', 'legs': 'Obsidian platelegs', 'neck': 'Berserker necklace'}
+# 	if all(meets_requirements(player_stats, get_equipment_by_name(e)) for e in obsidian.values()):
+# 		for weapon in ['Toktz-xil-ek', 'Toktz-xil-ak', 'Tzhaar-ket-em', 'Tzhaar-ket-om', 'Tzhaar-ket-om (t)']:
+# 			if meets_requirements(player_stats, get_equipment_by_name(weapon)):
+# 				sets += list(set(create_set_effect(s, {
+# 					**obsidian, **{'weapon': weapon}
+# 				}) for s in sets))
+
+# 	obsidian = {'neck': 'Berserker necklace'}
+# 	if all(meets_requirements(player_stats, get_equipment_by_name(e)) for e in obsidian.values()):
+# 		for weapon in ['toktz-xil-ek', 'toktz-xil-ak', 'tzhaar-ket-em', 'tzhaar-ket-om', 'tzhaar-ket-om (t)']:
+# 			if meets_requirements(player_stats, get_equipment_by_name(weapon)):
+# 				sets += list(set(create_set_effect(s, {
+# 					**obsidian, **{'weapon': weapon}
+# 				}) for s in sets))
 
 
 def eval_set(player_stats: dict, training_skill, states, defenders, s, include_shared_xp=True):

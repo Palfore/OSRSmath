@@ -1,20 +1,20 @@
 {
     "monsters": {
-        "molanisk": {
+        "count draynor (hard)": {
             "levels": {
-                "hitpoints": 52,
-                "attack": 40,
-                "strength": 40,
-                "defence": 50,
+                "hitpoints": 210,
+                "attack": 198,
+                "strength": 165,
+                "defence": 30,
                 "ranged": 1,
-                "magic": 0
+                "magic": 1
             },
             "stats": {
-                "defence_stab": 45,
-                "defence_slash": 45,
-                "defence_crush": 35,
-                "defence_magic": 30,
-                "defence_ranged": 55
+                "defence_stab": 2,
+                "defence_slash": 1,
+                "defence_crush": 3,
+                "defence_magic": 0,
+                "defence_ranged": 0
             },
             "xp_per_damage": 4.0
         }
