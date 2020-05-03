@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>714</width>
+    <height>738</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="13" column="0" colspan="6">
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="12" column="1">
+       <widget class="QPushButton" name="hands_link">
+        <property name="text">
+         <string>Hands</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2" colspan="2">
+       <widget class="QComboBox" name="neck"/>
+      </item>
+      <item row="14" column="2" colspan="2">
+       <widget class="QComboBox" name="ring"/>
+      </item>
+      <item row="6" column="2" colspan="2">
+       <widget class="QComboBox" name="weapon"/>
+      </item>
+      <item row="5" column="1">
+       <widget class="QPushButton" name="ammo_link">
+        <property name="text">
+         <string>Ammo</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="2" colspan="2">
+       <widget class="QComboBox" name="shield"/>
+      </item>
+      <item row="5" column="2" colspan="2">
+       <widget class="QComboBox" name="ammo"/>
+      </item>
+      <item row="12" column="2" colspan="2">
+       <widget class="QComboBox" name="hands"/>
+      </item>
+      <item row="3" column="2" colspan="2">
+       <widget class="QComboBox" name="cape"/>
+      </item>
+      <item row="1" column="2" colspan="2">
+       <widget class="QComboBox" name="head"/>
+      </item>
+      <item row="11" column="2" colspan="2">
+       <widget class="QComboBox" name="legs"/>
+      </item>
+      <item row="3" column="1">
+       <widget class="QPushButton" name="cape_link">
+        <property name="text">
+         <string>Cape</string>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="1">
+       <widget class="QPushButton" name="feet_link">
+        <property name="text">
+         <string>Feet</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QPushButton" name="body_link">
+        <property name="text">
+         <string>Body</string>
+        </property>
+       </widget>
+      </item>
+      <item row="14" column="1">
+       <widget class="QPushButton" name="ring_link">
+        <property name="text">
+         <string>Ring</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="1">
+       <widget class="QPushButton" name="legs_link">
+        <property name="text">
+         <string>Legs</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QPushButton" name="neck_link">
+        <property name="text">
+         <string>Neck</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="2" colspan="2">
+       <widget class="QComboBox" name="body"/>
+      </item>
+      <item row="13" column="2" colspan="2">
+       <widget class="QComboBox" name="feet"/>
+      </item>
+      <item row="10" column="1">
+       <widget class="QPushButton" name="shield_link">
+        <property name="text">
+         <string>Shield</string>
+        </property>
+       </widget>
+      </item>
+      <item row="16" column="1">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Xp/h</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="head_link">
+        <property name="text">
+         <string>Head</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QPushButton" name="weapon_link">
+        <property name="text">
+         <string>Weapon</string>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="1">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Attack Stance</string>
+        </property>
+       </widget>
+      </item>
+      <item row="16" column="3">
+       <widget class="QLineEdit" name="xp_rate">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="3">
+       <widget class="QLineEdit" name="attack_stance">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Potions</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Prayer</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="2" colspan="4">
+    <widget class="QComboBox" name="below_skill">
+     <item>
+      <property name="text">
+       <string>attack</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>strength</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>defence</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="4" column="2" colspan="5">
+    <widget class="QComboBox" name="training_skill">
+     <item>
+      <property name="text">
+       <string>attack</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>strength</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>defence</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>ranged</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>magic</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="7" column="7">
+    <widget class="QLabel" name="label_5">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string>boost below</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="10">
+    <widget class="QListWidget" name="opponents">
+     <property name="horizontalScrollMode">
+      <enum>QAbstractItemView::ScrollPerItem</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="0">
+    <widget class="QPushButton" name="evaluate">
+     <property name="text">
+      <string>Evaluate!</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Train</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="7">
+    <widget class="QComboBox" name="potion_attributes">
+     <item>
+      <property name="text">
+       <string>attack</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>strength</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>attack and strength</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="12" column="2" colspan="8">
+    <widget class="QProgressBar" name="progressBar">
+     <property name="value">
+      <number>0</number>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="6" rowspan="11" colspan="4">
+    <widget class="QTableWidget" name="best_in_slot_bonuses">
+     <property name="showGrid">
+      <bool>true</bool>
+     </property>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderStretchLastSection">
+      <bool>false</bool>
+     </attribute>
+     <row>
+      <property name="text">
+       <string>Stab</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Slash</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Crush</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Ranged</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Magic</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Melee Str</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Ranged Str</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Magic Str</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Attack Speed</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Cost</string>
+      </property>
+     </row>
+     <column>
+      <property name="text">
+       <string>Bonuses</string>
+      </property>
+     </column>
+     <item row="0" column="0">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="1" column="0">
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="2" column="0">
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="3" column="0">
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="4" column="0">
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="5" column="0">
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="6" column="0">
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="7" column="0">
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="8" column="0">
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="9" column="0">
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="5" column="2" colspan="5">
+    <widget class="QComboBox" name="potions"/>
+   </item>
+   <item row="5" column="8">
+    <widget class="QComboBox" name="boosting_scheme">
+     <item>
+      <property name="text">
+       <string>Constant</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dose After</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="7" column="8">
+    <widget class="QLineEdit" name="redose_level">
+     <property name="maxLength">
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="2" colspan="5">
+    <widget class="QComboBox" name="prayers"/>
+   </item>
+   <item row="10" column="7" colspan="2">
+    <widget class="QComboBox" name="prayer_attributes">
+     <item>
+      <property name="text">
+       <string>damage</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>accuracy</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>damage and accuracy</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>opponents</tabstop>
+  <tabstop>head_link</tabstop>
+  <tabstop>head</tabstop>
+  <tabstop>cape_link</tabstop>
+  <tabstop>cape</tabstop>
+  <tabstop>neck_link</tabstop>
+  <tabstop>neck</tabstop>
+  <tabstop>ammo_link</tabstop>
+  <tabstop>ammo</tabstop>
+  <tabstop>weapon_link</tabstop>
+  <tabstop>weapon</tabstop>
+  <tabstop>body_link</tabstop>
+  <tabstop>body</tabstop>
+  <tabstop>shield_link</tabstop>
+  <tabstop>shield</tabstop>
+  <tabstop>hands_link</tabstop>
+  <tabstop>hands</tabstop>
+  <tabstop>feet_link</tabstop>
+  <tabstop>feet</tabstop>
+  <tabstop>ring_link</tabstop>
+  <tabstop>ring</tabstop>
+  <tabstop>xp_rate</tabstop>
+  <tabstop>best_in_slot_bonuses</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

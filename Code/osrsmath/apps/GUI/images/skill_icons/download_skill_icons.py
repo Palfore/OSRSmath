@@ -1,24 +1,6 @@
+from osrsmath.model.general.skills import get_skills
 import requests
 from pprint import pprint
-
-def get_skills():
-	url = 'https://oldschool.runescape.wiki/w/Skills'
-	skills = []
-	reading = False
-	skill_text = '<td><span class="SkillClickPic"><span class="SkillClickPicText">'
-	for line in requests.get(url).text.split('\n'):
-		line = line.strip('\t').strip('')
-		if '<span class="mw-headline" id="Skills">Skills</span>' in line:
-			reading = True
-		if '<span class="mw-headline" id="Skill_types">Skill types</span>' in line:
-			reading = False
-			break
-		if not reading:
-			continue
-		if skill_text in line:
-			skill = line.replace(skill_text, '').split('</span>')[0]
-			skills.append(skill)
-	return skills
 
 def download(url, filename):
 	r = requests.get(url)

@@ -2,7 +2,7 @@ import osrsmath.apps.GUI.config as config
 
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'monsters.ui'
+# Form implementation generated from reading ui file '//mnt/c/Users/Nawar/Documents/GitHub/OSRS-Combat/Code/osrsmath/apps/GUI/monsters/monsters_skeleton.ui'
 #
 # Created by: PyQt5 UI code generator 5.14.1
 #
@@ -15,14 +15,16 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Monsters(object):
     def setupUi(self, Monsters):
         Monsters.setObjectName("Monsters")
-        Monsters.resize(536, 451)
+        Monsters.resize(578, 451)
         self.gridLayout = QtWidgets.QGridLayout(Monsters)
+        self.gridLayout.setSizeConstraint(QtWidgets.QLayout.SetMinimumSize)
         self.gridLayout.setObjectName("gridLayout")
         self.frame = QtWidgets.QFrame(Monsters)
         self.frame.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.frame)
+        self.gridLayout_2.setContentsMargins(-1, 1, -1, -1)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.frame_2 = QtWidgets.QFrame(self.frame)
         self.frame_2.setFrameShape(QtWidgets.QFrame.NoFrame)
@@ -41,7 +43,7 @@ class Ui_Monsters(object):
         self.image_3 = QtWidgets.QFrame(self.frame)
         self.image_3.setFrameShape(QtWidgets.QFrame.Box)
         self.image_3.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.image_3.setLineWidth(2)
+        self.image_3.setLineWidth(1)
         self.image_3.setObjectName("image_3")
         self.gridLayout_5 = QtWidgets.QGridLayout(self.image_3)
         self.gridLayout_5.setObjectName("gridLayout_5")
@@ -117,7 +119,7 @@ class Ui_Monsters(object):
         self.image = QtWidgets.QFrame(self.frame)
         self.image.setFrameShape(QtWidgets.QFrame.Box)
         self.image.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.image.setLineWidth(2)
+        self.image.setLineWidth(1)
         self.image.setObjectName("image")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.image)
         self.gridLayout_3.setObjectName("gridLayout_3")
@@ -205,7 +207,7 @@ class Ui_Monsters(object):
         self.image_2 = QtWidgets.QFrame(self.frame)
         self.image_2.setFrameShape(QtWidgets.QFrame.Box)
         self.image_2.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.image_2.setLineWidth(2)
+        self.image_2.setLineWidth(1)
         self.image_2.setObjectName("image_2")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.image_2)
         self.gridLayout_4.setObjectName("gridLayout_4")
@@ -307,10 +309,33 @@ class Ui_Monsters(object):
         self.xp_per_hit.setText("")
         self.xp_per_hit.setObjectName("xp_per_hit")
         self.gridLayout_2.addWidget(self.xp_per_hit, 6, 2, 1, 1)
-        self.gridLayout.addWidget(self.frame, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.frame, 0, 0, 1, 1)
 
         self.retranslateUi(Monsters)
         QtCore.QMetaObject.connectSlotsByName(Monsters)
+        Monsters.setTabOrder(self.nmz_only, self.search)
+        Monsters.setTabOrder(self.search, self.wiki_link)
+        Monsters.setTabOrder(self.wiki_link, self.combat_level)
+        Monsters.setTabOrder(self.combat_level, self.health)
+        Monsters.setTabOrder(self.health, self.attack)
+        Monsters.setTabOrder(self.attack, self.strength)
+        Monsters.setTabOrder(self.strength, self.defence)
+        Monsters.setTabOrder(self.defence, self.magic)
+        Monsters.setTabOrder(self.magic, self.ranged)
+        Monsters.setTabOrder(self.ranged, self.aggressive_attack)
+        Monsters.setTabOrder(self.aggressive_attack, self.aggressive_strength)
+        Monsters.setTabOrder(self.aggressive_strength, self.aggressive_magic)
+        Monsters.setTabOrder(self.aggressive_magic, self.aggressive_magic_damage)
+        Monsters.setTabOrder(self.aggressive_magic_damage, self.aggressive_ranged)
+        Monsters.setTabOrder(self.aggressive_ranged, self.aggressive_ranged_strength)
+        Monsters.setTabOrder(self.aggressive_ranged_strength, self.defensive_stab)
+        Monsters.setTabOrder(self.defensive_stab, self.defensive_slash)
+        Monsters.setTabOrder(self.defensive_slash, self.defensive_crush)
+        Monsters.setTabOrder(self.defensive_crush, self.defensive_magic)
+        Monsters.setTabOrder(self.defensive_magic, self.defensive_ranged)
+        Monsters.setTabOrder(self.defensive_ranged, self.xp_per_hit)
+        Monsters.setTabOrder(self.xp_per_hit, self.custom_name)
+        Monsters.setTabOrder(self.custom_name, self.add)
 
     def retranslateUi(self, Monsters):
         _translate = QtCore.QCoreApplication.translate
@@ -333,4 +358,3 @@ if __name__ == "__main__":
     ui.setupUi(Monsters)
     Monsters.show()
     sys.exit(app.exec_())
-

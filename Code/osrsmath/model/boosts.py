@@ -283,9 +283,10 @@ class Equipment:
 		}
 
 class BoostingSchemes:
-	def __init__(self, player, prayer):
+	def __init__(self, player, prayer, prayer_boosted_attributes=('damage', 'accuracy')):
 		self.player = player
-		self.prayer = prayer
+		self.damage_prayer = prayer if 'damage' in prayer_boosted_attributes else Prayer.none
+		self.accuracy_prayer = prayer if 'accuracy' in prayer_boosted_attributes else Prayer.none
 
 	def potion_when_skill_under(self, potion, skill, min_boost, boosted_attributes=('damage', 'accuracy')):
 		""" Drink a {potion} that boosts my {boosted_attributues: Note these are generic names since different combat styles are allowed}.
@@ -294,14 +295,20 @@ class BoostingSchemes:
 		if min_boost > max_boost:
 			raise ValueError(f"A min boost of {min_boost} is too high, the {skill} gets a maximum boost of {max_boost}.")
 		return [(
-			self.player.get_max_hit(lambda x: max(0, potion(x) - max_boost + boost) if 'damage' in boosted_attributes else potions.none, self.prayer),
-			self.player.get_attack_roll(lambda y: max(0, potion(y) - max_boost + boost) if 'accuracy' in boosted_attributes else potions.none, self.prayer)
+			self.player.get_max_hit(
+				lambda x: max(0, potion(x) - max_boost + boost) if 'damage' in boosted_attributes else potions.none,
+				self.damage_prayer
+			),
+			self.player.get_attack_roll(
+				lambda y: max(0, potion(y) - max_boost + boost) if 'accuracy' in boosted_attributes else potions.none,
+				self.accuracy_prayer
+			)
 		) for boost in range(min_boost, max_boost+1)]
 
 	def constant(self, potion):
 		return [(
-			self.player.get_max_hit(potion, self.prayer),
-			self.player.get_attack_roll(potion, self.prayer)
+			self.player.get_max_hit(potion, self.damage_prayer),
+			self.player.get_attack_roll(potion, self.accuracy_prayer)
 		)]
 
 if __name__ == '__main__':

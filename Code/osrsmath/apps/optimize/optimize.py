@@ -1,186 +1,239 @@
-from jsoncomment import JsonComment
-from osrsmath.model.monsters import Monster, get_monster_data
-from osrsmath.model.player import PlayerBuilder, get_equipment_data, get_equipment_by_name
-from osrsmath.model.rates import experience_per_hour
-from osrsmath.model.experience import combat_level, xp_rate
-from osrsmath.model.boosts import BoostingSchemes
-from osrsmath.model import successful_hits
-from collections import defaultdict
-from pprint import pprint
-import osrsmath.apps.nmz as nmz
-import numpy as np
-import copy
+import osrsmath.apps.GUI.config as config
 
-def load_opponent(search_type, value):
-	if search_type == 'id':
-		return Monster.from_id(value)
-	elif search_type == 'name':
-		return Monster.from_name(value)
-	else:
-		raise ValueError(f'The search type must be either "id" or "name", not {search_type}')
+# -*- coding: utf-8 -*-
 
-def load(file_name, process_opponents=True):
-	data = JsonComment().loadf(file_name)
-	player_stats = data['player_stats']
-	if process_opponents:
-		defenders = {}
-		for name, (search_type, value) in data['defenders'].items():
-			if process_opponents:
-				defenders[name] = load_opponent(search_type, value)
-	else:
-		defenders = data['defenders']
-	ignore = data['ignore']
-	adjustments = data['adjustments']
-	return player_stats, defenders, ignore, adjustments
-
-def is_only_melee_weapon(weapon):
-	# return all(stance['experience'] in ('strength', 'attack', 'defence', 'shared') for stance in weapon['weapon']['stances'])
-	# This is too restrictive because of staffs!
-	# but looking at 'shared' is worse because all magic and ranged items (pretty much) have shared
-	# so instead, since we can't handle shared anyway
-	# return weapon['weapon']['weapon_type'] not in ('bow', 'grenade', 'crossbow', 'thrown', 'blaster', 'gun')
-	return True
-
-def has_offensive_melee_bonuses(armour):
-	return any(amount > 0 for bonus, amount in armour['equipment'].items() if (bonus in [
-		"attack_crush", "attack_slash", "attack_stab", "melee_strength",
-	])) and armour['equipable_by_player']
-
-def get_offensive_melee_equipment(equipment_data):
-	# Reduce the equipment to only those that have a) offensive bonuses, b) melee bonuses
-	# Filter for only melee weapons since other attack styles aren't handled yet
-	# Also only equipment that gives offensive bonuses, since that is what we're optimizing
-	offensive_equipment = defaultdict(list)
-	for slot, equipment in equipment_data.items():
-		if slot == "weapon" or slot ==  "2h":
-			for weapon in equipment.values():
-				if is_only_melee_weapon(weapon) and has_offensive_melee_bonuses(weapon):
-					offensive_equipment[slot].append(weapon)
-		else:
-			for armour in equipment.values():
-				if has_offensive_melee_bonuses(armour):
-					offensive_equipment[slot].append(armour)
-	return offensive_equipment
-
-def get_offensive_bonuses(equipment, attack_style=None):
-	assert attack_style in ["crush", "slash", "stab"]
-	bonuses = {}
-	if equipment['weapon']:
-		# Use reciprocal since a greater 1/attack_speed is better,
-		# and comparisons are done using >.
-		bonuses.update({'reciprocal_attack_speed': 1/equipment['weapon']['attack_speed']})
-
-	if attack_style:
-		allowed = [f"attack_{attack_style}", "melee_strength"]
-	else:
-		allowed = ["attack_crush", "attack_stab", "attack_slash", "melee_strength"]
-
-	bonuses.update({stat:value for stat, value in equipment['equipment'].items() if stat in allowed})
-	return bonuses
-
-def is_better(A, B):
-	""" Is A absolutely better than B?
-		@param A Equipment stats eg: {'attack_crush': 53, ...}
-		@param B Equipment stats """
-	assert list(A.keys()) == list(B.keys())
-	if list(A.values()) == list(B.values()):
-		return False
-	for a, b in zip(list(A.values()), list(B.values())):
-		if b > a:
-			return False
-	return True
-
-def meets_requirements(player_stats, equipment):
-	for stat, req in equipment['equipment']['requirements'].items():
-		if stat not in player_stats:
-			raise ValueError(f"Supply your {stat} level to check {equipment['name']} for: {equipment['equipment']['requirements']}")
-		if player_stats[stat] < req:
-			return False
-	return True
-
-def get_sets(player_stats, defenders, ignore, adjustments, equipment_data=get_equipment_data(), progress_callback=None):
-	reduced_equipment = defaultdict(list)
-	items = get_offensive_melee_equipment(equipment_data).items()
-	for i, (slot, slot_equipment) in enumerate(items, 1):
-		if progress_callback:
-			progress_callback(100*i / len(items))
-		requirements = defaultdict(list)
-		for equipment in slot_equipment:
-			if equipment['name'] in ignore:
-				continue
-			if any([equipment['name'].startswith(s) for s in ('Corrupted', 'Zuriel', 'Statius', 'Vesta')]):
-				continue
-			if equipment['name'] in adjustments:
-				equipment['equipment']['requirements'] = adjustments[equipment['name']]
-
-			# If you satisfy a requirement, you can make it None, and choose only from that group!
-			if equipment['equipment']['requirements']:
-				if meets_requirements(player_stats, equipment):
-					equipment['equipment']['requirements'] = None
-				else:
-					continue
-
-			# https://stackoverflow.com/questions/1600591/using-a-python-dictionary-as-a-key-non-nested
-			reqs = tuple(sorted(equipment['equipment']['requirements'].items())) if equipment['equipment']['requirements'] else None
-			stats = get_offensive_bonuses(equipment, 'slash')
-			if stats not in [s for n, s, _ in requirements[reqs]]:
-				requirements[reqs].append((equipment['name'], stats, equipment))
-
-		final = defaultdict(list)
-		for req, eqs in requirements.items():
-			for e in eqs:
-				# Add so long as not everyone is better than you.
-				if all([not is_better(E, e[1]) for n, E, _ in eqs]):
-					final[req].append(e)
-
-		reduced_equipment[slot] = []
-		for r, es in final.items():
-			assert r is None
-			for e in es:
-				reduced_equipment[slot].append(e[0])
-		if not reduced_equipment[slot]:
-			reduced_equipment[slot].append(None)
+# Form implementation generated from reading ui file '//mnt/c/Users/Nawar/Documents/GitHub/OSRS-Combat/Code/osrsmath/apps/optimize/optimize.ui'
+#
+# Created by: PyQt5 UI code generator 5.14.1
+#
+# WARNING! All changes made in this file will be lost!
 
 
-	import itertools
-	reduced_equipment = ([[(slot, e) for e in eqs] for slot, eqs in reduced_equipment.items()])
-	sets = list(itertools.product(*list(reduced_equipment)[:-2]))
-	sets += list(itertools.product(*list(reduced_equipment)[1:]))
-	return [{ slot: eq for slot, eq in s if eq is not None} for s in sets]
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-def eval_set(player_stats: dict, training_skill, states, defenders, s, include_shared_xp=True):
-	player = PlayerBuilder(player_stats).equip(s.values()).get()
+class Ui_Form(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(714, 738)
+        self.gridLayout = QtWidgets.QGridLayout(Form)
+        self.gridLayout.setObjectName("gridLayout")
+        self.frame = QtWidgets.QFrame(Form)
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.frame)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.ammo = QtWidgets.QComboBox(self.frame)
+        self.ammo.setObjectName("ammo")
+        self.gridLayout_2.addWidget(self.ammo, 5, 2, 1, 2)
+        self.sheild = QtWidgets.QComboBox(self.frame)
+        self.sheild.setObjectName("sheild")
+        self.gridLayout_2.addWidget(self.sheild, 8, 2, 1, 2)
+        self.ring = QtWidgets.QComboBox(self.frame)
+        self.ring.setObjectName("ring")
+        self.gridLayout_2.addWidget(self.ring, 11, 2, 1, 2)
+        self.neck = QtWidgets.QComboBox(self.frame)
+        self.neck.setObjectName("neck")
+        self.gridLayout_2.addWidget(self.neck, 4, 2, 1, 2)
+        self.weapon = QtWidgets.QComboBox(self.frame)
+        self.weapon.setObjectName("weapon")
+        self.gridLayout_2.addWidget(self.weapon, 6, 2, 1, 2)
+        self.body = QtWidgets.QComboBox(self.frame)
+        self.body.setObjectName("body")
+        self.gridLayout_2.addWidget(self.body, 7, 2, 1, 2)
+        self.head = QtWidgets.QComboBox(self.frame)
+        self.head.setObjectName("head")
+        self.gridLayout_2.addWidget(self.head, 1, 2, 1, 2)
+        self.feet = QtWidgets.QComboBox(self.frame)
+        self.feet.setObjectName("feet")
+        self.gridLayout_2.addWidget(self.feet, 10, 2, 1, 2)
+        self.cape = QtWidgets.QComboBox(self.frame)
+        self.cape.setObjectName("cape")
+        self.gridLayout_2.addWidget(self.cape, 3, 2, 1, 2)
+        self.gloves = QtWidgets.QComboBox(self.frame)
+        self.gloves.setObjectName("gloves")
+        self.gridLayout_2.addWidget(self.gloves, 9, 2, 1, 2)
+        self.cape_button = QtWidgets.QPushButton(self.frame)
+        self.cape_button.setObjectName("cape_button")
+        self.gridLayout_2.addWidget(self.cape_button, 3, 1, 1, 1)
+        self.neck_button = QtWidgets.QPushButton(self.frame)
+        self.neck_button.setObjectName("neck_button")
+        self.gridLayout_2.addWidget(self.neck_button, 4, 1, 1, 1)
+        self.ammo_button = QtWidgets.QPushButton(self.frame)
+        self.ammo_button.setObjectName("ammo_button")
+        self.gridLayout_2.addWidget(self.ammo_button, 5, 1, 1, 1)
+        self.weapon_button = QtWidgets.QPushButton(self.frame)
+        self.weapon_button.setObjectName("weapon_button")
+        self.gridLayout_2.addWidget(self.weapon_button, 6, 1, 1, 1)
+        self.body_button = QtWidgets.QPushButton(self.frame)
+        self.body_button.setObjectName("body_button")
+        self.gridLayout_2.addWidget(self.body_button, 7, 1, 1, 1)
+        self.shield_button = QtWidgets.QPushButton(self.frame)
+        self.shield_button.setObjectName("shield_button")
+        self.gridLayout_2.addWidget(self.shield_button, 8, 1, 1, 1)
+        self.gloves_button = QtWidgets.QPushButton(self.frame)
+        self.gloves_button.setObjectName("gloves_button")
+        self.gridLayout_2.addWidget(self.gloves_button, 9, 1, 1, 1)
+        self.feet_button = QtWidgets.QPushButton(self.frame)
+        self.feet_button.setObjectName("feet_button")
+        self.gridLayout_2.addWidget(self.feet_button, 10, 1, 1, 1)
+        self.ring_button = QtWidgets.QPushButton(self.frame)
+        self.ring_button.setObjectName("ring_button")
+        self.gridLayout_2.addWidget(self.ring_button, 11, 1, 1, 1)
+        self.label = QtWidgets.QLabel(self.frame)
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
+        self.gridLayout_2.addWidget(self.label, 12, 1, 1, 1)
+        self.head_button = QtWidgets.QPushButton(self.frame)
+        self.head_button.setObjectName("head_button")
+        self.gridLayout_2.addWidget(self.head_button, 1, 1, 1, 1)
+        self.xp_rate = QtWidgets.QLineEdit(self.frame)
+        self.xp_rate.setReadOnly(True)
+        self.xp_rate.setObjectName("xp_rate")
+        self.gridLayout_2.addWidget(self.xp_rate, 12, 3, 1, 1)
+        self.gridLayout.addWidget(self.frame, 6, 0, 2, 3)
+        self.frame_2 = QtWidgets.QFrame(Form)
+        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_2.setObjectName("frame_2")
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.frame_2)
+        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.gridLayout.addWidget(self.frame_2, 9, 0, 1, 1)
+        self.training_skill = QtWidgets.QComboBox(Form)
+        self.training_skill.setObjectName("training_skill")
+        self.training_skill.addItem("")
+        self.training_skill.addItem("")
+        self.training_skill.addItem("")
+        self.training_skill.addItem("")
+        self.training_skill.addItem("")
+        self.gridLayout.addWidget(self.training_skill, 5, 0, 1, 1)
+        self.opponents = QtWidgets.QListWidget(Form)
+        self.opponents.setObjectName("opponents")
+        self.gridLayout.addWidget(self.opponents, 2, 0, 1, 5)
+        self.evaluate = QtWidgets.QPushButton(Form)
+        self.evaluate.setObjectName("evaluate")
+        self.gridLayout.addWidget(self.evaluate, 5, 1, 1, 1)
+        self.best_in_slot_bonuses = QtWidgets.QTableWidget(Form)
+        self.best_in_slot_bonuses.setShowGrid(True)
+        self.best_in_slot_bonuses.setObjectName("best_in_slot_bonuses")
+        self.best_in_slot_bonuses.setColumnCount(1)
+        self.best_in_slot_bonuses.setRowCount(10)
+        item = QtWidgets.QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(8, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(9, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.best_in_slot_bonuses.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
+        self.best_in_slot_bonuses.setItem(0, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
+        self.best_in_slot_bonuses.setItem(1, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
+        self.best_in_slot_bonuses.setItem(2, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
+        self.best_in_slot_bonuses.setItem(3, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
+        self.best_in_slot_bonuses.setItem(4, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
+        self.best_in_slot_bonuses.setItem(5, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
+        self.best_in_slot_bonuses.setItem(6, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
+        self.best_in_slot_bonuses.setItem(7, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
+        self.best_in_slot_bonuses.setItem(8, 0, item)
+        item = QtWidgets.QTableWidgetItem()
+        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
+        self.best_in_slot_bonuses.setItem(9, 0, item)
+        self.best_in_slot_bonuses.horizontalHeader().setStretchLastSection(True)
+        self.best_in_slot_bonuses.verticalHeader().setStretchLastSection(False)
+        self.gridLayout.addWidget(self.best_in_slot_bonuses, 5, 4, 5, 1)
+        self.progressBar = QtWidgets.QProgressBar(Form)
+        self.progressBar.setProperty("value", 0)
+        self.progressBar.setObjectName("progressBar")
+        self.gridLayout.addWidget(self.progressBar, 3, 0, 1, 5)
 
-	# Finds the best stance to train that skill for the given weapon.
-	best_set, best_xp_rate, best_stance = best = (None, float('-inf'), None)
-	for name, stance in player.get_stances().items():
-		if stance['experience'] in ([training_skill] + (['shared'] if include_shared_xp else [])):
-			player.combat_style = stance['combat_style']
-			xp = xp_rate(
-				stance['attack_type'],
-				player.get_stats()['attack_speed'],
-				states(player),
-				defenders,
-				'MarkovChain'
-			)
-			if xp > best[1]:
-				best = (s, xp, player.combat_style)
-	return best
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
 
-def get_best_set(player_stats: dict, training_skill, states, defenders, sets, include_shared_xp=True, progress_callback=None):
-	""" Returns the equipment set that provides the highest experience rate for the training_skill.
-		@param player_stats: {'attack': 40, ...}
-		@param training_skill: 'attack'
-		@param sets: [{'cape': 'Fire cape', ...}, {'cape': 'Legends cape', ...}, ...] """
-	best = (None, float('-inf'), None)
-	for i, s in enumerate(sets, 1):
-		if progress_callback:
-			progress_callback(100*i/len(sets))
-		_, xp, combat_syle = eval_set(player_stats, training_skill, states, defenders, s, include_shared_xp)
-		if xp > best[1]:
-			best = (s, xp, combat_syle)
+    def retranslateUi(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.cape_button.setText(_translate("Form", "Cape"))
+        self.neck_button.setText(_translate("Form", "Neck"))
+        self.ammo_button.setText(_translate("Form", "Ammo"))
+        self.weapon_button.setText(_translate("Form", "Weapon"))
+        self.body_button.setText(_translate("Form", "Body"))
+        self.shield_button.setText(_translate("Form", "Shield"))
+        self.gloves_button.setText(_translate("Form", "Gloves"))
+        self.feet_button.setText(_translate("Form", "Feet"))
+        self.ring_button.setText(_translate("Form", "Ring"))
+        self.label.setText(_translate("Form", "Xp/h"))
+        self.head_button.setText(_translate("Form", "Head"))
+        self.training_skill.setItemText(0, _translate("Form", "Train Attack"))
+        self.training_skill.setItemText(1, _translate("Form", "Train Strength"))
+        self.training_skill.setItemText(2, _translate("Form", "Train Defence"))
+        self.training_skill.setItemText(3, _translate("Form", "Train Ranged"))
+        self.training_skill.setItemText(4, _translate("Form", "Train Mage"))
+        self.evaluate.setText(_translate("Form", "Evaluate!"))
+        item = self.best_in_slot_bonuses.verticalHeaderItem(0)
+        item.setText(_translate("Form", "Stab"))
+        item = self.best_in_slot_bonuses.verticalHeaderItem(1)
+        item.setText(_translate("Form", "Slash"))
+        item = self.best_in_slot_bonuses.verticalHeaderItem(2)
+        item.setText(_translate("Form", "Crush"))
+        item = self.best_in_slot_bonuses.verticalHeaderItem(3)
+        item.setText(_translate("Form", "Ranged"))
+        item = self.best_in_slot_bonuses.verticalHeaderItem(4)
+        item.setText(_translate("Form", "Magic"))
+        item = self.best_in_slot_bonuses.verticalHeaderItem(5)
+        item.setText(_translate("Form", "Melee Str"))
+        item = self.best_in_slot_bonuses.verticalHeaderItem(6)
+        item.setText(_translate("Form", "Ranged Str"))
+        item = self.best_in_slot_bonuses.verticalHeaderItem(7)
+        item.setText(_translate("Form", "Magic Str"))
+        item = self.best_in_slot_bonuses.verticalHeaderItem(8)
+        item.setText(_translate("Form", "Attack Speed"))
+        item = self.best_in_slot_bonuses.verticalHeaderItem(9)
+        item.setText(_translate("Form", "Cost"))
+        item = self.best_in_slot_bonuses.horizontalHeaderItem(0)
+        item.setText(_translate("Form", "Bonuses"))
+        __sortingEnabled = self.best_in_slot_bonuses.isSortingEnabled()
+        self.best_in_slot_bonuses.setSortingEnabled(False)
+        self.best_in_slot_bonuses.setSortingEnabled(__sortingEnabled)
 
-	if best[0] == None:
-		raise ValueError(f"There was no way to gain {training_skill} experience given these equipment sets: {sets}")
-	return best
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Form = QtWidgets.QWidget()
+    ui = Ui_Form()
+    ui.setupUi(Form)
+    Form.show()
+    sys.exit(app.exec_())

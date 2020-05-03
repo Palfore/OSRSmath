@@ -70,8 +70,8 @@ class Monster:
 		return monster
 
 	def from_name(name, xp_per_damage=4, monster_data=None):
-		id = get_monster_by_name(name, monster_data)['id']
-		return Monster.from_id(id, monster_data)
+		return get_monster_by_name(name, monster_data)
+		# return Monster.from_id(id, monster_data)
 
 	def __init__(self, levels, stats, xp_per_damage=4):
 		self.levels = levels
@@ -110,6 +110,8 @@ def get_monster_data(force_update=False):
 	file_path = os.path.join(config.DATA_PATH, file_name)
 	if not os.path.exists(file_path) or force_update:
 		r = requests.get(os.path.join(MONSTER_LIST_BASE_URL, file_name))
+		if r.status_code != 200:
+			raise ValueError("Unable to retrieve monster data.")
 		with open(file_path, 'w') as f:
 			f.write(r.text)
 

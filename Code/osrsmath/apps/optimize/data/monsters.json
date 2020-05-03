@@ -1,0 +1,29 @@
+{
+    "monsters": {
+        "count draynor (hard)": {
+            "levels": {
+                "hitpoints": 210,
+                "attack": 198,
+                "strength": 165,
+                "defence": 30,
+                "ranged": 1,
+                "magic": 1
+            },
+            "stats": {
+                "defence_stab": 2,
+                "defence_slash": 1,
+                "defence_crush": 3,
+                "defence_magic": 0,
+                "defence_ranged": 0
+            },
+            "xp_per_damage": 4.0
+        }
+    },
+    "potions": "normal",
+    "potion_attributes": "attack and strength",
+    "boosting_scheme": "Dose After",
+    "below_skill": "attack",
+    "redose_level": "5",
+    "prayers": "none",
+    "prayer_attributes": "damage"
+}
