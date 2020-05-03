@@ -231,7 +231,7 @@ class Ui_Form(object):
         self.prayer_attributes.addItem("")
         self.prayer_attributes.addItem("")
         self.prayer_attributes.addItem("")
-        self.gridLayout.addWidget(self.prayer_attributes, 10, 7, 1, 2)
+        self.gridLayout.addWidget(self.prayer_attributes, 10, 7, 1, 1)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -287,9 +287,9 @@ class Ui_Form(object):
         self.label_5.setText(_translate("Form", "boost below"))
         self.evaluate.setText(_translate("Form", "Evaluate!"))
         self.label_6.setText(_translate("Form", "Train"))
-        self.potion_attributes.setItemText(0, _translate("Form", "attack"))
-        self.potion_attributes.setItemText(1, _translate("Form", "strength"))
-        self.potion_attributes.setItemText(2, _translate("Form", "attack and strength"))
+        self.potion_attributes.setItemText(0, _translate("Form", "accuracy"))
+        self.potion_attributes.setItemText(1, _translate("Form", "damage"))
+        self.potion_attributes.setItemText(2, _translate("Form", "accuracy and damage"))
         item = self.best_in_slot_bonuses.verticalHeaderItem(0)
         item.setText(_translate("Form", "Stab"))
         item = self.best_in_slot_bonuses.verticalHeaderItem(1)
@@ -317,8 +317,8 @@ class Ui_Form(object):
         self.best_in_slot_bonuses.setSortingEnabled(__sortingEnabled)
         self.boosting_scheme.setItemText(0, _translate("Form", "Constant"))
         self.boosting_scheme.setItemText(1, _translate("Form", "Dose After"))
-        self.prayer_attributes.setItemText(0, _translate("Form", "damage"))
-        self.prayer_attributes.setItemText(1, _translate("Form", "accuracy"))
+        self.prayer_attributes.setItemText(0, _translate("Form", "accuracy"))
+        self.prayer_attributes.setItemText(1, _translate("Form", "damage"))
         self.prayer_attributes.setItemText(2, _translate("Form", "damage and accuracy"))
 
 

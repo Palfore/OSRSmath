@@ -2,6 +2,7 @@ from osrsmath.apps.GUI.optimize.ignore_adjust_skeleton import Ui_IgnoreAdjustPan
 from osrsmath.apps.GUI.shared.widgets import Savable
 from PyQt5 import QtCore, QtGui, QtWidgets
 import json
+import ast
 
 class Data:
 	pass
@@ -12,7 +13,7 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
 		self.setupUi(self)
 
 		self.data = Data()
-		self.data.ignore = '[]'
+		self.data.ignore = ''
 		self.data.adjust = r'{}'
 		self.entities = {
 			'ignore_data': Savable.Entity(
@@ -43,24 +44,40 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
 		self.text.focusOutEvent = self.update_data_from_text
 
 	def get_ignore(self):
-		return json.loads(self.entities['ignore_data'].get())
+		text = self.entities['ignore_data'].get()
+		text = '",\n"'.join(text.split('\n'))
+		return ast.literal_eval(f'["{text}"]')
 
 	def get_adjust(self):
-		return json.loads(self.entities['adjust_data'].get())
+		text = self.entities['adjust_data'].get()
+		first = True
+
+		import re
+		json_object = {}
+		obj = None
+		for i, line in enumerate(text.split('\n')):
+			assert line.count(':') <= 1, f"Line #{i} shouldn't contain more than 1 ':'"
+
+			# If the ending of a line (ignoring whitespace) is ':{' it signals that the line has an item.
+			if re.sub(r"\s+", "", line).endswith(':{'):
+				item_name = line.split(':')[0].strip()
+				obj = {'name': item_name, 'req': {}}
+			# If a line has a ':' (without a '{') it contains a requirement
+			elif (':' in line) and ('{' not in line):
+				left, right = line.split(':', 1)
+				obj['req'].update({left.strip(): int(right.strip(','))})
+			# A '}' signals the end of a item creation. It will be added to the collection.
+			elif re.sub(r"\s+", "", line).startswith('}'):
+				json_object.update({obj['name']: obj['req']})
+				obj = None
+		return json_object
 
 	def on_toggle_change(self):
 		self.set_text(str(self.get_checked('data').get()))
 
 	def update_data_from_text(self, _=None):
 		self.set_text(self.text.toPlainText())
-		try:
-			data = json.loads(self.text.toPlainText())
-			data = json.dumps(data, indent=4)
-		except json.decoder.JSONDecodeError as e:
-			self.text.setFocus()
-			print(e)
-			return
-		self.get_checked('data').set(data)
+		self.get_checked('data').set(self.text.toPlainText())
 
 	def get_checked(self, kind):
 		''' Returns the kind entity whose toggle is checked. '''
@@ -73,4 +90,5 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
 			assert False, 'Neither ignore/adjust checkboxes were selected when updating.'
 
 	def set_text(self, text):
-		self.text.setPlainText(json.dumps(text.replace("'", '"'), indent=4).encode('utf-8').decode('unicode_escape').strip('"'))
+		self.text.setPlainText(text)
+		# self.text.setPlainText(json.dumps(text.replace("'", '"'), indent=4).encode('utf-8').decode('unicode_escape').strip('"'))

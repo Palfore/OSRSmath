@@ -154,9 +154,16 @@ def other(equipment):
 		elif 'void mage helm' in equipment:
 			return Equipment.elite_void_mage()
 
-	if all(e in equipment for e in ('obsidian helmet', 'obsidian platebody', 'obsidian platelegs')):
-		if any(e in equipment for e in ('toktz-xil-ek', 'toktz-xil-ak', 'tzhaar-ket-em', 'tzhaar-ket-om', 'tzhaar-ket-om (t)')):
-			return Equipment.obsidian()
+	if any(e in equipment for e in ('toktz-xil-ek', 'toktz-xil-ak', 'tzhaar-ket-em', 'tzhaar-ket-om', 'tzhaar-ket-om (t)')):
+		if all(e in equipment for e in ('obsidian helmet', 'obsidian platebody', 'obsidian platelegs')):
+			if 'berserker necklace' in equipment:
+				return Equipment.obsidian_and_necklace()
+			else:
+				return Equipment.obsidian()
+		elif 'berserker necklace' in equipment:
+				return Equipment.berserker_necklace()
+
+
 
 	return {}
 
@@ -282,11 +289,25 @@ class Equipment:
 			'attack': 1.1,
 		}
 
+	@staticmethod
+	def berserker_necklace():
+		return {
+			'strength': 1.2,
+			'attack': 1.2,
+		}
+
+	@staticmethod
+	def obsidian_and_necklace():
+		return {
+			'strength': 1.3,
+			'attack': 1.3,
+		}
+
 class BoostingSchemes:
 	def __init__(self, player, prayer, prayer_boosted_attributes=('damage', 'accuracy')):
 		self.player = player
-		self.damage_prayer = prayer if 'damage' in prayer_boosted_attributes else Prayer.none
-		self.accuracy_prayer = prayer if 'accuracy' in prayer_boosted_attributes else Prayer.none
+		self.damage_prayer = prayer if 'damage' in prayer_boosted_attributes else Prayers.none
+		self.accuracy_prayer = prayer if 'accuracy' in prayer_boosted_attributes else Prayers.none
 
 	def potion_when_skill_under(self, potion, skill, min_boost, boosted_attributes=('damage', 'accuracy')):
 		""" Drink a {potion} that boosts my {boosted_attributues: Note these are generic names since different combat styles are allowed}.
@@ -296,19 +317,19 @@ class BoostingSchemes:
 			raise ValueError(f"A min boost of {min_boost} is too high, the {skill} gets a maximum boost of {max_boost}.")
 		return [(
 			self.player.get_max_hit(
-				lambda x: max(0, potion(x) - max_boost + boost) if 'damage' in boosted_attributes else potions.none,
+				(lambda x: max(0, potion(x) - max_boost + boost)) if 'damage' in boosted_attributes else Potions.none,
 				self.damage_prayer
 			),
 			self.player.get_attack_roll(
-				lambda y: max(0, potion(y) - max_boost + boost) if 'accuracy' in boosted_attributes else potions.none,
+				(lambda y: max(0, potion(y) - max_boost + boost)) if 'accuracy' in boosted_attributes else Potions.none,
 				self.accuracy_prayer
 			)
 		) for boost in range(min_boost, max_boost+1)]
 
-	def constant(self, potion):
+	def constant(self, potion, boosted_attributes):
 		return [(
-			self.player.get_max_hit(potion, self.damage_prayer),
-			self.player.get_attack_roll(potion, self.accuracy_prayer)
+			self.player.get_max_hit(potion if 'damage' in boosted_attributes else Potions.none, self.damage_prayer),
+			self.player.get_attack_roll(potion if 'accuracy' in boosted_attributes else Potions.none, self.accuracy_prayer)
 		)]
 
 if __name__ == '__main__':

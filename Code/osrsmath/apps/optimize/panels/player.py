@@ -32,9 +32,6 @@ class PlayerPanel(QtWidgets.QWidget, Ui_Form, Savable):
 
 	def get_stats(self):
 		''' Returns a dictionary of all displayed levels (including cmb). '''
-		default_level = 1
 		return {
-			skill: int(
-				self.entities[skill].get() if self.entities[skill].get() != '' else default_level
-			) for skill in get_skills(lower=True) + ['cmb']
+			skill: int(self.entities[skill].get()) for skill in get_skills(lower=True) + ['cmb'] if self.entities[skill].get() != ''
 		}

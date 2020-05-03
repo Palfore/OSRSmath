@@ -89,12 +89,15 @@ def is_better(A, B):
 	return True
 
 def meets_requirements(player_stats, equipment):
+	if equipment['equipment']['requirements'] is None:
+		return True
 	for stat, req in equipment['equipment']['requirements'].items():
 		if stat not in player_stats:
 			raise ValueError(f"Supply your {stat} level to check {equipment['name']} for: {equipment['equipment']['requirements']}")
 		if player_stats[stat] < req:
 			return False
 	return True
+
 
 def get_sets(player_stats, defenders, ignore, adjustments, equipment_data, progress_callback=None, fixed_equipment=None):
 	reduced_equipment = defaultdict(list)
@@ -148,23 +151,27 @@ def get_sets(player_stats, defenders, ignore, adjustments, equipment_data, progr
 		non_void.extend([(n, e) for n, e in required_equipment.items()])
 		return tuple(non_void)
 
-	void = {
-		'body': 'Void knight top',
-		'legs': 'Void knight robe',
-		'hands': 'Void knight gloves',
-		'head': 'Void melee helm',
-	}
+	# Adding Void Set
+	void = {'body': 'Void knight top', 'legs': 'Void knight robe', 'hands': 'Void knight gloves', 'head': 'Void melee helm'}
 	if all(meets_requirements(player_stats, get_equipment_by_name(e)) for e in void.values()):
 		sets += list(set(create_set_effect(s, void) for s in sets))
 
-	obsidian = {'head': 'obsidian helmet', 'body': 'obsidian platebody', 'legs': 'obsidian platelegs'}
+	# Adding Obsidian Sets
+	obsidian = {'head': 'Obsidian helmet', 'body': 'Obsidian platebody', 'legs': 'Obsidian platelegs', 'neck': 'Berserker necklace'}
+	if all(meets_requirements(player_stats, get_equipment_by_name(e)) for e in obsidian.values()):
+		for weapon in ['Toktz-xil-ek', 'Toktz-xil-ak', 'Tzhaar-ket-em', 'Tzhaar-ket-om', 'Tzhaar-ket-om (t)']:
+			if meets_requirements(player_stats, get_equipment_by_name(weapon)):
+				sets += list(set(create_set_effect(s, {
+					**obsidian, **{'weapon': weapon}
+				}) for s in sets))
+
+	obsidian = {'neck': 'Berserker necklace'}
 	if all(meets_requirements(player_stats, get_equipment_by_name(e)) for e in obsidian.values()):
 		for weapon in ['toktz-xil-ek', 'toktz-xil-ak', 'tzhaar-ket-em', 'tzhaar-ket-om', 'tzhaar-ket-om (t)']:
 			if meets_requirements(player_stats, get_equipment_by_name(weapon)):
 				sets += list(set(create_set_effect(s, {
 					**obsidian, **{'weapon': weapon}
 				}) for s in sets))
-
 	return [{ slot: eq for slot, eq in s if eq is not None} for s in sets]
 
 

@@ -267,17 +267,17 @@
     <widget class="QComboBox" name="potion_attributes">
      <item>
       <property name="text">
-       <string>attack</string>
+       <string>accuracy</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>strength</string>
+       <string>damage</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>attack and strength</string>
+       <string>accuracy and damage</string>
       </property>
      </item>
     </widget>
@@ -437,16 +437,16 @@
    <item row="10" column="2" colspan="5">
     <widget class="QComboBox" name="prayers"/>
    </item>
-   <item row="10" column="7" colspan="2">
+   <item row="10" column="7">
     <widget class="QComboBox" name="prayer_attributes">
      <item>
       <property name="text">
-       <string>damage</string>
+       <string>accuracy</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>accuracy</string>
+       <string>damage</string>
       </property>
      </item>
      <item>

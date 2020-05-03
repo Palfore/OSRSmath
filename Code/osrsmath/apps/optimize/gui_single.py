@@ -72,10 +72,16 @@ class Ui_MainWindow(object):
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1000, 21))
         self.menubar.setObjectName("menubar")
+        self.menuHelp = QtWidgets.QMenu(self.menubar)
+        self.menuHelp.setObjectName("menuHelp")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+        self.actionOverview = QtWidgets.QAction(MainWindow)
+        self.actionOverview.setObjectName("actionOverview")
+        self.menuHelp.addAction(self.actionOverview)
+        self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -83,6 +89,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "OSRS Combat Optimizer"))
+        self.menuHelp.setTitle(_translate("MainWindow", "Help"))
+        self.actionOverview.setText(_translate("MainWindow", "Overview"))
 from osrsmath.apps.monsters.panel import MonsterPanel
 from osrsmath.apps.optimize.panels.ignore_adjust import IgnoreAdjustPanel
 from osrsmath.apps.optimize.panels.optimize import OptimizePanel

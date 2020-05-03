@@ -5,7 +5,7 @@ import sys
 def run(main_gui_class):
 	# Style from https://github.com/Lumyo/darkorange-pyside-stylesheet/tree/master/darkorange
 	app = QtWidgets.QApplication(sys.argv)
-	stylesheet_file = Path(__file__).parent/"stylesheets"/"darkorange"/"darkorange.stylesheet"
+	stylesheet_file = Path(__file__).parent/"stylesheets"/"darkorange"/"darkorange.css"
 	with open(stylesheet_file, "r") as f:
 		app.setStyleSheet(f.read())
 
