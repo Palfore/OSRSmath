@@ -1,35 +1,12 @@
-from jsoncomment import JsonComment
-from osrsmath.model.monsters import Monster
-
 from osrsmath.model.player import PlayerBuilder, get_equipment_by_name
 from osrsmath.model.experience import xp_rate
 from collections import defaultdict
 from pprint import pprint
-import numpy as np
 import itertools
-import copy
 
-def load_opponent(search_type, value):
-	if search_type == 'id':
-		return Monster.from_id(value)
-	elif search_type == 'name':
-		return Monster.from_name(value)
-	else:
-		raise ValueError(f'The search type must be either "id" or "name", not {search_type}')
-
-def load(file_name, process_opponents=True):
-	data = JsonComment().loadf(file_name)
-	player_stats = data['player_stats']
-	if process_opponents:
-		defenders = {}
-		for name, (search_type, value) in data['defenders'].items():
-			if process_opponents:
-				defenders[name] = load_opponent(search_type, value)
-	else:
-		defenders = data['defenders']
-	ignore = data['ignore']
-	adjustments = data['adjustments']
-	return player_stats, defenders, ignore, adjustments
+import pathos.pools as pp
+from multiprocessing import Value
+import time
 
 def is_only_melee_weapon(weapon):
 	# return all(stance['experience'] in ('strength', 'attack', 'defence', 'shared') for stance in weapon['weapon']['stances'])
@@ -76,18 +53,6 @@ def get_offensive_bonuses(equipment, attack_style=None):
 	bonuses.update({stat:value for stat, value in equipment['equipment'].items() if stat in allowed})
 	return bonuses
 
-def is_better(A, B):
-	""" Is A absolutely better than B?
-		@param A Equipment stats eg: {'attack_crush': 53, ...}
-		@param B Equipment stats """
-	assert list(A.keys()) == list(B.keys())
-	if list(A.values()) == list(B.values()):
-		return False
-	for a, b in zip(list(A.values()), list(B.values())):
-		if b > a:
-			return False
-	return True
-
 def meets_requirements(player_stats, equipment):
 	if equipment['equipment']['requirements'] is None:
 		return True
@@ -97,7 +62,6 @@ def meets_requirements(player_stats, equipment):
 		if player_stats[stat] < req:
 			return False
 	return True
-
 
 def get_equipable_gear(gear, player_stats, ignore, adjustments):
 	equipable = defaultdict(list)
@@ -117,11 +81,52 @@ def get_equipable_gear(gear, player_stats, ignore, adjustments):
 			equipable[slot].append(equipment)
 	return equipable
 
-def dict_as_key(dictionary):
-	# https://stackoverflow.com/questions/1600591/using-a-python-dictionary-as-a-key-non-nested
-	if not dictionary:
-		return None
-	return tuple(sorted(dictionary.items()))
+class Weapon:
+	@staticmethod
+	def stance_can_train(stance: dict, skill, allow_controlled=False):
+		if allow_controlled and stance['experience'] == 'shared':
+			return True # This will probably fail with ranged/magic gear.
+		return skill in stance['experience']
+
+	def __init__(self, weapon):
+		self.weapon = weapon
+
+	def can_train(self, skill):
+		return bool(self.get_skill_stances(skill))
+
+	def get_skill_stances(self, skill, allow_controlled=False):
+		return [stance for stance in self.weapon['weapon']['stances']
+		           if Weapon.stance_can_train(stance, skill, allow_controlled)]
+
+def is_better(A, B):
+	""" Is A absolutely better than B?
+		@param A Equipment stats eg: {'attack_crush': 53, ...}
+		@param B Equipment stats """
+	assert list(A.keys()) == list(B.keys())
+	if list(A.values()) == list(B.values()):
+		return False
+	for a, b in zip(list(A.values()), list(B.values())):
+		if b > a:
+			return False
+	return True
+
+def get_equipment(slot_equipment, offensive_attribute):
+	from osrsmath.apps.optimize.logic.utility import get_maximum_sets
+
+	unique_equipment = []
+	for equipment in slot_equipment:
+		# Record equipment if you haven't seen anything with these offensive stats before.
+		stats = get_offensive_bonuses(equipment, offensive_attribute)
+		if stats not in [s for n, s, _ in unique_equipment]:
+			unique_equipment.append((equipment['name'], stats, equipment))
+
+	# Next, we want to search through this to see if any of these unique profiles are factually worse.
+	# Eg: same stats except itemA.slash == 4, itemB.slash == 5, the itemA should be forgotten.
+	# but if itemA.slash == 4, itemA.strength == 10 and item.B == 5, itemB.strength == 9, we can't
+	# know which is better without evaluating, so keep them both.
+	return [name for name, _, _ in get_maximum_sets(
+		unique_equipment, getter=lambda x: x[1].values()  # x[1] -> stats
+	)]
 
 
 def get_sets(player_stats, defenders, ignore, adjustments, equipment_data, fixed_equipment=None):
@@ -130,30 +135,54 @@ def get_sets(player_stats, defenders, ignore, adjustments, equipment_data, fixed
 
 	items = get_offensive_melee_equipment(equipment_data)
 	equipable_gear = get_equipable_gear(items, player_stats, ignore, adjustments)
+	equipable_armour = {slot: equip for slot, equip in equipable_gear.items() if slot not in ['weapon', 'shield', '2h']}
+	training_skill = 'attack'
 
-	reduced_equipment = defaultdict(list)
-	for i, (slot, slot_equipment) in enumerate(equipable_gear.items(), 1):
-		unique_equipment = []
-		# Store the unique offensive profiles
-		for equipment in slot_equipment:
-			stats = get_offensive_bonuses(equipment, 'slash')  # Why is this slash? this should probably be dynamic based on the weapon
 
-			# Record equipment if you haven't seen anything with these offensive stats before.
-			if stats not in [s for n, s, _ in unique_equipment]:
-				unique_equipment.append((equipment['name'], stats, equipment))
+	rune_scim = get_equipment_by_name('Rune scimitar')
+	pprint(rune_scim)
+	for stance in rune_scim['weapon']['stances']:
+		print(stance)
+	exit()
+	# return
+	# for attack_type in ['stab', 'slash', 'crush']
+	# Get all weapons that can train the desired skill
+	# weapons = []
+	# for weapon in equipable_gear['weapon']:
+	# 	stances = Weapon(weapon).get_skill_stances(training_skill)
+	# 	if stances:
+	# 		weapons.append((weapon, stances))
 
-		# Next, we want to search through this to see if any of these unique profiles are factually worse.
-		# Eg: same stats except itemA.slash == 4, itemB.slash == 5, the itemA should be forgotten.
-		# but if itemA.slash == 4, itemA.strength == 10 and item.B == 5, itemB.strength == 9, we can't
-		# know which is better without evaluating, so keep them both.
-		reduced_equipment[slot] = [name for name, equipment_stats, _  in unique_equipment if (# not everyone is better than you.
-			all([not is_better(E, equipment_stats) for n, E, _ in unique_equipment])
-		)]
+	# # Reduce weapons
 
-	reduced_equipment = [ [(slot, e) for e in eqs] for slot, eqs in reduced_equipment.items()]
-	sets = list(itertools.product(*list(reduced_equipment)[:-2]))  # Ignore last two slots (shield & weapon)
-	sets += list(itertools.product(*list(reduced_equipment)[1:]))  # Ignore first slot (2h)
 
+	# for weapon, stances in weapons:
+	# 	for stance in stances:
+	# 		s = {slot: get_equipment(slot_eq, stance['attack_type']) for slot, slot_eq in equipable_armour.items()}
+	# 		print(weapon['name'], stance['attack_type'], s, '\n')
+
+
+
+	# reduced_equipment['weapon'] = []
+
+	sets = []
+	for attack in ['stab', 'slash', 'crush']:
+		reduced_equipment = defaultdict(list)
+		for i, (slot, slot_equipment) in enumerate(equipable_gear.items(), 1):
+			reduced_equipment[slot] = list(set(
+				get_equipment(slot_equipment, attack)
+			))
+
+		reduced_equipment = [ [(slot, e) for e in eqs] for slot, eqs in reduced_equipment.items()]
+		sets += list(itertools.product(*list(reduced_equipment)[:-2]))  # Ignore last two slots (shield & weapon)
+		sets += list(itertools.product(*list(reduced_equipment)[1:]))   # Ignore first slot (2h)
+
+
+
+	print(len(sets))
+	print(len(set(sets)))
+
+	# exit()
 	return [{ slot: eq for slot, eq in s if eq is not None} for s in sets]
 
 
@@ -204,20 +233,47 @@ def eval_set(player_stats: dict, training_skill, states, defenders, s, include_s
 				best = (s, xp, player.combat_style)
 	return best
 
+class Eval:
+	INTERVAL = 0.05  # How frequently the progress is updated (in seconds).
+	completed = Value('i', 0)
+
+	@classmethod
+	def start(cls, f, items, callback):
+		evaluator = Eval(f, len(items))
+		values = cls.map(evaluator, items)
+		evaluator.monitor_progress(callback)
+		return list(values)
+
+	@staticmethod
+	def map(f, items):
+		return pp.ProcessPool().imap(f, items)
+
+	def __init__(self, f, num_items):
+		self.num_items = num_items
+		self.f = f
+		with self.completed.get_lock():
+			self.completed.value = 0
+
+	def __call__(self, x):
+		result = self.f(x)
+		with self.completed.get_lock():
+			self.completed.value += 1
+		return result
+
+	def monitor_progress(self, callback):
+		callback(0)
+		while self.completed.value < self.num_items:
+			callback(self.completed.value/self.num_items*100)
+			time.sleep(self.INTERVAL)
+		callback(self.completed.value/self.num_items*100)
+
 def get_best_set(player_stats: dict, training_skill, states, defenders, sets, include_shared_xp=True, progress_callback=None):
 	""" Returns the equipment set that provides the highest experience rate for the training_skill.
 		@param player_stats: {'attack': 40, ...}
 		@param training_skill: 'attack'
-		@param sets: [{'cape': 'Fire cape', ...}, {'cape': 'Legends cape', ...}, ...]
-		@note Multithreading did not improve performance of this function. """
-	best = (None, float('-inf'), None)
-	for i, s in enumerate(sets, 1):
-		if progress_callback:
-			progress_callback(100*i/len(sets))
-		_, xp, combat_syle = eval_set(player_stats, training_skill, states, defenders, s, include_shared_xp)
-		if xp > best[1]:
-			best = (s, xp, combat_syle)
-
-	if best[0] == None:
-		raise ValueError(f"There was no way to gain {training_skill} experience given these equipment sets: {sets}")
-	return best
+		@param sets: [{'cape': 'Fire cape', ...}, {'cape': 'Legends cape', ...}, ...] """
+	return max(Eval.start(
+		lambda s: eval_set(player_stats, training_skill, states, defenders, s, include_shared_xp),
+		sets,
+		progress_callback
+	), key = lambda x: x[1])  # x[1] -> xp rate

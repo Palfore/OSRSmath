@@ -58,6 +58,27 @@ NMZ_BOSSES = [
 
 class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
 	SEPERATOR = ' | '
+	LABELS = [
+		('health', 'hitpoints'),
+		('attack', 'attack_level'),
+		('strength', 'strength_level'),
+		('defence', 'defence_level'),
+		('ranged', 'ranged_level'),
+		('magic', 'magic_level'),
+
+		('aggressive_attack', 'attack_accuracy'),
+		('aggressive_strength', 'melee_strength'),
+		('aggressive_magic', 'attack_magic'),
+		('aggressive_magic_damage', 'magic_damage'),
+		('aggressive_ranged', 'attack_ranged'),
+		('aggressive_ranged_strength', 'ranged_strength'),
+
+		('defensive_stab', 'defence_stab'),
+		('defensive_slash', 'defence_slash'),
+		('defensive_crush', 'defence_crush'),
+		('defensive_magic', 'defence_magic'),
+		('defensive_ranged', 'defence_ranged'),
+	]
 
 	def __init__(self, parent=None):
 		super().__init__(parent)
@@ -68,6 +89,8 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
 		self.nmz_only.stateChanged.connect(self.nmz_only_changed)
 		self.xp_per_hit.setText('4')
 		self.wiki_link.clicked.connect(self.open_wiki)
+		for label, obj in self.LABELS:
+			getattr(self, label).setValidator(QtGui.QIntValidator())
 
 		self.nmz_only_changed()
 		self.on_select()
@@ -93,28 +116,7 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
 		name, ID = self.search.currentText().split(self.SEPERATOR)
 		monster = self.monster_data[ID]
 		self.custom_name.setText(name)
-		labels = [
-			('health', 'hitpoints'),
-			('attack', 'attack_level'),
-			('strength', 'strength_level'),
-			('defence', 'defence_level'),
-			('ranged', 'ranged_level'),
-			('magic', 'magic_level'),
-
-			('aggressive_attack', 'attack_accuracy'),
-			('aggressive_strength', 'melee_strength'),
-			('aggressive_magic', 'attack_magic'),
-			('aggressive_magic_damage', 'magic_damage'),
-			('aggressive_ranged', 'attack_ranged'),
-			('aggressive_ranged_strength', 'ranged_strength'),
-
-			('defensive_stab', 'defence_stab'),
-			('defensive_slash', 'defence_slash'),
-			('defensive_crush', 'defence_crush'),
-			('defensive_magic', 'defence_magic'),
-			('defensive_ranged', 'defence_ranged'),
-		]
-		for attribute, key in labels:
+		for attribute, key in self.LABELS:
 			getattr(self, attribute).setText(str(monster[key]))
 		self.combat_level.setText(str(combat_level({
 			**{k.replace('_level', ''): v for k, v in self.get_monster().levels.items()},
@@ -140,21 +142,44 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
 		return monsters.Monster(**self.get_monster_as_dict())
 
 	def get_monster_as_dict(self):
+		extract = lambda x: int(x.text() if x.text().strip() != '' else 0)
 		return {
 			'levels': {
-				'hitpoints': int(self.health.text()),
-				'attack': int(self.attack.text()),
-				'strength': int(self.strength.text()),
-				'defence': int(self.defence.text()),
-				'ranged': int(self.ranged.text()),
-				'magic': int(self.magic.text()),
+				'hitpoints': extract(self.health),
+				'attack': extract(self.attack),
+				'strength': extract(self.strength),
+				'defence': extract(self.defence),
+				'ranged': extract(self.ranged),
+				'magic': extract(self.magic),
 			},
 			'stats': {
-				'defence_stab': int(self.defensive_stab.text()),
-				'defence_slash': int(self.defensive_slash.text()),
-				'defence_crush': int(self.defensive_crush.text()),
-				'defence_magic': int(self.defensive_magic.text()),
-				'defence_ranged': int(self.defensive_ranged.text()),
+				'defence_stab': extract(self.defensive_stab),
+				'defence_slash': extract(self.defensive_slash),
+				'defence_crush': extract(self.defensive_crush),
+				'defence_magic': extract(self.defensive_magic),
+				'defence_ranged': extract(self.defensive_ranged),
 			},
 			'xp_per_damage': float(self.xp_per_hit.text()),
 		}
+
+	def fill_monster(self, name, monster: dict):
+		extract = lambda x: str(int(x))
+		self.search.clear()
+		self.custom_name.setText(name)
+		self.health.setText(extract(monster['levels']['hitpoints']))
+		self.attack.setText(extract(monster['levels']['attack']))
+		self.strength.setText(extract(monster['levels']['strength']))
+		self.defence.setText(extract(monster['levels']['defence']))
+		self.ranged.setText(extract(monster['levels']['ranged']))
+		self.magic.setText(extract(monster['levels']['magic']))
+
+		self.defensive_stab.setText(extract(monster['stats']['defence_stab']))
+		self.defensive_slash.setText(extract(monster['stats']['defence_slash']))
+		self.defensive_crush.setText(extract(monster['stats']['defence_crush']))
+		self.defensive_magic.setText(extract(monster['stats']['defence_magic']))
+		self.defensive_ranged.setText(extract(monster['stats']['defence_ranged']))
+
+		self.xp_per_hit.setText(str(monster['xp_per_damage']))
+
+
+

@@ -131,7 +131,6 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		del self.data.monsters[name]
 
 	def add_monster(self, name, monster):
-		if name in self.data.monsters:
-			return
 		self.data.monsters[name] = monster
-		self.opponents.addItem(name)
+		if name not in (self.opponents.item(i).text() for i in range(self.opponents.count())):
+			self.opponents.addItem(name)

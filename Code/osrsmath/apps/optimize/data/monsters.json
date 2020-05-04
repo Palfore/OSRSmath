@@ -1,29 +1,29 @@
 {
     "monsters": {
-        "count draynor (hard)": {
+        "molanisk": {
             "levels": {
-                "hitpoints": 210,
-                "attack": 198,
-                "strength": 165,
-                "defence": 30,
+                "hitpoints": 52,
+                "attack": 40,
+                "strength": 40,
+                "defence": 50,
                 "ranged": 1,
-                "magic": 1
+                "magic": 0
             },
             "stats": {
-                "defence_stab": 2,
-                "defence_slash": 1,
-                "defence_crush": 3,
-                "defence_magic": 0,
-                "defence_ranged": 0
+                "defence_stab": 45,
+                "defence_slash": 45,
+                "defence_crush": 35,
+                "defence_magic": 30,
+                "defence_ranged": 55
             },
             "xp_per_damage": 4.0
         }
     },
-    "potions": "super",
+    "potions": "overload",
     "potion_attributes": "accuracy and damage",
     "boosting_scheme": "Constant",
     "below_skill": "attack",
-    "redose_level": "18",
+    "redose_level": "",
     "prayers": "piety",
     "prayer_attributes": "damage and accuracy"
 }

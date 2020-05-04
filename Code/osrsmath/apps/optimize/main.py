@@ -13,10 +13,14 @@ class GUI(Ui_MainWindow):
 		self.load_defaults()
 		self.monster_panel.add.clicked.connect(self.add_monster)
 		self.optimize_panel.evaluate.clicked.connect(self.on_evaluate)
+		self.optimize_panel.opponents.itemDoubleClicked.connect(
+			lambda item: self.monster_panel.fill_monster(item.text(), self.optimize_panel.data.monsters[item.text()])
+		)
 
 		self.optimize_panel.xp_rate.setStyleSheet("color: white;")
 		self.optimize_panel.attack_stance.setStyleSheet("color: white;")
 
+		self.on_evaluate()
 		import textwrap
 		self.menuHelp.triggered.connect(lambda: QtWidgets.QMessageBox(
 			QtWidgets.QMessageBox.Information,
@@ -50,7 +54,6 @@ class GUI(Ui_MainWindow):
 
 
 
-		# self.on_evaluate()
 
 	def add_monster(self):
 		name = self.monster_panel.custom_name.text()
@@ -61,7 +64,7 @@ class GUI(Ui_MainWindow):
 		self.MainWindow.statusBar().showMessage(message)
 
 	def on_evaluate(self):
-		from osrsmath.apps.optimize.logic.optimize import get_sets, get_best_set, load_opponent
+		from osrsmath.apps.optimize.logic.optimize import get_sets, get_best_set
 		from osrsmath.model.monsters import Monster
 		from osrsmath.model.boosts import BoostingSchemes, Prayers, Potions
 		import time
@@ -95,8 +98,6 @@ class GUI(Ui_MainWindow):
 			else:
 				boost = lambda p: BoostingSchemes(p, prayer, prayer_attributes).constant(potion, potion_attributes)
 
-
-
 			t0 = time.time()
 			self.update_status(f'Step (1/2). Generating Sets...')
 			sets = get_sets(stats, monsters, ignore, adjust, equipment_data)#progress_callback=lambda i: self.optimize_panel.progressBar.setValue(i))
@@ -110,6 +111,7 @@ class GUI(Ui_MainWindow):
 				include_shared_xp=False,
 				progress_callback=lambda i: self.optimize_panel.progressBar.setValue(i)
 			)
+
 
 			t1 = time.time()
 			self.update_status('Finished ...')

@@ -2,10 +2,10 @@
     "attack": "50",
     "defence": "50",
     "strength": "50",
-    "hitpoints": "94",
-    "ranged": "90",
-    "prayer": "70",
-    "magic": "81",
+    "hitpoints": "99",
+    "ranged": "99",
+    "prayer": "99",
+    "magic": "99",
     "cooking": "",
     "woodcutting": "99",
     "fletching": "",
@@ -22,5 +22,5 @@
     "runecraft": "",
     "hunter": "",
     "construction": "",
-    "cmb": "88"
+    "cmb": "97"
 }
