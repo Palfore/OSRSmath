@@ -148,9 +148,9 @@ def get_sets(training_skill, player_stats, defenders, ignore, adjustments, equip
 			], {
 				'neck': 'Berserker necklace'
 		}),
-		# 'slayer_helm': (None, {
-		# 	'head': 'Slayer helmet'
-		# }),
+		'slayer_helm': (None, {
+			'head': 'Slayer helmet'
+		}),
 		'salve_amulet': (None, {
 			'neck': 'Salve amulet'
 		}),
@@ -164,8 +164,9 @@ def get_sets(training_skill, player_stats, defenders, ignore, adjustments, equip
 		)
 	}
 	solver = Solver(training_skill, player_stats, ignore, adjustments, equipment_data, progress_callback)
-	for special_set in sets.values():
-		if special_set in considered_sets:
+	for name, special_set in sets.items():
+		if name in considered_sets:
+			print(name)
 			solver.add_special_set(*special_set)
 	return solver.solve()
 

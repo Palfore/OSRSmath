@@ -117,7 +117,7 @@ class Prayers:
 
 
 
-def other(equipment):
+def other(equipment, player):
 	equipment = [e.lower() for e in equipment]
 
 	# The order here is important, salve amulet does not stack with black mask
@@ -155,7 +155,8 @@ def other(equipment):
 			return Equipment.elite_void_mage()
 
 	if all(e in equipment for e in ("dharok's greataxe", "dharok's helm", "dharok's platebody", "dharok's platelegs")):
-		return Equipment.dharok(98)
+		if hasattr(player, 'current_health') and (player.levels['hitpoints'] >= player.current_health > 0):
+			return Equipment.dharok(player.levels['hitpoints'] - player.current_health)
 
 	if any(e in equipment for e in ('toktz-xil-ek', 'toktz-xil-ak', 'tzhaar-ket-em', 'tzhaar-ket-om', 'tzhaar-ket-om (t)')):
 		if all(e in equipment for e in ('obsidian helmet', 'obsidian platebody', 'obsidian platelegs')):

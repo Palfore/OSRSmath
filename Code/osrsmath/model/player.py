@@ -38,6 +38,7 @@ class PlayerBuilder:
 class Player:
 	def __init__(self, levels):
 		self.levels = levels
+		self.current_health = self.levels['current_health'] if 'current_health' in self.levels else None
 		self.gear = {slot: None for slot in SLOTS if '2h' not in slot}
 		self.combat_style = None
 
@@ -138,7 +139,7 @@ class Player:
 		dmg = self.get_damage_parameters()
 
 		other = boosts.Equipment.none()
-		other.update(boosts.other(self.get_equipment_names()))
+		other.update(boosts.other(self.get_equipment_names(), self))
 		special_attack_bonus = 1  # Special attacks are not implemented
 		multipler = 1  # Ignoring flooring order, since there is no official documentation
 		return damage.Standard().max_hit(
@@ -156,7 +157,7 @@ class Player:
 		stances = self.get_stances()
 
 		other = boosts.Equipment.none()
-		other.update(boosts.other(self.get_equipment_names()))
+		other.update(boosts.other(self.get_equipment_names(), self))
 		multipler = 1  # Ignoring flooring order, since there is no official documentation
 
 		return damage.Standard().max_attack_roll(

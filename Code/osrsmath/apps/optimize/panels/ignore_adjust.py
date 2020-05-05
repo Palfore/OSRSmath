@@ -92,3 +92,13 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
 	def set_text(self, text):
 		self.text.setPlainText(text)
 		# self.text.setPlainText(json.dumps(text.replace("'", '"'), indent=4).encode('utf-8').decode('unicode_escape').strip('"'))
+
+	def prepend_text(self, text):
+		original = self.get_checked('data').get().split('\n')
+		for i, line in enumerate(original):
+			if line.startswith('USER IGNORES'):
+				self.set_text('\n'.join(original[:i+1] + [text] + original[i+1:]))
+				break
+		else:  # If you didn't find that flag, just prepend it
+			self.set_text(text+'\n'+'\n'.join(original))
+		self.update_data_from_text()

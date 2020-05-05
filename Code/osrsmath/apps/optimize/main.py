@@ -6,8 +6,33 @@ from pprint import pprint as pp
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 DATA_PATH = Path().absolute() / 'data'
+slots = ['head', 'cape', 'neck', 'ammo', 'weapon', 'body', 'shield', 'legs', 'hands', 'feet', 'ring']
 
 class GUI(Ui_MainWindow):
+	HELP_TEXT = """\
+		This app allows you to determine the optimal equipment to wear against a set of opponents.
+
+		There are three main sections:
+		  1. Player (top left):
+		      a) Enter combat levels. Prompts appear if others are needed.
+		      b) Ignore equipment you don't want to consider.
+		      c) Adjust equipment requirements (if inaccurate or self-imposed)
+
+		  2. Monster (bottom left):
+		      a) Lookup by name and (crudely) filter by NMZ bosses.
+		      b) If inaccurate or cannot be found, modify values.
+
+		  3. Optimize (right)
+		      a) View fighting pool (ie. multiple enemies - useful for NMZ)
+		      b) Choose training skill
+		      c) Choose potions and how you use them.
+		      d) Choose prayers (always on).
+		      == Output ==
+		      e) Optimal equipment (dropdowns are for possible future use).
+		      f) Attack stance, xp/h, and offensive bonuses are also shown.
+
+		Note that there are a lot of exceptions in this game, so the interface is designed to have slack. """
+
 	def setupUi(self, MainWindow):
 		super().setupUi(MainWindow)
 		self.load_defaults()
@@ -24,33 +49,12 @@ class GUI(Ui_MainWindow):
 		import textwrap
 		self.menuHelp.triggered.connect(lambda: QtWidgets.QMessageBox(
 			QtWidgets.QMessageBox.Information,
-			'Help - Overview',
-
-			textwrap.dedent("""\
-			This app allows you to determine the optimal equipment to wear against a set of opponents.
-
-			There are three main sections:
-			  1. Player (top left):
-			      a) Enter combat levels. Prompts appear if others are needed.
-			      b) Ignore equipment you don't want to consider.
-			      c) Adjust equipment requirements (if inaccurate or self-imposed)
-
-			  2. Monster (bottom left):
-			      a) Lookup by name and (crudely) filter by NMZ bosses.
-			      b) If inaccurate or cannot be found, modify values.
-
-			  3. Optimize (right)
-			      a) View fighting pool (ie. multiple enemies - useful for NMZ)
-			      b) Choose training skill
-			      c) Choose potions and how you use them.
-			      d) Choose prayers (always on).
-			      == Output ==
-			      e) Optimal equipment (dropdowns are for possible future use).
-			      f) Attack stance, xp/h, and offensive bonuses are also shown.
-
-			Note that there are a lot of exceptions in this game, so the interface is designed to have slack.
-			""")
+			'Help - Overview', textwrap.dedent(self.HELP_TEXT)
 		).exec())
+
+		for slot in slots:
+			dropdown = getattr(self.optimize_panel, slot)
+			dropdown.mouseDoubleClickEvent = lambda _=None, slot=slot: self.ignore_adjust_panel.prepend_text(getattr(self.optimize_panel, slot).currentText())
 
 
 
@@ -83,6 +87,8 @@ class GUI(Ui_MainWindow):
 			training_skill = self.optimize_panel.get_training_skill()
 			special_sets = self.optimize_panel.get_selected_sets()
 			stats = self.player_panel.get_stats()
+			stats['current_health'] = int(self.optimize_panel.entities['dharok'].get())
+
 			ignore = self.ignore_adjust_panel.get_ignore()
 			adjust = self.ignore_adjust_panel.get_adjust()
 			potion = getattr(Potions, self.optimize_panel.potions.currentText())
@@ -117,7 +123,6 @@ class GUI(Ui_MainWindow):
 			self.update_status('Finished ...')
 
 			# Display Optimal Equipment
-			slots = ['head', 'cape', 'neck', 'ammo', 'weapon', 'body', 'shield', 'legs', 'hands', 'feet', 'ring']
 			for slot in slots:
 				equipment_list = getattr(self.optimize_panel, slot)
 				equipment_list.clear()
@@ -131,13 +136,19 @@ class GUI(Ui_MainWindow):
 			player = Player({})
 			for slot, item_name in s.items():
 				player.equip_by_name(item_name)
-			stats = player.get_stats()
+			equipment_stats = player.get_stats()
 			for i, stat in enumerate(['attack_stab', 'attack_slash', 'attack_crush', 'attack_ranged', 'attack_magic',
 										'melee_strength', 'ranged_strength', 'magic_damage', 'attack_speed']):
-				tab.setItem(i, 0, QtWidgets.QTableWidgetItem(str(stats[stat])))
-			tab.setItem(9, 0, QtWidgets.QTableWidgetItem(str("Not Supported")))
+				tab.setItem(i, 0, QtWidgets.QTableWidgetItem(str(round(equipment_stats[stat], 2))))
+			tab.setItem(9, 0, QtWidgets.QTableWidgetItem(str("")))
 
 			# Additional Messages
+			player = Player(stats)
+			player.combat_style = stance
+			[player.equip_by_name(e) for e in s.values()]
+			M = player.get_max_hit(potion, prayer)
+			print(M)
+
 			report = f"Solved in {t2-t0:.2f}s ({t1-t0:.2f}s, {t2-t1:.2f}s) using {len(sets)} sets, giving {xp/1000:.2f}k xp/h."
 			print(report, stance)
 			self.optimize_panel.xp_rate.setText(f"{xp/1000:,.2f}k")
