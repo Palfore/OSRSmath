@@ -6,7 +6,8 @@ def get_maximum_sets(groups, getter=None):
 		@param getter: A function which accesses the element of (A) to be compared.
 		@return [(A, B), (E, F), (M, N)]
 		@note When the group elements are single-length tuples,
-				this degenerates into the max function.'''
+				this degenerates into the max function.
+		@warning Fails if there are duplicate items. '''
 	def is_better(element, other):
 		if getter:
 			element = getter(element)
@@ -40,3 +41,11 @@ if __name__ == '__main__':
 	], lambda x: x['values']))
 
 	print(get_maximum_sets([(1, 4), (1, 5), (3, 4)]), [(1, 5), (3, 4)])
+
+	print(get_maximum_sets([
+		(0.16, -4, 85),
+		(0.16, -2, 85),
+		(0.16, 2, 0),
+		(0.16, 11, 13),
+		(0.16, 12, 68),
+	]))

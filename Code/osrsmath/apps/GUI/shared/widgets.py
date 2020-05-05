@@ -7,12 +7,21 @@ class Savable:
 		filled with calls to Savable.Entity. """
 	@staticmethod
 	def Entity(obj, default, setter, getter):
-		return type('Entity', (object,), {
-			'object': obj,
-			'default': default,
-			'set': lambda v: setter(obj, v),
-			'get': lambda: getter(obj)
-		})
+		return collections.namedtuple('Entity', ['object', 'default', 'set', 'get'])(
+			obj, default, lambda v: setter(obj, v), lambda: getter(obj)
+		)
+
+	@staticmethod
+	def DropDown(obj, default):
+		return Savable.Entity(obj, default, lambda o, v: o.setCurrentText(v), lambda o: o.currentText())
+
+	@staticmethod
+	def LineEdit(obj, default):
+		return Savable.Entity(obj, default, lambda o, v: o.setText(v), lambda o: o.text())
+
+	@staticmethod
+	def CheckBox(obj, default):
+		return Savable.Entity(obj, default, lambda o, v: o.setChecked(v), lambda o: o.isChecked())
 
 	def import_defaults(self, file_name):
 		self.state = {}

@@ -1,122 +1,22 @@
-from osrsmath.model.player import PlayerBuilder, get_equipment_by_name
-from osrsmath.model.experience import xp_rate
+from osrsmath.apps.optimize.logic.utility import get_maximum_sets
+from osrsmath.apps.optimize.logic.gear import (
+	get_offensive_bonuses, get_offensive_melee_equipment, get_equipable_gear, meets_requirements, Weapon
+)
+from osrsmath.apps.optimize.logic.evaluation import Eval, eval_set
+from osrsmath.model.player import get_equipment_by_name
 from collections import defaultdict
 from pprint import pprint
 import itertools
 
-import pathos.pools as pp
-from multiprocessing import Value
-import time
+def remove(equipment, *slots):
+	return {slot: equip for slot, equip in equipment.items() if slot not in slots}
 
-def is_only_melee_weapon(weapon):
-	# return all(stance['experience'] in ('strength', 'attack', 'defence', 'shared') for stance in weapon['weapon']['stances'])
-	# This is too restrictive because of staffs!
-	# but looking at 'shared' is worse because all magic and ranged items (pretty much) have shared
-	# so instead, since we can't handle shared anyway
-	# return weapon['weapon']['weapon_type'] not in ('bow', 'grenade', 'crossbow', 'thrown', 'blaster', 'gun')
-	return True
-
-def has_offensive_melee_bonuses(armour):
-	return any(amount > 0 for bonus, amount in armour['equipment'].items() if (bonus in [
-		"attack_crush", "attack_slash", "attack_stab", "melee_strength",
-	])) and armour['equipable_by_player']
-
-def get_offensive_melee_equipment(equipment_data):
-	# Reduce the equipment to only those that have a) offensive bonuses, b) melee bonuses
-	# Filter for only melee weapons since other attack styles aren't handled yet
-	# Also only equipment that gives offensive bonuses, since that is what we're optimizing
-	offensive_equipment = defaultdict(list)
-	for slot, equipment in equipment_data.items():
-		if slot == "weapon" or slot ==  "2h":
-			for weapon in equipment.values():
-				if is_only_melee_weapon(weapon) and has_offensive_melee_bonuses(weapon):
-					offensive_equipment[slot].append(weapon)
-		else:
-			for armour in equipment.values():
-				if has_offensive_melee_bonuses(armour):
-					offensive_equipment[slot].append(armour)
-	return offensive_equipment
-
-def get_offensive_bonuses(equipment, attack_style=None):
-	assert attack_style in ["crush", "slash", "stab", None]
-	bonuses = {}
-	if equipment['weapon']:
-		# Use reciprocal since a greater 1/attack_speed is better,
-		# and comparisons are done using >.
-		bonuses.update({'reciprocal_attack_speed': 1/equipment['weapon']['attack_speed']})
-
-	if attack_style:
-		allowed = [f"attack_{attack_style}", "melee_strength"]
-	else:
-		allowed = ["attack_crush", "attack_stab", "attack_slash", "melee_strength"]
-
-	bonuses.update({stat:value for stat, value in equipment['equipment'].items() if stat in allowed})
-	return bonuses
-
-def meets_requirements(player_stats, equipment):
-	if equipment['equipment']['requirements'] is None:
-		return True
-	for stat, req in equipment['equipment']['requirements'].items():
-		if stat not in player_stats:
-			raise ValueError(f"Supply your {stat} level to check {equipment['name']} for: {equipment['equipment']['requirements']}")
-		if player_stats[stat] < req:
-			return False
-	return True
-
-def get_equipable_gear(gear, player_stats, ignore, adjustments):
-	equipable = defaultdict(list)
-	for i, (slot, slot_equipment) in enumerate(gear.items(), 1):
-		for equipment in slot_equipment:
-			if equipment['name'] in ignore:
-				continue
-			if equipment['name'] in adjustments:
-				equipment['equipment']['requirements'] = adjustments[equipment['name']]
-
-			# If you satisfy a requirement, you can make it None, and choose only from that group!
-			if equipment['equipment']['requirements']:
-				if meets_requirements(player_stats, equipment):
-					equipment['equipment']['requirements'] = None
-				else:
-					continue
-			equipable[slot].append(equipment)
-	return equipable
-
-class Weapon:
-	@staticmethod
-	def stance_can_train(stance: dict, skill, allow_controlled=False):
-		if allow_controlled and stance['experience'] == 'shared':
-			return True # This will probably fail with ranged/magic gear.
-		return skill in stance['experience']
-
-	def __init__(self, weapon):
-		self.weapon = weapon
-
-	def can_train(self, skill):
-		return bool(self.get_skill_stances(skill))
-
-	def get_skill_stances(self, skill, allow_controlled=False):
-		return [stance for stance in self.weapon['weapon']['stances']
-		           if Weapon.stance_can_train(stance, skill, allow_controlled)]
-
-def is_better(A, B):
-	""" Is A absolutely better than B?
-		@param A Equipment stats eg: {'attack_crush': 53, ...}
-		@param B Equipment stats """
-	assert list(A.keys()) == list(B.keys())
-	if list(A.values()) == list(B.values()):
-		return False
-	for a, b in zip(list(A.values()), list(B.values())):
-		if b > a:
-			return False
-	return True
-
-def get_equipment(slot_equipment, offensive_attribute):
-	from osrsmath.apps.optimize.logic.utility import get_maximum_sets
-
+def get_unique_equipment(attack_style, slot_equipment):
+	''' Returns the names of the given equipment that are uniquely best, according to the attack_style. '''
 	unique_equipment = []
 	for equipment in slot_equipment:
 		# Record equipment if you haven't seen anything with these offensive stats before.
-		stats = get_offensive_bonuses(equipment, offensive_attribute)
+		stats = get_offensive_bonuses(equipment, attack_style)
 		if stats not in [s for n, s, _ in unique_equipment]:
 			unique_equipment.append((equipment['name'], stats, equipment))
 
@@ -124,66 +24,165 @@ def get_equipment(slot_equipment, offensive_attribute):
 	# Eg: same stats except itemA.slash == 4, itemB.slash == 5, the itemA should be forgotten.
 	# but if itemA.slash == 4, itemA.strength == 10 and item.B == 5, itemB.strength == 9, we can't
 	# know which is better without evaluating, so keep them both.
-	return [name for name, _, _ in get_maximum_sets(
+	return [equipment for name, _, equipment in get_maximum_sets(
 		unique_equipment, getter=lambda x: x[1].values()  # x[1] -> stats
 	)]
 
+def get_armour_sets(attack_style, gear):
+	''' Returns sets of load-outs, where each set is uniquely-maximal.
+		@param attack_style The attack style which determines maximal-ness.
+		@param gear The gear to consider.
+		@note The gear should EXCLUDE (weapon&shield)/2h. '''
+	if '2h' in gear:
+		assert 'weapon' not in gear
+		assert 'shield' not in gear
+	if 'shield' in gear:
+		assert '2h' not in gear
 
-def get_sets(player_stats, defenders, ignore, adjustments, equipment_data, fixed_equipment=None):
-	# Now I think I should seperate the weapon from the equipment, then select equipment based on
-	# training skill & which (slash, stab, crush) can train that skill.
-
-	items = get_offensive_melee_equipment(equipment_data)
-	equipable_gear = get_equipable_gear(items, player_stats, ignore, adjustments)
-	equipable_armour = {slot: equip for slot, equip in equipable_gear.items() if slot not in ['weapon', 'shield', '2h']}
-	training_skill = 'attack'
-
-
-	rune_scim = get_equipment_by_name('Rune scimitar')
-	pprint(rune_scim)
-	for stance in rune_scim['weapon']['stances']:
-		print(stance)
-	exit()
-	# return
-	# for attack_type in ['stab', 'slash', 'crush']
-	# Get all weapons that can train the desired skill
-	# weapons = []
-	# for weapon in equipable_gear['weapon']:
-	# 	stances = Weapon(weapon).get_skill_stances(training_skill)
-	# 	if stances:
-	# 		weapons.append((weapon, stances))
-
-	# # Reduce weapons
+	reduced_equipment = [[
+		(slot, e['name']) for e in get_unique_equipment(attack_style, equipment)
+	] for slot, equipment in gear.items()]
+	return list(itertools.product(*reduced_equipment))
 
 
-	# for weapon, stances in weapons:
-	# 	for stance in stances:
-	# 		s = {slot: get_equipment(slot_eq, stance['attack_type']) for slot, slot_eq in equipable_armour.items()}
-	# 		print(weapon['name'], stance['attack_type'], s, '\n')
+class Solver:
+	def __init__(self, training_skill, player_stats, ignore, adjustments, equipment_data, progress_callback=None):
+		self.training_skill = training_skill
+		self.player_stats = player_stats
+		self.callback = progress_callback
+		self.gear = get_equipable_gear(
+			get_offensive_melee_equipment(equipment_data), player_stats, ignore, adjustments
+		)
+		self.special_sets = []
+
+	def add_special_set(self, weapons, gear):
+		gear = {s: get_equipment_by_name(g) for s, g in gear.items()}
+		if not all(meets_requirements(self.player_stats, g) for g in gear.values()):
+			return
+		if weapons:
+			weapons = [get_equipment_by_name(w) for w in weapons]
+			weapons = [w for w in weapons if meets_requirements(self.player_stats, w)]
+			if not weapons:
+				return
+		self.special_sets.append((weapons, gear))
+
+	def solve(self):
+		equipment_sets = []
+		M = 3*(len(self.special_sets) + 1)
+		i = 1
+		for attack_type in ['stab', 'slash', 'crush']:
+			equipment_sets.extend(self.get_attack_sets(attack_type, []))
+			self.callback(i/M*100); i += 1
+			for weapons, special_gear in self.special_sets:
+				if weapons:
+					for weapon in weapons:
+						equipment_sets.extend(self.get_special_sets_with_fixed_weapon(attack_type, weapon, special_gear))
+				else:
+					equipment_sets.extend(self.get_special_sets(attack_type, special_gear))
+				self.callback(i/M*100); i += 1
+		return [(a, {slot: eq for slot, eq in s if eq is not None}) for a, s in equipment_sets]
+
+	def get_equipment_sets(self, attack_type, weapon_names, remove_slots):
+		s = []
+		for weapon in get_unique_equipment(attack_type, weapon_names):
+			s.extend(self.get_weapon_sets(attack_type, weapon, remove_slots))
+		return s
+
+	def get_attack_sets(self, attack_type, remove_slots):
+		return self.get_equipment_sets(attack_type, self.gear['weapon'], ['2h', 'weapon', *remove_slots]) +\
+	     	    self.get_equipment_sets(attack_type, self.gear['2h'], ['2h', 'weapon', 'shield', *remove_slots])
+
+	def get_special_sets(self, attack_type, special_gear):
+		if not all(meets_requirements(self.player_stats, e) for e in special_gear.values()):
+			return []
+		return self.add_equipment_to_sets(self.get_attack_sets(attack_type, special_gear.keys()), special_gear)
+
+	def get_special_sets_with_fixed_weapon(self, attack_type, weapon, special_gear):
+		s = self.get_weapon_sets(attack_type, weapon, list(special_gear.keys()) + ['2h', 'weapon'])
+		return self.add_equipment_to_sets(s, special_gear)
+
+	def get_weapon_sets(self, attack_type, weapon, ignore):
+		ignore += ['weapon', '2h'] if weapon['equipment']['slot'] == 'weapon' else ignore
+		ignore += ['weapon', 'shield', '2h'] if weapon['equipment']['slot'] == '2h' else ignore
+		armour = remove(self.gear, *ignore)
+		s = []
+		for stance in weapon['weapon']['stances']:
+			if Weapon.stance_can_do(stance, self.training_skill, attack_type, allow_controlled=False):
+				s.extend([
+					(stance['combat_style'], [('weapon', weapon['name']), *a])
+						for a in get_armour_sets(stance['attack_type'], armour)
+				])
+		return s
+
+	def add_equipment_to_sets(self, original_sets, additional_equipment):
+		return [
+			(style, equipment + [(slot, e['name']) for slot, e in additional_equipment.items()])
+				for style, equipment in original_sets
+		]
+
+
+def get_sets(training_skill, player_stats, defenders, ignore, adjustments, equipment_data, considered_sets, progress_callback=None):
+	sets = {
+		'void_knight': (None, {
+				'body': 'Void knight top',
+				'legs': 'Void knight robe',
+				'hands': 'Void knight gloves',
+				'head': 'Void melee helm'
+		}),
+		'elite_void': (None, {
+				'body': 'Elite void top',
+				'legs': 'Elite void robe',
+				'hands': 'Void knight gloves',
+				'head': 'Void melee helm'
+		}),
+		'obsidian': ([
+				'Toktz-xil-ek', 'Toktz-xil-ak', 'Tzhaar-ket-em', 'Tzhaar-ket-om', 'Tzhaar-ket-om (t)'
+			], {
+				'head': 'Obsidian helmet',
+				'body': 'Obsidian platebody',
+				'legs': 'Obsidian platelegs',
+				'neck': 'Berserker necklace'
+		}),
+		'berserker_necklace': ([
+				'Toktz-xil-ek', 'Toktz-xil-ak', 'Tzhaar-ket-em', 'Tzhaar-ket-om', 'Tzhaar-ket-om (t)'
+			], {
+				'neck': 'Berserker necklace'
+		}),
+		# 'slayer_helm': (None, {
+		# 	'head': 'Slayer helmet'
+		# }),
+		'salve_amulet': (None, {
+			'neck': 'Salve amulet'
+		}),
+		'dharok': ([
+			"Dharok's greataxe"
+			], {
+				'head': "Dharok's helm",
+				'body': "Dharok's platebody",
+				'legs': "Dharok's platelegs",
+			}
+		)
+	}
+	solver = Solver(training_skill, player_stats, ignore, adjustments, equipment_data, progress_callback)
+	for special_set in sets.values():
+		if special_set in considered_sets:
+			solver.add_special_set(*special_set)
+	return solver.solve()
+
+def get_best_set(player_stats: dict, training_skill, states, defenders, sets, include_shared_xp=True, progress_callback=None):
+	""" Returns the equipment set that provides the highest experience rate for the training_skill.
+		@param player_stats: {'attack': 40, ...}
+		@param training_skill: 'attack'
+		@param sets: [{'cape': 'Fire cape', ...}, {'cape': 'Legends cape', ...}, ...] """
+	return max(Eval.start(
+		lambda s: eval_set(player_stats, training_skill, states, defenders, s, include_shared_xp),
+		sets,
+		progress_callback
+	), key = lambda x: x[1])  # x[1] -> xp rate
 
 
 
-	# reduced_equipment['weapon'] = []
 
-	sets = []
-	for attack in ['stab', 'slash', 'crush']:
-		reduced_equipment = defaultdict(list)
-		for i, (slot, slot_equipment) in enumerate(equipable_gear.items(), 1):
-			reduced_equipment[slot] = list(set(
-				get_equipment(slot_equipment, attack)
-			))
-
-		reduced_equipment = [ [(slot, e) for e in eqs] for slot, eqs in reduced_equipment.items()]
-		sets += list(itertools.product(*list(reduced_equipment)[:-2]))  # Ignore last two slots (shield & weapon)
-		sets += list(itertools.product(*list(reduced_equipment)[1:]))   # Ignore first slot (2h)
-
-
-
-	print(len(sets))
-	print(len(set(sets)))
-
-	# exit()
-	return [{ slot: eq for slot, eq in s if eq is not None} for s in sets]
 
 
 # def create_set_effect(original, required_equipment):
@@ -213,67 +212,3 @@ def get_sets(player_stats, defenders, ignore, adjustments, equipment_data, fixed
 # 					**obsidian, **{'weapon': weapon}
 # 				}) for s in sets))
 
-
-def eval_set(player_stats: dict, training_skill, states, defenders, s, include_shared_xp=True):
-	player = PlayerBuilder(player_stats).equip(s.values()).get()
-
-	# Finds the best stance to train that skill for the given weapon.
-	best_set, best_xp_rate, best_stance = best = (None, float('-inf'), None)
-	for name, stance in player.get_stances().items():
-		if stance['experience'] in ([training_skill] + (['shared'] if include_shared_xp else [])):
-			player.combat_style = stance['combat_style']
-			xp = xp_rate(
-				stance['attack_type'],
-				player.get_stats()['attack_speed'],
-				states(player),
-				defenders,
-				'MarkovChain'
-			)
-			if xp > best[1]:
-				best = (s, xp, player.combat_style)
-	return best
-
-class Eval:
-	INTERVAL = 0.05  # How frequently the progress is updated (in seconds).
-	completed = Value('i', 0)
-
-	@classmethod
-	def start(cls, f, items, callback):
-		evaluator = Eval(f, len(items))
-		values = cls.map(evaluator, items)
-		evaluator.monitor_progress(callback)
-		return list(values)
-
-	@staticmethod
-	def map(f, items):
-		return pp.ProcessPool().imap(f, items)
-
-	def __init__(self, f, num_items):
-		self.num_items = num_items
-		self.f = f
-		with self.completed.get_lock():
-			self.completed.value = 0
-
-	def __call__(self, x):
-		result = self.f(x)
-		with self.completed.get_lock():
-			self.completed.value += 1
-		return result
-
-	def monitor_progress(self, callback):
-		callback(0)
-		while self.completed.value < self.num_items:
-			callback(self.completed.value/self.num_items*100)
-			time.sleep(self.INTERVAL)
-		callback(self.completed.value/self.num_items*100)
-
-def get_best_set(player_stats: dict, training_skill, states, defenders, sets, include_shared_xp=True, progress_callback=None):
-	""" Returns the equipment set that provides the highest experience rate for the training_skill.
-		@param player_stats: {'attack': 40, ...}
-		@param training_skill: 'attack'
-		@param sets: [{'cape': 'Fire cape', ...}, {'cape': 'Legends cape', ...}, ...] """
-	return max(Eval.start(
-		lambda s: eval_set(player_stats, training_skill, states, defenders, s, include_shared_xp),
-		sets,
-		progress_callback
-	), key = lambda x: x[1])  # x[1] -> xp rate

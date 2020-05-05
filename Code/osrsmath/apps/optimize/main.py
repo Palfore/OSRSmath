@@ -70,6 +70,7 @@ class GUI(Ui_MainWindow):
 		import time
 
 		try:
+			self.optimize_panel.progressBar.setValue(0)
 			equipment_data = get_equipment_data()
 			monsters = {name: Monster(**m) for name, m in self.optimize_panel.data.monsters.items()}
 			if not monsters:
@@ -78,17 +79,16 @@ class GUI(Ui_MainWindow):
 				).exec()
 				return
 
+			# Collect Input
 			training_skill = self.optimize_panel.get_training_skill()
+			special_sets = self.optimize_panel.get_selected_sets()
 			stats = self.player_panel.get_stats()
 			ignore = self.ignore_adjust_panel.get_ignore()
 			adjust = self.ignore_adjust_panel.get_adjust()
-
 			potion = getattr(Potions, self.optimize_panel.potions.currentText())
 			potion_attributes = self.optimize_panel.potion_attributes.currentText()
-
 			prayer = getattr(Prayers, self.optimize_panel.prayers.currentText())
 			prayer_attributes = self.optimize_panel.prayer_attributes.currentText()
-
 			if self.optimize_panel.boosting_scheme.currentText() == 'Dose After':
 				skill = self.optimize_panel.below_skill.currentText()
 				redose_level = int(self.optimize_panel.redose_level.text())
@@ -98,9 +98,11 @@ class GUI(Ui_MainWindow):
 			else:
 				boost = lambda p: BoostingSchemes(p, prayer, prayer_attributes).constant(potion, potion_attributes)
 
+			# Time and Evaluate Solution
 			t0 = time.time()
 			self.update_status(f'Step (1/2). Generating Sets...')
-			sets = get_sets(stats, monsters, ignore, adjust, equipment_data)#progress_callback=lambda i: self.optimize_panel.progressBar.setValue(i))
+			sets = get_sets(training_skill, stats, monsters, ignore, adjust, equipment_data, special_sets, progress_callback=lambda i: self.optimize_panel.progressBar.setValue(i))
+			t1 = time.time()
 			self.update_status(f'Step (2/2). Evaluating {len(sets)} Sets...')
 			s, xp, stance = get_best_set(
 				stats,
@@ -111,31 +113,10 @@ class GUI(Ui_MainWindow):
 				include_shared_xp=False,
 				progress_callback=lambda i: self.optimize_panel.progressBar.setValue(i)
 			)
-
-
-			t1 = time.time()
+			t2 = time.time()
 			self.update_status('Finished ...')
-			print(f"Solved in {t1-t0:.2f}s using {len(sets)} sets.")
 
-			player = Player({})
-			for slot, item_name in s.items():
-				player.equip_by_name(item_name)
-			stats = player.get_stats()
-
-			tab = self.optimize_panel.best_in_slot_bonuses
-
-			# tab.verticalHeaderItem(0).text().lower()
-			tab.setItem(0, 0, QtWidgets.QTableWidgetItem(str(stats['attack_stab'])))
-			tab.setItem(1, 0, QtWidgets.QTableWidgetItem(str(stats['attack_slash'])))
-			tab.setItem(2, 0, QtWidgets.QTableWidgetItem(str(stats['attack_crush'])))
-			tab.setItem(3, 0, QtWidgets.QTableWidgetItem(str(stats['attack_ranged'])))
-			tab.setItem(4, 0, QtWidgets.QTableWidgetItem(str(stats['attack_magic'])))
-			tab.setItem(5, 0, QtWidgets.QTableWidgetItem(str(stats['melee_strength'])))
-			tab.setItem(6, 0, QtWidgets.QTableWidgetItem(str(stats['ranged_strength'])))
-			tab.setItem(7, 0, QtWidgets.QTableWidgetItem(str(stats['magic_damage'])))
-			tab.setItem(8, 0, QtWidgets.QTableWidgetItem(str(stats['attack_speed'])))
-			tab.setItem(9, 0, QtWidgets.QTableWidgetItem(str("Not Supported")))
-
+			# Display Optimal Equipment
 			slots = ['head', 'cape', 'neck', 'ammo', 'weapon', 'body', 'shield', 'legs', 'hands', 'feet', 'ring']
 			for slot in slots:
 				equipment_list = getattr(self.optimize_panel, slot)
@@ -145,12 +126,23 @@ class GUI(Ui_MainWindow):
 				else:
 					equipment_list.addItem(s.get(slot))
 
+			# Display Offensive Attributes
+			tab = self.optimize_panel.best_in_slot_bonuses
+			player = Player({})
+			for slot, item_name in s.items():
+				player.equip_by_name(item_name)
+			stats = player.get_stats()
+			for i, stat in enumerate(['attack_stab', 'attack_slash', 'attack_crush', 'attack_ranged', 'attack_magic',
+										'melee_strength', 'ranged_strength', 'magic_damage', 'attack_speed']):
+				tab.setItem(i, 0, QtWidgets.QTableWidgetItem(str(stats[stat])))
+			tab.setItem(9, 0, QtWidgets.QTableWidgetItem(str("Not Supported")))
+
+			# Additional Messages
+			report = f"Solved in {t2-t0:.2f}s ({t1-t0:.2f}s, {t2-t1:.2f}s) using {len(sets)} sets, giving {xp/1000:.2f}k xp/h."
+			print(report, stance)
 			self.optimize_panel.xp_rate.setText(f"{xp/1000:,.2f}k")
 			self.optimize_panel.attack_stance.setText(f"{stance}")
-
-			# pp(sets)
-			print(s, xp, stance)
-			self.update_status('')
+			self.update_status(report)
 		except Exception as e:
 			import traceback
 			tb = traceback.format_exc()

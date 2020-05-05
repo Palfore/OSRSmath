@@ -154,6 +154,9 @@ def other(equipment):
 		elif 'void mage helm' in equipment:
 			return Equipment.elite_void_mage()
 
+	if all(e in equipment for e in ("dharok's greataxe", "dharok's helm", "dharok's platebody", "dharok's platelegs")):
+		return Equipment.dharok(98)
+
 	if any(e in equipment for e in ('toktz-xil-ek', 'toktz-xil-ak', 'tzhaar-ket-em', 'tzhaar-ket-om', 'tzhaar-ket-om (t)')):
 		if all(e in equipment for e in ('obsidian helmet', 'obsidian platebody', 'obsidian platelegs')):
 			if 'berserker necklace' in equipment:
@@ -162,6 +165,7 @@ def other(equipment):
 				return Equipment.obsidian()
 		elif 'berserker necklace' in equipment:
 				return Equipment.berserker_necklace()
+
 
 
 
@@ -303,6 +307,12 @@ class Equipment:
 			'attack': 1.3,
 		}
 
+	@staticmethod
+	def dharok(hp_lost):
+		return {
+			'strength': 1+(hp_lost/100)
+		}
+
 class BoostingSchemes:
 	def __init__(self, player, prayer, prayer_boosted_attributes=('damage', 'accuracy')):
 		self.player = player
@@ -331,38 +341,3 @@ class BoostingSchemes:
 			self.player.get_max_hit(potion if 'damage' in boosted_attributes else Potions.none, self.damage_prayer),
 			self.player.get_attack_roll(potion if 'accuracy' in boosted_attributes else Potions.none, self.accuracy_prayer)
 		)]
-
-if __name__ == '__main__':
-	from osrsmath.model.player import PlayerBuilder
-
-	player = PlayerBuilder({"attack": 70, "strength": 90, "defence": 70}).equip([
-		"Dragon Scimitar",
-		"Dharok's helm",
-		"Dharok's platebody",
-		"Dharok's platelegs",
-		"Dragon Boots",
-		"Holy Blessing",
-		"Barrows Gloves",
-		"Dragon Defender",
-		"Berserker Ring (i)",
-		"Amulet of Fury",
-		"Fire Cape",
-	]).get()
-	print("Player")
-	player.print()
-	print()
-
-	print("Super Combat")
-	states = BoostingSchemes(player).super_combat_when_skill_under("attack", 5, 'attack')
-	for s in states:
-		s.print()
-	print()
-
-	print("Overload")
-	states = BoostingSchemes(player).overload()
-	for s in states:
-		s.print()
-	print()
-
-
-

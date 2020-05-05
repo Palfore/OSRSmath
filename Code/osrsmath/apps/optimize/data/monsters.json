@@ -1,29 +1,36 @@
 {
     "monsters": {
-        "molanisk": {
+        "giant mole": {
             "levels": {
-                "hitpoints": 52,
-                "attack": 40,
-                "strength": 40,
-                "defence": 50,
+                "hitpoints": 200,
+                "attack": 200,
+                "strength": 200,
+                "defence": 200,
                 "ranged": 1,
-                "magic": 0
+                "magic": 200
             },
             "stats": {
-                "defence_stab": 45,
-                "defence_slash": 45,
-                "defence_crush": 35,
-                "defence_magic": 30,
-                "defence_ranged": 55
+                "defence_stab": 60,
+                "defence_slash": 80,
+                "defence_crush": 100,
+                "defence_magic": 80,
+                "defence_ranged": 60
             },
             "xp_per_damage": 4.0
         }
     },
-    "potions": "overload",
+    "potions": "none",
     "potion_attributes": "accuracy and damage",
     "boosting_scheme": "Constant",
     "below_skill": "attack",
     "redose_level": "",
-    "prayers": "piety",
-    "prayer_attributes": "damage and accuracy"
+    "prayers": "none",
+    "prayer_attributes": "accuracy",
+    "training_skill": "strength",
+    "slayer_helm": true,
+    "obsidian": true,
+    "void_knight": true,
+    "elite_void": true,
+    "berserker_necklace": true,
+    "dharok": "1"
 }

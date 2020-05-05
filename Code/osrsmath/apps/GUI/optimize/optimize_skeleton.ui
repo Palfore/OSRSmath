@@ -14,7 +14,57 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="13" column="0" colspan="6">
+   <item row="10" column="7">
+    <widget class="QComboBox" name="prayer_attributes">
+     <item>
+      <property name="text">
+       <string>accuracy</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>damage</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>accuracy and damage</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Train</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="0">
+    <widget class="QPushButton" name="evaluate">
+     <property name="text">
+      <string>Evaluate!</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="4">
+    <widget class="QLineEdit" name="dharok">
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="maxLength">
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Potions</string>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="0" colspan="6">
     <widget class="QFrame" name="frame">
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -170,37 +220,11 @@
      </layout>
     </widget>
    </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_3">
+   <item row="12" column="0">
+    <widget class="QLabel" name="label_8">
      <property name="text">
-      <string>Potions</string>
+      <string>Other</string>
      </property>
-    </widget>
-   </item>
-   <item row="10" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Prayer</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="2" colspan="4">
-    <widget class="QComboBox" name="below_skill">
-     <item>
-      <property name="text">
-       <string>attack</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>strength</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>defence</string>
-      </property>
-     </item>
     </widget>
    </item>
    <item row="4" column="2" colspan="5">
@@ -232,64 +256,50 @@
      </item>
     </widget>
    </item>
-   <item row="7" column="7">
-    <widget class="QLabel" name="label_5">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
+   <item row="12" column="3">
+    <widget class="QLabel" name="label_7">
      <property name="text">
-      <string>boost below</string>
+      <string>&lt;Dharok HP&gt;</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="10">
-    <widget class="QListWidget" name="opponents">
-     <property name="horizontalScrollMode">
-      <enum>QAbstractItemView::ScrollPerItem</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="0">
-    <widget class="QPushButton" name="evaluate">
-     <property name="text">
-      <string>Evaluate!</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_6">
-     <property name="text">
-      <string>Train</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="7">
-    <widget class="QComboBox" name="potion_attributes">
-     <item>
-      <property name="text">
-       <string>accuracy</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>damage</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>accuracy and damage</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="12" column="2" colspan="8">
+   <item row="14" column="2" colspan="8">
     <widget class="QProgressBar" name="progressBar">
      <property name="value">
       <number>0</number>
      </property>
     </widget>
    </item>
-   <item row="13" column="6" rowspan="11" colspan="4">
+   <item row="12" column="6">
+    <widget class="QCheckBox" name="slayer_helm">
+     <property name="text">
+      <string>Slayer Helm</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="2" colspan="5">
+    <widget class="QComboBox" name="below_skill">
+     <item>
+      <property name="text">
+       <string>attack</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>strength</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>defence</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="15" column="6" rowspan="11" colspan="4">
     <widget class="QTableWidget" name="best_in_slot_bonuses">
      <property name="showGrid">
       <bool>true</bool>
@@ -410,10 +420,7 @@
      </item>
     </widget>
    </item>
-   <item row="5" column="2" colspan="5">
-    <widget class="QComboBox" name="potions"/>
-   </item>
-   <item row="5" column="8">
+   <item row="5" column="8" colspan="2">
     <widget class="QComboBox" name="boosting_scheme">
      <item>
       <property name="text">
@@ -427,18 +434,31 @@
      </item>
     </widget>
    </item>
-   <item row="7" column="8">
-    <widget class="QLineEdit" name="redose_level">
-     <property name="maxLength">
-      <number>2</number>
+   <item row="7" column="7">
+    <widget class="QLabel" name="label_5">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="text">
+      <string>boost below</string>
      </property>
     </widget>
+   </item>
+   <item row="5" column="2" colspan="5">
+    <widget class="QComboBox" name="potions"/>
    </item>
    <item row="10" column="2" colspan="5">
     <widget class="QComboBox" name="prayers"/>
    </item>
-   <item row="10" column="7">
-    <widget class="QComboBox" name="prayer_attributes">
+   <item row="10" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Prayer</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="7">
+    <widget class="QComboBox" name="potion_attributes">
      <item>
       <property name="text">
        <string>accuracy</string>
@@ -451,9 +471,73 @@
      </item>
      <item>
       <property name="text">
-       <string>damage and accuracy</string>
+       <string>accuracy and damage</string>
       </property>
      </item>
+    </widget>
+   </item>
+   <item row="7" column="8" colspan="2">
+    <widget class="QLineEdit" name="redose_level">
+     <property name="maxLength">
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="10">
+    <widget class="QListWidget" name="opponents">
+     <property name="horizontalScrollMode">
+      <enum>QAbstractItemView::ScrollPerItem</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="6">
+    <widget class="QCheckBox" name="salve_amulet">
+     <property name="text">
+      <string>Salve Amulet</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="8">
+    <widget class="QCheckBox" name="berserker_necklace">
+     <property name="text">
+      <string>Bers. Neck.</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="7">
+    <widget class="QCheckBox" name="void_knight">
+     <property name="text">
+      <string>Void</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="8">
+    <widget class="QCheckBox" name="obsidian">
+     <property name="text">
+      <string>Obsidian</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="7">
+    <widget class="QCheckBox" name="elite_void">
+     <property name="text">
+      <string>Elite Void</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
     </widget>
    </item>
   </layout>

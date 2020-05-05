@@ -24,34 +24,31 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 
 		self.data = Data()
 		self.data.monsters = {}
-
+		self.special_sets = [
+			'dharok',
+			'slayer_helm',
+			'obsidian',
+			'void_knight',
+			'elite_void',
+			'berserker_necklace',
+		]
 		self.entities = {
 			'monsters': Savable.Entity(
 				None, None,
 				lambda o, v: {self.add_monster(name, monster) for name, monster in v.items()},
 				lambda v: self.data.monsters
 			),
-			'potions': Savable.Entity(
-				self.potions, None, lambda o, v: o.setCurrentText(v), lambda o: o.currentText()
-			),
-			'potion_attributes': Savable.Entity(
-				self.potion_attributes, None, lambda o, v: o.setCurrentText(v), lambda o: o.currentText()
-			),
-			'boosting_scheme': Savable.Entity(
-				self.boosting_scheme, None, lambda o, v: o.setCurrentText(v), lambda o: o.currentText()
-			),
-			'below_skill': Savable.Entity(
-				self.below_skill, None, lambda o, v: o.setCurrentText(v), lambda o: o.currentText()
-			),
-			'redose_level': Savable.Entity(
-				self.redose_level, None, lambda o, v: o.setText(v), lambda o: o.text()
-			),
-			'prayers': Savable.Entity(
-				self.prayers, None, lambda o, v: o.setCurrentText(v), lambda o: o.currentText()
-			),
-			'prayer_attributes': Savable.Entity(
-				self.prayer_attributes, None, lambda o, v: o.setCurrentText(v), lambda o: o.currentText()
-			),
+			'training_skill': Savable.DropDown(self.training_skill, None),
+			'potions': Savable.DropDown(self.potions, None),
+			'potion_attributes': Savable.DropDown(self.potion_attributes, None),
+			'boosting_scheme': Savable.DropDown(self.boosting_scheme, None),
+			'below_skill': Savable.DropDown(self.below_skill, None),
+			'redose_level': Savable.LineEdit(self.redose_level, None),
+			'prayers': Savable.DropDown(self.prayers, None),
+			'prayer_attributes': Savable.DropDown(self.prayer_attributes, None),
+
+			**{s: Savable.CheckBox(getattr(self, s), True) for s in self.special_sets if s != 'dharok'},
+			'dharok': Savable.LineEdit(self.dharok, 1),
 		}
 
 		for slot in ['head', 'cape', 'neck', 'ammo', 'weapon', 'body', 'legs', 'hands', 'feet', 'ring']:
@@ -85,6 +82,12 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		shortcut = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Delete), self.opponents);
 		shortcut.activated.connect(self.remove_selected_monster)
 
+	def get_selected_sets(self):
+		return [s for s in self.special_sets if (
+			(s == 'dharok' and int(self.entities[s].get())) != 0 or
+			(s != 'dharok' and self.entities[s].get())
+		)]
+
 	def open_link(self, slot):
 		from osrsmath.model.player import get_equipment_by_name
 		item = getattr(self, slot).currentText()
@@ -96,7 +99,12 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		from pprint import pprint
 		import webbrowser
 		pprint(equipment)
-		webbrowser.open(get_equipment_by_name(item)['wiki_url'])
+		from urllib.parse import quote
+		from pathlib import Path
+		# Encode ending (item name) to "%xx escape" format.
+		p = Path(get_equipment_by_name(item)['wiki_url'])
+		url = p.parent/quote(p.name)
+		webbrowser.open(str(url))
 
 	def on_prayer_select(self):
 		if self.prayers.currentText() == 'none':
