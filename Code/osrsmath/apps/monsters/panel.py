@@ -123,6 +123,7 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
 			**{'prayer': 0}
 		})))
 
+
 	def open_wiki(self):
 		name, ID = self.search.currentText().split(self.SEPERATOR)
 		monster = self.monster_data[ID]

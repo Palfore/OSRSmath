@@ -2,7 +2,7 @@ from osrsmath.apps.optimize.logic.utility import get_maximum_sets
 from osrsmath.apps.optimize.logic.gear import (
 	get_offensive_bonuses, get_offensive_melee_equipment, get_equipable_gear, meets_requirements, Weapon
 )
-from osrsmath.apps.optimize.logic.evaluation import Eval, eval_set
+from osrsmath.apps.optimize.logic.evaluation import mmap, eval_set
 from osrsmath.model.player import get_equipment_by_name
 from collections import defaultdict
 from pprint import pprint
@@ -175,7 +175,7 @@ def get_best_set(player_stats: dict, training_skill, states, defenders, sets, in
 		@param player_stats: {'attack': 40, ...}
 		@param training_skill: 'attack'
 		@param sets: [{'cape': 'Fire cape', ...}, {'cape': 'Legends cape', ...}, ...] """
-	return max(Eval.start(
+	return max(mmap(
 		lambda s: eval_set(player_stats, training_skill, states, defenders, s, include_shared_xp),
 		sets,
 		progress_callback

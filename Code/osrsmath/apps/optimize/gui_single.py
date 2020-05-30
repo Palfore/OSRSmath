@@ -1,5 +1,3 @@
-import osrsmath.apps.GUI.config as config
-
 # -*- coding: utf-8 -*-
 
 # Form implementation generated from reading ui file '//mnt/c/Users/Nawar/Documents/GitHub/OSRS-Combat/Code/osrsmath/apps/optimize/gui_single.ui'

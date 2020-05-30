@@ -10,7 +10,6 @@ import os
 import osrsmath.config as config
 
 if __name__ == '__main__':
-
 	showing = len(sys.argv) >= 2 and sys.argv[1] == 'show'
 	fig, ax = config.get_figure(38, 17, scale=3 if showing else 10)
 
@@ -32,11 +31,10 @@ if __name__ == '__main__':
 		return {label: (np.average(Z), np.std(Z), np.max(Z), np.min(Z))}
 
 	values = {}
-	# values.append(plot_error("Recursive", lambda h, m: Recursive().hinv(1, h, m)))
-	values.update(plot_error("Crude", lambda h, m: Crude().hinv(0, h, m)))
-	values.update(plot_error("Average", lambda h, m: Average().hinv(0, h, m)))
-	values.update(plot_error("MarkovChain", lambda h, m: MarkovChain().hinv(0, h, m)))
-	values.update(plot_error("MarkovChainApprox", lambda h, m: MarkovChainApprox().hinv(0, h, m)))
+	for method in Model.__subclasses__():
+		if method.__name__ == 'Simulation':
+			continue
+		values.update(plot_error(method.__name__, lambda h, m: method().turns_to_kill(h, m)))
 
 	print(R"\begin{table}[h]")
 	print('\t' + R"\centering")
@@ -49,7 +47,7 @@ if __name__ == '__main__':
 	print('\t' + R"\caption{Error statistics for various models.}")
 	print('\t' + R"\label{table:model_comp_stats}")
 	print(R"\end{table}")
-	exit()
+	# exit()
 
 	ax.tick_params(axis='z', labelsize=12)
 	ax.tick_params(axis='y', labelsize=12)
@@ -65,8 +63,11 @@ if __name__ == '__main__':
 	if showing:
 		plt.show()
 	else:
-		file_name = "errors"
-		plt.savefig(f"{file_name}.pdf")
-		os.system(f"pdfcrop {file_name}.pdf")
-		os.rename(f"{file_name}-crop.pdf", f"{file_name}.pdf")
+		from pathlib import Path
+		file_name = str(Path(__file__).parent/'errors')
+		plt.savefig(f"{file_name}.png")
+		os.system(f"convert {file_name}.png -trim {file_name}.png")
+		# plt.savefig(f"{file_name}.pdf")
+		# os.system(f"pdfcrop {file_name}.pdf")
+		# os.rename(f"{file_name}-crop.pdf", f"{file_name}.pdf")
 

@@ -1,0 +1,49 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+    <file alias="logo.png">images/logo.png</file>
+</qresource>
+<qresource prefix="/monster">
+	<file alias="Attack_icon.webp">images/monster/Attack_icon.webp</file>
+	<file alias="Combat_icon.webp">images/monster/Combat_icon.webp</file>
+	<file alias="Defence_icon.webp">images/monster/Defence_icon.webp</file>
+	<file alias="Hitpoints_icon.webp">images/monster/Hitpoints_icon.webp</file>
+	<file alias="Magic_Damage_icon.webp">images/monster/Magic_Damage_icon.webp</file>
+	<file alias="Magic_icon.webp">images/monster/Magic_icon.webp</file>
+	<file alias="Ranged_icon.webp">images/monster/Ranged_icon.webp</file>
+	<file alias="Ranged_Strength_icon.webp">images/monster/Ranged_Strength_icon.webp</file>
+	<file alias="Strength_icon.webp">images/monster/Strength_icon.webp</file>
+	<file alias="White_dagger.webp">images/monster/White_dagger.webp</file>
+	<file alias="White_scimitar.webp">images/monster/White_scimitar.webp</file>
+	<file alias="White_warhammer.webp">images/monster/White_warhammer.webp</file>
+</qresource>
+<qresource prefix="/skill_icons">
+    <file alias="Attack.png">images/skill_icons/Attack.png</file>
+	<file alias="Defence.png">images/skill_icons/Defence.png</file>
+	<file alias="Strength.png">images/skill_icons/Strength.png</file>
+	<file alias="Hitpoints.png">images/skill_icons/Hitpoints.png</file>
+	<file alias="Ranged.png">images/skill_icons/Ranged.png</file>
+	<file alias="Prayer.png">images/skill_icons/Prayer.png</file>
+	<file alias="Magic.png">images/skill_icons/Magic.png</file>
+	<file alias="Cooking.png">images/skill_icons/Cooking.png</file>
+	<file alias="Woodcutting.png">images/skill_icons/Woodcutting.png</file>
+	<file alias="Fletching.png">images/skill_icons/Fletching.png</file>
+	<file alias="Fishing.png">images/skill_icons/Fishing.png</file>
+	<file alias="Firemaking.png">images/skill_icons/Firemaking.png</file>
+	<file alias="Crafting.png">images/skill_icons/Crafting.png</file>
+	<file alias="Smithing.png">images/skill_icons/Smithing.png</file>
+	<file alias="Mining.png">images/skill_icons/Mining.png</file>
+	<file alias="Herblore.png">images/skill_icons/Herblore.png</file>
+	<file alias="Agility.png">images/skill_icons/Agility.png</file>
+	<file alias="Thieving.png">images/skill_icons/Thieving.png</file>
+	<file alias="Slayer.png">images/skill_icons/Slayer.png</file>
+	<file alias="Farming.png">images/skill_icons/Farming.png</file>
+	<file alias="Runecraft.png">images/skill_icons/Runecraft.png</file>
+	<file alias="Hunter.png">images/skill_icons/Hunter.png</file>
+	<file alias="Construction.png">images/skill_icons/Construction.png</file>
+</qresource>
+<qresource prefix="/orange">
+    <file alias="checkbox.png">shared/stylesheets/darkorange/images/checkbox.png</file>
+    <file alias="down_arrow.png">shared/stylesheets/darkorange/images/down_arrow.png</file>
+    <file alias="handle.png">shared/stylesheets/darkorange/images/handle.png</file>
+</qresource>
+</RCC>

@@ -1,43 +1,29 @@
 from osrsmath.model.player import PlayerBuilder
 from osrsmath.model.experience import xp_rate
-from multiprocessing import Value
-import pathos.pools as pp
 import time
 
-class Eval:
-	INTERVAL = 0.025  # How frequently the progress is updated (in seconds).
-	completed = Value('i', 0)
-
-	@classmethod
-	def start(cls, f, items, callback):
-		evaluator = Eval(f, len(items))
-		values = cls.map(evaluator, items)
-		evaluator.monitor_progress(callback)
-		return list(values)
-
-	@staticmethod
-	def map(f, items):
-		return pp.ProcessPool().imap(f, items)
-
-	def __init__(self, f, num_items):
-		self.num_items = num_items
-		self.f = f
-		with self.completed.get_lock():
-			self.completed.value = 0
-
-	def __call__(self, x):
-		result = self.f(x)
-		with self.completed.get_lock():
-			self.completed.value += 1
-		return result
-
-	def monitor_progress(self, callback):
-		callback(0)
-		while self.completed.value < self.num_items:
-			callback(self.completed.value/self.num_items*100)
-			time.sleep(self.INTERVAL)
-		callback(self.completed.value/self.num_items*100)
-
+def mmap(f, items, callback, interval=0.025):
+	# def g(*x):
+	# 	try:
+	# 		return f(*x)
+	# 	except KeyboardInterrupt:
+	# 		# Prevents killing main process, leaving children to never join (app hangs).
+	# 		raise KeyboardInterruptError()
+	results = []
+	start = time.time()
+	import multiprocess
+	with multiprocess.Pool() as pool:
+	# with pathos.pools.ProcessPool() as pool:
+		for i, result in enumerate(pool.imap_unordered(f, items), 1):
+			# QtCore.QCoreApplication.processEvents()  # Prevents app from hanging (especially windows)
+			results.append(result)
+			now = time.time()
+			if now-start >= interval:
+				start = now
+				callback(i/len(items)*100)
+		callback(100)
+		# pool.clear()  # Using close/join crashes the app on the next iteration, ProcessPool must effect the global space.
+	return results
 
 def eval_set(player_stats: dict, training_skill, states, defenders, s, include_shared_xp=True):
 	try:
@@ -52,7 +38,7 @@ def eval_set(player_stats: dict, training_skill, states, defenders, s, include_s
 			defenders,
 			'MarkovChain'
 		)
-		# print(s, '|', f"{xp/1000:.2f}")
+		print(s, '|', f"{xp/1000:.2f}")
 		return s, xp, combat_style
 	except Exception as e:
 		import traceback as tb

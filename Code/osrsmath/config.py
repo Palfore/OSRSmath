@@ -1,6 +1,46 @@
 import os
+import sys
+import pathlib
+from pathlib import Path
+
 TOP = os.path.dirname(__file__)
-DATA_PATH = os.path.join(TOP, 'Data')
+
+def resource_path(relative_path):
+	""" Get absolute path to resource, works for dev and for PyInstaller """
+	try:
+		# PyInstaller creates a temp folder and stores path in _MEIPASS
+		# Inside this, we store all data in the 'DATA' directory
+		base_path = os.path.join(sys._MEIPASS, 'DATA')
+	except AttributeError:
+		base_path = os.path.abspath(TOP)
+		# print('here', TOP, base_path)
+	return Path(os.path.join(base_path, relative_path))
+
+import shutil
+def user_path(relative_path, default=None):
+	# https://stackoverflow.com/questions/1024114/location-of-ini-config-files-in-linux-unix
+	try:  # Linux/MacOs
+		home = Path(os.environ.get('XDG_DATA_HOME', Path(os.environ['HOME'])/'.local/share'))
+	except KeyError:  # Windows
+			home = Path(os.environ['APPDATA'])
+
+
+	home /= 'osrsmath'
+	if not home.is_dir():
+		home.mkdir()
+	user_file = home/relative_path
+
+	if not user_file.is_file() and default:
+		# print(f'Attempting to create {relative_path}')
+		default = Path(default)
+		if not default.is_file():
+			raise FileNotFoundError(default)
+		# print(default, user_file)
+		os.makedirs(user_file.parent, exist_ok=True)
+		shutil.copy(default, user_file)
+	return user_file
+
+DATA_PATH = os.path.join(TOP, 'model/data')
 RESULTS_PATH = os.path.join(TOP, 'results')
 
 

@@ -44,7 +44,8 @@ setup(
 	license='MIT',
 	keywords='math optimization old school runescape',
 	package_data={
-		"": ["Data/*.json", "Data/*.dat"],
+		"osrsmath": ["osrsmath/apps/GUI/shared/stylesheets/darkorange/darkorange.css"]
+		# "": ["osrsmath/*.json", "Data/*.dat"],
 	},
 	classifiers=[
 	 	'Development Status :: 2 - Pre-Alpha',
@@ -59,6 +60,6 @@ setup(
 	],
 	project_urls={
 	},
-	install_requires=['numpy', 'matplotlib', 'scipy', 'Dijkstar', 'requests'],
+	install_requires=['wheel', 'pathos', 'numpy', 'matplotlib', 'scipy', 'Dijkstar', 'requests'],
 	python_requires='>=3',
 )

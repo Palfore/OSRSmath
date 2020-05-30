@@ -1,24 +1,5 @@
 {
-    "monsters": {
-        "giant mole": {
-            "levels": {
-                "hitpoints": 200,
-                "attack": 200,
-                "strength": 200,
-                "defence": 200,
-                "ranged": 1,
-                "magic": 200
-            },
-            "stats": {
-                "defence_stab": 60,
-                "defence_slash": 80,
-                "defence_crush": 100,
-                "defence_magic": 80,
-                "defence_ranged": 60
-            },
-            "xp_per_damage": 4.0
-        }
-    },
+    "monsters": {},
     "potions": "super",
     "potion_attributes": "accuracy and damage",
     "boosting_scheme": "Constant",
@@ -32,5 +13,6 @@
     "void_knight": false,
     "elite_void": false,
     "berserker_necklace": false,
-    "dharok": "0"
+    "dharok": "0",
+    "salve_amulet": false
 }

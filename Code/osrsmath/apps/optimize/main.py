@@ -1,3 +1,12 @@
+import multiprocess
+multiprocess.freeze_support()
+# import multiprocessing
+# multiprocessing.freeze_support()
+# if __name__ == '__main__':
+# import pathos
+# pathos.multiprocessing.freeze_support()
+
+
 from osrsmath.apps.optimize.gui_single import Ui_MainWindow
 from pathlib import Path
 
@@ -5,7 +14,11 @@ from osrsmath.model.player import Player, get_equipment_data
 from pprint import pprint as pp
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-DATA_PATH = Path().absolute() / 'data'
+import osrsmath.apps.GUI.resources
+import textwrap
+import osrsmath.config as config
+# DATA_PATH = Path().absolute() / 'data'
+# DATA_PATH = config.user_path("apps/optimize/data/")
 slots = ['head', 'cape', 'neck', 'ammo', 'weapon', 'body', 'shield', 'legs', 'hands', 'feet', 'ring']
 
 class GUI(Ui_MainWindow):
@@ -45,8 +58,7 @@ class GUI(Ui_MainWindow):
 		self.optimize_panel.xp_rate.setStyleSheet("color: white;")
 		self.optimize_panel.attack_stance.setStyleSheet("color: white;")
 
-		self.on_evaluate()
-		import textwrap
+		# self.on_evaluate()
 		self.menuHelp.triggered.connect(lambda: QtWidgets.QMessageBox(
 			QtWidgets.QMessageBox.Information,
 			'Help - Overview', textwrap.dedent(self.HELP_TEXT)
@@ -54,7 +66,14 @@ class GUI(Ui_MainWindow):
 
 		for slot in slots:
 			dropdown = getattr(self.optimize_panel, slot)
-			dropdown.mouseDoubleClickEvent = lambda _=None, slot=slot: self.ignore_adjust_panel.prepend_text(getattr(self.optimize_panel, slot).currentText())
+			dropdown.activated.connect(
+				lambda _=None, slot=slot: {
+					QtCore.Qt.ShiftModifier: self.ignore_adjust_panel.prepend_ignore,
+					QtCore.Qt.ControlModifier: self.ignore_adjust_panel.prepend_adjust,
+				}.get(QtWidgets.QApplication.keyboardModifiers(), lambda x: None)(
+					getattr(self.optimize_panel, slot).currentText()
+				)
+			)
 
 
 
@@ -107,7 +126,7 @@ class GUI(Ui_MainWindow):
 			# Time and Evaluate Solution
 			t0 = time.time()
 			self.update_status(f'Step (1/2). Generating Sets...')
-			sets = get_sets(training_skill, stats, monsters, ignore, adjust, equipment_data, special_sets, progress_callback=lambda i: self.optimize_panel.progressBar.setValue(i))
+			sets = get_sets(training_skill, stats, monsters, ignore, adjust, equipment_data, special_sets, progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)))
 			t1 = time.time()
 			self.update_status(f'Step (2/2). Evaluating {len(sets)} Sets...')
 			s, xp, stance = get_best_set(
@@ -117,7 +136,7 @@ class GUI(Ui_MainWindow):
 				monsters,
 				sets,
 				include_shared_xp=False,
-				progress_callback=lambda i: self.optimize_panel.progressBar.setValue(i)
+				progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i))
 			)
 			t2 = time.time()
 			self.update_status('Finished ...')
@@ -166,19 +185,28 @@ class GUI(Ui_MainWindow):
 				f"{e}\n{tb}"
 			).exec()
 
+	def get_data_path(self, file):
+		return config.user_path(
+			f"apps/optimize/data/{file}",
+			config.resource_path(f"apps/optimize/data/{file}")
+		)
+
 	def load_defaults(self):
-		self.player_panel.import_defaults(DATA_PATH/'player.json')
-		self.ignore_adjust_panel.import_defaults(DATA_PATH/'ignore.json')
-		self.optimize_panel.import_defaults(DATA_PATH/'monsters.json')
+		self.player_panel.import_defaults(self.get_data_path('player.json'))
+		self.ignore_adjust_panel.import_defaults(self.get_data_path('ignore.json'))
+		self.optimize_panel.import_defaults(self.get_data_path('monsters.json'))
 
 		self.ignore_adjust_panel.set_text(self.ignore_adjust_panel.get_checked('data').get())
 
 	def save_defaults(self):
-		self.player_panel.export_defaults(DATA_PATH/'player.json')
-		self.ignore_adjust_panel.export_defaults(DATA_PATH/'ignore.json')
-		self.optimize_panel.export_defaults(DATA_PATH/'monsters.json')
+		self.player_panel.export_defaults(self.get_data_path('player.json'))
+		self.ignore_adjust_panel.export_defaults(self.get_data_path('ignore.json'))
+		self.optimize_panel.export_defaults(self.get_data_path('monsters.json'))
+
 
 
 if __name__ == '__main__':
+	import multiprocess
+	multiprocess.freeze_support()
 	from osrsmath.apps.GUI.shared.application import run
 	run(GUI)

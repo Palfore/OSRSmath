@@ -41,11 +41,15 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
 		self.entities['ignore_toggle'].object.toggled.connect(self.on_toggle_change)
 		# self.entities['adjust_toggle'].object.toggled.connect(self.on_toggle_change)  # only one required
 		self.text.setTabStopDistance(12)
-		self.text.focusOutEvent = self.update_data_from_text
+		self.text.textChanged.connect(self.update_data_from_text)
 
 	def get_ignore(self):
 		text = self.entities['ignore_data'].get()
-		text = '",\n"'.join([item.strip() for item in text.split('\n')])
+		text = '",\n"'.join([line.strip() for line in text.split('\n') if not any([
+			line.startswith('#'),
+			'USER IGNORE' in line,
+			'DEFAULT IGNORE' in line
+		])])
 		return ast.literal_eval(f'["{text}"]')
 
 	def get_adjust(self):
@@ -55,6 +59,12 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
 		json_object = {}
 		obj = None
 		for i, line in enumerate(text.split('\n')):
+			if 'USER ADJUSTMENTS' in line:
+				continue
+			if 'DEFAULT ADJUSTMENTS' in line:
+				continue
+			if line.startswith('#'):
+				continue
 			assert line.count(':') <= 1, f"Line #{i} shouldn't contain more than 1 ':'"
 
 			# If the ending of a line (ignoring whitespace) is ':{' it signals that the line has an item.
@@ -91,13 +101,18 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
 
 	def set_text(self, text):
 		self.text.setPlainText(text)
-		# self.text.setPlainText(json.dumps(text.replace("'", '"'), indent=4).encode('utf-8').decode('unicode_escape').strip('"'))
 
-	def prepend_text(self, text):
+	def prepend_ignore(self, item):
+		self._prepend(item, 'USER IGNORES')
+
+	def prepend_adjust(self, item):
+		self._prepend(f"{item}: {{\n\t\n}}", 'USER ADJUSTMENTS')
+
+	def _prepend(self, insertion, insert_signal_text):
 		original = self.get_checked('data').get().split('\n')
 		for i, line in enumerate(original):
-			if line.startswith('USER IGNORES'):
-				self.set_text('\n'.join(original[:i+1] + [text] + original[i+1:]))
+			if line.startswith(insert_signal_text):
+				self.set_text('\n'.join(original[:i+1] + [insertion] + original[i+1:]))
 				break
 		else:  # If you didn't find that flag, just prepend it
 			self.set_text(text+'\n'+'\n'.join(original))

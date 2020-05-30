@@ -4,45 +4,25 @@
 import os
 from pathlib import Path
 
-COMPILER = 'pyuic5'
+UI_COMPILER = 'pyuic5'
+RC_COMPILER = 'pyrcc5'
 
-def make(file_path):
-	_make(file_path)
-	replace_image_dir(file_path)
+def make_ui(file_path):
+	os.system(f"{UI_COMPILER} -x {file_path}.ui -o {file_path}.py")
 
-def _make(file_path):
-	os.system(f"{COMPILER} -x {file_path}.ui -o {file_path}.py")
+def make_rc(file_path):
+	os.system(f'{RC_COMPILER} {file_path}.qrc -o {file_path}.py')
 
 def make_all(top_level_dir):
-	for path in Path(top_level_dir).rglob('*.ui'):
+	for path in Path(top_level_dir).rglob('*.qrc'):
+		print(f"Compiling QRC: {path}")
 		extensionless_path = '/'.join(path.parts).rstrip(path.suffix)
-		make(extensionless_path)
+		make_rc(extensionless_path)
 
-def replace_image_dir(file_path):
-	""" When the .ui generates a .py file, the image paths are specific to where they were loaded in
-		the Designer app. This is a problem because the file may be loaded from different directories.
-		This function will replace the 'hardcoded' path with a function call to the configured
-		image directory from config.py. """
-	imports = "import osrsmath.apps.GUI.config as config"
-	function_call = ".setPixmap(QtGui.QPixmap("
-	ending = '))\n'
-	with open(f"{file_path}.py", 'r') as f:
-		text = f.readlines()
-
-	with open(f"{file_path}.py", 'w') as f:
-		f.write(imports+'\n\n')
-		for line in text:
-			if function_call in line:
-				# Since all images must be stored in the images directory, 'images' will always
-				# be part of the path, so we can replace the relative parents with the config value.
-				widget, image_path = line.split(function_call)
-				image_path = Path(image_path.strip(ending)).parts
-				assert 'images' in image_path, f'In {file_path}.py, the default path used in qt-designer could not be found, maybe it changed?'
-				index = image_path.index('images')
-
-				image_path = '/'.join([f'f"{{config.images_directory}}', *image_path[index+1:]])
-				line = widget + function_call + image_path + ending
-			f.write(line)
+	for path in Path(top_level_dir).rglob('*.ui'):
+		print(f"Compiling UI: {path}")
+		extensionless_path = '/'.join(path.parts).rstrip(path.suffix)
+		make_ui(extensionless_path)
 
 if __name__ == '__main__':
 	import sys

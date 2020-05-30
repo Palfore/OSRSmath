@@ -28,7 +28,8 @@ def download_skill_icon(skill):
 if __name__ == '__main__':
 	skills = get_skills()
 	for i, skill in enumerate(skills, 1):
-		print(f'Downloading {skill} Icon... ({i}/{len(skills)} - {100*i/len(skills):.1f}%)')
-		download_skill_icon(skill)
+		print(f'<file alias="{skill}.png">images/skill_icons/{skill}.png</file>')
+		#print(f'Downloading {skill} Icon... ({i}/{len(skills)} - {100*i/len(skills):.1f}%)')
+		#download_skill_icon(skill)
 
 

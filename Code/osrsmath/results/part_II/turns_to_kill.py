@@ -20,26 +20,27 @@ def plot(m_bounds, h_bounds):
 	ax.tick_params(axis='y', labelsize=18)
 	ax.tick_params(axis='x', labelsize=18)
 
-	A = np.vectorize(lambda m, h: MarkovChain().hinv(0, m, h))(Hs, Ms)
+	A = np.vectorize(lambda m, h: MarkovChain().turns_to_kill(m, h))(Hs, Ms)
 	surf = ax.plot_surface(Hs, Ms, A, cmap=cm.hot)
 
-	A = np.vectorize(lambda m, h: Crude().hinv(0, m, h))(Hs, Ms)
+	A = np.vectorize(lambda m, h: Crude().turns_to_kill(m, h))(Hs, Ms)
 	surf = ax.plot_surface(Hs, Ms, A, cmap=cm.cool)
 	return plt
 
-showing = len(sys.argv) >= 2 and sys.argv[1] == 'show'
-if showing:
-	plot(m_bounds=(1, 110), h_bounds=(1, 250)).show()
-	plot(m_bounds=(20, 110), h_bounds=(1, 110)).show()
-else:
-	plot(m_bounds=(1, 110), h_bounds=(1, 250))
-	file_name = "turns_to_kill"
-	plt.savefig(f"{file_name}.pdf")
-	os.system(f"pdfcrop {file_name}.pdf")
-	os.rename(f"{file_name}-crop.pdf", f"{file_name}.pdf")
+if __name__ == '__main__':
+	showing = len(sys.argv) >= 2 and sys.argv[1] == 'show'
+	if showing:
+		plot(m_bounds=(1, 110), h_bounds=(1, 250)).show()
+		plot(m_bounds=(20, 110), h_bounds=(1, 110)).show()
+	else:
+		plot(m_bounds=(1, 110), h_bounds=(1, 250))
+		file_name = "turns_to_kill"
+		plt.savefig(f"{file_name}.pdf")
+		os.system(f"pdfcrop {file_name}.pdf")
+		os.rename(f"{file_name}-crop.pdf", f"{file_name}.pdf")
 
-	plot(m_bounds=(20, 110), h_bounds=(1, 110))
-	file_name = "turns_to_kill_zoom"
-	plt.savefig(f"{file_name}.pdf")
-	os.system(f"pdfcrop {file_name}.pdf")
-	os.rename(f"{file_name}-crop.pdf", f"{file_name}.pdf")
+		plot(m_bounds=(20, 110), h_bounds=(1, 110))
+		file_name = "turns_to_kill_zoom"
+		plt.savefig(f"{file_name}.pdf")
+		os.system(f"pdfcrop {file_name}.pdf")
+		os.rename(f"{file_name}-crop.pdf", f"{file_name}.pdf")

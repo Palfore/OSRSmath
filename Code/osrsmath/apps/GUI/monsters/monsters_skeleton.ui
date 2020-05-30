@@ -74,7 +74,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Ranged_icon.webp</pixmap>
+            <pixmap>:/monster/Ranged_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -90,7 +90,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/White_scimitar.webp</pixmap>
+            <pixmap>:/monster/White_scimitar.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -103,7 +103,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/White_warhammer.webp</pixmap>
+            <pixmap>:/monster/White_warhammer.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -116,7 +116,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Magic_icon.webp</pixmap>
+            <pixmap>:/monster/Magic_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -143,7 +143,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Defence_icon.webp</pixmap>
+            <pixmap>:/monster/Defence_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -162,7 +162,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/White_dagger.webp</pixmap>
+            <pixmap>:/monster/White_dagger.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -210,7 +210,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Magic_icon.webp</pixmap>
+            <pixmap>:/monster/Magic_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -223,7 +223,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Hitpoints_icon.webp</pixmap>
+            <pixmap>:/monster/Hitpoints_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -236,7 +236,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Ranged_icon.webp</pixmap>
+            <pixmap>:/monster/Ranged_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -262,7 +262,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Strength_icon.webp</pixmap>
+            <pixmap>:/monster/Strength_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -290,7 +290,7 @@
                <string/>
               </property>
               <property name="pixmap">
-               <pixmap>../images/monster/Combat_icon.webp</pixmap>
+               <pixmap>:/monster/Combat_icon.webp</pixmap>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -306,7 +306,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Defence_icon.webp</pixmap>
+            <pixmap>:/monster/Defence_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -325,7 +325,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Attack_icon.webp</pixmap>
+            <pixmap>:/monster/Attack_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -372,7 +372,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Strength_icon.webp</pixmap>
+            <pixmap>:/monster/Strength_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -406,7 +406,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Attack_icon.webp</pixmap>
+            <pixmap>:/monster/Attack_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -422,7 +422,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Ranged_icon.webp</pixmap>
+            <pixmap>:/monster/Ranged_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -435,7 +435,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Magic_icon.webp</pixmap>
+            <pixmap>:/monster/Magic_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -451,7 +451,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Attack_icon.webp</pixmap>
+            <pixmap>:/monster/Attack_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -464,7 +464,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Magic_Damage_icon.webp</pixmap>
+            <pixmap>:/monster/Magic_Damage_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -477,7 +477,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../images/monster/Ranged_Strength_icon.webp</pixmap>
+            <pixmap>:/monster/Ranged_Strength_icon.webp</pixmap>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>

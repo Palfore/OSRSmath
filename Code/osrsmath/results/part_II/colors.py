@@ -1,7 +1,8 @@
 colors = {
 	"Crude": "red",
 	"Average": "orange",
-	"Recursive": "black",
-	"MarkovChainApprox": "green",
+	"Recursive": "green",
+	"RecursiveApproximation": "lime",
 	"MarkovChain": "blue",
+	"MarkovChainApproximation": "cyan",
 }

@@ -28,7 +28,12 @@ class PlayerPanel(QtWidgets.QWidget, Ui_Form, Savable):
 			self.entities[skill].object.editingFinished.connect(self.update_cmb_level)
 
 	def update_cmb_level(self):
-		self.entities['cmb'].set(str(combat_level(self.get_stats())))
+		try:
+			self.entities['cmb'].set(str(combat_level(self.get_stats())))
+		except ValueError as e:
+			print(e)
+			pass
+
 
 	def get_stats(self):
 		''' Returns a dictionary of all displayed levels (including cmb). '''

@@ -4,6 +4,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 import osrsmath.model.boosts as boosts
 import inspect
+import webbrowser
+from urllib.parse import quote
+from pathlib import Path
+from pprint import pprint
 
 class Data:
 	pass
@@ -31,6 +35,7 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 			'void_knight',
 			'elite_void',
 			'berserker_necklace',
+			'salve_amulet',
 		]
 		self.entities = {
 			'monsters': Savable.Entity(
@@ -96,11 +101,8 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		except ValueError as e:
 			print(e)
 			return
-		from pprint import pprint
-		import webbrowser
+
 		pprint(equipment)
-		from urllib.parse import quote
-		from pathlib import Path
 		# Encode ending (item name) to "%xx escape" format.
 		p = Path(get_equipment_by_name(item)['wiki_url'])
 		url = p.parent/quote(p.name)

@@ -107,7 +107,14 @@ class Monster:
 
 def get_monster_data(force_update=False):
 	file_name = f'monsters-complete.json'
-	file_path = os.path.join(config.DATA_PATH, file_name)
+	import sys
+	import os
+	from pathlib import Path
+
+	# print(os.getcwd(), __file__, Path(), Path(__file__), sys.argv[0], config.DATA_PATH)
+	# file_path = os.path.join(config.DATA_PATH, file_name)
+	# file_path = 'DATA/model/data/'+file_name
+	file_path = config.resource_path(f"model/data/{file_name}")
 	if not os.path.exists(file_path) or force_update:
 		r = requests.get(os.path.join(MONSTER_LIST_BASE_URL, file_name))
 		if r.status_code != 200:
