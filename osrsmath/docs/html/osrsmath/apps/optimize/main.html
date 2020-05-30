@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>osrsmath.apps.optimize.main API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML'></script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>osrsmath.apps.optimize.main</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import multiprocess
+multiprocess.freeze_support()
+# import multiprocessing
+# multiprocessing.freeze_support()
+# if __name__ == &#39;__main__&#39;:
+# import pathos
+# pathos.multiprocessing.freeze_support()
+
+
+from osrsmath.apps.optimize.gui_single import Ui_MainWindow
+from pathlib import Path
+
+from osrsmath.model.player import Player, get_equipment_data
+from pprint import pprint as pp
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+import osrsmath.apps.GUI.resources
+import textwrap
+import osrsmath.config as config
+# DATA_PATH = Path().absolute() / &#39;data&#39;
+# DATA_PATH = config.user_path(&#34;apps/optimize/data/&#34;)
+slots = [&#39;head&#39;, &#39;cape&#39;, &#39;neck&#39;, &#39;ammo&#39;, &#39;weapon&#39;, &#39;body&#39;, &#39;shield&#39;, &#39;legs&#39;, &#39;hands&#39;, &#39;feet&#39;, &#39;ring&#39;]
+
+class GUI(Ui_MainWindow):
+        HELP_TEXT = &#34;&#34;&#34;\
+                This app allows you to determine the optimal equipment to wear against a set of opponents.
+
+                There are three main sections:
+                  1. Player (top left):
+                      a) Enter combat levels. Prompts appear if others are needed.
+                      b) Ignore equipment you don&#39;t want to consider.
+                      c) Adjust equipment requirements (if inaccurate or self-imposed)
+
+                  2. Monster (bottom left):
+                      a) Lookup by name and (crudely) filter by NMZ bosses.
+                      b) If inaccurate or cannot be found, modify values.
+
+                  3. Optimize (right)
+                      a) View fighting pool (ie. multiple enemies - useful for NMZ)
+                      b) Choose training skill
+                      c) Choose potions and how you use them.
+                      d) Choose prayers (always on).
+                      == Output ==
+                      e) Optimal equipment (dropdowns are for possible future use).
+                      f) Attack stance, xp/h, and offensive bonuses are also shown.
+
+                Note that there are a lot of exceptions in this game, so the interface is designed to have slack. &#34;&#34;&#34;
+
+        def setupUi(self, MainWindow):
+                super().setupUi(MainWindow)
+                self.load_defaults()
+                self.monster_panel.add.clicked.connect(self.add_monster)
+                self.optimize_panel.evaluate.clicked.connect(self.on_evaluate)
+                self.optimize_panel.opponents.itemDoubleClicked.connect(
+                        lambda item: self.monster_panel.fill_monster(item.text(), self.optimize_panel.data.monsters[item.text()])
+                )
+
+                self.optimize_panel.xp_rate.setStyleSheet(&#34;color: white;&#34;)
+                self.optimize_panel.attack_stance.setStyleSheet(&#34;color: white;&#34;)
+
+                # self.on_evaluate()
+                self.menuHelp.triggered.connect(lambda: QtWidgets.QMessageBox(
+                        QtWidgets.QMessageBox.Information,
+                        &#39;Help - Overview&#39;, textwrap.dedent(self.HELP_TEXT)
+                ).exec())
+
+                for slot in slots:
+                        dropdown = getattr(self.optimize_panel, slot)
+                        dropdown.activated.connect(
+                                lambda _=None, slot=slot: {
+                                        QtCore.Qt.ShiftModifier: self.ignore_adjust_panel.prepend_ignore,
+                                        QtCore.Qt.ControlModifier: self.ignore_adjust_panel.prepend_adjust,
+                                }.get(QtWidgets.QApplication.keyboardModifiers(), lambda x: None)(
+                                        getattr(self.optimize_panel, slot).currentText()
+                                )
+                        )
+
+
+
+
+        def add_monster(self):
+                name = self.monster_panel.custom_name.text()
+                if name:
+                        self.optimize_panel.add_monster(name, self.monster_panel.get_monster_as_dict())
+
+        def update_status(self, message):
+                self.MainWindow.statusBar().showMessage(message)
+
+        def on_evaluate(self):
+                from osrsmath.apps.optimize.logic.optimize import get_sets, get_best_set
+                from osrsmath.model.monsters import Monster
+                from osrsmath.model.boosts import BoostingSchemes, Prayers, Potions
+                import time
+
+                try:
+                        self.optimize_panel.progressBar.setValue(0)
+                        equipment_data = get_equipment_data()
+                        monsters = {name: Monster(**m) for name, m in self.optimize_panel.data.monsters.items()}
+                        if not monsters:
+                                QtWidgets.QMessageBox(
+                                        QtWidgets.QMessageBox.Warning, &#39;Invalid Number of Monsters&#39;, &#34;You haven&#39;t selected enough monsters.&#34;
+                                ).exec()
+                                return
+
+                        # Collect Input
+                        training_skill = self.optimize_panel.get_training_skill()
+                        special_sets = self.optimize_panel.get_selected_sets()
+                        stats = self.player_panel.get_stats()
+                        stats[&#39;current_health&#39;] = int(self.optimize_panel.entities[&#39;dharok&#39;].get())
+
+                        ignore = self.ignore_adjust_panel.get_ignore()
+                        adjust = self.ignore_adjust_panel.get_adjust()
+                        potion = getattr(Potions, self.optimize_panel.potions.currentText())
+                        potion_attributes = self.optimize_panel.potion_attributes.currentText()
+                        prayer = getattr(Prayers, self.optimize_panel.prayers.currentText())
+                        prayer_attributes = self.optimize_panel.prayer_attributes.currentText()
+                        if self.optimize_panel.boosting_scheme.currentText() == &#39;Dose After&#39;:
+                                skill = self.optimize_panel.below_skill.currentText()
+                                redose_level = int(self.optimize_panel.redose_level.text())
+                                boost = lambda p: BoostingSchemes(p, prayer, prayer_attributes).potion_when_skill_under(
+                                        potion, skill, redose_level, potion_attributes
+                                )
+                        else:
+                                boost = lambda p: BoostingSchemes(p, prayer, prayer_attributes).constant(potion, potion_attributes)
+
+                        # Time and Evaluate Solution
+                        t0 = time.time()
+                        self.update_status(f&#39;Step (1/2). Generating Sets...&#39;)
+                        sets = get_sets(training_skill, stats, monsters, ignore, adjust, equipment_data, special_sets, progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)))
+                        t1 = time.time()
+                        self.update_status(f&#39;Step (2/2). Evaluating {len(sets)} Sets...&#39;)
+                        s, xp, stance = get_best_set(
+                                stats,
+                                training_skill,
+                                boost,
+                                monsters,
+                                sets,
+                                include_shared_xp=False,
+                                progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i))
+                        )
+                        t2 = time.time()
+                        self.update_status(&#39;Finished ...&#39;)
+
+                        # Display Optimal Equipment
+                        for slot in slots:
+                                equipment_list = getattr(self.optimize_panel, slot)
+                                equipment_list.clear()
+                                if slot == &#39;weapon&#39;:
+                                        equipment_list.addItem(s.get(&#39;weapon&#39;) if &#39;weapon&#39; in s else s.get(&#39;2h&#39;))
+                                else:
+                                        equipment_list.addItem(s.get(slot))
+
+                        # Display Offensive Attributes
+                        tab = self.optimize_panel.best_in_slot_bonuses
+                        player = Player({})
+                        for slot, item_name in s.items():
+                                player.equip_by_name(item_name)
+                        equipment_stats = player.get_stats()
+                        for i, stat in enumerate([&#39;attack_stab&#39;, &#39;attack_slash&#39;, &#39;attack_crush&#39;, &#39;attack_ranged&#39;, &#39;attack_magic&#39;,
+                                                                                &#39;melee_strength&#39;, &#39;ranged_strength&#39;, &#39;magic_damage&#39;, &#39;attack_speed&#39;]):
+                                tab.setItem(i, 0, QtWidgets.QTableWidgetItem(str(round(equipment_stats[stat], 2))))
+                        tab.setItem(9, 0, QtWidgets.QTableWidgetItem(str(&#34;&#34;)))
+
+                        # Additional Messages
+                        player = Player(stats)
+                        player.combat_style = stance
+                        [player.equip_by_name(e) for e in s.values()]
+                        M = player.get_max_hit(potion, prayer)
+                        print(M)
+
+                        report = f&#34;Solved in {t2-t0:.2f}s ({t1-t0:.2f}s, {t2-t1:.2f}s) using {len(sets)} sets, giving {xp/1000:.2f}k xp/h.&#34;
+                        print(report, stance)
+                        self.optimize_panel.xp_rate.setText(f&#34;{xp/1000:,.2f}k&#34;)
+                        self.optimize_panel.attack_stance.setText(f&#34;{stance}&#34;)
+                        self.update_status(report)
+                except Exception as e:
+                        import traceback
+                        tb = traceback.format_exc()
+                        print(e)
+                        print(tb)
+                        self.update_status(&#39;Error Encountered&#39;)
+                        QtWidgets.QMessageBox(
+                                QtWidgets.QMessageBox.Critical,
+                                &#39;Error Encountered&#39;,
+                                f&#34;{e}\n{tb}&#34;
+                        ).exec()
+
+        def get_data_path(self, file):
+                return config.user_path(
+                        f&#34;apps/optimize/data/{file}&#34;,
+                        config.resource_path(f&#34;apps/optimize/data/{file}&#34;)
+                )
+
+        def load_defaults(self):
+                self.player_panel.import_defaults(self.get_data_path(&#39;player.json&#39;))
+                self.ignore_adjust_panel.import_defaults(self.get_data_path(&#39;ignore.json&#39;))
+                self.optimize_panel.import_defaults(self.get_data_path(&#39;monsters.json&#39;))
+
+                self.ignore_adjust_panel.set_text(self.ignore_adjust_panel.get_checked(&#39;data&#39;).get())
+
+        def save_defaults(self):
+                self.player_panel.export_defaults(self.get_data_path(&#39;player.json&#39;))
+                self.ignore_adjust_panel.export_defaults(self.get_data_path(&#39;ignore.json&#39;))
+                self.optimize_panel.export_defaults(self.get_data_path(&#39;monsters.json&#39;))
+
+
+
+if __name__ == &#39;__main__&#39;:
+        import multiprocess
+        multiprocess.freeze_support()
+        from osrsmath.apps.GUI.shared.application import run
+        run(GUI)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="osrsmath.apps.optimize.main.GUI"><code class="flex name class">
+<span>class <span class="ident">GUI</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class GUI(Ui_MainWindow):
+        HELP_TEXT = &#34;&#34;&#34;\
+                This app allows you to determine the optimal equipment to wear against a set of opponents.
+
+                There are three main sections:
+                  1. Player (top left):
+                      a) Enter combat levels. Prompts appear if others are needed.
+                      b) Ignore equipment you don&#39;t want to consider.
+                      c) Adjust equipment requirements (if inaccurate or self-imposed)
+
+                  2. Monster (bottom left):
+                      a) Lookup by name and (crudely) filter by NMZ bosses.
+                      b) If inaccurate or cannot be found, modify values.
+
+                  3. Optimize (right)
+                      a) View fighting pool (ie. multiple enemies - useful for NMZ)
+                      b) Choose training skill
+                      c) Choose potions and how you use them.
+                      d) Choose prayers (always on).
+                      == Output ==
+                      e) Optimal equipment (dropdowns are for possible future use).
+                      f) Attack stance, xp/h, and offensive bonuses are also shown.
+
+                Note that there are a lot of exceptions in this game, so the interface is designed to have slack. &#34;&#34;&#34;
+
+        def setupUi(self, MainWindow):
+                super().setupUi(MainWindow)
+                self.load_defaults()
+                self.monster_panel.add.clicked.connect(self.add_monster)
+                self.optimize_panel.evaluate.clicked.connect(self.on_evaluate)
+                self.optimize_panel.opponents.itemDoubleClicked.connect(
+                        lambda item: self.monster_panel.fill_monster(item.text(), self.optimize_panel.data.monsters[item.text()])
+                )
+
+                self.optimize_panel.xp_rate.setStyleSheet(&#34;color: white;&#34;)
+                self.optimize_panel.attack_stance.setStyleSheet(&#34;color: white;&#34;)
+
+                # self.on_evaluate()
+                self.menuHelp.triggered.connect(lambda: QtWidgets.QMessageBox(
+                        QtWidgets.QMessageBox.Information,
+                        &#39;Help - Overview&#39;, textwrap.dedent(self.HELP_TEXT)
+                ).exec())
+
+                for slot in slots:
+                        dropdown = getattr(self.optimize_panel, slot)
+                        dropdown.activated.connect(
+                                lambda _=None, slot=slot: {
+                                        QtCore.Qt.ShiftModifier: self.ignore_adjust_panel.prepend_ignore,
+                                        QtCore.Qt.ControlModifier: self.ignore_adjust_panel.prepend_adjust,
+                                }.get(QtWidgets.QApplication.keyboardModifiers(), lambda x: None)(
+                                        getattr(self.optimize_panel, slot).currentText()
+                                )
+                        )
+
+
+
+
+        def add_monster(self):
+                name = self.monster_panel.custom_name.text()
+                if name:
+                        self.optimize_panel.add_monster(name, self.monster_panel.get_monster_as_dict())
+
+        def update_status(self, message):
+                self.MainWindow.statusBar().showMessage(message)
+
+        def on_evaluate(self):
+                from osrsmath.apps.optimize.logic.optimize import get_sets, get_best_set
+                from osrsmath.model.monsters import Monster
+                from osrsmath.model.boosts import BoostingSchemes, Prayers, Potions
+                import time
+
+                try:
+                        self.optimize_panel.progressBar.setValue(0)
+                        equipment_data = get_equipment_data()
+                        monsters = {name: Monster(**m) for name, m in self.optimize_panel.data.monsters.items()}
+                        if not monsters:
+                                QtWidgets.QMessageBox(
+                                        QtWidgets.QMessageBox.Warning, &#39;Invalid Number of Monsters&#39;, &#34;You haven&#39;t selected enough monsters.&#34;
+                                ).exec()
+                                return
+
+                        # Collect Input
+                        training_skill = self.optimize_panel.get_training_skill()
+                        special_sets = self.optimize_panel.get_selected_sets()
+                        stats = self.player_panel.get_stats()
+                        stats[&#39;current_health&#39;] = int(self.optimize_panel.entities[&#39;dharok&#39;].get())
+
+                        ignore = self.ignore_adjust_panel.get_ignore()
+                        adjust = self.ignore_adjust_panel.get_adjust()
+                        potion = getattr(Potions, self.optimize_panel.potions.currentText())
+                        potion_attributes = self.optimize_panel.potion_attributes.currentText()
+                        prayer = getattr(Prayers, self.optimize_panel.prayers.currentText())
+                        prayer_attributes = self.optimize_panel.prayer_attributes.currentText()
+                        if self.optimize_panel.boosting_scheme.currentText() == &#39;Dose After&#39;:
+                                skill = self.optimize_panel.below_skill.currentText()
+                                redose_level = int(self.optimize_panel.redose_level.text())
+                                boost = lambda p: BoostingSchemes(p, prayer, prayer_attributes).potion_when_skill_under(
+                                        potion, skill, redose_level, potion_attributes
+                                )
+                        else:
+                                boost = lambda p: BoostingSchemes(p, prayer, prayer_attributes).constant(potion, potion_attributes)
+
+                        # Time and Evaluate Solution
+                        t0 = time.time()
+                        self.update_status(f&#39;Step (1/2). Generating Sets...&#39;)
+                        sets = get_sets(training_skill, stats, monsters, ignore, adjust, equipment_data, special_sets, progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)))
+                        t1 = time.time()
+                        self.update_status(f&#39;Step (2/2). Evaluating {len(sets)} Sets...&#39;)
+                        s, xp, stance = get_best_set(
+                                stats,
+                                training_skill,
+                                boost,
+                                monsters,
+                                sets,
+                                include_shared_xp=False,
+                                progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i))
+                        )
+                        t2 = time.time()
+                        self.update_status(&#39;Finished ...&#39;)
+
+                        # Display Optimal Equipment
+                        for slot in slots:
+                                equipment_list = getattr(self.optimize_panel, slot)
+                                equipment_list.clear()
+                                if slot == &#39;weapon&#39;:
+                                        equipment_list.addItem(s.get(&#39;weapon&#39;) if &#39;weapon&#39; in s else s.get(&#39;2h&#39;))
+                                else:
+                                        equipment_list.addItem(s.get(slot))
+
+                        # Display Offensive Attributes
+                        tab = self.optimize_panel.best_in_slot_bonuses
+                        player = Player({})
+                        for slot, item_name in s.items():
+                                player.equip_by_name(item_name)
+                        equipment_stats = player.get_stats()
+                        for i, stat in enumerate([&#39;attack_stab&#39;, &#39;attack_slash&#39;, &#39;attack_crush&#39;, &#39;attack_ranged&#39;, &#39;attack_magic&#39;,
+                                                                                &#39;melee_strength&#39;, &#39;ranged_strength&#39;, &#39;magic_damage&#39;, &#39;attack_speed&#39;]):
+                                tab.setItem(i, 0, QtWidgets.QTableWidgetItem(str(round(equipment_stats[stat], 2))))
+                        tab.setItem(9, 0, QtWidgets.QTableWidgetItem(str(&#34;&#34;)))
+
+                        # Additional Messages
+                        player = Player(stats)
+                        player.combat_style = stance
+                        [player.equip_by_name(e) for e in s.values()]
+                        M = player.get_max_hit(potion, prayer)
+                        print(M)
+
+                        report = f&#34;Solved in {t2-t0:.2f}s ({t1-t0:.2f}s, {t2-t1:.2f}s) using {len(sets)} sets, giving {xp/1000:.2f}k xp/h.&#34;
+                        print(report, stance)
+                        self.optimize_panel.xp_rate.setText(f&#34;{xp/1000:,.2f}k&#34;)
+                        self.optimize_panel.attack_stance.setText(f&#34;{stance}&#34;)
+                        self.update_status(report)
+                except Exception as e:
+                        import traceback
+                        tb = traceback.format_exc()
+                        print(e)
+                        print(tb)
+                        self.update_status(&#39;Error Encountered&#39;)
+                        QtWidgets.QMessageBox(
+                                QtWidgets.QMessageBox.Critical,
+                                &#39;Error Encountered&#39;,
+                                f&#34;{e}\n{tb}&#34;
+                        ).exec()
+
+        def get_data_path(self, file):
+                return config.user_path(
+                        f&#34;apps/optimize/data/{file}&#34;,
+                        config.resource_path(f&#34;apps/optimize/data/{file}&#34;)
+                )
+
+        def load_defaults(self):
+                self.player_panel.import_defaults(self.get_data_path(&#39;player.json&#39;))
+                self.ignore_adjust_panel.import_defaults(self.get_data_path(&#39;ignore.json&#39;))
+                self.optimize_panel.import_defaults(self.get_data_path(&#39;monsters.json&#39;))
+
+                self.ignore_adjust_panel.set_text(self.ignore_adjust_panel.get_checked(&#39;data&#39;).get())
+
+        def save_defaults(self):
+                self.player_panel.export_defaults(self.get_data_path(&#39;player.json&#39;))
+                self.ignore_adjust_panel.export_defaults(self.get_data_path(&#39;ignore.json&#39;))
+                self.optimize_panel.export_defaults(self.get_data_path(&#39;monsters.json&#39;))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.apps.optimize.gui_single.Ui_MainWindow" href="gui_single.html#osrsmath.apps.optimize.gui_single.Ui_MainWindow">Ui_MainWindow</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="osrsmath.apps.optimize.main.GUI.HELP_TEXT"><code class="name">var <span class="ident">HELP_TEXT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="osrsmath.apps.optimize.main.GUI.add_monster"><code class="name flex">
+<span>def <span class="ident">add_monster</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_monster(self):
+        name = self.monster_panel.custom_name.text()
+        if name:
+                self.optimize_panel.add_monster(name, self.monster_panel.get_monster_as_dict())</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.main.GUI.get_data_path"><code class="name flex">
+<span>def <span class="ident">get_data_path</span></span>(<span>self, file)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_data_path(self, file):
+        return config.user_path(
+                f&#34;apps/optimize/data/{file}&#34;,
+                config.resource_path(f&#34;apps/optimize/data/{file}&#34;)
+        )</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.main.GUI.load_defaults"><code class="name flex">
+<span>def <span class="ident">load_defaults</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_defaults(self):
+        self.player_panel.import_defaults(self.get_data_path(&#39;player.json&#39;))
+        self.ignore_adjust_panel.import_defaults(self.get_data_path(&#39;ignore.json&#39;))
+        self.optimize_panel.import_defaults(self.get_data_path(&#39;monsters.json&#39;))
+
+        self.ignore_adjust_panel.set_text(self.ignore_adjust_panel.get_checked(&#39;data&#39;).get())</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.main.GUI.on_evaluate"><code class="name flex">
+<span>def <span class="ident">on_evaluate</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_evaluate(self):
+        from osrsmath.apps.optimize.logic.optimize import get_sets, get_best_set
+        from osrsmath.model.monsters import Monster
+        from osrsmath.model.boosts import BoostingSchemes, Prayers, Potions
+        import time
+
+        try:
+                self.optimize_panel.progressBar.setValue(0)
+                equipment_data = get_equipment_data()
+                monsters = {name: Monster(**m) for name, m in self.optimize_panel.data.monsters.items()}
+                if not monsters:
+                        QtWidgets.QMessageBox(
+                                QtWidgets.QMessageBox.Warning, &#39;Invalid Number of Monsters&#39;, &#34;You haven&#39;t selected enough monsters.&#34;
+                        ).exec()
+                        return
+
+                # Collect Input
+                training_skill = self.optimize_panel.get_training_skill()
+                special_sets = self.optimize_panel.get_selected_sets()
+                stats = self.player_panel.get_stats()
+                stats[&#39;current_health&#39;] = int(self.optimize_panel.entities[&#39;dharok&#39;].get())
+
+                ignore = self.ignore_adjust_panel.get_ignore()
+                adjust = self.ignore_adjust_panel.get_adjust()
+                potion = getattr(Potions, self.optimize_panel.potions.currentText())
+                potion_attributes = self.optimize_panel.potion_attributes.currentText()
+                prayer = getattr(Prayers, self.optimize_panel.prayers.currentText())
+                prayer_attributes = self.optimize_panel.prayer_attributes.currentText()
+                if self.optimize_panel.boosting_scheme.currentText() == &#39;Dose After&#39;:
+                        skill = self.optimize_panel.below_skill.currentText()
+                        redose_level = int(self.optimize_panel.redose_level.text())
+                        boost = lambda p: BoostingSchemes(p, prayer, prayer_attributes).potion_when_skill_under(
+                                potion, skill, redose_level, potion_attributes
+                        )
+                else:
+                        boost = lambda p: BoostingSchemes(p, prayer, prayer_attributes).constant(potion, potion_attributes)
+
+                # Time and Evaluate Solution
+                t0 = time.time()
+                self.update_status(f&#39;Step (1/2). Generating Sets...&#39;)
+                sets = get_sets(training_skill, stats, monsters, ignore, adjust, equipment_data, special_sets, progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)))
+                t1 = time.time()
+                self.update_status(f&#39;Step (2/2). Evaluating {len(sets)} Sets...&#39;)
+                s, xp, stance = get_best_set(
+                        stats,
+                        training_skill,
+                        boost,
+                        monsters,
+                        sets,
+                        include_shared_xp=False,
+                        progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i))
+                )
+                t2 = time.time()
+                self.update_status(&#39;Finished ...&#39;)
+
+                # Display Optimal Equipment
+                for slot in slots:
+                        equipment_list = getattr(self.optimize_panel, slot)
+                        equipment_list.clear()
+                        if slot == &#39;weapon&#39;:
+                                equipment_list.addItem(s.get(&#39;weapon&#39;) if &#39;weapon&#39; in s else s.get(&#39;2h&#39;))
+                        else:
+                                equipment_list.addItem(s.get(slot))
+
+                # Display Offensive Attributes
+                tab = self.optimize_panel.best_in_slot_bonuses
+                player = Player({})
+                for slot, item_name in s.items():
+                        player.equip_by_name(item_name)
+                equipment_stats = player.get_stats()
+                for i, stat in enumerate([&#39;attack_stab&#39;, &#39;attack_slash&#39;, &#39;attack_crush&#39;, &#39;attack_ranged&#39;, &#39;attack_magic&#39;,
+                                                                        &#39;melee_strength&#39;, &#39;ranged_strength&#39;, &#39;magic_damage&#39;, &#39;attack_speed&#39;]):
+                        tab.setItem(i, 0, QtWidgets.QTableWidgetItem(str(round(equipment_stats[stat], 2))))
+                tab.setItem(9, 0, QtWidgets.QTableWidgetItem(str(&#34;&#34;)))
+
+                # Additional Messages
+                player = Player(stats)
+                player.combat_style = stance
+                [player.equip_by_name(e) for e in s.values()]
+                M = player.get_max_hit(potion, prayer)
+                print(M)
+
+                report = f&#34;Solved in {t2-t0:.2f}s ({t1-t0:.2f}s, {t2-t1:.2f}s) using {len(sets)} sets, giving {xp/1000:.2f}k xp/h.&#34;
+                print(report, stance)
+                self.optimize_panel.xp_rate.setText(f&#34;{xp/1000:,.2f}k&#34;)
+                self.optimize_panel.attack_stance.setText(f&#34;{stance}&#34;)
+                self.update_status(report)
+        except Exception as e:
+                import traceback
+                tb = traceback.format_exc()
+                print(e)
+                print(tb)
+                self.update_status(&#39;Error Encountered&#39;)
+                QtWidgets.QMessageBox(
+                        QtWidgets.QMessageBox.Critical,
+                        &#39;Error Encountered&#39;,
+                        f&#34;{e}\n{tb}&#34;
+                ).exec()</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.main.GUI.save_defaults"><code class="name flex">
+<span>def <span class="ident">save_defaults</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_defaults(self):
+        self.player_panel.export_defaults(self.get_data_path(&#39;player.json&#39;))
+        self.ignore_adjust_panel.export_defaults(self.get_data_path(&#39;ignore.json&#39;))
+        self.optimize_panel.export_defaults(self.get_data_path(&#39;monsters.json&#39;))</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.main.GUI.setupUi"><code class="name flex">
+<span>def <span class="ident">setupUi</span></span>(<span>self, MainWindow)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setupUi(self, MainWindow):
+        super().setupUi(MainWindow)
+        self.load_defaults()
+        self.monster_panel.add.clicked.connect(self.add_monster)
+        self.optimize_panel.evaluate.clicked.connect(self.on_evaluate)
+        self.optimize_panel.opponents.itemDoubleClicked.connect(
+                lambda item: self.monster_panel.fill_monster(item.text(), self.optimize_panel.data.monsters[item.text()])
+        )
+
+        self.optimize_panel.xp_rate.setStyleSheet(&#34;color: white;&#34;)
+        self.optimize_panel.attack_stance.setStyleSheet(&#34;color: white;&#34;)
+
+        # self.on_evaluate()
+        self.menuHelp.triggered.connect(lambda: QtWidgets.QMessageBox(
+                QtWidgets.QMessageBox.Information,
+                &#39;Help - Overview&#39;, textwrap.dedent(self.HELP_TEXT)
+        ).exec())
+
+        for slot in slots:
+                dropdown = getattr(self.optimize_panel, slot)
+                dropdown.activated.connect(
+                        lambda _=None, slot=slot: {
+                                QtCore.Qt.ShiftModifier: self.ignore_adjust_panel.prepend_ignore,
+                                QtCore.Qt.ControlModifier: self.ignore_adjust_panel.prepend_adjust,
+                        }.get(QtWidgets.QApplication.keyboardModifiers(), lambda x: None)(
+                                getattr(self.optimize_panel, slot).currentText()
+                        )
+                )</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.main.GUI.update_status"><code class="name flex">
+<span>def <span class="ident">update_status</span></span>(<span>self, message)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_status(self, message):
+        self.MainWindow.statusBar().showMessage(message)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="osrsmath.apps.optimize" href="index.html">osrsmath.apps.optimize</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="osrsmath.apps.optimize.main.GUI" href="#osrsmath.apps.optimize.main.GUI">GUI</a></code></h4>
+<ul class="two-column">
+<li><code><a title="osrsmath.apps.optimize.main.GUI.HELP_TEXT" href="#osrsmath.apps.optimize.main.GUI.HELP_TEXT">HELP_TEXT</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.main.GUI.add_monster" href="#osrsmath.apps.optimize.main.GUI.add_monster">add_monster</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.main.GUI.get_data_path" href="#osrsmath.apps.optimize.main.GUI.get_data_path">get_data_path</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.main.GUI.load_defaults" href="#osrsmath.apps.optimize.main.GUI.load_defaults">load_defaults</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.main.GUI.on_evaluate" href="#osrsmath.apps.optimize.main.GUI.on_evaluate">on_evaluate</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.main.GUI.save_defaults" href="#osrsmath.apps.optimize.main.GUI.save_defaults">save_defaults</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.main.GUI.setupUi" href="#osrsmath.apps.optimize.main.GUI.setupUi">setupUi</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.main.GUI.update_status" href="#osrsmath.apps.optimize.main.GUI.update_status">update_status</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

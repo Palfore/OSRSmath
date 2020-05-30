@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>osrsmath.results.part_III.optimize.best_gear_example API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML'></script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>osrsmath.results.part_III.optimize.best_gear_example</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># # def get_equipment_that_has_offensive_bonuses(player_stats, ignore, equipment_data=get_equipment_data()):
+# #     e = defaultdict(list)
+# #     for slot, slot_equipment in equipment_data.items():
+# #             for ID, equipment in slot_equipment.items():
+# #                     if equipment[&#39;name&#39;] in ignore:
+# #                             continue
+# #                     if any([equipment[&#39;name&#39;].startswith(s) for s in (&#39;Corrupted&#39;, &#39;Zuriel&#39;, &#39;Statius&#39;, &#39;Vesta&#39;)]):
+# #                             continue
+# #                     if any(equipment[&#39;equipment&#39;][stat] &gt; 0 for stat in (&#39;attack_stab&#39;, &#39;attack_crush&#39;, &#39;attack_slash&#39;, &#39;attack_ranged&#39;, &#39;attack_magic&#39;, &#39;ranged_strength&#39;, &#39;magic_damage&#39;, &#39;melee_strength&#39;)):
+# #                             e[slot].append(equipment)
+# #     return e
+
+# from jsoncomment import JsonComment
+# from osrsmath.apps.optimize import get_sets, eval_set, load, get_best_set
+# from osrsmath.model.player import get_equipment_data
+# from osrsmath.model.experience import combat_level
+# from osrsmath.model.monsters import Monster
+# from osrsmath.model.boosts import BoostingSchemes, Prayers, Potions
+# from pprint import pprint
+# import sys
+# import os
+
+
+# from jsoncomment import JsonComment
+# from osrsmath.model.monsters import Monster, get_monster_data
+# from osrsmath.model.player import PlayerBuilder, get_equipment_data, get_equipment_by_name
+# from osrsmath.model.rates import experience_per_hour
+# from osrsmath.model.experience import combat_level, xp_rate
+# from osrsmath.model.boosts import BoostingSchemes
+# from osrsmath.model import successful_hits
+# from collections import defaultdict
+# from pprint import pprint
+# import osrsmath.apps.nmz as nmz
+# import numpy as np
+# import copy
+
+# weapon_type = &#39;weapon&#39;
+
+# def get_stances_that_can_train(weapon, skill, allow_shared=True):
+#       &#34;&#34;&#34; Returns the stances (by combat_style) that the {weapon} can train the {skill} with. &#34;&#34;&#34;
+#       stances = []
+#       for stance in weapon[&#39;weapon&#39;][&#39;stances&#39;]:
+#               s = stance[&#39;experience&#39;]
+
+#               # Stances come in 4 flavors:
+#               #     1) attack, strength, defence, magic, ranged
+#               #     2) &#34;magic and defence&#34;, &#34;ranged and defence&#34;
+#               #     3) none
+#               #     4) shared
+#               # The first 2 can be identifies with the &#39;==&#39; or &#39;in&#39; operators, respectively.
+#               # The 3rd is simply ignored. Since the 2nd accounts for both magic and ranged,
+#               # &#39;shared&#39; is specifically melee.
+#               assert s in (&#39;attack&#39;, &#39;strength&#39;, &#39;defence&#39;, &#39;magic&#39;, &#39;ranged&#39;, &#39;magic and defence&#39;, &#39;ranged and defence&#39;, &#39;none&#39;, &#39;shared&#39;), s
+#               if skill == s:
+#                       stances.append(stance[&#39;combat_style&#39;])
+#               elif allow_shared:
+#                       if skill in s:
+#                               stances.append(stance[&#39;combat_style&#39;])
+#                       elif s == &#39;shared&#39;:
+#                               assert stance[&#39;attack_type&#39;] in (&#39;stab&#39;, &#39;crush&#39;, &#39;slash&#39;), stance[&#39;attack_type&#39;]
+#                               if skill in (&#39;attack&#39;, &#39;strength&#39;, &#39;defence&#39;):
+#                                       stances.append(stance[&#39;combat_style&#39;])
+#       return stances
+
+# def get_attack_types_that_train(weapon, skill, allow_shared=True):
+#       stances_dict = {s[&#39;combat_style&#39;]: s for s in weapon[&#39;weapon&#39;][&#39;stances&#39;]}
+#       stances = get_stances_that_can_train(weapon, skill, allow_shared)
+
+#       possible_attack_types = set()
+#       for stance in stances:
+#               stance = stances_dict[stance]
+#               if &#39;magic&#39; in stance[&#39;experience&#39;]:
+#                       possible_attack_types.add(&#39;attack_magic&#39;)
+#               elif &#39;ranged&#39; in stance[&#39;experience&#39;]:
+#                       possible_attack_types.add(&#39;attack_ranged&#39;)
+#               else:
+#                       possible_attack_types.add(&#39;attack_&#39; + stance[&#39;attack_type&#39;])
+#       return possible_attack_types
+
+# def get_weapons_that_can_train(skill, allow_shared=True, equipment_data=get_equipment_data()):
+#       assert skill in (&#39;attack&#39;, &#39;strength&#39;, &#39;defence&#39;, &#39;magic&#39;, &#39;ranged&#39;)
+#       weapons = []
+#       for ID, weapon in list(equipment_data[weapon_type].items()):
+#               assert weapon[&#39;equipable_by_player&#39;] and weapon[&#39;weapon&#39;]
+#               if get_stances_that_can_train(weapon, skill, allow_shared):
+#                       weapons.append(weapon)
+#       return weapons
+
+# def get_weapons_that_have_training_bonuses(skill, allow_shared=True, equipment=get_equipment_data()):
+#       weapons = []
+#       for weapon in get_weapons_that_can_train(skill, allow_shared, equipment):
+#               possible_attack_types = get_attack_types_that_train(weapon, skill, allow_shared)
+#               assert possible_attack_types
+#               # Could also include weapon[&#39;weapon&#39;][&#39;attack_speed&#39;] &lt; 4 for weapons faster than unarmed.
+#               # but this would only be additionally added if they have no relevant bonuses.
+#               if any(weapon[&#39;equipment&#39;][attack_type] &gt; 0 for attack_type in possible_attack_types):
+#                       weapons.append(weapon)
+#       return weapons
+
+# def meets_requirements(player_stats, equipment):
+#       if equipment[&#39;equipment&#39;][&#39;requirements&#39;] is None:
+#               return True
+#       for stat, req in equipment[&#39;equipment&#39;][&#39;requirements&#39;].items():
+#               if stat not in player_stats:
+#                       raise ValueError(f&#34;Supply your {stat} level to check {equipment[&#39;name&#39;]} for: {equipment[&#39;equipment&#39;][&#39;requirements&#39;]}&#34;)
+#               if player_stats[stat] &lt; req:
+#                       return False
+#       return True
+
+# def get_equipable(equipment, player_stats, ignore, adjustments):
+#       equipable = []
+#       for eq in equipment:
+#               if eq[&#39;name&#39;] in ignore:
+#                       continue
+#               if any([eq[&#39;name&#39;].startswith(s) for s in (&#39;Corrupted&#39;, &#39;Zuriel&#39;, &#39;Statius&#39;, &#39;Vesta&#39;)]):
+#                       continue
+#               if eq[&#39;name&#39;] in adjustments:
+#                       eq[&#39;equipment&#39;][&#39;requirements&#39;] = adjustments[eq[&#39;name&#39;]]
+#               if meets_requirements(player_stats, eq):
+#                       equipable.append(eq)
+#       return equipable
+
+# def is_better(A, B):
+#       &#34;&#34;&#34; Is A absolutely better than B?
+#               @param A Equipment stats eg: {&#39;attack_crush&#39;: 53, ...}
+#               @param B Equipment stats &#34;&#34;&#34;
+#       assert list(A.keys()) == list(B.keys())
+#       if list(A.values()) == list(B.values()):
+#               return False
+#       for a, b in zip(list(A.values()), list(B.values())):
+#               if b &gt; a:
+#                       return False
+#       return True
+
+# def reduce_bonuses(equipment, attack_type):
+#       bonuses = [attack_type]
+#       if &#39;magic&#39; in attack_type:
+#               bonuses.append(&#39;magic_damage&#39;)
+#       elif &#39;ranged&#39; in attack_type:
+#               bonuses.append(&#39;ranged_strength&#39;)
+#       else:
+#               bonuses.append(&#39;melee_strength&#39;)
+#       reduced = {b: v for b, v in equipment[&#39;equipment&#39;].items() if b in bonuses}
+#       reduced[&#39;reciprocal_attack_speed&#39;] = 1/equipment[&#39;weapon&#39;][&#39;attack_speed&#39;]
+#       return reduced
+
+# def get_best_options(skill, player_stats, ignore, adjustments, allow_shared=True):
+#       weapons = get_equipable(get_weapons_that_have_training_bonuses(skill, allow_shared), player_stats, ignore, adjustments)
+
+#       # Sort equipment by attack bonus required to train
+#       weapons_by_attack_type = defaultdict(list)
+#       for weapon in weapons:
+#               for attack_type in get_attack_types_that_train(weapon, skill, allow_shared):
+#                       weapons_by_attack_type[attack_type].append(weapon)
+
+#       # Then only select the strictly better set of those.
+#       best_by_attack_type = defaultdict(list)
+#       for attack_type, weapons in weapons_by_attack_type.items():
+#               for weapon in weapons:
+#                       # So long as not everyone is better than you.
+#                       if all([not is_better(
+#                                               reduce_bonuses(w, attack_type),
+#                                               reduce_bonuses(weapon, attack_type)
+#                                       ) for w in weapons]) and (  # And your stats aren&#39;t already included
+#                                               reduce_bonuses(weapon, attack_type) not in [
+#                                                       reduce_bonuses(e, attack_type) for e in best_by_attack_type[attack_type]
+#                                               ]
+#                                       ):
+#                               best_by_attack_type[attack_type].append(weapon)
+#       return best_by_attack_type
+
+
+
+# if __name__ == &#39;__main__&#39;:
+#       player_stats, defenders, ignore, adjustments = load(&#34;settings.json&#34;)
+#       player_stats.update({
+#               &#39;attack&#39;: 60,
+#               &#39;strength&#39;: 60,
+#               &#39;defence&#39;: 50,
+#               &#39;hitpoints&#39;: 50,
+#               &#39;magic&#39;: 50,
+#               &#39;ranged&#39;: 50,
+#               &#39;prayer&#39;: 43
+#       })
+#       player_stats.update({&#39;cmb&#39;: combat_level(player_stats)})
+#       ignore.extend([
+#               &#39;Amulet of torture&#39;,
+#               &#39;Amulet of torture (or)&#39;,
+#               &#39;Fighter torso&#39;,
+#               &#39;Fire cape&#39;,
+#       ])
+
+#       # e = get_equipable(get_weapons_that_have_training_bonuses(&#39;attack&#39;, True), player_stats, ignore, adjustments)
+#       e = get_best_options(&#39;defence&#39;, player_stats, ignore, adjustments, allow_shared=False)
+#       pprint([(e, [w[&#39;name&#39;] for w in ws]) for e, ws in e.items()])
+#       # print(len(e))
+
+
+#       # I now have a function that will give me the best weapons possible for a given attack_type for training something
+#       # So &#34;train attack using slash&#34; gives me a weapon set.
+#       # For each attack_type, I can try on the equipment that gives the best bonuses.
+#       # ie for attack_stab, what helmets give the best bonus? (considering that str might also go up)
+#       # At the end of the day, the user should be able to click on a suggest, and say &#34;what are alternatives&#34;
+
+
+#       # best_set = get_best_set(player_stats, &#39;attack&#39;,
+#       #       lambda p: BoostingSchemes(p, Prayers.none).constant(Potions.overload),
+#       #       defenders, get_sets(player_stats, defenders, ignore, adjustments), include_shared_xp=True
+#       # )
+#       # pprint(best_set)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="osrsmath.results.part_III.optimize" href="index.html">osrsmath.results.part_III.optimize</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

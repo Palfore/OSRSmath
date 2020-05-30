@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>osrsmath.apps.path.path API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML'></script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>osrsmath.apps.path.path</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># from jsoncomment import JsonComment
+# from osrsmath.apps.optimize import get_sets, get_best_set
+# from osrsmath.model.experience import combat_level
+# from osrsmath.model.monsters import Monster
+# from osrsmath.model.player import PlayerBuilder, get_equipment_data
+# from osrsmath.model.experience import get_time_to_level, time_dependent_model_xp
+# from osrsmath.model.boosts import BoostingSchemes, Potions
+# from osrsmath.model import successful_hits
+# from dijkstar import Graph, find_path
+# from multiprocessing import Pool
+# from pprint import pprint
+# import numpy as np
+# import copy
+# import os
+
+# ## Multi-processing boiler plate
+# _func = None
+# def worker_init(func):
+#   global _func
+#   _func = func
+# def worker(x):
+#   return _func(x)
+# def xmap(func, iterable, processes=None):
+#   with Pool(processes, initializer=worker_init, initargs=(func,)) as p:
+#     return p.map(worker, iterable)
+
+# def get_opponents():
+#       king_roald_hard = Monster({&#39;attack&#39;: 140, &#39;strength&#39;: 120, &#39;defence&#39;: 30, &#39;prayer&#39;: 1, &#39;hitpoints&#39;: 150, &#39;magic&#39;: 1, &#39;ranged&#39;: 1})
+#       king_roald_hard.attack_style = &#39;crush&#39;
+#       defenders = {
+#               &#39;easy&#39;: {
+#                       &#39;Count Draynor&#39;: Monster.from_id(6393),
+#                       &#39;King Roald&#39;: Monster.from_id(6389),
+#                       &#39;Me&#39;: Monster.from_id(6381),
+#                       &#39;Tree Spirit&#39;: Monster.from_id(6380),
+#                       &#39;Khazard Warlord&#39;:      Monster.from_id(6390),
+#               }, &#39;hard&#39;: {
+#                       &#39;Count Draynor&#39;: Monster.from_id(6332),
+#                       &#39;King Roald&#39;: king_roald_hard,
+#                       &#39;Me&#39;: Monster.from_id(6320),
+#                       &#39;Tree Spirit&#39;: Monster.from_id(6319),
+#                       &#39;Khazard Warlord&#39;: Monster.from_id(6329),
+#               }
+#       }
+#       return defenders
+
+
+# from collections import defaultdict
+# class Tree:
+#       def __init__(self, start, end, print_progress=True):
+#               def recur(parents):
+#                       if parents:
+#                               children = self.give_birth(parents)
+#                               self.nodes.extend(children)
+#                               if print_progress:
+#                                       print(len(self.nodes), len(children))
+#                               recur(children)
+
+#               self.nodes = []
+#               self.start = start
+#               self.end = end
+
+#               recur([ ((None, None, None), self.start) ])
+
+#               # print(f&#34;Number of Vertices: {self.num_vertices(self.start, self.end):,}&#34;)
+#               # print(f&#34;Number of Edges: {self.num_edges(self.start, self.end):,}&#34;)
+
+
+#       @staticmethod
+#       def num_vertices(start, end):
+#               a, b, c = [e - s for e, s in zip(end, start)]
+#               return (a+1)*(b+1)*(c+1)
+
+#       @staticmethod
+#       def num_edges(start, end):
+#               a, b, c = [e - s for e, s in zip(end, start)]
+#               return (3*a*b*c) + (2*a*b + 2*a*c + 2*b*c) + (a + b + c)
+
+#       def get_children(self, parent):
+#               a, s, d = parent
+#               end_a, end_s, end_d = self.end
+#               children = []
+#               if a &lt; end_a:
+#                       children.append((a+1, s, d))
+#               if s &lt; end_s:
+#                       children.append((a, s+1, d))
+#               if d &lt; end_d:
+#                       children.append((a, s, d+1))
+#               return children
+
+#       def get_parents(self, child):
+#               a, s, d = child
+#               start_a, start_s, start_d = self.start
+#               parents = []
+#               if a &gt; start_a:
+#                       parents.append((a-1, s, d))
+#               if s &gt; start_s:
+#                       parents.append((a, s-1, d))
+#               if d &gt; start_d:
+#                       parents.append((a, s, d-1))
+#               return parents
+
+#       def give_birth(self, parents):
+#               children = []
+#               seen = []
+#               end_a, end_s, end_d = self.end
+#               for _, init_levels in parents:
+#                       if init_levels in seen:
+#                               continue
+#                       seen.append(init_levels)
+#                       c = self.get_children(init_levels)
+#                       children.extend(list(zip([init_levels]*len(c), c)))
+#               return children
+
+#       @staticmethod
+#       def assign_edge(parent, child, boost_function, defenders, equipment_data, equipment=None):
+#               &#34;&#34;&#34; Returns (parent_string, child_string, (edge_cost, additional_information)),
+#                       where additional_information may contain optimal equipment loadouts, attack styles etc.
+#                       @oaram equipment One of:
+#                                       1) A list of equipment.
+#                                       2) A function | (a, s, d) =&gt; A list of equipment.
+#                                       3) None. In which case an optimization over possible equipment will be performed. &#34;&#34;&#34;
+#               def f(pair):
+#                       return f&#34;{pair[0]}-{pair[1]}-{pair[2]}&#34;
+#               (old_a, old_s, old_d), (new_a, new_s, new_d) = parent, child
+#               training_skill = &#39;attack&#39; if new_a &gt; old_a else &#39;strength&#39;
+#               diffs = [i for i, (x, y) in enumerate(zip(parent, child)) if y &gt; x]
+#               assert len(diffs) == 1, f&#34;{list(enumerate(list(zip(parent, child))))} - {diffs}&#34;
+#               training_skill = [&#39;attack&#39;, &#39;strength&#39;, &#39;defence&#39;][diffs[0]]
+
+#               if equipment:
+#                       if hasattr(equipment, &#39;__call__&#39;):
+#                               equipment = equipment(old_a, old_s, old_d)
+#                       player = PlayerBuilder({&#34;attack&#34;: old_a, &#34;strength&#34;: old_s, &#39;defence&#39;: old_d}, equipment_data).equip(equipment).get()
+#                       t = float(&#39;inf&#39;)
+#                       optimal_stance = (None, None)
+#                       for name, stance in player.get_stances().items():
+#                               if stance[&#39;experience&#39;] == training_skill:
+#                                       player.combat_style = stance[&#39;combat_style&#39;]
+#                                       level_time = get_time_to_level(player, training_skill, boost_function(player), defenders)
+#                                       if level_time &lt; t:
+#                                               t = level_time
+#                                               optimal_stance = (player.combat_style, time_dependent_model_xp(boost_function(player), defenders))
+
+#                       assert optimal_stance is not (None, None)
+#                       return f(parent), f(child), (t, {
+#                               &#39;stance&#39;: optimal_stance[0],
+#                               &#39;xp_rate&#39;: optimal_stance[1],
+#                               &#39;equipment&#39;: equipment,
+#                       })
+#               else:
+#                       data = JsonComment().loadf(&#34;../../results/part_III/optimize/settings.json&#34;)
+#                       player_stats = data[&#39;player_stats&#39;]
+#                       player_stats.update({&#34;attack&#34;: old_a, &#34;strength&#34;: old_s, &#39;defence&#39;: old_d})
+#                       player_stats.update({&#39;cmb&#39;: combat_level(player_stats)})
+
+#                       sets = get_sets(training_skill, defenders, player_stats, data[&#39;ignore&#39;], data[&#39;adjustments&#39;], equipment_data)
+#                       sets = [{ slot: eq for slot, eq in s if eq is not None} for s in sets]
+
+#                       best_equipment, best_xp_rate, best_stance = get_best_set(
+#                               player_stats, training_skill, boost_function,
+#                               defenders, sets, include_shared_xp=False
+#                       )
+#                       pprint({&#34;attack&#34;: old_a, &#34;strength&#34;: old_s, &#39;defence&#39;: old_d,
+#                               &#34;weapon&#34;: best_equipment[&#34;weapon&#34;] if &#34;weapon&#34; in best_equipment else best_equipment[&#34;2h&#34;]
+#                       })
+#                       player = PlayerBuilder(player_stats, equipment_data).equip(list(best_equipment.values())).get()
+#                       player.combat_style = best_stance
+#                       t = get_time_to_level(player, training_skill, boost_function(player), defenders)
+#                       return f(parent), f(child), (t, {
+#                               &#39;stance&#39;: best_stance,
+#                               &#39;xp_rate&#39;: best_xp_rate,
+#                               &#39;equipment&#39;: best_equipment,
+#                       })
+
+# def get_solution(tree, boost_function, defenders, equipment_data, equipment=None, start=None, end=None):
+#       start = start if start else tree.start
+#       end = end if end else tree.end
+#       graph = Graph()
+#       nodes = xmap(lambda c: Tree.assign_edge(*c, boost_function, defenders, equipment_data, equipment), tree.nodes)
+
+#       cost_dict = {(tuple(int(x) for x in p.split(&#39;-&#39;)), tuple(int(x) for x in c.split(&#39;-&#39;))): t for p, c, (t, _) in nodes}
+#       [graph.add_edge(*node) for node in nodes]
+
+#       return find_path(graph, &#39;-&#39;.join(str(s) for s in start), &#39;-&#39;.join(str(e) for e in end),
+#               cost_func=lambda u, v, edge, prev_edge: edge[0]
+#       )
+
+# from collections import namedtuple
+# PathInfo = namedtuple(&#39;PathInfo&#39;, (&#39;nodes&#39;, &#39;edges&#39;, &#39;costs&#39;, &#39;total_cost&#39;))
+# class Solver:
+#       def __iter__(self):
+#               return self
+
+#       def get_path_costs(self, nodes):
+#               edges = []
+#               costs = []
+#               total_cost = 0
+#               for i in range(len(nodes) - 1):
+#                       parent, child, (cost, details) = None, None, (0, {&#39;equipment&#39;: []}) #self.cost_function(nodes[i], nodes[i+1])
+#                       if (nodes[i], nodes[i+1]) in self.costs:
+#                               parent, child, (cost, details) = self.costs[(nodes[i], nodes[i+1])]
+#                       else:
+#                               parent, child, (cost, details) = c = self.cost_function(nodes[i], nodes[i+1])
+#                               self.costs[(nodes[i], nodes[i+1])] = c
+
+#                       edges.append( (cost, details) )
+#                       costs.append(cost)
+#                       total_cost += cost
+#               return edges, costs, total_cost
+
+#       def is_out_of_bounds(self, node):
+#               return not all(s &lt;= n &lt;= e for n, s, e in zip(node, self.start, self.end))
+
+#       def __init__(self, tree, cost_function):
+#               self.tree = tree
+#               self.start = tree.start
+#               self.end = tree.end
+#               self.costs = {}
+#               self.cost_function = cost_function
+
+#               self.best_path = []
+#               sa, ss, sd = self.start
+#               ea, es, ed = self.end
+#               for s in range(ss, es+1):
+#                       self.best_path.append((sa, s, sd))
+#               for a in range(sa+1, ea+1):
+#                       self.best_path.append((a, es, sd))
+#               for d in range(sd+1, ed+1):
+#                       self.best_path.append((ea, es, d))
+
+#               self.exclusions = [0]*(ea - sa)
+
+#       def __len__(self):
+#               return sum(e-s for e, s in zip(self.end, self.start))
+
+#       def __next__(self):
+#               def get_left_most_chain(excluded):
+#                       if sum(excluded) == 0:
+#                               return self.best_path
+
+#                       path = [self.start]
+#                       sa, ss, sd = self.start
+#                       ea, es, ed = self.end
+#                       c = 0
+#                       for i in range(len(self)):
+#                               a, s, d = path[-1]
+#                               a_gain = a - self.start[0]
+#                               s_gain = s - self.start[1]
+#                               d_gain = d - self.start[2]
+#                               if s &lt; es - excluded[a_gain]:
+#                                       path.append((a, s+1, d))
+#                               else:
+#                                       path.append((a+1, s, d))
+
+
+#                       return path
+
+#               def increment_exclusions():
+#                       largest_exclusion = self.end[0] - self.start[0]
+
+#                       def inc(value):
+#                               return value &lt; largest_exclusion
+
+#                       for i, ex in enumerate(self.exclusions):
+#                               if inc(ex):
+#                                       self.exclusions[i] += 1
+#                                       break
+#                               elif inc(self.exclusions[i + 1]):
+#                                       self.exclusions[i+1] += 1
+#                                       for j in range(i+1):
+#                                               self.exclusions[j] = self.exclusions[i+1]
+#                                       break
+
+#               # print(self.exclusions)
+#               chain = get_left_most_chain(self.exclusions)
+#               increment_exclusions()
+#               if self.exclusions[-1] == 1:
+#                       raise StopIteration
+
+#               print(self.get_path_costs(chain)[-1])
+#               self.best_path = chain
+#               return self.get()
+
+#       def get(self):
+#               path = [&#39;-&#39;.join(str(x) for x in node) for node in self.best_path]
+#               return PathInfo(path, *self.get_path_costs(self.best_path))</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="osrsmath.apps.path" href="index.html">osrsmath.apps.path</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

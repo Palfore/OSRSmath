@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>osrsmath.apps.optimize.panels.optimize API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML'></script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>osrsmath.apps.optimize.panels.optimize</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from osrsmath.apps.GUI.optimize.optimize_skeleton import Ui_Form
+from osrsmath.apps.GUI.shared.widgets import Savable
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+import osrsmath.model.boosts as boosts
+import inspect
+import webbrowser
+from urllib.parse import quote
+from pathlib import Path
+from pprint import pprint
+
+class Data:
+        pass
+
+def disable(obj):
+        # obj.setEnabled(False)
+        obj.hide()
+
+def enable(obj):
+        obj.show()
+        # if not obj.isEnabled():
+                # obj.setEnabled(True)
+
+class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
+        def __init__(self, parent=None):
+                super().__init__(parent)
+                self.setupUi(self)
+
+                self.data = Data()
+                self.data.monsters = {}
+                self.special_sets = [
+                        &#39;dharok&#39;,
+                        &#39;slayer_helm&#39;,
+                        &#39;obsidian&#39;,
+                        &#39;void_knight&#39;,
+                        &#39;elite_void&#39;,
+                        &#39;berserker_necklace&#39;,
+                        &#39;salve_amulet&#39;,
+                ]
+                self.entities = {
+                        &#39;monsters&#39;: Savable.Entity(
+                                None, None,
+                                lambda o, v: {self.add_monster(name, monster) for name, monster in v.items()},
+                                lambda v: self.data.monsters
+                        ),
+                        &#39;training_skill&#39;: Savable.DropDown(self.training_skill, None),
+                        &#39;potions&#39;: Savable.DropDown(self.potions, None),
+                        &#39;potion_attributes&#39;: Savable.DropDown(self.potion_attributes, None),
+                        &#39;boosting_scheme&#39;: Savable.DropDown(self.boosting_scheme, None),
+                        &#39;below_skill&#39;: Savable.DropDown(self.below_skill, None),
+                        &#39;redose_level&#39;: Savable.LineEdit(self.redose_level, None),
+                        &#39;prayers&#39;: Savable.DropDown(self.prayers, None),
+                        &#39;prayer_attributes&#39;: Savable.DropDown(self.prayer_attributes, None),
+
+                        **{s: Savable.CheckBox(getattr(self, s), True) for s in self.special_sets if s != &#39;dharok&#39;},
+                        &#39;dharok&#39;: Savable.LineEdit(self.dharok, 1),
+                }
+
+                for slot in [&#39;head&#39;, &#39;cape&#39;, &#39;neck&#39;, &#39;ammo&#39;, &#39;weapon&#39;, &#39;body&#39;, &#39;legs&#39;, &#39;hands&#39;, &#39;feet&#39;, &#39;ring&#39;]:
+                        equipment_button = getattr(self, f&#34;{slot}_link&#34;)
+                        equipment_button.clicked.connect(
+                                lambda _, slot=slot: self.open_link(slot)
+                        )
+
+
+
+                potion_names = list(list(zip(*inspect.getmembers(boosts.Potions, predicate=inspect.isfunction)))[0])
+                assert &#39;none&#39; in potion_names
+                self.potions.addItem(potion_names.pop(potion_names.index(&#39;none&#39;)))  # Place &#39;none&#39; first
+                self.potions.addItems(potion_names)
+
+                prayer_names = list(list(zip(*inspect.getmembers(boosts.Prayers, predicate=inspect.isfunction)))[0])
+                assert &#39;none&#39; in prayer_names
+                self.prayers.addItem(prayer_names.pop(prayer_names.index(&#39;none&#39;)))  # Place &#39;none&#39; first
+                self.prayers.addItems(prayer_names)
+
+                self.potions.currentIndexChanged.connect(self.on_potion_select)
+                self.boosting_scheme.currentIndexChanged.connect(self.on_boost_scheme_select)
+                self.prayers.currentIndexChanged.connect(self.on_prayer_select)
+                self.redose_level.setValidator(QtGui.QIntValidator(0, 99))
+
+                self.on_boost_scheme_select()
+                self.on_potion_select()
+                self.on_prayer_select()
+
+                # Allow the delete key to remove the selected opponent
+                shortcut = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Delete), self.opponents);
+                shortcut.activated.connect(self.remove_selected_monster)
+
+        def get_selected_sets(self):
+                return [s for s in self.special_sets if (
+                        (s == &#39;dharok&#39; and int(self.entities[s].get())) != 0 or
+                        (s != &#39;dharok&#39; and self.entities[s].get())
+                )]
+
+        def open_link(self, slot):
+                from osrsmath.model.player import get_equipment_by_name
+                item = getattr(self, slot).currentText()
+                try:
+                        equipment = get_equipment_by_name(item)
+                except ValueError as e:
+                        print(e)
+                        return
+
+                pprint(equipment)
+                # Encode ending (item name) to &#34;%xx escape&#34; format.
+                p = Path(get_equipment_by_name(item)[&#39;wiki_url&#39;])
+                url = p.parent/quote(p.name)
+                webbrowser.open(str(url))
+
+        def on_prayer_select(self):
+                if self.prayers.currentText() == &#39;none&#39;:
+                        disable(self.prayer_attributes)
+                else:
+                        enable(self.prayer_attributes)
+
+        def on_potion_select(self):
+                if self.potions.currentText() == &#39;none&#39;:
+                        disable(self.potion_attributes)
+                        disable(self.boosting_scheme)
+                else:
+                        enable(self.potion_attributes)
+                        enable(self.boosting_scheme)
+                self.on_boost_scheme_select()
+
+        def on_boost_scheme_select(self):
+                if self.boosting_scheme.currentText() == &#39;Constant&#39; or self.potions.currentText() == &#39;none&#39;:
+                        disable(self.below_skill)
+                        disable(self.redose_level)
+                        disable(self.label_5)
+                else:
+                        enable(self.below_skill)
+                        enable(self.redose_level)
+                        enable(self.label_5)
+
+        def get_training_skill(self):
+                return self.training_skill.currentText().lower()
+
+        def remove_selected_monster(self):
+                name = self.opponents.takeItem(self.opponents.currentRow()).text()
+                del self.data.monsters[name]
+
+        def add_monster(self, name, monster):
+                self.data.monsters[name] = monster
+                if name not in (self.opponents.item(i).text() for i in range(self.opponents.count())):
+                        self.opponents.addItem(name)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="osrsmath.apps.optimize.panels.optimize.disable"><code class="name flex">
+<span>def <span class="ident">disable</span></span>(<span>obj)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def disable(obj):
+        # obj.setEnabled(False)
+        obj.hide()</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.optimize.enable"><code class="name flex">
+<span>def <span class="ident">enable</span></span>(<span>obj)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def enable(obj):
+        obj.show()</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="osrsmath.apps.optimize.panels.optimize.Data"><code class="flex name class">
+<span>class <span class="ident">Data</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Data:
+        pass</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.optimize.OptimizePanel"><code class="flex name class">
+<span>class <span class="ident">OptimizePanel</span></span>
+<span>(</span><span>parent=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>QWidget(parent: QWidget = None, flags: Union[Qt.WindowFlags, Qt.WindowType] = Qt.WindowFlags())</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
+        def __init__(self, parent=None):
+                super().__init__(parent)
+                self.setupUi(self)
+
+                self.data = Data()
+                self.data.monsters = {}
+                self.special_sets = [
+                        &#39;dharok&#39;,
+                        &#39;slayer_helm&#39;,
+                        &#39;obsidian&#39;,
+                        &#39;void_knight&#39;,
+                        &#39;elite_void&#39;,
+                        &#39;berserker_necklace&#39;,
+                        &#39;salve_amulet&#39;,
+                ]
+                self.entities = {
+                        &#39;monsters&#39;: Savable.Entity(
+                                None, None,
+                                lambda o, v: {self.add_monster(name, monster) for name, monster in v.items()},
+                                lambda v: self.data.monsters
+                        ),
+                        &#39;training_skill&#39;: Savable.DropDown(self.training_skill, None),
+                        &#39;potions&#39;: Savable.DropDown(self.potions, None),
+                        &#39;potion_attributes&#39;: Savable.DropDown(self.potion_attributes, None),
+                        &#39;boosting_scheme&#39;: Savable.DropDown(self.boosting_scheme, None),
+                        &#39;below_skill&#39;: Savable.DropDown(self.below_skill, None),
+                        &#39;redose_level&#39;: Savable.LineEdit(self.redose_level, None),
+                        &#39;prayers&#39;: Savable.DropDown(self.prayers, None),
+                        &#39;prayer_attributes&#39;: Savable.DropDown(self.prayer_attributes, None),
+
+                        **{s: Savable.CheckBox(getattr(self, s), True) for s in self.special_sets if s != &#39;dharok&#39;},
+                        &#39;dharok&#39;: Savable.LineEdit(self.dharok, 1),
+                }
+
+                for slot in [&#39;head&#39;, &#39;cape&#39;, &#39;neck&#39;, &#39;ammo&#39;, &#39;weapon&#39;, &#39;body&#39;, &#39;legs&#39;, &#39;hands&#39;, &#39;feet&#39;, &#39;ring&#39;]:
+                        equipment_button = getattr(self, f&#34;{slot}_link&#34;)
+                        equipment_button.clicked.connect(
+                                lambda _, slot=slot: self.open_link(slot)
+                        )
+
+
+
+                potion_names = list(list(zip(*inspect.getmembers(boosts.Potions, predicate=inspect.isfunction)))[0])
+                assert &#39;none&#39; in potion_names
+                self.potions.addItem(potion_names.pop(potion_names.index(&#39;none&#39;)))  # Place &#39;none&#39; first
+                self.potions.addItems(potion_names)
+
+                prayer_names = list(list(zip(*inspect.getmembers(boosts.Prayers, predicate=inspect.isfunction)))[0])
+                assert &#39;none&#39; in prayer_names
+                self.prayers.addItem(prayer_names.pop(prayer_names.index(&#39;none&#39;)))  # Place &#39;none&#39; first
+                self.prayers.addItems(prayer_names)
+
+                self.potions.currentIndexChanged.connect(self.on_potion_select)
+                self.boosting_scheme.currentIndexChanged.connect(self.on_boost_scheme_select)
+                self.prayers.currentIndexChanged.connect(self.on_prayer_select)
+                self.redose_level.setValidator(QtGui.QIntValidator(0, 99))
+
+                self.on_boost_scheme_select()
+                self.on_potion_select()
+                self.on_prayer_select()
+
+                # Allow the delete key to remove the selected opponent
+                shortcut = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Delete), self.opponents);
+                shortcut.activated.connect(self.remove_selected_monster)
+
+        def get_selected_sets(self):
+                return [s for s in self.special_sets if (
+                        (s == &#39;dharok&#39; and int(self.entities[s].get())) != 0 or
+                        (s != &#39;dharok&#39; and self.entities[s].get())
+                )]
+
+        def open_link(self, slot):
+                from osrsmath.model.player import get_equipment_by_name
+                item = getattr(self, slot).currentText()
+                try:
+                        equipment = get_equipment_by_name(item)
+                except ValueError as e:
+                        print(e)
+                        return
+
+                pprint(equipment)
+                # Encode ending (item name) to &#34;%xx escape&#34; format.
+                p = Path(get_equipment_by_name(item)[&#39;wiki_url&#39;])
+                url = p.parent/quote(p.name)
+                webbrowser.open(str(url))
+
+        def on_prayer_select(self):
+                if self.prayers.currentText() == &#39;none&#39;:
+                        disable(self.prayer_attributes)
+                else:
+                        enable(self.prayer_attributes)
+
+        def on_potion_select(self):
+                if self.potions.currentText() == &#39;none&#39;:
+                        disable(self.potion_attributes)
+                        disable(self.boosting_scheme)
+                else:
+                        enable(self.potion_attributes)
+                        enable(self.boosting_scheme)
+                self.on_boost_scheme_select()
+
+        def on_boost_scheme_select(self):
+                if self.boosting_scheme.currentText() == &#39;Constant&#39; or self.potions.currentText() == &#39;none&#39;:
+                        disable(self.below_skill)
+                        disable(self.redose_level)
+                        disable(self.label_5)
+                else:
+                        enable(self.below_skill)
+                        enable(self.redose_level)
+                        enable(self.label_5)
+
+        def get_training_skill(self):
+                return self.training_skill.currentText().lower()
+
+        def remove_selected_monster(self):
+                name = self.opponents.takeItem(self.opponents.currentRow()).text()
+                del self.data.monsters[name]
+
+        def add_monster(self, name, monster):
+                self.data.monsters[name] = monster
+                if name not in (self.opponents.item(i).text() for i in range(self.opponents.count())):
+                        self.opponents.addItem(name)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt5.QtWidgets.QWidget</li>
+<li>PyQt5.QtCore.QObject</li>
+<li>sip.wrapper</li>
+<li>PyQt5.QtGui.QPaintDevice</li>
+<li>sip.simplewrapper</li>
+<li><a title="osrsmath.apps.GUI.optimize.optimize_skeleton.Ui_Form" href="../../GUI/optimize/optimize_skeleton.html#osrsmath.apps.GUI.optimize.optimize_skeleton.Ui_Form">Ui_Form</a></li>
+<li><a title="osrsmath.apps.GUI.shared.widgets.Savable" href="../../GUI/shared/widgets.html#osrsmath.apps.GUI.shared.widgets.Savable">Savable</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="osrsmath.apps.optimize.panels.optimize.OptimizePanel.add_monster"><code class="name flex">
+<span>def <span class="ident">add_monster</span></span>(<span>self, name, monster)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_monster(self, name, monster):
+        self.data.monsters[name] = monster
+        if name not in (self.opponents.item(i).text() for i in range(self.opponents.count())):
+                self.opponents.addItem(name)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.optimize.OptimizePanel.get_selected_sets"><code class="name flex">
+<span>def <span class="ident">get_selected_sets</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_selected_sets(self):
+        return [s for s in self.special_sets if (
+                (s == &#39;dharok&#39; and int(self.entities[s].get())) != 0 or
+                (s != &#39;dharok&#39; and self.entities[s].get())
+        )]</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.optimize.OptimizePanel.get_training_skill"><code class="name flex">
+<span>def <span class="ident">get_training_skill</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_training_skill(self):
+        return self.training_skill.currentText().lower()</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.optimize.OptimizePanel.on_boost_scheme_select"><code class="name flex">
+<span>def <span class="ident">on_boost_scheme_select</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_boost_scheme_select(self):
+        if self.boosting_scheme.currentText() == &#39;Constant&#39; or self.potions.currentText() == &#39;none&#39;:
+                disable(self.below_skill)
+                disable(self.redose_level)
+                disable(self.label_5)
+        else:
+                enable(self.below_skill)
+                enable(self.redose_level)
+                enable(self.label_5)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.optimize.OptimizePanel.on_potion_select"><code class="name flex">
+<span>def <span class="ident">on_potion_select</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_potion_select(self):
+        if self.potions.currentText() == &#39;none&#39;:
+                disable(self.potion_attributes)
+                disable(self.boosting_scheme)
+        else:
+                enable(self.potion_attributes)
+                enable(self.boosting_scheme)
+        self.on_boost_scheme_select()</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.optimize.OptimizePanel.on_prayer_select"><code class="name flex">
+<span>def <span class="ident">on_prayer_select</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_prayer_select(self):
+        if self.prayers.currentText() == &#39;none&#39;:
+                disable(self.prayer_attributes)
+        else:
+                enable(self.prayer_attributes)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.optimize.OptimizePanel.open_link"><code class="name flex">
+<span>def <span class="ident">open_link</span></span>(<span>self, slot)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open_link(self, slot):
+        from osrsmath.model.player import get_equipment_by_name
+        item = getattr(self, slot).currentText()
+        try:
+                equipment = get_equipment_by_name(item)
+        except ValueError as e:
+                print(e)
+                return
+
+        pprint(equipment)
+        # Encode ending (item name) to &#34;%xx escape&#34; format.
+        p = Path(get_equipment_by_name(item)[&#39;wiki_url&#39;])
+        url = p.parent/quote(p.name)
+        webbrowser.open(str(url))</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.optimize.OptimizePanel.remove_selected_monster"><code class="name flex">
+<span>def <span class="ident">remove_selected_monster</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def remove_selected_monster(self):
+        name = self.opponents.takeItem(self.opponents.currentRow()).text()
+        del self.data.monsters[name]</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="osrsmath.apps.optimize.panels" href="index.html">osrsmath.apps.optimize.panels</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="osrsmath.apps.optimize.panels.optimize.disable" href="#osrsmath.apps.optimize.panels.optimize.disable">disable</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.optimize.enable" href="#osrsmath.apps.optimize.panels.optimize.enable">enable</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="osrsmath.apps.optimize.panels.optimize.Data" href="#osrsmath.apps.optimize.panels.optimize.Data">Data</a></code></h4>
+</li>
+<li>
+<h4><code><a title="osrsmath.apps.optimize.panels.optimize.OptimizePanel" href="#osrsmath.apps.optimize.panels.optimize.OptimizePanel">OptimizePanel</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.apps.optimize.panels.optimize.OptimizePanel.add_monster" href="#osrsmath.apps.optimize.panels.optimize.OptimizePanel.add_monster">add_monster</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.optimize.OptimizePanel.get_selected_sets" href="#osrsmath.apps.optimize.panels.optimize.OptimizePanel.get_selected_sets">get_selected_sets</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.optimize.OptimizePanel.get_training_skill" href="#osrsmath.apps.optimize.panels.optimize.OptimizePanel.get_training_skill">get_training_skill</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.optimize.OptimizePanel.on_boost_scheme_select" href="#osrsmath.apps.optimize.panels.optimize.OptimizePanel.on_boost_scheme_select">on_boost_scheme_select</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.optimize.OptimizePanel.on_potion_select" href="#osrsmath.apps.optimize.panels.optimize.OptimizePanel.on_potion_select">on_potion_select</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.optimize.OptimizePanel.on_prayer_select" href="#osrsmath.apps.optimize.panels.optimize.OptimizePanel.on_prayer_select">on_prayer_select</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.optimize.OptimizePanel.open_link" href="#osrsmath.apps.optimize.panels.optimize.OptimizePanel.open_link">open_link</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.optimize.OptimizePanel.remove_selected_monster" href="#osrsmath.apps.optimize.panels.optimize.OptimizePanel.remove_selected_monster">remove_selected_monster</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

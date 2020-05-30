@@ -1,0 +1,7 @@
+wheel
+pathos
+numpy
+matplotlib
+scipy
+Dijkstar
+requests

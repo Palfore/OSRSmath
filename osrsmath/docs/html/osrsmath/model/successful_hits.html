@@ -1,0 +1,976 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>osrsmath.model.successful_hits API documentation</title>
+<meta name="description" content="Contains various models dealing with successful hit calculations …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML'></script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>osrsmath.model.successful_hits</code></h1>
+</header>
+<section id="section-intro">
+<p>Contains various models dealing with successful hit calculations.</p>
+<p>Each model inherits from <code><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></code> and implements up to three methods:</p>
+<ul>
+<li><code><a title="osrsmath.model.successful_hits.Model.h" href="#osrsmath.model.successful_hits.Model.h">Model.h()</a></code>, The expected health of an opponent after <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> successful hits.</li>
+<li><code><a title="osrsmath.model.successful_hits.Model.hinv" href="#osrsmath.model.successful_hits.Model.hinv">Model.hinv()</a></code>, The expected number of successful hits for an opponent's health to be <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>,</li>
+<li><code><a title="osrsmath.model.successful_hits.Model.turns_to_kill" href="#osrsmath.model.successful_hits.Model.turns_to_kill">Model.turns_to_kill()</a></code>, The expected number of successful hits to kill an opponent.</li>
+</ul>
+<p>It is not possible for some models to compute all methods.</p>
+<p>Here is a comparison of the <code>turn_to_kill</code> errors from simulation for the different models:
+<img alt="" src="../../../../results/part_II/errors.png"></p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">r&#34;&#34;&#34; Contains various models dealing with successful hit calculations.
+
+        Each model inherits from `Model` and implements up to three methods:
+
+        * `Model.h`, The expected health of an opponent after \(n\) successful hits.
+        * `Model.hinv`, The expected number of successful hits for an opponent&#39;s health to be \(h\),
+        * `Model.turns_to_kill`, The expected number of successful hits to kill an opponent.
+
+        It is not possible for some models to compute all methods.
+
+        Here is a comparison of the `turn_to_kill` errors from simulation for the different models:
+        .. figure:: HEAD/results/part_II/errors.png
+&#34;&#34;&#34;
+# pylint: disable=no-name-in-module  # scipy.special.beta is a C function, so pylint can&#39;t find it.
+# pylint: disable=misplaced-comparison-constant  # formatting is more clear in this math context.
+# pylint: disable=abstract-method  # Not all classes must implement all methods.
+# pylint: disable=invalid-name  # Several math-related one letter names are okay.
+
+from math import ceil, floor, log
+from scipy.special import beta
+import scipy.optimize
+import numpy as np
+
+def n_choose_k(n, k):
+        &#34;&#34;&#34; Extended to non-integers
+
+        See https://en.wikipedia.org/wiki/Binomial_coefficient#Two_real_or_complex_valued_arguments
+        &#34;&#34;&#34;
+        return 1 / ((n + 1) * beta(n - k + 1, k + 1))
+
+def validate(*, n=None, h=None, h_0=None, M=None, a=None, model=None):
+        &#34;&#34;&#34; Validates any input parameter according to `Model`.
+
+        Must be called with keyword arguments only.
+        &#34;&#34;&#34;
+        tolerance = 1e-12
+        if n is not None and not 0 &lt;= n:
+                raise ValueError(f&#34;Number of attacks (n) must be non-negative, not {n}.&#34;)
+        if h is not None and not 0 &lt;= h:
+                raise ValueError(f&#34;Final health (h) must be non-negative, not {h}.&#34;)
+        if h_0 is not None and not 1 &lt;= h_0:
+                raise ValueError(f&#34;Initial health (h_0) must be positive, not {h_0}.&#34;)
+        if M is not None and not 1 &lt;= M:
+                raise ValueError(f&#34;Max hit (M) must be positive, not {M}.&#34;)
+        if a is not None and not tolerance &lt;= a &lt;= 1:
+                raise ValueError(f&#39;Accuracy must be in [{tolerance}, 1], not {a}&#39;)
+        if model is not None and model not in Model.__subclasses__():
+                raise ValueError(f&#39;Model must be one of: {[cls.__name__ for cls in Model.__subclasses__()]}&#39;)
+
+class Model:
+        &#34;&#34;&#34; Computes various quantities given the model&#39;s assumptions. &#34;&#34;&#34;
+
+        def h(self, n: float, h_0: float, M: int):
+                r&#34;&#34;&#34; Returns the health after \( n \) successful hits.
+
+                Args:
+                        n: The number of successful attacks \( n \in [0, \infty) \).
+                        h_0: The initial health of the opponent \( h_0 \in [1, \infty) \).
+                        M: The max hit of the attacker \( M \in [1, \infty) \).
+                Returns:
+                        The health after \( n \) attacks.
+                &#34;&#34;&#34;
+                raise NotImplementedError()
+
+        def hinv(self, h, h_0, M):
+                r&#34;&#34;&#34; Calculates the number of successful attacks required to get an opponent to a given health.
+                Args:
+                        h: The final health of the opponent \( h \in [0, h_0) \).
+                        h_0: The initial health of the opponent \( h_0 \in [1, \infty) \).
+                        M: The max hit of the attacker \( M \in [1, \infty) \).
+                Returns:
+                        The number of successful attacks to get to \(h\) health.
+                &#34;&#34;&#34;
+                raise NotImplementedError()
+
+        def turns_to_kill(self, h_0, M):
+                r&#34;&#34;&#34; Calculates the number of turns kill an opponent.
+
+                Args:
+                        h: The final health of the opponent \( h \in [0, h_0) \).
+                        h_0: The initial health of the opponent \( h_0 \in [1, \infty) \).
+                        M: The max hit of the attacker \( M \in [1, \infty) \).
+                Returns:
+                        The number of successful attacks to kill an opponent.
+                &#34;&#34;&#34;
+                return self.hinv(0, h_0, M)
+
+
+class Crude(Model):
+        &#34;&#34;&#34; A crude implementation which doesn&#39;t consider overkill.
+
+        This is the simplest model.
+
+        Percent error for `turns_to_kill` when compared to simulation:
+        .. image:: HEAD/results/part_II/models/Crude.png
+        &#34;&#34;&#34;
+        def h(self, n, h_0, M):
+                validate(n=n, h_0=h_0, M=M)
+                return h_0 - n*M/2
+
+        def hinv(self, h, h_0, M):
+                validate(h=h, h_0=h_0, M=M)
+                return 2 * (h_0 - h) / M
+
+
+class Average(Model):
+        &#34;&#34;&#34; Considers the piecewise damage as an average for a simplified treatment.
+
+        This average assumes the opponent has all of its health depleted and so only `turns_to_kill` is implemented.
+
+        Percent error for `turns_to_kill` when compared to simulation:
+        .. image:: HEAD/results/part_II/models/Average.png
+        &#34;&#34;&#34;
+
+        def turns_to_kill(self, h_0, M):
+                validate(h_0=h_0, M=M)
+                g = min(M, h_0)
+
+                coeff = g * (g + 1) / (h_0 * (M + 1))
+                left = 0.5 * (M + h_0 + 1)
+                right = (1 / 3) * (2 * g + 1)
+                avg_d = coeff * (left - right)
+                return h_0 / avg_d
+
+
+class Recursive(Model):
+        &#34;&#34;&#34; This model considers the piecewise damage as such, providing a recursive solution.
+
+        Percent error for `turns_to_kill` when compared to simulation:
+        .. image:: HEAD/results/part_II/models/Recursive.png
+        &#34;&#34;&#34;
+        def h(self, n, h_0, M):
+                validate(n=n, h_0=h_0, M=M)
+                L = 2 * (h_0 / M - 1)
+                if n &lt; L:
+                        return h_0 - n*M / 2
+                gamma = 0.5/(M + 1)
+                return self.f(n-L, gamma, M)
+
+        def hinv(self, h, h_0, M):
+                validate(h=h, h_0=h_0, M=M)
+                starting_guess = Crude().hinv(h, h_0, M)
+
+                def f(n):
+                        if n &lt; 0:
+                                return np.inf
+                        return h - self.h(n, h_0, M)
+                answer = scipy.optimize.newton(f, x0=starting_guess, maxiter=1000)
+                return answer
+
+        def turns_to_kill(self, h_0, M):
+                # Override: The recursive models consider death at h=1
+                validate(h_0=h_0, M=M)
+                return self.hinv(1, h_0, M)
+
+        def f(self, n, gamma, f_0):
+                &#34;&#34;&#34; The recursive kernel. &#34;&#34;&#34;
+                if n &lt; 1:
+                        return 1 / gamma * (gamma*f_0)**(2**n)
+                f_n = self.f(n-1, gamma, f_0)
+                return gamma*(f_n**2 + f_n)
+
+class RecursiveApproximation(Model):
+        &#34;&#34;&#34; This model simplifies the `Recursive` model to obtain an analytic expressions.
+
+        Percent error for `turns_to_kill` when compared to simulation:
+        .. image:: HEAD/results/part_II/models/RecursiveApproximation.png
+        &#34;&#34;&#34;
+
+        def h(self, n, h_0, M):
+                validate(n=n, h_0=h_0, M=M)
+                L = 2 * (h_0 / M - 1)
+                if n &lt;= L:
+                        return Crude().h(n, h_0, M)
+                gamma = 0.5/(M + 1)
+                return 1 / gamma * (0.5 - gamma)**(2**(n-L))
+
+        def hinv(self, h, h_0, M):
+                validate(h=h, h_0=h_0, M=M)
+                if h &gt;= M:
+                        return Crude().hinv(h, h_0, M)
+                g = 0.5 / (M + 1)
+                L = 2*(h_0 / M - 1)
+                return log(log(g*h, .5 - g), 2) + L
+
+        def turns_to_kill(self, h_0, M):
+                # Override: The recursive models consider death at h=1
+                validate(h_0=h_0, M=M)
+                return self.hinv(1, h_0, M)
+
+
+class MarkovChain(Model):
+        &#34;&#34;&#34; This model uses a Markov Chain analysis.
+
+        Percent error for `turns_to_kill` when compared to simulation:
+        .. image:: HEAD/results/part_II/models/MarkovChain.png
+        &#34;&#34;&#34;
+
+        def turns_to_kill(self, h_0, M):
+                validate(h_0=h_0, M=M)
+                # pylint: disable=bad-continuation
+                if M &lt;= 10 and h_0 &gt; 30:
+                        # This region suffers from overflow error and other numerical inaccuracies
+                        # Instead the asymptotic behavior is used.
+                        return MarkovChainApproximation().turns_to_kill(h_0, M)
+                return sum(
+                        (
+                                (((M + 1) / M)**(h_0 - M*i)) *
+                                (-1 / (M + 1))**i *
+                                n_choose_k(h_0 - M*i - 1, i)
+                        ) for i in range(0, floor((h_0 - 1) / (M+1)) + 1)
+                )
+
+
+class MarkovChainApproximation(Model):
+        &#34;&#34;&#34; This model uses a asymptotic expansion of `MarkovChain` to obtain an analytic expression.
+
+        Percent error for `turns_to_kill` when compared to simulation:
+        .. image:: HEAD/results/part_II/models/MarkovChainApproximation.png
+        &#34;&#34;&#34;
+
+        def turns_to_kill(self, h_0, M):
+                validate(h_0=h_0, M=M)
+                return (2 / M) * (h_0 + (M - 1) / 3)
+
+
+class Simulation(Model):
+        r&#34;&#34;&#34; Simulates \(N\) kills to experimentally approximate the required functions.
+
+                Warning: Due to inaccurate negative health handling, `h` should not be trusted when \(h &lt; m\). &#34;&#34;&#34;
+        DEFAULT_N = 10_000
+
+        def __init__(self, N=DEFAULT_N):
+                self.N = N
+
+        def h(self, n, h_0, M):
+                validate(n=n, h_0=h_0, M=M)
+                print(&#34;Warning: This method might not be accurate for h(n) &lt; M.&#34;)
+                h_n = 0
+                for _ in range(self.N):
+                        h = h_0
+
+                        # To handle non-integer n, we only need the average to work out.
+                        # So if you have n=5.3, do 5 iterations with 30% probability and
+                        # 6 with 70%.
+                        fractional = n - floor(n)
+                        if np.random.uniform(0, 1) &lt; fractional:
+                                n_fractional = ceil(n)
+                        else:
+                                n_fractional = floor(n)
+
+                        for _ in range(n_fractional):
+                                h -= np.random.uniform(0, M)
+                        h_n += max(h, 0)  # This handling makes this inaccurate, not sure how to fix.
+                return h_n / self.N
+
+        def hinv(self, h, h_0, M):
+                validate(h=h, h_0=h_0, M=M)
+                hits = 0
+                for _ in range(self.N):
+                        h_i = h_0
+                        while h_i &gt; h:
+                                h_i -= np.random.random_integers(0, M)
+                                hits += 1
+                return hits / self.N</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="osrsmath.model.successful_hits.n_choose_k"><code class="name flex">
+<span>def <span class="ident">n_choose_k</span></span>(<span>n, k)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Extended to non-integers</p>
+<p>See <a href="https://en.wikipedia.org/wiki/Binomial_coefficient#Two_real_or_complex_valued_arguments">https://en.wikipedia.org/wiki/Binomial_coefficient#Two_real_or_complex_valued_arguments</a></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def n_choose_k(n, k):
+        &#34;&#34;&#34; Extended to non-integers
+
+        See https://en.wikipedia.org/wiki/Binomial_coefficient#Two_real_or_complex_valued_arguments
+        &#34;&#34;&#34;
+        return 1 / ((n + 1) * beta(n - k + 1, k + 1))</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.model.successful_hits.validate"><code class="name flex">
+<span>def <span class="ident">validate</span></span>(<span>*, n=None, h=None, h_0=None, M=None, a=None, model=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Validates any input parameter according to <code><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></code>.</p>
+<p>Must be called with keyword arguments only.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate(*, n=None, h=None, h_0=None, M=None, a=None, model=None):
+        &#34;&#34;&#34; Validates any input parameter according to `Model`.
+
+        Must be called with keyword arguments only.
+        &#34;&#34;&#34;
+        tolerance = 1e-12
+        if n is not None and not 0 &lt;= n:
+                raise ValueError(f&#34;Number of attacks (n) must be non-negative, not {n}.&#34;)
+        if h is not None and not 0 &lt;= h:
+                raise ValueError(f&#34;Final health (h) must be non-negative, not {h}.&#34;)
+        if h_0 is not None and not 1 &lt;= h_0:
+                raise ValueError(f&#34;Initial health (h_0) must be positive, not {h_0}.&#34;)
+        if M is not None and not 1 &lt;= M:
+                raise ValueError(f&#34;Max hit (M) must be positive, not {M}.&#34;)
+        if a is not None and not tolerance &lt;= a &lt;= 1:
+                raise ValueError(f&#39;Accuracy must be in [{tolerance}, 1], not {a}&#39;)
+        if model is not None and model not in Model.__subclasses__():
+                raise ValueError(f&#39;Model must be one of: {[cls.__name__ for cls in Model.__subclasses__()]}&#39;)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="osrsmath.model.successful_hits.Average"><code class="flex name class">
+<span>class <span class="ident">Average</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Considers the piecewise damage as an average for a simplified treatment.</p>
+<p>This average assumes the opponent has all of its health depleted and so only <code>turns_to_kill</code> is implemented.</p>
+<p>Percent error for <code>turns_to_kill</code> when compared to simulation:
+<img alt="" src="../../../../results/part_II/models/Average.png"></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Average(Model):
+        &#34;&#34;&#34; Considers the piecewise damage as an average for a simplified treatment.
+
+        This average assumes the opponent has all of its health depleted and so only `turns_to_kill` is implemented.
+
+        Percent error for `turns_to_kill` when compared to simulation:
+        .. image:: HEAD/results/part_II/models/Average.png
+        &#34;&#34;&#34;
+
+        def turns_to_kill(self, h_0, M):
+                validate(h_0=h_0, M=M)
+                g = min(M, h_0)
+
+                coeff = g * (g + 1) / (h_0 * (M + 1))
+                left = 0.5 * (M + h_0 + 1)
+                right = (1 / 3) * (2 * g + 1)
+                avg_d = coeff * (left - right)
+                return h_0 / avg_d</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></b></code>:
+<ul class="hlist">
+<li><code><a title="osrsmath.model.successful_hits.Model.h" href="#osrsmath.model.successful_hits.Model.h">h</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.hinv" href="#osrsmath.model.successful_hits.Model.hinv">hinv</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.turns_to_kill" href="#osrsmath.model.successful_hits.Model.turns_to_kill">turns_to_kill</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="osrsmath.model.successful_hits.Crude"><code class="flex name class">
+<span>class <span class="ident">Crude</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>A crude implementation which doesn't consider overkill.</p>
+<p>This is the simplest model.</p>
+<p>Percent error for <code>turns_to_kill</code> when compared to simulation:
+<img alt="" src="../../../../results/part_II/models/Crude.png"></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Crude(Model):
+        &#34;&#34;&#34; A crude implementation which doesn&#39;t consider overkill.
+
+        This is the simplest model.
+
+        Percent error for `turns_to_kill` when compared to simulation:
+        .. image:: HEAD/results/part_II/models/Crude.png
+        &#34;&#34;&#34;
+        def h(self, n, h_0, M):
+                validate(n=n, h_0=h_0, M=M)
+                return h_0 - n*M/2
+
+        def hinv(self, h, h_0, M):
+                validate(h=h, h_0=h_0, M=M)
+                return 2 * (h_0 - h) / M</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></b></code>:
+<ul class="hlist">
+<li><code><a title="osrsmath.model.successful_hits.Model.h" href="#osrsmath.model.successful_hits.Model.h">h</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.hinv" href="#osrsmath.model.successful_hits.Model.hinv">hinv</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.turns_to_kill" href="#osrsmath.model.successful_hits.Model.turns_to_kill">turns_to_kill</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="osrsmath.model.successful_hits.MarkovChain"><code class="flex name class">
+<span>class <span class="ident">MarkovChain</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>This model uses a Markov Chain analysis.</p>
+<p>Percent error for <code>turns_to_kill</code> when compared to simulation:
+<img alt="" src="../../../../results/part_II/models/MarkovChain.png"></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MarkovChain(Model):
+        &#34;&#34;&#34; This model uses a Markov Chain analysis.
+
+        Percent error for `turns_to_kill` when compared to simulation:
+        .. image:: HEAD/results/part_II/models/MarkovChain.png
+        &#34;&#34;&#34;
+
+        def turns_to_kill(self, h_0, M):
+                validate(h_0=h_0, M=M)
+                # pylint: disable=bad-continuation
+                if M &lt;= 10 and h_0 &gt; 30:
+                        # This region suffers from overflow error and other numerical inaccuracies
+                        # Instead the asymptotic behavior is used.
+                        return MarkovChainApproximation().turns_to_kill(h_0, M)
+                return sum(
+                        (
+                                (((M + 1) / M)**(h_0 - M*i)) *
+                                (-1 / (M + 1))**i *
+                                n_choose_k(h_0 - M*i - 1, i)
+                        ) for i in range(0, floor((h_0 - 1) / (M+1)) + 1)
+                )</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></b></code>:
+<ul class="hlist">
+<li><code><a title="osrsmath.model.successful_hits.Model.h" href="#osrsmath.model.successful_hits.Model.h">h</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.hinv" href="#osrsmath.model.successful_hits.Model.hinv">hinv</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.turns_to_kill" href="#osrsmath.model.successful_hits.Model.turns_to_kill">turns_to_kill</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="osrsmath.model.successful_hits.MarkovChainApproximation"><code class="flex name class">
+<span>class <span class="ident">MarkovChainApproximation</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>This model uses a asymptotic expansion of <code><a title="osrsmath.model.successful_hits.MarkovChain" href="#osrsmath.model.successful_hits.MarkovChain">MarkovChain</a></code> to obtain an analytic expression.</p>
+<p>Percent error for <code>turns_to_kill</code> when compared to simulation:
+<img alt="" src="../../../../results/part_II/models/MarkovChainApproximation.png"></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MarkovChainApproximation(Model):
+        &#34;&#34;&#34; This model uses a asymptotic expansion of `MarkovChain` to obtain an analytic expression.
+
+        Percent error for `turns_to_kill` when compared to simulation:
+        .. image:: HEAD/results/part_II/models/MarkovChainApproximation.png
+        &#34;&#34;&#34;
+
+        def turns_to_kill(self, h_0, M):
+                validate(h_0=h_0, M=M)
+                return (2 / M) * (h_0 + (M - 1) / 3)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></b></code>:
+<ul class="hlist">
+<li><code><a title="osrsmath.model.successful_hits.Model.h" href="#osrsmath.model.successful_hits.Model.h">h</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.hinv" href="#osrsmath.model.successful_hits.Model.hinv">hinv</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.turns_to_kill" href="#osrsmath.model.successful_hits.Model.turns_to_kill">turns_to_kill</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="osrsmath.model.successful_hits.Model"><code class="flex name class">
+<span>class <span class="ident">Model</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes various quantities given the model's assumptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Model:
+        &#34;&#34;&#34; Computes various quantities given the model&#39;s assumptions. &#34;&#34;&#34;
+
+        def h(self, n: float, h_0: float, M: int):
+                r&#34;&#34;&#34; Returns the health after \( n \) successful hits.
+
+                Args:
+                        n: The number of successful attacks \( n \in [0, \infty) \).
+                        h_0: The initial health of the opponent \( h_0 \in [1, \infty) \).
+                        M: The max hit of the attacker \( M \in [1, \infty) \).
+                Returns:
+                        The health after \( n \) attacks.
+                &#34;&#34;&#34;
+                raise NotImplementedError()
+
+        def hinv(self, h, h_0, M):
+                r&#34;&#34;&#34; Calculates the number of successful attacks required to get an opponent to a given health.
+                Args:
+                        h: The final health of the opponent \( h \in [0, h_0) \).
+                        h_0: The initial health of the opponent \( h_0 \in [1, \infty) \).
+                        M: The max hit of the attacker \( M \in [1, \infty) \).
+                Returns:
+                        The number of successful attacks to get to \(h\) health.
+                &#34;&#34;&#34;
+                raise NotImplementedError()
+
+        def turns_to_kill(self, h_0, M):
+                r&#34;&#34;&#34; Calculates the number of turns kill an opponent.
+
+                Args:
+                        h: The final health of the opponent \( h \in [0, h_0) \).
+                        h_0: The initial health of the opponent \( h_0 \in [1, \infty) \).
+                        M: The max hit of the attacker \( M \in [1, \infty) \).
+                Returns:
+                        The number of successful attacks to kill an opponent.
+                &#34;&#34;&#34;
+                return self.hinv(0, h_0, M)</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="osrsmath.model.successful_hits.Average" href="#osrsmath.model.successful_hits.Average">Average</a></li>
+<li><a title="osrsmath.model.successful_hits.Crude" href="#osrsmath.model.successful_hits.Crude">Crude</a></li>
+<li><a title="osrsmath.model.successful_hits.MarkovChain" href="#osrsmath.model.successful_hits.MarkovChain">MarkovChain</a></li>
+<li><a title="osrsmath.model.successful_hits.MarkovChainApproximation" href="#osrsmath.model.successful_hits.MarkovChainApproximation">MarkovChainApproximation</a></li>
+<li><a title="osrsmath.model.successful_hits.Recursive" href="#osrsmath.model.successful_hits.Recursive">Recursive</a></li>
+<li><a title="osrsmath.model.successful_hits.RecursiveApproximation" href="#osrsmath.model.successful_hits.RecursiveApproximation">RecursiveApproximation</a></li>
+<li><a title="osrsmath.model.successful_hits.Simulation" href="#osrsmath.model.successful_hits.Simulation">Simulation</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="osrsmath.model.successful_hits.Model.h"><code class="name flex">
+<span>def <span class="ident">h</span></span>(<span>self, n: float, h_0: float, M: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the health after <span><span class="MathJax_Preview"> n </span><script type="math/tex"> n </script></span> successful hits.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>n</code></strong></dt>
+<dd>The number of successful attacks <span><span class="MathJax_Preview"> n \in [0, \infty) </span><script type="math/tex"> n \in [0, \infty) </script></span>.</dd>
+<dt><strong><code>h_0</code></strong></dt>
+<dd>The initial health of the opponent <span><span class="MathJax_Preview"> h_0 \in [1, \infty) </span><script type="math/tex"> h_0 \in [1, \infty) </script></span>.</dd>
+<dt><strong><code>M</code></strong></dt>
+<dd>The max hit of the attacker <span><span class="MathJax_Preview"> M \in [1, \infty) </span><script type="math/tex"> M \in [1, \infty) </script></span>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The health after <span><span class="MathJax_Preview"> n </span><script type="math/tex"> n </script></span> attacks.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def h(self, n: float, h_0: float, M: int):
+        r&#34;&#34;&#34; Returns the health after \( n \) successful hits.
+
+        Args:
+                n: The number of successful attacks \( n \in [0, \infty) \).
+                h_0: The initial health of the opponent \( h_0 \in [1, \infty) \).
+                M: The max hit of the attacker \( M \in [1, \infty) \).
+        Returns:
+                The health after \( n \) attacks.
+        &#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.model.successful_hits.Model.hinv"><code class="name flex">
+<span>def <span class="ident">hinv</span></span>(<span>self, h, h_0, M)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculates the number of successful attacks required to get an opponent to a given health.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>h</code></strong></dt>
+<dd>The final health of the opponent <span><span class="MathJax_Preview"> h \in [0, h_0) </span><script type="math/tex"> h \in [0, h_0) </script></span>.</dd>
+<dt><strong><code>h_0</code></strong></dt>
+<dd>The initial health of the opponent <span><span class="MathJax_Preview"> h_0 \in [1, \infty) </span><script type="math/tex"> h_0 \in [1, \infty) </script></span>.</dd>
+<dt><strong><code>M</code></strong></dt>
+<dd>The max hit of the attacker <span><span class="MathJax_Preview"> M \in [1, \infty) </span><script type="math/tex"> M \in [1, \infty) </script></span>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The number of successful attacks to get to <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span> health.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hinv(self, h, h_0, M):
+        r&#34;&#34;&#34; Calculates the number of successful attacks required to get an opponent to a given health.
+        Args:
+                h: The final health of the opponent \( h \in [0, h_0) \).
+                h_0: The initial health of the opponent \( h_0 \in [1, \infty) \).
+                M: The max hit of the attacker \( M \in [1, \infty) \).
+        Returns:
+                The number of successful attacks to get to \(h\) health.
+        &#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.model.successful_hits.Model.turns_to_kill"><code class="name flex">
+<span>def <span class="ident">turns_to_kill</span></span>(<span>self, h_0, M)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculates the number of turns kill an opponent.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>h</code></strong></dt>
+<dd>The final health of the opponent <span><span class="MathJax_Preview"> h \in [0, h_0) </span><script type="math/tex"> h \in [0, h_0) </script></span>.</dd>
+<dt><strong><code>h_0</code></strong></dt>
+<dd>The initial health of the opponent <span><span class="MathJax_Preview"> h_0 \in [1, \infty) </span><script type="math/tex"> h_0 \in [1, \infty) </script></span>.</dd>
+<dt><strong><code>M</code></strong></dt>
+<dd>The max hit of the attacker <span><span class="MathJax_Preview"> M \in [1, \infty) </span><script type="math/tex"> M \in [1, \infty) </script></span>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>The number of successful attacks to kill an opponent.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def turns_to_kill(self, h_0, M):
+        r&#34;&#34;&#34; Calculates the number of turns kill an opponent.
+
+        Args:
+                h: The final health of the opponent \( h \in [0, h_0) \).
+                h_0: The initial health of the opponent \( h_0 \in [1, \infty) \).
+                M: The max hit of the attacker \( M \in [1, \infty) \).
+        Returns:
+                The number of successful attacks to kill an opponent.
+        &#34;&#34;&#34;
+        return self.hinv(0, h_0, M)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="osrsmath.model.successful_hits.Recursive"><code class="flex name class">
+<span>class <span class="ident">Recursive</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>This model considers the piecewise damage as such, providing a recursive solution.</p>
+<p>Percent error for <code>turns_to_kill</code> when compared to simulation:
+<img alt="" src="../../../../results/part_II/models/Recursive.png"></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Recursive(Model):
+        &#34;&#34;&#34; This model considers the piecewise damage as such, providing a recursive solution.
+
+        Percent error for `turns_to_kill` when compared to simulation:
+        .. image:: HEAD/results/part_II/models/Recursive.png
+        &#34;&#34;&#34;
+        def h(self, n, h_0, M):
+                validate(n=n, h_0=h_0, M=M)
+                L = 2 * (h_0 / M - 1)
+                if n &lt; L:
+                        return h_0 - n*M / 2
+                gamma = 0.5/(M + 1)
+                return self.f(n-L, gamma, M)
+
+        def hinv(self, h, h_0, M):
+                validate(h=h, h_0=h_0, M=M)
+                starting_guess = Crude().hinv(h, h_0, M)
+
+                def f(n):
+                        if n &lt; 0:
+                                return np.inf
+                        return h - self.h(n, h_0, M)
+                answer = scipy.optimize.newton(f, x0=starting_guess, maxiter=1000)
+                return answer
+
+        def turns_to_kill(self, h_0, M):
+                # Override: The recursive models consider death at h=1
+                validate(h_0=h_0, M=M)
+                return self.hinv(1, h_0, M)
+
+        def f(self, n, gamma, f_0):
+                &#34;&#34;&#34; The recursive kernel. &#34;&#34;&#34;
+                if n &lt; 1:
+                        return 1 / gamma * (gamma*f_0)**(2**n)
+                f_n = self.f(n-1, gamma, f_0)
+                return gamma*(f_n**2 + f_n)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="osrsmath.model.successful_hits.Recursive.f"><code class="name flex">
+<span>def <span class="ident">f</span></span>(<span>self, n, gamma, f_0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The recursive kernel.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def f(self, n, gamma, f_0):
+        &#34;&#34;&#34; The recursive kernel. &#34;&#34;&#34;
+        if n &lt; 1:
+                return 1 / gamma * (gamma*f_0)**(2**n)
+        f_n = self.f(n-1, gamma, f_0)
+        return gamma*(f_n**2 + f_n)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></b></code>:
+<ul class="hlist">
+<li><code><a title="osrsmath.model.successful_hits.Model.h" href="#osrsmath.model.successful_hits.Model.h">h</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.hinv" href="#osrsmath.model.successful_hits.Model.hinv">hinv</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.turns_to_kill" href="#osrsmath.model.successful_hits.Model.turns_to_kill">turns_to_kill</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="osrsmath.model.successful_hits.RecursiveApproximation"><code class="flex name class">
+<span>class <span class="ident">RecursiveApproximation</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>This model simplifies the <code><a title="osrsmath.model.successful_hits.Recursive" href="#osrsmath.model.successful_hits.Recursive">Recursive</a></code> model to obtain an analytic expressions.</p>
+<p>Percent error for <code>turns_to_kill</code> when compared to simulation:
+<img alt="" src="../../../../results/part_II/models/RecursiveApproximation.png"></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RecursiveApproximation(Model):
+        &#34;&#34;&#34; This model simplifies the `Recursive` model to obtain an analytic expressions.
+
+        Percent error for `turns_to_kill` when compared to simulation:
+        .. image:: HEAD/results/part_II/models/RecursiveApproximation.png
+        &#34;&#34;&#34;
+
+        def h(self, n, h_0, M):
+                validate(n=n, h_0=h_0, M=M)
+                L = 2 * (h_0 / M - 1)
+                if n &lt;= L:
+                        return Crude().h(n, h_0, M)
+                gamma = 0.5/(M + 1)
+                return 1 / gamma * (0.5 - gamma)**(2**(n-L))
+
+        def hinv(self, h, h_0, M):
+                validate(h=h, h_0=h_0, M=M)
+                if h &gt;= M:
+                        return Crude().hinv(h, h_0, M)
+                g = 0.5 / (M + 1)
+                L = 2*(h_0 / M - 1)
+                return log(log(g*h, .5 - g), 2) + L
+
+        def turns_to_kill(self, h_0, M):
+                # Override: The recursive models consider death at h=1
+                validate(h_0=h_0, M=M)
+                return self.hinv(1, h_0, M)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></b></code>:
+<ul class="hlist">
+<li><code><a title="osrsmath.model.successful_hits.Model.h" href="#osrsmath.model.successful_hits.Model.h">h</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.hinv" href="#osrsmath.model.successful_hits.Model.hinv">hinv</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.turns_to_kill" href="#osrsmath.model.successful_hits.Model.turns_to_kill">turns_to_kill</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="osrsmath.model.successful_hits.Simulation"><code class="flex name class">
+<span>class <span class="ident">Simulation</span></span>
+<span>(</span><span>N=10000)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Simulates <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> kills to experimentally approximate the required functions.</p>
+<p>Warning: Due to inaccurate negative health handling, <code>h</code> should not be trusted when <span><span class="MathJax_Preview">h &lt; m</span><script type="math/tex">h < m</script></span>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Simulation(Model):
+        r&#34;&#34;&#34; Simulates \(N\) kills to experimentally approximate the required functions.
+
+                Warning: Due to inaccurate negative health handling, `h` should not be trusted when \(h &lt; m\). &#34;&#34;&#34;
+        DEFAULT_N = 10_000
+
+        def __init__(self, N=DEFAULT_N):
+                self.N = N
+
+        def h(self, n, h_0, M):
+                validate(n=n, h_0=h_0, M=M)
+                print(&#34;Warning: This method might not be accurate for h(n) &lt; M.&#34;)
+                h_n = 0
+                for _ in range(self.N):
+                        h = h_0
+
+                        # To handle non-integer n, we only need the average to work out.
+                        # So if you have n=5.3, do 5 iterations with 30% probability and
+                        # 6 with 70%.
+                        fractional = n - floor(n)
+                        if np.random.uniform(0, 1) &lt; fractional:
+                                n_fractional = ceil(n)
+                        else:
+                                n_fractional = floor(n)
+
+                        for _ in range(n_fractional):
+                                h -= np.random.uniform(0, M)
+                        h_n += max(h, 0)  # This handling makes this inaccurate, not sure how to fix.
+                return h_n / self.N
+
+        def hinv(self, h, h_0, M):
+                validate(h=h, h_0=h_0, M=M)
+                hits = 0
+                for _ in range(self.N):
+                        h_i = h_0
+                        while h_i &gt; h:
+                                h_i -= np.random.random_integers(0, M)
+                                hits += 1
+                return hits / self.N</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="osrsmath.model.successful_hits.Simulation.DEFAULT_N"><code class="name">var <span class="ident">DEFAULT_N</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></b></code>:
+<ul class="hlist">
+<li><code><a title="osrsmath.model.successful_hits.Model.h" href="#osrsmath.model.successful_hits.Model.h">h</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.hinv" href="#osrsmath.model.successful_hits.Model.hinv">hinv</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.turns_to_kill" href="#osrsmath.model.successful_hits.Model.turns_to_kill">turns_to_kill</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="osrsmath.model" href="index.html">osrsmath.model</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="osrsmath.model.successful_hits.n_choose_k" href="#osrsmath.model.successful_hits.n_choose_k">n_choose_k</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.validate" href="#osrsmath.model.successful_hits.validate">validate</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="osrsmath.model.successful_hits.Average" href="#osrsmath.model.successful_hits.Average">Average</a></code></h4>
+</li>
+<li>
+<h4><code><a title="osrsmath.model.successful_hits.Crude" href="#osrsmath.model.successful_hits.Crude">Crude</a></code></h4>
+</li>
+<li>
+<h4><code><a title="osrsmath.model.successful_hits.MarkovChain" href="#osrsmath.model.successful_hits.MarkovChain">MarkovChain</a></code></h4>
+</li>
+<li>
+<h4><code><a title="osrsmath.model.successful_hits.MarkovChainApproximation" href="#osrsmath.model.successful_hits.MarkovChainApproximation">MarkovChainApproximation</a></code></h4>
+</li>
+<li>
+<h4><code><a title="osrsmath.model.successful_hits.Model" href="#osrsmath.model.successful_hits.Model">Model</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.model.successful_hits.Model.h" href="#osrsmath.model.successful_hits.Model.h">h</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.hinv" href="#osrsmath.model.successful_hits.Model.hinv">hinv</a></code></li>
+<li><code><a title="osrsmath.model.successful_hits.Model.turns_to_kill" href="#osrsmath.model.successful_hits.Model.turns_to_kill">turns_to_kill</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="osrsmath.model.successful_hits.Recursive" href="#osrsmath.model.successful_hits.Recursive">Recursive</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.model.successful_hits.Recursive.f" href="#osrsmath.model.successful_hits.Recursive.f">f</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="osrsmath.model.successful_hits.RecursiveApproximation" href="#osrsmath.model.successful_hits.RecursiveApproximation">RecursiveApproximation</a></code></h4>
+</li>
+<li>
+<h4><code><a title="osrsmath.model.successful_hits.Simulation" href="#osrsmath.model.successful_hits.Simulation">Simulation</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.model.successful_hits.Simulation.DEFAULT_N" href="#osrsmath.model.successful_hits.Simulation.DEFAULT_N">DEFAULT_N</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

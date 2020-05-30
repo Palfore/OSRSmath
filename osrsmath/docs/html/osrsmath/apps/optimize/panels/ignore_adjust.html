@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>osrsmath.apps.optimize.panels.ignore_adjust API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML'></script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>osrsmath.apps.optimize.panels.ignore_adjust</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from osrsmath.apps.GUI.optimize.ignore_adjust_skeleton import Ui_IgnoreAdjustPanel
+from osrsmath.apps.GUI.shared.widgets import Savable
+from PyQt5 import QtCore, QtGui, QtWidgets
+import ast
+import re
+
+class Data:
+        pass
+
+class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
+        def __init__(self, parent=None):
+                super().__init__(parent)
+                self.setupUi(self)
+
+                self.data = Data()
+                self.data.ignore = &#39;&#39;
+                self.data.adjust = r&#39;{}&#39;
+                self.entities = {
+                        &#39;ignore_data&#39;: Savable.Entity(
+                                None, None,
+                                lambda o, v: setattr(self.data, &#39;ignore&#39;, v),
+                                lambda o: self.data.ignore
+                        ),
+                        &#39;adjust_data&#39;: Savable.Entity(
+                                None, None,
+                                lambda o, v: setattr(self.data, &#39;adjust&#39;, v),
+                                lambda o: self.data.adjust
+                        ),
+                        &#39;ignore_toggle&#39;: Savable.Entity(
+                                self.ignore, True,
+                                lambda o, v: o.setChecked(v),
+                                lambda o: o.isChecked()
+                        ),
+                        &#39;adjust_toggle&#39;: Savable.Entity(
+                                self.adjustments, False,
+                                lambda o, v: o.setChecked(v),
+                                lambda o: o.isChecked()
+                        ),
+                }
+
+                self.entities[&#39;ignore_toggle&#39;].object.toggled.connect(self.on_toggle_change)
+                # self.entities[&#39;adjust_toggle&#39;].object.toggled.connect(self.on_toggle_change)  # only one required
+                self.text.setTabStopDistance(12)
+                self.text.textChanged.connect(self.update_data_from_text)
+
+        def get_ignore(self):
+                text = self.entities[&#39;ignore_data&#39;].get()
+                text = &#39;&#34;,\n&#34;&#39;.join([line.strip() for line in text.split(&#39;\n&#39;) if not any([
+                        line.startswith(&#39;#&#39;),
+                        &#39;USER IGNORE&#39; in line,
+                        &#39;DEFAULT IGNORE&#39; in line
+                ])])
+                return ast.literal_eval(f&#39;[&#34;{text}&#34;]&#39;)
+
+        def get_adjust(self):
+                text = self.entities[&#39;adjust_data&#39;].get()
+                first = True
+
+                json_object = {}
+                obj = None
+                for i, line in enumerate(text.split(&#39;\n&#39;)):
+                        if &#39;USER ADJUSTMENTS&#39; in line:
+                                continue
+                        if &#39;DEFAULT ADJUSTMENTS&#39; in line:
+                                continue
+                        if line.startswith(&#39;#&#39;):
+                                continue
+                        assert line.count(&#39;:&#39;) &lt;= 1, f&#34;Line #{i} shouldn&#39;t contain more than 1 &#39;:&#39;&#34;
+
+                        # If the ending of a line (ignoring whitespace) is &#39;:{&#39; it signals that the line has an item.
+                        if re.sub(r&#34;\s+&#34;, &#34;&#34;, line).endswith(&#39;:{&#39;):
+                                item_name = line.split(&#39;:&#39;)[0].strip()
+                                assert item_name not in json_object, f&#39;{item_name} on line #{i} is already specified.&#39;
+                                obj = {&#39;name&#39;: item_name, &#39;req&#39;: {}}
+                        # If a line has a &#39;:&#39; (without a &#39;{&#39;) it contains a requirement
+                        elif (&#39;:&#39; in line) and (&#39;{&#39; not in line):
+                                left, right = line.split(&#39;:&#39;, 1)
+                                assert left.strip() not in obj[&#39;req&#39;], f&#39;{left.strip()} on line #{i} (item {obj[&#34;name&#34;]}) is already specified.&#39;
+                                obj[&#39;req&#39;].update({left.strip(): int(right.strip(&#39;,&#39;))})
+                        # A &#39;}&#39; signals the end of a item creation. It will be added to the collection.
+                        elif re.sub(r&#34;\s+&#34;, &#34;&#34;, line).startswith(&#39;}&#39;):
+                                json_object.update({obj[&#39;name&#39;]: obj[&#39;req&#39;]})
+                                obj = None
+                return json_object
+
+        def on_toggle_change(self):
+                self.set_text(str(self.get_checked(&#39;data&#39;).get()))
+
+        def update_data_from_text(self, _=None):
+                self.get_checked(&#39;data&#39;).set(self.text.toPlainText())
+
+        def get_checked(self, kind):
+                &#39;&#39;&#39; Returns the kind entity whose toggle is checked. &#39;&#39;&#39;
+                assert kind in (&#39;toggle&#39;, &#39;data&#39;)
+                if self.entities[f&#39;ignore_toggle&#39;].object.isChecked():
+                        return self.entities[f&#39;ignore_{kind}&#39;]
+                elif self.entities[f&#39;adjust_toggle&#39;].object.isChecked():
+                        return self.entities[f&#39;adjust_{kind}&#39;]
+                else:
+                        assert False, &#39;Neither ignore/adjust checkboxes were selected when updating.&#39;
+
+        def set_text(self, text):
+                self.text.setPlainText(text)
+
+        def prepend_ignore(self, item):
+                self._prepend(item, &#39;USER IGNORES&#39;)
+
+        def prepend_adjust(self, item):
+                self._prepend(f&#34;{item}: {{\n\t\n}}&#34;, &#39;USER ADJUSTMENTS&#39;)
+
+        def _prepend(self, insertion, insert_signal_text):
+                original = self.get_checked(&#39;data&#39;).get().split(&#39;\n&#39;)
+                for i, line in enumerate(original):
+                        if line.startswith(insert_signal_text):
+                                self.set_text(&#39;\n&#39;.join(original[:i+1] + [insertion] + original[i+1:]))
+                                break
+                else:  # If you didn&#39;t find that flag, just prepend it
+                        self.set_text(text+&#39;\n&#39;+&#39;\n&#39;.join(original))
+                self.update_data_from_text()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.Data"><code class="flex name class">
+<span>class <span class="ident">Data</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Data:
+        pass</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel"><code class="flex name class">
+<span>class <span class="ident">IgnoreAdjustPanel</span></span>
+<span>(</span><span>parent=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>QWidget(parent: QWidget = None, flags: Union[Qt.WindowFlags, Qt.WindowType] = Qt.WindowFlags())</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
+        def __init__(self, parent=None):
+                super().__init__(parent)
+                self.setupUi(self)
+
+                self.data = Data()
+                self.data.ignore = &#39;&#39;
+                self.data.adjust = r&#39;{}&#39;
+                self.entities = {
+                        &#39;ignore_data&#39;: Savable.Entity(
+                                None, None,
+                                lambda o, v: setattr(self.data, &#39;ignore&#39;, v),
+                                lambda o: self.data.ignore
+                        ),
+                        &#39;adjust_data&#39;: Savable.Entity(
+                                None, None,
+                                lambda o, v: setattr(self.data, &#39;adjust&#39;, v),
+                                lambda o: self.data.adjust
+                        ),
+                        &#39;ignore_toggle&#39;: Savable.Entity(
+                                self.ignore, True,
+                                lambda o, v: o.setChecked(v),
+                                lambda o: o.isChecked()
+                        ),
+                        &#39;adjust_toggle&#39;: Savable.Entity(
+                                self.adjustments, False,
+                                lambda o, v: o.setChecked(v),
+                                lambda o: o.isChecked()
+                        ),
+                }
+
+                self.entities[&#39;ignore_toggle&#39;].object.toggled.connect(self.on_toggle_change)
+                # self.entities[&#39;adjust_toggle&#39;].object.toggled.connect(self.on_toggle_change)  # only one required
+                self.text.setTabStopDistance(12)
+                self.text.textChanged.connect(self.update_data_from_text)
+
+        def get_ignore(self):
+                text = self.entities[&#39;ignore_data&#39;].get()
+                text = &#39;&#34;,\n&#34;&#39;.join([line.strip() for line in text.split(&#39;\n&#39;) if not any([
+                        line.startswith(&#39;#&#39;),
+                        &#39;USER IGNORE&#39; in line,
+                        &#39;DEFAULT IGNORE&#39; in line
+                ])])
+                return ast.literal_eval(f&#39;[&#34;{text}&#34;]&#39;)
+
+        def get_adjust(self):
+                text = self.entities[&#39;adjust_data&#39;].get()
+                first = True
+
+                json_object = {}
+                obj = None
+                for i, line in enumerate(text.split(&#39;\n&#39;)):
+                        if &#39;USER ADJUSTMENTS&#39; in line:
+                                continue
+                        if &#39;DEFAULT ADJUSTMENTS&#39; in line:
+                                continue
+                        if line.startswith(&#39;#&#39;):
+                                continue
+                        assert line.count(&#39;:&#39;) &lt;= 1, f&#34;Line #{i} shouldn&#39;t contain more than 1 &#39;:&#39;&#34;
+
+                        # If the ending of a line (ignoring whitespace) is &#39;:{&#39; it signals that the line has an item.
+                        if re.sub(r&#34;\s+&#34;, &#34;&#34;, line).endswith(&#39;:{&#39;):
+                                item_name = line.split(&#39;:&#39;)[0].strip()
+                                assert item_name not in json_object, f&#39;{item_name} on line #{i} is already specified.&#39;
+                                obj = {&#39;name&#39;: item_name, &#39;req&#39;: {}}
+                        # If a line has a &#39;:&#39; (without a &#39;{&#39;) it contains a requirement
+                        elif (&#39;:&#39; in line) and (&#39;{&#39; not in line):
+                                left, right = line.split(&#39;:&#39;, 1)
+                                assert left.strip() not in obj[&#39;req&#39;], f&#39;{left.strip()} on line #{i} (item {obj[&#34;name&#34;]}) is already specified.&#39;
+                                obj[&#39;req&#39;].update({left.strip(): int(right.strip(&#39;,&#39;))})
+                        # A &#39;}&#39; signals the end of a item creation. It will be added to the collection.
+                        elif re.sub(r&#34;\s+&#34;, &#34;&#34;, line).startswith(&#39;}&#39;):
+                                json_object.update({obj[&#39;name&#39;]: obj[&#39;req&#39;]})
+                                obj = None
+                return json_object
+
+        def on_toggle_change(self):
+                self.set_text(str(self.get_checked(&#39;data&#39;).get()))
+
+        def update_data_from_text(self, _=None):
+                self.get_checked(&#39;data&#39;).set(self.text.toPlainText())
+
+        def get_checked(self, kind):
+                &#39;&#39;&#39; Returns the kind entity whose toggle is checked. &#39;&#39;&#39;
+                assert kind in (&#39;toggle&#39;, &#39;data&#39;)
+                if self.entities[f&#39;ignore_toggle&#39;].object.isChecked():
+                        return self.entities[f&#39;ignore_{kind}&#39;]
+                elif self.entities[f&#39;adjust_toggle&#39;].object.isChecked():
+                        return self.entities[f&#39;adjust_{kind}&#39;]
+                else:
+                        assert False, &#39;Neither ignore/adjust checkboxes were selected when updating.&#39;
+
+        def set_text(self, text):
+                self.text.setPlainText(text)
+
+        def prepend_ignore(self, item):
+                self._prepend(item, &#39;USER IGNORES&#39;)
+
+        def prepend_adjust(self, item):
+                self._prepend(f&#34;{item}: {{\n\t\n}}&#34;, &#39;USER ADJUSTMENTS&#39;)
+
+        def _prepend(self, insertion, insert_signal_text):
+                original = self.get_checked(&#39;data&#39;).get().split(&#39;\n&#39;)
+                for i, line in enumerate(original):
+                        if line.startswith(insert_signal_text):
+                                self.set_text(&#39;\n&#39;.join(original[:i+1] + [insertion] + original[i+1:]))
+                                break
+                else:  # If you didn&#39;t find that flag, just prepend it
+                        self.set_text(text+&#39;\n&#39;+&#39;\n&#39;.join(original))
+                self.update_data_from_text()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt5.QtWidgets.QWidget</li>
+<li>PyQt5.QtCore.QObject</li>
+<li>sip.wrapper</li>
+<li>PyQt5.QtGui.QPaintDevice</li>
+<li>sip.simplewrapper</li>
+<li><a title="osrsmath.apps.GUI.optimize.ignore_adjust_skeleton.Ui_IgnoreAdjustPanel" href="../../GUI/optimize/ignore_adjust_skeleton.html#osrsmath.apps.GUI.optimize.ignore_adjust_skeleton.Ui_IgnoreAdjustPanel">Ui_IgnoreAdjustPanel</a></li>
+<li><a title="osrsmath.apps.GUI.shared.widgets.Savable" href="../../GUI/shared/widgets.html#osrsmath.apps.GUI.shared.widgets.Savable">Savable</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_adjust"><code class="name flex">
+<span>def <span class="ident">get_adjust</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_adjust(self):
+        text = self.entities[&#39;adjust_data&#39;].get()
+        first = True
+
+        json_object = {}
+        obj = None
+        for i, line in enumerate(text.split(&#39;\n&#39;)):
+                if &#39;USER ADJUSTMENTS&#39; in line:
+                        continue
+                if &#39;DEFAULT ADJUSTMENTS&#39; in line:
+                        continue
+                if line.startswith(&#39;#&#39;):
+                        continue
+                assert line.count(&#39;:&#39;) &lt;= 1, f&#34;Line #{i} shouldn&#39;t contain more than 1 &#39;:&#39;&#34;
+
+                # If the ending of a line (ignoring whitespace) is &#39;:{&#39; it signals that the line has an item.
+                if re.sub(r&#34;\s+&#34;, &#34;&#34;, line).endswith(&#39;:{&#39;):
+                        item_name = line.split(&#39;:&#39;)[0].strip()
+                        assert item_name not in json_object, f&#39;{item_name} on line #{i} is already specified.&#39;
+                        obj = {&#39;name&#39;: item_name, &#39;req&#39;: {}}
+                # If a line has a &#39;:&#39; (without a &#39;{&#39;) it contains a requirement
+                elif (&#39;:&#39; in line) and (&#39;{&#39; not in line):
+                        left, right = line.split(&#39;:&#39;, 1)
+                        assert left.strip() not in obj[&#39;req&#39;], f&#39;{left.strip()} on line #{i} (item {obj[&#34;name&#34;]}) is already specified.&#39;
+                        obj[&#39;req&#39;].update({left.strip(): int(right.strip(&#39;,&#39;))})
+                # A &#39;}&#39; signals the end of a item creation. It will be added to the collection.
+                elif re.sub(r&#34;\s+&#34;, &#34;&#34;, line).startswith(&#39;}&#39;):
+                        json_object.update({obj[&#39;name&#39;]: obj[&#39;req&#39;]})
+                        obj = None
+        return json_object</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_checked"><code class="name flex">
+<span>def <span class="ident">get_checked</span></span>(<span>self, kind)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the kind entity whose toggle is checked.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_checked(self, kind):
+        &#39;&#39;&#39; Returns the kind entity whose toggle is checked. &#39;&#39;&#39;
+        assert kind in (&#39;toggle&#39;, &#39;data&#39;)
+        if self.entities[f&#39;ignore_toggle&#39;].object.isChecked():
+                return self.entities[f&#39;ignore_{kind}&#39;]
+        elif self.entities[f&#39;adjust_toggle&#39;].object.isChecked():
+                return self.entities[f&#39;adjust_{kind}&#39;]
+        else:
+                assert False, &#39;Neither ignore/adjust checkboxes were selected when updating.&#39;</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_ignore"><code class="name flex">
+<span>def <span class="ident">get_ignore</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_ignore(self):
+        text = self.entities[&#39;ignore_data&#39;].get()
+        text = &#39;&#34;,\n&#34;&#39;.join([line.strip() for line in text.split(&#39;\n&#39;) if not any([
+                line.startswith(&#39;#&#39;),
+                &#39;USER IGNORE&#39; in line,
+                &#39;DEFAULT IGNORE&#39; in line
+        ])])
+        return ast.literal_eval(f&#39;[&#34;{text}&#34;]&#39;)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.on_toggle_change"><code class="name flex">
+<span>def <span class="ident">on_toggle_change</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_toggle_change(self):
+        self.set_text(str(self.get_checked(&#39;data&#39;).get()))</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.prepend_adjust"><code class="name flex">
+<span>def <span class="ident">prepend_adjust</span></span>(<span>self, item)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def prepend_adjust(self, item):
+        self._prepend(f&#34;{item}: {{\n\t\n}}&#34;, &#39;USER ADJUSTMENTS&#39;)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.prepend_ignore"><code class="name flex">
+<span>def <span class="ident">prepend_ignore</span></span>(<span>self, item)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def prepend_ignore(self, item):
+        self._prepend(item, &#39;USER IGNORES&#39;)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.set_text"><code class="name flex">
+<span>def <span class="ident">set_text</span></span>(<span>self, text)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_text(self, text):
+        self.text.setPlainText(text)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.update_data_from_text"><code class="name flex">
+<span>def <span class="ident">update_data_from_text</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_data_from_text(self, _=None):
+        self.get_checked(&#39;data&#39;).set(self.text.toPlainText())</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="osrsmath.apps.optimize.panels" href="index.html">osrsmath.apps.optimize.panels</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.Data" href="#osrsmath.apps.optimize.panels.ignore_adjust.Data">Data</a></code></h4>
+</li>
+<li>
+<h4><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel">IgnoreAdjustPanel</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_adjust" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_adjust">get_adjust</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_checked" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_checked">get_checked</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_ignore" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_ignore">get_ignore</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.on_toggle_change" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.on_toggle_change">on_toggle_change</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.prepend_adjust" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.prepend_adjust">prepend_adjust</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.prepend_ignore" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.prepend_ignore">prepend_ignore</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.set_text" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.set_text">set_text</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.update_data_from_text" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.update_data_from_text">update_data_from_text</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+README.md
+setup.py
+osrsmath.egg-info/PKG-INFO
+osrsmath.egg-info/SOURCES.txt
+osrsmath.egg-info/dependency_links.txt
+osrsmath.egg-info/requires.txt
+osrsmath.egg-info/top_level.txt

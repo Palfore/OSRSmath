@@ -1,0 +1,1564 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>osrsmath.tests.unittests.model.test_successful_hits API documentation</title>
+<meta name="description" content="Tests h(n; h_0, M) and n(h; h_0, M) for the various models …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML'></script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>osrsmath.tests.unittests.model.test_successful_hits</code></h1>
+</header>
+<section id="section-intro">
+<p>Tests h(n; h_0, M) and n(h; h_0, M) for the various models.</p>
+<p>The Recursive models have lots of exceptions due to how they treat things. They are also very
+difficult to compute by hand so testing them is difficult. So their testing is not complete.</p>
+<p>The Simulation model is not tested since it is stochastic, and the true values can only be known through simulation.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34; Tests h(n; h_0, M) and n(h; h_0, M) for the various models.
+
+        The Recursive models have lots of exceptions due to how they treat things. They are also very
+        difficult to compute by hand so testing them is difficult. So their testing is not complete.
+
+        The Simulation model is not tested since it is stochastic, and the true values can only be known through simulation. &#34;&#34;&#34;
+
+from osrsmath.model.successful_hits import *
+import unittest
+import numpy as np
+import math
+
+class Properties:
+        @property
+        def model(self):
+                raise NotImplementedError
+
+        @property
+        def h_0(self):
+                raise NotImplementedError
+
+        @property
+        def M(self):
+                raise NotImplementedError
+
+        @property
+        def fractional_turns(self):
+                raise NotImplementedError
+
+        @property
+        def fractional_health(self):
+                raise NotImplementedError
+
+        @property
+        def negative_turns(self):
+                raise NotImplementedError
+
+        @property
+        def negative_health(self):
+                raise NotImplementedError
+
+
+class TestHImplementation(Properties):
+        @property
+        def health_after_1_hit(self):
+                raise NotImplementedError
+
+        def test_0_hits_returns_initial_health(self):
+                self.assertEqual(self.model().h(0, self.h_0, self.M), self.h_0)
+
+        def test_1_hit_should_return_expected_value(self):
+                self.assertEqual(self.model().h(1, self.h_0, self.M), self.health_after_1_hit)
+
+        def test_fractional_turns_should_return_expected_value(self):
+                self.assertAlmostEqual(self.model().h(self.fractional_turns, self.h_0, self.M), self.fractional_health)
+
+        def test_negative_turns_should_return_expected_value(self):
+                self.assertAlmostEqual(self.model().h(self.fractional_turns, self.h_0, self.M), self.fractional_health)
+
+
+class TestHinvImplementation(Properties):
+        @property
+        def turns_to_1_less_health(self):
+                raise NotImplementedError
+
+        def test_initial_health_takes_zero_turns(self):
+                self.assertEqual(self.model().hinv(self.h_0, self.h_0, self.M), 0)
+
+        def test_1_less_health_should_return_expected_value(self):
+                self.assertEqual(self.model().hinv(self.h_0 - 1, self.h_0, self.M), self.turns_to_1_less_health)
+
+        def test_fractional_health_should_return_expected_value(self):
+                self.assertAlmostEqual(self.model().hinv(self.fractional_health, self.h_0, self.M), self.fractional_turns)
+
+        def test_negative_health_should_return_expected_value(self):
+                self.assertAlmostEqual(self.model().hinv(self.fractional_health, self.h_0, self.M), self.fractional_turns)
+
+
+class TestTurnsToKill(Properties):
+        def test_max_hit_of_1_kills_in_two_times_initial_health_turns(self):
+                # Let M = 1
+                self.assertAlmostEqual(self.model().turns_to_kill(self.h_0, 1), 2*self.h_0)
+
+        def test_health_of_1_dies_in_specific_turns(self):
+                # Let h = 1
+                # Chance of hitting at least 1 is M/(M+1). 1 over that is # turns
+                self.assertAlmostEqual(self.model().turns_to_kill(1, self.M), (self.M+1)/self.M)
+
+
+### Model Testing ###############################################################################
+class TestCrude(TestTurnsToKill, TestHImplementation, TestHinvImplementation, unittest.TestCase):
+        model = Crude
+        h_0 = 100
+        M = 10
+        health_after_1_hit = h_0 - M / 2
+        turns_to_1_less_health = 1 / (M / 2)
+        fractional_turns = 3.543
+        fractional_health = h_0 - fractional_turns * M / 2
+        negative_turns = -2
+        negative_health = h_0 + M
+
+        def test_health_of_1_dies_in_specific_turns(self):
+                # Override, since this model doesn&#39;t consider overkill.
+                self.assertAlmostEqual(self.model().turns_to_kill(1, self.M), 2/self.M)
+
+class TestAverage(TestTurnsToKill, unittest.TestCase):
+        model = Average
+        h_0 = 100
+        M = 10
+
+        def test_h_is_not_implemented(self):
+                self.assertRaises(NotImplementedError, lambda: self.model().h(1, self.h_0, self.M))
+
+        def test_hinv_does_not_support_arbitrary_h(self):
+                self.assertRaises(AssertionError, lambda: self.model().hinv(1, self.h_0, self.M))
+
+class TestRecursiveApproximation(unittest.TestCase):
+        model = RecursiveApproximation
+        h_0 = 10  # Overkill region
+        M = 20
+
+class TestRecursive(TestHImplementation, unittest.TestCase):
+        # Doesn&#39;t inherit from TestTurnsToKill since its treatment is different
+        model = Recursive
+        h_0 = 11
+        M = 20
+        health_after_1_hit = 1/42 * (  ( 42*(M/42)**(2**(9/10)) )**2 + (42*(M/42)**(2**(9/10)) )**1  )
+
+        def test_fractional_turns_should_return_expected_value(self):
+                pass  # Ignore, very difficult to calculate by hand
+        def test_negative_turns_should_return_expected_value(self):
+                pass  # Ignore, very difficult to calculate by hand
+
+        def test_0_hits_returns_initial_health(self):
+                &#34;&#34;&#34; This model cannot output 0 due to its asymptotic nature. @see test_0_hits_does_not_return_initial_health &#34;&#34;&#34;
+                pass
+
+        def test_0_hits_does_not_return_initial_health(self):
+                self.assertNotAlmostEqual(self.model().h(0, self.h_0, self.M), self.h_0)
+
+        def test_h_of_hinv_of_x_is_x(self):
+                &#34;&#34;&#34; This seems to have no exceptions. &#34;&#34;&#34;
+                for i in np.arange(1, 50, 0.1):
+                        self.assertAlmostEqual(self.model().h(self.model().hinv(i, self.h_0, self.M), self.h_0, self.M), i)
+
+        def test_hinv_of_h_of_x_is_x_in_particular_settings(self):
+                &#34;&#34;&#34; @see test_hinv_of_h_has_exceptions &#34;&#34;&#34;
+                self.assertAlmostEqual(self.model().hinv(self.model().h(5, 11, self.M), 11, self.M), 5)
+
+        def test_hinv_of_h_has_exceptions(self):
+                &#34;&#34;&#34; Periodically (at multiples relating to h_0 and M), there are disagreements.
+                        They occur in bands (size 0.5) at integer multiples of M/2.
+                        These are not fully understood, but likely relate to the approximation. Most likely the approximation
+                        creates a multi-valued function, and the inversion finds an incorrect root.
+                        Maybe we can estimate the direction, like the desired root should always be above the crude starting estimate.
+                        Then we can perform a bounded search, eg: search within [Crude, inf]. &#34;&#34;&#34;
+                self.assertNotAlmostEqual(self.model().hinv(self.model().h(5, 10, self.M), 10, self.M), 5)
+
+class TestMarkovChain(TestTurnsToKill, unittest.TestCase):
+        model = MarkovChain
+        h_0 = 100
+        M = 20
+
+        def test_h_is_not_implemented(self):
+                self.assertRaises(NotImplementedError, lambda: self.model().h(1, self.h_0, self.M))
+
+        def test_hinv_does_not_support_arbitrary_h(self):
+                self.assertRaises(AssertionError, lambda: self.model().hinv(1, self.h_0, self.M))
+
+        def test_only_first_term_included(self):
+                # when (h - 1)/(M + 1) &lt;= 1, like h_0=M, only the i=0 term is included
+                self.assertAlmostEqual(self.model().turns_to_kill(self.M, self.M), ((self.M+1)/self.M)**self.M)
+
+        def test_satisfies_recurrence_relations(self):
+                with self.subTest(&#34;h &gt; m + 1&#34;):
+                        assert self.h_0 &gt; (self.M + 1)
+                        self.assertAlmostEqual(self.model().turns_to_kill(self.h_0, self.M),
+                                (self.M + 1) / self.M * self.model().turns_to_kill(self.h_0 - 1, self.M)
+                                -1 / self.M * self.model().turns_to_kill(self.h_0 - self.M - 1, self.M)
+                        )
+
+                with self.subTest(&#34;h &lt;= m + 1&#34;):
+                        h = 5
+                        assert h &lt;= (self.M + 1)
+                        self.assertAlmostEqual(self.model().turns_to_kill(h, self.M),
+                                (self.M + 1) / self.M * self.model().turns_to_kill(h - 1, self.M)
+                        )
+
+class TestMarkovChainApproximation(TestTurnsToKill, unittest.TestCase):
+        model = MarkovChainApproximation
+        h_0 = 100
+        M = 10
+
+        def test_h_is_not_implemented(self):
+                self.assertRaises(NotImplementedError, lambda: self.model().h(1, self.h_0, self.M))
+
+        def test_hinv_does_not_support_arbitrary_h(self):
+                self.assertRaises(AssertionError, lambda: self.model().hinv(1, self.h_0, self.M))
+
+        def test_health_of_1_dies_in_specific_turns(self):
+                # Override, this is large h_0 approximation, so the standard doesn&#39;t hold here
+                self.assertAlmostEqual(self.model().turns_to_kill(1, self.M), (2/3) * (1 + 2/self.M))</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.Properties"><code class="flex name class">
+<span>class <span class="ident">Properties</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Properties:
+        @property
+        def model(self):
+                raise NotImplementedError
+
+        @property
+        def h_0(self):
+                raise NotImplementedError
+
+        @property
+        def M(self):
+                raise NotImplementedError
+
+        @property
+        def fractional_turns(self):
+                raise NotImplementedError
+
+        @property
+        def fractional_health(self):
+                raise NotImplementedError
+
+        @property
+        def negative_turns(self):
+                raise NotImplementedError
+
+        @property
+        def negative_health(self):
+                raise NotImplementedError</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation">TestHImplementation</a></li>
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation">TestHinvImplementation</a></li>
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill" href="#osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill">TestTurnsToKill</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.Properties.M"><code class="name">var <span class="ident">M</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def M(self):
+        raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.Properties.fractional_health"><code class="name">var <span class="ident">fractional_health</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def fractional_health(self):
+        raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.Properties.fractional_turns"><code class="name">var <span class="ident">fractional_turns</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def fractional_turns(self):
+        raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.Properties.h_0"><code class="name">var <span class="ident">h_0</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def h_0(self):
+        raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.Properties.model"><code class="name">var <span class="ident">model</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def model(self):
+        raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.Properties.negative_health"><code class="name">var <span class="ident">negative_health</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def negative_health(self):
+        raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.Properties.negative_turns"><code class="name">var <span class="ident">negative_turns</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def negative_turns(self):
+        raise NotImplementedError</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestAverage"><code class="flex name class">
+<span>class <span class="ident">TestAverage</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TestAverage(TestTurnsToKill, unittest.TestCase):
+        model = Average
+        h_0 = 100
+        M = 10
+
+        def test_h_is_not_implemented(self):
+                self.assertRaises(NotImplementedError, lambda: self.model().h(1, self.h_0, self.M))
+
+        def test_hinv_does_not_support_arbitrary_h(self):
+                self.assertRaises(AssertionError, lambda: self.model().hinv(1, self.h_0, self.M))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill" href="#osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill">TestTurnsToKill</a></li>
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties">Properties</a></li>
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestAverage.M"><code class="name">var <span class="ident">M</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestAverage.h_0"><code class="name">var <span class="ident">h_0</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestAverage.model"><code class="name">var <span class="ident">model</span></code></dt>
+<dd>
+<div class="desc"><p>Considers the piecewise damage as an average for a simplified treatment.</p>
+<p>This average assumes the opponent has all of its health depleted and so only <code>turns_to_kill</code> is implemented.</p>
+<p>Percent error for <code>turns_to_kill</code> when compared to simulation:
+<img alt="" src="../../../../../../results/part_II/models/Average.png"></p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestAverage.test_h_is_not_implemented"><code class="name flex">
+<span>def <span class="ident">test_h_is_not_implemented</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_h_is_not_implemented(self):
+        self.assertRaises(NotImplementedError, lambda: self.model().h(1, self.h_0, self.M))</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestAverage.test_hinv_does_not_support_arbitrary_h"><code class="name flex">
+<span>def <span class="ident">test_hinv_does_not_support_arbitrary_h</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_hinv_does_not_support_arbitrary_h(self):
+        self.assertRaises(AssertionError, lambda: self.model().hinv(1, self.h_0, self.M))</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestCrude"><code class="flex name class">
+<span>class <span class="ident">TestCrude</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TestCrude(TestTurnsToKill, TestHImplementation, TestHinvImplementation, unittest.TestCase):
+        model = Crude
+        h_0 = 100
+        M = 10
+        health_after_1_hit = h_0 - M / 2
+        turns_to_1_less_health = 1 / (M / 2)
+        fractional_turns = 3.543
+        fractional_health = h_0 - fractional_turns * M / 2
+        negative_turns = -2
+        negative_health = h_0 + M
+
+        def test_health_of_1_dies_in_specific_turns(self):
+                # Override, since this model doesn&#39;t consider overkill.
+                self.assertAlmostEqual(self.model().turns_to_kill(1, self.M), 2/self.M)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill" href="#osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill">TestTurnsToKill</a></li>
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation">TestHImplementation</a></li>
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation">TestHinvImplementation</a></li>
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties">Properties</a></li>
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.M"><code class="name">var <span class="ident">M</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.fractional_health"><code class="name">var <span class="ident">fractional_health</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.fractional_turns"><code class="name">var <span class="ident">fractional_turns</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.h_0"><code class="name">var <span class="ident">h_0</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.health_after_1_hit"><code class="name">var <span class="ident">health_after_1_hit</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.model"><code class="name">var <span class="ident">model</span></code></dt>
+<dd>
+<div class="desc"><p>A crude implementation which doesn't consider overkill.</p>
+<p>This is the simplest model.</p>
+<p>Percent error for <code>turns_to_kill</code> when compared to simulation:
+<img alt="" src="../../../../../../results/part_II/models/Crude.png"></p></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.negative_health"><code class="name">var <span class="ident">negative_health</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.negative_turns"><code class="name">var <span class="ident">negative_turns</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.turns_to_1_less_health"><code class="name">var <span class="ident">turns_to_1_less_health</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.test_health_of_1_dies_in_specific_turns"><code class="name flex">
+<span>def <span class="ident">test_health_of_1_dies_in_specific_turns</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_health_of_1_dies_in_specific_turns(self):
+        # Override, since this model doesn&#39;t consider overkill.
+        self.assertAlmostEqual(self.model().turns_to_kill(1, self.M), 2/self.M)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation"><code class="flex name class">
+<span>class <span class="ident">TestHImplementation</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TestHImplementation(Properties):
+        @property
+        def health_after_1_hit(self):
+                raise NotImplementedError
+
+        def test_0_hits_returns_initial_health(self):
+                self.assertEqual(self.model().h(0, self.h_0, self.M), self.h_0)
+
+        def test_1_hit_should_return_expected_value(self):
+                self.assertEqual(self.model().h(1, self.h_0, self.M), self.health_after_1_hit)
+
+        def test_fractional_turns_should_return_expected_value(self):
+                self.assertAlmostEqual(self.model().h(self.fractional_turns, self.h_0, self.M), self.fractional_health)
+
+        def test_negative_turns_should_return_expected_value(self):
+                self.assertAlmostEqual(self.model().h(self.fractional_turns, self.h_0, self.M), self.fractional_health)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties">Properties</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestCrude" href="#osrsmath.tests.unittests.model.test_successful_hits.TestCrude">TestCrude</a></li>
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursive">TestRecursive</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation.health_after_1_hit"><code class="name">var <span class="ident">health_after_1_hit</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def health_after_1_hit(self):
+        raise NotImplementedError</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation.test_0_hits_returns_initial_health"><code class="name flex">
+<span>def <span class="ident">test_0_hits_returns_initial_health</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_0_hits_returns_initial_health(self):
+        self.assertEqual(self.model().h(0, self.h_0, self.M), self.h_0)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation.test_1_hit_should_return_expected_value"><code class="name flex">
+<span>def <span class="ident">test_1_hit_should_return_expected_value</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_1_hit_should_return_expected_value(self):
+        self.assertEqual(self.model().h(1, self.h_0, self.M), self.health_after_1_hit)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation.test_fractional_turns_should_return_expected_value"><code class="name flex">
+<span>def <span class="ident">test_fractional_turns_should_return_expected_value</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_fractional_turns_should_return_expected_value(self):
+        self.assertAlmostEqual(self.model().h(self.fractional_turns, self.h_0, self.M), self.fractional_health)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation.test_negative_turns_should_return_expected_value"><code class="name flex">
+<span>def <span class="ident">test_negative_turns_should_return_expected_value</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_negative_turns_should_return_expected_value(self):
+        self.assertAlmostEqual(self.model().h(self.fractional_turns, self.h_0, self.M), self.fractional_health)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation"><code class="flex name class">
+<span>class <span class="ident">TestHinvImplementation</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TestHinvImplementation(Properties):
+        @property
+        def turns_to_1_less_health(self):
+                raise NotImplementedError
+
+        def test_initial_health_takes_zero_turns(self):
+                self.assertEqual(self.model().hinv(self.h_0, self.h_0, self.M), 0)
+
+        def test_1_less_health_should_return_expected_value(self):
+                self.assertEqual(self.model().hinv(self.h_0 - 1, self.h_0, self.M), self.turns_to_1_less_health)
+
+        def test_fractional_health_should_return_expected_value(self):
+                self.assertAlmostEqual(self.model().hinv(self.fractional_health, self.h_0, self.M), self.fractional_turns)
+
+        def test_negative_health_should_return_expected_value(self):
+                self.assertAlmostEqual(self.model().hinv(self.fractional_health, self.h_0, self.M), self.fractional_turns)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties">Properties</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestCrude" href="#osrsmath.tests.unittests.model.test_successful_hits.TestCrude">TestCrude</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation.turns_to_1_less_health"><code class="name">var <span class="ident">turns_to_1_less_health</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def turns_to_1_less_health(self):
+        raise NotImplementedError</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation.test_1_less_health_should_return_expected_value"><code class="name flex">
+<span>def <span class="ident">test_1_less_health_should_return_expected_value</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_1_less_health_should_return_expected_value(self):
+        self.assertEqual(self.model().hinv(self.h_0 - 1, self.h_0, self.M), self.turns_to_1_less_health)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation.test_fractional_health_should_return_expected_value"><code class="name flex">
+<span>def <span class="ident">test_fractional_health_should_return_expected_value</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_fractional_health_should_return_expected_value(self):
+        self.assertAlmostEqual(self.model().hinv(self.fractional_health, self.h_0, self.M), self.fractional_turns)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation.test_initial_health_takes_zero_turns"><code class="name flex">
+<span>def <span class="ident">test_initial_health_takes_zero_turns</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_initial_health_takes_zero_turns(self):
+        self.assertEqual(self.model().hinv(self.h_0, self.h_0, self.M), 0)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation.test_negative_health_should_return_expected_value"><code class="name flex">
+<span>def <span class="ident">test_negative_health_should_return_expected_value</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_negative_health_should_return_expected_value(self):
+        self.assertAlmostEqual(self.model().hinv(self.fractional_health, self.h_0, self.M), self.fractional_turns)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain"><code class="flex name class">
+<span>class <span class="ident">TestMarkovChain</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TestMarkovChain(TestTurnsToKill, unittest.TestCase):
+        model = MarkovChain
+        h_0 = 100
+        M = 20
+
+        def test_h_is_not_implemented(self):
+                self.assertRaises(NotImplementedError, lambda: self.model().h(1, self.h_0, self.M))
+
+        def test_hinv_does_not_support_arbitrary_h(self):
+                self.assertRaises(AssertionError, lambda: self.model().hinv(1, self.h_0, self.M))
+
+        def test_only_first_term_included(self):
+                # when (h - 1)/(M + 1) &lt;= 1, like h_0=M, only the i=0 term is included
+                self.assertAlmostEqual(self.model().turns_to_kill(self.M, self.M), ((self.M+1)/self.M)**self.M)
+
+        def test_satisfies_recurrence_relations(self):
+                with self.subTest(&#34;h &gt; m + 1&#34;):
+                        assert self.h_0 &gt; (self.M + 1)
+                        self.assertAlmostEqual(self.model().turns_to_kill(self.h_0, self.M),
+                                (self.M + 1) / self.M * self.model().turns_to_kill(self.h_0 - 1, self.M)
+                                -1 / self.M * self.model().turns_to_kill(self.h_0 - self.M - 1, self.M)
+                        )
+
+                with self.subTest(&#34;h &lt;= m + 1&#34;):
+                        h = 5
+                        assert h &lt;= (self.M + 1)
+                        self.assertAlmostEqual(self.model().turns_to_kill(h, self.M),
+                                (self.M + 1) / self.M * self.model().turns_to_kill(h - 1, self.M)
+                        )</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill" href="#osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill">TestTurnsToKill</a></li>
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties">Properties</a></li>
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.M"><code class="name">var <span class="ident">M</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.h_0"><code class="name">var <span class="ident">h_0</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.model"><code class="name">var <span class="ident">model</span></code></dt>
+<dd>
+<div class="desc"><p>This model uses a Markov Chain analysis.</p>
+<p>Percent error for <code>turns_to_kill</code> when compared to simulation:
+<img alt="" src="../../../../../../results/part_II/models/MarkovChain.png"></p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.test_h_is_not_implemented"><code class="name flex">
+<span>def <span class="ident">test_h_is_not_implemented</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_h_is_not_implemented(self):
+        self.assertRaises(NotImplementedError, lambda: self.model().h(1, self.h_0, self.M))</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.test_hinv_does_not_support_arbitrary_h"><code class="name flex">
+<span>def <span class="ident">test_hinv_does_not_support_arbitrary_h</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_hinv_does_not_support_arbitrary_h(self):
+        self.assertRaises(AssertionError, lambda: self.model().hinv(1, self.h_0, self.M))</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.test_only_first_term_included"><code class="name flex">
+<span>def <span class="ident">test_only_first_term_included</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_only_first_term_included(self):
+        # when (h - 1)/(M + 1) &lt;= 1, like h_0=M, only the i=0 term is included
+        self.assertAlmostEqual(self.model().turns_to_kill(self.M, self.M), ((self.M+1)/self.M)**self.M)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.test_satisfies_recurrence_relations"><code class="name flex">
+<span>def <span class="ident">test_satisfies_recurrence_relations</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_satisfies_recurrence_relations(self):
+        with self.subTest(&#34;h &gt; m + 1&#34;):
+                assert self.h_0 &gt; (self.M + 1)
+                self.assertAlmostEqual(self.model().turns_to_kill(self.h_0, self.M),
+                        (self.M + 1) / self.M * self.model().turns_to_kill(self.h_0 - 1, self.M)
+                        -1 / self.M * self.model().turns_to_kill(self.h_0 - self.M - 1, self.M)
+                )
+
+        with self.subTest(&#34;h &lt;= m + 1&#34;):
+                h = 5
+                assert h &lt;= (self.M + 1)
+                self.assertAlmostEqual(self.model().turns_to_kill(h, self.M),
+                        (self.M + 1) / self.M * self.model().turns_to_kill(h - 1, self.M)
+                )</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation"><code class="flex name class">
+<span>class <span class="ident">TestMarkovChainApproximation</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TestMarkovChainApproximation(TestTurnsToKill, unittest.TestCase):
+        model = MarkovChainApproximation
+        h_0 = 100
+        M = 10
+
+        def test_h_is_not_implemented(self):
+                self.assertRaises(NotImplementedError, lambda: self.model().h(1, self.h_0, self.M))
+
+        def test_hinv_does_not_support_arbitrary_h(self):
+                self.assertRaises(AssertionError, lambda: self.model().hinv(1, self.h_0, self.M))
+
+        def test_health_of_1_dies_in_specific_turns(self):
+                # Override, this is large h_0 approximation, so the standard doesn&#39;t hold here
+                self.assertAlmostEqual(self.model().turns_to_kill(1, self.M), (2/3) * (1 + 2/self.M))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill" href="#osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill">TestTurnsToKill</a></li>
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties">Properties</a></li>
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.M"><code class="name">var <span class="ident">M</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.h_0"><code class="name">var <span class="ident">h_0</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.model"><code class="name">var <span class="ident">model</span></code></dt>
+<dd>
+<div class="desc"><p>This model uses a asymptotic expansion of <code>MarkovChain</code> to obtain an analytic expression.</p>
+<p>Percent error for <code>turns_to_kill</code> when compared to simulation:
+<img alt="" src="../../../../../../results/part_II/models/MarkovChainApproximation.png"></p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.test_h_is_not_implemented"><code class="name flex">
+<span>def <span class="ident">test_h_is_not_implemented</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_h_is_not_implemented(self):
+        self.assertRaises(NotImplementedError, lambda: self.model().h(1, self.h_0, self.M))</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.test_health_of_1_dies_in_specific_turns"><code class="name flex">
+<span>def <span class="ident">test_health_of_1_dies_in_specific_turns</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_health_of_1_dies_in_specific_turns(self):
+        # Override, this is large h_0 approximation, so the standard doesn&#39;t hold here
+        self.assertAlmostEqual(self.model().turns_to_kill(1, self.M), (2/3) * (1 + 2/self.M))</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.test_hinv_does_not_support_arbitrary_h"><code class="name flex">
+<span>def <span class="ident">test_hinv_does_not_support_arbitrary_h</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_hinv_does_not_support_arbitrary_h(self):
+        self.assertRaises(AssertionError, lambda: self.model().hinv(1, self.h_0, self.M))</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive"><code class="flex name class">
+<span>class <span class="ident">TestRecursive</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TestRecursive(TestHImplementation, unittest.TestCase):
+        # Doesn&#39;t inherit from TestTurnsToKill since its treatment is different
+        model = Recursive
+        h_0 = 11
+        M = 20
+        health_after_1_hit = 1/42 * (  ( 42*(M/42)**(2**(9/10)) )**2 + (42*(M/42)**(2**(9/10)) )**1  )
+
+        def test_fractional_turns_should_return_expected_value(self):
+                pass  # Ignore, very difficult to calculate by hand
+        def test_negative_turns_should_return_expected_value(self):
+                pass  # Ignore, very difficult to calculate by hand
+
+        def test_0_hits_returns_initial_health(self):
+                &#34;&#34;&#34; This model cannot output 0 due to its asymptotic nature. @see test_0_hits_does_not_return_initial_health &#34;&#34;&#34;
+                pass
+
+        def test_0_hits_does_not_return_initial_health(self):
+                self.assertNotAlmostEqual(self.model().h(0, self.h_0, self.M), self.h_0)
+
+        def test_h_of_hinv_of_x_is_x(self):
+                &#34;&#34;&#34; This seems to have no exceptions. &#34;&#34;&#34;
+                for i in np.arange(1, 50, 0.1):
+                        self.assertAlmostEqual(self.model().h(self.model().hinv(i, self.h_0, self.M), self.h_0, self.M), i)
+
+        def test_hinv_of_h_of_x_is_x_in_particular_settings(self):
+                &#34;&#34;&#34; @see test_hinv_of_h_has_exceptions &#34;&#34;&#34;
+                self.assertAlmostEqual(self.model().hinv(self.model().h(5, 11, self.M), 11, self.M), 5)
+
+        def test_hinv_of_h_has_exceptions(self):
+                &#34;&#34;&#34; Periodically (at multiples relating to h_0 and M), there are disagreements.
+                        They occur in bands (size 0.5) at integer multiples of M/2.
+                        These are not fully understood, but likely relate to the approximation. Most likely the approximation
+                        creates a multi-valued function, and the inversion finds an incorrect root.
+                        Maybe we can estimate the direction, like the desired root should always be above the crude starting estimate.
+                        Then we can perform a bounded search, eg: search within [Crude, inf]. &#34;&#34;&#34;
+                self.assertNotAlmostEqual(self.model().hinv(self.model().h(5, 10, self.M), 10, self.M), 5)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation">TestHImplementation</a></li>
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties">Properties</a></li>
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.M"><code class="name">var <span class="ident">M</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.h_0"><code class="name">var <span class="ident">h_0</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.health_after_1_hit"><code class="name">var <span class="ident">health_after_1_hit</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.model"><code class="name">var <span class="ident">model</span></code></dt>
+<dd>
+<div class="desc"><p>This model considers the piecewise damage as such, providing a recursive solution.</p>
+<p>Percent error for <code>turns_to_kill</code> when compared to simulation:
+<img alt="" src="../../../../../../results/part_II/models/Recursive.png"></p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_0_hits_does_not_return_initial_health"><code class="name flex">
+<span>def <span class="ident">test_0_hits_does_not_return_initial_health</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_0_hits_does_not_return_initial_health(self):
+        self.assertNotAlmostEqual(self.model().h(0, self.h_0, self.M), self.h_0)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_0_hits_returns_initial_health"><code class="name flex">
+<span>def <span class="ident">test_0_hits_returns_initial_health</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This model cannot output 0 due to its asymptotic nature. @see test_0_hits_does_not_return_initial_health</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_0_hits_returns_initial_health(self):
+        &#34;&#34;&#34; This model cannot output 0 due to its asymptotic nature. @see test_0_hits_does_not_return_initial_health &#34;&#34;&#34;
+        pass</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_fractional_turns_should_return_expected_value"><code class="name flex">
+<span>def <span class="ident">test_fractional_turns_should_return_expected_value</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_fractional_turns_should_return_expected_value(self):
+        pass  # Ignore, very difficult to calculate by hand</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_h_of_hinv_of_x_is_x"><code class="name flex">
+<span>def <span class="ident">test_h_of_hinv_of_x_is_x</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This seems to have no exceptions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_h_of_hinv_of_x_is_x(self):
+        &#34;&#34;&#34; This seems to have no exceptions. &#34;&#34;&#34;
+        for i in np.arange(1, 50, 0.1):
+                self.assertAlmostEqual(self.model().h(self.model().hinv(i, self.h_0, self.M), self.h_0, self.M), i)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_hinv_of_h_has_exceptions"><code class="name flex">
+<span>def <span class="ident">test_hinv_of_h_has_exceptions</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Periodically (at multiples relating to h_0 and M), there are disagreements.
+They occur in bands (size 0.5) at integer multiples of M/2.
+These are not fully understood, but likely relate to the approximation. Most likely the approximation
+creates a multi-valued function, and the inversion finds an incorrect root.
+Maybe we can estimate the direction, like the desired root should always be above the crude starting estimate.
+Then we can perform a bounded search, eg: search within [Crude, inf].</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_hinv_of_h_has_exceptions(self):
+        &#34;&#34;&#34; Periodically (at multiples relating to h_0 and M), there are disagreements.
+                They occur in bands (size 0.5) at integer multiples of M/2.
+                These are not fully understood, but likely relate to the approximation. Most likely the approximation
+                creates a multi-valued function, and the inversion finds an incorrect root.
+                Maybe we can estimate the direction, like the desired root should always be above the crude starting estimate.
+                Then we can perform a bounded search, eg: search within [Crude, inf]. &#34;&#34;&#34;
+        self.assertNotAlmostEqual(self.model().hinv(self.model().h(5, 10, self.M), 10, self.M), 5)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_hinv_of_h_of_x_is_x_in_particular_settings"><code class="name flex">
+<span>def <span class="ident">test_hinv_of_h_of_x_is_x_in_particular_settings</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>@see test_hinv_of_h_has_exceptions</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_hinv_of_h_of_x_is_x_in_particular_settings(self):
+        &#34;&#34;&#34; @see test_hinv_of_h_has_exceptions &#34;&#34;&#34;
+        self.assertAlmostEqual(self.model().hinv(self.model().h(5, 11, self.M), 11, self.M), 5)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_negative_turns_should_return_expected_value"><code class="name flex">
+<span>def <span class="ident">test_negative_turns_should_return_expected_value</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_negative_turns_should_return_expected_value(self):
+        pass  # Ignore, very difficult to calculate by hand</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursiveApproximation"><code class="flex name class">
+<span>class <span class="ident">TestRecursiveApproximation</span></span>
+<span>(</span><span>methodName='runTest')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A class whose instances are single test cases.</p>
+<p>By default, the test code itself should be placed in a method named
+'runTest'.</p>
+<p>If the fixture may be used for many test cases, create as
+many test methods as are needed. When instantiating such a TestCase
+subclass, specify in the constructor arguments the name of the test method
+that the instance is to execute.</p>
+<p>Test authors should subclass TestCase for their own tests. Construction
+and deconstruction of the test's environment ('fixture') can be
+implemented by overriding the 'setUp' and 'tearDown' methods respectively.</p>
+<p>If it is necessary to override the <strong>init</strong> method, the base class
+<strong>init</strong> method must always be called. It is important that subclasses
+should not change the signature of their <strong>init</strong> method, since instances
+of the classes are instantiated automatically by parts of the framework
+in order to be run.</p>
+<p>When subclassing TestCase, you can set these attributes:
+* failureException: determines which exception will be raised when
+the instance's assertion methods fail; test methods raising this
+exception will be deemed to have 'failed' rather than 'errored'.
+* longMessage: determines whether long messages (including repr of
+objects used in assert methods) will be printed on failure in <em>addition</em>
+to any explicit message passed.
+* maxDiff: sets the maximum length of a diff in failure messages
+by assert methods using difflib. It is looked up as an instance
+attribute so can be configured by individual tests if required.</p>
+<p>Create an instance of the class that will use the named test
+method when executed. Raises a ValueError if the instance does
+not have a method with the specified name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TestRecursiveApproximation(unittest.TestCase):
+        model = RecursiveApproximation
+        h_0 = 10  # Overkill region
+        M = 20</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>unittest.case.TestCase</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursiveApproximation.M"><code class="name">var <span class="ident">M</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursiveApproximation.h_0"><code class="name">var <span class="ident">h_0</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestRecursiveApproximation.model"><code class="name">var <span class="ident">model</span></code></dt>
+<dd>
+<div class="desc"><p>This model simplifies the <code>Recursive</code> model to obtain an analytic expressions.</p>
+<p>Percent error for <code>turns_to_kill</code> when compared to simulation:
+<img alt="" src="../../../../../../results/part_II/models/RecursiveApproximation.png"></p></div>
+</dd>
+</dl>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill"><code class="flex name class">
+<span>class <span class="ident">TestTurnsToKill</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TestTurnsToKill(Properties):
+        def test_max_hit_of_1_kills_in_two_times_initial_health_turns(self):
+                # Let M = 1
+                self.assertAlmostEqual(self.model().turns_to_kill(self.h_0, 1), 2*self.h_0)
+
+        def test_health_of_1_dies_in_specific_turns(self):
+                # Let h = 1
+                # Chance of hitting at least 1 is M/(M+1). 1 over that is # turns
+                self.assertAlmostEqual(self.model().turns_to_kill(1, self.M), (self.M+1)/self.M)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties">Properties</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestAverage" href="#osrsmath.tests.unittests.model.test_successful_hits.TestAverage">TestAverage</a></li>
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestCrude" href="#osrsmath.tests.unittests.model.test_successful_hits.TestCrude">TestCrude</a></li>
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain">TestMarkovChain</a></li>
+<li><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation">TestMarkovChainApproximation</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill.test_health_of_1_dies_in_specific_turns"><code class="name flex">
+<span>def <span class="ident">test_health_of_1_dies_in_specific_turns</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_health_of_1_dies_in_specific_turns(self):
+        # Let h = 1
+        # Chance of hitting at least 1 is M/(M+1). 1 over that is # turns
+        self.assertAlmostEqual(self.model().turns_to_kill(1, self.M), (self.M+1)/self.M)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill.test_max_hit_of_1_kills_in_two_times_initial_health_turns"><code class="name flex">
+<span>def <span class="ident">test_max_hit_of_1_kills_in_two_times_initial_health_turns</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def test_max_hit_of_1_kills_in_two_times_initial_health_turns(self):
+        # Let M = 1
+        self.assertAlmostEqual(self.model().turns_to_kill(self.h_0, 1), 2*self.h_0)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="osrsmath.tests.unittests.model" href="index.html">osrsmath.tests.unittests.model</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties">Properties</a></code></h4>
+<ul class="two-column">
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties.M" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties.M">M</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties.fractional_health" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties.fractional_health">fractional_health</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties.fractional_turns" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties.fractional_turns">fractional_turns</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties.h_0" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties.h_0">h_0</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties.model" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties.model">model</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties.negative_health" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties.negative_health">negative_health</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.Properties.negative_turns" href="#osrsmath.tests.unittests.model.test_successful_hits.Properties.negative_turns">negative_turns</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestAverage" href="#osrsmath.tests.unittests.model.test_successful_hits.TestAverage">TestAverage</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestAverage.M" href="#osrsmath.tests.unittests.model.test_successful_hits.TestAverage.M">M</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestAverage.h_0" href="#osrsmath.tests.unittests.model.test_successful_hits.TestAverage.h_0">h_0</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestAverage.model" href="#osrsmath.tests.unittests.model.test_successful_hits.TestAverage.model">model</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestAverage.test_h_is_not_implemented" href="#osrsmath.tests.unittests.model.test_successful_hits.TestAverage.test_h_is_not_implemented">test_h_is_not_implemented</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestAverage.test_hinv_does_not_support_arbitrary_h" href="#osrsmath.tests.unittests.model.test_successful_hits.TestAverage.test_hinv_does_not_support_arbitrary_h">test_hinv_does_not_support_arbitrary_h</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestCrude" href="#osrsmath.tests.unittests.model.test_successful_hits.TestCrude">TestCrude</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.M" href="#osrsmath.tests.unittests.model.test_successful_hits.TestCrude.M">M</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.fractional_health" href="#osrsmath.tests.unittests.model.test_successful_hits.TestCrude.fractional_health">fractional_health</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.fractional_turns" href="#osrsmath.tests.unittests.model.test_successful_hits.TestCrude.fractional_turns">fractional_turns</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.h_0" href="#osrsmath.tests.unittests.model.test_successful_hits.TestCrude.h_0">h_0</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.health_after_1_hit" href="#osrsmath.tests.unittests.model.test_successful_hits.TestCrude.health_after_1_hit">health_after_1_hit</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.model" href="#osrsmath.tests.unittests.model.test_successful_hits.TestCrude.model">model</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.negative_health" href="#osrsmath.tests.unittests.model.test_successful_hits.TestCrude.negative_health">negative_health</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.negative_turns" href="#osrsmath.tests.unittests.model.test_successful_hits.TestCrude.negative_turns">negative_turns</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.test_health_of_1_dies_in_specific_turns" href="#osrsmath.tests.unittests.model.test_successful_hits.TestCrude.test_health_of_1_dies_in_specific_turns">test_health_of_1_dies_in_specific_turns</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestCrude.turns_to_1_less_health" href="#osrsmath.tests.unittests.model.test_successful_hits.TestCrude.turns_to_1_less_health">turns_to_1_less_health</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation">TestHImplementation</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation.health_after_1_hit" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation.health_after_1_hit">health_after_1_hit</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation.test_0_hits_returns_initial_health" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation.test_0_hits_returns_initial_health">test_0_hits_returns_initial_health</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation.test_1_hit_should_return_expected_value" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation.test_1_hit_should_return_expected_value">test_1_hit_should_return_expected_value</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation.test_fractional_turns_should_return_expected_value" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation.test_fractional_turns_should_return_expected_value">test_fractional_turns_should_return_expected_value</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation.test_negative_turns_should_return_expected_value" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHImplementation.test_negative_turns_should_return_expected_value">test_negative_turns_should_return_expected_value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation">TestHinvImplementation</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation.test_1_less_health_should_return_expected_value" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation.test_1_less_health_should_return_expected_value">test_1_less_health_should_return_expected_value</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation.test_fractional_health_should_return_expected_value" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation.test_fractional_health_should_return_expected_value">test_fractional_health_should_return_expected_value</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation.test_initial_health_takes_zero_turns" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation.test_initial_health_takes_zero_turns">test_initial_health_takes_zero_turns</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation.test_negative_health_should_return_expected_value" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation.test_negative_health_should_return_expected_value">test_negative_health_should_return_expected_value</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation.turns_to_1_less_health" href="#osrsmath.tests.unittests.model.test_successful_hits.TestHinvImplementation.turns_to_1_less_health">turns_to_1_less_health</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain">TestMarkovChain</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.M" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.M">M</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.h_0" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.h_0">h_0</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.model" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.model">model</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.test_h_is_not_implemented" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.test_h_is_not_implemented">test_h_is_not_implemented</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.test_hinv_does_not_support_arbitrary_h" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.test_hinv_does_not_support_arbitrary_h">test_hinv_does_not_support_arbitrary_h</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.test_only_first_term_included" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.test_only_first_term_included">test_only_first_term_included</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.test_satisfies_recurrence_relations" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChain.test_satisfies_recurrence_relations">test_satisfies_recurrence_relations</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation">TestMarkovChainApproximation</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.M" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.M">M</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.h_0" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.h_0">h_0</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.model" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.model">model</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.test_h_is_not_implemented" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.test_h_is_not_implemented">test_h_is_not_implemented</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.test_health_of_1_dies_in_specific_turns" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.test_health_of_1_dies_in_specific_turns">test_health_of_1_dies_in_specific_turns</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.test_hinv_does_not_support_arbitrary_h" href="#osrsmath.tests.unittests.model.test_successful_hits.TestMarkovChainApproximation.test_hinv_does_not_support_arbitrary_h">test_hinv_does_not_support_arbitrary_h</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursive">TestRecursive</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.M" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.M">M</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.h_0" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.h_0">h_0</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.health_after_1_hit" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.health_after_1_hit">health_after_1_hit</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.model" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.model">model</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_0_hits_does_not_return_initial_health" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_0_hits_does_not_return_initial_health">test_0_hits_does_not_return_initial_health</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_0_hits_returns_initial_health" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_0_hits_returns_initial_health">test_0_hits_returns_initial_health</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_fractional_turns_should_return_expected_value" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_fractional_turns_should_return_expected_value">test_fractional_turns_should_return_expected_value</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_h_of_hinv_of_x_is_x" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_h_of_hinv_of_x_is_x">test_h_of_hinv_of_x_is_x</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_hinv_of_h_has_exceptions" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_hinv_of_h_has_exceptions">test_hinv_of_h_has_exceptions</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_hinv_of_h_of_x_is_x_in_particular_settings" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_hinv_of_h_of_x_is_x_in_particular_settings">test_hinv_of_h_of_x_is_x_in_particular_settings</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_negative_turns_should_return_expected_value" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursive.test_negative_turns_should_return_expected_value">test_negative_turns_should_return_expected_value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursiveApproximation" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursiveApproximation">TestRecursiveApproximation</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursiveApproximation.M" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursiveApproximation.M">M</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursiveApproximation.h_0" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursiveApproximation.h_0">h_0</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestRecursiveApproximation.model" href="#osrsmath.tests.unittests.model.test_successful_hits.TestRecursiveApproximation.model">model</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill" href="#osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill">TestTurnsToKill</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill.test_health_of_1_dies_in_specific_turns" href="#osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill.test_health_of_1_dies_in_specific_turns">test_health_of_1_dies_in_specific_turns</a></code></li>
+<li><code><a title="osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill.test_max_hit_of_1_kills_in_two_times_initial_health_turns" href="#osrsmath.tests.unittests.model.test_successful_hits.TestTurnsToKill.test_max_hit_of_1_kills_in_two_times_initial_health_turns">test_max_hit_of_1_kills_in_two_times_initial_health_turns</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
