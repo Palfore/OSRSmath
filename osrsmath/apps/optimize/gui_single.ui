@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>600</height>
+    <width>1002</width>
+    <height>583</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -125,7 +125,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
+     <width>1002</width>
      <height>21</height>
     </rect>
    </property>
@@ -135,12 +135,41 @@
     </property>
     <addaction name="actionOverview"/>
    </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>Style</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuFont">
+    <property name="title">
+     <string>Font</string>
+    </property>
+    <addaction name="actionIncrease_Size"/>
+    <addaction name="actionDecrease_Size"/>
+   </widget>
    <addaction name="menuHelp"/>
+   <addaction name="menuView"/>
+   <addaction name="menuFont"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOverview">
    <property name="text">
     <string>Overview</string>
+   </property>
+  </action>
+  <action name="actionChange_Style">
+   <property name="text">
+    <string>Change Style</string>
+   </property>
+  </action>
+  <action name="actionIncrease_Size">
+   <property name="text">
+    <string>Increase Size</string>
+   </property>
+  </action>
+  <action name="actionDecrease_Size">
+   <property name="text">
+    <string>Decrease Size</string>
    </property>
   </action>
  </widget>

@@ -1,11 +1,5 @@
 import multiprocess
 multiprocess.freeze_support()
-# import multiprocessing
-# multiprocessing.freeze_support()
-# if __name__ == '__main__':
-# import pathos
-# pathos.multiprocessing.freeze_support()
-
 
 from osrsmath.apps.optimize.gui_single import Ui_MainWindow
 from pathlib import Path
@@ -17,8 +11,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import osrsmath.apps.GUI.resources
 import textwrap
 import osrsmath.config as config
-# DATA_PATH = Path().absolute() / 'data'
-# DATA_PATH = config.user_path("apps/optimize/data/")
+import glob
+import os
+
 slots = ['head', 'cape', 'neck', 'ammo', 'weapon', 'body', 'shield', 'legs', 'hands', 'feet', 'ring']
 
 class GUI(Ui_MainWindow):
@@ -55,15 +50,46 @@ class GUI(Ui_MainWindow):
 			lambda item: self.monster_panel.fill_monster(item.text(), self.optimize_panel.data.monsters[item.text()])
 		)
 
-		self.optimize_panel.xp_rate.setStyleSheet("color: white;")
-		self.optimize_panel.attack_stance.setStyleSheet("color: white;")
-
-		# self.on_evaluate()
-		self.menuHelp.triggered.connect(lambda: QtWidgets.QMessageBox(
+		self.actionOverview.triggered.connect(lambda: QtWidgets.QMessageBox(
 			QtWidgets.QMessageBox.Information,
 			'Help - Overview', textwrap.dedent(self.HELP_TEXT)
 		).exec())
 
+
+		def update_style(style_sheet_text=None):
+			if style_sheet_text is None:
+				style_sheet_text = self.MainWindow.styleSheet()
+			self.MainWindow.setStyleSheet(style_sheet_text + '\n' + f'QWidget{{font-size: {self.fontsize}px;}}')
+
+		def increase():
+			self.fontsize += 1
+			update_style()
+
+		def decrease():
+			if self.fontsize > 2:
+				self.fontsize -= 1
+			update_style()
+
+		# Allow font size changes in menu
+		self.fontsize = self.MainWindow.font().pointSize()
+		self.actionIncrease_Size.setShortcut("Ctrl++")
+		self.actionDecrease_Size.setShortcut("Ctrl+-")
+		self.actionIncrease_Size.triggered.connect(increase)
+		self.actionDecrease_Size.triggered.connect(decrease)
+
+		# Load stylesheet options into menu
+		for style_sheet in glob.glob(str(config.resource_path("apps/GUI/shared/stylesheets/*.?ss"))):
+			option = os.path.basename(style_sheet).split('.')[0]  # Raw file name, no extension
+			name = f'style_{option}'
+			setattr(self, name, QtWidgets.QAction(self.MainWindow))
+			item = getattr(self, name)
+			item.setObjectName(name)
+			item.setText(option)
+			self.menuView.addAction(item)
+			item.triggered.connect(lambda _, style_sheet=style_sheet: update_style(open(style_sheet).read()))
+
+
+		# Ctrl+click and shift+click equipment adds it to ignore/adjust panel respectively
 		for slot in slots:
 			dropdown = getattr(self.optimize_panel, slot)
 			dropdown.activated.connect(
@@ -170,9 +196,15 @@ class GUI(Ui_MainWindow):
 
 			report = f"Solved in {t2-t0:.2f}s ({t1-t0:.2f}s, {t2-t1:.2f}s) using {len(sets)} sets, giving {xp/1000:.2f}k xp/h."
 			print(report, stance)
+			self.update_status(report)
+
+			hit_rate = xp/4  # Assume 4xp per hit
+			total_hitpoints = sum(monster.levels['hitpoints'] for name, monster in monsters.items())
+			kill_time = total_hitpoints / hit_rate
 			self.optimize_panel.xp_rate.setText(f"{xp/1000:,.2f}k")
 			self.optimize_panel.attack_stance.setText(f"{stance}")
-			self.update_status(report)
+			self.optimize_panel.kill_time.setText(f"{3600*kill_time:,.2f}s")
+			self.optimize_panel.kills_per_hour.setText(f"{1/kill_time:,.2f}")
 		except Exception as e:
 			import traceback
 			tb = traceback.format_exc()
@@ -186,10 +218,7 @@ class GUI(Ui_MainWindow):
 			).exec()
 
 	def get_data_path(self, file):
-		return config.user_path(
-			f"apps/optimize/data/{file}",
-			config.resource_path(f"apps/optimize/data/{file}")
-		)
+		return config.resource_path(f"apps/optimize/data/{file}")
 
 	def load_defaults(self):
 		self.player_panel.import_defaults(self.get_data_path('player.json'))

@@ -22,12 +22,13 @@ def xmap(func, iterable, processes=None):
 
 def create_dataset(file_path, N, max_hits, healths, final_health=0):
 	print("Creating Dataset")
+	simulation = Simulation(N)
 	dataset = {
 		"N": N,
 		"source": inspect.getsource(Simulation(N).hinv),
 		"data": {
 			str(h): {
-				str(m): hinv  for m, hinv in xmap(lambda m: (str(m), Simulation(N).hinv(final_health, h, m)), max_hits, processes=12)
+				str(m): hinv  for m, hinv in xmap(lambda m: (str(m), simulation.hinv(final_health, h, m)), max_hits, processes=12)
 			} for h in healths
 		}
 	}

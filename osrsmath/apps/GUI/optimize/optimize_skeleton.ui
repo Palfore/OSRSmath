@@ -14,115 +14,8 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="7" column="2" colspan="4">
-    <widget class="QComboBox" name="below_skill">
-     <item>
-      <property name="text">
-       <string>attack</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>strength</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>defence</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_6">
-     <property name="text">
-      <string>Train</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="6" colspan="3">
-    <widget class="QComboBox" name="potion_attributes">
-     <item>
-      <property name="text">
-       <string>accuracy</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>damage</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>accuracy and damage</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="7" column="9">
-    <widget class="QLineEdit" name="redose_level">
-     <property name="maxLength">
-      <number>2</number>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="4">
-    <widget class="QLineEdit" name="dharok">
-     <property name="text">
-      <string>0</string>
-     </property>
-     <property name="maxLength">
-      <number>2</number>
-     </property>
-    </widget>
-   </item>
-   <item row="14" column="0">
-    <widget class="QPushButton" name="evaluate">
-     <property name="text">
-      <string>Evaluate!</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="2" colspan="4">
-    <widget class="QComboBox" name="prayers"/>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Potions</string>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="0">
-    <widget class="QLabel" name="label_8">
-     <property name="text">
-      <string>Other</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="6" colspan="3">
-    <widget class="QLabel" name="label_5">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="text">
-      <string>boost below</string>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="3">
-    <widget class="QLabel" name="label_7">
-     <property name="text">
-      <string>&lt;Dharok HP&gt;</string>
-     </property>
-    </widget>
-   </item>
-   <item row="14" column="2" colspan="9">
-    <widget class="QProgressBar" name="progressBar">
-     <property name="value">
-      <number>0</number>
-     </property>
-    </widget>
+   <item row="5" column="2" colspan="4">
+    <widget class="QComboBox" name="potions"/>
    </item>
    <item row="10" column="6" colspan="3">
     <widget class="QComboBox" name="prayer_attributes">
@@ -141,6 +34,26 @@
        <string>accuracy and damage</string>
       </property>
      </item>
+    </widget>
+   </item>
+   <item row="12" column="8">
+    <widget class="QCheckBox" name="void_knight">
+     <property name="text">
+      <string>Void</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="6">
+    <widget class="QCheckBox" name="slayer_helm">
+     <property name="text">
+      <string>Slayer Helm</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
     </widget>
    </item>
    <item row="4" column="2" colspan="4">
@@ -172,16 +85,6 @@
      </item>
     </widget>
    </item>
-   <item row="12" column="8">
-    <widget class="QCheckBox" name="void_knight">
-     <property name="text">
-      <string>Void</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
    <item row="13" column="8">
     <widget class="QCheckBox" name="elite_void">
      <property name="text">
@@ -192,14 +95,18 @@
      </property>
     </widget>
    </item>
-   <item row="12" column="6">
-    <widget class="QCheckBox" name="slayer_helm">
-     <property name="text">
-      <string>Slayer Helm</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
+   <item row="5" column="9" colspan="2">
+    <widget class="QComboBox" name="boosting_scheme">
+     <item>
+      <property name="text">
+       <string>Constant</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dose After</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="16" column="8" rowspan="11" colspan="3">
@@ -255,7 +162,7 @@
      </row>
      <row>
       <property name="text">
-       <string>Attack Speed</string>
+       <string>Speed</string>
       </property>
      </row>
      <row>
@@ -353,30 +260,120 @@
      </item>
     </widget>
    </item>
-   <item row="5" column="9" colspan="2">
-    <widget class="QComboBox" name="boosting_scheme">
+   <item row="5" column="6" colspan="3">
+    <widget class="QComboBox" name="potion_attributes">
      <item>
       <property name="text">
-       <string>Constant</string>
+       <string>accuracy</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Dose After</string>
+       <string>damage</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>accuracy and damage</string>
       </property>
      </item>
     </widget>
    </item>
-   <item row="5" column="2" colspan="4">
-    <widget class="QComboBox" name="potions"/>
+   <item row="7" column="2" colspan="4">
+    <widget class="QComboBox" name="below_skill">
+     <item>
+      <property name="text">
+       <string>attack</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>strength</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>defence</string>
+      </property>
+     </item>
+    </widget>
    </item>
-   <item row="13" column="6">
-    <widget class="QCheckBox" name="salve_amulet">
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_6">
      <property name="text">
-      <string>Salve Amulet</string>
+      <string>Train</string>
      </property>
-     <property name="checked">
+    </widget>
+   </item>
+   <item row="12" column="4">
+    <widget class="QLineEdit" name="dharok">
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="maxLength">
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Potions</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="0">
+    <widget class="QPushButton" name="evaluate">
+     <property name="text">
+      <string>Evaluate!</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="9">
+    <widget class="QLineEdit" name="redose_level">
+     <property name="maxLength">
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="2" colspan="4">
+    <widget class="QComboBox" name="prayers"/>
+   </item>
+   <item row="7" column="6" colspan="3">
+    <widget class="QLabel" name="label_5">
+     <property name="enabled">
       <bool>true</bool>
+     </property>
+     <property name="text">
+      <string>boost below</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="2" colspan="9">
+    <widget class="QProgressBar" name="progressBar">
+     <property name="value">
+      <number>0</number>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="0">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>Other</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="3">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>&lt;Dharok HP&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Prayer</string>
      </property>
     </widget>
    </item>
@@ -390,10 +387,13 @@
      </property>
     </widget>
    </item>
-   <item row="10" column="0">
-    <widget class="QLabel" name="label_4">
+   <item row="13" column="6">
+    <widget class="QCheckBox" name="salve_amulet">
      <property name="text">
-      <string>Prayer</string>
+      <string>Salve Amulet</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -423,130 +423,17 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
+      <item row="15" column="3">
+       <widget class="QLineEdit" name="attack_stance">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
       <item row="12" column="1">
        <widget class="QPushButton" name="hands_link">
         <property name="text">
          <string>Hands</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="2" colspan="2">
-       <widget class="QComboBox" name="neck"/>
-      </item>
-      <item row="14" column="2" colspan="2">
-       <widget class="QComboBox" name="ring"/>
-      </item>
-      <item row="6" column="2" colspan="2">
-       <widget class="QComboBox" name="weapon"/>
-      </item>
-      <item row="5" column="1">
-       <widget class="QPushButton" name="ammo_link">
-        <property name="text">
-         <string>Ammo</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="2" colspan="2">
-       <widget class="QComboBox" name="shield"/>
-      </item>
-      <item row="5" column="2" colspan="2">
-       <widget class="QComboBox" name="ammo"/>
-      </item>
-      <item row="12" column="2" colspan="2">
-       <widget class="QComboBox" name="hands"/>
-      </item>
-      <item row="3" column="2" colspan="2">
-       <widget class="QComboBox" name="cape"/>
-      </item>
-      <item row="1" column="2" colspan="2">
-       <widget class="QComboBox" name="head"/>
-      </item>
-      <item row="11" column="2" colspan="2">
-       <widget class="QComboBox" name="legs"/>
-      </item>
-      <item row="3" column="1">
-       <widget class="QPushButton" name="cape_link">
-        <property name="text">
-         <string>Cape</string>
-        </property>
-       </widget>
-      </item>
-      <item row="13" column="1">
-       <widget class="QPushButton" name="feet_link">
-        <property name="text">
-         <string>Feet</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QPushButton" name="body_link">
-        <property name="text">
-         <string>Body</string>
-        </property>
-       </widget>
-      </item>
-      <item row="14" column="1">
-       <widget class="QPushButton" name="ring_link">
-        <property name="text">
-         <string>Ring</string>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="1">
-       <widget class="QPushButton" name="legs_link">
-        <property name="text">
-         <string>Legs</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QPushButton" name="neck_link">
-        <property name="text">
-         <string>Neck</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="2" colspan="2">
-       <widget class="QComboBox" name="body"/>
-      </item>
-      <item row="13" column="2" colspan="2">
-       <widget class="QComboBox" name="feet"/>
-      </item>
-      <item row="10" column="1">
-       <widget class="QPushButton" name="shield_link">
-        <property name="text">
-         <string>Shield</string>
-        </property>
-       </widget>
-      </item>
-      <item row="16" column="1">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Xp/h</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QPushButton" name="head_link">
-        <property name="text">
-         <string>Head</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QPushButton" name="weapon_link">
-        <property name="text">
-         <string>Weapon</string>
-        </property>
-       </widget>
-      </item>
-      <item row="15" column="1">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Attack Stance</string>
         </property>
        </widget>
       </item>
@@ -560,10 +447,261 @@
         </property>
        </widget>
       </item>
-      <item row="15" column="3">
-       <widget class="QLineEdit" name="attack_stance">
+      <item row="6" column="1">
+       <widget class="QPushButton" name="weapon_link">
+        <property name="text">
+         <string>Weapon</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="head_link">
+        <property name="text">
+         <string>Head</string>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="1">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Attack Stance</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QPushButton" name="cape_link">
+        <property name="text">
+         <string>Cape</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QPushButton" name="ammo_link">
+        <property name="text">
+         <string>Ammo</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QPushButton" name="body_link">
+        <property name="text">
+         <string>Body</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QPushButton" name="neck_link">
+        <property name="text">
+         <string>Neck</string>
+        </property>
+       </widget>
+      </item>
+      <item row="14" column="1">
+       <widget class="QPushButton" name="ring_link">
+        <property name="text">
+         <string>Ring</string>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="1">
+       <widget class="QPushButton" name="feet_link">
+        <property name="text">
+         <string>Feet</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="1">
+       <widget class="QPushButton" name="legs_link">
+        <property name="text">
+         <string>Legs</string>
+        </property>
+       </widget>
+      </item>
+      <item row="16" column="1">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Xp/h</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="16" column="5">
+       <widget class="QLineEdit" name="kills_per_hour">
         <property name="enabled">
          <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="1">
+       <widget class="QPushButton" name="shield_link">
+        <property name="text">
+         <string>Shield</string>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="5">
+       <widget class="QLineEdit" name="kill_time">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="4">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Kill Time</string>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="2" colspan="4">
+       <widget class="QComboBox" name="hands"/>
+      </item>
+      <item row="10" column="2" colspan="4">
+       <widget class="QComboBox" name="shield"/>
+      </item>
+      <item row="6" column="2" colspan="4">
+       <widget class="QComboBox" name="weapon"/>
+      </item>
+      <item row="11" column="2" colspan="4">
+       <widget class="QComboBox" name="legs"/>
+      </item>
+      <item row="14" column="2" colspan="4">
+       <widget class="QComboBox" name="ring"/>
+      </item>
+      <item row="16" column="4">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Kills/h</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2" colspan="4">
+       <widget class="QComboBox" name="cape"/>
+      </item>
+      <item row="8" column="2" colspan="4">
+       <widget class="QComboBox" name="body"/>
+      </item>
+      <item row="13" column="2" colspan="4">
+       <widget class="QComboBox" name="feet"/>
+      </item>
+      <item row="5" column="2" colspan="4">
+       <widget class="QComboBox" name="ammo"/>
+      </item>
+      <item row="4" column="2" colspan="4">
+       <widget class="QComboBox" name="neck"/>
+      </item>
+      <item row="1" column="2" colspan="4">
+       <widget class="QComboBox" name="head"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="include_head">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="include_cape">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="include_neck">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="include_ammo">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="include_weapon">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QCheckBox" name="include_body">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QCheckBox" name="include_shield">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0">
+       <widget class="QCheckBox" name="include_legs">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0">
+       <widget class="QCheckBox" name="include_hands">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="13" column="0">
+       <widget class="QCheckBox" name="include_feet">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="14" column="0">
+       <widget class="QCheckBox" name="rings">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -591,7 +729,6 @@
   <tabstop>hands_link</tabstop>
   <tabstop>hands</tabstop>
   <tabstop>feet_link</tabstop>
-  <tabstop>feet</tabstop>
   <tabstop>ring_link</tabstop>
   <tabstop>ring</tabstop>
   <tabstop>xp_rate</tabstop>

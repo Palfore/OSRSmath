@@ -1,5 +1,60 @@
 {
-    "monsters": {},
+    "monsters": {
+        "molanisk": {
+            "levels": {
+                "hitpoints": 52,
+                "attack": 40,
+                "strength": 40,
+                "defence": 50,
+                "ranged": 1,
+                "magic": 0
+            },
+            "stats": {
+                "defence_stab": 45,
+                "defence_slash": 45,
+                "defence_crush": 35,
+                "defence_magic": 30,
+                "defence_ranged": 55
+            },
+            "xp_per_damage": 4.0
+        },
+        "molanisk231": {
+            "levels": {
+                "hitpoints": 52,
+                "attack": 40,
+                "strength": 40,
+                "defence": 50,
+                "ranged": 1,
+                "magic": 0
+            },
+            "stats": {
+                "defence_stab": 45,
+                "defence_slash": 45,
+                "defence_crush": 35,
+                "defence_magic": 30,
+                "defence_ranged": 55
+            },
+            "xp_per_damage": 4.0
+        },
+        "molanisk2": {
+            "levels": {
+                "hitpoints": 52,
+                "attack": 40,
+                "strength": 40,
+                "defence": 50,
+                "ranged": 1,
+                "magic": 0
+            },
+            "stats": {
+                "defence_stab": 45,
+                "defence_slash": 45,
+                "defence_crush": 35,
+                "defence_magic": 30,
+                "defence_ranged": 55
+            },
+            "xp_per_damage": 4.0
+        }
+    },
     "potions": "super",
     "potion_attributes": "accuracy and damage",
     "boosting_scheme": "Constant",
@@ -8,10 +63,10 @@
     "prayers": "piety",
     "prayer_attributes": "accuracy and damage",
     "training_skill": "strength",
-    "slayer_helm": false,
+    "slayer_helm": true,
     "obsidian": false,
-    "void_knight": false,
-    "elite_void": false,
+    "void_knight": true,
+    "elite_void": true,
     "berserker_necklace": false,
     "dharok": "0",
     "salve_amulet": false

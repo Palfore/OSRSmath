@@ -5,3 +5,5 @@ matplotlib
 scipy
 Dijkstar
 requests
+tornado
+multiprocess

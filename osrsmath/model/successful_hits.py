@@ -44,8 +44,9 @@ def validate(*, n=None, h=None, h_0=None, M=None, a=None, model=None):
 		raise ValueError(f"Max hit (M) must be positive, not {M}.")
 	if a is not None and not tolerance <= a <= 1:
 		raise ValueError(f'Accuracy must be in [{tolerance}, 1], not {a}')
-	if model is not None and model not in Model.__subclasses__():
-		raise ValueError(f'Model must be one of: {[cls.__name__ for cls in Model.__subclasses__()]}')
+	if model is not None:
+		if not issubclass(type(model), Model):
+			raise ValueError(f'The model must be a Model from: {[cls.__name__ for cls in Model.__subclasses__()]}, not {model}')
 
 class Model:
 	""" Computes various quantities given the model's assumptions. """
@@ -199,8 +200,16 @@ class MarkovChain(Model):
 	def turns_to_kill(self, h_0, M):
 		validate(h_0=h_0, M=M)
 		# pylint: disable=bad-continuation
-		if M <= 10 and h_0 > 30:
-			# This region suffers from overflow error and other numerical inaccuracies
+
+
+		# Emperically, catastrophic error occurs above the line defined by two points:
+		ax, ay = (0, 0)
+		bx, by = (43, 1000)
+		m = (by - ay) / (bx - ax)
+		b = ay - m*ax
+		line = lambda x: m*x + b
+		if h_0 > line(M):
+		# if M <= 10 and h_0 > 30:
 			# Instead the asymptotic behavior is used.
 			return MarkovChainApproximation().turns_to_kill(h_0, M)
 		return sum(

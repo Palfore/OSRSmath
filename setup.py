@@ -64,6 +64,6 @@ setup(
 	],
 	project_urls={
 	},
-	install_requires=['wheel', 'pathos', 'numpy', 'matplotlib', 'scipy', 'Dijkstar', 'requests'],
+	install_requires=['wheel', 'pathos', 'numpy', 'matplotlib', 'scipy', 'Dijkstar', 'requests', 'tornado', 'multiprocess'],
 	python_requires='>=3',
 )

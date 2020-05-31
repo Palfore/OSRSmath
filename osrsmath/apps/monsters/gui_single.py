@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '//mnt/c/Users/Nawar/Documents/GitHub/OSRS-Combat/Code/osrsmath/apps/monsters/gui_single.ui'
+# Form implementation generated from reading ui file '//mnt/c/Users/Nawar/Documents/GitHub/OSRSmath/osrsmath/apps/monsters/gui_single.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.1
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 

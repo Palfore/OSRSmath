@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '//mnt/c/Users/Nawar/Documents/GitHub/OSRS-Combat/Code/osrsmath/apps/optimize/gui_single.ui'
+# Form implementation generated from reading ui file '//mnt/c/Users/Nawar/Documents/GitHub/OSRSmath/osrsmath/apps/optimize/gui_single.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.1
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -13,9 +13,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1000, 600)
+        MainWindow.resize(1002, 583)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("//mnt/c/Users/Nawar/Documents/GitHub/OSRS-Combat/Code/osrsmath/apps/optimize/../GUI/images/logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("//mnt/c/Users/Nawar/Documents/GitHub/OSRSmath/osrsmath/apps/optimize/../GUI/images/logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -68,18 +68,32 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.frame_3, 0, 1, 2, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1000, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1002, 21))
         self.menubar.setObjectName("menubar")
         self.menuHelp = QtWidgets.QMenu(self.menubar)
         self.menuHelp.setObjectName("menuHelp")
+        self.menuView = QtWidgets.QMenu(self.menubar)
+        self.menuView.setObjectName("menuView")
+        self.menuFont = QtWidgets.QMenu(self.menubar)
+        self.menuFont.setObjectName("menuFont")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.actionOverview = QtWidgets.QAction(MainWindow)
         self.actionOverview.setObjectName("actionOverview")
+        self.actionChange_Style = QtWidgets.QAction(MainWindow)
+        self.actionChange_Style.setObjectName("actionChange_Style")
+        self.actionIncrease_Size = QtWidgets.QAction(MainWindow)
+        self.actionIncrease_Size.setObjectName("actionIncrease_Size")
+        self.actionDecrease_Size = QtWidgets.QAction(MainWindow)
+        self.actionDecrease_Size.setObjectName("actionDecrease_Size")
         self.menuHelp.addAction(self.actionOverview)
+        self.menuFont.addAction(self.actionIncrease_Size)
+        self.menuFont.addAction(self.actionDecrease_Size)
         self.menubar.addAction(self.menuHelp.menuAction())
+        self.menubar.addAction(self.menuView.menuAction())
+        self.menubar.addAction(self.menuFont.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -88,7 +102,12 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "OSRS Combat Optimizer"))
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
+        self.menuView.setTitle(_translate("MainWindow", "Style"))
+        self.menuFont.setTitle(_translate("MainWindow", "Font"))
         self.actionOverview.setText(_translate("MainWindow", "Overview"))
+        self.actionChange_Style.setText(_translate("MainWindow", "Change Style"))
+        self.actionIncrease_Size.setText(_translate("MainWindow", "Increase Size"))
+        self.actionDecrease_Size.setText(_translate("MainWindow", "Decrease Size"))
 from osrsmath.apps.monsters.panel import MonsterPanel
 from osrsmath.apps.optimize.panels.ignore_adjust import IgnoreAdjustPanel
 from osrsmath.apps.optimize.panels.optimize import OptimizePanel
