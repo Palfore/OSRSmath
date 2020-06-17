@@ -53,12 +53,13 @@ def xmap(func, iterable, processes=None):
 
 def create_dataset(file_path, N, max_hits, healths, final_health=0):
         print(&#34;Creating Dataset&#34;)
+        simulation = Simulation(N)
         dataset = {
                 &#34;N&#34;: N,
                 &#34;source&#34;: inspect.getsource(Simulation(N).hinv),
                 &#34;data&#34;: {
                         str(h): {
-                                str(m): hinv  for m, hinv in xmap(lambda m: (str(m), Simulation(N).hinv(final_health, h, m)), max_hits, processes=12)
+                                str(m): hinv  for m, hinv in xmap(lambda m: (str(m), simulation.hinv(final_health, h, m)), max_hits, processes=12)
                         } for h in healths
                 }
         }
@@ -105,12 +106,13 @@ if __name__ == &#39;__main__&#39;:
 </summary>
 <pre><code class="python">def create_dataset(file_path, N, max_hits, healths, final_health=0):
         print(&#34;Creating Dataset&#34;)
+        simulation = Simulation(N)
         dataset = {
                 &#34;N&#34;: N,
                 &#34;source&#34;: inspect.getsource(Simulation(N).hinv),
                 &#34;data&#34;: {
                         str(h): {
-                                str(m): hinv  for m, hinv in xmap(lambda m: (str(m), Simulation(N).hinv(final_health, h, m)), max_hits, processes=12)
+                                str(m): hinv  for m, hinv in xmap(lambda m: (str(m), simulation.hinv(final_health, h, m)), max_hits, processes=12)
                         } for h in healths
                 }
         }

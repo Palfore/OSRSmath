@@ -27,53 +27,58 @@
 </summary>
 <pre><code class="python"># -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file &#39;//mnt/c/Users/Nawar/Documents/GitHub/OSRS-Combat/Code/osrsmath/apps/GUI/optimize/ignore_adjust_skeleton.ui&#39;
-#
-# Created by: PyQt5 UI code generator 5.14.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file &#39;ignore_adjust_skeleton.ui&#39;
+##
+## Created by: Qt User Interface Compiler version 5.15.0
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PySide2.QtCore import (QCoreApplication, QDate, QDateTime, QMetaObject,
+    QObject, QPoint, QRect, QSize, QTime, QUrl, Qt)
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
+    QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter,
+    QPixmap, QRadialGradient)
+from PySide2.QtWidgets import *
 
 
 class Ui_IgnoreAdjustPanel(object):
     def setupUi(self, IgnoreAdjustPanel):
-        IgnoreAdjustPanel.setObjectName(&#34;IgnoreAdjustPanel&#34;)
+        if not IgnoreAdjustPanel.objectName():
+            IgnoreAdjustPanel.setObjectName(u&#34;IgnoreAdjustPanel&#34;)
         IgnoreAdjustPanel.resize(267, 254)
-        IgnoreAdjustPanel.setMinimumSize(QtCore.QSize(267, 0))
-        IgnoreAdjustPanel.setMaximumSize(QtCore.QSize(267, 16777215))
-        self.gridLayout = QtWidgets.QGridLayout(IgnoreAdjustPanel)
-        self.gridLayout.setObjectName(&#34;gridLayout&#34;)
-        self.ignore = QtWidgets.QRadioButton(IgnoreAdjustPanel)
+        IgnoreAdjustPanel.setMinimumSize(QSize(267, 0))
+        IgnoreAdjustPanel.setMaximumSize(QSize(267, 16777215))
+        self.gridLayout = QGridLayout(IgnoreAdjustPanel)
+        self.gridLayout.setObjectName(u&#34;gridLayout&#34;)
+        self.ignore = QRadioButton(IgnoreAdjustPanel)
+        self.ignore.setObjectName(u&#34;ignore&#34;)
         self.ignore.setChecked(True)
-        self.ignore.setObjectName(&#34;ignore&#34;)
+
         self.gridLayout.addWidget(self.ignore, 0, 0, 1, 1)
-        self.adjustments = QtWidgets.QRadioButton(IgnoreAdjustPanel)
-        self.adjustments.setObjectName(&#34;adjustments&#34;)
+
+        self.adjustments = QRadioButton(IgnoreAdjustPanel)
+        self.adjustments.setObjectName(u&#34;adjustments&#34;)
+
         self.gridLayout.addWidget(self.adjustments, 0, 1, 1, 1)
-        self.text = QtWidgets.QPlainTextEdit(IgnoreAdjustPanel)
-        self.text.setObjectName(&#34;text&#34;)
+
+        self.text = QPlainTextEdit(IgnoreAdjustPanel)
+        self.text.setObjectName(u&#34;text&#34;)
+
         self.gridLayout.addWidget(self.text, 1, 0, 1, 2)
 
+
         self.retranslateUi(IgnoreAdjustPanel)
-        QtCore.QMetaObject.connectSlotsByName(IgnoreAdjustPanel)
+
+        QMetaObject.connectSlotsByName(IgnoreAdjustPanel)
+    # setupUi
 
     def retranslateUi(self, IgnoreAdjustPanel):
-        _translate = QtCore.QCoreApplication.translate
-        IgnoreAdjustPanel.setWindowTitle(_translate(&#34;IgnoreAdjustPanel&#34;, &#34;Form&#34;))
-        self.ignore.setText(_translate(&#34;IgnoreAdjustPanel&#34;, &#34;Ignore&#34;))
-        self.adjustments.setText(_translate(&#34;IgnoreAdjustPanel&#34;, &#34;Adjustments&#34;))
-
-
-if __name__ == &#34;__main__&#34;:
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    IgnoreAdjustPanel = QtWidgets.QWidget()
-    ui = Ui_IgnoreAdjustPanel()
-    ui.setupUi(IgnoreAdjustPanel)
-    IgnoreAdjustPanel.show()
-    sys.exit(app.exec_())</code></pre>
+        IgnoreAdjustPanel.setWindowTitle(QCoreApplication.translate(&#34;IgnoreAdjustPanel&#34;, u&#34;Form&#34;, None))
+        self.ignore.setText(QCoreApplication.translate(&#34;IgnoreAdjustPanel&#34;, u&#34;Ignore&#34;, None))
+        self.adjustments.setText(QCoreApplication.translate(&#34;IgnoreAdjustPanel&#34;, u&#34;Adjustments&#34;, None))
+    # retranslateUi</code></pre>
 </details>
 </section>
 <section>
@@ -96,31 +101,39 @@ if __name__ == &#34;__main__&#34;:
 </summary>
 <pre><code class="python">class Ui_IgnoreAdjustPanel(object):
     def setupUi(self, IgnoreAdjustPanel):
-        IgnoreAdjustPanel.setObjectName(&#34;IgnoreAdjustPanel&#34;)
+        if not IgnoreAdjustPanel.objectName():
+            IgnoreAdjustPanel.setObjectName(u&#34;IgnoreAdjustPanel&#34;)
         IgnoreAdjustPanel.resize(267, 254)
-        IgnoreAdjustPanel.setMinimumSize(QtCore.QSize(267, 0))
-        IgnoreAdjustPanel.setMaximumSize(QtCore.QSize(267, 16777215))
-        self.gridLayout = QtWidgets.QGridLayout(IgnoreAdjustPanel)
-        self.gridLayout.setObjectName(&#34;gridLayout&#34;)
-        self.ignore = QtWidgets.QRadioButton(IgnoreAdjustPanel)
+        IgnoreAdjustPanel.setMinimumSize(QSize(267, 0))
+        IgnoreAdjustPanel.setMaximumSize(QSize(267, 16777215))
+        self.gridLayout = QGridLayout(IgnoreAdjustPanel)
+        self.gridLayout.setObjectName(u&#34;gridLayout&#34;)
+        self.ignore = QRadioButton(IgnoreAdjustPanel)
+        self.ignore.setObjectName(u&#34;ignore&#34;)
         self.ignore.setChecked(True)
-        self.ignore.setObjectName(&#34;ignore&#34;)
+
         self.gridLayout.addWidget(self.ignore, 0, 0, 1, 1)
-        self.adjustments = QtWidgets.QRadioButton(IgnoreAdjustPanel)
-        self.adjustments.setObjectName(&#34;adjustments&#34;)
+
+        self.adjustments = QRadioButton(IgnoreAdjustPanel)
+        self.adjustments.setObjectName(u&#34;adjustments&#34;)
+
         self.gridLayout.addWidget(self.adjustments, 0, 1, 1, 1)
-        self.text = QtWidgets.QPlainTextEdit(IgnoreAdjustPanel)
-        self.text.setObjectName(&#34;text&#34;)
+
+        self.text = QPlainTextEdit(IgnoreAdjustPanel)
+        self.text.setObjectName(u&#34;text&#34;)
+
         self.gridLayout.addWidget(self.text, 1, 0, 1, 2)
 
+
         self.retranslateUi(IgnoreAdjustPanel)
-        QtCore.QMetaObject.connectSlotsByName(IgnoreAdjustPanel)
+
+        QMetaObject.connectSlotsByName(IgnoreAdjustPanel)
+    # setupUi
 
     def retranslateUi(self, IgnoreAdjustPanel):
-        _translate = QtCore.QCoreApplication.translate
-        IgnoreAdjustPanel.setWindowTitle(_translate(&#34;IgnoreAdjustPanel&#34;, &#34;Form&#34;))
-        self.ignore.setText(_translate(&#34;IgnoreAdjustPanel&#34;, &#34;Ignore&#34;))
-        self.adjustments.setText(_translate(&#34;IgnoreAdjustPanel&#34;, &#34;Adjustments&#34;))</code></pre>
+        IgnoreAdjustPanel.setWindowTitle(QCoreApplication.translate(&#34;IgnoreAdjustPanel&#34;, u&#34;Form&#34;, None))
+        self.ignore.setText(QCoreApplication.translate(&#34;IgnoreAdjustPanel&#34;, u&#34;Ignore&#34;, None))
+        self.adjustments.setText(QCoreApplication.translate(&#34;IgnoreAdjustPanel&#34;, u&#34;Adjustments&#34;, None))</code></pre>
 </details>
 <h3>Subclasses</h3>
 <ul class="hlist">
@@ -138,10 +151,9 @@ if __name__ == &#34;__main__&#34;:
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def retranslateUi(self, IgnoreAdjustPanel):
-    _translate = QtCore.QCoreApplication.translate
-    IgnoreAdjustPanel.setWindowTitle(_translate(&#34;IgnoreAdjustPanel&#34;, &#34;Form&#34;))
-    self.ignore.setText(_translate(&#34;IgnoreAdjustPanel&#34;, &#34;Ignore&#34;))
-    self.adjustments.setText(_translate(&#34;IgnoreAdjustPanel&#34;, &#34;Adjustments&#34;))</code></pre>
+    IgnoreAdjustPanel.setWindowTitle(QCoreApplication.translate(&#34;IgnoreAdjustPanel&#34;, u&#34;Form&#34;, None))
+    self.ignore.setText(QCoreApplication.translate(&#34;IgnoreAdjustPanel&#34;, u&#34;Ignore&#34;, None))
+    self.adjustments.setText(QCoreApplication.translate(&#34;IgnoreAdjustPanel&#34;, u&#34;Adjustments&#34;, None))</code></pre>
 </details>
 </dd>
 <dt id="osrsmath.apps.GUI.optimize.ignore_adjust_skeleton.Ui_IgnoreAdjustPanel.setupUi"><code class="name flex">
@@ -154,25 +166,33 @@ if __name__ == &#34;__main__&#34;:
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def setupUi(self, IgnoreAdjustPanel):
-    IgnoreAdjustPanel.setObjectName(&#34;IgnoreAdjustPanel&#34;)
+    if not IgnoreAdjustPanel.objectName():
+        IgnoreAdjustPanel.setObjectName(u&#34;IgnoreAdjustPanel&#34;)
     IgnoreAdjustPanel.resize(267, 254)
-    IgnoreAdjustPanel.setMinimumSize(QtCore.QSize(267, 0))
-    IgnoreAdjustPanel.setMaximumSize(QtCore.QSize(267, 16777215))
-    self.gridLayout = QtWidgets.QGridLayout(IgnoreAdjustPanel)
-    self.gridLayout.setObjectName(&#34;gridLayout&#34;)
-    self.ignore = QtWidgets.QRadioButton(IgnoreAdjustPanel)
+    IgnoreAdjustPanel.setMinimumSize(QSize(267, 0))
+    IgnoreAdjustPanel.setMaximumSize(QSize(267, 16777215))
+    self.gridLayout = QGridLayout(IgnoreAdjustPanel)
+    self.gridLayout.setObjectName(u&#34;gridLayout&#34;)
+    self.ignore = QRadioButton(IgnoreAdjustPanel)
+    self.ignore.setObjectName(u&#34;ignore&#34;)
     self.ignore.setChecked(True)
-    self.ignore.setObjectName(&#34;ignore&#34;)
+
     self.gridLayout.addWidget(self.ignore, 0, 0, 1, 1)
-    self.adjustments = QtWidgets.QRadioButton(IgnoreAdjustPanel)
-    self.adjustments.setObjectName(&#34;adjustments&#34;)
+
+    self.adjustments = QRadioButton(IgnoreAdjustPanel)
+    self.adjustments.setObjectName(u&#34;adjustments&#34;)
+
     self.gridLayout.addWidget(self.adjustments, 0, 1, 1, 1)
-    self.text = QtWidgets.QPlainTextEdit(IgnoreAdjustPanel)
-    self.text.setObjectName(&#34;text&#34;)
+
+    self.text = QPlainTextEdit(IgnoreAdjustPanel)
+    self.text.setObjectName(u&#34;text&#34;)
+
     self.gridLayout.addWidget(self.text, 1, 0, 1, 2)
 
+
     self.retranslateUi(IgnoreAdjustPanel)
-    QtCore.QMetaObject.connectSlotsByName(IgnoreAdjustPanel)</code></pre>
+
+    QMetaObject.connectSlotsByName(IgnoreAdjustPanel)</code></pre>
 </details>
 </dd>
 </dl>

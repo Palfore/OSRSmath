@@ -1,78 +1,120 @@
-# The Mathematics and Optimization of OSRS Combat
+# The Mathematics and Optimization of OSRS
 
-The purpose of this project is to accurately model [Old School Runescape](https://oldschool.runescape.com/) mechanics in order to optimize or analyze game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. In particular, many attempts have been made to model combat, but certain details and high level treatment are often avoided. In addition to this, the tools that have been built by the community, focus on ease of access, which limits their ability to solve more complex tasks. An common example of this, is letting players compare two sets of gear, but being able to determine optimal setups. This project aims to solve this by using a relatively high level mathematical description coupled with a clear and easy to use codebase.
+The purpose of this project is to accurately model [Old School Runescape](https://oldschool.runescape.com/) mechanics in order to optimize or analyze game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. In particular, combat is a particularly rewarding application, as very complex problems that were previously unsolved for decades can now be.
 
-Additionally, coherent and comprehensive documentation doesn't really exist regarding the math behind osrs. This project provides a [document](https://github.com/Palfore/OSRS-Combat/blob/master/Documentation/main.pdf) (`Documentaion/main.pdf`) that attempts to fill this gap. More details on [the code](https://github.com/Palfore/OSRS-Combat/tree/master/osrsmath) can be found at `osrsmath/README.md`.
+There are three components to this project:
 
-# Old School Runescape Math (osrsmath)
+### 1. Applications
 
-This project houses python code that implements various equations used in the game, primarily focused on combat mechanics. Built upon this are some applications that attempt to optimize game play or otherwise apply these equations. Having these models in a powerful programming language like Python allows novel problems to be solved. The applications are currently unpolished and not very user friendly, but here is a list of apps:
+These application provide useful functionalities for end users. Once installed, they can be run using the command: `python -m [Module Location]`.
 
-
-| Application        | File           | Description  |
+| Application        | Module Location           | Description  |
 | ------------- |:-------------:| :-----|
-| Path | `apps/path.py` | For a given set of equipment: What is the most efficient way to train from a given attack and strength level to a desired level in nmz?|
-| Optimize | `apps/optimize.py` | Use a genetic algorithm to find a near optimal equipment setup and/or opponent(s) for maximum experience rates. (In progress)|
-| Nightmare Zone (nmz)| `apps/nmz.py` |How much experience per hour should you expect from various setups?|
-| Single Opponent | `apps/single_opponent.py` | Straight forward combat analysis versus a single opponent.|
+| Path | `osrsmath.apps.path.main` | What is the most mathematically efficient way to get from a set of starting attack, strength, and defence levels, to a final set of levels? This is currently not user-friendly. |
+| Optimize | `osrsmath.apps.optimize.main` | What is the most efficient equipment to wear when fighting a given opponent? |
 
-At this point in time, they don't currently provide interfaces, so you would have to edit the files, then run those scripts to use them. This will change in the future.
+
+### 2. Library
+
+For developers, they can use the basic functionalities (like modeling combat or potion boosts) to build their own applications. Within their own code the can import functionalities using `import osrsmath.model.[module_of_interest]`. Check out a [list of modules](https://github.com/Palfore/OSRSmath/osrsmath/docs/html/osrsmath/model/index.html) to see what can be done.
+
+### 3. Documentation
+
+Coherent and comprehensive documentation doesn't really exist regarding the math behind osrs. This project provides a [document](https://github.com/Palfore/OSRSmath/osrsmath/docs/latex/main.pdf) that attempts to fill this gap.
 
 ## Installing
+There are two methods. The **User** method is the easiest - but if it doesn't work please let me know and you can use the **Developer** instructions instead, which should still be easy to follow.
 
-### Python
-To get the code, simply run
-``` pip install osrsmath ```
+### User
+This has been tested on:
+	`Ubuntu 20.04` (using [wsl1](https://docs.microsoft.com/en-us/windows/wsl/about) on windows),
+	`MacOS` (Catalina 15.15.5),
+	`Windows 10` (v1909)
 
+Navigate to [FILL IN THIS LINK] and download the executables.
 
-To check that everything is working, in the command line run
-```
-python -m osrsmath.apps.path
-```
-If your environment supports graphical displays, you should get an image like:
-![Image of Training Scheme](https://raw.githubusercontent.com/Palfore/OSRS-Combat/master/Code/Results/training_schemes/recur_60_60.png)
+### Developer
+Open a terminal/command prompt.
+Make sure you have `python3.6+` installed (type `python --version`)
+Make sure `pip3` is installed (type `pip3 --version`).
+Update pip `pip3 install --upgrade pip`
+Update setuptools `pip3 install --upgrade setuptools`
 
-Otherwise you should at least get the saved image in the current directory.
+To install the apps, or to use as a library:
+	`pip3 install osrsmath`
 
+To develop the code:
+	Download the github source code, unzip it and place it anywhere.
+	Open a terminal in that directory (which contains setup.py).
+	Run `pip3 install -e .`
 
-Alternatively, since at the moment there is not interface to access the apps, you may wish instead to download the code files, run the setup script, and explore from there:
-```
-git clone https://github.com/Palfore/OSRS-Combat
-cd OSRS-Combat/osrsmath
-python setup.py -e .
-```
-Then edit `/apps/path.py` (for example), and run `python /apps/path.py`.
+Run the desired application with: `python3 -m osrsmath.apps.[app_name].main`. Linux may require `sudo apt-get install python3-pyqt5`
 
+## Developing
+### Packaging:
+These are instructions for creating app executables:
+1. Type `pip3 install PyInstaller`
+2. On MacOS, `python<=3.6.3` is required since PyInstaller on macos isn't supported after that.
+   On Windows, the app store version of Python (3.8) doesn't work.
+3. Navigate to the `Application` folder of the app you want to create an executable for.
+4. Type `python3 package.py`.
+
+### GUI Development:
+These are instructions for creating & modifying the GUI design:
+1. Use [QT designer](https://build-system.fman.io/qt-designer-download).
+2. Create or modify a `.ui` file in QT designer.
+3. Run `python -m osrsmath.apps.GUI.shared.util make` to compile them.
 
 ### Latex
+To compile the latex documents a latex compiler needs to be installed. [MiKTeX](https://miktex.org/download) is a good cross-platform option. Alternatively, on linux you could simply type `sudo apt-get install texlive-full`.
 
-To compile the latex documents (developers only):
+The central document can be compiled with `pdflatex main.tex`.
+The html documentation uses [`pdoc3`](https://pypi.org/project/pdoc3/) which can be installed with `pip3 install pdoc3`. Then the documentation can be compiled by naviating to the top directory (containing `setup.py`) and type:
+	
+	pdoc --html osrsmath -o osrsmath/docs/html -c latex_math=True --force
+	python osrsmath/docs/compile.py
 
-`sudo apt-get install texlive-full`
 
+### Tests
 
-## Running the tests
-
-Coming soon!
-
-## Built With
-
-* [osrsbox](https://pypi.org/project/osrsbox/) - Provides Data files
-* [dijkstar](https://pypi.org/project/Dijkstar/) - Implements the dijkstra Algorithm
+The `unittest` module is used for testing. Navigate to the `tests` directory and run the command `python3 -m unittest`
 
 ## Authors
 
-* **Nawar Ismail** - *Initial work* - [Palfore](https://github.com/Palfore)
+* **Nawar Ismail** - [Palfore](https://github.com/Palfore)
+
+If you are interested in contributing, here is a good list of tasks:
+
+Beginner:
+* Update and add testing code.
+* Add documentation
+* Model simpler problems like:
+	* [Barbarian fishing](https://oldschool.runescape.wiki/w/Barbarian_Training#Barbarian_Fishing)
+	* [Prospector kit order](https://oldschool.runescape.wiki/w/Prospector_kit#Cheap_first)
+* Add contributions to the [Wiki](https://oldschool.runescape.wiki/)
+
+
+Advanced:
+* Refactor `player.py` and `monster.py` code.
+* Add range & mage support to `apps.optimize`.
+* Solve advanced problems:
+	* Loop `apps.optimize` over all monsters to find best monster to fight!
+	* Add opponent damage to `apps.optimize`, so that your defences matter and optimize that.
 
 <!-- See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project. -->
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
+### Code
 
-* [OSRSBox](https://www.osrsbox.com/blog/2019/01/22/calculating-melee-dps-in-osrs/)
+* [osrsbox](https://pypi.org/project/osrsbox/) - Provides Data files
+* [dijkstar](https://pypi.org/project/Dijkstar/) - Implements the dijkstra Algorithm
+
+### Knowledge
+* [OSRSBox melee dps](https://www.osrsbox.com/blog/2019/01/22/calculating-melee-dps-in-osrs/)
 * [DPS Calculator by Bitterkoekje](https://docs.google.com/spreadsheets/d/1wzy1VxNWEAAc0FQyDAdpiFggAfn5U6RGPp2CisAHZW8/)
 * [Forum Post by Bitterkoekje](https://web.archive.org/web/20190905124128/http://webcache.googleusercontent.com/search?q=cache:http://services.runescape.com/m=forum/forums.ws?317,318,712,65587452)
 * [Overkill by Nukelawe](https://www.reddit.com/r/2007scape/comments/4d6l7j/effects_of_overkill_on_dps/)

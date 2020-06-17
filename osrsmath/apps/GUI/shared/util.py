@@ -4,11 +4,11 @@
 import os
 from pathlib import Path
 
-UI_COMPILER = 'pyuic5'
-RC_COMPILER = 'pyrcc5'
+UI_COMPILER = 'pyside2-uic'  # 'pyuic5'
+RC_COMPILER = 'pyside2-rcc'  # 'pyrcc5'
 
 def make_ui(file_path):
-	os.system(f"{UI_COMPILER} -x {file_path}.ui -o {file_path}.py")
+	os.system(f"{UI_COMPILER} {file_path}.ui -o {file_path}.py")
 
 def make_rc(file_path):
 	os.system(f'{RC_COMPILER} {file_path}.qrc -o {file_path}.py')

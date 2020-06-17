@@ -54,7 +54,7 @@
 			where $A_\text{max}$ and $D_\text{max}$ represent the maximum attack and defense rolls ($R_\text{max}$) respectively. This is plotted in Fig.~\ref{fig:accuracy}. No information suggests magic accuracy is any different. No other work / official statements show how special attacks factor into this. It is a fair assumption that $a^\text{eff} = aB^\text{SA}$ for special attacks that increase accuracy (since no flooring needs to be done for accuracy).
 			\begin{figure}[H]
 				\centering
-				\includegraphics[width=\linewidth]{../Code/osrsmath/results/part_I/Accuracy.pdf}
+				\includegraphics[width=\linewidth]{results/part_I/Accuracy.pdf}
 				\caption{Player accuracy as a function of the player's maximum accuracy roll and opponent's maximum defense roll. The black line is the piecewise boundary.}
 				\label{fig:accuracy}
 			\end{figure}
@@ -176,7 +176,7 @@
 
 				\begin{figure}
 					\centering
-					\includegraphics[width=\linewidth]{../Code/osrsmath/results/part_II/average_damage.pdf}
+					\includegraphics[width=\linewidth]{results/part_II/average_damage.pdf}
 					\caption{The average damage of an attack with a maximum hit of $M$ on an opponent with $h$ health. The black line is the piecewise boundary.}
 					\label{fig:average_d}
 				\end{figure}
@@ -391,11 +391,11 @@ def time_to_kill_regen(h_0):
 				\centering
 				\begin{subfigure}{0.5\linewidth}
 					\centering
-					\includegraphics[width=\linewidth]{../Code/osrsmath/results/part_II/turns_to_kill.pdf}
+					\includegraphics[width=\linewidth]{results/part_II/turns_to_kill.pdf}
 				\end{subfigure}%
 				\begin{subfigure}{0.5\linewidth}
 					\centering
-					\includegraphics[width=\linewidth]{../Code/osrsmath/results/part_II/turns_to_kill_zoom.pdf}
+					\includegraphics[width=\linewidth]{results/part_II/turns_to_kill_zoom.pdf}
 				\end{subfigure}
 				\caption{
 					The number of successful turns to kill an opponent that has $h_0$ health, given that the attacker's max hit is $M$. The MarkovChain (hot colors) and Crude (cool colors) methods are shown. However, due to the scale of the left plot they are indistinguishable. The right plot shows a smaller region which allows for a comparison.
@@ -404,7 +404,7 @@ def time_to_kill_regen(h_0):
 
 			\begin{figure}
 				\centering
-				\includegraphics[width=\linewidth]{../Code/osrsmath/results/part_II/errors.pdf}
+				\includegraphics[width=\linewidth]{results/part_II/errors.pdf}
 				\caption{
 					A comparison between different models. The percent relative error with respect to the simulations are shown.
 				}\label{fig:comparison}
@@ -412,7 +412,7 @@ def time_to_kill_regen(h_0):
 
 			\begin{figure}
 				\centering
-				\includegraphics[width=\linewidth]{../Code/osrsmath/results/part_II/best_model.pdf}
+				\includegraphics[width=\linewidth]{results/part_II/best_model.pdf}
 				\caption{
 					The model which agrees best with simulation, for different initial healths, and maximum hits. The final plot shows a comparison which includes all models. Since the MarkovChain (MC) models have very low errors, they occlude the other details. So, the other plots only include a subset of models. The leftmost only shows Crude, Average, and Recursive. The middle plot additionally includes MarkovChainApprox (MCApprox). Several interesting trends are discussed in the main body.
 				}\label{fig:best_model}
@@ -466,7 +466,7 @@ def time_to_kill_regen(h_0):
 
 			\subsubsection{Time-Dependent Boosts}
 				There are several time-dependent boosts in the game, most notably potions. Additionally, Dharok is a set of equipment which provides increased damage based on the health missing from the player. Since health recovers at a rate of one health per minute, and the boosted level from potions decreases one level per minute, these introduce time-dependent experience rates. Thankfully, the treatment is relatively simple. Let $a = a(t)$, and $M = M(t)$. At each boosted state, we can calculate the expected experience rate, and average over the boosted states:
-				\begin{align}
+				\begin{align}\label{eq:average_experience_rate}
 					\boxed{\langle E \rangle = \frac{1}{N}\sum_{i=0}^{N} E(a(t_i), M(t_i))}
 				\end{align}
 				For example, if the player re-drinks a potion after $N=10$ levels have dropped, then the above determines the average experience. Things are a little bit more complex when both potions and Dharok are used since the timings might not line up, but for large times the detail should get averaged out.
@@ -509,6 +509,20 @@ def time_to_kill_regen(h_0):
 
 	% \part{Optimization}
 	\chapter{Optimal Equipment}
+		Given the ability to model combat effectively, a natural question arises: What is a best equipment for a player to use against an opponent. Our objective to maximize is the experience rate, given most completely by Eq.~(\ref{eq:average_experience_rate}). There are a lot of parameters underneath this equation: the defensive characteristics of the opponent pool (levels, bonuses), the offensive characteristics of the player, and the player's boosts (prayer, potions). However the majority of this has already been modeled and discussed in the previous sections. The experience rate can be calculated for any fixed set of equipment, so how can we use this to find the most efficient setup.
+
+		There are 11 equipment slots, and each slot has on the order of 10-100 items (there is a large variance). A brute force search, would require between $10^{11}$ and $100^{9}=10^{22}$ sets to be considered. Thus our problem boils down to a search space reduction problem. Intuitively, we know this problem can be greatly simplified. For a player with maxed levels, there is no reason to compare a \texttt{Ghrazi rapier} to a  \texttt{Bronze dagger}. But what exactly allows to say that?
+
+		Let's assume the player would like to train attack. Each melee weapon in the game has several \texttt{attack types} which can be at least one of \texttt{slash, stab, crush}. Equipment affects each type differently so it makes sense to compartmentalize this problem into fixing both the training skill, and the attack type. This would allow us to iterate over the valid \texttt{attack types} for each weapon and pick whichever gives the highest experience rate. At this point the question becomes ``For a given player training \emph{attack} using a \emph{Ghrazi rapier} with \emph{stab}, what is the best equipment for this?''.
+
+		With this simplification, the number of parameters that we have to consider for each piece of equipment is significantly reduced. However only the \texttt{attack type} bonus, the \texttt{strength bonus}, and if we are comparing weapons the \texttt{attack speed} would matter. Then, for each slot we can take the subset of the equipment that is strictly worse  than everything else i.e. we cannot know that $(\text{stab}=5,\,\text{strength}=5)$ is better than $(\text{stab}=10,\,\text{strength}=1)$ (since the way accuracy and max hit influence xp is complex and relies on a given model), but we can know that $(\text{stab}=1,\,\text{strength}=1)$ is worse than both and so we shouldn't consider it.
+
+		This typically reduces the subsets to between 1 and 5 items per slot. We also have to iterate over the \texttt{attack types} so for melee there are typically between $3\cdot1^{11}=3$ to $3\cdot5^{11}\approx3\cdot10^6$ possible optimal equipment sets. Many slots work out to only having a single item, and the typical number of sets is about 100-250. This means that everything single other combination is worse than something in the sets, which is a really powerful statement. Especially considering that this doesn't rely on any model!
+
+		One final consider is the influence of set effects, most equipment with set effects are not optimal without their effects and are therefore ruled out of the above process. However, running the same algorithm but fixing the slots associated with the equipment set resolves this. The amount of sets to consider increases relatively quickly (and approximately linearly) with the number of equipment sets considered. In practice, 6 additional sets typically introduces 400 additional sets to consider.
+
+		Ultimately what we end up with is a computational efficient method for determining the \emph{mathematically} optimal set of equipment for a player to fight an arbitrary group of opponents.
+
 	\chapter{Optimal Training Order}
 		% In the NMZ, we can consider the player's opponents, and equipment as parameters to an optimization problem. This could also consider equipment cost.
 		We will try to find the most efficient ordering to level up melee combat skills to maximize efficiency. For simplicity, we will fix equipment, and NMZ opponents. Let's start at $(\text{attack}, \text{strength}) = (a, s)$ and end at $(A, S)$. Defense is not considered since it does not increase experience rates (apart from less interruption required from sustaining health). The first question is should we obtain $(a+1, s)$ or $(a, s+1)$. This question can be asked recursively, producing a tree-like structure of possible training schemes as depicted in Fig.~\ref{fig:training_scheme}. Each downward path is a possible way to get to the target levels.

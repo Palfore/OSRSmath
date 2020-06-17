@@ -1,21 +1,13 @@
 from osrsmath.model.player import PlayerBuilder
 from osrsmath.model.experience import xp_rate
+import multiprocess
 import time
 
 def mmap(f, items, callback, interval=0.025):
-	# def g(*x):
-	# 	try:
-	# 		return f(*x)
-	# 	except KeyboardInterrupt:
-	# 		# Prevents killing main process, leaving children to never join (app hangs).
-	# 		raise KeyboardInterruptError()
 	results = []
 	start = time.time()
-	import multiprocess
 	with multiprocess.Pool() as pool:
-	# with pathos.pools.ProcessPool() as pool:
 		for i, result in enumerate(pool.imap_unordered(f, items), 1):
-			# QtCore.QCoreApplication.processEvents()  # Prevents app from hanging (especially windows)
 			results.append(result)
 			now = time.time()
 			if now-start >= interval:
@@ -38,7 +30,7 @@ def eval_set(player_stats: dict, training_skill, states, defenders, s, include_s
 			defenders,
 			'MarkovChain'
 		)
-		print(s, '|', f"{xp/1000:.2f}")
+		# print(s, '|', f"{xp/1000:.2f}")
 		return s, xp, combat_style
 	except Exception as e:
 		import traceback as tb

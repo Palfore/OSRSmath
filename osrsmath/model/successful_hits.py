@@ -108,6 +108,7 @@ class Average(Model):
 	""" Considers the piecewise damage as an average for a simplified treatment.
 
 	This average assumes the opponent has all of its health depleted and so only `turns_to_kill` is implemented.
+	This model was developed by Nukelawa.
 
 	Percent error for `turns_to_kill` when compared to simulation:
 	.. image:: HEAD/results/part_II/models/Average.png
@@ -126,6 +127,8 @@ class Average(Model):
 
 class Recursive(Model):
 	""" This model considers the piecewise damage as such, providing a recursive solution.
+	
+	This model was developed by Palfore.
 
 	Percent error for `turns_to_kill` when compared to simulation:
 	.. image:: HEAD/results/part_II/models/Recursive.png
@@ -163,6 +166,8 @@ class Recursive(Model):
 
 class RecursiveApproximation(Model):
 	""" This model simplifies the `Recursive` model to obtain an analytic expressions.
+	
+	This model was developed by Palfore.
 
 	Percent error for `turns_to_kill` when compared to simulation:
 	.. image:: HEAD/results/part_II/models/RecursiveApproximation.png
@@ -192,6 +197,8 @@ class RecursiveApproximation(Model):
 
 class MarkovChain(Model):
 	""" This model uses a Markov Chain analysis.
+	
+	This model was developed by Nukelawa.
 
 	Percent error for `turns_to_kill` when compared to simulation:
 	.. image:: HEAD/results/part_II/models/MarkovChain.png
@@ -204,7 +211,7 @@ class MarkovChain(Model):
 
 		# Emperically, catastrophic error occurs above the line defined by two points:
 		ax, ay = (0, 0)
-		bx, by = (43, 1000)
+		bx, by = (50, 1000)
 		m = (by - ay) / (bx - ax)
 		b = ay - m*ax
 		line = lambda x: m*x + b
@@ -223,6 +230,8 @@ class MarkovChain(Model):
 
 class MarkovChainApproximation(Model):
 	""" This model uses a asymptotic expansion of `MarkovChain` to obtain an analytic expression.
+	
+	This model was developed by Nukelawa and Corpslayer.
 
 	Percent error for `turns_to_kill` when compared to simulation:
 	.. image:: HEAD/results/part_II/models/MarkovChainApproximation.png

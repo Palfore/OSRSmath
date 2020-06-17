@@ -1,7 +1,8 @@
 from osrsmath.apps.GUI.optimize.optimize_skeleton import Ui_Form
 from osrsmath.apps.GUI.shared.widgets import Savable
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PySide2 import QtCore, QtGui, QtWidgets
 
+from osrsmath.model.player import get_equipment_by_name
 import osrsmath.model.boosts as boosts
 import inspect
 import webbrowser
@@ -57,9 +58,10 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		}
 
 		for slot in ['head', 'cape', 'neck', 'ammo', 'weapon', 'body', 'legs', 'hands', 'feet', 'ring']:
+			getattr(self, f"{slot}_link").setToolTip('Open the wiki page for the equipment in this slot.')
 			equipment_button = getattr(self, f"{slot}_link")
 			equipment_button.clicked.connect(
-				lambda _, slot=slot: self.open_link(slot)
+				lambda _=None, slot=slot: self.open_link(slot)
 			)
 
 
@@ -94,12 +96,13 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		)]
 
 	def open_link(self, slot):
-		from osrsmath.model.player import get_equipment_by_name
 		item = getattr(self, slot).currentText()
 		try:
 			equipment = get_equipment_by_name(item)
 		except ValueError as e:
-			print(e)
+			QtWidgets.QMessageBox(
+				QtWidgets.QMessageBox.Warning, 'Wiki Link not Found', str(e)
+			).exec_()
 			return
 
 		pprint(equipment)

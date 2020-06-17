@@ -1,9 +1,0 @@
-wheel
-pathos
-numpy
-matplotlib
-scipy
-Dijkstar
-requests
-tornado
-multiprocess

@@ -42,8 +42,8 @@
 	<file alias="Construction.png">images/skill_icons/Construction.png</file>
 </qresource>
 <qresource prefix="/orange">
-    <file alias="checkbox.png">shared/stylesheets/darkorange/images/checkbox.png</file>
-    <file alias="down_arrow.png">shared/stylesheets/darkorange/images/down_arrow.png</file>
-    <file alias="handle.png">shared/stylesheets/darkorange/images/handle.png</file>
+    <file alias="checkbox.png">shared/stylesheets/images/checkbox.png</file>
+    <file alias="down_arrow.png">shared/stylesheets/images/down_arrow.png</file>
+    <file alias="handle.png">shared/stylesheets/images/handle.png</file>
 </qresource>
 </RCC>

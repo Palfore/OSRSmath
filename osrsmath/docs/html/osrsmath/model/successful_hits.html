@@ -81,8 +81,9 @@ def validate(*, n=None, h=None, h_0=None, M=None, a=None, model=None):
                 raise ValueError(f&#34;Max hit (M) must be positive, not {M}.&#34;)
         if a is not None and not tolerance &lt;= a &lt;= 1:
                 raise ValueError(f&#39;Accuracy must be in [{tolerance}, 1], not {a}&#39;)
-        if model is not None and model not in Model.__subclasses__():
-                raise ValueError(f&#39;Model must be one of: {[cls.__name__ for cls in Model.__subclasses__()]}&#39;)
+        if model is not None:
+                if not issubclass(type(model), Model):
+                        raise ValueError(f&#39;The model must be a Model from: {[cls.__name__ for cls in Model.__subclasses__()]}, not {model}&#39;)
 
 class Model:
         &#34;&#34;&#34; Computes various quantities given the model&#39;s assumptions. &#34;&#34;&#34;
@@ -144,6 +145,7 @@ class Average(Model):
         &#34;&#34;&#34; Considers the piecewise damage as an average for a simplified treatment.
 
         This average assumes the opponent has all of its health depleted and so only `turns_to_kill` is implemented.
+        This model was developed by Nukelawa.
 
         Percent error for `turns_to_kill` when compared to simulation:
         .. image:: HEAD/results/part_II/models/Average.png
@@ -162,6 +164,8 @@ class Average(Model):
 
 class Recursive(Model):
         &#34;&#34;&#34; This model considers the piecewise damage as such, providing a recursive solution.
+        
+        This model was developed by Palfore.
 
         Percent error for `turns_to_kill` when compared to simulation:
         .. image:: HEAD/results/part_II/models/Recursive.png
@@ -199,6 +203,8 @@ class Recursive(Model):
 
 class RecursiveApproximation(Model):
         &#34;&#34;&#34; This model simplifies the `Recursive` model to obtain an analytic expressions.
+        
+        This model was developed by Palfore.
 
         Percent error for `turns_to_kill` when compared to simulation:
         .. image:: HEAD/results/part_II/models/RecursiveApproximation.png
@@ -228,6 +234,8 @@ class RecursiveApproximation(Model):
 
 class MarkovChain(Model):
         &#34;&#34;&#34; This model uses a Markov Chain analysis.
+        
+        This model was developed by Nukelawa.
 
         Percent error for `turns_to_kill` when compared to simulation:
         .. image:: HEAD/results/part_II/models/MarkovChain.png
@@ -236,8 +244,16 @@ class MarkovChain(Model):
         def turns_to_kill(self, h_0, M):
                 validate(h_0=h_0, M=M)
                 # pylint: disable=bad-continuation
-                if M &lt;= 10 and h_0 &gt; 30:
-                        # This region suffers from overflow error and other numerical inaccuracies
+
+
+                # Emperically, catastrophic error occurs above the line defined by two points:
+                ax, ay = (0, 0)
+                bx, by = (50, 1000)
+                m = (by - ay) / (bx - ax)
+                b = ay - m*ax
+                line = lambda x: m*x + b
+                if h_0 &gt; line(M):
+                # if M &lt;= 10 and h_0 &gt; 30:
                         # Instead the asymptotic behavior is used.
                         return MarkovChainApproximation().turns_to_kill(h_0, M)
                 return sum(
@@ -251,6 +267,8 @@ class MarkovChain(Model):
 
 class MarkovChainApproximation(Model):
         &#34;&#34;&#34; This model uses a asymptotic expansion of `MarkovChain` to obtain an analytic expression.
+        
+        This model was developed by Nukelawa and Corpslayer.
 
         Percent error for `turns_to_kill` when compared to simulation:
         .. image:: HEAD/results/part_II/models/MarkovChainApproximation.png
@@ -353,8 +371,9 @@ class Simulation(Model):
                 raise ValueError(f&#34;Max hit (M) must be positive, not {M}.&#34;)
         if a is not None and not tolerance &lt;= a &lt;= 1:
                 raise ValueError(f&#39;Accuracy must be in [{tolerance}, 1], not {a}&#39;)
-        if model is not None and model not in Model.__subclasses__():
-                raise ValueError(f&#39;Model must be one of: {[cls.__name__ for cls in Model.__subclasses__()]}&#39;)</code></pre>
+        if model is not None:
+                if not issubclass(type(model), Model):
+                        raise ValueError(f&#39;The model must be a Model from: {[cls.__name__ for cls in Model.__subclasses__()]}, not {model}&#39;)</code></pre>
 </details>
 </dd>
 </dl>
@@ -367,7 +386,8 @@ class Simulation(Model):
 </code></dt>
 <dd>
 <div class="desc"><p>Considers the piecewise damage as an average for a simplified treatment.</p>
-<p>This average assumes the opponent has all of its health depleted and so only <code>turns_to_kill</code> is implemented.</p>
+<p>This average assumes the opponent has all of its health depleted and so only <code>turns_to_kill</code> is implemented.
+This model was developed by Nukelawa.</p>
 <p>Percent error for <code>turns_to_kill</code> when compared to simulation:
 <img alt="" src="../../../../results/part_II/models/Average.png"></p></div>
 <details class="source">
@@ -378,6 +398,7 @@ class Simulation(Model):
         &#34;&#34;&#34; Considers the piecewise damage as an average for a simplified treatment.
 
         This average assumes the opponent has all of its health depleted and so only `turns_to_kill` is implemented.
+        This model was developed by Nukelawa.
 
         Percent error for `turns_to_kill` when compared to simulation:
         .. image:: HEAD/results/part_II/models/Average.png
@@ -456,6 +477,7 @@ class Simulation(Model):
 </code></dt>
 <dd>
 <div class="desc"><p>This model uses a Markov Chain analysis.</p>
+<p>This model was developed by Nukelawa.</p>
 <p>Percent error for <code>turns_to_kill</code> when compared to simulation:
 <img alt="" src="../../../../results/part_II/models/MarkovChain.png"></p></div>
 <details class="source">
@@ -464,6 +486,8 @@ class Simulation(Model):
 </summary>
 <pre><code class="python">class MarkovChain(Model):
         &#34;&#34;&#34; This model uses a Markov Chain analysis.
+        
+        This model was developed by Nukelawa.
 
         Percent error for `turns_to_kill` when compared to simulation:
         .. image:: HEAD/results/part_II/models/MarkovChain.png
@@ -472,8 +496,16 @@ class Simulation(Model):
         def turns_to_kill(self, h_0, M):
                 validate(h_0=h_0, M=M)
                 # pylint: disable=bad-continuation
-                if M &lt;= 10 and h_0 &gt; 30:
-                        # This region suffers from overflow error and other numerical inaccuracies
+
+
+                # Emperically, catastrophic error occurs above the line defined by two points:
+                ax, ay = (0, 0)
+                bx, by = (50, 1000)
+                m = (by - ay) / (bx - ax)
+                b = ay - m*ax
+                line = lambda x: m*x + b
+                if h_0 &gt; line(M):
+                # if M &lt;= 10 and h_0 &gt; 30:
                         # Instead the asymptotic behavior is used.
                         return MarkovChainApproximation().turns_to_kill(h_0, M)
                 return sum(
@@ -504,6 +536,7 @@ class Simulation(Model):
 </code></dt>
 <dd>
 <div class="desc"><p>This model uses a asymptotic expansion of <code><a title="osrsmath.model.successful_hits.MarkovChain" href="#osrsmath.model.successful_hits.MarkovChain">MarkovChain</a></code> to obtain an analytic expression.</p>
+<p>This model was developed by Nukelawa and Corpslayer.</p>
 <p>Percent error for <code>turns_to_kill</code> when compared to simulation:
 <img alt="" src="../../../../results/part_II/models/MarkovChainApproximation.png"></p></div>
 <details class="source">
@@ -512,6 +545,8 @@ class Simulation(Model):
 </summary>
 <pre><code class="python">class MarkovChainApproximation(Model):
         &#34;&#34;&#34; This model uses a asymptotic expansion of `MarkovChain` to obtain an analytic expression.
+        
+        This model was developed by Nukelawa and Corpslayer.
 
         Percent error for `turns_to_kill` when compared to simulation:
         .. image:: HEAD/results/part_II/models/MarkovChainApproximation.png
@@ -700,6 +735,7 @@ class Simulation(Model):
 </code></dt>
 <dd>
 <div class="desc"><p>This model considers the piecewise damage as such, providing a recursive solution.</p>
+<p>This model was developed by Palfore.</p>
 <p>Percent error for <code>turns_to_kill</code> when compared to simulation:
 <img alt="" src="../../../../results/part_II/models/Recursive.png"></p></div>
 <details class="source">
@@ -708,6 +744,8 @@ class Simulation(Model):
 </summary>
 <pre><code class="python">class Recursive(Model):
         &#34;&#34;&#34; This model considers the piecewise damage as such, providing a recursive solution.
+        
+        This model was developed by Palfore.
 
         Percent error for `turns_to_kill` when compared to simulation:
         .. image:: HEAD/results/part_II/models/Recursive.png
@@ -783,6 +821,7 @@ class Simulation(Model):
 </code></dt>
 <dd>
 <div class="desc"><p>This model simplifies the <code><a title="osrsmath.model.successful_hits.Recursive" href="#osrsmath.model.successful_hits.Recursive">Recursive</a></code> model to obtain an analytic expressions.</p>
+<p>This model was developed by Palfore.</p>
 <p>Percent error for <code>turns_to_kill</code> when compared to simulation:
 <img alt="" src="../../../../results/part_II/models/RecursiveApproximation.png"></p></div>
 <details class="source">
@@ -791,6 +830,8 @@ class Simulation(Model):
 </summary>
 <pre><code class="python">class RecursiveApproximation(Model):
         &#34;&#34;&#34; This model simplifies the `Recursive` model to obtain an analytic expressions.
+        
+        This model was developed by Palfore.
 
         Percent error for `turns_to_kill` when compared to simulation:
         .. image:: HEAD/results/part_II/models/RecursiveApproximation.png

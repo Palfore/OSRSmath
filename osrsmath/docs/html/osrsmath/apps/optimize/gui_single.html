@@ -27,109 +27,167 @@
 </summary>
 <pre><code class="python"># -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file &#39;//mnt/c/Users/Nawar/Documents/GitHub/OSRS-Combat/Code/osrsmath/apps/optimize/gui_single.ui&#39;
-#
-# Created by: PyQt5 UI code generator 5.14.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file &#39;gui_single.ui&#39;
+##
+## Created by: Qt User Interface Compiler version 5.15.0
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
+from PySide2.QtCore import (QCoreApplication, QDate, QDateTime, QMetaObject,
+    QObject, QPoint, QRect, QSize, QTime, QUrl, Qt)
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
+    QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter,
+    QPixmap, QRadialGradient)
+from PySide2.QtWidgets import *
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from osrsmath.apps.monsters.panel import MonsterPanel
+from osrsmath.apps.optimize.panels.player import PlayerPanel
+from osrsmath.apps.optimize.panels.ignore_adjust import IgnoreAdjustPanel
+from osrsmath.apps.optimize.panels.optimize import OptimizePanel
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName(&#34;MainWindow&#34;)
-        MainWindow.resize(1000, 600)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(&#34;//mnt/c/Users/Nawar/Documents/GitHub/OSRS-Combat/Code/osrsmath/apps/optimize/../GUI/images/logo.png&#34;), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u&#34;MainWindow&#34;)
+        MainWindow.resize(1002, 583)
+        icon = QIcon()
+        icon.addFile(u&#34;../GUI/images/logo.png&#34;, QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName(&#34;centralwidget&#34;)
-        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout.setObjectName(&#34;gridLayout&#34;)
-        self.frame_2 = QtWidgets.QFrame(self.centralwidget)
-        self.frame_2.setMinimumSize(QtCore.QSize(388, 0))
-        self.frame_2.setMaximumSize(QtCore.QSize(388, 16777215))
-        self.frame_2.setFrameShape(QtWidgets.QFrame.Box)
-        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.actionOverview = QAction(MainWindow)
+        self.actionOverview.setObjectName(u&#34;actionOverview&#34;)
+        self.actionChange_Style = QAction(MainWindow)
+        self.actionChange_Style.setObjectName(u&#34;actionChange_Style&#34;)
+        self.actionIncrease_Size = QAction(MainWindow)
+        self.actionIncrease_Size.setObjectName(u&#34;actionIncrease_Size&#34;)
+        self.actionDecrease_Size = QAction(MainWindow)
+        self.actionDecrease_Size.setObjectName(u&#34;actionDecrease_Size&#34;)
+        self.actionPlayer_Panel = QAction(MainWindow)
+        self.actionPlayer_Panel.setObjectName(u&#34;actionPlayer_Panel&#34;)
+        self.actionMonster_Panel = QAction(MainWindow)
+        self.actionMonster_Panel.setObjectName(u&#34;actionMonster_Panel&#34;)
+        self.actionOptimize_Panel = QAction(MainWindow)
+        self.actionOptimize_Panel.setObjectName(u&#34;actionOptimize_Panel&#34;)
+        self.actionShortcuts = QAction(MainWindow)
+        self.actionShortcuts.setObjectName(u&#34;actionShortcuts&#34;)
+        self.actionUpdate_Now = QAction(MainWindow)
+        self.actionUpdate_Now.setObjectName(u&#34;actionUpdate_Now&#34;)
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u&#34;centralwidget&#34;)
+        self.gridLayout = QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName(u&#34;gridLayout&#34;)
+        self.frame_2 = QFrame(self.centralwidget)
+        self.frame_2.setObjectName(u&#34;frame_2&#34;)
+        self.frame_2.setMinimumSize(QSize(388, 0))
+        self.frame_2.setMaximumSize(QSize(388, 16777215))
+        self.frame_2.setFrameShape(QFrame.Box)
+        self.frame_2.setFrameShadow(QFrame.Raised)
         self.frame_2.setLineWidth(3)
-        self.frame_2.setObjectName(&#34;frame_2&#34;)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.frame_2)
-        self.horizontalLayout_2.setSizeConstraint(QtWidgets.QLayout.SetMinimumSize)
-        self.horizontalLayout_2.setObjectName(&#34;horizontalLayout_2&#34;)
+        self.horizontalLayout_2 = QHBoxLayout(self.frame_2)
+        self.horizontalLayout_2.setObjectName(u&#34;horizontalLayout_2&#34;)
+        self.horizontalLayout_2.setSizeConstraint(QLayout.SetMinimumSize)
         self.monster_panel = MonsterPanel(self.frame_2)
-        self.monster_panel.setObjectName(&#34;monster_panel&#34;)
+        self.monster_panel.setObjectName(u&#34;monster_panel&#34;)
+
         self.horizontalLayout_2.addWidget(self.monster_panel)
+
+
         self.gridLayout.addWidget(self.frame_2, 1, 0, 1, 1)
-        self.frame = QtWidgets.QFrame(self.centralwidget)
+
+        self.frame = QFrame(self.centralwidget)
+        self.frame.setObjectName(u&#34;frame&#34;)
         self.frame.setEnabled(True)
-        self.frame.setMinimumSize(QtCore.QSize(388, 0))
-        self.frame.setMaximumSize(QtCore.QSize(388, 16777215))
-        self.frame.setFrameShape(QtWidgets.QFrame.Box)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setMinimumSize(QSize(388, 0))
+        self.frame.setMaximumSize(QSize(388, 16777215))
+        self.frame.setFrameShape(QFrame.Box)
+        self.frame.setFrameShadow(QFrame.Raised)
         self.frame.setLineWidth(3)
         self.frame.setMidLineWidth(0)
-        self.frame.setObjectName(&#34;frame&#34;)
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame)
-        self.horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetMinimumSize)
-        self.horizontalLayout.setObjectName(&#34;horizontalLayout&#34;)
+        self.horizontalLayout = QHBoxLayout(self.frame)
+        self.horizontalLayout.setObjectName(u&#34;horizontalLayout&#34;)
+        self.horizontalLayout.setSizeConstraint(QLayout.SetMinimumSize)
         self.player_panel = PlayerPanel(self.frame)
-        self.player_panel.setObjectName(&#34;player_panel&#34;)
+        self.player_panel.setObjectName(u&#34;player_panel&#34;)
+
         self.horizontalLayout.addWidget(self.player_panel)
+
         self.ignore_adjust_panel = IgnoreAdjustPanel(self.frame)
-        self.ignore_adjust_panel.setObjectName(&#34;ignore_adjust_panel&#34;)
+        self.ignore_adjust_panel.setObjectName(u&#34;ignore_adjust_panel&#34;)
+
         self.horizontalLayout.addWidget(self.ignore_adjust_panel)
-        self.gridLayout.addWidget(self.frame, 0, 0, 1, 1, QtCore.Qt.AlignHCenter)
-        self.frame_3 = QtWidgets.QFrame(self.centralwidget)
-        self.frame_3.setMinimumSize(QtCore.QSize(588, 0))
-        self.frame_3.setFrameShape(QtWidgets.QFrame.Box)
-        self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
+
+
+        self.gridLayout.addWidget(self.frame, 0, 0, 1, 1, Qt.AlignHCenter)
+
+        self.frame_3 = QFrame(self.centralwidget)
+        self.frame_3.setObjectName(u&#34;frame_3&#34;)
+        self.frame_3.setMinimumSize(QSize(588, 0))
+        self.frame_3.setFrameShape(QFrame.Box)
+        self.frame_3.setFrameShadow(QFrame.Raised)
         self.frame_3.setLineWidth(3)
-        self.frame_3.setObjectName(&#34;frame_3&#34;)
-        self.gridLayout_4 = QtWidgets.QGridLayout(self.frame_3)
-        self.gridLayout_4.setObjectName(&#34;gridLayout_4&#34;)
+        self.gridLayout_4 = QGridLayout(self.frame_3)
+        self.gridLayout_4.setObjectName(u&#34;gridLayout_4&#34;)
         self.optimize_panel = OptimizePanel(self.frame_3)
-        self.optimize_panel.setObjectName(&#34;optimize_panel&#34;)
+        self.optimize_panel.setObjectName(u&#34;optimize_panel&#34;)
+
         self.gridLayout_4.addWidget(self.optimize_panel, 0, 0, 1, 1)
+
+
         self.gridLayout.addWidget(self.frame_3, 0, 1, 2, 1)
+
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1000, 21))
-        self.menubar.setObjectName(&#34;menubar&#34;)
-        self.menuHelp = QtWidgets.QMenu(self.menubar)
-        self.menuHelp.setObjectName(&#34;menuHelp&#34;)
+        self.menubar = QMenuBar(MainWindow)
+        self.menubar.setObjectName(u&#34;menubar&#34;)
+        self.menubar.setGeometry(QRect(0, 0, 1002, 21))
+        self.menuHelp = QMenu(self.menubar)
+        self.menuHelp.setObjectName(u&#34;menuHelp&#34;)
+        self.menuView = QMenu(self.menubar)
+        self.menuView.setObjectName(u&#34;menuView&#34;)
+        self.menuFont = QMenu(self.menubar)
+        self.menuFont.setObjectName(u&#34;menuFont&#34;)
+        self.menuUpdate = QMenu(self.menubar)
+        self.menuUpdate.setObjectName(u&#34;menuUpdate&#34;)
         MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName(&#34;statusbar&#34;)
+        self.statusbar = QStatusBar(MainWindow)
+        self.statusbar.setObjectName(u&#34;statusbar&#34;)
         MainWindow.setStatusBar(self.statusbar)
-        self.actionOverview = QtWidgets.QAction(MainWindow)
-        self.actionOverview.setObjectName(&#34;actionOverview&#34;)
-        self.menuHelp.addAction(self.actionOverview)
+
         self.menubar.addAction(self.menuHelp.menuAction())
+        self.menubar.addAction(self.menuView.menuAction())
+        self.menubar.addAction(self.menuFont.menuAction())
+        self.menubar.addAction(self.menuUpdate.menuAction())
+        self.menuHelp.addAction(self.actionOverview)
+        self.menuHelp.addAction(self.actionPlayer_Panel)
+        self.menuHelp.addAction(self.actionMonster_Panel)
+        self.menuHelp.addAction(self.actionOptimize_Panel)
+        self.menuHelp.addAction(self.actionShortcuts)
+        self.menuFont.addAction(self.actionIncrease_Size)
+        self.menuFont.addAction(self.actionDecrease_Size)
+        self.menuUpdate.addAction(self.actionUpdate_Now)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate(&#34;MainWindow&#34;, &#34;OSRS Combat Optimizer&#34;))
-        self.menuHelp.setTitle(_translate(&#34;MainWindow&#34;, &#34;Help&#34;))
-        self.actionOverview.setText(_translate(&#34;MainWindow&#34;, &#34;Overview&#34;))
-from osrsmath.apps.monsters.panel import MonsterPanel
-from osrsmath.apps.optimize.panels.ignore_adjust import IgnoreAdjustPanel
-from osrsmath.apps.optimize.panels.optimize import OptimizePanel
-from osrsmath.apps.optimize.panels.player import PlayerPanel
-
-
-if __name__ == &#34;__main__&#34;:
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())</code></pre>
+        MainWindow.setWindowTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;OSRS Combat Optimizer&#34;, None))
+        self.actionOverview.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Overview&#34;, None))
+        self.actionChange_Style.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Change Style&#34;, None))
+        self.actionIncrease_Size.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Increase Size&#34;, None))
+        self.actionDecrease_Size.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Decrease Size&#34;, None))
+        self.actionPlayer_Panel.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Player Panel&#34;, None))
+        self.actionMonster_Panel.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Monster Panel&#34;, None))
+        self.actionOptimize_Panel.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Optimize Panel&#34;, None))
+        self.actionShortcuts.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Shortcuts&#34;, None))
+        self.actionUpdate_Now.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Update Now&#34;, None))
+        self.menuHelp.setTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Help&#34;, None))
+        self.menuView.setTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Style&#34;, None))
+        self.menuFont.setTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Font&#34;, None))
+        self.menuUpdate.setTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Update&#34;, None))
+    # retranslateUi</code></pre>
 </details>
 </section>
 <section>
@@ -152,83 +210,143 @@ if __name__ == &#34;__main__&#34;:
 </summary>
 <pre><code class="python">class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName(&#34;MainWindow&#34;)
-        MainWindow.resize(1000, 600)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(&#34;//mnt/c/Users/Nawar/Documents/GitHub/OSRS-Combat/Code/osrsmath/apps/optimize/../GUI/images/logo.png&#34;), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u&#34;MainWindow&#34;)
+        MainWindow.resize(1002, 583)
+        icon = QIcon()
+        icon.addFile(u&#34;../GUI/images/logo.png&#34;, QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName(&#34;centralwidget&#34;)
-        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout.setObjectName(&#34;gridLayout&#34;)
-        self.frame_2 = QtWidgets.QFrame(self.centralwidget)
-        self.frame_2.setMinimumSize(QtCore.QSize(388, 0))
-        self.frame_2.setMaximumSize(QtCore.QSize(388, 16777215))
-        self.frame_2.setFrameShape(QtWidgets.QFrame.Box)
-        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.actionOverview = QAction(MainWindow)
+        self.actionOverview.setObjectName(u&#34;actionOverview&#34;)
+        self.actionChange_Style = QAction(MainWindow)
+        self.actionChange_Style.setObjectName(u&#34;actionChange_Style&#34;)
+        self.actionIncrease_Size = QAction(MainWindow)
+        self.actionIncrease_Size.setObjectName(u&#34;actionIncrease_Size&#34;)
+        self.actionDecrease_Size = QAction(MainWindow)
+        self.actionDecrease_Size.setObjectName(u&#34;actionDecrease_Size&#34;)
+        self.actionPlayer_Panel = QAction(MainWindow)
+        self.actionPlayer_Panel.setObjectName(u&#34;actionPlayer_Panel&#34;)
+        self.actionMonster_Panel = QAction(MainWindow)
+        self.actionMonster_Panel.setObjectName(u&#34;actionMonster_Panel&#34;)
+        self.actionOptimize_Panel = QAction(MainWindow)
+        self.actionOptimize_Panel.setObjectName(u&#34;actionOptimize_Panel&#34;)
+        self.actionShortcuts = QAction(MainWindow)
+        self.actionShortcuts.setObjectName(u&#34;actionShortcuts&#34;)
+        self.actionUpdate_Now = QAction(MainWindow)
+        self.actionUpdate_Now.setObjectName(u&#34;actionUpdate_Now&#34;)
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u&#34;centralwidget&#34;)
+        self.gridLayout = QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName(u&#34;gridLayout&#34;)
+        self.frame_2 = QFrame(self.centralwidget)
+        self.frame_2.setObjectName(u&#34;frame_2&#34;)
+        self.frame_2.setMinimumSize(QSize(388, 0))
+        self.frame_2.setMaximumSize(QSize(388, 16777215))
+        self.frame_2.setFrameShape(QFrame.Box)
+        self.frame_2.setFrameShadow(QFrame.Raised)
         self.frame_2.setLineWidth(3)
-        self.frame_2.setObjectName(&#34;frame_2&#34;)
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.frame_2)
-        self.horizontalLayout_2.setSizeConstraint(QtWidgets.QLayout.SetMinimumSize)
-        self.horizontalLayout_2.setObjectName(&#34;horizontalLayout_2&#34;)
+        self.horizontalLayout_2 = QHBoxLayout(self.frame_2)
+        self.horizontalLayout_2.setObjectName(u&#34;horizontalLayout_2&#34;)
+        self.horizontalLayout_2.setSizeConstraint(QLayout.SetMinimumSize)
         self.monster_panel = MonsterPanel(self.frame_2)
-        self.monster_panel.setObjectName(&#34;monster_panel&#34;)
+        self.monster_panel.setObjectName(u&#34;monster_panel&#34;)
+
         self.horizontalLayout_2.addWidget(self.monster_panel)
+
+
         self.gridLayout.addWidget(self.frame_2, 1, 0, 1, 1)
-        self.frame = QtWidgets.QFrame(self.centralwidget)
+
+        self.frame = QFrame(self.centralwidget)
+        self.frame.setObjectName(u&#34;frame&#34;)
         self.frame.setEnabled(True)
-        self.frame.setMinimumSize(QtCore.QSize(388, 0))
-        self.frame.setMaximumSize(QtCore.QSize(388, 16777215))
-        self.frame.setFrameShape(QtWidgets.QFrame.Box)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setMinimumSize(QSize(388, 0))
+        self.frame.setMaximumSize(QSize(388, 16777215))
+        self.frame.setFrameShape(QFrame.Box)
+        self.frame.setFrameShadow(QFrame.Raised)
         self.frame.setLineWidth(3)
         self.frame.setMidLineWidth(0)
-        self.frame.setObjectName(&#34;frame&#34;)
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame)
-        self.horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetMinimumSize)
-        self.horizontalLayout.setObjectName(&#34;horizontalLayout&#34;)
+        self.horizontalLayout = QHBoxLayout(self.frame)
+        self.horizontalLayout.setObjectName(u&#34;horizontalLayout&#34;)
+        self.horizontalLayout.setSizeConstraint(QLayout.SetMinimumSize)
         self.player_panel = PlayerPanel(self.frame)
-        self.player_panel.setObjectName(&#34;player_panel&#34;)
+        self.player_panel.setObjectName(u&#34;player_panel&#34;)
+
         self.horizontalLayout.addWidget(self.player_panel)
+
         self.ignore_adjust_panel = IgnoreAdjustPanel(self.frame)
-        self.ignore_adjust_panel.setObjectName(&#34;ignore_adjust_panel&#34;)
+        self.ignore_adjust_panel.setObjectName(u&#34;ignore_adjust_panel&#34;)
+
         self.horizontalLayout.addWidget(self.ignore_adjust_panel)
-        self.gridLayout.addWidget(self.frame, 0, 0, 1, 1, QtCore.Qt.AlignHCenter)
-        self.frame_3 = QtWidgets.QFrame(self.centralwidget)
-        self.frame_3.setMinimumSize(QtCore.QSize(588, 0))
-        self.frame_3.setFrameShape(QtWidgets.QFrame.Box)
-        self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
+
+
+        self.gridLayout.addWidget(self.frame, 0, 0, 1, 1, Qt.AlignHCenter)
+
+        self.frame_3 = QFrame(self.centralwidget)
+        self.frame_3.setObjectName(u&#34;frame_3&#34;)
+        self.frame_3.setMinimumSize(QSize(588, 0))
+        self.frame_3.setFrameShape(QFrame.Box)
+        self.frame_3.setFrameShadow(QFrame.Raised)
         self.frame_3.setLineWidth(3)
-        self.frame_3.setObjectName(&#34;frame_3&#34;)
-        self.gridLayout_4 = QtWidgets.QGridLayout(self.frame_3)
-        self.gridLayout_4.setObjectName(&#34;gridLayout_4&#34;)
+        self.gridLayout_4 = QGridLayout(self.frame_3)
+        self.gridLayout_4.setObjectName(u&#34;gridLayout_4&#34;)
         self.optimize_panel = OptimizePanel(self.frame_3)
-        self.optimize_panel.setObjectName(&#34;optimize_panel&#34;)
+        self.optimize_panel.setObjectName(u&#34;optimize_panel&#34;)
+
         self.gridLayout_4.addWidget(self.optimize_panel, 0, 0, 1, 1)
+
+
         self.gridLayout.addWidget(self.frame_3, 0, 1, 2, 1)
+
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1000, 21))
-        self.menubar.setObjectName(&#34;menubar&#34;)
-        self.menuHelp = QtWidgets.QMenu(self.menubar)
-        self.menuHelp.setObjectName(&#34;menuHelp&#34;)
+        self.menubar = QMenuBar(MainWindow)
+        self.menubar.setObjectName(u&#34;menubar&#34;)
+        self.menubar.setGeometry(QRect(0, 0, 1002, 21))
+        self.menuHelp = QMenu(self.menubar)
+        self.menuHelp.setObjectName(u&#34;menuHelp&#34;)
+        self.menuView = QMenu(self.menubar)
+        self.menuView.setObjectName(u&#34;menuView&#34;)
+        self.menuFont = QMenu(self.menubar)
+        self.menuFont.setObjectName(u&#34;menuFont&#34;)
+        self.menuUpdate = QMenu(self.menubar)
+        self.menuUpdate.setObjectName(u&#34;menuUpdate&#34;)
         MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName(&#34;statusbar&#34;)
+        self.statusbar = QStatusBar(MainWindow)
+        self.statusbar.setObjectName(u&#34;statusbar&#34;)
         MainWindow.setStatusBar(self.statusbar)
-        self.actionOverview = QtWidgets.QAction(MainWindow)
-        self.actionOverview.setObjectName(&#34;actionOverview&#34;)
-        self.menuHelp.addAction(self.actionOverview)
+
         self.menubar.addAction(self.menuHelp.menuAction())
+        self.menubar.addAction(self.menuView.menuAction())
+        self.menubar.addAction(self.menuFont.menuAction())
+        self.menubar.addAction(self.menuUpdate.menuAction())
+        self.menuHelp.addAction(self.actionOverview)
+        self.menuHelp.addAction(self.actionPlayer_Panel)
+        self.menuHelp.addAction(self.actionMonster_Panel)
+        self.menuHelp.addAction(self.actionOptimize_Panel)
+        self.menuHelp.addAction(self.actionShortcuts)
+        self.menuFont.addAction(self.actionIncrease_Size)
+        self.menuFont.addAction(self.actionDecrease_Size)
+        self.menuUpdate.addAction(self.actionUpdate_Now)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate(&#34;MainWindow&#34;, &#34;OSRS Combat Optimizer&#34;))
-        self.menuHelp.setTitle(_translate(&#34;MainWindow&#34;, &#34;Help&#34;))
-        self.actionOverview.setText(_translate(&#34;MainWindow&#34;, &#34;Overview&#34;))</code></pre>
+        MainWindow.setWindowTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;OSRS Combat Optimizer&#34;, None))
+        self.actionOverview.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Overview&#34;, None))
+        self.actionChange_Style.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Change Style&#34;, None))
+        self.actionIncrease_Size.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Increase Size&#34;, None))
+        self.actionDecrease_Size.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Decrease Size&#34;, None))
+        self.actionPlayer_Panel.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Player Panel&#34;, None))
+        self.actionMonster_Panel.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Monster Panel&#34;, None))
+        self.actionOptimize_Panel.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Optimize Panel&#34;, None))
+        self.actionShortcuts.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Shortcuts&#34;, None))
+        self.actionUpdate_Now.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Update Now&#34;, None))
+        self.menuHelp.setTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Help&#34;, None))
+        self.menuView.setTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Style&#34;, None))
+        self.menuFont.setTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Font&#34;, None))
+        self.menuUpdate.setTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Update&#34;, None))</code></pre>
 </details>
 <h3>Subclasses</h3>
 <ul class="hlist">
@@ -246,10 +364,20 @@ if __name__ == &#34;__main__&#34;:
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def retranslateUi(self, MainWindow):
-    _translate = QtCore.QCoreApplication.translate
-    MainWindow.setWindowTitle(_translate(&#34;MainWindow&#34;, &#34;OSRS Combat Optimizer&#34;))
-    self.menuHelp.setTitle(_translate(&#34;MainWindow&#34;, &#34;Help&#34;))
-    self.actionOverview.setText(_translate(&#34;MainWindow&#34;, &#34;Overview&#34;))</code></pre>
+    MainWindow.setWindowTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;OSRS Combat Optimizer&#34;, None))
+    self.actionOverview.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Overview&#34;, None))
+    self.actionChange_Style.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Change Style&#34;, None))
+    self.actionIncrease_Size.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Increase Size&#34;, None))
+    self.actionDecrease_Size.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Decrease Size&#34;, None))
+    self.actionPlayer_Panel.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Player Panel&#34;, None))
+    self.actionMonster_Panel.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Monster Panel&#34;, None))
+    self.actionOptimize_Panel.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Optimize Panel&#34;, None))
+    self.actionShortcuts.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Shortcuts&#34;, None))
+    self.actionUpdate_Now.setText(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Update Now&#34;, None))
+    self.menuHelp.setTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Help&#34;, None))
+    self.menuView.setTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Style&#34;, None))
+    self.menuFont.setTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Font&#34;, None))
+    self.menuUpdate.setTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;Update&#34;, None))</code></pre>
 </details>
 </dd>
 <dt id="osrsmath.apps.optimize.gui_single.Ui_MainWindow.setupUi"><code class="name flex">
@@ -262,77 +390,126 @@ if __name__ == &#34;__main__&#34;:
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def setupUi(self, MainWindow):
-    MainWindow.setObjectName(&#34;MainWindow&#34;)
-    MainWindow.resize(1000, 600)
-    icon = QtGui.QIcon()
-    icon.addPixmap(QtGui.QPixmap(&#34;//mnt/c/Users/Nawar/Documents/GitHub/OSRS-Combat/Code/osrsmath/apps/optimize/../GUI/images/logo.png&#34;), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+    if not MainWindow.objectName():
+        MainWindow.setObjectName(u&#34;MainWindow&#34;)
+    MainWindow.resize(1002, 583)
+    icon = QIcon()
+    icon.addFile(u&#34;../GUI/images/logo.png&#34;, QSize(), QIcon.Normal, QIcon.Off)
     MainWindow.setWindowIcon(icon)
-    self.centralwidget = QtWidgets.QWidget(MainWindow)
-    self.centralwidget.setObjectName(&#34;centralwidget&#34;)
-    self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
-    self.gridLayout.setObjectName(&#34;gridLayout&#34;)
-    self.frame_2 = QtWidgets.QFrame(self.centralwidget)
-    self.frame_2.setMinimumSize(QtCore.QSize(388, 0))
-    self.frame_2.setMaximumSize(QtCore.QSize(388, 16777215))
-    self.frame_2.setFrameShape(QtWidgets.QFrame.Box)
-    self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+    self.actionOverview = QAction(MainWindow)
+    self.actionOverview.setObjectName(u&#34;actionOverview&#34;)
+    self.actionChange_Style = QAction(MainWindow)
+    self.actionChange_Style.setObjectName(u&#34;actionChange_Style&#34;)
+    self.actionIncrease_Size = QAction(MainWindow)
+    self.actionIncrease_Size.setObjectName(u&#34;actionIncrease_Size&#34;)
+    self.actionDecrease_Size = QAction(MainWindow)
+    self.actionDecrease_Size.setObjectName(u&#34;actionDecrease_Size&#34;)
+    self.actionPlayer_Panel = QAction(MainWindow)
+    self.actionPlayer_Panel.setObjectName(u&#34;actionPlayer_Panel&#34;)
+    self.actionMonster_Panel = QAction(MainWindow)
+    self.actionMonster_Panel.setObjectName(u&#34;actionMonster_Panel&#34;)
+    self.actionOptimize_Panel = QAction(MainWindow)
+    self.actionOptimize_Panel.setObjectName(u&#34;actionOptimize_Panel&#34;)
+    self.actionShortcuts = QAction(MainWindow)
+    self.actionShortcuts.setObjectName(u&#34;actionShortcuts&#34;)
+    self.actionUpdate_Now = QAction(MainWindow)
+    self.actionUpdate_Now.setObjectName(u&#34;actionUpdate_Now&#34;)
+    self.centralwidget = QWidget(MainWindow)
+    self.centralwidget.setObjectName(u&#34;centralwidget&#34;)
+    self.gridLayout = QGridLayout(self.centralwidget)
+    self.gridLayout.setObjectName(u&#34;gridLayout&#34;)
+    self.frame_2 = QFrame(self.centralwidget)
+    self.frame_2.setObjectName(u&#34;frame_2&#34;)
+    self.frame_2.setMinimumSize(QSize(388, 0))
+    self.frame_2.setMaximumSize(QSize(388, 16777215))
+    self.frame_2.setFrameShape(QFrame.Box)
+    self.frame_2.setFrameShadow(QFrame.Raised)
     self.frame_2.setLineWidth(3)
-    self.frame_2.setObjectName(&#34;frame_2&#34;)
-    self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.frame_2)
-    self.horizontalLayout_2.setSizeConstraint(QtWidgets.QLayout.SetMinimumSize)
-    self.horizontalLayout_2.setObjectName(&#34;horizontalLayout_2&#34;)
+    self.horizontalLayout_2 = QHBoxLayout(self.frame_2)
+    self.horizontalLayout_2.setObjectName(u&#34;horizontalLayout_2&#34;)
+    self.horizontalLayout_2.setSizeConstraint(QLayout.SetMinimumSize)
     self.monster_panel = MonsterPanel(self.frame_2)
-    self.monster_panel.setObjectName(&#34;monster_panel&#34;)
+    self.monster_panel.setObjectName(u&#34;monster_panel&#34;)
+
     self.horizontalLayout_2.addWidget(self.monster_panel)
+
+
     self.gridLayout.addWidget(self.frame_2, 1, 0, 1, 1)
-    self.frame = QtWidgets.QFrame(self.centralwidget)
+
+    self.frame = QFrame(self.centralwidget)
+    self.frame.setObjectName(u&#34;frame&#34;)
     self.frame.setEnabled(True)
-    self.frame.setMinimumSize(QtCore.QSize(388, 0))
-    self.frame.setMaximumSize(QtCore.QSize(388, 16777215))
-    self.frame.setFrameShape(QtWidgets.QFrame.Box)
-    self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+    self.frame.setMinimumSize(QSize(388, 0))
+    self.frame.setMaximumSize(QSize(388, 16777215))
+    self.frame.setFrameShape(QFrame.Box)
+    self.frame.setFrameShadow(QFrame.Raised)
     self.frame.setLineWidth(3)
     self.frame.setMidLineWidth(0)
-    self.frame.setObjectName(&#34;frame&#34;)
-    self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame)
-    self.horizontalLayout.setSizeConstraint(QtWidgets.QLayout.SetMinimumSize)
-    self.horizontalLayout.setObjectName(&#34;horizontalLayout&#34;)
+    self.horizontalLayout = QHBoxLayout(self.frame)
+    self.horizontalLayout.setObjectName(u&#34;horizontalLayout&#34;)
+    self.horizontalLayout.setSizeConstraint(QLayout.SetMinimumSize)
     self.player_panel = PlayerPanel(self.frame)
-    self.player_panel.setObjectName(&#34;player_panel&#34;)
+    self.player_panel.setObjectName(u&#34;player_panel&#34;)
+
     self.horizontalLayout.addWidget(self.player_panel)
+
     self.ignore_adjust_panel = IgnoreAdjustPanel(self.frame)
-    self.ignore_adjust_panel.setObjectName(&#34;ignore_adjust_panel&#34;)
+    self.ignore_adjust_panel.setObjectName(u&#34;ignore_adjust_panel&#34;)
+
     self.horizontalLayout.addWidget(self.ignore_adjust_panel)
-    self.gridLayout.addWidget(self.frame, 0, 0, 1, 1, QtCore.Qt.AlignHCenter)
-    self.frame_3 = QtWidgets.QFrame(self.centralwidget)
-    self.frame_3.setMinimumSize(QtCore.QSize(588, 0))
-    self.frame_3.setFrameShape(QtWidgets.QFrame.Box)
-    self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
+
+
+    self.gridLayout.addWidget(self.frame, 0, 0, 1, 1, Qt.AlignHCenter)
+
+    self.frame_3 = QFrame(self.centralwidget)
+    self.frame_3.setObjectName(u&#34;frame_3&#34;)
+    self.frame_3.setMinimumSize(QSize(588, 0))
+    self.frame_3.setFrameShape(QFrame.Box)
+    self.frame_3.setFrameShadow(QFrame.Raised)
     self.frame_3.setLineWidth(3)
-    self.frame_3.setObjectName(&#34;frame_3&#34;)
-    self.gridLayout_4 = QtWidgets.QGridLayout(self.frame_3)
-    self.gridLayout_4.setObjectName(&#34;gridLayout_4&#34;)
+    self.gridLayout_4 = QGridLayout(self.frame_3)
+    self.gridLayout_4.setObjectName(u&#34;gridLayout_4&#34;)
     self.optimize_panel = OptimizePanel(self.frame_3)
-    self.optimize_panel.setObjectName(&#34;optimize_panel&#34;)
+    self.optimize_panel.setObjectName(u&#34;optimize_panel&#34;)
+
     self.gridLayout_4.addWidget(self.optimize_panel, 0, 0, 1, 1)
+
+
     self.gridLayout.addWidget(self.frame_3, 0, 1, 2, 1)
+
     MainWindow.setCentralWidget(self.centralwidget)
-    self.menubar = QtWidgets.QMenuBar(MainWindow)
-    self.menubar.setGeometry(QtCore.QRect(0, 0, 1000, 21))
-    self.menubar.setObjectName(&#34;menubar&#34;)
-    self.menuHelp = QtWidgets.QMenu(self.menubar)
-    self.menuHelp.setObjectName(&#34;menuHelp&#34;)
+    self.menubar = QMenuBar(MainWindow)
+    self.menubar.setObjectName(u&#34;menubar&#34;)
+    self.menubar.setGeometry(QRect(0, 0, 1002, 21))
+    self.menuHelp = QMenu(self.menubar)
+    self.menuHelp.setObjectName(u&#34;menuHelp&#34;)
+    self.menuView = QMenu(self.menubar)
+    self.menuView.setObjectName(u&#34;menuView&#34;)
+    self.menuFont = QMenu(self.menubar)
+    self.menuFont.setObjectName(u&#34;menuFont&#34;)
+    self.menuUpdate = QMenu(self.menubar)
+    self.menuUpdate.setObjectName(u&#34;menuUpdate&#34;)
     MainWindow.setMenuBar(self.menubar)
-    self.statusbar = QtWidgets.QStatusBar(MainWindow)
-    self.statusbar.setObjectName(&#34;statusbar&#34;)
+    self.statusbar = QStatusBar(MainWindow)
+    self.statusbar.setObjectName(u&#34;statusbar&#34;)
     MainWindow.setStatusBar(self.statusbar)
-    self.actionOverview = QtWidgets.QAction(MainWindow)
-    self.actionOverview.setObjectName(&#34;actionOverview&#34;)
-    self.menuHelp.addAction(self.actionOverview)
+
     self.menubar.addAction(self.menuHelp.menuAction())
+    self.menubar.addAction(self.menuView.menuAction())
+    self.menubar.addAction(self.menuFont.menuAction())
+    self.menubar.addAction(self.menuUpdate.menuAction())
+    self.menuHelp.addAction(self.actionOverview)
+    self.menuHelp.addAction(self.actionPlayer_Panel)
+    self.menuHelp.addAction(self.actionMonster_Panel)
+    self.menuHelp.addAction(self.actionOptimize_Panel)
+    self.menuHelp.addAction(self.actionShortcuts)
+    self.menuFont.addAction(self.actionIncrease_Size)
+    self.menuFont.addAction(self.actionDecrease_Size)
+    self.menuUpdate.addAction(self.actionUpdate_Now)
 
     self.retranslateUi(MainWindow)
-    QtCore.QMetaObject.connectSlotsByName(MainWindow)</code></pre>
+
+    QMetaObject.connectSlotsByName(MainWindow)</code></pre>
 </details>
 </dd>
 </dl>

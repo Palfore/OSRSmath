@@ -17,7 +17,6 @@
 # miktexsetup finish
 # initexmf --set-config-value [MPM]AutoInstall=1
 
-
 # The command line utility `convert` is used.
 # sudo apt install imagemagick
 
@@ -64,6 +63,17 @@ setup(
 	],
 	project_urls={
 	},
-	install_requires=['wheel', 'pathos', 'numpy', 'matplotlib', 'scipy', 'Dijkstar', 'requests', 'tornado', 'multiprocess'],
+	install_requires=[
+		'wheel',
+		# 'pathos',  # multiprocess used instead.
+		'PySide2',
+		'numpy',
+		'matplotlib',
+		'scipy',
+		'Dijkstar',
+		'requests',
+		'tornado',
+		'multiprocess'
+	],  # Developers may need PyInstaller, and Pdoc3
 	python_requires='>=3',
 )

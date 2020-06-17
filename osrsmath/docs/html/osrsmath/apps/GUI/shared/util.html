@@ -36,11 +36,11 @@ Run: <code>python util.py make</code> to compile ALL .ui files into the respecti
 import os
 from pathlib import Path
 
-UI_COMPILER = &#39;pyuic5&#39;
-RC_COMPILER = &#39;pyrcc5&#39;
+UI_COMPILER = &#39;pyside2-uic&#39;  # &#39;pyuic5&#39;
+RC_COMPILER = &#39;pyside2-rcc&#39;  # &#39;pyrcc5&#39;
 
 def make_ui(file_path):
-        os.system(f&#34;{UI_COMPILER} -x {file_path}.ui -o {file_path}.py&#34;)
+        os.system(f&#34;{UI_COMPILER} {file_path}.ui -o {file_path}.py&#34;)
 
 def make_rc(file_path):
         os.system(f&#39;{RC_COMPILER} {file_path}.qrc -o {file_path}.py&#39;)
@@ -114,7 +114,7 @@ if __name__ == &#39;__main__&#39;:
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def make_ui(file_path):
-        os.system(f&#34;{UI_COMPILER} -x {file_path}.ui -o {file_path}.py&#34;)</code></pre>
+        os.system(f&#34;{UI_COMPILER} {file_path}.ui -o {file_path}.py&#34;)</code></pre>
 </details>
 </dd>
 </dl>

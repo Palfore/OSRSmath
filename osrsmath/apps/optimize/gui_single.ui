@@ -134,6 +134,10 @@
      <string>Help</string>
     </property>
     <addaction name="actionOverview"/>
+    <addaction name="actionPlayer_Panel"/>
+    <addaction name="actionMonster_Panel"/>
+    <addaction name="actionOptimize_Panel"/>
+    <addaction name="actionShortcuts"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
@@ -147,9 +151,16 @@
     <addaction name="actionIncrease_Size"/>
     <addaction name="actionDecrease_Size"/>
    </widget>
+   <widget class="QMenu" name="menuUpdate">
+    <property name="title">
+     <string>Update</string>
+    </property>
+    <addaction name="actionUpdate_Now"/>
+   </widget>
    <addaction name="menuHelp"/>
    <addaction name="menuView"/>
    <addaction name="menuFont"/>
+   <addaction name="menuUpdate"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOverview">
@@ -170,6 +181,31 @@
   <action name="actionDecrease_Size">
    <property name="text">
     <string>Decrease Size</string>
+   </property>
+  </action>
+  <action name="actionPlayer_Panel">
+   <property name="text">
+    <string>Player Panel</string>
+   </property>
+  </action>
+  <action name="actionMonster_Panel">
+   <property name="text">
+    <string>Monster Panel</string>
+   </property>
+  </action>
+  <action name="actionOptimize_Panel">
+   <property name="text">
+    <string>Optimize Panel</string>
+   </property>
+  </action>
+  <action name="actionShortcuts">
+   <property name="text">
+    <string>Shortcuts</string>
+   </property>
+  </action>
+  <action name="actionUpdate_Now">
+   <property name="text">
+    <string>Update Now</string>
    </property>
   </action>
  </widget>

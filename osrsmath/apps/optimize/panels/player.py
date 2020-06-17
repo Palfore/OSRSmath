@@ -2,7 +2,7 @@ from osrsmath.apps.GUI.optimize.player_skeleton import Ui_Form
 from osrsmath.apps.GUI.shared.widgets import Savable
 from osrsmath.model.general.skills import get_skills, get_combat_skills
 from osrsmath.model.experience import combat_level
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PySide2 import QtCore, QtGui, QtWidgets
 
 class PlayerPanel(QtWidgets.QWidget, Ui_Form, Savable):
 	def __init__(self, parent=None):

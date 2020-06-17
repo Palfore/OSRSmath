@@ -67,10 +67,11 @@ class Solver:
 		self.special_sets.append((weapons, gear))
 
 	def solve(self):
+		attack_types = ['stab', 'slash', 'crush']
 		equipment_sets = []
-		M = 3*(len(self.special_sets) + 1)
+		M = len(attack_types)*(len(self.special_sets) + 1)
 		i = 1
-		for attack_type in ['stab', 'slash', 'crush']:
+		for attack_type in attack_types:
 			equipment_sets.extend(self.get_attack_sets(attack_type, []))
 			self.callback(i/M*100); i += 1
 			for weapons, special_gear in self.special_sets:
@@ -175,41 +176,12 @@ def get_best_set(player_stats: dict, training_skill, states, defenders, sets, in
 		@param player_stats: {'attack': 40, ...}
 		@param training_skill: 'attack'
 		@param sets: [{'cape': 'Fire cape', ...}, {'cape': 'Legends cape', ...}, ...] """
-	return max(mmap(
+	sets = mmap(
 		lambda s: eval_set(player_stats, training_skill, states, defenders, s, include_shared_xp),
 		sets,
 		progress_callback
-	), key = lambda x: x[1])  # x[1] -> xp rate
+	)
+	if not sets:
+		return None, 0, None
 
-
-
-
-
-
-# def create_set_effect(original, required_equipment):
-# 		non_void = list(filter(lambda n: n[0] not in required_equipment, original))
-# 		non_void.extend([(n, e) for n, e in required_equipment.items()])
-# 		return tuple(non_void)
-
-# 	# Adding Void Set
-# 	void = {'body': 'Void knight top', 'legs': 'Void knight robe', 'hands': 'Void knight gloves', 'head': 'Void melee helm'}
-# 	if all(meets_requirements(player_stats, get_equipment_by_name(e)) for e in void.values()):
-# 		sets += list(set(create_set_effect(s, void) for s in sets))
-
-# 	# Adding Obsidian Sets
-# 	obsidian = {'head': 'Obsidian helmet', 'body': 'Obsidian platebody', 'legs': 'Obsidian platelegs', 'neck': 'Berserker necklace'}
-# 	if all(meets_requirements(player_stats, get_equipment_by_name(e)) for e in obsidian.values()):
-# 		for weapon in ['Toktz-xil-ek', 'Toktz-xil-ak', 'Tzhaar-ket-em', 'Tzhaar-ket-om', 'Tzhaar-ket-om (t)']:
-# 			if meets_requirements(player_stats, get_equipment_by_name(weapon)):
-# 				sets += list(set(create_set_effect(s, {
-# 					**obsidian, **{'weapon': weapon}
-# 				}) for s in sets))
-
-# 	obsidian = {'neck': 'Berserker necklace'}
-# 	if all(meets_requirements(player_stats, get_equipment_by_name(e)) for e in obsidian.values()):
-# 		for weapon in ['toktz-xil-ek', 'toktz-xil-ak', 'tzhaar-ket-em', 'tzhaar-ket-om', 'tzhaar-ket-om (t)']:
-# 			if meets_requirements(player_stats, get_equipment_by_name(weapon)):
-# 				sets += list(set(create_set_effect(s, {
-# 					**obsidian, **{'weapon': weapon}
-# 				}) for s in sets))
-
+	return max(sets, key=lambda x: x[1])  # x[1] -> xp rate

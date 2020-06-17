@@ -1,5 +1,5 @@
 from osrsmath.apps.GUI.monsters.monsters_skeleton import Ui_Monsters
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PySide2 import QtCore, QtGui, QtWidgets
 import osrsmath.model.monsters as monsters
 import webbrowser
 from osrsmath.model.experience import combat_level
@@ -79,6 +79,8 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
 		('defensive_magic', 'defence_magic'),
 		('defensive_ranged', 'defence_ranged'),
 	]
+	ADD_TOOLTIP = "Reduce the search to only contain nmz boss names."
+	NMZ_ONLY_TOOLTIP = "Add this monster to your monster pool."
 
 	def __init__(self, parent=None):
 		super().__init__(parent)
@@ -94,6 +96,10 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
 
 		self.nmz_only_changed()
 		self.on_select()
+
+
+		self.nmz_only.setToolTip(self.ADD_TOOLTIP)
+		self.add.setToolTip(self.NMZ_ONLY_TOOLTIP)
 
 	def nmz_only_changed(self):
 		if self.nmz_only.isChecked():
@@ -134,7 +140,7 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
 				QtWidgets.QMessageBox.Info,
 				'No wiki entry found.',
 				f"{name} (id: {ID}) did not have a wiki url."
-			).exec()
+			).exec_()
 
 	def get_monster(self):
 		''' Returns a monster from the displayed data.

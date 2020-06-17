@@ -58,6 +58,7 @@ class Potions:
 class Prayers:
         &#34;&#34;&#34; Namespace for different prayer boost calculations.
                 These are percentage increases in level since prayer boosts are multiplicative. &#34;&#34;&#34;
+        
         @staticmethod
         def piety(skill):
                 multipliers = {
@@ -142,8 +143,6 @@ class Prayers:
                 assert skill in multipliers
                 return multipliers[skill]
 
-
-
 def other(equipment, player):
         equipment = [e.lower() for e in equipment]
 
@@ -193,9 +192,6 @@ def other(equipment, player):
                                 return Equipment.obsidian()
                 elif &#39;berserker necklace&#39; in equipment:
                                 return Equipment.berserker_necklace()
-
-
-
 
         return {}
 
@@ -436,9 +432,6 @@ class BoostingSchemes:
                                 return Equipment.obsidian()
                 elif &#39;berserker necklace&#39; in equipment:
                                 return Equipment.berserker_necklace()
-
-
-
 
         return {}</code></pre>
 </details>
@@ -1137,6 +1130,7 @@ These are percentage increases in level since prayer boosts are multiplicative.<
 <pre><code class="python">class Prayers:
         &#34;&#34;&#34; Namespace for different prayer boost calculations.
                 These are percentage increases in level since prayer boosts are multiplicative. &#34;&#34;&#34;
+        
         @staticmethod
         def piety(skill):
                 multipliers = {

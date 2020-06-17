@@ -27,378 +27,513 @@
 </summary>
 <pre><code class="python"># -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file &#39;//mnt/c/Users/Nawar/Documents/GitHub/OSRS-Combat/Code/osrsmath/apps/GUI/optimize/optimize_skeleton.ui&#39;
-#
-# Created by: PyQt5 UI code generator 5.14.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file &#39;optimize_skeleton.ui&#39;
+##
+## Created by: Qt User Interface Compiler version 5.15.0
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
-
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PySide2.QtCore import (QCoreApplication, QDate, QDateTime, QMetaObject,
+    QObject, QPoint, QRect, QSize, QTime, QUrl, Qt)
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
+    QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter,
+    QPixmap, QRadialGradient)
+from PySide2.QtWidgets import *
 
 
 class Ui_Form(object):
     def setupUi(self, Form):
-        Form.setObjectName(&#34;Form&#34;)
+        if not Form.objectName():
+            Form.setObjectName(u&#34;Form&#34;)
         Form.resize(714, 738)
-        self.gridLayout = QtWidgets.QGridLayout(Form)
-        self.gridLayout.setObjectName(&#34;gridLayout&#34;)
-        self.below_skill = QtWidgets.QComboBox(Form)
-        self.below_skill.setObjectName(&#34;below_skill&#34;)
-        self.below_skill.addItem(&#34;&#34;)
-        self.below_skill.addItem(&#34;&#34;)
-        self.below_skill.addItem(&#34;&#34;)
-        self.gridLayout.addWidget(self.below_skill, 7, 2, 1, 4)
-        self.label_6 = QtWidgets.QLabel(Form)
-        self.label_6.setObjectName(&#34;label_6&#34;)
-        self.gridLayout.addWidget(self.label_6, 4, 0, 1, 1)
-        self.potion_attributes = QtWidgets.QComboBox(Form)
-        self.potion_attributes.setObjectName(&#34;potion_attributes&#34;)
-        self.potion_attributes.addItem(&#34;&#34;)
-        self.potion_attributes.addItem(&#34;&#34;)
-        self.potion_attributes.addItem(&#34;&#34;)
-        self.gridLayout.addWidget(self.potion_attributes, 5, 6, 1, 3)
-        self.redose_level = QtWidgets.QLineEdit(Form)
-        self.redose_level.setMaxLength(2)
-        self.redose_level.setObjectName(&#34;redose_level&#34;)
-        self.gridLayout.addWidget(self.redose_level, 7, 9, 1, 1)
-        self.dharok = QtWidgets.QLineEdit(Form)
-        self.dharok.setMaxLength(2)
-        self.dharok.setObjectName(&#34;dharok&#34;)
-        self.gridLayout.addWidget(self.dharok, 12, 4, 1, 1)
-        self.evaluate = QtWidgets.QPushButton(Form)
-        self.evaluate.setObjectName(&#34;evaluate&#34;)
-        self.gridLayout.addWidget(self.evaluate, 14, 0, 1, 1)
-        self.prayers = QtWidgets.QComboBox(Form)
-        self.prayers.setObjectName(&#34;prayers&#34;)
-        self.gridLayout.addWidget(self.prayers, 10, 2, 1, 4)
-        self.label_3 = QtWidgets.QLabel(Form)
-        self.label_3.setObjectName(&#34;label_3&#34;)
-        self.gridLayout.addWidget(self.label_3, 5, 0, 1, 1)
-        self.label_8 = QtWidgets.QLabel(Form)
-        self.label_8.setObjectName(&#34;label_8&#34;)
-        self.gridLayout.addWidget(self.label_8, 12, 0, 1, 1)
-        self.label_5 = QtWidgets.QLabel(Form)
-        self.label_5.setEnabled(True)
-        self.label_5.setObjectName(&#34;label_5&#34;)
-        self.gridLayout.addWidget(self.label_5, 7, 6, 1, 3)
-        self.label_7 = QtWidgets.QLabel(Form)
-        self.label_7.setObjectName(&#34;label_7&#34;)
-        self.gridLayout.addWidget(self.label_7, 12, 3, 1, 1)
-        self.progressBar = QtWidgets.QProgressBar(Form)
-        self.progressBar.setProperty(&#34;value&#34;, 0)
-        self.progressBar.setObjectName(&#34;progressBar&#34;)
-        self.gridLayout.addWidget(self.progressBar, 14, 2, 1, 9)
-        self.prayer_attributes = QtWidgets.QComboBox(Form)
-        self.prayer_attributes.setObjectName(&#34;prayer_attributes&#34;)
+        self.gridLayout = QGridLayout(Form)
+        self.gridLayout.setObjectName(u&#34;gridLayout&#34;)
+        self.potions = QComboBox(Form)
+        self.potions.setObjectName(u&#34;potions&#34;)
+
+        self.gridLayout.addWidget(self.potions, 5, 2, 1, 4)
+
+        self.prayer_attributes = QComboBox(Form)
         self.prayer_attributes.addItem(&#34;&#34;)
         self.prayer_attributes.addItem(&#34;&#34;)
         self.prayer_attributes.addItem(&#34;&#34;)
+        self.prayer_attributes.setObjectName(u&#34;prayer_attributes&#34;)
+
         self.gridLayout.addWidget(self.prayer_attributes, 10, 6, 1, 3)
-        self.training_skill = QtWidgets.QComboBox(Form)
-        self.training_skill.setObjectName(&#34;training_skill&#34;)
-        self.training_skill.addItem(&#34;&#34;)
-        self.training_skill.addItem(&#34;&#34;)
-        self.training_skill.addItem(&#34;&#34;)
-        self.training_skill.addItem(&#34;&#34;)
-        self.training_skill.addItem(&#34;&#34;)
-        self.gridLayout.addWidget(self.training_skill, 4, 2, 1, 4)
-        self.void_knight = QtWidgets.QCheckBox(Form)
+
+        self.void_knight = QCheckBox(Form)
+        self.void_knight.setObjectName(u&#34;void_knight&#34;)
         self.void_knight.setChecked(True)
-        self.void_knight.setObjectName(&#34;void_knight&#34;)
+
         self.gridLayout.addWidget(self.void_knight, 12, 8, 1, 1)
-        self.elite_void = QtWidgets.QCheckBox(Form)
-        self.elite_void.setChecked(True)
-        self.elite_void.setObjectName(&#34;elite_void&#34;)
-        self.gridLayout.addWidget(self.elite_void, 13, 8, 1, 1)
-        self.slayer_helm = QtWidgets.QCheckBox(Form)
+
+        self.slayer_helm = QCheckBox(Form)
+        self.slayer_helm.setObjectName(u&#34;slayer_helm&#34;)
         self.slayer_helm.setChecked(True)
-        self.slayer_helm.setObjectName(&#34;slayer_helm&#34;)
+
         self.gridLayout.addWidget(self.slayer_helm, 12, 6, 1, 1)
-        self.best_in_slot_bonuses = QtWidgets.QTableWidget(Form)
+
+        self.training_skill = QComboBox(Form)
+        self.training_skill.addItem(&#34;&#34;)
+        self.training_skill.addItem(&#34;&#34;)
+        self.training_skill.addItem(&#34;&#34;)
+        self.training_skill.addItem(&#34;&#34;)
+        self.training_skill.addItem(&#34;&#34;)
+        self.training_skill.setObjectName(u&#34;training_skill&#34;)
+
+        self.gridLayout.addWidget(self.training_skill, 4, 2, 1, 4)
+
+        self.elite_void = QCheckBox(Form)
+        self.elite_void.setObjectName(u&#34;elite_void&#34;)
+        self.elite_void.setChecked(True)
+
+        self.gridLayout.addWidget(self.elite_void, 13, 8, 1, 1)
+
+        self.boosting_scheme = QComboBox(Form)
+        self.boosting_scheme.addItem(&#34;&#34;)
+        self.boosting_scheme.addItem(&#34;&#34;)
+        self.boosting_scheme.setObjectName(u&#34;boosting_scheme&#34;)
+
+        self.gridLayout.addWidget(self.boosting_scheme, 5, 9, 1, 2)
+
+        self.best_in_slot_bonuses = QTableWidget(Form)
+        if (self.best_in_slot_bonuses.columnCount() &lt; 1):
+            self.best_in_slot_bonuses.setColumnCount(1)
+        __qtablewidgetitem = QTableWidgetItem()
+        __qtablewidgetitem.setTextAlignment(Qt.AlignCenter);
+        self.best_in_slot_bonuses.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        if (self.best_in_slot_bonuses.rowCount() &lt; 10):
+            self.best_in_slot_bonuses.setRowCount(10)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(0, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(1, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(2, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(3, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(4, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(5, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(6, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(7, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(8, __qtablewidgetitem9)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(9, __qtablewidgetitem10)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        __qtablewidgetitem11.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(0, 0, __qtablewidgetitem11)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        __qtablewidgetitem12.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(1, 0, __qtablewidgetitem12)
+        __qtablewidgetitem13 = QTableWidgetItem()
+        __qtablewidgetitem13.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(2, 0, __qtablewidgetitem13)
+        __qtablewidgetitem14 = QTableWidgetItem()
+        __qtablewidgetitem14.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(3, 0, __qtablewidgetitem14)
+        __qtablewidgetitem15 = QTableWidgetItem()
+        __qtablewidgetitem15.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(4, 0, __qtablewidgetitem15)
+        __qtablewidgetitem16 = QTableWidgetItem()
+        __qtablewidgetitem16.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(5, 0, __qtablewidgetitem16)
+        __qtablewidgetitem17 = QTableWidgetItem()
+        __qtablewidgetitem17.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(6, 0, __qtablewidgetitem17)
+        __qtablewidgetitem18 = QTableWidgetItem()
+        __qtablewidgetitem18.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(7, 0, __qtablewidgetitem18)
+        __qtablewidgetitem19 = QTableWidgetItem()
+        __qtablewidgetitem19.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(8, 0, __qtablewidgetitem19)
+        __qtablewidgetitem20 = QTableWidgetItem()
+        __qtablewidgetitem20.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(9, 0, __qtablewidgetitem20)
+        self.best_in_slot_bonuses.setObjectName(u&#34;best_in_slot_bonuses&#34;)
         self.best_in_slot_bonuses.setShowGrid(True)
-        self.best_in_slot_bonuses.setObjectName(&#34;best_in_slot_bonuses&#34;)
-        self.best_in_slot_bonuses.setColumnCount(1)
-        self.best_in_slot_bonuses.setRowCount(10)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(4, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(5, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(6, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(7, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(8, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(9, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.best_in_slot_bonuses.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(0, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(1, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(2, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(3, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(4, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(5, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(6, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(7, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(8, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(9, 0, item)
         self.best_in_slot_bonuses.horizontalHeader().setStretchLastSection(True)
         self.best_in_slot_bonuses.verticalHeader().setStretchLastSection(False)
+
         self.gridLayout.addWidget(self.best_in_slot_bonuses, 16, 8, 11, 3)
-        self.boosting_scheme = QtWidgets.QComboBox(Form)
-        self.boosting_scheme.setObjectName(&#34;boosting_scheme&#34;)
-        self.boosting_scheme.addItem(&#34;&#34;)
-        self.boosting_scheme.addItem(&#34;&#34;)
-        self.gridLayout.addWidget(self.boosting_scheme, 5, 9, 1, 2)
-        self.potions = QtWidgets.QComboBox(Form)
-        self.potions.setObjectName(&#34;potions&#34;)
-        self.gridLayout.addWidget(self.potions, 5, 2, 1, 4)
-        self.salve_amulet = QtWidgets.QCheckBox(Form)
-        self.salve_amulet.setChecked(True)
-        self.salve_amulet.setObjectName(&#34;salve_amulet&#34;)
-        self.gridLayout.addWidget(self.salve_amulet, 13, 6, 1, 1)
-        self.berserker_necklace = QtWidgets.QCheckBox(Form)
-        self.berserker_necklace.setChecked(True)
-        self.berserker_necklace.setObjectName(&#34;berserker_necklace&#34;)
-        self.gridLayout.addWidget(self.berserker_necklace, 13, 9, 1, 1)
-        self.label_4 = QtWidgets.QLabel(Form)
-        self.label_4.setObjectName(&#34;label_4&#34;)
+
+        self.potion_attributes = QComboBox(Form)
+        self.potion_attributes.addItem(&#34;&#34;)
+        self.potion_attributes.addItem(&#34;&#34;)
+        self.potion_attributes.addItem(&#34;&#34;)
+        self.potion_attributes.setObjectName(u&#34;potion_attributes&#34;)
+
+        self.gridLayout.addWidget(self.potion_attributes, 5, 6, 1, 3)
+
+        self.below_skill = QComboBox(Form)
+        self.below_skill.addItem(&#34;&#34;)
+        self.below_skill.addItem(&#34;&#34;)
+        self.below_skill.addItem(&#34;&#34;)
+        self.below_skill.setObjectName(u&#34;below_skill&#34;)
+
+        self.gridLayout.addWidget(self.below_skill, 7, 2, 1, 4)
+
+        self.label_6 = QLabel(Form)
+        self.label_6.setObjectName(u&#34;label_6&#34;)
+
+        self.gridLayout.addWidget(self.label_6, 4, 0, 1, 1)
+
+        self.dharok = QLineEdit(Form)
+        self.dharok.setObjectName(u&#34;dharok&#34;)
+        self.dharok.setMaxLength(2)
+
+        self.gridLayout.addWidget(self.dharok, 12, 4, 1, 1)
+
+        self.label_3 = QLabel(Form)
+        self.label_3.setObjectName(u&#34;label_3&#34;)
+
+        self.gridLayout.addWidget(self.label_3, 5, 0, 1, 1)
+
+        self.evaluate = QPushButton(Form)
+        self.evaluate.setObjectName(u&#34;evaluate&#34;)
+
+        self.gridLayout.addWidget(self.evaluate, 14, 0, 1, 1)
+
+        self.redose_level = QLineEdit(Form)
+        self.redose_level.setObjectName(u&#34;redose_level&#34;)
+        self.redose_level.setMaxLength(2)
+
+        self.gridLayout.addWidget(self.redose_level, 7, 9, 1, 1)
+
+        self.prayers = QComboBox(Form)
+        self.prayers.setObjectName(u&#34;prayers&#34;)
+
+        self.gridLayout.addWidget(self.prayers, 10, 2, 1, 4)
+
+        self.label_5 = QLabel(Form)
+        self.label_5.setObjectName(u&#34;label_5&#34;)
+        self.label_5.setEnabled(True)
+
+        self.gridLayout.addWidget(self.label_5, 7, 6, 1, 3)
+
+        self.progressBar = QProgressBar(Form)
+        self.progressBar.setObjectName(u&#34;progressBar&#34;)
+        self.progressBar.setValue(0)
+
+        self.gridLayout.addWidget(self.progressBar, 14, 2, 1, 9)
+
+        self.label_8 = QLabel(Form)
+        self.label_8.setObjectName(u&#34;label_8&#34;)
+
+        self.gridLayout.addWidget(self.label_8, 12, 0, 1, 1)
+
+        self.label_7 = QLabel(Form)
+        self.label_7.setObjectName(u&#34;label_7&#34;)
+
+        self.gridLayout.addWidget(self.label_7, 12, 3, 1, 1)
+
+        self.label_4 = QLabel(Form)
+        self.label_4.setObjectName(u&#34;label_4&#34;)
+
         self.gridLayout.addWidget(self.label_4, 10, 0, 1, 1)
-        self.obsidian = QtWidgets.QCheckBox(Form)
+
+        self.berserker_necklace = QCheckBox(Form)
+        self.berserker_necklace.setObjectName(u&#34;berserker_necklace&#34;)
+        self.berserker_necklace.setChecked(True)
+
+        self.gridLayout.addWidget(self.berserker_necklace, 13, 9, 1, 1)
+
+        self.salve_amulet = QCheckBox(Form)
+        self.salve_amulet.setObjectName(u&#34;salve_amulet&#34;)
+        self.salve_amulet.setChecked(True)
+
+        self.gridLayout.addWidget(self.salve_amulet, 13, 6, 1, 1)
+
+        self.obsidian = QCheckBox(Form)
+        self.obsidian.setObjectName(u&#34;obsidian&#34;)
         self.obsidian.setChecked(True)
-        self.obsidian.setObjectName(&#34;obsidian&#34;)
+
         self.gridLayout.addWidget(self.obsidian, 12, 9, 1, 1)
-        self.opponents = QtWidgets.QListWidget(Form)
-        self.opponents.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollPerItem)
-        self.opponents.setObjectName(&#34;opponents&#34;)
+
+        self.opponents = QListWidget(Form)
+        self.opponents.setObjectName(u&#34;opponents&#34;)
+        self.opponents.setHorizontalScrollMode(QAbstractItemView.ScrollPerItem)
+
         self.gridLayout.addWidget(self.opponents, 2, 0, 1, 11)
-        self.frame = QtWidgets.QFrame(Form)
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName(&#34;frame&#34;)
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.frame)
-        self.gridLayout_2.setObjectName(&#34;gridLayout_2&#34;)
-        self.hands_link = QtWidgets.QPushButton(self.frame)
-        self.hands_link.setObjectName(&#34;hands_link&#34;)
-        self.gridLayout_2.addWidget(self.hands_link, 12, 1, 1, 1)
-        self.neck = QtWidgets.QComboBox(self.frame)
-        self.neck.setObjectName(&#34;neck&#34;)
-        self.gridLayout_2.addWidget(self.neck, 4, 2, 1, 2)
-        self.ring = QtWidgets.QComboBox(self.frame)
-        self.ring.setObjectName(&#34;ring&#34;)
-        self.gridLayout_2.addWidget(self.ring, 14, 2, 1, 2)
-        self.weapon = QtWidgets.QComboBox(self.frame)
-        self.weapon.setObjectName(&#34;weapon&#34;)
-        self.gridLayout_2.addWidget(self.weapon, 6, 2, 1, 2)
-        self.ammo_link = QtWidgets.QPushButton(self.frame)
-        self.ammo_link.setObjectName(&#34;ammo_link&#34;)
-        self.gridLayout_2.addWidget(self.ammo_link, 5, 1, 1, 1)
-        self.shield = QtWidgets.QComboBox(self.frame)
-        self.shield.setObjectName(&#34;shield&#34;)
-        self.gridLayout_2.addWidget(self.shield, 10, 2, 1, 2)
-        self.ammo = QtWidgets.QComboBox(self.frame)
-        self.ammo.setObjectName(&#34;ammo&#34;)
-        self.gridLayout_2.addWidget(self.ammo, 5, 2, 1, 2)
-        self.hands = QtWidgets.QComboBox(self.frame)
-        self.hands.setObjectName(&#34;hands&#34;)
-        self.gridLayout_2.addWidget(self.hands, 12, 2, 1, 2)
-        self.cape = QtWidgets.QComboBox(self.frame)
-        self.cape.setObjectName(&#34;cape&#34;)
-        self.gridLayout_2.addWidget(self.cape, 3, 2, 1, 2)
-        self.head = QtWidgets.QComboBox(self.frame)
-        self.head.setObjectName(&#34;head&#34;)
-        self.gridLayout_2.addWidget(self.head, 1, 2, 1, 2)
-        self.legs = QtWidgets.QComboBox(self.frame)
-        self.legs.setObjectName(&#34;legs&#34;)
-        self.gridLayout_2.addWidget(self.legs, 11, 2, 1, 2)
-        self.cape_link = QtWidgets.QPushButton(self.frame)
-        self.cape_link.setObjectName(&#34;cape_link&#34;)
-        self.gridLayout_2.addWidget(self.cape_link, 3, 1, 1, 1)
-        self.feet_link = QtWidgets.QPushButton(self.frame)
-        self.feet_link.setObjectName(&#34;feet_link&#34;)
-        self.gridLayout_2.addWidget(self.feet_link, 13, 1, 1, 1)
-        self.body_link = QtWidgets.QPushButton(self.frame)
-        self.body_link.setObjectName(&#34;body_link&#34;)
-        self.gridLayout_2.addWidget(self.body_link, 8, 1, 1, 1)
-        self.ring_link = QtWidgets.QPushButton(self.frame)
-        self.ring_link.setObjectName(&#34;ring_link&#34;)
-        self.gridLayout_2.addWidget(self.ring_link, 14, 1, 1, 1)
-        self.legs_link = QtWidgets.QPushButton(self.frame)
-        self.legs_link.setObjectName(&#34;legs_link&#34;)
-        self.gridLayout_2.addWidget(self.legs_link, 11, 1, 1, 1)
-        self.neck_link = QtWidgets.QPushButton(self.frame)
-        self.neck_link.setObjectName(&#34;neck_link&#34;)
-        self.gridLayout_2.addWidget(self.neck_link, 4, 1, 1, 1)
-        self.body = QtWidgets.QComboBox(self.frame)
-        self.body.setObjectName(&#34;body&#34;)
-        self.gridLayout_2.addWidget(self.body, 8, 2, 1, 2)
-        self.feet = QtWidgets.QComboBox(self.frame)
-        self.feet.setObjectName(&#34;feet&#34;)
-        self.gridLayout_2.addWidget(self.feet, 13, 2, 1, 2)
-        self.shield_link = QtWidgets.QPushButton(self.frame)
-        self.shield_link.setObjectName(&#34;shield_link&#34;)
-        self.gridLayout_2.addWidget(self.shield_link, 10, 1, 1, 1)
-        self.label = QtWidgets.QLabel(self.frame)
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.label.setObjectName(&#34;label&#34;)
-        self.gridLayout_2.addWidget(self.label, 16, 1, 1, 1)
-        self.head_link = QtWidgets.QPushButton(self.frame)
-        self.head_link.setObjectName(&#34;head_link&#34;)
-        self.gridLayout_2.addWidget(self.head_link, 1, 1, 1, 1)
-        self.weapon_link = QtWidgets.QPushButton(self.frame)
-        self.weapon_link.setObjectName(&#34;weapon_link&#34;)
-        self.gridLayout_2.addWidget(self.weapon_link, 6, 1, 1, 1)
-        self.label_2 = QtWidgets.QLabel(self.frame)
-        self.label_2.setObjectName(&#34;label_2&#34;)
-        self.gridLayout_2.addWidget(self.label_2, 15, 1, 1, 1)
-        self.xp_rate = QtWidgets.QLineEdit(self.frame)
+
+        self.frame = QFrame(Form)
+        self.frame.setObjectName(u&#34;frame&#34;)
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.gridLayout_2 = QGridLayout(self.frame)
+        self.gridLayout_2.setObjectName(u&#34;gridLayout_2&#34;)
+        self.head = QComboBox(self.frame)
+        self.head.setObjectName(u&#34;head&#34;)
+
+        self.gridLayout_2.addWidget(self.head, 1, 1, 1, 4)
+
+        self.attack_stance = QLineEdit(self.frame)
+        self.attack_stance.setObjectName(u&#34;attack_stance&#34;)
+        self.attack_stance.setEnabled(False)
+
+        self.gridLayout_2.addWidget(self.attack_stance, 15, 2, 1, 1)
+
+        self.hands_link = QPushButton(self.frame)
+        self.hands_link.setObjectName(u&#34;hands_link&#34;)
+
+        self.gridLayout_2.addWidget(self.hands_link, 12, 0, 1, 1)
+
+        self.xp_rate = QLineEdit(self.frame)
+        self.xp_rate.setObjectName(u&#34;xp_rate&#34;)
         self.xp_rate.setEnabled(False)
         self.xp_rate.setReadOnly(True)
-        self.xp_rate.setObjectName(&#34;xp_rate&#34;)
-        self.gridLayout_2.addWidget(self.xp_rate, 16, 3, 1, 1)
-        self.attack_stance = QtWidgets.QLineEdit(self.frame)
-        self.attack_stance.setEnabled(False)
-        self.attack_stance.setObjectName(&#34;attack_stance&#34;)
-        self.gridLayout_2.addWidget(self.attack_stance, 15, 3, 1, 1)
+
+        self.gridLayout_2.addWidget(self.xp_rate, 16, 2, 1, 1)
+
+        self.weapon_link = QPushButton(self.frame)
+        self.weapon_link.setObjectName(u&#34;weapon_link&#34;)
+
+        self.gridLayout_2.addWidget(self.weapon_link, 6, 0, 1, 1)
+
+        self.head_link = QPushButton(self.frame)
+        self.head_link.setObjectName(u&#34;head_link&#34;)
+
+        self.gridLayout_2.addWidget(self.head_link, 1, 0, 1, 1)
+
+        self.label_2 = QLabel(self.frame)
+        self.label_2.setObjectName(u&#34;label_2&#34;)
+
+        self.gridLayout_2.addWidget(self.label_2, 15, 0, 1, 1)
+
+        self.cape_link = QPushButton(self.frame)
+        self.cape_link.setObjectName(u&#34;cape_link&#34;)
+
+        self.gridLayout_2.addWidget(self.cape_link, 3, 0, 1, 1)
+
+        self.ammo_link = QPushButton(self.frame)
+        self.ammo_link.setObjectName(u&#34;ammo_link&#34;)
+
+        self.gridLayout_2.addWidget(self.ammo_link, 5, 0, 1, 1)
+
+        self.body_link = QPushButton(self.frame)
+        self.body_link.setObjectName(u&#34;body_link&#34;)
+
+        self.gridLayout_2.addWidget(self.body_link, 8, 0, 1, 1)
+
+        self.neck_link = QPushButton(self.frame)
+        self.neck_link.setObjectName(u&#34;neck_link&#34;)
+
+        self.gridLayout_2.addWidget(self.neck_link, 4, 0, 1, 1)
+
+        self.ring_link = QPushButton(self.frame)
+        self.ring_link.setObjectName(u&#34;ring_link&#34;)
+
+        self.gridLayout_2.addWidget(self.ring_link, 14, 0, 1, 1)
+
+        self.feet_link = QPushButton(self.frame)
+        self.feet_link.setObjectName(u&#34;feet_link&#34;)
+
+        self.gridLayout_2.addWidget(self.feet_link, 13, 0, 1, 1)
+
+        self.legs_link = QPushButton(self.frame)
+        self.legs_link.setObjectName(u&#34;legs_link&#34;)
+
+        self.gridLayout_2.addWidget(self.legs_link, 11, 0, 1, 1)
+
+        self.label = QLabel(self.frame)
+        self.label.setObjectName(u&#34;label&#34;)
+        self.label.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_2.addWidget(self.label, 16, 0, 1, 1)
+
+        self.kills_per_hour = QLineEdit(self.frame)
+        self.kills_per_hour.setObjectName(u&#34;kills_per_hour&#34;)
+        self.kills_per_hour.setEnabled(False)
+
+        self.gridLayout_2.addWidget(self.kills_per_hour, 16, 4, 1, 1)
+
+        self.shield_link = QPushButton(self.frame)
+        self.shield_link.setObjectName(u&#34;shield_link&#34;)
+
+        self.gridLayout_2.addWidget(self.shield_link, 10, 0, 1, 1)
+
+        self.kill_time = QLineEdit(self.frame)
+        self.kill_time.setObjectName(u&#34;kill_time&#34;)
+        self.kill_time.setEnabled(False)
+
+        self.gridLayout_2.addWidget(self.kill_time, 15, 4, 1, 1)
+
+        self.label_9 = QLabel(self.frame)
+        self.label_9.setObjectName(u&#34;label_9&#34;)
+
+        self.gridLayout_2.addWidget(self.label_9, 15, 3, 1, 1)
+
+        self.hands = QComboBox(self.frame)
+        self.hands.setObjectName(u&#34;hands&#34;)
+
+        self.gridLayout_2.addWidget(self.hands, 12, 1, 1, 4)
+
+        self.shield = QComboBox(self.frame)
+        self.shield.setObjectName(u&#34;shield&#34;)
+
+        self.gridLayout_2.addWidget(self.shield, 10, 1, 1, 4)
+
+        self.weapon = QComboBox(self.frame)
+        self.weapon.setObjectName(u&#34;weapon&#34;)
+
+        self.gridLayout_2.addWidget(self.weapon, 6, 1, 1, 4)
+
+        self.legs = QComboBox(self.frame)
+        self.legs.setObjectName(u&#34;legs&#34;)
+
+        self.gridLayout_2.addWidget(self.legs, 11, 1, 1, 4)
+
+        self.ring = QComboBox(self.frame)
+        self.ring.setObjectName(u&#34;ring&#34;)
+
+        self.gridLayout_2.addWidget(self.ring, 14, 1, 1, 4)
+
+        self.label_10 = QLabel(self.frame)
+        self.label_10.setObjectName(u&#34;label_10&#34;)
+
+        self.gridLayout_2.addWidget(self.label_10, 16, 3, 1, 1)
+
+        self.cape = QComboBox(self.frame)
+        self.cape.setObjectName(u&#34;cape&#34;)
+
+        self.gridLayout_2.addWidget(self.cape, 3, 1, 1, 4)
+
+        self.body = QComboBox(self.frame)
+        self.body.setObjectName(u&#34;body&#34;)
+
+        self.gridLayout_2.addWidget(self.body, 8, 1, 1, 4)
+
+        self.feet = QComboBox(self.frame)
+        self.feet.setObjectName(u&#34;feet&#34;)
+
+        self.gridLayout_2.addWidget(self.feet, 13, 1, 1, 4)
+
+        self.ammo = QComboBox(self.frame)
+        self.ammo.setObjectName(u&#34;ammo&#34;)
+
+        self.gridLayout_2.addWidget(self.ammo, 5, 1, 1, 4)
+
+        self.neck = QComboBox(self.frame)
+        self.neck.setObjectName(u&#34;neck&#34;)
+
+        self.gridLayout_2.addWidget(self.neck, 4, 1, 1, 4)
+
+
         self.gridLayout.addWidget(self.frame, 16, 0, 1, 7)
 
+        QWidget.setTabOrder(self.opponents, self.head_link)
+        QWidget.setTabOrder(self.head_link, self.head)
+        QWidget.setTabOrder(self.head, self.cape_link)
+        QWidget.setTabOrder(self.cape_link, self.cape)
+        QWidget.setTabOrder(self.cape, self.neck_link)
+        QWidget.setTabOrder(self.neck_link, self.neck)
+        QWidget.setTabOrder(self.neck, self.ammo_link)
+        QWidget.setTabOrder(self.ammo_link, self.ammo)
+        QWidget.setTabOrder(self.ammo, self.weapon_link)
+        QWidget.setTabOrder(self.weapon_link, self.weapon)
+        QWidget.setTabOrder(self.weapon, self.body_link)
+        QWidget.setTabOrder(self.body_link, self.body)
+        QWidget.setTabOrder(self.body, self.shield_link)
+        QWidget.setTabOrder(self.shield_link, self.shield)
+        QWidget.setTabOrder(self.shield, self.hands_link)
+        QWidget.setTabOrder(self.hands_link, self.hands)
+        QWidget.setTabOrder(self.hands, self.feet_link)
+        QWidget.setTabOrder(self.feet_link, self.ring_link)
+        QWidget.setTabOrder(self.ring_link, self.ring)
+        QWidget.setTabOrder(self.ring, self.xp_rate)
+        QWidget.setTabOrder(self.xp_rate, self.best_in_slot_bonuses)
+
         self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
-        Form.setTabOrder(self.opponents, self.head_link)
-        Form.setTabOrder(self.head_link, self.head)
-        Form.setTabOrder(self.head, self.cape_link)
-        Form.setTabOrder(self.cape_link, self.cape)
-        Form.setTabOrder(self.cape, self.neck_link)
-        Form.setTabOrder(self.neck_link, self.neck)
-        Form.setTabOrder(self.neck, self.ammo_link)
-        Form.setTabOrder(self.ammo_link, self.ammo)
-        Form.setTabOrder(self.ammo, self.weapon_link)
-        Form.setTabOrder(self.weapon_link, self.weapon)
-        Form.setTabOrder(self.weapon, self.body_link)
-        Form.setTabOrder(self.body_link, self.body)
-        Form.setTabOrder(self.body, self.shield_link)
-        Form.setTabOrder(self.shield_link, self.shield)
-        Form.setTabOrder(self.shield, self.hands_link)
-        Form.setTabOrder(self.hands_link, self.hands)
-        Form.setTabOrder(self.hands, self.feet_link)
-        Form.setTabOrder(self.feet_link, self.feet)
-        Form.setTabOrder(self.feet, self.ring_link)
-        Form.setTabOrder(self.ring_link, self.ring)
-        Form.setTabOrder(self.ring, self.xp_rate)
-        Form.setTabOrder(self.xp_rate, self.best_in_slot_bonuses)
+
+        QMetaObject.connectSlotsByName(Form)
+    # setupUi
 
     def retranslateUi(self, Form):
-        _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate(&#34;Form&#34;, &#34;Form&#34;))
-        self.below_skill.setItemText(0, _translate(&#34;Form&#34;, &#34;attack&#34;))
-        self.below_skill.setItemText(1, _translate(&#34;Form&#34;, &#34;strength&#34;))
-        self.below_skill.setItemText(2, _translate(&#34;Form&#34;, &#34;defence&#34;))
-        self.label_6.setText(_translate(&#34;Form&#34;, &#34;Train&#34;))
-        self.potion_attributes.setItemText(0, _translate(&#34;Form&#34;, &#34;accuracy&#34;))
-        self.potion_attributes.setItemText(1, _translate(&#34;Form&#34;, &#34;damage&#34;))
-        self.potion_attributes.setItemText(2, _translate(&#34;Form&#34;, &#34;accuracy and damage&#34;))
-        self.dharok.setText(_translate(&#34;Form&#34;, &#34;0&#34;))
-        self.evaluate.setText(_translate(&#34;Form&#34;, &#34;Evaluate!&#34;))
-        self.label_3.setText(_translate(&#34;Form&#34;, &#34;Potions&#34;))
-        self.label_8.setText(_translate(&#34;Form&#34;, &#34;Other&#34;))
-        self.label_5.setText(_translate(&#34;Form&#34;, &#34;boost below&#34;))
-        self.label_7.setText(_translate(&#34;Form&#34;, &#34;&lt;Dharok HP&gt;&#34;))
-        self.prayer_attributes.setItemText(0, _translate(&#34;Form&#34;, &#34;accuracy&#34;))
-        self.prayer_attributes.setItemText(1, _translate(&#34;Form&#34;, &#34;damage&#34;))
-        self.prayer_attributes.setItemText(2, _translate(&#34;Form&#34;, &#34;accuracy and damage&#34;))
-        self.training_skill.setItemText(0, _translate(&#34;Form&#34;, &#34;attack&#34;))
-        self.training_skill.setItemText(1, _translate(&#34;Form&#34;, &#34;strength&#34;))
-        self.training_skill.setItemText(2, _translate(&#34;Form&#34;, &#34;defence&#34;))
-        self.training_skill.setItemText(3, _translate(&#34;Form&#34;, &#34;ranged&#34;))
-        self.training_skill.setItemText(4, _translate(&#34;Form&#34;, &#34;magic&#34;))
-        self.void_knight.setText(_translate(&#34;Form&#34;, &#34;Void&#34;))
-        self.elite_void.setText(_translate(&#34;Form&#34;, &#34;Elite Void&#34;))
-        self.slayer_helm.setText(_translate(&#34;Form&#34;, &#34;Slayer Helm&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(0)
-        item.setText(_translate(&#34;Form&#34;, &#34;Stab&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(1)
-        item.setText(_translate(&#34;Form&#34;, &#34;Slash&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(2)
-        item.setText(_translate(&#34;Form&#34;, &#34;Crush&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(3)
-        item.setText(_translate(&#34;Form&#34;, &#34;Ranged&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(4)
-        item.setText(_translate(&#34;Form&#34;, &#34;Magic&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(5)
-        item.setText(_translate(&#34;Form&#34;, &#34;Melee Str&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(6)
-        item.setText(_translate(&#34;Form&#34;, &#34;Ranged Str&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(7)
-        item.setText(_translate(&#34;Form&#34;, &#34;Magic Str&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(8)
-        item.setText(_translate(&#34;Form&#34;, &#34;Attack Speed&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(9)
-        item.setText(_translate(&#34;Form&#34;, &#34;Cost&#34;))
-        item = self.best_in_slot_bonuses.horizontalHeaderItem(0)
-        item.setText(_translate(&#34;Form&#34;, &#34;Bonuses&#34;))
+        Form.setWindowTitle(QCoreApplication.translate(&#34;Form&#34;, u&#34;Form&#34;, None))
+        self.prayer_attributes.setItemText(0, QCoreApplication.translate(&#34;Form&#34;, u&#34;accuracy&#34;, None))
+        self.prayer_attributes.setItemText(1, QCoreApplication.translate(&#34;Form&#34;, u&#34;damage&#34;, None))
+        self.prayer_attributes.setItemText(2, QCoreApplication.translate(&#34;Form&#34;, u&#34;accuracy and damage&#34;, None))
+
+        self.void_knight.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Void&#34;, None))
+        self.slayer_helm.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Slayer Helm&#34;, None))
+        self.training_skill.setItemText(0, QCoreApplication.translate(&#34;Form&#34;, u&#34;attack&#34;, None))
+        self.training_skill.setItemText(1, QCoreApplication.translate(&#34;Form&#34;, u&#34;strength&#34;, None))
+        self.training_skill.setItemText(2, QCoreApplication.translate(&#34;Form&#34;, u&#34;defence&#34;, None))
+        self.training_skill.setItemText(3, QCoreApplication.translate(&#34;Form&#34;, u&#34;ranged&#34;, None))
+        self.training_skill.setItemText(4, QCoreApplication.translate(&#34;Form&#34;, u&#34;magic&#34;, None))
+
+        self.elite_void.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Elite Void&#34;, None))
+        self.boosting_scheme.setItemText(0, QCoreApplication.translate(&#34;Form&#34;, u&#34;Constant&#34;, None))
+        self.boosting_scheme.setItemText(1, QCoreApplication.translate(&#34;Form&#34;, u&#34;Dose After&#34;, None))
+
+        ___qtablewidgetitem = self.best_in_slot_bonuses.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Bonuses&#34;, None));
+        ___qtablewidgetitem1 = self.best_in_slot_bonuses.verticalHeaderItem(0)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Stab&#34;, None));
+        ___qtablewidgetitem2 = self.best_in_slot_bonuses.verticalHeaderItem(1)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Slash&#34;, None));
+        ___qtablewidgetitem3 = self.best_in_slot_bonuses.verticalHeaderItem(2)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Crush&#34;, None));
+        ___qtablewidgetitem4 = self.best_in_slot_bonuses.verticalHeaderItem(3)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Ranged&#34;, None));
+        ___qtablewidgetitem5 = self.best_in_slot_bonuses.verticalHeaderItem(4)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Magic&#34;, None));
+        ___qtablewidgetitem6 = self.best_in_slot_bonuses.verticalHeaderItem(5)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Melee Str&#34;, None));
+        ___qtablewidgetitem7 = self.best_in_slot_bonuses.verticalHeaderItem(6)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Ranged Str&#34;, None));
+        ___qtablewidgetitem8 = self.best_in_slot_bonuses.verticalHeaderItem(7)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Magic Str&#34;, None));
+        ___qtablewidgetitem9 = self.best_in_slot_bonuses.verticalHeaderItem(8)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Speed&#34;, None));
+        ___qtablewidgetitem10 = self.best_in_slot_bonuses.verticalHeaderItem(9)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Cost&#34;, None));
+
         __sortingEnabled = self.best_in_slot_bonuses.isSortingEnabled()
         self.best_in_slot_bonuses.setSortingEnabled(False)
         self.best_in_slot_bonuses.setSortingEnabled(__sortingEnabled)
-        self.boosting_scheme.setItemText(0, _translate(&#34;Form&#34;, &#34;Constant&#34;))
-        self.boosting_scheme.setItemText(1, _translate(&#34;Form&#34;, &#34;Dose After&#34;))
-        self.salve_amulet.setText(_translate(&#34;Form&#34;, &#34;Salve Amulet&#34;))
-        self.berserker_necklace.setText(_translate(&#34;Form&#34;, &#34;Bers. Neck.&#34;))
-        self.label_4.setText(_translate(&#34;Form&#34;, &#34;Prayer&#34;))
-        self.obsidian.setText(_translate(&#34;Form&#34;, &#34;Obsidian&#34;))
-        self.hands_link.setText(_translate(&#34;Form&#34;, &#34;Hands&#34;))
-        self.ammo_link.setText(_translate(&#34;Form&#34;, &#34;Ammo&#34;))
-        self.cape_link.setText(_translate(&#34;Form&#34;, &#34;Cape&#34;))
-        self.feet_link.setText(_translate(&#34;Form&#34;, &#34;Feet&#34;))
-        self.body_link.setText(_translate(&#34;Form&#34;, &#34;Body&#34;))
-        self.ring_link.setText(_translate(&#34;Form&#34;, &#34;Ring&#34;))
-        self.legs_link.setText(_translate(&#34;Form&#34;, &#34;Legs&#34;))
-        self.neck_link.setText(_translate(&#34;Form&#34;, &#34;Neck&#34;))
-        self.shield_link.setText(_translate(&#34;Form&#34;, &#34;Shield&#34;))
-        self.label.setText(_translate(&#34;Form&#34;, &#34;Xp/h&#34;))
-        self.head_link.setText(_translate(&#34;Form&#34;, &#34;Head&#34;))
-        self.weapon_link.setText(_translate(&#34;Form&#34;, &#34;Weapon&#34;))
-        self.label_2.setText(_translate(&#34;Form&#34;, &#34;Attack Stance&#34;))
 
+        self.potion_attributes.setItemText(0, QCoreApplication.translate(&#34;Form&#34;, u&#34;accuracy&#34;, None))
+        self.potion_attributes.setItemText(1, QCoreApplication.translate(&#34;Form&#34;, u&#34;damage&#34;, None))
+        self.potion_attributes.setItemText(2, QCoreApplication.translate(&#34;Form&#34;, u&#34;accuracy and damage&#34;, None))
 
-if __name__ == &#34;__main__&#34;:
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
-    sys.exit(app.exec_())</code></pre>
+        self.below_skill.setItemText(0, QCoreApplication.translate(&#34;Form&#34;, u&#34;attack&#34;, None))
+        self.below_skill.setItemText(1, QCoreApplication.translate(&#34;Form&#34;, u&#34;strength&#34;, None))
+        self.below_skill.setItemText(2, QCoreApplication.translate(&#34;Form&#34;, u&#34;defence&#34;, None))
+
+        self.label_6.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Train&#34;, None))
+        self.dharok.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;0&#34;, None))
+        self.label_3.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Potions&#34;, None))
+        self.evaluate.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Evaluate!&#34;, None))
+        self.label_5.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;boost below&#34;, None))
+        self.label_8.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Other&#34;, None))
+        self.label_7.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;&lt;Dharok HP&gt;&#34;, None))
+        self.label_4.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Prayer&#34;, None))
+        self.berserker_necklace.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Bers. Neck.&#34;, None))
+        self.salve_amulet.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Salve Amulet&#34;, None))
+        self.obsidian.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Obsidian&#34;, None))
+        self.hands_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Hands&#34;, None))
+        self.weapon_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Weapon&#34;, None))
+        self.head_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Head&#34;, None))
+        self.label_2.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Attack Stance&#34;, None))
+        self.cape_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Cape&#34;, None))
+        self.ammo_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Ammo&#34;, None))
+        self.body_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Body&#34;, None))
+        self.neck_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Neck&#34;, None))
+        self.ring_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Ring&#34;, None))
+        self.feet_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Feet&#34;, None))
+        self.legs_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Legs&#34;, None))
+        self.label.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Xp/h&#34;, None))
+        self.shield_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Shield&#34;, None))
+        self.label_9.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Kill Time&#34;, None))
+        self.label_10.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Kills/h&#34;, None))
+    # retranslateUi</code></pre>
 </details>
 </section>
 <section>
@@ -421,356 +556,494 @@ if __name__ == &#34;__main__&#34;:
 </summary>
 <pre><code class="python">class Ui_Form(object):
     def setupUi(self, Form):
-        Form.setObjectName(&#34;Form&#34;)
+        if not Form.objectName():
+            Form.setObjectName(u&#34;Form&#34;)
         Form.resize(714, 738)
-        self.gridLayout = QtWidgets.QGridLayout(Form)
-        self.gridLayout.setObjectName(&#34;gridLayout&#34;)
-        self.below_skill = QtWidgets.QComboBox(Form)
-        self.below_skill.setObjectName(&#34;below_skill&#34;)
-        self.below_skill.addItem(&#34;&#34;)
-        self.below_skill.addItem(&#34;&#34;)
-        self.below_skill.addItem(&#34;&#34;)
-        self.gridLayout.addWidget(self.below_skill, 7, 2, 1, 4)
-        self.label_6 = QtWidgets.QLabel(Form)
-        self.label_6.setObjectName(&#34;label_6&#34;)
-        self.gridLayout.addWidget(self.label_6, 4, 0, 1, 1)
-        self.potion_attributes = QtWidgets.QComboBox(Form)
-        self.potion_attributes.setObjectName(&#34;potion_attributes&#34;)
-        self.potion_attributes.addItem(&#34;&#34;)
-        self.potion_attributes.addItem(&#34;&#34;)
-        self.potion_attributes.addItem(&#34;&#34;)
-        self.gridLayout.addWidget(self.potion_attributes, 5, 6, 1, 3)
-        self.redose_level = QtWidgets.QLineEdit(Form)
-        self.redose_level.setMaxLength(2)
-        self.redose_level.setObjectName(&#34;redose_level&#34;)
-        self.gridLayout.addWidget(self.redose_level, 7, 9, 1, 1)
-        self.dharok = QtWidgets.QLineEdit(Form)
-        self.dharok.setMaxLength(2)
-        self.dharok.setObjectName(&#34;dharok&#34;)
-        self.gridLayout.addWidget(self.dharok, 12, 4, 1, 1)
-        self.evaluate = QtWidgets.QPushButton(Form)
-        self.evaluate.setObjectName(&#34;evaluate&#34;)
-        self.gridLayout.addWidget(self.evaluate, 14, 0, 1, 1)
-        self.prayers = QtWidgets.QComboBox(Form)
-        self.prayers.setObjectName(&#34;prayers&#34;)
-        self.gridLayout.addWidget(self.prayers, 10, 2, 1, 4)
-        self.label_3 = QtWidgets.QLabel(Form)
-        self.label_3.setObjectName(&#34;label_3&#34;)
-        self.gridLayout.addWidget(self.label_3, 5, 0, 1, 1)
-        self.label_8 = QtWidgets.QLabel(Form)
-        self.label_8.setObjectName(&#34;label_8&#34;)
-        self.gridLayout.addWidget(self.label_8, 12, 0, 1, 1)
-        self.label_5 = QtWidgets.QLabel(Form)
-        self.label_5.setEnabled(True)
-        self.label_5.setObjectName(&#34;label_5&#34;)
-        self.gridLayout.addWidget(self.label_5, 7, 6, 1, 3)
-        self.label_7 = QtWidgets.QLabel(Form)
-        self.label_7.setObjectName(&#34;label_7&#34;)
-        self.gridLayout.addWidget(self.label_7, 12, 3, 1, 1)
-        self.progressBar = QtWidgets.QProgressBar(Form)
-        self.progressBar.setProperty(&#34;value&#34;, 0)
-        self.progressBar.setObjectName(&#34;progressBar&#34;)
-        self.gridLayout.addWidget(self.progressBar, 14, 2, 1, 9)
-        self.prayer_attributes = QtWidgets.QComboBox(Form)
-        self.prayer_attributes.setObjectName(&#34;prayer_attributes&#34;)
+        self.gridLayout = QGridLayout(Form)
+        self.gridLayout.setObjectName(u&#34;gridLayout&#34;)
+        self.potions = QComboBox(Form)
+        self.potions.setObjectName(u&#34;potions&#34;)
+
+        self.gridLayout.addWidget(self.potions, 5, 2, 1, 4)
+
+        self.prayer_attributes = QComboBox(Form)
         self.prayer_attributes.addItem(&#34;&#34;)
         self.prayer_attributes.addItem(&#34;&#34;)
         self.prayer_attributes.addItem(&#34;&#34;)
+        self.prayer_attributes.setObjectName(u&#34;prayer_attributes&#34;)
+
         self.gridLayout.addWidget(self.prayer_attributes, 10, 6, 1, 3)
-        self.training_skill = QtWidgets.QComboBox(Form)
-        self.training_skill.setObjectName(&#34;training_skill&#34;)
-        self.training_skill.addItem(&#34;&#34;)
-        self.training_skill.addItem(&#34;&#34;)
-        self.training_skill.addItem(&#34;&#34;)
-        self.training_skill.addItem(&#34;&#34;)
-        self.training_skill.addItem(&#34;&#34;)
-        self.gridLayout.addWidget(self.training_skill, 4, 2, 1, 4)
-        self.void_knight = QtWidgets.QCheckBox(Form)
+
+        self.void_knight = QCheckBox(Form)
+        self.void_knight.setObjectName(u&#34;void_knight&#34;)
         self.void_knight.setChecked(True)
-        self.void_knight.setObjectName(&#34;void_knight&#34;)
+
         self.gridLayout.addWidget(self.void_knight, 12, 8, 1, 1)
-        self.elite_void = QtWidgets.QCheckBox(Form)
-        self.elite_void.setChecked(True)
-        self.elite_void.setObjectName(&#34;elite_void&#34;)
-        self.gridLayout.addWidget(self.elite_void, 13, 8, 1, 1)
-        self.slayer_helm = QtWidgets.QCheckBox(Form)
+
+        self.slayer_helm = QCheckBox(Form)
+        self.slayer_helm.setObjectName(u&#34;slayer_helm&#34;)
         self.slayer_helm.setChecked(True)
-        self.slayer_helm.setObjectName(&#34;slayer_helm&#34;)
+
         self.gridLayout.addWidget(self.slayer_helm, 12, 6, 1, 1)
-        self.best_in_slot_bonuses = QtWidgets.QTableWidget(Form)
+
+        self.training_skill = QComboBox(Form)
+        self.training_skill.addItem(&#34;&#34;)
+        self.training_skill.addItem(&#34;&#34;)
+        self.training_skill.addItem(&#34;&#34;)
+        self.training_skill.addItem(&#34;&#34;)
+        self.training_skill.addItem(&#34;&#34;)
+        self.training_skill.setObjectName(u&#34;training_skill&#34;)
+
+        self.gridLayout.addWidget(self.training_skill, 4, 2, 1, 4)
+
+        self.elite_void = QCheckBox(Form)
+        self.elite_void.setObjectName(u&#34;elite_void&#34;)
+        self.elite_void.setChecked(True)
+
+        self.gridLayout.addWidget(self.elite_void, 13, 8, 1, 1)
+
+        self.boosting_scheme = QComboBox(Form)
+        self.boosting_scheme.addItem(&#34;&#34;)
+        self.boosting_scheme.addItem(&#34;&#34;)
+        self.boosting_scheme.setObjectName(u&#34;boosting_scheme&#34;)
+
+        self.gridLayout.addWidget(self.boosting_scheme, 5, 9, 1, 2)
+
+        self.best_in_slot_bonuses = QTableWidget(Form)
+        if (self.best_in_slot_bonuses.columnCount() &lt; 1):
+            self.best_in_slot_bonuses.setColumnCount(1)
+        __qtablewidgetitem = QTableWidgetItem()
+        __qtablewidgetitem.setTextAlignment(Qt.AlignCenter);
+        self.best_in_slot_bonuses.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        if (self.best_in_slot_bonuses.rowCount() &lt; 10):
+            self.best_in_slot_bonuses.setRowCount(10)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(0, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(1, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(2, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(3, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(4, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(5, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(6, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(7, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(8, __qtablewidgetitem9)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.best_in_slot_bonuses.setVerticalHeaderItem(9, __qtablewidgetitem10)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        __qtablewidgetitem11.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(0, 0, __qtablewidgetitem11)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        __qtablewidgetitem12.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(1, 0, __qtablewidgetitem12)
+        __qtablewidgetitem13 = QTableWidgetItem()
+        __qtablewidgetitem13.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(2, 0, __qtablewidgetitem13)
+        __qtablewidgetitem14 = QTableWidgetItem()
+        __qtablewidgetitem14.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(3, 0, __qtablewidgetitem14)
+        __qtablewidgetitem15 = QTableWidgetItem()
+        __qtablewidgetitem15.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(4, 0, __qtablewidgetitem15)
+        __qtablewidgetitem16 = QTableWidgetItem()
+        __qtablewidgetitem16.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(5, 0, __qtablewidgetitem16)
+        __qtablewidgetitem17 = QTableWidgetItem()
+        __qtablewidgetitem17.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(6, 0, __qtablewidgetitem17)
+        __qtablewidgetitem18 = QTableWidgetItem()
+        __qtablewidgetitem18.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(7, 0, __qtablewidgetitem18)
+        __qtablewidgetitem19 = QTableWidgetItem()
+        __qtablewidgetitem19.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(8, 0, __qtablewidgetitem19)
+        __qtablewidgetitem20 = QTableWidgetItem()
+        __qtablewidgetitem20.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+        self.best_in_slot_bonuses.setItem(9, 0, __qtablewidgetitem20)
+        self.best_in_slot_bonuses.setObjectName(u&#34;best_in_slot_bonuses&#34;)
         self.best_in_slot_bonuses.setShowGrid(True)
-        self.best_in_slot_bonuses.setObjectName(&#34;best_in_slot_bonuses&#34;)
-        self.best_in_slot_bonuses.setColumnCount(1)
-        self.best_in_slot_bonuses.setRowCount(10)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(4, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(5, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(6, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(7, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(8, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.best_in_slot_bonuses.setVerticalHeaderItem(9, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setTextAlignment(QtCore.Qt.AlignCenter)
-        self.best_in_slot_bonuses.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(0, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(1, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(2, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(3, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(4, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(5, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(6, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(7, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(8, 0, item)
-        item = QtWidgets.QTableWidgetItem()
-        item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-        self.best_in_slot_bonuses.setItem(9, 0, item)
         self.best_in_slot_bonuses.horizontalHeader().setStretchLastSection(True)
         self.best_in_slot_bonuses.verticalHeader().setStretchLastSection(False)
+
         self.gridLayout.addWidget(self.best_in_slot_bonuses, 16, 8, 11, 3)
-        self.boosting_scheme = QtWidgets.QComboBox(Form)
-        self.boosting_scheme.setObjectName(&#34;boosting_scheme&#34;)
-        self.boosting_scheme.addItem(&#34;&#34;)
-        self.boosting_scheme.addItem(&#34;&#34;)
-        self.gridLayout.addWidget(self.boosting_scheme, 5, 9, 1, 2)
-        self.potions = QtWidgets.QComboBox(Form)
-        self.potions.setObjectName(&#34;potions&#34;)
-        self.gridLayout.addWidget(self.potions, 5, 2, 1, 4)
-        self.salve_amulet = QtWidgets.QCheckBox(Form)
-        self.salve_amulet.setChecked(True)
-        self.salve_amulet.setObjectName(&#34;salve_amulet&#34;)
-        self.gridLayout.addWidget(self.salve_amulet, 13, 6, 1, 1)
-        self.berserker_necklace = QtWidgets.QCheckBox(Form)
-        self.berserker_necklace.setChecked(True)
-        self.berserker_necklace.setObjectName(&#34;berserker_necklace&#34;)
-        self.gridLayout.addWidget(self.berserker_necklace, 13, 9, 1, 1)
-        self.label_4 = QtWidgets.QLabel(Form)
-        self.label_4.setObjectName(&#34;label_4&#34;)
+
+        self.potion_attributes = QComboBox(Form)
+        self.potion_attributes.addItem(&#34;&#34;)
+        self.potion_attributes.addItem(&#34;&#34;)
+        self.potion_attributes.addItem(&#34;&#34;)
+        self.potion_attributes.setObjectName(u&#34;potion_attributes&#34;)
+
+        self.gridLayout.addWidget(self.potion_attributes, 5, 6, 1, 3)
+
+        self.below_skill = QComboBox(Form)
+        self.below_skill.addItem(&#34;&#34;)
+        self.below_skill.addItem(&#34;&#34;)
+        self.below_skill.addItem(&#34;&#34;)
+        self.below_skill.setObjectName(u&#34;below_skill&#34;)
+
+        self.gridLayout.addWidget(self.below_skill, 7, 2, 1, 4)
+
+        self.label_6 = QLabel(Form)
+        self.label_6.setObjectName(u&#34;label_6&#34;)
+
+        self.gridLayout.addWidget(self.label_6, 4, 0, 1, 1)
+
+        self.dharok = QLineEdit(Form)
+        self.dharok.setObjectName(u&#34;dharok&#34;)
+        self.dharok.setMaxLength(2)
+
+        self.gridLayout.addWidget(self.dharok, 12, 4, 1, 1)
+
+        self.label_3 = QLabel(Form)
+        self.label_3.setObjectName(u&#34;label_3&#34;)
+
+        self.gridLayout.addWidget(self.label_3, 5, 0, 1, 1)
+
+        self.evaluate = QPushButton(Form)
+        self.evaluate.setObjectName(u&#34;evaluate&#34;)
+
+        self.gridLayout.addWidget(self.evaluate, 14, 0, 1, 1)
+
+        self.redose_level = QLineEdit(Form)
+        self.redose_level.setObjectName(u&#34;redose_level&#34;)
+        self.redose_level.setMaxLength(2)
+
+        self.gridLayout.addWidget(self.redose_level, 7, 9, 1, 1)
+
+        self.prayers = QComboBox(Form)
+        self.prayers.setObjectName(u&#34;prayers&#34;)
+
+        self.gridLayout.addWidget(self.prayers, 10, 2, 1, 4)
+
+        self.label_5 = QLabel(Form)
+        self.label_5.setObjectName(u&#34;label_5&#34;)
+        self.label_5.setEnabled(True)
+
+        self.gridLayout.addWidget(self.label_5, 7, 6, 1, 3)
+
+        self.progressBar = QProgressBar(Form)
+        self.progressBar.setObjectName(u&#34;progressBar&#34;)
+        self.progressBar.setValue(0)
+
+        self.gridLayout.addWidget(self.progressBar, 14, 2, 1, 9)
+
+        self.label_8 = QLabel(Form)
+        self.label_8.setObjectName(u&#34;label_8&#34;)
+
+        self.gridLayout.addWidget(self.label_8, 12, 0, 1, 1)
+
+        self.label_7 = QLabel(Form)
+        self.label_7.setObjectName(u&#34;label_7&#34;)
+
+        self.gridLayout.addWidget(self.label_7, 12, 3, 1, 1)
+
+        self.label_4 = QLabel(Form)
+        self.label_4.setObjectName(u&#34;label_4&#34;)
+
         self.gridLayout.addWidget(self.label_4, 10, 0, 1, 1)
-        self.obsidian = QtWidgets.QCheckBox(Form)
+
+        self.berserker_necklace = QCheckBox(Form)
+        self.berserker_necklace.setObjectName(u&#34;berserker_necklace&#34;)
+        self.berserker_necklace.setChecked(True)
+
+        self.gridLayout.addWidget(self.berserker_necklace, 13, 9, 1, 1)
+
+        self.salve_amulet = QCheckBox(Form)
+        self.salve_amulet.setObjectName(u&#34;salve_amulet&#34;)
+        self.salve_amulet.setChecked(True)
+
+        self.gridLayout.addWidget(self.salve_amulet, 13, 6, 1, 1)
+
+        self.obsidian = QCheckBox(Form)
+        self.obsidian.setObjectName(u&#34;obsidian&#34;)
         self.obsidian.setChecked(True)
-        self.obsidian.setObjectName(&#34;obsidian&#34;)
+
         self.gridLayout.addWidget(self.obsidian, 12, 9, 1, 1)
-        self.opponents = QtWidgets.QListWidget(Form)
-        self.opponents.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollPerItem)
-        self.opponents.setObjectName(&#34;opponents&#34;)
+
+        self.opponents = QListWidget(Form)
+        self.opponents.setObjectName(u&#34;opponents&#34;)
+        self.opponents.setHorizontalScrollMode(QAbstractItemView.ScrollPerItem)
+
         self.gridLayout.addWidget(self.opponents, 2, 0, 1, 11)
-        self.frame = QtWidgets.QFrame(Form)
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName(&#34;frame&#34;)
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.frame)
-        self.gridLayout_2.setObjectName(&#34;gridLayout_2&#34;)
-        self.hands_link = QtWidgets.QPushButton(self.frame)
-        self.hands_link.setObjectName(&#34;hands_link&#34;)
-        self.gridLayout_2.addWidget(self.hands_link, 12, 1, 1, 1)
-        self.neck = QtWidgets.QComboBox(self.frame)
-        self.neck.setObjectName(&#34;neck&#34;)
-        self.gridLayout_2.addWidget(self.neck, 4, 2, 1, 2)
-        self.ring = QtWidgets.QComboBox(self.frame)
-        self.ring.setObjectName(&#34;ring&#34;)
-        self.gridLayout_2.addWidget(self.ring, 14, 2, 1, 2)
-        self.weapon = QtWidgets.QComboBox(self.frame)
-        self.weapon.setObjectName(&#34;weapon&#34;)
-        self.gridLayout_2.addWidget(self.weapon, 6, 2, 1, 2)
-        self.ammo_link = QtWidgets.QPushButton(self.frame)
-        self.ammo_link.setObjectName(&#34;ammo_link&#34;)
-        self.gridLayout_2.addWidget(self.ammo_link, 5, 1, 1, 1)
-        self.shield = QtWidgets.QComboBox(self.frame)
-        self.shield.setObjectName(&#34;shield&#34;)
-        self.gridLayout_2.addWidget(self.shield, 10, 2, 1, 2)
-        self.ammo = QtWidgets.QComboBox(self.frame)
-        self.ammo.setObjectName(&#34;ammo&#34;)
-        self.gridLayout_2.addWidget(self.ammo, 5, 2, 1, 2)
-        self.hands = QtWidgets.QComboBox(self.frame)
-        self.hands.setObjectName(&#34;hands&#34;)
-        self.gridLayout_2.addWidget(self.hands, 12, 2, 1, 2)
-        self.cape = QtWidgets.QComboBox(self.frame)
-        self.cape.setObjectName(&#34;cape&#34;)
-        self.gridLayout_2.addWidget(self.cape, 3, 2, 1, 2)
-        self.head = QtWidgets.QComboBox(self.frame)
-        self.head.setObjectName(&#34;head&#34;)
-        self.gridLayout_2.addWidget(self.head, 1, 2, 1, 2)
-        self.legs = QtWidgets.QComboBox(self.frame)
-        self.legs.setObjectName(&#34;legs&#34;)
-        self.gridLayout_2.addWidget(self.legs, 11, 2, 1, 2)
-        self.cape_link = QtWidgets.QPushButton(self.frame)
-        self.cape_link.setObjectName(&#34;cape_link&#34;)
-        self.gridLayout_2.addWidget(self.cape_link, 3, 1, 1, 1)
-        self.feet_link = QtWidgets.QPushButton(self.frame)
-        self.feet_link.setObjectName(&#34;feet_link&#34;)
-        self.gridLayout_2.addWidget(self.feet_link, 13, 1, 1, 1)
-        self.body_link = QtWidgets.QPushButton(self.frame)
-        self.body_link.setObjectName(&#34;body_link&#34;)
-        self.gridLayout_2.addWidget(self.body_link, 8, 1, 1, 1)
-        self.ring_link = QtWidgets.QPushButton(self.frame)
-        self.ring_link.setObjectName(&#34;ring_link&#34;)
-        self.gridLayout_2.addWidget(self.ring_link, 14, 1, 1, 1)
-        self.legs_link = QtWidgets.QPushButton(self.frame)
-        self.legs_link.setObjectName(&#34;legs_link&#34;)
-        self.gridLayout_2.addWidget(self.legs_link, 11, 1, 1, 1)
-        self.neck_link = QtWidgets.QPushButton(self.frame)
-        self.neck_link.setObjectName(&#34;neck_link&#34;)
-        self.gridLayout_2.addWidget(self.neck_link, 4, 1, 1, 1)
-        self.body = QtWidgets.QComboBox(self.frame)
-        self.body.setObjectName(&#34;body&#34;)
-        self.gridLayout_2.addWidget(self.body, 8, 2, 1, 2)
-        self.feet = QtWidgets.QComboBox(self.frame)
-        self.feet.setObjectName(&#34;feet&#34;)
-        self.gridLayout_2.addWidget(self.feet, 13, 2, 1, 2)
-        self.shield_link = QtWidgets.QPushButton(self.frame)
-        self.shield_link.setObjectName(&#34;shield_link&#34;)
-        self.gridLayout_2.addWidget(self.shield_link, 10, 1, 1, 1)
-        self.label = QtWidgets.QLabel(self.frame)
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.label.setObjectName(&#34;label&#34;)
-        self.gridLayout_2.addWidget(self.label, 16, 1, 1, 1)
-        self.head_link = QtWidgets.QPushButton(self.frame)
-        self.head_link.setObjectName(&#34;head_link&#34;)
-        self.gridLayout_2.addWidget(self.head_link, 1, 1, 1, 1)
-        self.weapon_link = QtWidgets.QPushButton(self.frame)
-        self.weapon_link.setObjectName(&#34;weapon_link&#34;)
-        self.gridLayout_2.addWidget(self.weapon_link, 6, 1, 1, 1)
-        self.label_2 = QtWidgets.QLabel(self.frame)
-        self.label_2.setObjectName(&#34;label_2&#34;)
-        self.gridLayout_2.addWidget(self.label_2, 15, 1, 1, 1)
-        self.xp_rate = QtWidgets.QLineEdit(self.frame)
+
+        self.frame = QFrame(Form)
+        self.frame.setObjectName(u&#34;frame&#34;)
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.gridLayout_2 = QGridLayout(self.frame)
+        self.gridLayout_2.setObjectName(u&#34;gridLayout_2&#34;)
+        self.head = QComboBox(self.frame)
+        self.head.setObjectName(u&#34;head&#34;)
+
+        self.gridLayout_2.addWidget(self.head, 1, 1, 1, 4)
+
+        self.attack_stance = QLineEdit(self.frame)
+        self.attack_stance.setObjectName(u&#34;attack_stance&#34;)
+        self.attack_stance.setEnabled(False)
+
+        self.gridLayout_2.addWidget(self.attack_stance, 15, 2, 1, 1)
+
+        self.hands_link = QPushButton(self.frame)
+        self.hands_link.setObjectName(u&#34;hands_link&#34;)
+
+        self.gridLayout_2.addWidget(self.hands_link, 12, 0, 1, 1)
+
+        self.xp_rate = QLineEdit(self.frame)
+        self.xp_rate.setObjectName(u&#34;xp_rate&#34;)
         self.xp_rate.setEnabled(False)
         self.xp_rate.setReadOnly(True)
-        self.xp_rate.setObjectName(&#34;xp_rate&#34;)
-        self.gridLayout_2.addWidget(self.xp_rate, 16, 3, 1, 1)
-        self.attack_stance = QtWidgets.QLineEdit(self.frame)
-        self.attack_stance.setEnabled(False)
-        self.attack_stance.setObjectName(&#34;attack_stance&#34;)
-        self.gridLayout_2.addWidget(self.attack_stance, 15, 3, 1, 1)
+
+        self.gridLayout_2.addWidget(self.xp_rate, 16, 2, 1, 1)
+
+        self.weapon_link = QPushButton(self.frame)
+        self.weapon_link.setObjectName(u&#34;weapon_link&#34;)
+
+        self.gridLayout_2.addWidget(self.weapon_link, 6, 0, 1, 1)
+
+        self.head_link = QPushButton(self.frame)
+        self.head_link.setObjectName(u&#34;head_link&#34;)
+
+        self.gridLayout_2.addWidget(self.head_link, 1, 0, 1, 1)
+
+        self.label_2 = QLabel(self.frame)
+        self.label_2.setObjectName(u&#34;label_2&#34;)
+
+        self.gridLayout_2.addWidget(self.label_2, 15, 0, 1, 1)
+
+        self.cape_link = QPushButton(self.frame)
+        self.cape_link.setObjectName(u&#34;cape_link&#34;)
+
+        self.gridLayout_2.addWidget(self.cape_link, 3, 0, 1, 1)
+
+        self.ammo_link = QPushButton(self.frame)
+        self.ammo_link.setObjectName(u&#34;ammo_link&#34;)
+
+        self.gridLayout_2.addWidget(self.ammo_link, 5, 0, 1, 1)
+
+        self.body_link = QPushButton(self.frame)
+        self.body_link.setObjectName(u&#34;body_link&#34;)
+
+        self.gridLayout_2.addWidget(self.body_link, 8, 0, 1, 1)
+
+        self.neck_link = QPushButton(self.frame)
+        self.neck_link.setObjectName(u&#34;neck_link&#34;)
+
+        self.gridLayout_2.addWidget(self.neck_link, 4, 0, 1, 1)
+
+        self.ring_link = QPushButton(self.frame)
+        self.ring_link.setObjectName(u&#34;ring_link&#34;)
+
+        self.gridLayout_2.addWidget(self.ring_link, 14, 0, 1, 1)
+
+        self.feet_link = QPushButton(self.frame)
+        self.feet_link.setObjectName(u&#34;feet_link&#34;)
+
+        self.gridLayout_2.addWidget(self.feet_link, 13, 0, 1, 1)
+
+        self.legs_link = QPushButton(self.frame)
+        self.legs_link.setObjectName(u&#34;legs_link&#34;)
+
+        self.gridLayout_2.addWidget(self.legs_link, 11, 0, 1, 1)
+
+        self.label = QLabel(self.frame)
+        self.label.setObjectName(u&#34;label&#34;)
+        self.label.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_2.addWidget(self.label, 16, 0, 1, 1)
+
+        self.kills_per_hour = QLineEdit(self.frame)
+        self.kills_per_hour.setObjectName(u&#34;kills_per_hour&#34;)
+        self.kills_per_hour.setEnabled(False)
+
+        self.gridLayout_2.addWidget(self.kills_per_hour, 16, 4, 1, 1)
+
+        self.shield_link = QPushButton(self.frame)
+        self.shield_link.setObjectName(u&#34;shield_link&#34;)
+
+        self.gridLayout_2.addWidget(self.shield_link, 10, 0, 1, 1)
+
+        self.kill_time = QLineEdit(self.frame)
+        self.kill_time.setObjectName(u&#34;kill_time&#34;)
+        self.kill_time.setEnabled(False)
+
+        self.gridLayout_2.addWidget(self.kill_time, 15, 4, 1, 1)
+
+        self.label_9 = QLabel(self.frame)
+        self.label_9.setObjectName(u&#34;label_9&#34;)
+
+        self.gridLayout_2.addWidget(self.label_9, 15, 3, 1, 1)
+
+        self.hands = QComboBox(self.frame)
+        self.hands.setObjectName(u&#34;hands&#34;)
+
+        self.gridLayout_2.addWidget(self.hands, 12, 1, 1, 4)
+
+        self.shield = QComboBox(self.frame)
+        self.shield.setObjectName(u&#34;shield&#34;)
+
+        self.gridLayout_2.addWidget(self.shield, 10, 1, 1, 4)
+
+        self.weapon = QComboBox(self.frame)
+        self.weapon.setObjectName(u&#34;weapon&#34;)
+
+        self.gridLayout_2.addWidget(self.weapon, 6, 1, 1, 4)
+
+        self.legs = QComboBox(self.frame)
+        self.legs.setObjectName(u&#34;legs&#34;)
+
+        self.gridLayout_2.addWidget(self.legs, 11, 1, 1, 4)
+
+        self.ring = QComboBox(self.frame)
+        self.ring.setObjectName(u&#34;ring&#34;)
+
+        self.gridLayout_2.addWidget(self.ring, 14, 1, 1, 4)
+
+        self.label_10 = QLabel(self.frame)
+        self.label_10.setObjectName(u&#34;label_10&#34;)
+
+        self.gridLayout_2.addWidget(self.label_10, 16, 3, 1, 1)
+
+        self.cape = QComboBox(self.frame)
+        self.cape.setObjectName(u&#34;cape&#34;)
+
+        self.gridLayout_2.addWidget(self.cape, 3, 1, 1, 4)
+
+        self.body = QComboBox(self.frame)
+        self.body.setObjectName(u&#34;body&#34;)
+
+        self.gridLayout_2.addWidget(self.body, 8, 1, 1, 4)
+
+        self.feet = QComboBox(self.frame)
+        self.feet.setObjectName(u&#34;feet&#34;)
+
+        self.gridLayout_2.addWidget(self.feet, 13, 1, 1, 4)
+
+        self.ammo = QComboBox(self.frame)
+        self.ammo.setObjectName(u&#34;ammo&#34;)
+
+        self.gridLayout_2.addWidget(self.ammo, 5, 1, 1, 4)
+
+        self.neck = QComboBox(self.frame)
+        self.neck.setObjectName(u&#34;neck&#34;)
+
+        self.gridLayout_2.addWidget(self.neck, 4, 1, 1, 4)
+
+
         self.gridLayout.addWidget(self.frame, 16, 0, 1, 7)
 
+        QWidget.setTabOrder(self.opponents, self.head_link)
+        QWidget.setTabOrder(self.head_link, self.head)
+        QWidget.setTabOrder(self.head, self.cape_link)
+        QWidget.setTabOrder(self.cape_link, self.cape)
+        QWidget.setTabOrder(self.cape, self.neck_link)
+        QWidget.setTabOrder(self.neck_link, self.neck)
+        QWidget.setTabOrder(self.neck, self.ammo_link)
+        QWidget.setTabOrder(self.ammo_link, self.ammo)
+        QWidget.setTabOrder(self.ammo, self.weapon_link)
+        QWidget.setTabOrder(self.weapon_link, self.weapon)
+        QWidget.setTabOrder(self.weapon, self.body_link)
+        QWidget.setTabOrder(self.body_link, self.body)
+        QWidget.setTabOrder(self.body, self.shield_link)
+        QWidget.setTabOrder(self.shield_link, self.shield)
+        QWidget.setTabOrder(self.shield, self.hands_link)
+        QWidget.setTabOrder(self.hands_link, self.hands)
+        QWidget.setTabOrder(self.hands, self.feet_link)
+        QWidget.setTabOrder(self.feet_link, self.ring_link)
+        QWidget.setTabOrder(self.ring_link, self.ring)
+        QWidget.setTabOrder(self.ring, self.xp_rate)
+        QWidget.setTabOrder(self.xp_rate, self.best_in_slot_bonuses)
+
         self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
-        Form.setTabOrder(self.opponents, self.head_link)
-        Form.setTabOrder(self.head_link, self.head)
-        Form.setTabOrder(self.head, self.cape_link)
-        Form.setTabOrder(self.cape_link, self.cape)
-        Form.setTabOrder(self.cape, self.neck_link)
-        Form.setTabOrder(self.neck_link, self.neck)
-        Form.setTabOrder(self.neck, self.ammo_link)
-        Form.setTabOrder(self.ammo_link, self.ammo)
-        Form.setTabOrder(self.ammo, self.weapon_link)
-        Form.setTabOrder(self.weapon_link, self.weapon)
-        Form.setTabOrder(self.weapon, self.body_link)
-        Form.setTabOrder(self.body_link, self.body)
-        Form.setTabOrder(self.body, self.shield_link)
-        Form.setTabOrder(self.shield_link, self.shield)
-        Form.setTabOrder(self.shield, self.hands_link)
-        Form.setTabOrder(self.hands_link, self.hands)
-        Form.setTabOrder(self.hands, self.feet_link)
-        Form.setTabOrder(self.feet_link, self.feet)
-        Form.setTabOrder(self.feet, self.ring_link)
-        Form.setTabOrder(self.ring_link, self.ring)
-        Form.setTabOrder(self.ring, self.xp_rate)
-        Form.setTabOrder(self.xp_rate, self.best_in_slot_bonuses)
+
+        QMetaObject.connectSlotsByName(Form)
+    # setupUi
 
     def retranslateUi(self, Form):
-        _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate(&#34;Form&#34;, &#34;Form&#34;))
-        self.below_skill.setItemText(0, _translate(&#34;Form&#34;, &#34;attack&#34;))
-        self.below_skill.setItemText(1, _translate(&#34;Form&#34;, &#34;strength&#34;))
-        self.below_skill.setItemText(2, _translate(&#34;Form&#34;, &#34;defence&#34;))
-        self.label_6.setText(_translate(&#34;Form&#34;, &#34;Train&#34;))
-        self.potion_attributes.setItemText(0, _translate(&#34;Form&#34;, &#34;accuracy&#34;))
-        self.potion_attributes.setItemText(1, _translate(&#34;Form&#34;, &#34;damage&#34;))
-        self.potion_attributes.setItemText(2, _translate(&#34;Form&#34;, &#34;accuracy and damage&#34;))
-        self.dharok.setText(_translate(&#34;Form&#34;, &#34;0&#34;))
-        self.evaluate.setText(_translate(&#34;Form&#34;, &#34;Evaluate!&#34;))
-        self.label_3.setText(_translate(&#34;Form&#34;, &#34;Potions&#34;))
-        self.label_8.setText(_translate(&#34;Form&#34;, &#34;Other&#34;))
-        self.label_5.setText(_translate(&#34;Form&#34;, &#34;boost below&#34;))
-        self.label_7.setText(_translate(&#34;Form&#34;, &#34;&lt;Dharok HP&gt;&#34;))
-        self.prayer_attributes.setItemText(0, _translate(&#34;Form&#34;, &#34;accuracy&#34;))
-        self.prayer_attributes.setItemText(1, _translate(&#34;Form&#34;, &#34;damage&#34;))
-        self.prayer_attributes.setItemText(2, _translate(&#34;Form&#34;, &#34;accuracy and damage&#34;))
-        self.training_skill.setItemText(0, _translate(&#34;Form&#34;, &#34;attack&#34;))
-        self.training_skill.setItemText(1, _translate(&#34;Form&#34;, &#34;strength&#34;))
-        self.training_skill.setItemText(2, _translate(&#34;Form&#34;, &#34;defence&#34;))
-        self.training_skill.setItemText(3, _translate(&#34;Form&#34;, &#34;ranged&#34;))
-        self.training_skill.setItemText(4, _translate(&#34;Form&#34;, &#34;magic&#34;))
-        self.void_knight.setText(_translate(&#34;Form&#34;, &#34;Void&#34;))
-        self.elite_void.setText(_translate(&#34;Form&#34;, &#34;Elite Void&#34;))
-        self.slayer_helm.setText(_translate(&#34;Form&#34;, &#34;Slayer Helm&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(0)
-        item.setText(_translate(&#34;Form&#34;, &#34;Stab&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(1)
-        item.setText(_translate(&#34;Form&#34;, &#34;Slash&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(2)
-        item.setText(_translate(&#34;Form&#34;, &#34;Crush&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(3)
-        item.setText(_translate(&#34;Form&#34;, &#34;Ranged&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(4)
-        item.setText(_translate(&#34;Form&#34;, &#34;Magic&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(5)
-        item.setText(_translate(&#34;Form&#34;, &#34;Melee Str&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(6)
-        item.setText(_translate(&#34;Form&#34;, &#34;Ranged Str&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(7)
-        item.setText(_translate(&#34;Form&#34;, &#34;Magic Str&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(8)
-        item.setText(_translate(&#34;Form&#34;, &#34;Attack Speed&#34;))
-        item = self.best_in_slot_bonuses.verticalHeaderItem(9)
-        item.setText(_translate(&#34;Form&#34;, &#34;Cost&#34;))
-        item = self.best_in_slot_bonuses.horizontalHeaderItem(0)
-        item.setText(_translate(&#34;Form&#34;, &#34;Bonuses&#34;))
+        Form.setWindowTitle(QCoreApplication.translate(&#34;Form&#34;, u&#34;Form&#34;, None))
+        self.prayer_attributes.setItemText(0, QCoreApplication.translate(&#34;Form&#34;, u&#34;accuracy&#34;, None))
+        self.prayer_attributes.setItemText(1, QCoreApplication.translate(&#34;Form&#34;, u&#34;damage&#34;, None))
+        self.prayer_attributes.setItemText(2, QCoreApplication.translate(&#34;Form&#34;, u&#34;accuracy and damage&#34;, None))
+
+        self.void_knight.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Void&#34;, None))
+        self.slayer_helm.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Slayer Helm&#34;, None))
+        self.training_skill.setItemText(0, QCoreApplication.translate(&#34;Form&#34;, u&#34;attack&#34;, None))
+        self.training_skill.setItemText(1, QCoreApplication.translate(&#34;Form&#34;, u&#34;strength&#34;, None))
+        self.training_skill.setItemText(2, QCoreApplication.translate(&#34;Form&#34;, u&#34;defence&#34;, None))
+        self.training_skill.setItemText(3, QCoreApplication.translate(&#34;Form&#34;, u&#34;ranged&#34;, None))
+        self.training_skill.setItemText(4, QCoreApplication.translate(&#34;Form&#34;, u&#34;magic&#34;, None))
+
+        self.elite_void.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Elite Void&#34;, None))
+        self.boosting_scheme.setItemText(0, QCoreApplication.translate(&#34;Form&#34;, u&#34;Constant&#34;, None))
+        self.boosting_scheme.setItemText(1, QCoreApplication.translate(&#34;Form&#34;, u&#34;Dose After&#34;, None))
+
+        ___qtablewidgetitem = self.best_in_slot_bonuses.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Bonuses&#34;, None));
+        ___qtablewidgetitem1 = self.best_in_slot_bonuses.verticalHeaderItem(0)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Stab&#34;, None));
+        ___qtablewidgetitem2 = self.best_in_slot_bonuses.verticalHeaderItem(1)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Slash&#34;, None));
+        ___qtablewidgetitem3 = self.best_in_slot_bonuses.verticalHeaderItem(2)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Crush&#34;, None));
+        ___qtablewidgetitem4 = self.best_in_slot_bonuses.verticalHeaderItem(3)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Ranged&#34;, None));
+        ___qtablewidgetitem5 = self.best_in_slot_bonuses.verticalHeaderItem(4)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Magic&#34;, None));
+        ___qtablewidgetitem6 = self.best_in_slot_bonuses.verticalHeaderItem(5)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Melee Str&#34;, None));
+        ___qtablewidgetitem7 = self.best_in_slot_bonuses.verticalHeaderItem(6)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Ranged Str&#34;, None));
+        ___qtablewidgetitem8 = self.best_in_slot_bonuses.verticalHeaderItem(7)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Magic Str&#34;, None));
+        ___qtablewidgetitem9 = self.best_in_slot_bonuses.verticalHeaderItem(8)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Speed&#34;, None));
+        ___qtablewidgetitem10 = self.best_in_slot_bonuses.verticalHeaderItem(9)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Cost&#34;, None));
+
         __sortingEnabled = self.best_in_slot_bonuses.isSortingEnabled()
         self.best_in_slot_bonuses.setSortingEnabled(False)
         self.best_in_slot_bonuses.setSortingEnabled(__sortingEnabled)
-        self.boosting_scheme.setItemText(0, _translate(&#34;Form&#34;, &#34;Constant&#34;))
-        self.boosting_scheme.setItemText(1, _translate(&#34;Form&#34;, &#34;Dose After&#34;))
-        self.salve_amulet.setText(_translate(&#34;Form&#34;, &#34;Salve Amulet&#34;))
-        self.berserker_necklace.setText(_translate(&#34;Form&#34;, &#34;Bers. Neck.&#34;))
-        self.label_4.setText(_translate(&#34;Form&#34;, &#34;Prayer&#34;))
-        self.obsidian.setText(_translate(&#34;Form&#34;, &#34;Obsidian&#34;))
-        self.hands_link.setText(_translate(&#34;Form&#34;, &#34;Hands&#34;))
-        self.ammo_link.setText(_translate(&#34;Form&#34;, &#34;Ammo&#34;))
-        self.cape_link.setText(_translate(&#34;Form&#34;, &#34;Cape&#34;))
-        self.feet_link.setText(_translate(&#34;Form&#34;, &#34;Feet&#34;))
-        self.body_link.setText(_translate(&#34;Form&#34;, &#34;Body&#34;))
-        self.ring_link.setText(_translate(&#34;Form&#34;, &#34;Ring&#34;))
-        self.legs_link.setText(_translate(&#34;Form&#34;, &#34;Legs&#34;))
-        self.neck_link.setText(_translate(&#34;Form&#34;, &#34;Neck&#34;))
-        self.shield_link.setText(_translate(&#34;Form&#34;, &#34;Shield&#34;))
-        self.label.setText(_translate(&#34;Form&#34;, &#34;Xp/h&#34;))
-        self.head_link.setText(_translate(&#34;Form&#34;, &#34;Head&#34;))
-        self.weapon_link.setText(_translate(&#34;Form&#34;, &#34;Weapon&#34;))
-        self.label_2.setText(_translate(&#34;Form&#34;, &#34;Attack Stance&#34;))</code></pre>
+
+        self.potion_attributes.setItemText(0, QCoreApplication.translate(&#34;Form&#34;, u&#34;accuracy&#34;, None))
+        self.potion_attributes.setItemText(1, QCoreApplication.translate(&#34;Form&#34;, u&#34;damage&#34;, None))
+        self.potion_attributes.setItemText(2, QCoreApplication.translate(&#34;Form&#34;, u&#34;accuracy and damage&#34;, None))
+
+        self.below_skill.setItemText(0, QCoreApplication.translate(&#34;Form&#34;, u&#34;attack&#34;, None))
+        self.below_skill.setItemText(1, QCoreApplication.translate(&#34;Form&#34;, u&#34;strength&#34;, None))
+        self.below_skill.setItemText(2, QCoreApplication.translate(&#34;Form&#34;, u&#34;defence&#34;, None))
+
+        self.label_6.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Train&#34;, None))
+        self.dharok.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;0&#34;, None))
+        self.label_3.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Potions&#34;, None))
+        self.evaluate.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Evaluate!&#34;, None))
+        self.label_5.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;boost below&#34;, None))
+        self.label_8.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Other&#34;, None))
+        self.label_7.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;&lt;Dharok HP&gt;&#34;, None))
+        self.label_4.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Prayer&#34;, None))
+        self.berserker_necklace.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Bers. Neck.&#34;, None))
+        self.salve_amulet.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Salve Amulet&#34;, None))
+        self.obsidian.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Obsidian&#34;, None))
+        self.hands_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Hands&#34;, None))
+        self.weapon_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Weapon&#34;, None))
+        self.head_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Head&#34;, None))
+        self.label_2.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Attack Stance&#34;, None))
+        self.cape_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Cape&#34;, None))
+        self.ammo_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Ammo&#34;, None))
+        self.body_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Body&#34;, None))
+        self.neck_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Neck&#34;, None))
+        self.ring_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Ring&#34;, None))
+        self.feet_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Feet&#34;, None))
+        self.legs_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Legs&#34;, None))
+        self.label.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Xp/h&#34;, None))
+        self.shield_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Shield&#34;, None))
+        self.label_9.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Kill Time&#34;, None))
+        self.label_10.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Kills/h&#34;, None))</code></pre>
 </details>
 <h3>Subclasses</h3>
 <ul class="hlist">
@@ -788,76 +1061,84 @@ if __name__ == &#34;__main__&#34;:
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def retranslateUi(self, Form):
-    _translate = QtCore.QCoreApplication.translate
-    Form.setWindowTitle(_translate(&#34;Form&#34;, &#34;Form&#34;))
-    self.below_skill.setItemText(0, _translate(&#34;Form&#34;, &#34;attack&#34;))
-    self.below_skill.setItemText(1, _translate(&#34;Form&#34;, &#34;strength&#34;))
-    self.below_skill.setItemText(2, _translate(&#34;Form&#34;, &#34;defence&#34;))
-    self.label_6.setText(_translate(&#34;Form&#34;, &#34;Train&#34;))
-    self.potion_attributes.setItemText(0, _translate(&#34;Form&#34;, &#34;accuracy&#34;))
-    self.potion_attributes.setItemText(1, _translate(&#34;Form&#34;, &#34;damage&#34;))
-    self.potion_attributes.setItemText(2, _translate(&#34;Form&#34;, &#34;accuracy and damage&#34;))
-    self.dharok.setText(_translate(&#34;Form&#34;, &#34;0&#34;))
-    self.evaluate.setText(_translate(&#34;Form&#34;, &#34;Evaluate!&#34;))
-    self.label_3.setText(_translate(&#34;Form&#34;, &#34;Potions&#34;))
-    self.label_8.setText(_translate(&#34;Form&#34;, &#34;Other&#34;))
-    self.label_5.setText(_translate(&#34;Form&#34;, &#34;boost below&#34;))
-    self.label_7.setText(_translate(&#34;Form&#34;, &#34;&lt;Dharok HP&gt;&#34;))
-    self.prayer_attributes.setItemText(0, _translate(&#34;Form&#34;, &#34;accuracy&#34;))
-    self.prayer_attributes.setItemText(1, _translate(&#34;Form&#34;, &#34;damage&#34;))
-    self.prayer_attributes.setItemText(2, _translate(&#34;Form&#34;, &#34;accuracy and damage&#34;))
-    self.training_skill.setItemText(0, _translate(&#34;Form&#34;, &#34;attack&#34;))
-    self.training_skill.setItemText(1, _translate(&#34;Form&#34;, &#34;strength&#34;))
-    self.training_skill.setItemText(2, _translate(&#34;Form&#34;, &#34;defence&#34;))
-    self.training_skill.setItemText(3, _translate(&#34;Form&#34;, &#34;ranged&#34;))
-    self.training_skill.setItemText(4, _translate(&#34;Form&#34;, &#34;magic&#34;))
-    self.void_knight.setText(_translate(&#34;Form&#34;, &#34;Void&#34;))
-    self.elite_void.setText(_translate(&#34;Form&#34;, &#34;Elite Void&#34;))
-    self.slayer_helm.setText(_translate(&#34;Form&#34;, &#34;Slayer Helm&#34;))
-    item = self.best_in_slot_bonuses.verticalHeaderItem(0)
-    item.setText(_translate(&#34;Form&#34;, &#34;Stab&#34;))
-    item = self.best_in_slot_bonuses.verticalHeaderItem(1)
-    item.setText(_translate(&#34;Form&#34;, &#34;Slash&#34;))
-    item = self.best_in_slot_bonuses.verticalHeaderItem(2)
-    item.setText(_translate(&#34;Form&#34;, &#34;Crush&#34;))
-    item = self.best_in_slot_bonuses.verticalHeaderItem(3)
-    item.setText(_translate(&#34;Form&#34;, &#34;Ranged&#34;))
-    item = self.best_in_slot_bonuses.verticalHeaderItem(4)
-    item.setText(_translate(&#34;Form&#34;, &#34;Magic&#34;))
-    item = self.best_in_slot_bonuses.verticalHeaderItem(5)
-    item.setText(_translate(&#34;Form&#34;, &#34;Melee Str&#34;))
-    item = self.best_in_slot_bonuses.verticalHeaderItem(6)
-    item.setText(_translate(&#34;Form&#34;, &#34;Ranged Str&#34;))
-    item = self.best_in_slot_bonuses.verticalHeaderItem(7)
-    item.setText(_translate(&#34;Form&#34;, &#34;Magic Str&#34;))
-    item = self.best_in_slot_bonuses.verticalHeaderItem(8)
-    item.setText(_translate(&#34;Form&#34;, &#34;Attack Speed&#34;))
-    item = self.best_in_slot_bonuses.verticalHeaderItem(9)
-    item.setText(_translate(&#34;Form&#34;, &#34;Cost&#34;))
-    item = self.best_in_slot_bonuses.horizontalHeaderItem(0)
-    item.setText(_translate(&#34;Form&#34;, &#34;Bonuses&#34;))
+    Form.setWindowTitle(QCoreApplication.translate(&#34;Form&#34;, u&#34;Form&#34;, None))
+    self.prayer_attributes.setItemText(0, QCoreApplication.translate(&#34;Form&#34;, u&#34;accuracy&#34;, None))
+    self.prayer_attributes.setItemText(1, QCoreApplication.translate(&#34;Form&#34;, u&#34;damage&#34;, None))
+    self.prayer_attributes.setItemText(2, QCoreApplication.translate(&#34;Form&#34;, u&#34;accuracy and damage&#34;, None))
+
+    self.void_knight.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Void&#34;, None))
+    self.slayer_helm.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Slayer Helm&#34;, None))
+    self.training_skill.setItemText(0, QCoreApplication.translate(&#34;Form&#34;, u&#34;attack&#34;, None))
+    self.training_skill.setItemText(1, QCoreApplication.translate(&#34;Form&#34;, u&#34;strength&#34;, None))
+    self.training_skill.setItemText(2, QCoreApplication.translate(&#34;Form&#34;, u&#34;defence&#34;, None))
+    self.training_skill.setItemText(3, QCoreApplication.translate(&#34;Form&#34;, u&#34;ranged&#34;, None))
+    self.training_skill.setItemText(4, QCoreApplication.translate(&#34;Form&#34;, u&#34;magic&#34;, None))
+
+    self.elite_void.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Elite Void&#34;, None))
+    self.boosting_scheme.setItemText(0, QCoreApplication.translate(&#34;Form&#34;, u&#34;Constant&#34;, None))
+    self.boosting_scheme.setItemText(1, QCoreApplication.translate(&#34;Form&#34;, u&#34;Dose After&#34;, None))
+
+    ___qtablewidgetitem = self.best_in_slot_bonuses.horizontalHeaderItem(0)
+    ___qtablewidgetitem.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Bonuses&#34;, None));
+    ___qtablewidgetitem1 = self.best_in_slot_bonuses.verticalHeaderItem(0)
+    ___qtablewidgetitem1.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Stab&#34;, None));
+    ___qtablewidgetitem2 = self.best_in_slot_bonuses.verticalHeaderItem(1)
+    ___qtablewidgetitem2.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Slash&#34;, None));
+    ___qtablewidgetitem3 = self.best_in_slot_bonuses.verticalHeaderItem(2)
+    ___qtablewidgetitem3.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Crush&#34;, None));
+    ___qtablewidgetitem4 = self.best_in_slot_bonuses.verticalHeaderItem(3)
+    ___qtablewidgetitem4.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Ranged&#34;, None));
+    ___qtablewidgetitem5 = self.best_in_slot_bonuses.verticalHeaderItem(4)
+    ___qtablewidgetitem5.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Magic&#34;, None));
+    ___qtablewidgetitem6 = self.best_in_slot_bonuses.verticalHeaderItem(5)
+    ___qtablewidgetitem6.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Melee Str&#34;, None));
+    ___qtablewidgetitem7 = self.best_in_slot_bonuses.verticalHeaderItem(6)
+    ___qtablewidgetitem7.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Ranged Str&#34;, None));
+    ___qtablewidgetitem8 = self.best_in_slot_bonuses.verticalHeaderItem(7)
+    ___qtablewidgetitem8.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Magic Str&#34;, None));
+    ___qtablewidgetitem9 = self.best_in_slot_bonuses.verticalHeaderItem(8)
+    ___qtablewidgetitem9.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Speed&#34;, None));
+    ___qtablewidgetitem10 = self.best_in_slot_bonuses.verticalHeaderItem(9)
+    ___qtablewidgetitem10.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Cost&#34;, None));
+
     __sortingEnabled = self.best_in_slot_bonuses.isSortingEnabled()
     self.best_in_slot_bonuses.setSortingEnabled(False)
     self.best_in_slot_bonuses.setSortingEnabled(__sortingEnabled)
-    self.boosting_scheme.setItemText(0, _translate(&#34;Form&#34;, &#34;Constant&#34;))
-    self.boosting_scheme.setItemText(1, _translate(&#34;Form&#34;, &#34;Dose After&#34;))
-    self.salve_amulet.setText(_translate(&#34;Form&#34;, &#34;Salve Amulet&#34;))
-    self.berserker_necklace.setText(_translate(&#34;Form&#34;, &#34;Bers. Neck.&#34;))
-    self.label_4.setText(_translate(&#34;Form&#34;, &#34;Prayer&#34;))
-    self.obsidian.setText(_translate(&#34;Form&#34;, &#34;Obsidian&#34;))
-    self.hands_link.setText(_translate(&#34;Form&#34;, &#34;Hands&#34;))
-    self.ammo_link.setText(_translate(&#34;Form&#34;, &#34;Ammo&#34;))
-    self.cape_link.setText(_translate(&#34;Form&#34;, &#34;Cape&#34;))
-    self.feet_link.setText(_translate(&#34;Form&#34;, &#34;Feet&#34;))
-    self.body_link.setText(_translate(&#34;Form&#34;, &#34;Body&#34;))
-    self.ring_link.setText(_translate(&#34;Form&#34;, &#34;Ring&#34;))
-    self.legs_link.setText(_translate(&#34;Form&#34;, &#34;Legs&#34;))
-    self.neck_link.setText(_translate(&#34;Form&#34;, &#34;Neck&#34;))
-    self.shield_link.setText(_translate(&#34;Form&#34;, &#34;Shield&#34;))
-    self.label.setText(_translate(&#34;Form&#34;, &#34;Xp/h&#34;))
-    self.head_link.setText(_translate(&#34;Form&#34;, &#34;Head&#34;))
-    self.weapon_link.setText(_translate(&#34;Form&#34;, &#34;Weapon&#34;))
-    self.label_2.setText(_translate(&#34;Form&#34;, &#34;Attack Stance&#34;))</code></pre>
+
+    self.potion_attributes.setItemText(0, QCoreApplication.translate(&#34;Form&#34;, u&#34;accuracy&#34;, None))
+    self.potion_attributes.setItemText(1, QCoreApplication.translate(&#34;Form&#34;, u&#34;damage&#34;, None))
+    self.potion_attributes.setItemText(2, QCoreApplication.translate(&#34;Form&#34;, u&#34;accuracy and damage&#34;, None))
+
+    self.below_skill.setItemText(0, QCoreApplication.translate(&#34;Form&#34;, u&#34;attack&#34;, None))
+    self.below_skill.setItemText(1, QCoreApplication.translate(&#34;Form&#34;, u&#34;strength&#34;, None))
+    self.below_skill.setItemText(2, QCoreApplication.translate(&#34;Form&#34;, u&#34;defence&#34;, None))
+
+    self.label_6.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Train&#34;, None))
+    self.dharok.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;0&#34;, None))
+    self.label_3.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Potions&#34;, None))
+    self.evaluate.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Evaluate!&#34;, None))
+    self.label_5.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;boost below&#34;, None))
+    self.label_8.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Other&#34;, None))
+    self.label_7.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;&lt;Dharok HP&gt;&#34;, None))
+    self.label_4.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Prayer&#34;, None))
+    self.berserker_necklace.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Bers. Neck.&#34;, None))
+    self.salve_amulet.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Salve Amulet&#34;, None))
+    self.obsidian.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Obsidian&#34;, None))
+    self.hands_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Hands&#34;, None))
+    self.weapon_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Weapon&#34;, None))
+    self.head_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Head&#34;, None))
+    self.label_2.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Attack Stance&#34;, None))
+    self.cape_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Cape&#34;, None))
+    self.ammo_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Ammo&#34;, None))
+    self.body_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Body&#34;, None))
+    self.neck_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Neck&#34;, None))
+    self.ring_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Ring&#34;, None))
+    self.feet_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Feet&#34;, None))
+    self.legs_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Legs&#34;, None))
+    self.label.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Xp/h&#34;, None))
+    self.shield_link.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Shield&#34;, None))
+    self.label_9.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Kill Time&#34;, None))
+    self.label_10.setText(QCoreApplication.translate(&#34;Form&#34;, u&#34;Kills/h&#34;, None))</code></pre>
 </details>
 </dd>
 <dt id="osrsmath.apps.GUI.optimize.optimize_skeleton.Ui_Form.setupUi"><code class="name flex">
@@ -870,284 +1151,413 @@ if __name__ == &#34;__main__&#34;:
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def setupUi(self, Form):
-    Form.setObjectName(&#34;Form&#34;)
+    if not Form.objectName():
+        Form.setObjectName(u&#34;Form&#34;)
     Form.resize(714, 738)
-    self.gridLayout = QtWidgets.QGridLayout(Form)
-    self.gridLayout.setObjectName(&#34;gridLayout&#34;)
-    self.below_skill = QtWidgets.QComboBox(Form)
-    self.below_skill.setObjectName(&#34;below_skill&#34;)
-    self.below_skill.addItem(&#34;&#34;)
-    self.below_skill.addItem(&#34;&#34;)
-    self.below_skill.addItem(&#34;&#34;)
-    self.gridLayout.addWidget(self.below_skill, 7, 2, 1, 4)
-    self.label_6 = QtWidgets.QLabel(Form)
-    self.label_6.setObjectName(&#34;label_6&#34;)
-    self.gridLayout.addWidget(self.label_6, 4, 0, 1, 1)
-    self.potion_attributes = QtWidgets.QComboBox(Form)
-    self.potion_attributes.setObjectName(&#34;potion_attributes&#34;)
-    self.potion_attributes.addItem(&#34;&#34;)
-    self.potion_attributes.addItem(&#34;&#34;)
-    self.potion_attributes.addItem(&#34;&#34;)
-    self.gridLayout.addWidget(self.potion_attributes, 5, 6, 1, 3)
-    self.redose_level = QtWidgets.QLineEdit(Form)
-    self.redose_level.setMaxLength(2)
-    self.redose_level.setObjectName(&#34;redose_level&#34;)
-    self.gridLayout.addWidget(self.redose_level, 7, 9, 1, 1)
-    self.dharok = QtWidgets.QLineEdit(Form)
-    self.dharok.setMaxLength(2)
-    self.dharok.setObjectName(&#34;dharok&#34;)
-    self.gridLayout.addWidget(self.dharok, 12, 4, 1, 1)
-    self.evaluate = QtWidgets.QPushButton(Form)
-    self.evaluate.setObjectName(&#34;evaluate&#34;)
-    self.gridLayout.addWidget(self.evaluate, 14, 0, 1, 1)
-    self.prayers = QtWidgets.QComboBox(Form)
-    self.prayers.setObjectName(&#34;prayers&#34;)
-    self.gridLayout.addWidget(self.prayers, 10, 2, 1, 4)
-    self.label_3 = QtWidgets.QLabel(Form)
-    self.label_3.setObjectName(&#34;label_3&#34;)
-    self.gridLayout.addWidget(self.label_3, 5, 0, 1, 1)
-    self.label_8 = QtWidgets.QLabel(Form)
-    self.label_8.setObjectName(&#34;label_8&#34;)
-    self.gridLayout.addWidget(self.label_8, 12, 0, 1, 1)
-    self.label_5 = QtWidgets.QLabel(Form)
-    self.label_5.setEnabled(True)
-    self.label_5.setObjectName(&#34;label_5&#34;)
-    self.gridLayout.addWidget(self.label_5, 7, 6, 1, 3)
-    self.label_7 = QtWidgets.QLabel(Form)
-    self.label_7.setObjectName(&#34;label_7&#34;)
-    self.gridLayout.addWidget(self.label_7, 12, 3, 1, 1)
-    self.progressBar = QtWidgets.QProgressBar(Form)
-    self.progressBar.setProperty(&#34;value&#34;, 0)
-    self.progressBar.setObjectName(&#34;progressBar&#34;)
-    self.gridLayout.addWidget(self.progressBar, 14, 2, 1, 9)
-    self.prayer_attributes = QtWidgets.QComboBox(Form)
-    self.prayer_attributes.setObjectName(&#34;prayer_attributes&#34;)
+    self.gridLayout = QGridLayout(Form)
+    self.gridLayout.setObjectName(u&#34;gridLayout&#34;)
+    self.potions = QComboBox(Form)
+    self.potions.setObjectName(u&#34;potions&#34;)
+
+    self.gridLayout.addWidget(self.potions, 5, 2, 1, 4)
+
+    self.prayer_attributes = QComboBox(Form)
     self.prayer_attributes.addItem(&#34;&#34;)
     self.prayer_attributes.addItem(&#34;&#34;)
     self.prayer_attributes.addItem(&#34;&#34;)
+    self.prayer_attributes.setObjectName(u&#34;prayer_attributes&#34;)
+
     self.gridLayout.addWidget(self.prayer_attributes, 10, 6, 1, 3)
-    self.training_skill = QtWidgets.QComboBox(Form)
-    self.training_skill.setObjectName(&#34;training_skill&#34;)
-    self.training_skill.addItem(&#34;&#34;)
-    self.training_skill.addItem(&#34;&#34;)
-    self.training_skill.addItem(&#34;&#34;)
-    self.training_skill.addItem(&#34;&#34;)
-    self.training_skill.addItem(&#34;&#34;)
-    self.gridLayout.addWidget(self.training_skill, 4, 2, 1, 4)
-    self.void_knight = QtWidgets.QCheckBox(Form)
+
+    self.void_knight = QCheckBox(Form)
+    self.void_knight.setObjectName(u&#34;void_knight&#34;)
     self.void_knight.setChecked(True)
-    self.void_knight.setObjectName(&#34;void_knight&#34;)
+
     self.gridLayout.addWidget(self.void_knight, 12, 8, 1, 1)
-    self.elite_void = QtWidgets.QCheckBox(Form)
-    self.elite_void.setChecked(True)
-    self.elite_void.setObjectName(&#34;elite_void&#34;)
-    self.gridLayout.addWidget(self.elite_void, 13, 8, 1, 1)
-    self.slayer_helm = QtWidgets.QCheckBox(Form)
+
+    self.slayer_helm = QCheckBox(Form)
+    self.slayer_helm.setObjectName(u&#34;slayer_helm&#34;)
     self.slayer_helm.setChecked(True)
-    self.slayer_helm.setObjectName(&#34;slayer_helm&#34;)
+
     self.gridLayout.addWidget(self.slayer_helm, 12, 6, 1, 1)
-    self.best_in_slot_bonuses = QtWidgets.QTableWidget(Form)
+
+    self.training_skill = QComboBox(Form)
+    self.training_skill.addItem(&#34;&#34;)
+    self.training_skill.addItem(&#34;&#34;)
+    self.training_skill.addItem(&#34;&#34;)
+    self.training_skill.addItem(&#34;&#34;)
+    self.training_skill.addItem(&#34;&#34;)
+    self.training_skill.setObjectName(u&#34;training_skill&#34;)
+
+    self.gridLayout.addWidget(self.training_skill, 4, 2, 1, 4)
+
+    self.elite_void = QCheckBox(Form)
+    self.elite_void.setObjectName(u&#34;elite_void&#34;)
+    self.elite_void.setChecked(True)
+
+    self.gridLayout.addWidget(self.elite_void, 13, 8, 1, 1)
+
+    self.boosting_scheme = QComboBox(Form)
+    self.boosting_scheme.addItem(&#34;&#34;)
+    self.boosting_scheme.addItem(&#34;&#34;)
+    self.boosting_scheme.setObjectName(u&#34;boosting_scheme&#34;)
+
+    self.gridLayout.addWidget(self.boosting_scheme, 5, 9, 1, 2)
+
+    self.best_in_slot_bonuses = QTableWidget(Form)
+    if (self.best_in_slot_bonuses.columnCount() &lt; 1):
+        self.best_in_slot_bonuses.setColumnCount(1)
+    __qtablewidgetitem = QTableWidgetItem()
+    __qtablewidgetitem.setTextAlignment(Qt.AlignCenter);
+    self.best_in_slot_bonuses.setHorizontalHeaderItem(0, __qtablewidgetitem)
+    if (self.best_in_slot_bonuses.rowCount() &lt; 10):
+        self.best_in_slot_bonuses.setRowCount(10)
+    __qtablewidgetitem1 = QTableWidgetItem()
+    self.best_in_slot_bonuses.setVerticalHeaderItem(0, __qtablewidgetitem1)
+    __qtablewidgetitem2 = QTableWidgetItem()
+    self.best_in_slot_bonuses.setVerticalHeaderItem(1, __qtablewidgetitem2)
+    __qtablewidgetitem3 = QTableWidgetItem()
+    self.best_in_slot_bonuses.setVerticalHeaderItem(2, __qtablewidgetitem3)
+    __qtablewidgetitem4 = QTableWidgetItem()
+    self.best_in_slot_bonuses.setVerticalHeaderItem(3, __qtablewidgetitem4)
+    __qtablewidgetitem5 = QTableWidgetItem()
+    self.best_in_slot_bonuses.setVerticalHeaderItem(4, __qtablewidgetitem5)
+    __qtablewidgetitem6 = QTableWidgetItem()
+    self.best_in_slot_bonuses.setVerticalHeaderItem(5, __qtablewidgetitem6)
+    __qtablewidgetitem7 = QTableWidgetItem()
+    self.best_in_slot_bonuses.setVerticalHeaderItem(6, __qtablewidgetitem7)
+    __qtablewidgetitem8 = QTableWidgetItem()
+    self.best_in_slot_bonuses.setVerticalHeaderItem(7, __qtablewidgetitem8)
+    __qtablewidgetitem9 = QTableWidgetItem()
+    self.best_in_slot_bonuses.setVerticalHeaderItem(8, __qtablewidgetitem9)
+    __qtablewidgetitem10 = QTableWidgetItem()
+    self.best_in_slot_bonuses.setVerticalHeaderItem(9, __qtablewidgetitem10)
+    __qtablewidgetitem11 = QTableWidgetItem()
+    __qtablewidgetitem11.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+    self.best_in_slot_bonuses.setItem(0, 0, __qtablewidgetitem11)
+    __qtablewidgetitem12 = QTableWidgetItem()
+    __qtablewidgetitem12.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+    self.best_in_slot_bonuses.setItem(1, 0, __qtablewidgetitem12)
+    __qtablewidgetitem13 = QTableWidgetItem()
+    __qtablewidgetitem13.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+    self.best_in_slot_bonuses.setItem(2, 0, __qtablewidgetitem13)
+    __qtablewidgetitem14 = QTableWidgetItem()
+    __qtablewidgetitem14.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+    self.best_in_slot_bonuses.setItem(3, 0, __qtablewidgetitem14)
+    __qtablewidgetitem15 = QTableWidgetItem()
+    __qtablewidgetitem15.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+    self.best_in_slot_bonuses.setItem(4, 0, __qtablewidgetitem15)
+    __qtablewidgetitem16 = QTableWidgetItem()
+    __qtablewidgetitem16.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+    self.best_in_slot_bonuses.setItem(5, 0, __qtablewidgetitem16)
+    __qtablewidgetitem17 = QTableWidgetItem()
+    __qtablewidgetitem17.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+    self.best_in_slot_bonuses.setItem(6, 0, __qtablewidgetitem17)
+    __qtablewidgetitem18 = QTableWidgetItem()
+    __qtablewidgetitem18.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+    self.best_in_slot_bonuses.setItem(7, 0, __qtablewidgetitem18)
+    __qtablewidgetitem19 = QTableWidgetItem()
+    __qtablewidgetitem19.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+    self.best_in_slot_bonuses.setItem(8, 0, __qtablewidgetitem19)
+    __qtablewidgetitem20 = QTableWidgetItem()
+    __qtablewidgetitem20.setFlags(Qt.ItemIsSelectable|Qt.ItemIsDragEnabled|Qt.ItemIsDropEnabled|Qt.ItemIsUserCheckable|Qt.ItemIsEnabled);
+    self.best_in_slot_bonuses.setItem(9, 0, __qtablewidgetitem20)
+    self.best_in_slot_bonuses.setObjectName(u&#34;best_in_slot_bonuses&#34;)
     self.best_in_slot_bonuses.setShowGrid(True)
-    self.best_in_slot_bonuses.setObjectName(&#34;best_in_slot_bonuses&#34;)
-    self.best_in_slot_bonuses.setColumnCount(1)
-    self.best_in_slot_bonuses.setRowCount(10)
-    item = QtWidgets.QTableWidgetItem()
-    self.best_in_slot_bonuses.setVerticalHeaderItem(0, item)
-    item = QtWidgets.QTableWidgetItem()
-    self.best_in_slot_bonuses.setVerticalHeaderItem(1, item)
-    item = QtWidgets.QTableWidgetItem()
-    self.best_in_slot_bonuses.setVerticalHeaderItem(2, item)
-    item = QtWidgets.QTableWidgetItem()
-    self.best_in_slot_bonuses.setVerticalHeaderItem(3, item)
-    item = QtWidgets.QTableWidgetItem()
-    self.best_in_slot_bonuses.setVerticalHeaderItem(4, item)
-    item = QtWidgets.QTableWidgetItem()
-    self.best_in_slot_bonuses.setVerticalHeaderItem(5, item)
-    item = QtWidgets.QTableWidgetItem()
-    self.best_in_slot_bonuses.setVerticalHeaderItem(6, item)
-    item = QtWidgets.QTableWidgetItem()
-    self.best_in_slot_bonuses.setVerticalHeaderItem(7, item)
-    item = QtWidgets.QTableWidgetItem()
-    self.best_in_slot_bonuses.setVerticalHeaderItem(8, item)
-    item = QtWidgets.QTableWidgetItem()
-    self.best_in_slot_bonuses.setVerticalHeaderItem(9, item)
-    item = QtWidgets.QTableWidgetItem()
-    item.setTextAlignment(QtCore.Qt.AlignCenter)
-    self.best_in_slot_bonuses.setHorizontalHeaderItem(0, item)
-    item = QtWidgets.QTableWidgetItem()
-    item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-    self.best_in_slot_bonuses.setItem(0, 0, item)
-    item = QtWidgets.QTableWidgetItem()
-    item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-    self.best_in_slot_bonuses.setItem(1, 0, item)
-    item = QtWidgets.QTableWidgetItem()
-    item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-    self.best_in_slot_bonuses.setItem(2, 0, item)
-    item = QtWidgets.QTableWidgetItem()
-    item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-    self.best_in_slot_bonuses.setItem(3, 0, item)
-    item = QtWidgets.QTableWidgetItem()
-    item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-    self.best_in_slot_bonuses.setItem(4, 0, item)
-    item = QtWidgets.QTableWidgetItem()
-    item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-    self.best_in_slot_bonuses.setItem(5, 0, item)
-    item = QtWidgets.QTableWidgetItem()
-    item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-    self.best_in_slot_bonuses.setItem(6, 0, item)
-    item = QtWidgets.QTableWidgetItem()
-    item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-    self.best_in_slot_bonuses.setItem(7, 0, item)
-    item = QtWidgets.QTableWidgetItem()
-    item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-    self.best_in_slot_bonuses.setItem(8, 0, item)
-    item = QtWidgets.QTableWidgetItem()
-    item.setFlags(QtCore.Qt.ItemIsSelectable|QtCore.Qt.ItemIsDragEnabled|QtCore.Qt.ItemIsDropEnabled|QtCore.Qt.ItemIsUserCheckable|QtCore.Qt.ItemIsEnabled)
-    self.best_in_slot_bonuses.setItem(9, 0, item)
     self.best_in_slot_bonuses.horizontalHeader().setStretchLastSection(True)
     self.best_in_slot_bonuses.verticalHeader().setStretchLastSection(False)
+
     self.gridLayout.addWidget(self.best_in_slot_bonuses, 16, 8, 11, 3)
-    self.boosting_scheme = QtWidgets.QComboBox(Form)
-    self.boosting_scheme.setObjectName(&#34;boosting_scheme&#34;)
-    self.boosting_scheme.addItem(&#34;&#34;)
-    self.boosting_scheme.addItem(&#34;&#34;)
-    self.gridLayout.addWidget(self.boosting_scheme, 5, 9, 1, 2)
-    self.potions = QtWidgets.QComboBox(Form)
-    self.potions.setObjectName(&#34;potions&#34;)
-    self.gridLayout.addWidget(self.potions, 5, 2, 1, 4)
-    self.salve_amulet = QtWidgets.QCheckBox(Form)
-    self.salve_amulet.setChecked(True)
-    self.salve_amulet.setObjectName(&#34;salve_amulet&#34;)
-    self.gridLayout.addWidget(self.salve_amulet, 13, 6, 1, 1)
-    self.berserker_necklace = QtWidgets.QCheckBox(Form)
-    self.berserker_necklace.setChecked(True)
-    self.berserker_necklace.setObjectName(&#34;berserker_necklace&#34;)
-    self.gridLayout.addWidget(self.berserker_necklace, 13, 9, 1, 1)
-    self.label_4 = QtWidgets.QLabel(Form)
-    self.label_4.setObjectName(&#34;label_4&#34;)
+
+    self.potion_attributes = QComboBox(Form)
+    self.potion_attributes.addItem(&#34;&#34;)
+    self.potion_attributes.addItem(&#34;&#34;)
+    self.potion_attributes.addItem(&#34;&#34;)
+    self.potion_attributes.setObjectName(u&#34;potion_attributes&#34;)
+
+    self.gridLayout.addWidget(self.potion_attributes, 5, 6, 1, 3)
+
+    self.below_skill = QComboBox(Form)
+    self.below_skill.addItem(&#34;&#34;)
+    self.below_skill.addItem(&#34;&#34;)
+    self.below_skill.addItem(&#34;&#34;)
+    self.below_skill.setObjectName(u&#34;below_skill&#34;)
+
+    self.gridLayout.addWidget(self.below_skill, 7, 2, 1, 4)
+
+    self.label_6 = QLabel(Form)
+    self.label_6.setObjectName(u&#34;label_6&#34;)
+
+    self.gridLayout.addWidget(self.label_6, 4, 0, 1, 1)
+
+    self.dharok = QLineEdit(Form)
+    self.dharok.setObjectName(u&#34;dharok&#34;)
+    self.dharok.setMaxLength(2)
+
+    self.gridLayout.addWidget(self.dharok, 12, 4, 1, 1)
+
+    self.label_3 = QLabel(Form)
+    self.label_3.setObjectName(u&#34;label_3&#34;)
+
+    self.gridLayout.addWidget(self.label_3, 5, 0, 1, 1)
+
+    self.evaluate = QPushButton(Form)
+    self.evaluate.setObjectName(u&#34;evaluate&#34;)
+
+    self.gridLayout.addWidget(self.evaluate, 14, 0, 1, 1)
+
+    self.redose_level = QLineEdit(Form)
+    self.redose_level.setObjectName(u&#34;redose_level&#34;)
+    self.redose_level.setMaxLength(2)
+
+    self.gridLayout.addWidget(self.redose_level, 7, 9, 1, 1)
+
+    self.prayers = QComboBox(Form)
+    self.prayers.setObjectName(u&#34;prayers&#34;)
+
+    self.gridLayout.addWidget(self.prayers, 10, 2, 1, 4)
+
+    self.label_5 = QLabel(Form)
+    self.label_5.setObjectName(u&#34;label_5&#34;)
+    self.label_5.setEnabled(True)
+
+    self.gridLayout.addWidget(self.label_5, 7, 6, 1, 3)
+
+    self.progressBar = QProgressBar(Form)
+    self.progressBar.setObjectName(u&#34;progressBar&#34;)
+    self.progressBar.setValue(0)
+
+    self.gridLayout.addWidget(self.progressBar, 14, 2, 1, 9)
+
+    self.label_8 = QLabel(Form)
+    self.label_8.setObjectName(u&#34;label_8&#34;)
+
+    self.gridLayout.addWidget(self.label_8, 12, 0, 1, 1)
+
+    self.label_7 = QLabel(Form)
+    self.label_7.setObjectName(u&#34;label_7&#34;)
+
+    self.gridLayout.addWidget(self.label_7, 12, 3, 1, 1)
+
+    self.label_4 = QLabel(Form)
+    self.label_4.setObjectName(u&#34;label_4&#34;)
+
     self.gridLayout.addWidget(self.label_4, 10, 0, 1, 1)
-    self.obsidian = QtWidgets.QCheckBox(Form)
+
+    self.berserker_necklace = QCheckBox(Form)
+    self.berserker_necklace.setObjectName(u&#34;berserker_necklace&#34;)
+    self.berserker_necklace.setChecked(True)
+
+    self.gridLayout.addWidget(self.berserker_necklace, 13, 9, 1, 1)
+
+    self.salve_amulet = QCheckBox(Form)
+    self.salve_amulet.setObjectName(u&#34;salve_amulet&#34;)
+    self.salve_amulet.setChecked(True)
+
+    self.gridLayout.addWidget(self.salve_amulet, 13, 6, 1, 1)
+
+    self.obsidian = QCheckBox(Form)
+    self.obsidian.setObjectName(u&#34;obsidian&#34;)
     self.obsidian.setChecked(True)
-    self.obsidian.setObjectName(&#34;obsidian&#34;)
+
     self.gridLayout.addWidget(self.obsidian, 12, 9, 1, 1)
-    self.opponents = QtWidgets.QListWidget(Form)
-    self.opponents.setHorizontalScrollMode(QtWidgets.QAbstractItemView.ScrollPerItem)
-    self.opponents.setObjectName(&#34;opponents&#34;)
+
+    self.opponents = QListWidget(Form)
+    self.opponents.setObjectName(u&#34;opponents&#34;)
+    self.opponents.setHorizontalScrollMode(QAbstractItemView.ScrollPerItem)
+
     self.gridLayout.addWidget(self.opponents, 2, 0, 1, 11)
-    self.frame = QtWidgets.QFrame(Form)
-    self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-    self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-    self.frame.setObjectName(&#34;frame&#34;)
-    self.gridLayout_2 = QtWidgets.QGridLayout(self.frame)
-    self.gridLayout_2.setObjectName(&#34;gridLayout_2&#34;)
-    self.hands_link = QtWidgets.QPushButton(self.frame)
-    self.hands_link.setObjectName(&#34;hands_link&#34;)
-    self.gridLayout_2.addWidget(self.hands_link, 12, 1, 1, 1)
-    self.neck = QtWidgets.QComboBox(self.frame)
-    self.neck.setObjectName(&#34;neck&#34;)
-    self.gridLayout_2.addWidget(self.neck, 4, 2, 1, 2)
-    self.ring = QtWidgets.QComboBox(self.frame)
-    self.ring.setObjectName(&#34;ring&#34;)
-    self.gridLayout_2.addWidget(self.ring, 14, 2, 1, 2)
-    self.weapon = QtWidgets.QComboBox(self.frame)
-    self.weapon.setObjectName(&#34;weapon&#34;)
-    self.gridLayout_2.addWidget(self.weapon, 6, 2, 1, 2)
-    self.ammo_link = QtWidgets.QPushButton(self.frame)
-    self.ammo_link.setObjectName(&#34;ammo_link&#34;)
-    self.gridLayout_2.addWidget(self.ammo_link, 5, 1, 1, 1)
-    self.shield = QtWidgets.QComboBox(self.frame)
-    self.shield.setObjectName(&#34;shield&#34;)
-    self.gridLayout_2.addWidget(self.shield, 10, 2, 1, 2)
-    self.ammo = QtWidgets.QComboBox(self.frame)
-    self.ammo.setObjectName(&#34;ammo&#34;)
-    self.gridLayout_2.addWidget(self.ammo, 5, 2, 1, 2)
-    self.hands = QtWidgets.QComboBox(self.frame)
-    self.hands.setObjectName(&#34;hands&#34;)
-    self.gridLayout_2.addWidget(self.hands, 12, 2, 1, 2)
-    self.cape = QtWidgets.QComboBox(self.frame)
-    self.cape.setObjectName(&#34;cape&#34;)
-    self.gridLayout_2.addWidget(self.cape, 3, 2, 1, 2)
-    self.head = QtWidgets.QComboBox(self.frame)
-    self.head.setObjectName(&#34;head&#34;)
-    self.gridLayout_2.addWidget(self.head, 1, 2, 1, 2)
-    self.legs = QtWidgets.QComboBox(self.frame)
-    self.legs.setObjectName(&#34;legs&#34;)
-    self.gridLayout_2.addWidget(self.legs, 11, 2, 1, 2)
-    self.cape_link = QtWidgets.QPushButton(self.frame)
-    self.cape_link.setObjectName(&#34;cape_link&#34;)
-    self.gridLayout_2.addWidget(self.cape_link, 3, 1, 1, 1)
-    self.feet_link = QtWidgets.QPushButton(self.frame)
-    self.feet_link.setObjectName(&#34;feet_link&#34;)
-    self.gridLayout_2.addWidget(self.feet_link, 13, 1, 1, 1)
-    self.body_link = QtWidgets.QPushButton(self.frame)
-    self.body_link.setObjectName(&#34;body_link&#34;)
-    self.gridLayout_2.addWidget(self.body_link, 8, 1, 1, 1)
-    self.ring_link = QtWidgets.QPushButton(self.frame)
-    self.ring_link.setObjectName(&#34;ring_link&#34;)
-    self.gridLayout_2.addWidget(self.ring_link, 14, 1, 1, 1)
-    self.legs_link = QtWidgets.QPushButton(self.frame)
-    self.legs_link.setObjectName(&#34;legs_link&#34;)
-    self.gridLayout_2.addWidget(self.legs_link, 11, 1, 1, 1)
-    self.neck_link = QtWidgets.QPushButton(self.frame)
-    self.neck_link.setObjectName(&#34;neck_link&#34;)
-    self.gridLayout_2.addWidget(self.neck_link, 4, 1, 1, 1)
-    self.body = QtWidgets.QComboBox(self.frame)
-    self.body.setObjectName(&#34;body&#34;)
-    self.gridLayout_2.addWidget(self.body, 8, 2, 1, 2)
-    self.feet = QtWidgets.QComboBox(self.frame)
-    self.feet.setObjectName(&#34;feet&#34;)
-    self.gridLayout_2.addWidget(self.feet, 13, 2, 1, 2)
-    self.shield_link = QtWidgets.QPushButton(self.frame)
-    self.shield_link.setObjectName(&#34;shield_link&#34;)
-    self.gridLayout_2.addWidget(self.shield_link, 10, 1, 1, 1)
-    self.label = QtWidgets.QLabel(self.frame)
-    self.label.setAlignment(QtCore.Qt.AlignCenter)
-    self.label.setObjectName(&#34;label&#34;)
-    self.gridLayout_2.addWidget(self.label, 16, 1, 1, 1)
-    self.head_link = QtWidgets.QPushButton(self.frame)
-    self.head_link.setObjectName(&#34;head_link&#34;)
-    self.gridLayout_2.addWidget(self.head_link, 1, 1, 1, 1)
-    self.weapon_link = QtWidgets.QPushButton(self.frame)
-    self.weapon_link.setObjectName(&#34;weapon_link&#34;)
-    self.gridLayout_2.addWidget(self.weapon_link, 6, 1, 1, 1)
-    self.label_2 = QtWidgets.QLabel(self.frame)
-    self.label_2.setObjectName(&#34;label_2&#34;)
-    self.gridLayout_2.addWidget(self.label_2, 15, 1, 1, 1)
-    self.xp_rate = QtWidgets.QLineEdit(self.frame)
+
+    self.frame = QFrame(Form)
+    self.frame.setObjectName(u&#34;frame&#34;)
+    self.frame.setFrameShape(QFrame.StyledPanel)
+    self.frame.setFrameShadow(QFrame.Raised)
+    self.gridLayout_2 = QGridLayout(self.frame)
+    self.gridLayout_2.setObjectName(u&#34;gridLayout_2&#34;)
+    self.head = QComboBox(self.frame)
+    self.head.setObjectName(u&#34;head&#34;)
+
+    self.gridLayout_2.addWidget(self.head, 1, 1, 1, 4)
+
+    self.attack_stance = QLineEdit(self.frame)
+    self.attack_stance.setObjectName(u&#34;attack_stance&#34;)
+    self.attack_stance.setEnabled(False)
+
+    self.gridLayout_2.addWidget(self.attack_stance, 15, 2, 1, 1)
+
+    self.hands_link = QPushButton(self.frame)
+    self.hands_link.setObjectName(u&#34;hands_link&#34;)
+
+    self.gridLayout_2.addWidget(self.hands_link, 12, 0, 1, 1)
+
+    self.xp_rate = QLineEdit(self.frame)
+    self.xp_rate.setObjectName(u&#34;xp_rate&#34;)
     self.xp_rate.setEnabled(False)
     self.xp_rate.setReadOnly(True)
-    self.xp_rate.setObjectName(&#34;xp_rate&#34;)
-    self.gridLayout_2.addWidget(self.xp_rate, 16, 3, 1, 1)
-    self.attack_stance = QtWidgets.QLineEdit(self.frame)
-    self.attack_stance.setEnabled(False)
-    self.attack_stance.setObjectName(&#34;attack_stance&#34;)
-    self.gridLayout_2.addWidget(self.attack_stance, 15, 3, 1, 1)
+
+    self.gridLayout_2.addWidget(self.xp_rate, 16, 2, 1, 1)
+
+    self.weapon_link = QPushButton(self.frame)
+    self.weapon_link.setObjectName(u&#34;weapon_link&#34;)
+
+    self.gridLayout_2.addWidget(self.weapon_link, 6, 0, 1, 1)
+
+    self.head_link = QPushButton(self.frame)
+    self.head_link.setObjectName(u&#34;head_link&#34;)
+
+    self.gridLayout_2.addWidget(self.head_link, 1, 0, 1, 1)
+
+    self.label_2 = QLabel(self.frame)
+    self.label_2.setObjectName(u&#34;label_2&#34;)
+
+    self.gridLayout_2.addWidget(self.label_2, 15, 0, 1, 1)
+
+    self.cape_link = QPushButton(self.frame)
+    self.cape_link.setObjectName(u&#34;cape_link&#34;)
+
+    self.gridLayout_2.addWidget(self.cape_link, 3, 0, 1, 1)
+
+    self.ammo_link = QPushButton(self.frame)
+    self.ammo_link.setObjectName(u&#34;ammo_link&#34;)
+
+    self.gridLayout_2.addWidget(self.ammo_link, 5, 0, 1, 1)
+
+    self.body_link = QPushButton(self.frame)
+    self.body_link.setObjectName(u&#34;body_link&#34;)
+
+    self.gridLayout_2.addWidget(self.body_link, 8, 0, 1, 1)
+
+    self.neck_link = QPushButton(self.frame)
+    self.neck_link.setObjectName(u&#34;neck_link&#34;)
+
+    self.gridLayout_2.addWidget(self.neck_link, 4, 0, 1, 1)
+
+    self.ring_link = QPushButton(self.frame)
+    self.ring_link.setObjectName(u&#34;ring_link&#34;)
+
+    self.gridLayout_2.addWidget(self.ring_link, 14, 0, 1, 1)
+
+    self.feet_link = QPushButton(self.frame)
+    self.feet_link.setObjectName(u&#34;feet_link&#34;)
+
+    self.gridLayout_2.addWidget(self.feet_link, 13, 0, 1, 1)
+
+    self.legs_link = QPushButton(self.frame)
+    self.legs_link.setObjectName(u&#34;legs_link&#34;)
+
+    self.gridLayout_2.addWidget(self.legs_link, 11, 0, 1, 1)
+
+    self.label = QLabel(self.frame)
+    self.label.setObjectName(u&#34;label&#34;)
+    self.label.setAlignment(Qt.AlignCenter)
+
+    self.gridLayout_2.addWidget(self.label, 16, 0, 1, 1)
+
+    self.kills_per_hour = QLineEdit(self.frame)
+    self.kills_per_hour.setObjectName(u&#34;kills_per_hour&#34;)
+    self.kills_per_hour.setEnabled(False)
+
+    self.gridLayout_2.addWidget(self.kills_per_hour, 16, 4, 1, 1)
+
+    self.shield_link = QPushButton(self.frame)
+    self.shield_link.setObjectName(u&#34;shield_link&#34;)
+
+    self.gridLayout_2.addWidget(self.shield_link, 10, 0, 1, 1)
+
+    self.kill_time = QLineEdit(self.frame)
+    self.kill_time.setObjectName(u&#34;kill_time&#34;)
+    self.kill_time.setEnabled(False)
+
+    self.gridLayout_2.addWidget(self.kill_time, 15, 4, 1, 1)
+
+    self.label_9 = QLabel(self.frame)
+    self.label_9.setObjectName(u&#34;label_9&#34;)
+
+    self.gridLayout_2.addWidget(self.label_9, 15, 3, 1, 1)
+
+    self.hands = QComboBox(self.frame)
+    self.hands.setObjectName(u&#34;hands&#34;)
+
+    self.gridLayout_2.addWidget(self.hands, 12, 1, 1, 4)
+
+    self.shield = QComboBox(self.frame)
+    self.shield.setObjectName(u&#34;shield&#34;)
+
+    self.gridLayout_2.addWidget(self.shield, 10, 1, 1, 4)
+
+    self.weapon = QComboBox(self.frame)
+    self.weapon.setObjectName(u&#34;weapon&#34;)
+
+    self.gridLayout_2.addWidget(self.weapon, 6, 1, 1, 4)
+
+    self.legs = QComboBox(self.frame)
+    self.legs.setObjectName(u&#34;legs&#34;)
+
+    self.gridLayout_2.addWidget(self.legs, 11, 1, 1, 4)
+
+    self.ring = QComboBox(self.frame)
+    self.ring.setObjectName(u&#34;ring&#34;)
+
+    self.gridLayout_2.addWidget(self.ring, 14, 1, 1, 4)
+
+    self.label_10 = QLabel(self.frame)
+    self.label_10.setObjectName(u&#34;label_10&#34;)
+
+    self.gridLayout_2.addWidget(self.label_10, 16, 3, 1, 1)
+
+    self.cape = QComboBox(self.frame)
+    self.cape.setObjectName(u&#34;cape&#34;)
+
+    self.gridLayout_2.addWidget(self.cape, 3, 1, 1, 4)
+
+    self.body = QComboBox(self.frame)
+    self.body.setObjectName(u&#34;body&#34;)
+
+    self.gridLayout_2.addWidget(self.body, 8, 1, 1, 4)
+
+    self.feet = QComboBox(self.frame)
+    self.feet.setObjectName(u&#34;feet&#34;)
+
+    self.gridLayout_2.addWidget(self.feet, 13, 1, 1, 4)
+
+    self.ammo = QComboBox(self.frame)
+    self.ammo.setObjectName(u&#34;ammo&#34;)
+
+    self.gridLayout_2.addWidget(self.ammo, 5, 1, 1, 4)
+
+    self.neck = QComboBox(self.frame)
+    self.neck.setObjectName(u&#34;neck&#34;)
+
+    self.gridLayout_2.addWidget(self.neck, 4, 1, 1, 4)
+
+
     self.gridLayout.addWidget(self.frame, 16, 0, 1, 7)
 
+    QWidget.setTabOrder(self.opponents, self.head_link)
+    QWidget.setTabOrder(self.head_link, self.head)
+    QWidget.setTabOrder(self.head, self.cape_link)
+    QWidget.setTabOrder(self.cape_link, self.cape)
+    QWidget.setTabOrder(self.cape, self.neck_link)
+    QWidget.setTabOrder(self.neck_link, self.neck)
+    QWidget.setTabOrder(self.neck, self.ammo_link)
+    QWidget.setTabOrder(self.ammo_link, self.ammo)
+    QWidget.setTabOrder(self.ammo, self.weapon_link)
+    QWidget.setTabOrder(self.weapon_link, self.weapon)
+    QWidget.setTabOrder(self.weapon, self.body_link)
+    QWidget.setTabOrder(self.body_link, self.body)
+    QWidget.setTabOrder(self.body, self.shield_link)
+    QWidget.setTabOrder(self.shield_link, self.shield)
+    QWidget.setTabOrder(self.shield, self.hands_link)
+    QWidget.setTabOrder(self.hands_link, self.hands)
+    QWidget.setTabOrder(self.hands, self.feet_link)
+    QWidget.setTabOrder(self.feet_link, self.ring_link)
+    QWidget.setTabOrder(self.ring_link, self.ring)
+    QWidget.setTabOrder(self.ring, self.xp_rate)
+    QWidget.setTabOrder(self.xp_rate, self.best_in_slot_bonuses)
+
     self.retranslateUi(Form)
-    QtCore.QMetaObject.connectSlotsByName(Form)
-    Form.setTabOrder(self.opponents, self.head_link)
-    Form.setTabOrder(self.head_link, self.head)
-    Form.setTabOrder(self.head, self.cape_link)
-    Form.setTabOrder(self.cape_link, self.cape)
-    Form.setTabOrder(self.cape, self.neck_link)
-    Form.setTabOrder(self.neck_link, self.neck)
-    Form.setTabOrder(self.neck, self.ammo_link)
-    Form.setTabOrder(self.ammo_link, self.ammo)
-    Form.setTabOrder(self.ammo, self.weapon_link)
-    Form.setTabOrder(self.weapon_link, self.weapon)
-    Form.setTabOrder(self.weapon, self.body_link)
-    Form.setTabOrder(self.body_link, self.body)
-    Form.setTabOrder(self.body, self.shield_link)
-    Form.setTabOrder(self.shield_link, self.shield)
-    Form.setTabOrder(self.shield, self.hands_link)
-    Form.setTabOrder(self.hands_link, self.hands)
-    Form.setTabOrder(self.hands, self.feet_link)
-    Form.setTabOrder(self.feet_link, self.feet)
-    Form.setTabOrder(self.feet, self.ring_link)
-    Form.setTabOrder(self.ring_link, self.ring)
-    Form.setTabOrder(self.ring, self.xp_rate)
-    Form.setTabOrder(self.xp_rate, self.best_in_slot_bonuses)</code></pre>
+
+    QMetaObject.connectSlotsByName(Form)</code></pre>
 </details>
 </dd>
 </dl>

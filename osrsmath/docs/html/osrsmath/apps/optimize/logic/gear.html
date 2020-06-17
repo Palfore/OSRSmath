@@ -106,6 +106,8 @@ def get_equipable_gear(gear, player_stats, ignore, adjustments):
 class Weapon:
         @staticmethod
         def stance_can_train(stance: dict, skill, allow_controlled=False):
+                if stance[&#39;experience&#39;] is None:  # Like Dinh&#39;s bulwark, on block
+                        return False
                 if allow_controlled and stance[&#39;experience&#39;] == &#39;shared&#39;:
                         return True # This will probably fail with ranged/magic gear.
                 return skill in stance[&#39;experience&#39;]
@@ -291,6 +293,8 @@ class Weapon:
 <pre><code class="python">class Weapon:
         @staticmethod
         def stance_can_train(stance: dict, skill, allow_controlled=False):
+                if stance[&#39;experience&#39;] is None:  # Like Dinh&#39;s bulwark, on block
+                        return False
                 if allow_controlled and stance[&#39;experience&#39;] == &#39;shared&#39;:
                         return True # This will probably fail with ranged/magic gear.
                 return skill in stance[&#39;experience&#39;]
@@ -343,6 +347,8 @@ def stance_can_do(stance, skill, attack_type, allow_controlled=False):
 </summary>
 <pre><code class="python">@staticmethod
 def stance_can_train(stance: dict, skill, allow_controlled=False):
+        if stance[&#39;experience&#39;] is None:  # Like Dinh&#39;s bulwark, on block
+                return False
         if allow_controlled and stance[&#39;experience&#39;] == &#39;shared&#39;:
                 return True # This will probably fail with ranged/magic gear.
         return skill in stance[&#39;experience&#39;]</code></pre>

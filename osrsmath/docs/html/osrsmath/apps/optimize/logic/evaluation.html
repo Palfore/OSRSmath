@@ -27,22 +27,14 @@
 </summary>
 <pre><code class="python">from osrsmath.model.player import PlayerBuilder
 from osrsmath.model.experience import xp_rate
+import multiprocess
 import time
 
 def mmap(f, items, callback, interval=0.025):
-        # def g(*x):
-        #       try:
-        #               return f(*x)
-        #       except KeyboardInterrupt:
-        #               # Prevents killing main process, leaving children to never join (app hangs).
-        #               raise KeyboardInterruptError()
         results = []
         start = time.time()
-        import multiprocess
         with multiprocess.Pool() as pool:
-        # with pathos.pools.ProcessPool() as pool:
                 for i, result in enumerate(pool.imap_unordered(f, items), 1):
-                        # QtCore.QCoreApplication.processEvents()  # Prevents app from hanging (especially windows)
                         results.append(result)
                         now = time.time()
                         if now-start &gt;= interval:
@@ -65,7 +57,7 @@ def eval_set(player_stats: dict, training_skill, states, defenders, s, include_s
                         defenders,
                         &#39;MarkovChain&#39;
                 )
-                print(s, &#39;|&#39;, f&#34;{xp/1000:.2f}&#34;)
+                # print(s, &#39;|&#39;, f&#34;{xp/1000:.2f}&#34;)
                 return s, xp, combat_style
         except Exception as e:
                 import traceback as tb
@@ -101,7 +93,7 @@ def eval_set(player_stats: dict, training_skill, states, defenders, s, include_s
                         defenders,
                         &#39;MarkovChain&#39;
                 )
-                print(s, &#39;|&#39;, f&#34;{xp/1000:.2f}&#34;)
+                # print(s, &#39;|&#39;, f&#34;{xp/1000:.2f}&#34;)
                 return s, xp, combat_style
         except Exception as e:
                 import traceback as tb
@@ -118,19 +110,10 @@ def eval_set(player_stats: dict, training_skill, states, defenders, s, include_s
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def mmap(f, items, callback, interval=0.025):
-        # def g(*x):
-        #       try:
-        #               return f(*x)
-        #       except KeyboardInterrupt:
-        #               # Prevents killing main process, leaving children to never join (app hangs).
-        #               raise KeyboardInterruptError()
         results = []
         start = time.time()
-        import multiprocess
         with multiprocess.Pool() as pool:
-        # with pathos.pools.ProcessPool() as pool:
                 for i, result in enumerate(pool.imap_unordered(f, items), 1):
-                        # QtCore.QCoreApplication.processEvents()  # Prevents app from hanging (especially windows)
                         results.append(result)
                         now = time.time()
                         if now-start &gt;= interval:

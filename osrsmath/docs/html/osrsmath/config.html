@@ -30,46 +30,12 @@ import sys
 import pathlib
 from pathlib import Path
 
-TOP = os.path.dirname(__file__)
-
-def resource_path(relative_path):
-        &#34;&#34;&#34; Get absolute path to resource, works for dev and for PyInstaller &#34;&#34;&#34;
-        try:
-                # PyInstaller creates a temp folder and stores path in _MEIPASS
-                # Inside this, we store all data in the &#39;DATA&#39; directory
-                base_path = os.path.join(sys._MEIPASS, &#39;DATA&#39;)
-        except AttributeError:
-                base_path = os.path.abspath(TOP)
-                # print(&#39;here&#39;, TOP, base_path)
-        return Path(os.path.join(base_path, relative_path))
-
-import shutil
-def user_path(relative_path, default=None):
-        # https://stackoverflow.com/questions/1024114/location-of-ini-config-files-in-linux-unix
-        try:  # Linux/MacOs
-                home = Path(os.environ.get(&#39;XDG_DATA_HOME&#39;, Path(os.environ[&#39;HOME&#39;])/&#39;.local/share&#39;))
-        except KeyError:  # Windows
-                        home = Path(os.environ[&#39;APPDATA&#39;])
-
-
-        home /= &#39;osrsmath&#39;
-        if not home.is_dir():
-                home.mkdir()
-        user_file = home/relative_path
-
-        if not user_file.is_file() and default:
-                # print(f&#39;Attempting to create {relative_path}&#39;)
-                default = Path(default)
-                if not default.is_file():
-                        raise FileNotFoundError(default)
-                # print(default, user_file)
-                os.makedirs(user_file.parent, exist_ok=True)
-                shutil.copy(default, user_file)
-        return user_file
-
+TOP = os.path.join(os.path.dirname(sys.argv[0]), &#39;DATA&#39;) if getattr(sys, &#39;frozen&#39;, False) else os.path.dirname(__file__)
 DATA_PATH = os.path.join(TOP, &#39;model/data&#39;)
 RESULTS_PATH = os.path.join(TOP, &#39;results&#39;)
 
+def resource_path(path):
+        return Path(TOP)/path
 
 def get_figure(a=None, e=None, scale=10):
         &#34;&#34;&#34; Creates the desired figure setup:
@@ -142,28 +108,7 @@ def get_figure(a=None, e=None, scale=10):
 </details>
 </dd>
 <dt id="osrsmath.config.resource_path"><code class="name flex">
-<span>def <span class="ident">resource_path</span></span>(<span>relative_path)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Get absolute path to resource, works for dev and for PyInstaller</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def resource_path(relative_path):
-        &#34;&#34;&#34; Get absolute path to resource, works for dev and for PyInstaller &#34;&#34;&#34;
-        try:
-                # PyInstaller creates a temp folder and stores path in _MEIPASS
-                # Inside this, we store all data in the &#39;DATA&#39; directory
-                base_path = os.path.join(sys._MEIPASS, &#39;DATA&#39;)
-        except AttributeError:
-                base_path = os.path.abspath(TOP)
-                # print(&#39;here&#39;, TOP, base_path)
-        return Path(os.path.join(base_path, relative_path))</code></pre>
-</details>
-</dd>
-<dt id="osrsmath.config.user_path"><code class="name flex">
-<span>def <span class="ident">user_path</span></span>(<span>relative_path, default=None)</span>
+<span>def <span class="ident">resource_path</span></span>(<span>path)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -171,28 +116,8 @@ def get_figure(a=None, e=None, scale=10):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def user_path(relative_path, default=None):
-        # https://stackoverflow.com/questions/1024114/location-of-ini-config-files-in-linux-unix
-        try:  # Linux/MacOs
-                home = Path(os.environ.get(&#39;XDG_DATA_HOME&#39;, Path(os.environ[&#39;HOME&#39;])/&#39;.local/share&#39;))
-        except KeyError:  # Windows
-                        home = Path(os.environ[&#39;APPDATA&#39;])
-
-
-        home /= &#39;osrsmath&#39;
-        if not home.is_dir():
-                home.mkdir()
-        user_file = home/relative_path
-
-        if not user_file.is_file() and default:
-                # print(f&#39;Attempting to create {relative_path}&#39;)
-                default = Path(default)
-                if not default.is_file():
-                        raise FileNotFoundError(default)
-                # print(default, user_file)
-                os.makedirs(user_file.parent, exist_ok=True)
-                shutil.copy(default, user_file)
-        return user_file</code></pre>
+<pre><code class="python">def resource_path(path):
+        return Path(TOP)/path</code></pre>
 </details>
 </dd>
 </dl>
@@ -215,7 +140,6 @@ def get_figure(a=None, e=None, scale=10):
 <ul class="">
 <li><code><a title="osrsmath.config.get_figure" href="#osrsmath.config.get_figure">get_figure</a></code></li>
 <li><code><a title="osrsmath.config.resource_path" href="#osrsmath.config.resource_path">resource_path</a></code></li>
-<li><code><a title="osrsmath.config.user_path" href="#osrsmath.config.user_path">user_path</a></code></li>
 </ul>
 </li>
 </ul>

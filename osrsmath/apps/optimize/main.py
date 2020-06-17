@@ -5,8 +5,9 @@ from osrsmath.apps.optimize.gui_single import Ui_MainWindow
 from pathlib import Path
 
 from osrsmath.model.player import Player, get_equipment_data
+from osrsmath.model.monsters import get_monster_data
 from pprint import pprint as pp
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PySide2 import QtCore, QtGui, QtWidgets
 
 import osrsmath.apps.GUI.resources
 import textwrap
@@ -17,29 +18,100 @@ import os
 slots = ['head', 'cape', 'neck', 'ammo', 'weapon', 'body', 'shield', 'legs', 'hands', 'feet', 'ring']
 
 class GUI(Ui_MainWindow):
-	HELP_TEXT = """\
+	OVERVIEW_TEXT = textwrap.dedent("""\
 		This app allows you to determine the optimal equipment to wear against a set of opponents.
 
-		There are three main sections:
+		There are three main panels:
 		  1. Player (top left):
-		      a) Enter combat levels. Prompts appear if others are needed.
-		      b) Ignore equipment you don't want to consider.
-		      c) Adjust equipment requirements (if inaccurate or self-imposed)
+		      Enter levels, ignore equipment, and adjust requirements.
 
 		  2. Monster (bottom left):
-		      a) Lookup by name and (crudely) filter by NMZ bosses.
-		      b) If inaccurate or cannot be found, modify values.
+		      Lookup monsters, adjust there stats if desired.
+		      Add them to the monster pool.
 
 		  3. Optimize (right)
-		      a) View fighting pool (ie. multiple enemies - useful for NMZ)
-		      b) Choose training skill
-		      c) Choose potions and how you use them.
-		      d) Choose prayers (always on).
-		      == Output ==
-		      e) Optimal equipment (dropdowns are for possible future use).
-		      f) Attack stance, xp/h, and offensive bonuses are also shown.
+		      Find optimal equipment to fight the monster pool using your stats.
+		      Allows potions, prayers, and equipment sets.
+		      Note that the dropdowns are for potential future use.
 
-		Note that there are a lot of exceptions in this game, so the interface is designed to have slack. """
+		You can change the style and zoom in/out using the menubar.
+		This helps people with different monitors/preferences.
+		""")
+
+	SHORTCUTS_TEXT = textwrap.dedent("""\
+		General:
+			Ctrl++ Zoom in
+			Ctrl+- Zoom out
+
+		Monster Panel:
+			DoubleClick Edit Monster (use it in monster panel to customize)
+			Delete Delete selected monster from pool
+
+		Optimize Panel:
+			Shift+Enter Evaluate current configuration
+
+			You can also add equipment to the ignore/adjust lists by
+			clicking on the dropdown item and using one of:
+				Shift+Click Add to ignore
+				Ctrl+Click Add to adjust
+
+		""").replace('\t', ' '*6)
+
+
+	PLAYER_TEXT = textwrap.dedent("""\
+		1. Enter your combat stats.
+		If additional skill levels are needed you will be asked.
+		Username lookup to load your stats is not current implemented.
+
+		2. Equipment listed in the Ignore tab won't be considered.
+		Try running the evaluation first, then adding things you want to ignore.
+		Lines starting with # are ignored (so you can use them as comments).
+		You can use '*' as a wildcard. So "*sword" will ignore anything ending with sword.
+
+		3. Equipment in the Adjust tab will use the given requirements.
+		This overrides the database which may have errors, or you may want to impose your own restrictions (e.g. fire cape has no explicit requirements, so you may want to adjust that).
+		However, you might find ignore to be much easier to use.
+		""").replace('\t', ' '*6)
+
+	MONSTER_TEXT = textwrap.dedent("""\
+		Search for monsters.
+		The number corresponds to their id.
+		The database isn't perfect, so you can look up monsters on the wiki.
+		If anything is off, adjust the stats.
+		Give an optional name, and add it to the pool.
+
+		You can filter to only show NMZ bosses.
+		Due to database restrictions this is only crude.
+
+		Adding a monster to the pool with the same name will override.
+		Double clicking a monster in the pool will load it back into this panel.
+		This allows you to adjust or view their stats.
+		""").replace('\t', ' '*6)
+
+	OPTIMIZE_TEXT = textwrap.dedent("""\
+		1. Choose a skill to train (range & mage unsupported now)
+
+		2. Choose a potion, and what it boosts, and how you use it.
+		Dose after means:
+			"Take a dose after the [skill] *boost* drops below [a threshold]".
+			Useful for normal potion usage. Constant is better for overloads.
+
+		3. Choose a prayer, and what it boosts.
+			level1,2,3 are the successive prayers.
+
+		4. Choose what special sets to consider.
+			<Dharok HP> should be the average hp while dh'ing.
+			Zero means don't consider dh.
+
+		5. Evaluate
+		===========================
+
+		Each slot label will lookup the corresponding equipment on the wiki.
+		Dropdowns are for future consideration.
+		Kill information assumes 4xp/hit for all monsters (temporary).
+		Kill information counts one kill as the entire pool.
+		Offensive bonuses are shown, cost doesn't work.
+		""").replace('\t', ' '*6)
 
 	def setupUi(self, MainWindow):
 		super().setupUi(MainWindow)
@@ -50,11 +122,43 @@ class GUI(Ui_MainWindow):
 			lambda item: self.monster_panel.fill_monster(item.text(), self.optimize_panel.data.monsters[item.text()])
 		)
 
-		self.actionOverview.triggered.connect(lambda: QtWidgets.QMessageBox(
-			QtWidgets.QMessageBox.Information,
-			'Help - Overview', textwrap.dedent(self.HELP_TEXT)
-		).exec())
+		self.actionOverview.triggered.connect(lambda: QtWidgets.QMessageBox(QtWidgets.QMessageBox.Information,
+			'Help - Overview', self.OVERVIEW_TEXT
+		).exec_())
+		self.actionPlayer_Panel.triggered.connect(lambda: QtWidgets.QMessageBox(QtWidgets.QMessageBox.Information,
+			'Help - Player Panel', self.PLAYER_TEXT
+		).exec_())
+		self.actionMonster_Panel.triggered.connect(lambda: QtWidgets.QMessageBox(QtWidgets.QMessageBox.Information,
+			'Help - Monster Panel', self.MONSTER_TEXT
+		).exec_())
+		self.actionOptimize_Panel.triggered.connect(lambda: QtWidgets.QMessageBox(QtWidgets.QMessageBox.Information,
+			'Help - Optimize Panel', self.OPTIMIZE_TEXT
+		).exec_())
+		self.actionShortcuts.triggered.connect(lambda: QtWidgets.QMessageBox(QtWidgets.QMessageBox.Information,
+			'Help - Shortcuts', self.SHORTCUTS_TEXT
+		).exec_())
 
+		def update(do):
+			if do:
+				self.update_status('Updating Equipment...')  # These don't seem to work
+				get_equipment_data(force_update=True)
+				self.update_status('Updating Monsters...')
+				get_monster_data(force_update=True)
+				self.update_status('Finished Updating Database!')  # but this does.
+
+		self.actionUpdate_Now.triggered.connect(lambda: update(QtWidgets.QMessageBox(QtWidgets.QMessageBox.Question,
+			'Update Now', "Would you like to download the latest equipment and monsters? You only need to do this "
+			"if you want to use those new entities."
+			"It is also possible that the osrsbox database has not yet been updated.",
+			QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No
+		).exec_() == QtWidgets.QMessageBox.Yes))
+
+		self.optimize_panel.evaluate.setToolTip("Determine the optimal gear for your configuration.")
+		self.optimize_panel.dharok.setToolTip("What's your average hp? 0 means don't consider dharok.")
+		self.optimize_panel.obsidian.setToolTip("The obsidian armour set, along with the necklace.")
+
+		shortcut = QtWidgets.QShortcut(QtGui.QKeySequence("Shift+Return"), self.optimize_panel);
+		shortcut.activated.connect(self.on_evaluate)
 
 		def update_style(style_sheet_text=None):
 			if style_sheet_text is None:
@@ -86,23 +190,23 @@ class GUI(Ui_MainWindow):
 			item.setObjectName(name)
 			item.setText(option)
 			self.menuView.addAction(item)
-			item.triggered.connect(lambda _, style_sheet=style_sheet: update_style(open(style_sheet).read()))
+			item.triggered.connect(lambda _=None, style_sheet=style_sheet: update_style(open(style_sheet).read()))
 
 
 		# Ctrl+click and shift+click equipment adds it to ignore/adjust panel respectively
+		def modifier(slot):
+			mods = QtWidgets.QApplication.keyboardModifiers()
+			if mods == QtCore.Qt.ShiftModifier:
+				modify_text = self.ignore_adjust_panel.prepend_ignore
+			elif mods == QtCore.Qt.ControlModifier:
+				modify_text = self.ignore_adjust_panel.prepend_adjust
+			else:
+				return
+			modify_text(getattr(self.optimize_panel, slot).currentText())
+
 		for slot in slots:
 			dropdown = getattr(self.optimize_panel, slot)
-			dropdown.activated.connect(
-				lambda _=None, slot=slot: {
-					QtCore.Qt.ShiftModifier: self.ignore_adjust_panel.prepend_ignore,
-					QtCore.Qt.ControlModifier: self.ignore_adjust_panel.prepend_adjust,
-				}.get(QtWidgets.QApplication.keyboardModifiers(), lambda x: None)(
-					getattr(self.optimize_panel, slot).currentText()
-				)
-			)
-
-
-
+			dropdown.activated.connect(lambda _=None, slot=slot: modifier(slot))
 
 	def add_monster(self):
 		name = self.monster_panel.custom_name.text()
@@ -125,7 +229,7 @@ class GUI(Ui_MainWindow):
 			if not monsters:
 				QtWidgets.QMessageBox(
 					QtWidgets.QMessageBox.Warning, 'Invalid Number of Monsters', "You haven't selected enough monsters."
-				).exec()
+				).exec_()
 				return
 
 			# Collect Input
@@ -142,7 +246,13 @@ class GUI(Ui_MainWindow):
 			prayer_attributes = self.optimize_panel.prayer_attributes.currentText()
 			if self.optimize_panel.boosting_scheme.currentText() == 'Dose After':
 				skill = self.optimize_panel.below_skill.currentText()
-				redose_level = int(self.optimize_panel.redose_level.text())
+				try:
+					redose_level = int(self.optimize_panel.redose_level.text())
+				except ValueError:
+					QtWidgets.QMessageBox(
+						QtWidgets.QMessageBox.Warning, 'Invalid Boosting Input', "You haven't provided a valid 'dose after' level."
+					).exec_()
+					return
 				boost = lambda p: BoostingSchemes(p, prayer, prayer_attributes).potion_when_skill_under(
 					potion, skill, redose_level, potion_attributes
 				)
@@ -166,6 +276,9 @@ class GUI(Ui_MainWindow):
 			)
 			t2 = time.time()
 			self.update_status('Finished ...')
+			if s is None:
+				self.update_status('No results found.')
+				return
 
 			# Display Optimal Equipment
 			for slot in slots:
@@ -215,7 +328,7 @@ class GUI(Ui_MainWindow):
 				QtWidgets.QMessageBox.Critical,
 				'Error Encountered',
 				f"{e}\n{tb}"
-			).exec()
+			).exec_()
 
 	def get_data_path(self, file):
 		return config.resource_path(f"apps/optimize/data/{file}")

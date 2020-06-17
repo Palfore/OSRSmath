@@ -26,7 +26,7 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">from osrsmath.apps.GUI.monsters.monsters_skeleton import Ui_Monsters
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PySide2 import QtCore, QtGui, QtWidgets
 import osrsmath.model.monsters as monsters
 import webbrowser
 from osrsmath.model.experience import combat_level
@@ -106,6 +106,8 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
                 (&#39;defensive_magic&#39;, &#39;defence_magic&#39;),
                 (&#39;defensive_ranged&#39;, &#39;defence_ranged&#39;),
         ]
+        ADD_TOOLTIP = &#34;Reduce the search to only contain nmz boss names.&#34;
+        NMZ_ONLY_TOOLTIP = &#34;Add this monster to your monster pool.&#34;
 
         def __init__(self, parent=None):
                 super().__init__(parent)
@@ -121,6 +123,10 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
 
                 self.nmz_only_changed()
                 self.on_select()
+
+
+                self.nmz_only.setToolTip(self.ADD_TOOLTIP)
+                self.add.setToolTip(self.NMZ_ONLY_TOOLTIP)
 
         def nmz_only_changed(self):
                 if self.nmz_only.isChecked():
@@ -161,7 +167,7 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
                                 QtWidgets.QMessageBox.Info,
                                 &#39;No wiki entry found.&#39;,
                                 f&#34;{name} (id: {ID}) did not have a wiki url.&#34;
-                        ).exec()
+                        ).exec_()
 
         def get_monster(self):
                 &#39;&#39;&#39; Returns a monster from the displayed data.
@@ -224,7 +230,7 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
 <span>(</span><span>parent=None)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>QWidget(parent: QWidget = None, flags: Union[Qt.WindowFlags, Qt.WindowType] = Qt.WindowFlags())</p></div>
+<div class="desc"><p>QWidget(self, parent: typing.Union[PySide2.QtWidgets.QWidget, NoneType] = None, f: PySide2.QtCore.Qt.WindowFlags = Default(Qt.WindowFlags))</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -252,6 +258,8 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
                 (&#39;defensive_magic&#39;, &#39;defence_magic&#39;),
                 (&#39;defensive_ranged&#39;, &#39;defence_ranged&#39;),
         ]
+        ADD_TOOLTIP = &#34;Reduce the search to only contain nmz boss names.&#34;
+        NMZ_ONLY_TOOLTIP = &#34;Add this monster to your monster pool.&#34;
 
         def __init__(self, parent=None):
                 super().__init__(parent)
@@ -267,6 +275,10 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
 
                 self.nmz_only_changed()
                 self.on_select()
+
+
+                self.nmz_only.setToolTip(self.ADD_TOOLTIP)
+                self.add.setToolTip(self.NMZ_ONLY_TOOLTIP)
 
         def nmz_only_changed(self):
                 if self.nmz_only.isChecked():
@@ -307,7 +319,7 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
                                 QtWidgets.QMessageBox.Info,
                                 &#39;No wiki entry found.&#39;,
                                 f&#34;{name} (id: {ID}) did not have a wiki url.&#34;
-                        ).exec()
+                        ).exec_()
 
         def get_monster(self):
                 &#39;&#39;&#39; Returns a monster from the displayed data.
@@ -357,20 +369,31 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li>PyQt5.QtWidgets.QWidget</li>
-<li>PyQt5.QtCore.QObject</li>
-<li>sip.wrapper</li>
-<li>PyQt5.QtGui.QPaintDevice</li>
-<li>sip.simplewrapper</li>
+<li>PySide2.QtWidgets.QWidget</li>
+<li>PySide2.QtCore.QObject</li>
+<li>PySide2.QtGui.QPaintDevice</li>
+<li>Shiboken.Object</li>
 <li><a title="osrsmath.apps.GUI.monsters.monsters_skeleton.Ui_Monsters" href="../GUI/monsters/monsters_skeleton.html#osrsmath.apps.GUI.monsters.monsters_skeleton.Ui_Monsters">Ui_Monsters</a></li>
 </ul>
 <h3>Class variables</h3>
 <dl>
+<dt id="osrsmath.apps.monsters.panel.MonsterPanel.ADD_TOOLTIP"><code class="name">var <span class="ident">ADD_TOOLTIP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="osrsmath.apps.monsters.panel.MonsterPanel.LABELS"><code class="name">var <span class="ident">LABELS</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
+<dt id="osrsmath.apps.monsters.panel.MonsterPanel.NMZ_ONLY_TOOLTIP"><code class="name">var <span class="ident">NMZ_ONLY_TOOLTIP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="osrsmath.apps.monsters.panel.MonsterPanel.SEPERATOR"><code class="name">var <span class="ident">SEPERATOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.apps.monsters.panel.MonsterPanel.staticMetaObject"><code class="name">var <span class="ident">staticMetaObject</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -522,7 +545,7 @@ include other data.</p></div>
                         QtWidgets.QMessageBox.Info,
                         &#39;No wiki entry found.&#39;,
                         f&#34;{name} (id: {ID}) did not have a wiki url.&#34;
-                ).exec()</code></pre>
+                ).exec_()</code></pre>
 </details>
 </dd>
 </dl>
@@ -546,7 +569,9 @@ include other data.</p></div>
 <li>
 <h4><code><a title="osrsmath.apps.monsters.panel.MonsterPanel" href="#osrsmath.apps.monsters.panel.MonsterPanel">MonsterPanel</a></code></h4>
 <ul class="two-column">
+<li><code><a title="osrsmath.apps.monsters.panel.MonsterPanel.ADD_TOOLTIP" href="#osrsmath.apps.monsters.panel.MonsterPanel.ADD_TOOLTIP">ADD_TOOLTIP</a></code></li>
 <li><code><a title="osrsmath.apps.monsters.panel.MonsterPanel.LABELS" href="#osrsmath.apps.monsters.panel.MonsterPanel.LABELS">LABELS</a></code></li>
+<li><code><a title="osrsmath.apps.monsters.panel.MonsterPanel.NMZ_ONLY_TOOLTIP" href="#osrsmath.apps.monsters.panel.MonsterPanel.NMZ_ONLY_TOOLTIP">NMZ_ONLY_TOOLTIP</a></code></li>
 <li><code><a title="osrsmath.apps.monsters.panel.MonsterPanel.SEPERATOR" href="#osrsmath.apps.monsters.panel.MonsterPanel.SEPERATOR">SEPERATOR</a></code></li>
 <li><code><a title="osrsmath.apps.monsters.panel.MonsterPanel.fill_monster" href="#osrsmath.apps.monsters.panel.MonsterPanel.fill_monster">fill_monster</a></code></li>
 <li><code><a title="osrsmath.apps.monsters.panel.MonsterPanel.get_monster" href="#osrsmath.apps.monsters.panel.MonsterPanel.get_monster">get_monster</a></code></li>
@@ -554,6 +579,7 @@ include other data.</p></div>
 <li><code><a title="osrsmath.apps.monsters.panel.MonsterPanel.nmz_only_changed" href="#osrsmath.apps.monsters.panel.MonsterPanel.nmz_only_changed">nmz_only_changed</a></code></li>
 <li><code><a title="osrsmath.apps.monsters.panel.MonsterPanel.on_select" href="#osrsmath.apps.monsters.panel.MonsterPanel.on_select">on_select</a></code></li>
 <li><code><a title="osrsmath.apps.monsters.panel.MonsterPanel.open_wiki" href="#osrsmath.apps.monsters.panel.MonsterPanel.open_wiki">open_wiki</a></code></li>
+<li><code><a title="osrsmath.apps.monsters.panel.MonsterPanel.staticMetaObject" href="#osrsmath.apps.monsters.panel.MonsterPanel.staticMetaObject">staticMetaObject</a></code></li>
 </ul>
 </li>
 </ul>

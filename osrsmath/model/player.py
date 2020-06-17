@@ -79,6 +79,8 @@ class Player:
 			'stab': 'Melee',
 			'slash': 'Melee',
 			'crush': 'Melee',
+			'ranged': 'Ranged',
+			'magic': 'Magic',
 		}[self.get_stances()[self.combat_style]['attack_type']]
 
 	def get_equipment_names(self):
@@ -286,7 +288,7 @@ def get_equipment_by_name(name, slot=None, equipment_data=None):
 		for item_id, data in equipment_slot_data.items():
 			if name.lower() == data['name'].lower():
 				return data
-	raise ValueError(f"Equipment with name {name} could not be found.")
+	raise ValueError(f"Equipment with name '{name}' could not be found.")
 
 def filter_equipment(data):
 	if data is None:

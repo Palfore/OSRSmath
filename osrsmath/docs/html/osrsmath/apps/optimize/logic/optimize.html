@@ -94,10 +94,11 @@ class Solver:
                 self.special_sets.append((weapons, gear))
 
         def solve(self):
+                attack_types = [&#39;stab&#39;, &#39;slash&#39;, &#39;crush&#39;]
                 equipment_sets = []
-                M = 3*(len(self.special_sets) + 1)
+                M = len(attack_types)*(len(self.special_sets) + 1)
                 i = 1
-                for attack_type in [&#39;stab&#39;, &#39;slash&#39;, &#39;crush&#39;]:
+                for attack_type in attack_types:
                         equipment_sets.extend(self.get_attack_sets(attack_type, []))
                         self.callback(i/M*100); i += 1
                         for weapons, special_gear in self.special_sets:
@@ -202,43 +203,15 @@ def get_best_set(player_stats: dict, training_skill, states, defenders, sets, in
                 @param player_stats: {&#39;attack&#39;: 40, ...}
                 @param training_skill: &#39;attack&#39;
                 @param sets: [{&#39;cape&#39;: &#39;Fire cape&#39;, ...}, {&#39;cape&#39;: &#39;Legends cape&#39;, ...}, ...] &#34;&#34;&#34;
-        return max(mmap(
+        sets = mmap(
                 lambda s: eval_set(player_stats, training_skill, states, defenders, s, include_shared_xp),
                 sets,
                 progress_callback
-        ), key = lambda x: x[1])  # x[1] -&gt; xp rate
+        )
+        if not sets:
+                return None, 0, None
 
-
-
-
-
-
-# def create_set_effect(original, required_equipment):
-#               non_void = list(filter(lambda n: n[0] not in required_equipment, original))
-#               non_void.extend([(n, e) for n, e in required_equipment.items()])
-#               return tuple(non_void)
-
-#       # Adding Void Set
-#       void = {&#39;body&#39;: &#39;Void knight top&#39;, &#39;legs&#39;: &#39;Void knight robe&#39;, &#39;hands&#39;: &#39;Void knight gloves&#39;, &#39;head&#39;: &#39;Void melee helm&#39;}
-#       if all(meets_requirements(player_stats, get_equipment_by_name(e)) for e in void.values()):
-#               sets += list(set(create_set_effect(s, void) for s in sets))
-
-#       # Adding Obsidian Sets
-#       obsidian = {&#39;head&#39;: &#39;Obsidian helmet&#39;, &#39;body&#39;: &#39;Obsidian platebody&#39;, &#39;legs&#39;: &#39;Obsidian platelegs&#39;, &#39;neck&#39;: &#39;Berserker necklace&#39;}
-#       if all(meets_requirements(player_stats, get_equipment_by_name(e)) for e in obsidian.values()):
-#               for weapon in [&#39;Toktz-xil-ek&#39;, &#39;Toktz-xil-ak&#39;, &#39;Tzhaar-ket-em&#39;, &#39;Tzhaar-ket-om&#39;, &#39;Tzhaar-ket-om (t)&#39;]:
-#                       if meets_requirements(player_stats, get_equipment_by_name(weapon)):
-#                               sets += list(set(create_set_effect(s, {
-#                                       **obsidian, **{&#39;weapon&#39;: weapon}
-#                               }) for s in sets))
-
-#       obsidian = {&#39;neck&#39;: &#39;Berserker necklace&#39;}
-#       if all(meets_requirements(player_stats, get_equipment_by_name(e)) for e in obsidian.values()):
-#               for weapon in [&#39;toktz-xil-ek&#39;, &#39;toktz-xil-ak&#39;, &#39;tzhaar-ket-em&#39;, &#39;tzhaar-ket-om&#39;, &#39;tzhaar-ket-om (t)&#39;]:
-#                       if meets_requirements(player_stats, get_equipment_by_name(weapon)):
-#                               sets += list(set(create_set_effect(s, {
-#                                       **obsidian, **{&#39;weapon&#39;: weapon}
-#                               }) for s in sets))</code></pre>
+        return max(sets, key=lambda x: x[1])  # x[1] -&gt; xp rate</code></pre>
 </details>
 </section>
 <section>
@@ -294,11 +267,15 @@ def get_best_set(player_stats: dict, training_skill, states, defenders, sets, in
                 @param player_stats: {&#39;attack&#39;: 40, ...}
                 @param training_skill: &#39;attack&#39;
                 @param sets: [{&#39;cape&#39;: &#39;Fire cape&#39;, ...}, {&#39;cape&#39;: &#39;Legends cape&#39;, ...}, ...] &#34;&#34;&#34;
-        return max(mmap(
+        sets = mmap(
                 lambda s: eval_set(player_stats, training_skill, states, defenders, s, include_shared_xp),
                 sets,
                 progress_callback
-        ), key = lambda x: x[1])  # x[1] -&gt; xp rate</code></pre>
+        )
+        if not sets:
+                return None, 0, None
+
+        return max(sets, key=lambda x: x[1])  # x[1] -&gt; xp rate</code></pre>
 </details>
 </dd>
 <dt id="osrsmath.apps.optimize.logic.optimize.get_sets"><code class="name flex">
@@ -437,10 +414,11 @@ def get_best_set(player_stats: dict, training_skill, states, defenders, sets, in
                 self.special_sets.append((weapons, gear))
 
         def solve(self):
+                attack_types = [&#39;stab&#39;, &#39;slash&#39;, &#39;crush&#39;]
                 equipment_sets = []
-                M = 3*(len(self.special_sets) + 1)
+                M = len(attack_types)*(len(self.special_sets) + 1)
                 i = 1
-                for attack_type in [&#39;stab&#39;, &#39;slash&#39;, &#39;crush&#39;]:
+                for attack_type in attack_types:
                         equipment_sets.extend(self.get_attack_sets(attack_type, []))
                         self.callback(i/M*100); i += 1
                         for weapons, special_gear in self.special_sets:
@@ -621,10 +599,11 @@ def get_best_set(player_stats: dict, training_skill, states, defenders, sets, in
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def solve(self):
+        attack_types = [&#39;stab&#39;, &#39;slash&#39;, &#39;crush&#39;]
         equipment_sets = []
-        M = 3*(len(self.special_sets) + 1)
+        M = len(attack_types)*(len(self.special_sets) + 1)
         i = 1
-        for attack_type in [&#39;stab&#39;, &#39;slash&#39;, &#39;crush&#39;]:
+        for attack_type in attack_types:
                 equipment_sets.extend(self.get_attack_sets(attack_type, []))
                 self.callback(i/M*100); i += 1
                 for weapons, special_gear in self.special_sets:

@@ -27,8 +27,9 @@
 </summary>
 <pre><code class="python">from osrsmath.apps.GUI.optimize.optimize_skeleton import Ui_Form
 from osrsmath.apps.GUI.shared.widgets import Savable
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PySide2 import QtCore, QtGui, QtWidgets
 
+from osrsmath.model.player import get_equipment_by_name
 import osrsmath.model.boosts as boosts
 import inspect
 import webbrowser
@@ -84,9 +85,10 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
                 }
 
                 for slot in [&#39;head&#39;, &#39;cape&#39;, &#39;neck&#39;, &#39;ammo&#39;, &#39;weapon&#39;, &#39;body&#39;, &#39;legs&#39;, &#39;hands&#39;, &#39;feet&#39;, &#39;ring&#39;]:
+                        getattr(self, f&#34;{slot}_link&#34;).setToolTip(&#39;Open the wiki page for the equipment in this slot.&#39;)
                         equipment_button = getattr(self, f&#34;{slot}_link&#34;)
                         equipment_button.clicked.connect(
-                                lambda _, slot=slot: self.open_link(slot)
+                                lambda _=None, slot=slot: self.open_link(slot)
                         )
 
 
@@ -121,12 +123,13 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
                 )]
 
         def open_link(self, slot):
-                from osrsmath.model.player import get_equipment_by_name
                 item = getattr(self, slot).currentText()
                 try:
                         equipment = get_equipment_by_name(item)
                 except ValueError as e:
-                        print(e)
+                        QtWidgets.QMessageBox(
+                                QtWidgets.QMessageBox.Warning, &#39;Wiki Link not Found&#39;, str(e)
+                        ).exec_()
                         return
 
                 pprint(equipment)
@@ -230,7 +233,7 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 <span>(</span><span>parent=None)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>QWidget(parent: QWidget = None, flags: Union[Qt.WindowFlags, Qt.WindowType] = Qt.WindowFlags())</p></div>
+<div class="desc"><p>QWidget(self, parent: typing.Union[PySide2.QtWidgets.QWidget, NoneType] = None, f: PySide2.QtCore.Qt.WindowFlags = Default(Qt.WindowFlags))</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -271,9 +274,10 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
                 }
 
                 for slot in [&#39;head&#39;, &#39;cape&#39;, &#39;neck&#39;, &#39;ammo&#39;, &#39;weapon&#39;, &#39;body&#39;, &#39;legs&#39;, &#39;hands&#39;, &#39;feet&#39;, &#39;ring&#39;]:
+                        getattr(self, f&#34;{slot}_link&#34;).setToolTip(&#39;Open the wiki page for the equipment in this slot.&#39;)
                         equipment_button = getattr(self, f&#34;{slot}_link&#34;)
                         equipment_button.clicked.connect(
-                                lambda _, slot=slot: self.open_link(slot)
+                                lambda _=None, slot=slot: self.open_link(slot)
                         )
 
 
@@ -308,12 +312,13 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
                 )]
 
         def open_link(self, slot):
-                from osrsmath.model.player import get_equipment_by_name
                 item = getattr(self, slot).currentText()
                 try:
                         equipment = get_equipment_by_name(item)
                 except ValueError as e:
-                        print(e)
+                        QtWidgets.QMessageBox(
+                                QtWidgets.QMessageBox.Warning, &#39;Wiki Link not Found&#39;, str(e)
+                        ).exec_()
                         return
 
                 pprint(equipment)
@@ -361,14 +366,20 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li>PyQt5.QtWidgets.QWidget</li>
-<li>PyQt5.QtCore.QObject</li>
-<li>sip.wrapper</li>
-<li>PyQt5.QtGui.QPaintDevice</li>
-<li>sip.simplewrapper</li>
+<li>PySide2.QtWidgets.QWidget</li>
+<li>PySide2.QtCore.QObject</li>
+<li>PySide2.QtGui.QPaintDevice</li>
+<li>Shiboken.Object</li>
 <li><a title="osrsmath.apps.GUI.optimize.optimize_skeleton.Ui_Form" href="../../GUI/optimize/optimize_skeleton.html#osrsmath.apps.GUI.optimize.optimize_skeleton.Ui_Form">Ui_Form</a></li>
 <li><a title="osrsmath.apps.GUI.shared.widgets.Savable" href="../../GUI/shared/widgets.html#osrsmath.apps.GUI.shared.widgets.Savable">Savable</a></li>
 </ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="osrsmath.apps.optimize.panels.optimize.OptimizePanel.staticMetaObject"><code class="name">var <span class="ident">staticMetaObject</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
 <h3>Methods</h3>
 <dl>
 <dt id="osrsmath.apps.optimize.panels.optimize.OptimizePanel.add_monster"><code class="name flex">
@@ -480,12 +491,13 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def open_link(self, slot):
-        from osrsmath.model.player import get_equipment_by_name
         item = getattr(self, slot).currentText()
         try:
                 equipment = get_equipment_by_name(item)
         except ValueError as e:
-                print(e)
+                QtWidgets.QMessageBox(
+                        QtWidgets.QMessageBox.Warning, &#39;Wiki Link not Found&#39;, str(e)
+                ).exec_()
                 return
 
         pprint(equipment)
@@ -547,6 +559,7 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 <li><code><a title="osrsmath.apps.optimize.panels.optimize.OptimizePanel.on_prayer_select" href="#osrsmath.apps.optimize.panels.optimize.OptimizePanel.on_prayer_select">on_prayer_select</a></code></li>
 <li><code><a title="osrsmath.apps.optimize.panels.optimize.OptimizePanel.open_link" href="#osrsmath.apps.optimize.panels.optimize.OptimizePanel.open_link">open_link</a></code></li>
 <li><code><a title="osrsmath.apps.optimize.panels.optimize.OptimizePanel.remove_selected_monster" href="#osrsmath.apps.optimize.panels.optimize.OptimizePanel.remove_selected_monster">remove_selected_monster</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.optimize.OptimizePanel.staticMetaObject" href="#osrsmath.apps.optimize.panels.optimize.OptimizePanel.staticMetaObject">staticMetaObject</a></code></li>
 </ul>
 </li>
 </ul>

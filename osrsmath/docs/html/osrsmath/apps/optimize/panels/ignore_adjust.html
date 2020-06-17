@@ -27,7 +27,7 @@
 </summary>
 <pre><code class="python">from osrsmath.apps.GUI.optimize.ignore_adjust_skeleton import Ui_IgnoreAdjustPanel
 from osrsmath.apps.GUI.shared.widgets import Savable
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PySide2 import QtCore, QtGui, QtWidgets
 import ast
 import re
 
@@ -35,6 +35,14 @@ class Data:
         pass
 
 class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
+        IGNORE_USER_SIGNAL_TEXT = &#39;USER IGNORES&#39;
+        IGNORE_DEFAULT_SIGNAL_TEXT = &#39;DEFAULT IGNORES&#39;
+        ADJUST_USER_SIGNAL_TEXT = &#39;USER OVERRIDES&#39;
+        ADJUST_DEFAULT_SIGNAL_TEXT = &#39;DEFAULT OVERRIDES&#39;
+
+        IGNORE_TOOLTIP = &#34;Equipment listed here won&#39;t be considered.&#34;
+        ADJUST_TOOLTIP = &#34;Equipment requirements here will override the database.&#34;
+
         def __init__(self, parent=None):
                 super().__init__(parent)
                 self.setupUi(self)
@@ -70,12 +78,16 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
                 self.text.setTabStopDistance(12)
                 self.text.textChanged.connect(self.update_data_from_text)
 
+                self.entities[&#39;ignore_toggle&#39;].object.setToolTip(self.IGNORE_TOOLTIP)
+                self.entities[&#39;adjust_toggle&#39;].object.setToolTip(self.ADJUST_TOOLTIP)
+
+
         def get_ignore(self):
                 text = self.entities[&#39;ignore_data&#39;].get()
                 text = &#39;&#34;,\n&#34;&#39;.join([line.strip() for line in text.split(&#39;\n&#39;) if not any([
                         line.startswith(&#39;#&#39;),
-                        &#39;USER IGNORE&#39; in line,
-                        &#39;DEFAULT IGNORE&#39; in line
+                        self.IGNORE_USER_SIGNAL_TEXT in line,
+                        self.IGNORE_DEFAULT_SIGNAL_TEXT in line
                 ])])
                 return ast.literal_eval(f&#39;[&#34;{text}&#34;]&#39;)
 
@@ -86,9 +98,9 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
                 json_object = {}
                 obj = None
                 for i, line in enumerate(text.split(&#39;\n&#39;)):
-                        if &#39;USER ADJUSTMENTS&#39; in line:
+                        if self.ADJUST_USER_SIGNAL_TEXT in line:
                                 continue
-                        if &#39;DEFAULT ADJUSTMENTS&#39; in line:
+                        if self.ADJUST_DEFAULT_SIGNAL_TEXT in line:
                                 continue
                         if line.startswith(&#39;#&#39;):
                                 continue
@@ -101,6 +113,8 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
                                 obj = {&#39;name&#39;: item_name, &#39;req&#39;: {}}
                         # If a line has a &#39;:&#39; (without a &#39;{&#39;) it contains a requirement
                         elif (&#39;:&#39; in line) and (&#39;{&#39; not in line):
+                                if &#39;req&#39; not in obj:
+                                        raise ValueError(f&#34;The &#39;:&#39; character shouldn&#39;t appear in line {i}: {line.strip()}&#34;)
                                 left, right = line.split(&#39;:&#39;, 1)
                                 assert left.strip() not in obj[&#39;req&#39;], f&#39;{left.strip()} on line #{i} (item {obj[&#34;name&#34;]}) is already specified.&#39;
                                 obj[&#39;req&#39;].update({left.strip(): int(right.strip(&#39;,&#39;))})
@@ -130,10 +144,12 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
                 self.text.setPlainText(text)
 
         def prepend_ignore(self, item):
-                self._prepend(item, &#39;USER IGNORES&#39;)
+                self.entities[&#39;ignore_toggle&#39;].object.setChecked(True)
+                self._prepend(item, self.IGNORE_USER_SIGNAL_TEXT)
 
         def prepend_adjust(self, item):
-                self._prepend(f&#34;{item}: {{\n\t\n}}&#34;, &#39;USER ADJUSTMENTS&#39;)
+                self.entities[&#39;adjust_toggle&#39;].object.setChecked(True)
+                self._prepend(f&#34;{item}: {{\n\t\n}}&#34;, self.ADJUST_USER_SIGNAL_TEXT)
 
         def _prepend(self, insertion, insert_signal_text):
                 original = self.get_checked(&#39;data&#39;).get().split(&#39;\n&#39;)
@@ -142,7 +158,7 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
                                 self.set_text(&#39;\n&#39;.join(original[:i+1] + [insertion] + original[i+1:]))
                                 break
                 else:  # If you didn&#39;t find that flag, just prepend it
-                        self.set_text(text+&#39;\n&#39;+&#39;\n&#39;.join(original))
+                        self.set_text(insertion+&#39;\n&#39;+&#39;\n&#39;.join(original))
                 self.update_data_from_text()</code></pre>
 </details>
 </section>
@@ -173,12 +189,20 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
 <span>(</span><span>parent=None)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>QWidget(parent: QWidget = None, flags: Union[Qt.WindowFlags, Qt.WindowType] = Qt.WindowFlags())</p></div>
+<div class="desc"><p>QWidget(self, parent: typing.Union[PySide2.QtWidgets.QWidget, NoneType] = None, f: PySide2.QtCore.Qt.WindowFlags = Default(Qt.WindowFlags))</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
+        IGNORE_USER_SIGNAL_TEXT = &#39;USER IGNORES&#39;
+        IGNORE_DEFAULT_SIGNAL_TEXT = &#39;DEFAULT IGNORES&#39;
+        ADJUST_USER_SIGNAL_TEXT = &#39;USER OVERRIDES&#39;
+        ADJUST_DEFAULT_SIGNAL_TEXT = &#39;DEFAULT OVERRIDES&#39;
+
+        IGNORE_TOOLTIP = &#34;Equipment listed here won&#39;t be considered.&#34;
+        ADJUST_TOOLTIP = &#34;Equipment requirements here will override the database.&#34;
+
         def __init__(self, parent=None):
                 super().__init__(parent)
                 self.setupUi(self)
@@ -214,12 +238,16 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
                 self.text.setTabStopDistance(12)
                 self.text.textChanged.connect(self.update_data_from_text)
 
+                self.entities[&#39;ignore_toggle&#39;].object.setToolTip(self.IGNORE_TOOLTIP)
+                self.entities[&#39;adjust_toggle&#39;].object.setToolTip(self.ADJUST_TOOLTIP)
+
+
         def get_ignore(self):
                 text = self.entities[&#39;ignore_data&#39;].get()
                 text = &#39;&#34;,\n&#34;&#39;.join([line.strip() for line in text.split(&#39;\n&#39;) if not any([
                         line.startswith(&#39;#&#39;),
-                        &#39;USER IGNORE&#39; in line,
-                        &#39;DEFAULT IGNORE&#39; in line
+                        self.IGNORE_USER_SIGNAL_TEXT in line,
+                        self.IGNORE_DEFAULT_SIGNAL_TEXT in line
                 ])])
                 return ast.literal_eval(f&#39;[&#34;{text}&#34;]&#39;)
 
@@ -230,9 +258,9 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
                 json_object = {}
                 obj = None
                 for i, line in enumerate(text.split(&#39;\n&#39;)):
-                        if &#39;USER ADJUSTMENTS&#39; in line:
+                        if self.ADJUST_USER_SIGNAL_TEXT in line:
                                 continue
-                        if &#39;DEFAULT ADJUSTMENTS&#39; in line:
+                        if self.ADJUST_DEFAULT_SIGNAL_TEXT in line:
                                 continue
                         if line.startswith(&#39;#&#39;):
                                 continue
@@ -245,6 +273,8 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
                                 obj = {&#39;name&#39;: item_name, &#39;req&#39;: {}}
                         # If a line has a &#39;:&#39; (without a &#39;{&#39;) it contains a requirement
                         elif (&#39;:&#39; in line) and (&#39;{&#39; not in line):
+                                if &#39;req&#39; not in obj:
+                                        raise ValueError(f&#34;The &#39;:&#39; character shouldn&#39;t appear in line {i}: {line.strip()}&#34;)
                                 left, right = line.split(&#39;:&#39;, 1)
                                 assert left.strip() not in obj[&#39;req&#39;], f&#39;{left.strip()} on line #{i} (item {obj[&#34;name&#34;]}) is already specified.&#39;
                                 obj[&#39;req&#39;].update({left.strip(): int(right.strip(&#39;,&#39;))})
@@ -274,10 +304,12 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
                 self.text.setPlainText(text)
 
         def prepend_ignore(self, item):
-                self._prepend(item, &#39;USER IGNORES&#39;)
+                self.entities[&#39;ignore_toggle&#39;].object.setChecked(True)
+                self._prepend(item, self.IGNORE_USER_SIGNAL_TEXT)
 
         def prepend_adjust(self, item):
-                self._prepend(f&#34;{item}: {{\n\t\n}}&#34;, &#39;USER ADJUSTMENTS&#39;)
+                self.entities[&#39;adjust_toggle&#39;].object.setChecked(True)
+                self._prepend(f&#34;{item}: {{\n\t\n}}&#34;, self.ADJUST_USER_SIGNAL_TEXT)
 
         def _prepend(self, insertion, insert_signal_text):
                 original = self.get_checked(&#39;data&#39;).get().split(&#39;\n&#39;)
@@ -286,19 +318,49 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
                                 self.set_text(&#39;\n&#39;.join(original[:i+1] + [insertion] + original[i+1:]))
                                 break
                 else:  # If you didn&#39;t find that flag, just prepend it
-                        self.set_text(text+&#39;\n&#39;+&#39;\n&#39;.join(original))
+                        self.set_text(insertion+&#39;\n&#39;+&#39;\n&#39;.join(original))
                 self.update_data_from_text()</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li>PyQt5.QtWidgets.QWidget</li>
-<li>PyQt5.QtCore.QObject</li>
-<li>sip.wrapper</li>
-<li>PyQt5.QtGui.QPaintDevice</li>
-<li>sip.simplewrapper</li>
+<li>PySide2.QtWidgets.QWidget</li>
+<li>PySide2.QtCore.QObject</li>
+<li>PySide2.QtGui.QPaintDevice</li>
+<li>Shiboken.Object</li>
 <li><a title="osrsmath.apps.GUI.optimize.ignore_adjust_skeleton.Ui_IgnoreAdjustPanel" href="../../GUI/optimize/ignore_adjust_skeleton.html#osrsmath.apps.GUI.optimize.ignore_adjust_skeleton.Ui_IgnoreAdjustPanel">Ui_IgnoreAdjustPanel</a></li>
 <li><a title="osrsmath.apps.GUI.shared.widgets.Savable" href="../../GUI/shared/widgets.html#osrsmath.apps.GUI.shared.widgets.Savable">Savable</a></li>
 </ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.ADJUST_DEFAULT_SIGNAL_TEXT"><code class="name">var <span class="ident">ADJUST_DEFAULT_SIGNAL_TEXT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.ADJUST_TOOLTIP"><code class="name">var <span class="ident">ADJUST_TOOLTIP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.ADJUST_USER_SIGNAL_TEXT"><code class="name">var <span class="ident">ADJUST_USER_SIGNAL_TEXT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.IGNORE_DEFAULT_SIGNAL_TEXT"><code class="name">var <span class="ident">IGNORE_DEFAULT_SIGNAL_TEXT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.IGNORE_TOOLTIP"><code class="name">var <span class="ident">IGNORE_TOOLTIP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.IGNORE_USER_SIGNAL_TEXT"><code class="name">var <span class="ident">IGNORE_USER_SIGNAL_TEXT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.staticMetaObject"><code class="name">var <span class="ident">staticMetaObject</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
 <h3>Methods</h3>
 <dl>
 <dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_adjust"><code class="name flex">
@@ -317,9 +379,9 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
         json_object = {}
         obj = None
         for i, line in enumerate(text.split(&#39;\n&#39;)):
-                if &#39;USER ADJUSTMENTS&#39; in line:
+                if self.ADJUST_USER_SIGNAL_TEXT in line:
                         continue
-                if &#39;DEFAULT ADJUSTMENTS&#39; in line:
+                if self.ADJUST_DEFAULT_SIGNAL_TEXT in line:
                         continue
                 if line.startswith(&#39;#&#39;):
                         continue
@@ -332,6 +394,8 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
                         obj = {&#39;name&#39;: item_name, &#39;req&#39;: {}}
                 # If a line has a &#39;:&#39; (without a &#39;{&#39;) it contains a requirement
                 elif (&#39;:&#39; in line) and (&#39;{&#39; not in line):
+                        if &#39;req&#39; not in obj:
+                                raise ValueError(f&#34;The &#39;:&#39; character shouldn&#39;t appear in line {i}: {line.strip()}&#34;)
                         left, right = line.split(&#39;:&#39;, 1)
                         assert left.strip() not in obj[&#39;req&#39;], f&#39;{left.strip()} on line #{i} (item {obj[&#34;name&#34;]}) is already specified.&#39;
                         obj[&#39;req&#39;].update({left.strip(): int(right.strip(&#39;,&#39;))})
@@ -375,8 +439,8 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
         text = self.entities[&#39;ignore_data&#39;].get()
         text = &#39;&#34;,\n&#34;&#39;.join([line.strip() for line in text.split(&#39;\n&#39;) if not any([
                 line.startswith(&#39;#&#39;),
-                &#39;USER IGNORE&#39; in line,
-                &#39;DEFAULT IGNORE&#39; in line
+                self.IGNORE_USER_SIGNAL_TEXT in line,
+                self.IGNORE_DEFAULT_SIGNAL_TEXT in line
         ])])
         return ast.literal_eval(f&#39;[&#34;{text}&#34;]&#39;)</code></pre>
 </details>
@@ -404,7 +468,8 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def prepend_adjust(self, item):
-        self._prepend(f&#34;{item}: {{\n\t\n}}&#34;, &#39;USER ADJUSTMENTS&#39;)</code></pre>
+        self.entities[&#39;adjust_toggle&#39;].object.setChecked(True)
+        self._prepend(f&#34;{item}: {{\n\t\n}}&#34;, self.ADJUST_USER_SIGNAL_TEXT)</code></pre>
 </details>
 </dd>
 <dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.prepend_ignore"><code class="name flex">
@@ -417,7 +482,8 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def prepend_ignore(self, item):
-        self._prepend(item, &#39;USER IGNORES&#39;)</code></pre>
+        self.entities[&#39;ignore_toggle&#39;].object.setChecked(True)
+        self._prepend(item, self.IGNORE_USER_SIGNAL_TEXT)</code></pre>
 </details>
 </dd>
 <dt id="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.set_text"><code class="name flex">
@@ -470,6 +536,12 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
 <li>
 <h4><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel">IgnoreAdjustPanel</a></code></h4>
 <ul class="">
+<li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.ADJUST_DEFAULT_SIGNAL_TEXT" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.ADJUST_DEFAULT_SIGNAL_TEXT">ADJUST_DEFAULT_SIGNAL_TEXT</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.ADJUST_TOOLTIP" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.ADJUST_TOOLTIP">ADJUST_TOOLTIP</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.ADJUST_USER_SIGNAL_TEXT" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.ADJUST_USER_SIGNAL_TEXT">ADJUST_USER_SIGNAL_TEXT</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.IGNORE_DEFAULT_SIGNAL_TEXT" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.IGNORE_DEFAULT_SIGNAL_TEXT">IGNORE_DEFAULT_SIGNAL_TEXT</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.IGNORE_TOOLTIP" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.IGNORE_TOOLTIP">IGNORE_TOOLTIP</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.IGNORE_USER_SIGNAL_TEXT" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.IGNORE_USER_SIGNAL_TEXT">IGNORE_USER_SIGNAL_TEXT</a></code></li>
 <li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_adjust" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_adjust">get_adjust</a></code></li>
 <li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_checked" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_checked">get_checked</a></code></li>
 <li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_ignore" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.get_ignore">get_ignore</a></code></li>
@@ -477,6 +549,7 @@ class IgnoreAdjustPanel(QtWidgets.QWidget, Ui_IgnoreAdjustPanel, Savable):
 <li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.prepend_adjust" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.prepend_adjust">prepend_adjust</a></code></li>
 <li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.prepend_ignore" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.prepend_ignore">prepend_ignore</a></code></li>
 <li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.set_text" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.set_text">set_text</a></code></li>
+<li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.staticMetaObject" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.staticMetaObject">staticMetaObject</a></code></li>
 <li><code><a title="osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.update_data_from_text" href="#osrsmath.apps.optimize.panels.ignore_adjust.IgnoreAdjustPanel.update_data_from_text">update_data_from_text</a></code></li>
 </ul>
 </li>

@@ -27,53 +27,55 @@
 </summary>
 <pre><code class="python"># -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file &#39;//mnt/c/Users/Nawar/Documents/GitHub/OSRS-Combat/Code/osrsmath/apps/monsters/gui_single.ui&#39;
-#
-# Created by: PyQt5 UI code generator 5.14.1
-#
-# WARNING! All changes made in this file will be lost!
+################################################################################
+## Form generated from reading UI file &#39;gui_single.ui&#39;
+##
+## Created by: Qt User Interface Compiler version 5.15.0
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
+from PySide2.QtCore import (QCoreApplication, QDate, QDateTime, QMetaObject,
+    QObject, QPoint, QRect, QSize, QTime, QUrl, Qt)
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
+    QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter,
+    QPixmap, QRadialGradient)
+from PySide2.QtWidgets import *
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from osrsmath.apps.monsters.panel import MonsterPanel
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName(&#34;MainWindow&#34;)
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u&#34;MainWindow&#34;)
         MainWindow.resize(800, 600)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName(&#34;centralwidget&#34;)
-        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout.setObjectName(&#34;gridLayout&#34;)
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u&#34;centralwidget&#34;)
+        self.gridLayout = QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName(u&#34;gridLayout&#34;)
         self.widget = MonsterPanel(self.centralwidget)
-        self.widget.setObjectName(&#34;widget&#34;)
+        self.widget.setObjectName(u&#34;widget&#34;)
+
         self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
+
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
-        self.menubar.setObjectName(&#34;menubar&#34;)
+        self.menubar = QMenuBar(MainWindow)
+        self.menubar.setObjectName(u&#34;menubar&#34;)
+        self.menubar.setGeometry(QRect(0, 0, 800, 21))
         MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName(&#34;statusbar&#34;)
+        self.statusbar = QStatusBar(MainWindow)
+        self.statusbar.setObjectName(u&#34;statusbar&#34;)
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate(&#34;MainWindow&#34;, &#34;MainWindow&#34;))
-from osrsmath.apps.monsters.panel import MonsterPanel
-
-
-if __name__ == &#34;__main__&#34;:
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())</code></pre>
+        MainWindow.setWindowTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;MainWindow&#34;, None))
+    # retranslateUi</code></pre>
 </details>
 </section>
 <section>
@@ -96,30 +98,34 @@ if __name__ == &#34;__main__&#34;:
 </summary>
 <pre><code class="python">class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName(&#34;MainWindow&#34;)
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u&#34;MainWindow&#34;)
         MainWindow.resize(800, 600)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName(&#34;centralwidget&#34;)
-        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout.setObjectName(&#34;gridLayout&#34;)
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u&#34;centralwidget&#34;)
+        self.gridLayout = QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName(u&#34;gridLayout&#34;)
         self.widget = MonsterPanel(self.centralwidget)
-        self.widget.setObjectName(&#34;widget&#34;)
+        self.widget.setObjectName(u&#34;widget&#34;)
+
         self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
+
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
-        self.menubar.setObjectName(&#34;menubar&#34;)
+        self.menubar = QMenuBar(MainWindow)
+        self.menubar.setObjectName(u&#34;menubar&#34;)
+        self.menubar.setGeometry(QRect(0, 0, 800, 21))
         MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName(&#34;statusbar&#34;)
+        self.statusbar = QStatusBar(MainWindow)
+        self.statusbar.setObjectName(u&#34;statusbar&#34;)
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
 
     def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate(&#34;MainWindow&#34;, &#34;MainWindow&#34;))</code></pre>
+        MainWindow.setWindowTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;MainWindow&#34;, None))</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
@@ -133,8 +139,7 @@ if __name__ == &#34;__main__&#34;:
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def retranslateUi(self, MainWindow):
-    _translate = QtCore.QCoreApplication.translate
-    MainWindow.setWindowTitle(_translate(&#34;MainWindow&#34;, &#34;MainWindow&#34;))</code></pre>
+    MainWindow.setWindowTitle(QCoreApplication.translate(&#34;MainWindow&#34;, u&#34;MainWindow&#34;, None))</code></pre>
 </details>
 </dd>
 <dt id="osrsmath.apps.monsters.gui_single.Ui_MainWindow.setupUi"><code class="name flex">
@@ -147,26 +152,30 @@ if __name__ == &#34;__main__&#34;:
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def setupUi(self, MainWindow):
-    MainWindow.setObjectName(&#34;MainWindow&#34;)
+    if not MainWindow.objectName():
+        MainWindow.setObjectName(u&#34;MainWindow&#34;)
     MainWindow.resize(800, 600)
-    self.centralwidget = QtWidgets.QWidget(MainWindow)
-    self.centralwidget.setObjectName(&#34;centralwidget&#34;)
-    self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
-    self.gridLayout.setObjectName(&#34;gridLayout&#34;)
+    self.centralwidget = QWidget(MainWindow)
+    self.centralwidget.setObjectName(u&#34;centralwidget&#34;)
+    self.gridLayout = QGridLayout(self.centralwidget)
+    self.gridLayout.setObjectName(u&#34;gridLayout&#34;)
     self.widget = MonsterPanel(self.centralwidget)
-    self.widget.setObjectName(&#34;widget&#34;)
+    self.widget.setObjectName(u&#34;widget&#34;)
+
     self.gridLayout.addWidget(self.widget, 0, 0, 1, 1)
+
     MainWindow.setCentralWidget(self.centralwidget)
-    self.menubar = QtWidgets.QMenuBar(MainWindow)
-    self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
-    self.menubar.setObjectName(&#34;menubar&#34;)
+    self.menubar = QMenuBar(MainWindow)
+    self.menubar.setObjectName(u&#34;menubar&#34;)
+    self.menubar.setGeometry(QRect(0, 0, 800, 21))
     MainWindow.setMenuBar(self.menubar)
-    self.statusbar = QtWidgets.QStatusBar(MainWindow)
-    self.statusbar.setObjectName(&#34;statusbar&#34;)
+    self.statusbar = QStatusBar(MainWindow)
+    self.statusbar.setObjectName(u&#34;statusbar&#34;)
     MainWindow.setStatusBar(self.statusbar)
 
     self.retranslateUi(MainWindow)
-    QtCore.QMetaObject.connectSlotsByName(MainWindow)</code></pre>
+
+    QMetaObject.connectSlotsByName(MainWindow)</code></pre>
 </details>
 </dd>
 </dl>

@@ -28,12 +28,12 @@
 \contentsline {subsubsection}{Time-Dependent Boosts}{22}{figure.caption.9}%
 \contentsline {subsubsection}{Comparisons}{22}{equation.3.1.1}%
 \contentsline {chapter}{\numberline {4}Optimal Equipment}{24}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Optimal Training Order}{25}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Improvements}{29}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Conclusion}{30}{chapter.7}%
-\contentsline {chapter}{Appendices}{31}{section*.13}%
-\contentsline {chapter}{\numberline {A}Average Damage}{32}{appendix.1.A}%
-\contentsline {section}{\numberline {A.1}Power Reduction}{33}{section.1.A.1}%
-\contentsline {section}{\numberline {A.2}Simplifying}{34}{section.1.A.2}%
-\contentsline {chapter}{\numberline {B}Recursive Analytic Solution Attempt}{35}{appendix.1.B}%
-\contentsline {chapter}{\numberline {C}Recursive Approximation Justification}{37}{appendix.1.C}%
+\contentsline {chapter}{\numberline {5}Optimal Training Order}{26}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Improvements}{30}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Conclusion}{31}{chapter.7}%
+\contentsline {chapter}{Appendices}{32}{section*.13}%
+\contentsline {chapter}{\numberline {A}Average Damage}{33}{appendix.1.A}%
+\contentsline {section}{\numberline {A.1}Power Reduction}{34}{section.1.A.1}%
+\contentsline {section}{\numberline {A.2}Simplifying}{35}{section.1.A.2}%
+\contentsline {chapter}{\numberline {B}Recursive Analytic Solution Attempt}{36}{appendix.1.B}%
+\contentsline {chapter}{\numberline {C}Recursive Approximation Justification}{38}{appendix.1.C}%
