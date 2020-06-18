@@ -1,20 +1,20 @@
 {
     "monsters": {
-        "giant mole": {
+        "general graardor": {
             "levels": {
-                "hitpoints": 200,
-                "attack": 200,
-                "strength": 200,
-                "defence": 200,
-                "ranged": 1,
-                "magic": 200
+                "hitpoints": 255,
+                "attack": 280,
+                "strength": 350,
+                "defence": 250,
+                "ranged": 350,
+                "magic": 80
             },
             "stats": {
-                "defence_stab": 60,
-                "defence_slash": 80,
-                "defence_crush": 100,
-                "defence_magic": 80,
-                "defence_ranged": 60
+                "defence_stab": 90,
+                "defence_slash": 90,
+                "defence_crush": 90,
+                "defence_magic": 298,
+                "defence_ranged": 90
             },
             "xp_per_damage": 4.0
         }
@@ -23,15 +23,15 @@
     "potion_attributes": "accuracy and damage",
     "boosting_scheme": "Dose After",
     "below_skill": "attack",
-    "redose_level": "5",
-    "prayers": "level3",
+    "redose_level": "7",
+    "prayers": "piety",
     "prayer_attributes": "accuracy and damage",
-    "training_skill": "defence",
+    "training_skill": "attack",
     "slayer_helm": false,
-    "obsidian": false,
+    "obsidian": true,
     "void_knight": true,
     "elite_void": true,
     "berserker_necklace": true,
-    "dharok": "0",
+    "dharok": "1",
     "salve_amulet": false
 }

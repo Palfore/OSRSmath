@@ -265,7 +265,7 @@ class GUI(Ui_MainWindow):
 			sets = get_sets(training_skill, stats, monsters, ignore, adjust, equipment_data, special_sets, progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)))
 			t1 = time.time()
 			self.update_status(f'Step (2/2). Evaluating {len(sets)} Sets...')
-			s, xp, stance = get_best_set(
+			(s, xp, stance), xps = get_best_set(
 				stats,
 				training_skill,
 				boost,
@@ -279,6 +279,15 @@ class GUI(Ui_MainWindow):
 			if s is None:
 				self.update_status('No results found.')
 				return
+
+			if self.optimize_panel.show_histogram.isChecked():
+				import matplotlib.pyplot as plt
+				plt.title('Xp/h Histogram')
+				plt.ylabel('Frequency')
+				plt.xlabel('Xp/h')
+				plt.hist(xps)
+				plt.show()
+
 
 			# Display Optimal Equipment
 			for slot in slots:

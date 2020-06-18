@@ -184,4 +184,4 @@ def get_best_set(player_stats: dict, training_skill, states, defenders, sets, in
 	if not sets:
 		return None, 0, None
 
-	return max(sets, key=lambda x: x[1])  # x[1] -> xp rate
+	return max(sets, key=lambda x: x[1]), [s[1] for s in sets]  # x[1] -> xp rate
