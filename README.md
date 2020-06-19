@@ -16,11 +16,11 @@ These application provide useful functionalities for end users. Once installed, 
 
 ### 2. Library
 
-For developers, they can use the basic functionalities (like modeling combat or potion boosts) to build their own applications. Within their own code the can import functionalities using `import osrsmath.model.[module_of_interest]`. Check out a [list of modules](https://github.com/Palfore/OSRSmath/osrsmath/docs/html/osrsmath/model/index.html) to see what can be done.
+For developers, they can use the basic functionalities (like modeling combat or potion boosts) to build their own applications. Within their own code the can import functionalities using `import osrsmath.model.[module_of_interest]`. Download the source, and check out the documentation for the modules at `OSRSmath/osrsmath/docs/html/osrsmath/index.html` to see what can be done.
 
 ### 3. Documentation
 
-Coherent and comprehensive documentation doesn't really exist regarding the math behind osrs. This project provides a [document](https://github.com/Palfore/OSRSmath/osrsmath/docs/latex/main.pdf) that attempts to fill this gap. It also documents its source code, which can be viewed by downloading the source and navigating to `osrsmath/docs/html/osrsmath/index.html`. In future, it would be nice to host this online.
+Coherent and comprehensive documentation doesn't really exist regarding the math behind osrs. This project provides a [document](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/main.pdf) that attempts to fill this gap. It also documents its source code, which can be viewed by downloading the source and navigating to `osrsmath/docs/html/osrsmath/index.html`. In future, it would be nice to host this online.
 
 ## Installing
 There are two methods. The **User** method is the easiest - but if it doesn't work please let me know and you can use the **Developer** instructions instead, which should still be easy to follow.
@@ -84,7 +84,7 @@ The `unittest` module is used for testing. Navigate to the `tests` directory and
 
 ## Authors
 
-* **Nawar Ismail** - [Palfore](https://github.com/Palfore)
+* **Nawar Ismail** - [Palfore](https://www.palfore.com/)
 
 If you are interested in contributing, check out the [issues section](https://github.com/Palfore/OSRSmath/issues) on GitHub.
 
@@ -92,7 +92,7 @@ If you are interested in contributing, check out the [issues section](https://gi
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+This open-source project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
 
 ## Acknowledgments
 ### Code
