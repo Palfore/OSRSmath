@@ -148,8 +148,9 @@ class GUI(Ui_MainWindow):
 
 		self.actionUpdate_Now.triggered.connect(lambda: update(QtWidgets.QMessageBox(QtWidgets.QMessageBox.Question,
 			'Update Now', "Would you like to download the latest equipment and monsters? You only need to do this "
-			"if you want to use those new entities."
-			"It is also possible that the osrsbox database has not yet been updated.",
+			"if you want to use those new entities. "
+			"If something is missing after updating, it is also possible that the osrsbox database has not yet been updated. ",
+			"Try again on another day."
 			QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No
 		).exec_() == QtWidgets.QMessageBox.Yes))
 

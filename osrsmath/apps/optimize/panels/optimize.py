@@ -55,6 +55,8 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 
 			**{s: Savable.CheckBox(getattr(self, s), True) for s in self.special_sets if s != 'dharok'},
 			'dharok': Savable.LineEdit(self.dharok, 1),
+
+			'show_histogram': Savable.CheckBox(self.show_histogram, False), 
 		}
 
 		for slot in ['head', 'cape', 'neck', 'ammo', 'weapon', 'body', 'legs', 'hands', 'feet', 'ring']:
