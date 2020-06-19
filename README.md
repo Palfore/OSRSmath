@@ -20,35 +20,37 @@ For developers, they can use the basic functionalities (like modeling combat or 
 
 ### 3. Documentation
 
-Coherent and comprehensive documentation doesn't really exist regarding the math behind osrs. This project provides a [document](https://github.com/Palfore/OSRSmath/osrsmath/docs/latex/main.pdf) that attempts to fill this gap.
+Coherent and comprehensive documentation doesn't really exist regarding the math behind osrs. This project provides a [document](https://github.com/Palfore/OSRSmath/osrsmath/docs/latex/main.pdf) that attempts to fill this gap. It also documents its source code, which can be viewed by downloading the source and navigating to `osrsmath/docs/html/osrsmath/index.html`. In future, it would be nice to host this online.
 
 ## Installing
 There are two methods. The **User** method is the easiest - but if it doesn't work please let me know and you can use the **Developer** instructions instead, which should still be easy to follow.
 
 ### User
-This has been tested on:
-	`Ubuntu 20.04` (using [wsl1](https://docs.microsoft.com/en-us/windows/wsl/about) on windows),
-	`MacOS` (Catalina 15.15.5),
-	`Windows 10` (v1909)
 
-Navigate to [FILL IN THIS LINK] and download the executables.
+Navigate to [GitHub releases](https://github.com/Palfore/OSRSmath/releases) and download the latest version.
 
 ### Developer
-Open a terminal/command prompt.
-Make sure you have `python3.6+` installed (type `python --version`)
-Make sure `pip3` is installed (type `pip3 --version`).
-Update pip `pip3 install --upgrade pip`
-Update setuptools `pip3 install --upgrade setuptools`
+1. Open a terminal/command prompt.
+2. Make sure you have `python3.6+` installed (type `python --version`)
+3. Make sure `pip3` is installed (type `pip3 --version`).
+4. Update pip `pip3 install --upgrade pip`
+5. Update setuptools `pip3 install --upgrade setuptools`
 
 To install the apps, or to use as a library:
-	`pip3 install osrsmath`
+1. `pip3 install osrsmath`
 
 To develop the code:
-	Download the github source code, unzip it and place it anywhere.
-	Open a terminal in that directory (which contains setup.py).
-	Run `pip3 install -e .`
+1. Download the github source code, unzip it and place it anywhere.
+2. Open a terminal in that directory (which contains setup.py).
+3. Run `pip3 install -e .`
 
 Run the desired application with: `python3 -m osrsmath.apps.[app_name].main`. Linux may require `sudo apt-get install python3-pyqt5`
+
+These installation methods have been tested on:
+	`Ubuntu 20.04` (using [wsl1](https://docs.microsoft.com/en-us/windows/wsl/about) on windows),
+	`MacOS` (Catalina 15.15.5),
+	and
+	`Windows 10` (v1909)
 
 ## Developing
 ### Packaging:
@@ -58,6 +60,7 @@ These are instructions for creating app executables:
    On Windows, the app store version of Python (3.8) doesn't work.
 3. Navigate to the `Application` folder of the app you want to create an executable for.
 4. Type `python3 package.py`.
+5. Symbolic links should then be created to `dist/main/main[.exe]`, the should be named osrsmath-[app_name].
 
 ### GUI Development:
 These are instructions for creating & modifying the GUI design:
@@ -83,23 +86,7 @@ The `unittest` module is used for testing. Navigate to the `tests` directory and
 
 * **Nawar Ismail** - [Palfore](https://github.com/Palfore)
 
-If you are interested in contributing, here is a good list of tasks:
-
-Beginner:
-* Update and add testing code.
-* Add documentation
-* Model simpler problems like:
-	* [Barbarian fishing](https://oldschool.runescape.wiki/w/Barbarian_Training#Barbarian_Fishing)
-	* [Prospector kit order](https://oldschool.runescape.wiki/w/Prospector_kit#Cheap_first)
-* Add contributions to the [Wiki](https://oldschool.runescape.wiki/)
-
-
-Advanced:
-* Refactor `player.py` and `monster.py` code.
-* Add range & mage support to `apps.optimize`.
-* Solve advanced problems:
-	* Loop `apps.optimize` over all monsters to find best monster to fight!
-	* Add opponent damage to `apps.optimize`, so that your defences matter and optimize that.
+If you are interested in contributing, check out the [issues section](https://github.com/Palfore/OSRSmath/issues) on GitHub.
 
 <!-- See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project. -->
 

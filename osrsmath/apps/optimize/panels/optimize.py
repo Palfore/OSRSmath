@@ -90,6 +90,8 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		# Allow the delete key to remove the selected opponent
 		shortcut = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Delete), self.opponents);
 		shortcut.activated.connect(self.remove_selected_monster)
+		shortcut = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Backspace), self.opponents); # For mac
+		shortcut.activated.connect(self.remove_selected_monster)
 
 	def get_selected_sets(self):
 		return [s for s in self.special_sets if (

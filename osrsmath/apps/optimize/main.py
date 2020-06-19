@@ -103,7 +103,7 @@ class GUI(Ui_MainWindow):
 			<Dharok HP> should be the average hp while dh'ing.
 			Zero means don't consider dh.
 
-		5. Evaluate
+		5. Evaluate. Optionally a histogram can be displayed showing the xp/h distribution.
 		===========================
 
 		Each slot label will lookup the corresponding equipment on the wiki.
@@ -149,8 +149,8 @@ class GUI(Ui_MainWindow):
 		self.actionUpdate_Now.triggered.connect(lambda: update(QtWidgets.QMessageBox(QtWidgets.QMessageBox.Question,
 			'Update Now', "Would you like to download the latest equipment and monsters? You only need to do this "
 			"if you want to use those new entities. "
-			"If something is missing after updating, it is also possible that the osrsbox database has not yet been updated. ",
-			"Try again on another day."
+			"If something is missing after updating, it is also possible that the osrsbox database has not yet been updated. "
+			"Try again on another day.",
 			QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No
 		).exec_() == QtWidgets.QMessageBox.Yes))
 
@@ -245,7 +245,7 @@ class GUI(Ui_MainWindow):
 			potion_attributes = self.optimize_panel.potion_attributes.currentText()
 			prayer = getattr(Prayers, self.optimize_panel.prayers.currentText())
 			prayer_attributes = self.optimize_panel.prayer_attributes.currentText()
-			if self.optimize_panel.boosting_scheme.currentText() == 'Dose After':
+			if potion != Potions.none and self.optimize_panel.boosting_scheme.currentText() == 'Dose After':
 				skill = self.optimize_panel.below_skill.currentText()
 				try:
 					redose_level = int(self.optimize_panel.redose_level.text())

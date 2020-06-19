@@ -1,37 +1,19 @@
 {
-    "monsters": {
-        "general graardor": {
-            "levels": {
-                "hitpoints": 255,
-                "attack": 280,
-                "strength": 350,
-                "defence": 250,
-                "ranged": 350,
-                "magic": 80
-            },
-            "stats": {
-                "defence_stab": 90,
-                "defence_slash": 90,
-                "defence_crush": 90,
-                "defence_magic": 298,
-                "defence_ranged": 90
-            },
-            "xp_per_damage": 4.0
-        }
-    },
-    "potions": "super",
+    "monsters": {},
+    "potions": "none",
     "potion_attributes": "accuracy and damage",
     "boosting_scheme": "Dose After",
     "below_skill": "attack",
     "redose_level": "7",
-    "prayers": "piety",
+    "prayers": "none",
     "prayer_attributes": "accuracy and damage",
     "training_skill": "attack",
     "slayer_helm": false,
-    "obsidian": true,
-    "void_knight": true,
-    "elite_void": true,
-    "berserker_necklace": true,
-    "dharok": "1",
-    "salve_amulet": false
+    "obsidian": false,
+    "void_knight": false,
+    "elite_void": false,
+    "berserker_necklace": false,
+    "dharok": "0",
+    "salve_amulet": false,
+    "show_histogram": true
 }

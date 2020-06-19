@@ -1,11 +1,11 @@
 {
-    "attack": "85",
-    "defence": "75",
+    "attack": "99",
+    "defence": "99",
     "strength": "99",
     "hitpoints": "99",
-    "ranged": "90",
-    "prayer": "70",
-    "magic": "86",
+    "ranged": "99",
+    "prayer": "99",
+    "magic": "99",
     "cooking": "",
     "woodcutting": "99",
     "fletching": "",
@@ -22,5 +22,5 @@
     "runecraft": "",
     "hunter": "",
     "construction": "",
-    "cmb": "112"
+    "cmb": "126"
 }
