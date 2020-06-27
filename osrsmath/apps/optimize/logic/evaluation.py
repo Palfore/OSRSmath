@@ -3,10 +3,13 @@ from osrsmath.model.experience import xp_rate
 import multiprocess
 import time
 
-def mmap(f, items, callback, interval=0.025):
+def mmap(f, items, callback, interval=0.025, num_cores=0):
+	""" num_cores: None or 0 mean maximum ("the number returned by `os.cpu_count()`"). 
+			@see https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool
+	"""
 	results = []
 	start = time.time()
-	with multiprocess.Pool() as pool:
+	with multiprocess.Pool(num_cores if num_cores != 0 else None) as pool:
 		for i, result in enumerate(pool.imap_unordered(f, items), 1):
 			results.append(result)
 			now = time.time()

@@ -49,7 +49,7 @@ class Solver:
 	def __init__(self, training_skill, player_stats, ignore, adjustments, equipment_data, progress_callback=None):
 		self.training_skill = training_skill
 		self.player_stats = player_stats
-		self.callback = progress_callback
+		self.callback = progress_callback if progress_callback else lambda x: None
 		self.gear = get_equipable_gear(
 			get_offensive_melee_equipment(equipment_data), player_stats, ignore, adjustments
 		)
@@ -171,7 +171,7 @@ def get_sets(training_skill, player_stats, defenders, ignore, adjustments, equip
 			solver.add_special_set(*special_set)
 	return solver.solve()
 
-def get_best_set(player_stats: dict, training_skill, states, defenders, sets, include_shared_xp=True, progress_callback=None):
+def get_best_set(player_stats: dict, training_skill, states, defenders, sets, include_shared_xp=True, progress_callback=None, num_cores=0):
 	""" Returns the equipment set that provides the highest experience rate for the training_skill.
 		@param player_stats: {'attack': 40, ...}
 		@param training_skill: 'attack'
@@ -179,7 +179,8 @@ def get_best_set(player_stats: dict, training_skill, states, defenders, sets, in
 	sets = mmap(
 		lambda s: eval_set(player_stats, training_skill, states, defenders, s, include_shared_xp),
 		sets,
-		progress_callback
+		progress_callback if progress_callback else lambda x: None,
+		num_cores=num_cores
 	)
 	if not sets:
 		return None, 0, None

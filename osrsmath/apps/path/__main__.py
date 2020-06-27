@@ -64,9 +64,10 @@ if __name__ == '__main__':
 
 	### Optimal Equipment
 	from timeit import default_timer
+	from osrsmath.model.boosts import Prayers, Potions
 	start = default_timer()
-	tree = Tree((1, 1, 99), (99, 99, 99), print_progress=False)
-	path = get_solution(tree, lambda p: BoostingSchemes(p).overload(), defenders_, equipment_data_, equipment=None)
+	tree = Tree((90, 90, 99), (99, 99, 99), print_progress=False)
+	path = get_solution(tree, lambda p: BoostingSchemes(p, Prayers.none).constant(Potions.overload, ('damage', 'accuracy')), defenders_, equipment_data_, equipment=None)
 	printer = TreePrinter(tree.start, tree.end)
 	printer.add_grid()
 	printer.add_path(path, 'red')

@@ -405,6 +405,16 @@ class Ui_Form(object):
 
         self.gridLayout.addWidget(self.show_histogram, 15, 2, 1, 1)
 
+        self.label_11 = QLabel(Form)
+        self.label_11.setObjectName(u"label_11")
+
+        self.gridLayout.addWidget(self.label_11, 4, 5, 1, 1)
+
+        self.cpu_cores = QLineEdit(Form)
+        self.cpu_cores.setObjectName(u"cpu_cores")
+
+        self.gridLayout.addWidget(self.cpu_cores, 4, 7, 1, 1)
+
         QWidget.setTabOrder(self.opponents, self.head_link)
         QWidget.setTabOrder(self.head_link, self.head)
         QWidget.setTabOrder(self.head, self.cape_link)
@@ -512,5 +522,10 @@ class Ui_Form(object):
         self.obsidian.setText(QCoreApplication.translate("Form", u"Obsidian", None))
         self.label_5.setText(QCoreApplication.translate("Form", u"boost below", None))
         self.show_histogram.setText(QCoreApplication.translate("Form", u"Show Histogram", None))
+#if QT_CONFIG(tooltip)
+        self.label_11.setToolTip(QCoreApplication.translate("Form", u"Number of cores to use during calculations, high values might cause lag.", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_11.setText(QCoreApplication.translate("Form", u"CPU Cores:", None))
+        self.cpu_cores.setText(QCoreApplication.translate("Form", u"0", None))
     # retranslateUi
 

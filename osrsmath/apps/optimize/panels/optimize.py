@@ -6,6 +6,7 @@ from osrsmath.model.player import get_equipment_by_name
 import osrsmath.model.boosts as boosts
 import inspect
 import webbrowser
+import os
 from urllib.parse import quote
 from pathlib import Path
 from pprint import pprint
@@ -44,6 +45,7 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 				lambda o, v: {self.add_monster(name, monster) for name, monster in v.items()},
 				lambda v: self.data.monsters
 			),
+			'cpu_cores': Savable.LineEdit(self.cpu_cores, 0),
 			'training_skill': Savable.DropDown(self.training_skill, None),
 			'potions': Savable.DropDown(self.potions, None),
 			'potion_attributes': Savable.DropDown(self.potion_attributes, None),
@@ -81,7 +83,10 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		self.potions.currentIndexChanged.connect(self.on_potion_select)
 		self.boosting_scheme.currentIndexChanged.connect(self.on_boost_scheme_select)
 		self.prayers.currentIndexChanged.connect(self.on_prayer_select)
+		
 		self.redose_level.setValidator(QtGui.QIntValidator(0, 99))
+		self.cpu_cores.setValidator(QtGui.QIntValidator(0, os.cpu_count()))  # Apparently, it only validate the # of digits
+		self.cpu_cores.setToolTip(f'0 will use all cores. You have {os.cpu_count()}.')
 
 		self.on_boost_scheme_select()
 		self.on_potion_select()

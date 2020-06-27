@@ -2,7 +2,7 @@
     "monsters": {},
     "potions": "none",
     "potion_attributes": "accuracy and damage",
-    "boosting_scheme": "Dose After",
+    "boosting_scheme": "Constant",
     "below_skill": "attack",
     "redose_level": "7",
     "prayers": "none",
@@ -15,5 +15,6 @@
     "berserker_necklace": false,
     "dharok": "0",
     "salve_amulet": false,
-    "show_histogram": true
+    "show_histogram": false,
+    "cpu_cores": "0"
 }

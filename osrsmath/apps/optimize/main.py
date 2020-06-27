@@ -273,7 +273,8 @@ class GUI(Ui_MainWindow):
 				monsters,
 				sets,
 				include_shared_xp=False,
-				progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i))
+				progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)),
+				num_cores=int(self.optimize_panel.cpu_cores.text())
 			)
 			t2 = time.time()
 			self.update_status('Finished ...')

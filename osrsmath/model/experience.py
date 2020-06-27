@@ -21,7 +21,6 @@ def experience_required_to_level_up_to(level: int):
 	x = level - 1
 	return floor( x + 300 * 2**(x / 7) ) / 4
 
-
 def single_state_xp_rate(attack_style, max_hit, max_attack_roll, attack_speed, defenders: dict, model='MarkovChain'):
 	""" Returns the xp/h averaged across all defenders, given the attack is in a constant state. """
 	average = 0

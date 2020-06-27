@@ -408,6 +408,7 @@ class Ui_Monsters(object):
 
         self.xp_per_hit = QLineEdit(self.frame)
         self.xp_per_hit.setObjectName(u"xp_per_hit")
+        self.xp_per_hit.setEnabled(False)
 
         self.gridLayout_2.addWidget(self.xp_per_hit, 6, 2, 1, 1)
 
@@ -473,6 +474,9 @@ class Ui_Monsters(object):
         self.add.setText(QCoreApplication.translate("Monsters", u"Add", None))
         self.wiki_link.setText(QCoreApplication.translate("Monsters", u"See on Wiki", None))
         self.label_20.setText(QCoreApplication.translate("Monsters", u"xp/damage", None))
-        self.xp_per_hit.setText("")
+#if QT_CONFIG(tooltip)
+        self.xp_per_hit.setToolTip(QCoreApplication.translate("Monsters", u"Not supported, you may instead multiply your xp rate by the desired amount.", None))
+#endif // QT_CONFIG(tooltip)
+        self.xp_per_hit.setText(QCoreApplication.translate("Monsters", u"4", None))
     # retranslateUi
 

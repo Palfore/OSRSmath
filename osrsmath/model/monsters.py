@@ -154,7 +154,7 @@ def filter_monster(data):
 		'poisonous', 'immune_poison', 'immune_venom', 'weakness',
 		'attack_accuracy', 'max_hit',
 	]
-	filtered_data = {feature: data[feature] for feature in features_to_collect}
+	filtered_data = {feature: data.get(feature, None) for feature in features_to_collect}
 	filtered_data['attack_speed'] *= 0.6  # Convert attack_speed into [attacks/second]
 	return filtered_data
 

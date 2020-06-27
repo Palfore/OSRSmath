@@ -16,7 +16,7 @@ These application provide useful functionalities for end users. Once installed, 
 
 ### 2. Library
 
-For developers, they can use the basic functionalities (like modeling combat or potion boosts) to build their own applications. Within their own code the can import functionalities using `import osrsmath.model.[module_of_interest]`. Download the source, and check out the documentation for the modules at `OSRSmath/osrsmath/docs/html/osrsmath/index.html` to see what can be done.
+For developers, they can use the basic functionalities (like modeling combat or potion boosts) to build their own applications. The code is available on [PyPi](https://pypi.org/project/osrsmath/), and can be installed using `pip3 install osrsmath`. Within their own code the can import functionalities using `import osrsmath.model.[module_of_interest]`. Download the source, and check out the documentation for the modules at `OSRSmath/osrsmath/docs/html/osrsmath/index.html` to see what can be done.
 
 ### 3. Documentation
 
@@ -27,7 +27,7 @@ There are two methods. The **User** method is the easiest - but if it doesn't wo
 
 ### User
 
-Navigate to [GitHub releases](https://github.com/Palfore/OSRSmath/releases) and download the latest version.
+Navigate to [GitHub releases](https://github.com/Palfore/OSRSmath/releases) and download the latest version (Asset) for your system. Unzip, and run! You may be prompted with a security warning, I will look into removing this.
 
 ### Developer
 1. Open a terminal/command prompt.
@@ -62,13 +62,18 @@ These are instructions for creating app executables:
 4. Type `python3 package.py`.
 5. Symbolic links should then be created to `dist/main/main[.exe]`, the should be named osrsmath-[app_name].
 
+On MacOS, the application has to be signed. I don't know the Mac ecosystem very well, however these websites helped me:
+1. https://github.com/pyinstaller/pyinstaller/wiki/Recipe-OSX-Code-Signing
+2. https://stackoverflow.com/questions/16845169/error-when-trying-to-obtain-a-certificate-the-specified-item-could-not-be-found
+3. https://apple.stackexchange.com/questions/254380/why-am-i-getting-an-invalid-active-developer-path-when-attempting-to-use-git-a
+
 ### GUI Development:
 These are instructions for creating & modifying the GUI design:
 1. Use [QT designer](https://build-system.fman.io/qt-designer-download).
 2. Create or modify a `.ui` file in QT designer.
 3. Run `python -m osrsmath.apps.GUI.shared.util make` to compile them.
 
-### Latex
+### Documentation
 To compile the latex documents a latex compiler needs to be installed. [MiKTeX](https://miktex.org/download) is a good cross-platform option. Alternatively, on linux you could simply type `sudo apt-get install texlive-full`.
 
 The central document can be compiled with `pdflatex main.tex`.

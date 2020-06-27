@@ -73,7 +73,8 @@ setup(
 		'Dijkstar',
 		'requests',
 		'tornado',
-		'multiprocess'
+		'multiprocess',
+                'jsoncomment',
 	],  # Developers may need PyInstaller, and Pdoc3
 	python_requires='>=3',
 )
