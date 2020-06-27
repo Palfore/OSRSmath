@@ -29,7 +29,8 @@ There are two methods. The **User** method is the easiest - but if it doesn't wo
 
 ### User
 
-Navigate to [GitHub releases](https://github.com/Palfore/OSRSmath/releases) and download the latest version (Asset) for your system. Unzip, and run! You may be prompted with a security warning, I will look into removing this.
+If you have [`python3`](https://www.python.org/downloads/) already installed, you can simply type, into a terminal/command prompt: `pip3 install osrsmath` to install the library, then `python3 -m osrsmath.apps.[app_name].main` to run it.
+If you do not have it installed either install it or you can download these executables, although there may be some installation issues. To do this, navigate to [GitHub releases](https://github.com/Palfore/OSRSmath/releases) and download the latest version (Asset) for your system. Unzip, and run!
 
 ### Developer
 1. Open a terminal/command prompt.
