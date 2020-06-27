@@ -2,6 +2,8 @@
 
 The purpose of this project is to accurately model [Old School Runescape](https://oldschool.runescape.com/) mechanics in order to optimize or analyze game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. In particular, combat is a particularly rewarding application, as very complex problems that were previously unsolved for decades can now be.
 
+If you're interested, you can join the [discord](https://discord.gg/4SXcKQh) to discuss anything!
+
 There are three components to this project:
 
 ### 1. Applications
