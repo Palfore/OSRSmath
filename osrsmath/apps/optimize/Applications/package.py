@@ -7,7 +7,7 @@ import osrsmath.config as config
 import platform
 import shutil
 import sys
-top = platform.system()
+top = system = platform.system()
 
 def compile():
 	try:
@@ -35,6 +35,19 @@ def compile():
 		command = f'''{sys.executable} -m PyInstaller {json.dumps(args).replace('"', '').replace(',', '')[1:-1]}'''
 		print(command)
 		os.system(command)
+
+		if system in ['Linux', 'Darwin']:
+			# Create shortcut, I could not get symlinks to work.
+			# This wont work if they don't execute from the top directory.
+			with open('osrsmath-optimize', 'w') as f:
+				f.write('#!/bin/sh\n')
+				f.write('cd "$(dirname $0)/dist/main && ./main')
+			os.system('chmod +x osrsmath-optimize')
+		elif system == 'Windows':
+			os.system(R'mklink "osrsmath-optimize" "dist\main\main.exe"')
+
+
+
 	except Exception as e:
 		print(e)
 	finally:
