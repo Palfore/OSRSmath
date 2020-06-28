@@ -12,8 +12,9 @@ These application provide useful functionalities for end users. Once installed, 
 
 | Application        | Module Location           | Description  |
 | ------------- |:-------------:| :-----|
-| Path | `osrsmath.apps.path.main` | What is the most mathematically efficient way to get from a set of starting attack, strength, and defence levels, to a final set of levels? This is currently not user-friendly. |
 | Optimize | `osrsmath.apps.optimize.main` | What is the most efficient equipment to wear when fighting a given opponent? |
+
+[//]: # (| Path | `osrsmath.apps.path.main` | What is the most mathematically efficient way to get from a set of starting attack, strength, and defence levels, to a final set of levels? This is currently not user-friendly. |)
 
 
 ### 2. Library
