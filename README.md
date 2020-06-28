@@ -33,7 +33,7 @@ This application was written in the programming language [`Python`](https://www.
 
 1. To install `Python` simply visit the [download page](https://www.python.org/downloads/).
 2. Once it is installed, open a terminal (MacOS/Linux) or command prompt (Windows). 
-3. Type the command `pip3 install osrsmath` to install this program.
+3. Type the command `pip3 install --update pip` then `pip3 install osrsmath` to install this program.
 4. Then type `python3 -m osrsmath.apps.[app_name].main` to run an application. For example, replace `[app_name]` with `optimize` to run the optimize application.
 
 You might also consider trying the executables directly, although there are currently installation issues, particularly on MacOS so this isn't currently recommended. To do this, navigate to [GitHub releases](https://github.com/Palfore/OSRSmath/releases) and download the latest version (Asset) for your system. Unzip, and run!
