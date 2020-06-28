@@ -25,12 +25,17 @@ For developers, they can use the basic functionalities (like modeling combat or 
 Coherent and comprehensive documentation doesn't really exist regarding the math behind osrs. This project provides a [document](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/main.pdf) that attempts to fill this gap. It also documents its source code, which can be viewed by downloading the source and navigating to `osrsmath/docs/html/osrsmath/index.html`. In future, it would be nice to host this online.
 
 ## Installing
-There are two methods. The **User** method is the easiest - but if it doesn't work please let me know and you can use the **Developer** instructions instead, which should still be easy to follow.
 
 ### User
 
-If you have [`python3`](https://www.python.org/downloads/) already installed, you can simply type, into a terminal/command prompt: `pip3 install osrsmath` to install the library, then `python3 -m osrsmath.apps.[app_name].main` to run it.
-If you do not have it installed either install it or you can download these executables, although there may be some installation issues. To do this, navigate to [GitHub releases](https://github.com/Palfore/OSRSmath/releases) and download the latest version (Asset) for your system. Unzip, and run!
+This application was written in the programming language [`Python`](https://www.python.org/), which has two major version. `python3` is the version used here, more specifically any version greater than `3.6.3` should work (the latest is best). 
+
+1. To install `Python` simply visit the [download page](https://www.python.org/downloads/).
+2. Once it is installed, open a terminal (MacOS/Linux) or command prompt (Windows). 
+3. Type the command `pip3 install osrsmath` to install this program.
+4. Then type `python3 -m osrsmath.apps.[app_name].main` to run an application. For example, replace `[app_name]` with `optimize` to run the optimize application.
+
+You might also consider trying the executables directly, although there are currently installation issues, particularly on MacOS. To do this, navigate to [GitHub releases](https://github.com/Palfore/OSRSmath/releases) and download the latest version (Asset) for your system. Unzip, and run!
 
 ### Developer
 1. Open a terminal/command prompt.
