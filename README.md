@@ -2,6 +2,8 @@
 
 The purpose of this project is to accurately model [Old School Runescape](https://oldschool.runescape.com/) mechanics in order to optimize or analyze game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. In particular, combat is a particularly rewarding application, as very complex problems that were previously unsolved for decades can now be.
 
+If you're interested, you can join the [discord](https://discord.gg/4SXcKQh) to discuss anything!
+
 There are three components to this project:
 
 ### 1. Applications
@@ -10,8 +12,9 @@ These application provide useful functionalities for end users. Once installed, 
 
 | Application        | Module Location           | Description  |
 | ------------- |:-------------:| :-----|
-| Path | `osrsmath.apps.path.main` | What is the most mathematically efficient way to get from a set of starting attack, strength, and defence levels, to a final set of levels? This is currently not user-friendly. |
 | Optimize | `osrsmath.apps.optimize.main` | What is the most efficient equipment to wear when fighting a given opponent? |
+
+[//]: # (| Path | `osrsmath.apps.path.main` | What is the most mathematically efficient way to get from a set of starting attack, strength, and defence levels, to a final set of levels? This is currently not user-friendly. |)
 
 
 ### 2. Library
@@ -23,11 +26,17 @@ For developers, they can use the basic functionalities (like modeling combat or 
 Coherent and comprehensive documentation doesn't really exist regarding the math behind osrs. This project provides a [document](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/main.pdf) that attempts to fill this gap. It also documents its source code, which can be viewed by downloading the source and navigating to `osrsmath/docs/html/osrsmath/index.html`. In future, it would be nice to host this online.
 
 ## Installing
-There are two methods. The **User** method is the easiest - but if it doesn't work please let me know and you can use the **Developer** instructions instead, which should still be easy to follow.
 
 ### User
 
-Navigate to [GitHub releases](https://github.com/Palfore/OSRSmath/releases) and download the latest version (Asset) for your system. Unzip, and run! You may be prompted with a security warning, I will look into removing this.
+This application was written in the programming language [`Python`](https://www.python.org/), which has two major version. `python3` is the version used here, more specifically any version greater than `3.6.3` should work (the latest is best). 
+
+1. To install `Python` simply visit the [download page](https://www.python.org/downloads/).
+2. Once it is installed, open a terminal (MacOS/Linux) or command prompt (Windows). 
+3. Type the command `pip3 install --update pip` then `pip3 install osrsmath` to install this program.
+4. Then type `python3 -m osrsmath.apps.[app_name].main` to run an application. For example, replace `[app_name]` with `optimize` to run the optimize application.
+
+You might also consider trying the executables directly, although there are currently installation issues, particularly on MacOS so this isn't currently recommended. To do this, navigate to [GitHub releases](https://github.com/Palfore/OSRSmath/releases) and download the latest version (Asset) for your system. Unzip, and run!
 
 ### Developer
 1. Open a terminal/command prompt.
