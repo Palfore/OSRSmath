@@ -294,20 +294,20 @@ class Equipment:
 	def berserker_necklace():
 		return {
 			'strength': 1.2,
-			'attack': 1.2,
+			'attack': 1.0,
 		}
 
 	@staticmethod
 	def obsidian_and_necklace():
 		return {
 			'strength': 1.3,
-			'attack': 1.3,
+			'attack': 1.1,
 		}
 
 	@staticmethod
 	def dharok(hp_lost):
 		return {
-			'strength': 1+(hp_lost/100)
+			'strength': 1 + (hp_lost / 100)
 		}
 
 class BoostingSchemes:
