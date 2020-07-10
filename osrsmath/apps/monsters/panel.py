@@ -1,8 +1,8 @@
 from osrsmath.apps.GUI.monsters.monsters_skeleton import Ui_Monsters
 from PySide2 import QtCore, QtGui, QtWidgets
-import osrsmath.model.monsters as monsters
+import osrsmath.combat.monsters as monsters
 import webbrowser
-from osrsmath.model.experience import combat_level
+from osrsmath.combat.experience import combat_level
 from pprint import pprint
 
 NMZ_BOSSES = [

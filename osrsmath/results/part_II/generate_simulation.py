@@ -7,7 +7,7 @@ import inspect
 import json
 import os
 import osrsmath.config as config
-from osrsmath.model.successful_hits import Simulation
+from osrsmath.combat.successful_hits import Simulation
 
 ## Multi-processing boiler plate, that allows for lambda's
 _func = None

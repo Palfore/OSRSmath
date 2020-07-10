@@ -3,7 +3,7 @@ from osrsmath.apps.optimize.logic.gear import (
 	get_offensive_bonuses, get_offensive_melee_equipment, get_equipable_gear, meets_requirements, Weapon
 )
 from osrsmath.apps.optimize.logic.evaluation import mmap, eval_set
-from osrsmath.model.player import get_equipment_by_name
+from osrsmath.combat.player import get_equipment_by_name
 from collections import defaultdict
 from pprint import pprint
 import itertools

@@ -19,7 +19,7 @@ import json
 import os
 
 import osrsmath.config as config
-import osrsmath.model.damage as damage
+import osrsmath.combat.damage as damage
 
 MONSTER_LIST_BASE_URL = "https://raw.githubusercontent.com/osrsbox/osrsbox-db/master/docs"
 
@@ -113,8 +113,8 @@ def get_monster_data(force_update=False):
 
 	# print(os.getcwd(), __file__, Path(), Path(__file__), sys.argv[0], config.DATA_PATH)
 	# file_path = os.path.join(config.DATA_PATH, file_name)
-	# file_path = 'DATA/model/data/'+file_name
-	file_path = config.resource_path(f"model/data/{file_name}")
+	# file_path = 'DATA/combat/data/'+file_name
+	file_path = config.resource_path(f"combat/data/{file_name}")
 	if not os.path.exists(file_path) or force_update:
 		r = requests.get(os.path.join(MONSTER_LIST_BASE_URL, file_name))
 		if r.status_code != 200:

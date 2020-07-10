@@ -1,6 +1,6 @@
-import osrsmath.model.successful_hits as successful_hits
-from osrsmath.model.rates import experience_per_hour
-from osrsmath.model.damage import accuracy
+import osrsmath.combat.successful_hits as successful_hits
+from osrsmath.combat.rates import experience_per_hour
+from osrsmath.combat.damage import accuracy
 from math import floor
 
 def combat_level(stats: dict, integer=True):
@@ -47,9 +47,9 @@ def time_to_level(current_level, experience_rate):
 	return experience_required_to_level_up_to(current_level + 1) / experience_rate
 
 if __name__ == '__main__':
-	from osrsmath.model.player import PlayerBuilder
-	from osrsmath.model.boosts import BoostingSchemes
-	from osrsmath.model.monsters import Monster
+	from osrsmath.combat.player import PlayerBuilder
+	from osrsmath.combat.boosts import BoostingSchemes
+	from osrsmath.combat.monsters import Monster
 
 	player = PlayerBuilder({"attack": 70, "strength": 90, "defence": 70}).equip([
 		"Dragon Scimitar",

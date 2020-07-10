@@ -1,5 +1,5 @@
-from osrsmath.model.damage import *
-from osrsmath.model.boosts import *
+from osrsmath.combat.damage import *
+from osrsmath.combat.boosts import *
 import unittest
 
 class TestAccuracy(unittest.TestCase):

@@ -1,4 +1,4 @@
-from osrsmath.model.rates import *
+from osrsmath.combat.rates import *
 import unittest
 
 class FakeModel:

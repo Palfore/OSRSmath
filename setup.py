@@ -36,7 +36,7 @@ with open('README.md') as f:
 
 setup(
 	name='osrsmath',
-	version='0.1.6',
+	version='0.0.3.2',
 	packages=find_packages(),
 	description="Mathematical Functions & Optimization Calculations for OSRS",
 	long_description_content_type='text/markdown',

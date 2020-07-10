@@ -1,5 +1,5 @@
-from osrsmath.model.player import PlayerBuilder
-from osrsmath.model.experience import xp_rate
+from osrsmath.combat.player import PlayerBuilder
+from osrsmath.combat.experience import xp_rate
 import multiprocess
 import time
 

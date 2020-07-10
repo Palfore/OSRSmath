@@ -16,10 +16,11 @@ These application provide useful functionalities for end users. Once installed, 
 
 [//]: # (| Path | `osrsmath.apps.path.main` | What is the most mathematically efficient way to get from a set of starting attack, strength, and defence levels, to a final set of levels? This is currently not user-friendly. |)
 
+![The optimize app.](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/apps/optimize/images/interface.png "The optimize app.")
 
 ### 2. Library
 
-For developers, they can use the basic functionalities (like modeling combat or potion boosts) to build their own applications. The code is available on [PyPi](https://pypi.org/project/osrsmath/), and can be installed using `pip3 install osrsmath`. Within their own code the can import functionalities using `import osrsmath.model.[module_of_interest]`. Download the source, and check out the documentation for the modules at `OSRSmath/osrsmath/docs/html/osrsmath/index.html` to see what can be done.
+For developers, they can use the basic functionalities (like modeling combat or potion boosts) to build their own applications. The code is available on [PyPi](https://pypi.org/project/osrsmath/), and can be installed using `pip3 install osrsmath`. Within their own code the can import functionalities using `import osrsmath.[module_of_interest]`. Download the source, and check out the documentation for the modules at `OSRSmath/osrsmath/docs/html/osrsmath/index.html` to see what can be done.
 
 ### 3. Documentation
 

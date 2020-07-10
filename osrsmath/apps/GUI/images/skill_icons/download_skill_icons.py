@@ -1,4 +1,4 @@
-from osrsmath.model.general.skills import get_skills
+from osrsmath.general.skills import get_skills
 import requests
 from pprint import pprint
 

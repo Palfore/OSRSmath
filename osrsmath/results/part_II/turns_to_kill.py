@@ -1,4 +1,4 @@
-from osrsmath.model.successful_hits import *
+from osrsmath.combat.successful_hits import *
 from matplotlib import cm
 import matplotlib.pyplot as plt
 import osrsmath.config as config

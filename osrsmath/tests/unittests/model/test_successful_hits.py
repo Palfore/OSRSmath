@@ -5,7 +5,7 @@
 
 	The Simulation model is not tested since it is stochastic, and the true values can only be known through simulation. """
 
-from osrsmath.model.successful_hits import *
+from osrsmath.combat.successful_hits import *
 import unittest
 import numpy as np
 import math

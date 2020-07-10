@@ -1,6 +1,6 @@
 from osrsmath.results.part_II.colors import colors
 from osrsmath.results.part_II.generate_simulation import load_dataset
-import osrsmath.model.successful_hits as sh
+import osrsmath.combat.successful_hits as sh
 
 import matplotlib as mpl
 import matplotlib.colors as clrs

@@ -21,7 +21,7 @@ def compile():
 		original_data_path = Path(config.TOP)
 		new_data_path = Path('DATA/')
 		additional_data = [
-			'model/data/',
+			'combat/data/',
 			'apps/GUI/shared/stylesheets',
 			'apps/optimize/data',
 		]

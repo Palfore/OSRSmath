@@ -1,4 +1,4 @@
-import osrsmath.model.damage as damage
+import osrsmath.combat.damage as damage
 from matplotlib import cm
 import matplotlib.pyplot as plt
 import osrsmath.config as config

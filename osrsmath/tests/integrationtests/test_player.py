@@ -1,7 +1,7 @@
-from osrsmath.model.player import *
-from osrsmath.model.monsters import *
-from osrsmath.model.boosts import *
-from osrsmath.model.experience import single_state_xp_rate, xp_rate, time_to_level
+from osrsmath.combat.player import *
+from osrsmath.combat.monsters import *
+from osrsmath.combat.boosts import *
+from osrsmath.combat.experience import single_state_xp_rate, xp_rate, time_to_level
 import unittest
 
 

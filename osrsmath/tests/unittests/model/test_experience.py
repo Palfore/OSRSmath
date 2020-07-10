@@ -1,4 +1,4 @@
-from osrsmath.model.experience import *
+from osrsmath.combat.experience import *
 import unittest
 
 XP_TABLE = {  # https://oldschool.runescape.wiki/w/Experience

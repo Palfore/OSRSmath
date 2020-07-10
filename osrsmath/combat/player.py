@@ -12,9 +12,9 @@ import json
 import os
 
 import osrsmath.config as config
-import osrsmath.model.damage as damage
-import osrsmath.model.boosts as boosts
-import osrsmath.model.experience as experience
+import osrsmath.combat.damage as damage
+import osrsmath.combat.boosts as boosts
+import osrsmath.combat.experience as experience
 
 SLOT_BASE_URL = "https://raw.githubusercontent.com/osrsbox/osrsbox-db/master/docs/items-json-slot"
 SLOTS = ['2h', 'ammo', 'body', 'cape', 'feet', 'hands', 'head', 'legs', 'neck', 'ring', 'shield', 'weapon']
@@ -249,7 +249,7 @@ def get_equipment_slot_data(slot, force_update=False):
 	# print(os.getcwd(), sys.argv[0], config.DATA_PATH)
 	file_name = f'items-{slot}.json'
 	# file_path = os.path.join(config.DATA_PATH, file_name)
-	file_path = config.resource_path(f"model/data/{file_name}")
+	file_path = config.resource_path(f"combat/data/{file_name}")
 	if not os.path.exists(file_path) or force_update:
 		r = requests.get(os.path.join(SLOT_BASE_URL, file_name))
 

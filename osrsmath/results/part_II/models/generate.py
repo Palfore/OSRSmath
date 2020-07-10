@@ -1,5 +1,5 @@
 from osrsmath.results.part_II.colors import colors
-from osrsmath.model.successful_hits import *
+from osrsmath.combat.successful_hits import *
 from osrsmath.results.part_II.generate_simulation import load_dataset
 from pprint import pprint
 from mpl_toolkits.mplot3d import Axes3D

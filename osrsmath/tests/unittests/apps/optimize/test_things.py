@@ -5,7 +5,7 @@
 
 """
 from osrsmath.apps.optimize import *
-from osrsmath.model.player import get_equipment_data, get_equipment_by_name
+from osrsmath.combat.player import get_equipment_data, get_equipment_by_name
 import unittest
 
 EQ = get_equipment_data()

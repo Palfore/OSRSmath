@@ -2,8 +2,8 @@ from osrsmath.apps.GUI.optimize.optimize_skeleton import Ui_Form
 from osrsmath.apps.GUI.shared.widgets import Savable
 from PySide2 import QtCore, QtGui, QtWidgets
 
-from osrsmath.model.player import get_equipment_by_name
-import osrsmath.model.boosts as boosts
+from osrsmath.combat.player import get_equipment_by_name
+import osrsmath.combat.boosts as boosts
 import inspect
 import webbrowser
 import os

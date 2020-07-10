@@ -1,4 +1,4 @@
-r""" Extends `osrsmath.model.successful_hits` by considering accuracy \(a\).
+r""" Extends `osrsmath.combat.successful_hits` by considering accuracy \(a\).
 
 	A distinction is made between a 'successful hit' and an 'attempted hit'.
 	An attempted hit means an attack has been made (regardless of whether a damage roll
@@ -11,7 +11,7 @@ r""" Extends `osrsmath.model.successful_hits` by considering accuracy \(a\).
 # pylint: disable=multiple-statements
 # pylint: disable=invalid-name  # Several math-related one letter names are okay
 
-import osrsmath.model.successful_hits as successful_hits
+import osrsmath.combat.successful_hits as successful_hits
 
 def health_after_attacks(n: float, h_0: float, M: int, a: float, model: successful_hits.Model) -> float:
 	r""" Calculates the health of an opponent after a given number of attack attempts.
@@ -20,7 +20,7 @@ def health_after_attacks(n: float, h_0: float, M: int, a: float, model: successf
 		h_0: The initial health of the opponent \( h_0 \in [1, \infty) \).
 		M: The max hit of the attacker \( M \in [1, \infty) \).
 		a: The accuracy of the attacker \( a \in [0, 1]\).
-	 	model: The subclass of `osrsmath.model.successful_hits.Model` to be used for sucessful hit calculations.
+	 	model: The subclass of `osrsmath.combat.successful_hits.Model` to be used for sucessful hit calculations.
 	Returns:
 		The health after \( n \) attacks.
 	Raises:
@@ -38,7 +38,7 @@ def attacks_until_health(h: float, h_0: float, M: int, a: float, model: successf
 		h_0: The initial health of the opponent \( h_0 \in [1, \infty) \).
 		M: The max hit of the attacker \( M \in [1, \infty) \).
 		a: The accuracy of the attacker \( a \in [0, 1]\).
-	 	model: The subclass of `osrsmath.model.successful_hits.Model` to be used for sucessful hit calculations.
+	 	model: The subclass of `osrsmath.combat.successful_hits.Model` to be used for sucessful hit calculations.
 	Returns:
 		The number of attacks to get to \(h\) health.
 	Raises:
@@ -50,7 +50,7 @@ def attacks_until_health(h: float, h_0: float, M: int, a: float, model: successf
 def attacks_to_kill(h_0: float, M: float, a: float, model: successful_hits.Model) -> float:
 	r""" Calculates the number of turns kill an opponent.
 
-	Note that for some `osrsmath.model.successful_hits.Model`'s, `attacks_to_kill` is calculated
+	Note that for some `osrsmath.combat.successful_hits.Model`'s, `attacks_to_kill` is calculated
 	differently than `attacks_until_health`, with \(h=0\). For that reason, this function should be used
 	if it is the desired quantity.
 
@@ -59,7 +59,7 @@ def attacks_to_kill(h_0: float, M: float, a: float, model: successful_hits.Model
 		h_0: The initial health of the opponent \( h_0 \in [1, \infty) \).
 		M: The max hit of the attacker \( M \in [1, \infty) \).
 		a: The accuracy of the attacker \( a \in [0, 1]\).
-	 	model: The subclass of `osrsmath.model.successful_hits.Model` to be used for sucessful hit calculations.
+	 	model: The subclass of `osrsmath.combat.successful_hits.Model` to be used for sucessful hit calculations.
 	Returns:
 		The number of attacks to kill an opponent.
 	Raises:

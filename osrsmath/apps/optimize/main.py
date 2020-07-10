@@ -4,8 +4,8 @@ multiprocess.freeze_support()
 from osrsmath.apps.optimize.gui_single import Ui_MainWindow
 from pathlib import Path
 
-from osrsmath.model.player import Player, get_equipment_data
-from osrsmath.model.monsters import get_monster_data
+from osrsmath.combat.player import Player, get_equipment_data
+from osrsmath.combat.monsters import get_monster_data
 from pprint import pprint as pp
 from PySide2 import QtCore, QtGui, QtWidgets
 
@@ -219,8 +219,8 @@ class GUI(Ui_MainWindow):
 
 	def on_evaluate(self):
 		from osrsmath.apps.optimize.logic.optimize import get_sets, get_best_set
-		from osrsmath.model.monsters import Monster
-		from osrsmath.model.boosts import BoostingSchemes, Prayers, Potions
+		from osrsmath.combat.monsters import Monster
+		from osrsmath.combat.boosts import BoostingSchemes, Prayers, Potions
 		import time
 
 		try:

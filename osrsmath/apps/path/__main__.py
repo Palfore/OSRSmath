@@ -1,7 +1,7 @@
 from osrsmath.apps.path.path import *
 from osrsmath.apps.path.printers import *
-from osrsmath.model.player import get_equipment_data
-from osrsmath.model.boosts import BoostingSchemes, Potions
+from osrsmath.combat.player import get_equipment_data
+from osrsmath.combat.boosts import BoostingSchemes, Potions
 from pprint import pprint
 import copy
 
@@ -64,7 +64,7 @@ if __name__ == '__main__':
 
 	### Optimal Equipment
 	from timeit import default_timer
-	from osrsmath.model.boosts import Prayers, Potions
+	from osrsmath.combat.boosts import Prayers, Potions
 	start = default_timer()
 	tree = Tree((90, 90, 99), (99, 99, 99), print_progress=False)
 	path = get_solution(tree, lambda p: BoostingSchemes(p, Prayers.none).constant(Potions.overload, ('damage', 'accuracy')), defenders_, equipment_data_, equipment=None)
