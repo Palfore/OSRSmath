@@ -36,7 +36,7 @@ with open('README.md') as f:
 
 setup(
 	name='osrsmath',
-	version='0.0.3.2',
+	version='0.0.3.3',
 	packages=find_packages(),
 	description="Mathematical Functions & Optimization Calculations for OSRS",
 	long_description_content_type='text/markdown',
@@ -47,9 +47,14 @@ setup(
 	license='MIT',
 	keywords='math optimization old school runescape',
 	package_data={
-		"osrsmath": ["osrsmath/apps/GUI/shared/stylesheets/darkorange/darkorange.css"]
-		# "": ["osrsmath/*.json", "Data/*.dat"],
+		"osrsmath": [
+			"apps/GUI/shared/stylesheets",
+			"apps/GUI/shared/stylesheets/*",
+			"apps/optimize/data/*",
+			"combat/data/*",
+		],
 	},
+	# inlcude_package_data=True,
 	classifiers=[
 	 	'Development Status :: 2 - Pre-Alpha',
 		'Intended Audience :: Developers',

@@ -1,39 +1,20 @@
 {
-    "monsters": {
-        "baby blue dragon": {
-            "levels": {
-                "hitpoints": 50,
-                "attack": 40,
-                "strength": 40,
-                "defence": 40,
-                "ranged": 1,
-                "magic": 1
-            },
-            "stats": {
-                "defence_stab": 30,
-                "defence_slash": 50,
-                "defence_crush": 50,
-                "defence_magic": 40,
-                "defence_ranged": 30
-            },
-            "xp_per_damage": 4.0
-        }
-    },
-    "potions": "super",
+    "monsters": {},
+    "potions": "none",
     "potion_attributes": "accuracy and damage",
     "boosting_scheme": "Constant",
     "below_skill": "attack",
     "redose_level": "7",
-    "prayers": "piety",
+    "prayers": "none",
     "prayer_attributes": "accuracy and damage",
     "training_skill": "attack",
     "slayer_helm": false,
     "obsidian": false,
-    "void_knight": true,
-    "elite_void": true,
+    "void_knight": false,
+    "elite_void": false,
     "berserker_necklace": false,
     "dharok": "0",
     "salve_amulet": false,
     "show_histogram": false,
-    "cpu_cores": "10"
+    "cpu_cores": "0"
 }

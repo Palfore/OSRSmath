@@ -14,6 +14,7 @@
 		        interpret this. I assume crush because the monsters I've seen with this use their fist.
 """
 from pprint import pprint
+from pathlib import Path
 import requests
 import json
 import os
@@ -106,17 +107,10 @@ class Monster:
 
 
 def get_monster_data(force_update=False):
-	file_name = f'monsters-complete.json'
-	import sys
-	import os
-	from pathlib import Path
-
-	# print(os.getcwd(), __file__, Path(), Path(__file__), sys.argv[0], config.DATA_PATH)
-	# file_path = os.path.join(config.DATA_PATH, file_name)
-	# file_path = 'DATA/combat/data/'+file_name
-	file_path = config.resource_path(f"combat/data/{file_name}")
-	if not os.path.exists(file_path) or force_update:
-		r = requests.get(os.path.join(MONSTER_LIST_BASE_URL, file_name))
+	file_name = 'monsters-complete.json'
+	file_path = config.resource_path(Path(f"combat/data/{file_name}"))
+	if not file_path.exists() or force_update:
+		r = requests.get(MONSTER_LIST_BASE_URL+'/'+file_name)
 		if r.status_code != 200:
 			raise ValueError("Unable to retrieve monster data.")
 		with open(file_path, 'w') as f:

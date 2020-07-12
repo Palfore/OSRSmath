@@ -4,7 +4,7 @@ import pathlib
 from pathlib import Path
 
 TOP = os.path.join(os.path.dirname(sys.argv[0]), 'DATA') if getattr(sys, 'frozen', False) else os.path.dirname(__file__)
-DATA_PATH = os.path.join(TOP, 'combat/data')
+DATA_PATH = os.path.join(TOP, 'combat', 'data')
 RESULTS_PATH = os.path.join(TOP, 'results')
 
 def resource_path(path):

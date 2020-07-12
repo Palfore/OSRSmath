@@ -22,8 +22,8 @@ def run(main_gui_class):
 	MainWindow.show()
 
 	app.setStyle('Fusion')
-	stylesheet_file = config.resource_path("apps/GUI/shared/stylesheets/darkorange.css")
-	with open(os.path.abspath(stylesheet_file), "r") as f:
+	stylesheet_file = config.resource_path(Path("apps/GUI/shared/stylesheets/darkorange.css"))
+	with open(stylesheet_file) as f:
 		MainWindow.setStyleSheet(f.read())
 
 	# APPLICATION EXIT

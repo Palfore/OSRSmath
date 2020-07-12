@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.3.3
+### Changed
+- Fixed some file path issues
+
 ## 0.0.3.2
 ### Changed
 - Moved 'osrsmath.model' to 'osrsmath.combat'
