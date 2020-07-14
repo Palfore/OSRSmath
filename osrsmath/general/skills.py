@@ -1,7 +1,11 @@
-def get_skills(lower=False):
-	''' Returns a list of the skill names in the order listed on the highscores.
-		@see https://secure.runescape.com/m=hiscore_oldschool/overall
-		@param lower If the skills should be lowercase or titlecase. '''
+""" This module provides useful information about the skills. """
+
+def get_skills(lower: bool=False):
+	""" Returns a list of the skill names in the order listed on the highscores.
+	
+	See https://secure.runescape.com/m=hiscore_oldschool/overall
+	Args:
+		lower: If the skills should be lowercase or titlecase. """
 	skills = [
 		"Attack",
 		"Defence",
@@ -29,9 +33,11 @@ def get_skills(lower=False):
 	]
 	return [s.lower() for s in skills] if lower else skills
 
-def get_combat_skills(lower=False):
-	''' Returns a list of the skills that contribute to combat level in no particular order.
-		@param lower If the skills should be lowercase or titlecase. '''
+def get_combat_skills(lower: bool=False):
+	""" Returns a list of the skills that contribute to combat level in no particular order.
+		
+	Args:
+		lower: If the skills should be lowercase or titlecase. """
 	skills = [
 		"Attack",
 		"Strength",

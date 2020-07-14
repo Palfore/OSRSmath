@@ -29,10 +29,11 @@
 from osrsmath.apps.GUI.shared.widgets import Savable
 from PySide2 import QtCore, QtGui, QtWidgets
 
-from osrsmath.model.player import get_equipment_by_name
-import osrsmath.model.boosts as boosts
+from osrsmath.combat.player import get_equipment_by_name
+import osrsmath.combat.boosts as boosts
 import inspect
 import webbrowser
+import os
 from urllib.parse import quote
 from pathlib import Path
 from pprint import pprint
@@ -71,6 +72,7 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
                                 lambda o, v: {self.add_monster(name, monster) for name, monster in v.items()},
                                 lambda v: self.data.monsters
                         ),
+                        &#39;cpu_cores&#39;: Savable.LineEdit(self.cpu_cores, 0),
                         &#39;training_skill&#39;: Savable.DropDown(self.training_skill, None),
                         &#39;potions&#39;: Savable.DropDown(self.potions, None),
                         &#39;potion_attributes&#39;: Savable.DropDown(self.potion_attributes, None),
@@ -82,6 +84,8 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 
                         **{s: Savable.CheckBox(getattr(self, s), True) for s in self.special_sets if s != &#39;dharok&#39;},
                         &#39;dharok&#39;: Savable.LineEdit(self.dharok, 1),
+
+                        &#39;show_histogram&#39;: Savable.CheckBox(self.show_histogram, False), 
                 }
 
                 for slot in [&#39;head&#39;, &#39;cape&#39;, &#39;neck&#39;, &#39;ammo&#39;, &#39;weapon&#39;, &#39;body&#39;, &#39;legs&#39;, &#39;hands&#39;, &#39;feet&#39;, &#39;ring&#39;]:
@@ -106,7 +110,10 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
                 self.potions.currentIndexChanged.connect(self.on_potion_select)
                 self.boosting_scheme.currentIndexChanged.connect(self.on_boost_scheme_select)
                 self.prayers.currentIndexChanged.connect(self.on_prayer_select)
+                
                 self.redose_level.setValidator(QtGui.QIntValidator(0, 99))
+                self.cpu_cores.setValidator(QtGui.QIntValidator(0, os.cpu_count()))  # Apparently, it only validate the # of digits
+                self.cpu_cores.setToolTip(f&#39;0 will use all cores. You have {os.cpu_count()}.&#39;)
 
                 self.on_boost_scheme_select()
                 self.on_potion_select()
@@ -114,6 +121,8 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 
                 # Allow the delete key to remove the selected opponent
                 shortcut = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Delete), self.opponents);
+                shortcut.activated.connect(self.remove_selected_monster)
+                shortcut = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Backspace), self.opponents); # For mac
                 shortcut.activated.connect(self.remove_selected_monster)
 
         def get_selected_sets(self):
@@ -260,6 +269,7 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
                                 lambda o, v: {self.add_monster(name, monster) for name, monster in v.items()},
                                 lambda v: self.data.monsters
                         ),
+                        &#39;cpu_cores&#39;: Savable.LineEdit(self.cpu_cores, 0),
                         &#39;training_skill&#39;: Savable.DropDown(self.training_skill, None),
                         &#39;potions&#39;: Savable.DropDown(self.potions, None),
                         &#39;potion_attributes&#39;: Savable.DropDown(self.potion_attributes, None),
@@ -271,6 +281,8 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 
                         **{s: Savable.CheckBox(getattr(self, s), True) for s in self.special_sets if s != &#39;dharok&#39;},
                         &#39;dharok&#39;: Savable.LineEdit(self.dharok, 1),
+
+                        &#39;show_histogram&#39;: Savable.CheckBox(self.show_histogram, False), 
                 }
 
                 for slot in [&#39;head&#39;, &#39;cape&#39;, &#39;neck&#39;, &#39;ammo&#39;, &#39;weapon&#39;, &#39;body&#39;, &#39;legs&#39;, &#39;hands&#39;, &#39;feet&#39;, &#39;ring&#39;]:
@@ -295,7 +307,10 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
                 self.potions.currentIndexChanged.connect(self.on_potion_select)
                 self.boosting_scheme.currentIndexChanged.connect(self.on_boost_scheme_select)
                 self.prayers.currentIndexChanged.connect(self.on_prayer_select)
+                
                 self.redose_level.setValidator(QtGui.QIntValidator(0, 99))
+                self.cpu_cores.setValidator(QtGui.QIntValidator(0, os.cpu_count()))  # Apparently, it only validate the # of digits
+                self.cpu_cores.setToolTip(f&#39;0 will use all cores. You have {os.cpu_count()}.&#39;)
 
                 self.on_boost_scheme_select()
                 self.on_potion_select()
@@ -303,6 +318,8 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 
                 # Allow the delete key to remove the selected opponent
                 shortcut = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Delete), self.opponents);
+                shortcut.activated.connect(self.remove_selected_monster)
+                shortcut = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Backspace), self.opponents); # For mac
                 shortcut.activated.connect(self.remove_selected_monster)
 
         def get_selected_sets(self):

@@ -31,8 +31,8 @@ multiprocess.freeze_support()
 from osrsmath.apps.optimize.gui_single import Ui_MainWindow
 from pathlib import Path
 
-from osrsmath.model.player import Player, get_equipment_data
-from osrsmath.model.monsters import get_monster_data
+from osrsmath.combat.player import Player, get_equipment_data
+from osrsmath.combat.monsters import get_monster_data
 from pprint import pprint as pp
 from PySide2 import QtCore, QtGui, QtWidgets
 
@@ -130,7 +130,7 @@ class GUI(Ui_MainWindow):
                         &lt;Dharok HP&gt; should be the average hp while dh&#39;ing.
                         Zero means don&#39;t consider dh.
 
-                5. Evaluate
+                5. Evaluate. Optionally a histogram can be displayed showing the xp/h distribution.
                 ===========================
 
                 Each slot label will lookup the corresponding equipment on the wiki.
@@ -175,8 +175,9 @@ class GUI(Ui_MainWindow):
 
                 self.actionUpdate_Now.triggered.connect(lambda: update(QtWidgets.QMessageBox(QtWidgets.QMessageBox.Question,
                         &#39;Update Now&#39;, &#34;Would you like to download the latest equipment and monsters? You only need to do this &#34;
-                        &#34;if you want to use those new entities.&#34;
-                        &#34;It is also possible that the osrsbox database has not yet been updated.&#34;,
+                        &#34;if you want to use those new entities. &#34;
+                        &#34;If something is missing after updating, it is also possible that the osrsbox database has not yet been updated. &#34;
+                        &#34;Try again on another day.&#34;,
                         QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No
                 ).exec_() == QtWidgets.QMessageBox.Yes))
 
@@ -245,8 +246,8 @@ class GUI(Ui_MainWindow):
 
         def on_evaluate(self):
                 from osrsmath.apps.optimize.logic.optimize import get_sets, get_best_set
-                from osrsmath.model.monsters import Monster
-                from osrsmath.model.boosts import BoostingSchemes, Prayers, Potions
+                from osrsmath.combat.monsters import Monster
+                from osrsmath.combat.boosts import BoostingSchemes, Prayers, Potions
                 import time
 
                 try:
@@ -271,7 +272,7 @@ class GUI(Ui_MainWindow):
                         potion_attributes = self.optimize_panel.potion_attributes.currentText()
                         prayer = getattr(Prayers, self.optimize_panel.prayers.currentText())
                         prayer_attributes = self.optimize_panel.prayer_attributes.currentText()
-                        if self.optimize_panel.boosting_scheme.currentText() == &#39;Dose After&#39;:
+                        if potion != Potions.none and self.optimize_panel.boosting_scheme.currentText() == &#39;Dose After&#39;:
                                 skill = self.optimize_panel.below_skill.currentText()
                                 try:
                                         redose_level = int(self.optimize_panel.redose_level.text())
@@ -292,20 +293,30 @@ class GUI(Ui_MainWindow):
                         sets = get_sets(training_skill, stats, monsters, ignore, adjust, equipment_data, special_sets, progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)))
                         t1 = time.time()
                         self.update_status(f&#39;Step (2/2). Evaluating {len(sets)} Sets...&#39;)
-                        s, xp, stance = get_best_set(
+                        (s, xp, stance), xps = get_best_set(
                                 stats,
                                 training_skill,
                                 boost,
                                 monsters,
                                 sets,
                                 include_shared_xp=False,
-                                progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i))
+                                progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)),
+                                num_cores=int(self.optimize_panel.cpu_cores.text())
                         )
                         t2 = time.time()
                         self.update_status(&#39;Finished ...&#39;)
                         if s is None:
                                 self.update_status(&#39;No results found.&#39;)
                                 return
+
+                        if self.optimize_panel.show_histogram.isChecked():
+                                import matplotlib.pyplot as plt
+                                plt.title(&#39;Xp/h Histogram&#39;)
+                                plt.ylabel(&#39;Frequency&#39;)
+                                plt.xlabel(&#39;Xp/h&#39;)
+                                plt.hist(xps)
+                                plt.show()
+
 
                         # Display Optimal Equipment
                         for slot in slots:
@@ -485,7 +496,7 @@ if __name__ == &#39;__main__&#39;:
                         &lt;Dharok HP&gt; should be the average hp while dh&#39;ing.
                         Zero means don&#39;t consider dh.
 
-                5. Evaluate
+                5. Evaluate. Optionally a histogram can be displayed showing the xp/h distribution.
                 ===========================
 
                 Each slot label will lookup the corresponding equipment on the wiki.
@@ -530,8 +541,9 @@ if __name__ == &#39;__main__&#39;:
 
                 self.actionUpdate_Now.triggered.connect(lambda: update(QtWidgets.QMessageBox(QtWidgets.QMessageBox.Question,
                         &#39;Update Now&#39;, &#34;Would you like to download the latest equipment and monsters? You only need to do this &#34;
-                        &#34;if you want to use those new entities.&#34;
-                        &#34;It is also possible that the osrsbox database has not yet been updated.&#34;,
+                        &#34;if you want to use those new entities. &#34;
+                        &#34;If something is missing after updating, it is also possible that the osrsbox database has not yet been updated. &#34;
+                        &#34;Try again on another day.&#34;,
                         QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No
                 ).exec_() == QtWidgets.QMessageBox.Yes))
 
@@ -600,8 +612,8 @@ if __name__ == &#39;__main__&#39;:
 
         def on_evaluate(self):
                 from osrsmath.apps.optimize.logic.optimize import get_sets, get_best_set
-                from osrsmath.model.monsters import Monster
-                from osrsmath.model.boosts import BoostingSchemes, Prayers, Potions
+                from osrsmath.combat.monsters import Monster
+                from osrsmath.combat.boosts import BoostingSchemes, Prayers, Potions
                 import time
 
                 try:
@@ -626,7 +638,7 @@ if __name__ == &#39;__main__&#39;:
                         potion_attributes = self.optimize_panel.potion_attributes.currentText()
                         prayer = getattr(Prayers, self.optimize_panel.prayers.currentText())
                         prayer_attributes = self.optimize_panel.prayer_attributes.currentText()
-                        if self.optimize_panel.boosting_scheme.currentText() == &#39;Dose After&#39;:
+                        if potion != Potions.none and self.optimize_panel.boosting_scheme.currentText() == &#39;Dose After&#39;:
                                 skill = self.optimize_panel.below_skill.currentText()
                                 try:
                                         redose_level = int(self.optimize_panel.redose_level.text())
@@ -647,20 +659,30 @@ if __name__ == &#39;__main__&#39;:
                         sets = get_sets(training_skill, stats, monsters, ignore, adjust, equipment_data, special_sets, progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)))
                         t1 = time.time()
                         self.update_status(f&#39;Step (2/2). Evaluating {len(sets)} Sets...&#39;)
-                        s, xp, stance = get_best_set(
+                        (s, xp, stance), xps = get_best_set(
                                 stats,
                                 training_skill,
                                 boost,
                                 monsters,
                                 sets,
                                 include_shared_xp=False,
-                                progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i))
+                                progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)),
+                                num_cores=int(self.optimize_panel.cpu_cores.text())
                         )
                         t2 = time.time()
                         self.update_status(&#39;Finished ...&#39;)
                         if s is None:
                                 self.update_status(&#39;No results found.&#39;)
                                 return
+
+                        if self.optimize_panel.show_histogram.isChecked():
+                                import matplotlib.pyplot as plt
+                                plt.title(&#39;Xp/h Histogram&#39;)
+                                plt.ylabel(&#39;Frequency&#39;)
+                                plt.xlabel(&#39;Xp/h&#39;)
+                                plt.hist(xps)
+                                plt.show()
+
 
                         # Display Optimal Equipment
                         for slot in slots:
@@ -812,8 +834,8 @@ if __name__ == &#39;__main__&#39;:
 </summary>
 <pre><code class="python">def on_evaluate(self):
         from osrsmath.apps.optimize.logic.optimize import get_sets, get_best_set
-        from osrsmath.model.monsters import Monster
-        from osrsmath.model.boosts import BoostingSchemes, Prayers, Potions
+        from osrsmath.combat.monsters import Monster
+        from osrsmath.combat.boosts import BoostingSchemes, Prayers, Potions
         import time
 
         try:
@@ -838,7 +860,7 @@ if __name__ == &#39;__main__&#39;:
                 potion_attributes = self.optimize_panel.potion_attributes.currentText()
                 prayer = getattr(Prayers, self.optimize_panel.prayers.currentText())
                 prayer_attributes = self.optimize_panel.prayer_attributes.currentText()
-                if self.optimize_panel.boosting_scheme.currentText() == &#39;Dose After&#39;:
+                if potion != Potions.none and self.optimize_panel.boosting_scheme.currentText() == &#39;Dose After&#39;:
                         skill = self.optimize_panel.below_skill.currentText()
                         try:
                                 redose_level = int(self.optimize_panel.redose_level.text())
@@ -859,20 +881,30 @@ if __name__ == &#39;__main__&#39;:
                 sets = get_sets(training_skill, stats, monsters, ignore, adjust, equipment_data, special_sets, progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)))
                 t1 = time.time()
                 self.update_status(f&#39;Step (2/2). Evaluating {len(sets)} Sets...&#39;)
-                s, xp, stance = get_best_set(
+                (s, xp, stance), xps = get_best_set(
                         stats,
                         training_skill,
                         boost,
                         monsters,
                         sets,
                         include_shared_xp=False,
-                        progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i))
+                        progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)),
+                        num_cores=int(self.optimize_panel.cpu_cores.text())
                 )
                 t2 = time.time()
                 self.update_status(&#39;Finished ...&#39;)
                 if s is None:
                         self.update_status(&#39;No results found.&#39;)
                         return
+
+                if self.optimize_panel.show_histogram.isChecked():
+                        import matplotlib.pyplot as plt
+                        plt.title(&#39;Xp/h Histogram&#39;)
+                        plt.ylabel(&#39;Frequency&#39;)
+                        plt.xlabel(&#39;Xp/h&#39;)
+                        plt.hist(xps)
+                        plt.show()
+
 
                 # Display Optimal Equipment
                 for slot in slots:
@@ -984,8 +1016,9 @@ if __name__ == &#39;__main__&#39;:
 
         self.actionUpdate_Now.triggered.connect(lambda: update(QtWidgets.QMessageBox(QtWidgets.QMessageBox.Question,
                 &#39;Update Now&#39;, &#34;Would you like to download the latest equipment and monsters? You only need to do this &#34;
-                &#34;if you want to use those new entities.&#34;
-                &#34;It is also possible that the osrsbox database has not yet been updated.&#34;,
+                &#34;if you want to use those new entities. &#34;
+                &#34;If something is missing after updating, it is also possible that the osrsbox database has not yet been updated. &#34;
+                &#34;Try again on another day.&#34;,
                 QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No
         ).exec_() == QtWidgets.QMessageBox.Yes))
 

@@ -435,6 +435,7 @@ class Ui_Monsters(object):
 
         self.xp_per_hit = QLineEdit(self.frame)
         self.xp_per_hit.setObjectName(u&#34;xp_per_hit&#34;)
+        self.xp_per_hit.setEnabled(False)
 
         self.gridLayout_2.addWidget(self.xp_per_hit, 6, 2, 1, 1)
 
@@ -500,7 +501,10 @@ class Ui_Monsters(object):
         self.add.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;Add&#34;, None))
         self.wiki_link.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;See on Wiki&#34;, None))
         self.label_20.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;xp/damage&#34;, None))
-        self.xp_per_hit.setText(&#34;&#34;)
+#if QT_CONFIG(tooltip)
+        self.xp_per_hit.setToolTip(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;Not supported, you may instead multiply your xp rate by the desired amount.&#34;, None))
+#endif // QT_CONFIG(tooltip)
+        self.xp_per_hit.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;4&#34;, None))
     # retranslateUi</code></pre>
 </details>
 </section>
@@ -914,6 +918,7 @@ class Ui_Monsters(object):
 
         self.xp_per_hit = QLineEdit(self.frame)
         self.xp_per_hit.setObjectName(u&#34;xp_per_hit&#34;)
+        self.xp_per_hit.setEnabled(False)
 
         self.gridLayout_2.addWidget(self.xp_per_hit, 6, 2, 1, 1)
 
@@ -979,7 +984,10 @@ class Ui_Monsters(object):
         self.add.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;Add&#34;, None))
         self.wiki_link.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;See on Wiki&#34;, None))
         self.label_20.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;xp/damage&#34;, None))
-        self.xp_per_hit.setText(&#34;&#34;)</code></pre>
+#if QT_CONFIG(tooltip)
+        self.xp_per_hit.setToolTip(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;Not supported, you may instead multiply your xp rate by the desired amount.&#34;, None))
+#endif // QT_CONFIG(tooltip)
+        self.xp_per_hit.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;4&#34;, None))</code></pre>
 </details>
 <h3>Subclasses</h3>
 <ul class="hlist">
@@ -996,37 +1004,40 @@ class Ui_Monsters(object):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def retranslateUi(self, Monsters):
-    Monsters.setWindowTitle(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;Form&#34;, None))
-    self.label_19.setText(&#34;&#34;)
-    self.label_16.setText(&#34;&#34;)
-    self.label_17.setText(&#34;&#34;)
-    self.label_18.setText(&#34;&#34;)
-    self.label_25.setText(&#34;&#34;)
-    self.label_15.setText(&#34;&#34;)
-    self.label_26.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34; Defensive Stats &#34;, None))
-    self.label_7.setText(&#34;&#34;)
-    self.label_3.setText(&#34;&#34;)
-    self.label_8.setText(&#34;&#34;)
-    self.label_5.setText(&#34;&#34;)
-    self.label_21.setText(&#34;&#34;)
-    self.label_6.setText(&#34;&#34;)
-    self.label_4.setText(&#34;&#34;)
-    self.label_22.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;   Combat Stats  &#34;, None))
-    self.label_10.setText(&#34;&#34;)
-    self.label_23.setText(&#34;&#34;)
-    self.label_13.setText(&#34;&#34;)
-    self.label_11.setText(&#34;&#34;)
-    self.label_9.setText(&#34;&#34;)
-    self.label_12.setText(&#34;&#34;)
-    self.label_14.setText(&#34;&#34;)
-    self.label_24.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;Aggressive Stats&#34;, None))
-    self.nmz_only.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;NMZ only&#34;, None))
-    self.label_27.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;Custom Name&#34;, None))
-    self.add.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;Add&#34;, None))
-    self.wiki_link.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;See on Wiki&#34;, None))
-    self.label_20.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;xp/damage&#34;, None))
-    self.xp_per_hit.setText(&#34;&#34;)</code></pre>
+<pre><code class="python">    def retranslateUi(self, Monsters):
+        Monsters.setWindowTitle(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;Form&#34;, None))
+        self.label_19.setText(&#34;&#34;)
+        self.label_16.setText(&#34;&#34;)
+        self.label_17.setText(&#34;&#34;)
+        self.label_18.setText(&#34;&#34;)
+        self.label_25.setText(&#34;&#34;)
+        self.label_15.setText(&#34;&#34;)
+        self.label_26.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34; Defensive Stats &#34;, None))
+        self.label_7.setText(&#34;&#34;)
+        self.label_3.setText(&#34;&#34;)
+        self.label_8.setText(&#34;&#34;)
+        self.label_5.setText(&#34;&#34;)
+        self.label_21.setText(&#34;&#34;)
+        self.label_6.setText(&#34;&#34;)
+        self.label_4.setText(&#34;&#34;)
+        self.label_22.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;   Combat Stats  &#34;, None))
+        self.label_10.setText(&#34;&#34;)
+        self.label_23.setText(&#34;&#34;)
+        self.label_13.setText(&#34;&#34;)
+        self.label_11.setText(&#34;&#34;)
+        self.label_9.setText(&#34;&#34;)
+        self.label_12.setText(&#34;&#34;)
+        self.label_14.setText(&#34;&#34;)
+        self.label_24.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;Aggressive Stats&#34;, None))
+        self.nmz_only.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;NMZ only&#34;, None))
+        self.label_27.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;Custom Name&#34;, None))
+        self.add.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;Add&#34;, None))
+        self.wiki_link.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;See on Wiki&#34;, None))
+        self.label_20.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;xp/damage&#34;, None))
+#if QT_CONFIG(tooltip)
+        self.xp_per_hit.setToolTip(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;Not supported, you may instead multiply your xp rate by the desired amount.&#34;, None))
+#endif // QT_CONFIG(tooltip)
+        self.xp_per_hit.setText(QCoreApplication.translate(&#34;Monsters&#34;, u&#34;4&#34;, None))</code></pre>
 </details>
 </dd>
 <dt id="osrsmath.apps.GUI.monsters.monsters_skeleton.Ui_Monsters.setupUi"><code class="name flex">
@@ -1429,6 +1440,7 @@ class Ui_Monsters(object):
 
     self.xp_per_hit = QLineEdit(self.frame)
     self.xp_per_hit.setObjectName(u&#34;xp_per_hit&#34;)
+    self.xp_per_hit.setEnabled(False)
 
     self.gridLayout_2.addWidget(self.xp_per_hit, 6, 2, 1, 1)
 

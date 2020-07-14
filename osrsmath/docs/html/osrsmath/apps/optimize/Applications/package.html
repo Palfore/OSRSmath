@@ -34,7 +34,7 @@ import osrsmath.config as config
 import platform
 import shutil
 import sys
-top = platform.system()
+top = system = platform.system()
 
 def compile():
         try:
@@ -48,7 +48,7 @@ def compile():
                 original_data_path = Path(config.TOP)
                 new_data_path = Path(&#39;DATA/&#39;)
                 additional_data = [
-                        &#39;model/data/&#39;,
+                        &#39;combat/data/&#39;,
                         &#39;apps/GUI/shared/stylesheets&#39;,
                         &#39;apps/optimize/data&#39;,
                 ]
@@ -62,6 +62,19 @@ def compile():
                 command = f&#39;&#39;&#39;{sys.executable} -m PyInstaller {json.dumps(args).replace(&#39;&#34;&#39;, &#39;&#39;).replace(&#39;,&#39;, &#39;&#39;)[1:-1]}&#39;&#39;&#39;
                 print(command)
                 os.system(command)
+
+                if system in [&#39;Linux&#39;, &#39;Darwin&#39;]:
+                        # Create shortcut, I could not get symlinks to work.
+                        # This wont work if they don&#39;t execute from the top directory.
+                        with open(&#39;osrsmath-optimize&#39;, &#39;w&#39;) as f:
+                                f.write(&#39;#!/bin/sh\n&#39;)
+                                f.write(&#39;cd &#34;$(dirname $0)/dist/main &amp;&amp; ./main&#39;)
+                        os.system(&#39;chmod +x osrsmath-optimize&#39;)
+                elif system == &#39;Windows&#39;:
+                        os.system(R&#39;mklink &#34;osrsmath-optimize&#34; &#34;dist\main\main.exe&#34;&#39;)
+
+
+
         except Exception as e:
                 print(e)
         finally:
@@ -104,7 +117,7 @@ if __name__ == &#39;__main__&#39;:
                 original_data_path = Path(config.TOP)
                 new_data_path = Path(&#39;DATA/&#39;)
                 additional_data = [
-                        &#39;model/data/&#39;,
+                        &#39;combat/data/&#39;,
                         &#39;apps/GUI/shared/stylesheets&#39;,
                         &#39;apps/optimize/data&#39;,
                 ]
@@ -118,6 +131,19 @@ if __name__ == &#39;__main__&#39;:
                 command = f&#39;&#39;&#39;{sys.executable} -m PyInstaller {json.dumps(args).replace(&#39;&#34;&#39;, &#39;&#39;).replace(&#39;,&#39;, &#39;&#39;)[1:-1]}&#39;&#39;&#39;
                 print(command)
                 os.system(command)
+
+                if system in [&#39;Linux&#39;, &#39;Darwin&#39;]:
+                        # Create shortcut, I could not get symlinks to work.
+                        # This wont work if they don&#39;t execute from the top directory.
+                        with open(&#39;osrsmath-optimize&#39;, &#39;w&#39;) as f:
+                                f.write(&#39;#!/bin/sh\n&#39;)
+                                f.write(&#39;cd &#34;$(dirname $0)/dist/main &amp;&amp; ./main&#39;)
+                        os.system(&#39;chmod +x osrsmath-optimize&#39;)
+                elif system == &#39;Windows&#39;:
+                        os.system(R&#39;mklink &#34;osrsmath-optimize&#34; &#34;dist\main\main.exe&#34;&#39;)
+
+
+
         except Exception as e:
                 print(e)
         finally:

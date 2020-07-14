@@ -25,15 +25,18 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from osrsmath.model.player import PlayerBuilder
-from osrsmath.model.experience import xp_rate
+<pre><code class="python">from osrsmath.combat.player import PlayerBuilder
+from osrsmath.combat.experience import xp_rate
 import multiprocess
 import time
 
-def mmap(f, items, callback, interval=0.025):
+def mmap(f, items, callback, interval=0.025, num_cores=0):
+        &#34;&#34;&#34; num_cores: None or 0 mean maximum (&#34;the number returned by `os.cpu_count()`&#34;). 
+                        @see https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool
+        &#34;&#34;&#34;
         results = []
         start = time.time()
-        with multiprocess.Pool() as pool:
+        with multiprocess.Pool(num_cores if num_cores != 0 else None) as pool:
                 for i, result in enumerate(pool.imap_unordered(f, items), 1):
                         results.append(result)
                         now = time.time()
@@ -101,18 +104,22 @@ def eval_set(player_stats: dict, training_skill, states, defenders, s, include_s
 </details>
 </dd>
 <dt id="osrsmath.apps.optimize.logic.evaluation.mmap"><code class="name flex">
-<span>def <span class="ident">mmap</span></span>(<span>f, items, callback, interval=0.025)</span>
+<span>def <span class="ident">mmap</span></span>(<span>f, items, callback, interval=0.025, num_cores=0)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>num_cores: None or 0 mean maximum ("the number returned by <code>os.cpu_count()</code>").
+@see <a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool">https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool</a></p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def mmap(f, items, callback, interval=0.025):
+<pre><code class="python">def mmap(f, items, callback, interval=0.025, num_cores=0):
+        &#34;&#34;&#34; num_cores: None or 0 mean maximum (&#34;the number returned by `os.cpu_count()`&#34;). 
+                        @see https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool
+        &#34;&#34;&#34;
         results = []
         start = time.time()
-        with multiprocess.Pool() as pool:
+        with multiprocess.Pool(num_cores if num_cores != 0 else None) as pool:
                 for i, result in enumerate(pool.imap_unordered(f, items), 1):
                         results.append(result)
                         now = time.time()

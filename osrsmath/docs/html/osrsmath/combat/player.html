@@ -1,0 +1,1205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>osrsmath.combat.player API documentation</title>
+<meta name="description" content="This file provides an interface for playable characters through the Player class.
+In addition, several function are provided to load details about …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML'></script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>osrsmath.combat.player</code></h1>
+</header>
+<section id="section-intro">
+<p>This file provides an interface for playable characters through the Player class.
+In addition, several function are provided to load details about relevant equipment.</p>
+<p>Note that at this point, there are a few assumptions / restrictions:
+1) Assume Melee combat. For simplicity, melee combat is first to be modeled.
+later on, the other combat styles will be added.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34; This file provides an interface for playable characters through the Player class.
+        In addition, several function are provided to load details about relevant equipment.
+
+        Note that at this point, there are a few assumptions / restrictions:
+                1) Assume Melee combat. For simplicity, melee combat is first to be modeled.
+                      later on, the other combat styles will be added.
+&#34;&#34;&#34;
+
+from pprint import pprint
+from pathlib import Path
+import requests
+import json
+import os
+
+import osrsmath.config as config
+import osrsmath.combat.damage as damage
+import osrsmath.combat.boosts as boosts
+import osrsmath.combat.experience as experience
+
+SLOT_BASE_URL = &#34;https://raw.githubusercontent.com/osrsbox/osrsbox-db/master/docs/items-json-slot&#34;
+SLOTS = [&#39;2h&#39;, &#39;ammo&#39;, &#39;body&#39;, &#39;cape&#39;, &#39;feet&#39;, &#39;hands&#39;, &#39;head&#39;, &#39;legs&#39;, &#39;neck&#39;, &#39;ring&#39;, &#39;shield&#39;, &#39;weapon&#39;]
+
+class PlayerBuilder:
+        def __init__(self, stats, equipment_data=None):
+                self.player = Player(stats)
+                self.equipment_data = get_equipment_data() if equipment_data is None else equipment_data
+
+        def equip(self, equipment):
+                if type(equipment) == str:
+                        self.player.equip_by_name(equipment, self.equipment_data)
+                else:
+                        for e in equipment:
+                                self.player.equip_by_name(e, self.equipment_data)
+                return self
+
+        def get(self):
+                return self.player
+
+class Player:
+        def __init__(self, levels):
+                self.levels = levels
+                self.current_health = self.levels[&#39;current_health&#39;] if &#39;current_health&#39; in self.levels else None
+                self.gear = {slot: None for slot in SLOTS if &#39;2h&#39; not in slot}
+                self.combat_style = None
+
+        ### EQUIPMENT ##################################################################################
+        def equip(self, equipment):
+                slot = equipment[&#39;slot&#39;]
+                if slot == &#39;2h&#39;:
+                        self.unequip(&#39;weapon&#39;)
+                        self.unequip(&#39;shield&#39;)
+                        slot = &#39;weapon&#39;
+                elif slot == &#39;shield&#39; and (self.gear[&#39;weapon&#39;] and self.gear[&#39;weapon&#39;][&#39;slot&#39;] == &#39;2h&#39;):
+                        self.unequip(&#39;weapon&#39;)
+                assert slot != &#39;2h&#39;
+                self.gear[slot] = equipment
+
+        def equip_by_id(self, id, equipment_data=None):
+                self.equip(filter_equipment(get_equipment_by_id(id, slot=None, equipment_data=equipment_data)))
+
+        def equip_by_name(self, name, equipment_data=None):
+                self.equip(filter_equipment(get_equipment_by_name(name, slot=None, equipment_data=equipment_data)))
+
+        def unequip(self, slot):
+                self.gear[slot] = None
+
+        ### GETTERS ##################################################################################
+        def get_stances(self):
+                return {stance[&#39;combat_style&#39;]: stance for stance in self.gear[&#39;weapon&#39;][&#39;stances&#39;]}
+
+        def get_combat_type(self):
+                &#34;&#34;&#34; Returns Melee, Ranged, or Magic based on experience gained. &#34;&#34;&#34;
+                if self.combat_style is None:
+                        return None
+                if &#39;ranged&#39; in self.get_stances()[self.combat_style][&#39;experience&#39;]:
+                        return &#39;Ranged&#39;
+                if &#39;magic&#39; in self.get_stances()[self.combat_style][&#39;experience&#39;]:
+                        return &#39;Magic&#39;
+                return {
+                        &#39;stab&#39;: &#39;Melee&#39;,
+                        &#39;slash&#39;: &#39;Melee&#39;,
+                        &#39;crush&#39;: &#39;Melee&#39;,
+                        &#39;ranged&#39;: &#39;Ranged&#39;,
+                        &#39;magic&#39;: &#39;Magic&#39;,
+                }[self.get_stances()[self.combat_style][&#39;attack_type&#39;]]
+
+        def get_equipment_names(self):
+                &#34;&#34;&#34; Returns a list of the worn equipment names. &#34;&#34;&#34;
+                return [e[&#39;name&#39;] for e in self.gear.values() if e]
+
+        def get_stats(self):
+                overall = {}
+                for slot, equipment in self.gear.items():
+                        assert slot != &#39;2h&#39;  # 2h slot is not used, 2h&#39;s go into weapon slot.
+                        if equipment is None:
+                                continue
+                        for stat, value in equipment.items():
+                                if stat in (&#39;name&#39;, &#39;requirements&#39;, &#39;slot&#39;, &#39;id&#39;, &#39;stances&#39;, &#39;attack_speed&#39;, &#39;weapon_type&#39;):
+                                        continue
+                                if stat in overall:
+                                        overall[stat] += value
+                                else:
+                                        overall[stat] = value
+                overall[&#39;stances&#39;] = self.gear[&#39;weapon&#39;][&#39;stances&#39;]
+                overall[&#39;attack_speed&#39;] = self.gear[&#39;weapon&#39;][&#39;attack_speed&#39;]
+                overall[&#39;weapon_type&#39;] = self.gear[&#39;weapon&#39;][&#39;weapon_type&#39;]
+                return overall
+
+
+        ### DAMAGE ##################################################################################
+        def can_attack(self):
+                pass
+
+        def get_damage_parameters(self):
+                stats = self.get_stats()
+                stances = self.get_stances()
+                if self.get_combat_type() == &#39;Melee&#39;:
+                        return {
+                                &#39;offensive_equipment_bonus&#39;: stats[&#39;melee_strength&#39;],
+                                &#39;offensive_skill&#39;: &#39;strength&#39;,
+                                &#39;offensive_stance_bonus&#39;: {&#39;aggressive&#39;: 3, &#39;controlled&#39;: 1}.get(stances[self.combat_style][&#39;attack_style&#39;], 0),
+                                &#39;accuracy_equipment_bonus&#39;: stats[&#39;attack_&#39; + stances[self.combat_style][&#39;attack_type&#39;]],
+                                &#39;accuracy_skill&#39;: &#39;attack&#39;,
+                                &#39;accuracy_stance_bonus&#39;: {&#39;accurate&#39;: 3, &#39;controlled&#39;:1}.get(stances[self.combat_style][&#39;attack_style&#39;], 0),
+                        }
+                elif self.get_combat_type() == &#39;Ranged&#39;:
+                        return {
+                                &#39;offensive_equipment_bonus&#39;: stats[&#39;ranged_strength&#39;],
+                                &#39;offensive_skill&#39;: &#39;ranged&#39;,
+                                &#39;offensive_stance_bonus&#39;: {&#39;accurate&#39;: 3}.get(stances[self.combat_style][&#39;attack_style&#39;], 0),
+                                &#39;accuracy_equipment_bonus&#39;: stats[&#39;attack_ranged&#39;],
+                                &#39;accuracy_skill&#39;: &#39;ranged&#39;,
+                                &#39;accuracy_stance_bonus&#39;: {&#39;accurate&#39;: 3}.get(stances[self.combat_style][&#39;attack_style&#39;], 0),
+                        }
+                elif self.get_combat_type() == &#39;Magic&#39;:
+                        raise ValueError(&#34;Magic is not supported&#34;)
+                else:
+                        raise ValueError(&#34;Could not identify combat type&#34;)
+
+
+        def get_max_hit(self, potion, prayer):
+                dmg = self.get_damage_parameters()
+
+                other = boosts.Equipment.none()
+                other.update(boosts.other(self.get_equipment_names(), self))
+                special_attack_bonus = 1  # Special attacks are not implemented
+                multipler = 1  # Ignoring flooring order, since there is no official documentation
+                return damage.Standard().max_hit(
+                        dmg[&#39;offensive_equipment_bonus&#39;],
+                        self.levels[dmg[&#39;offensive_skill&#39;]],
+                        potion(self.levels[dmg[&#39;offensive_skill&#39;]]),
+                        prayer(dmg[&#39;offensive_skill&#39;]),
+                        other[dmg[&#39;offensive_skill&#39;]],
+                        dmg[&#39;offensive_stance_bonus&#39;],
+                        1, multipler
+                )
+
+        def get_attack_roll(self, potion, prayer):
+                dmg = self.get_damage_parameters()
+                stances = self.get_stances()
+
+                other = boosts.Equipment.none()
+                other.update(boosts.other(self.get_equipment_names(), self))
+                multipler = 1  # Ignoring flooring order, since there is no official documentation
+
+                return damage.Standard().max_attack_roll(
+                        dmg[&#39;accuracy_equipment_bonus&#39;],
+                        self.levels[dmg[&#39;accuracy_skill&#39;]],
+                        potion(self.levels[dmg[&#39;accuracy_skill&#39;]]),
+                        prayer(dmg[&#39;accuracy_skill&#39;]),
+                        other[dmg[&#39;accuracy_skill&#39;]],
+                        dmg[&#39;accuracy_stance_bonus&#39;],
+                        multipler
+                )
+
+        def get_defence_roll(self, attacker_attack_type, potion, prayer, multipler, using_special=False):
+                assert not using_special, &#34;Special attacks are not implemented&#34;
+                stats = self.get_stats()
+                stances = self.get_stances()
+
+                other = boosts.Equipment.none()
+                other.update(boosts.other(self.get_equipment_names()))
+                multipler = 1  # Ignoring flooring order, since there is no official documentation
+                if self.get_combat_type() in (&#39;Melee&#39;, &#39;Ranged&#39;):
+                        return damage.Standard().max_defence_roll(
+                                stats[&#39;defence_&#39; + attacker_attack_type],
+                                self.levels[&#39;defence&#39;],
+                                potion(self.levels[&#39;defence&#39;]),
+                                prayer(&#39;defence&#39;),
+                                other[&#39;defence&#39;],
+                                {&#39;longrange&#39;: 3, &#39;defensive&#39;: 3, &#39;controlled&#39;: 1,}.get(stances[self.combat_style][&#39;attack_style&#39;], 0),
+                                multipler
+                        )
+                elif self.get_combat_type() == &#39;Magic&#39;:
+                        raise ValueError(&#34;Magic is not supported&#34;)
+                else:
+                        raise ValueError(&#34;Could not identify combat type&#34;)
+
+        @staticmethod
+        def get_accuracy(attack_roll, opponent_defence_roll):
+                return damage.accuracy(attack_roll, opponent_defence_roll)
+
+        ### EXPERIENCE ##################################################################################
+        def xp_rate(self, states, opponents):
+                attack_type = self.get_stances()[self.combat_style][&#39;attack_type&#39;]
+                if attack_type is None:
+                        attack_type = self.get_combat_type().lower()
+
+                speed_bonus = -0.6 if self.get_stances()[self.combat_style][&#39;boosts&#39;] == &#34;attack speed by 1 tick&#34; else 0
+                return experience.xp_rate(
+                        attack_type,
+                        self.get_stats()[&#39;attack_speed&#39;] + speed_bonus,
+                        states, opponents
+                )
+
+        def time_to_level(self, states, opponents):
+                training = self.get_stances()[self.combat_style][&#39;experience&#39;]
+                if training == &#39;shared&#39;:
+                        raise ValueError(&#34;Only direct experience is allowed, not shared&#34;)
+
+                return experience.time_to_level(self.levels[training], self.xp_rate(states, opponents))
+
+        ### OTHER ##################################################################################
+        def print(self):
+                padding = max(len(slot) for slot in self.gear.keys())
+                print(&#34;Levels:&#34;)
+                for stat, level in self.levels.items():
+                        print(f&#34;\t{stat}: {level}&#34;)
+
+                print(&#34;Equipment:&#34;)
+                for slot, equipment in self.gear.items():
+                        print(f&#34;\t{slot:{padding}}: {equipment[&#39;name&#39;] if equipment else None}&#34;)
+
+                print(&#34;Stats:&#34;)
+                for stat, value in self.get_stats().items():
+                        if stat in (&#39;stances&#39;, &#39;weapon_type&#39;):
+                                continue
+                        print(f&#34;\t{stat}: {value}&#34;)
+
+                print(&#34;Attack Stances:&#34;, &#39;, &#39;.join([f&#34;[{k}: {v[&#39;attack_type&#39;]}, {v[&#39;experience&#39;]}]&#34; for k, v in self.get_stances().items()]))
+                print(f&#34;Currently Using {self.combat_style}&#34;, end=&#39; &#39; if self.combat_style else &#39;\n&#39;)
+                if self.combat_style:
+                        print(f&#34;which trains {self.get_stances()[self.combat_style][&#39;experience&#39;]} ({self.get_combat_type()})&#34;)
+
+
+def get_equipment_slot_data(slot, force_update=False):
+        file_name = f&#39;items-{slot}.json&#39;
+        file_path = config.resource_path(Path(f&#34;combat/data/{file_name}&#34;))
+        if not file_path.exists() or force_update:
+                r = requests.get(SLOT_BASE_URL+&#39;/&#39;+file_name)
+
+                with open(file_path, &#39;w&#39;) as f:
+                        f.write(r.text)
+
+        with open(file_path, &#39;r&#39;) as f:
+                return json.load(f)
+
+def get_equipment_data(force_update=False):
+        data = {}
+        for slot in SLOTS:
+                data[slot] = get_equipment_slot_data(slot, force_update=force_update)
+        return data
+
+def get_equipment_by_id(id, slot=None, equipment_data=None):
+        if equipment_data is None:
+                equipment_data = get_equipment_data()
+
+        for equipment_slot, equipment_slot_data in equipment_data.items():
+                if slot is not None and (equipment_slot != slot):
+                        continue
+                for item_id, data in equipment_slot_data.items():
+                        if item_id == id:
+                                return data
+        raise ValueError(f&#34;Equipment with id {id} could not be found.&#34;)
+
+def get_equipment_by_name(name, slot=None, equipment_data=None):
+        if slot:
+                assert slot in SLOTS, f&#34;slot is {slot} but must be one of: {SLOTS}&#34;
+        if equipment_data is None:
+                equipment_data = get_equipment_data()
+        for equipment_slot, equipment_slot_data in equipment_data.items():
+                if slot is not None and (equipment_slot != slot):
+                        continue
+                for item_id, data in equipment_slot_data.items():
+                        if name.lower() == data[&#39;name&#39;].lower():
+                                return data
+        raise ValueError(f&#34;Equipment with name &#39;{name}&#39; could not be found.&#34;)
+
+def filter_equipment(data):
+        if data is None:
+                return None
+        if not all((data[&#39;equipable_by_player&#39;], data[&#39;equipable&#39;], )):
+                # raise ValueError(f&#34;Equipment not equipable by player: {data[&#39;name&#39;]}, {data[&#39;id&#39;]}\n{data}&#34;)
+                return None
+        filtered_data = {&#39;name&#39;: data[&#39;name&#39;], &#39;id&#39;: data[&#39;id&#39;]}
+        filtered_data.update(data[&#39;equipment&#39;])
+        if data[&#39;weapon&#39;] is not None:
+                filtered_data.update(data[&#39;weapon&#39;])
+                filtered_data[&#39;attack_speed&#39;] *= 0.6  # Convert attack_speed into [attacks/second]
+        filtered_data[&#39;weight&#39;] = data[&#39;weight&#39;] if data[&#39;weight&#39;] is not None else 0.0
+        return filtered_data
+
+if __name__ == &#39;__main__&#39;:
+        from monsters import Monster
+        equipment_data = get_equipment_data()
+
+        attacker = Player({&#39;attack&#39;: 70, &#39;strength&#39;: 85, &#39;defence&#39;: 70, &#39;prayer&#39;: 56, &#39;hitpoints&#39;: 79, &#39;magic&#39;: 71, &#39;ranged&#39;: 70})
+        attacker.equip_by_name(&#34;Dragon Scimitar&#34;)
+        attacker.equip_by_name(&#34;Dharok&#39;s helm&#34;)
+        attacker.equip_by_name(&#34;Dharok&#39;s platebody&#34;)
+        attacker.equip_by_name(&#34;Dharok&#39;s platelegs&#34;)
+        attacker.equip_by_name(&#34;Dragon Boots&#34;)
+        attacker.equip_by_name(&#34;Holy Blessing&#34;)
+        attacker.equip_by_name(&#34;Barrows Gloves&#34;)
+        attacker.equip_by_name(&#34;Dragon Defender&#34;)
+        attacker.equip_by_name(&#34;Berserker Ring (i)&#34;)
+        attacker.equip_by_name(&#34;Amulet of Fury&#34;)
+        attacker.equip_by_name(&#34;Fire Cape&#34;)
+        attacker.combat_style = &#39;slash&#39;
+        m = attacker.get_max_hit(0, 1, 1)
+        A = attacker.get_attack_roll(0, 1, 1, 1)
+
+        defender = Monster.from_name(&#34;Black Demon (hard)&#34;)
+        D = defender.get_defence_roll(attacker.get_stances()[attacker.combat_style][&#39;attack_type&#39;], 0, 1, 1, 1)
+        a = defender.get_accuracy(A, D)
+        print(m, A, D, a)
+        exit()
+
+        # Check that all equipable items work (don&#39;t crash)
+        attacker = Player({})
+        for slot, data in equipment_data.items():
+                for key in data.keys():
+                        item = filter_equipment(get_equipment_by_id(key, equipment_data=equipment_data))
+                        if item is None:
+                                continue
+                        attacker.equip(item)
+                        attacker.get_stats()
+        pprint(attacker.get_stats())
+        pprint(attacker.gear)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="osrsmath.combat.player.filter_equipment"><code class="name flex">
+<span>def <span class="ident">filter_equipment</span></span>(<span>data)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def filter_equipment(data):
+        if data is None:
+                return None
+        if not all((data[&#39;equipable_by_player&#39;], data[&#39;equipable&#39;], )):
+                # raise ValueError(f&#34;Equipment not equipable by player: {data[&#39;name&#39;]}, {data[&#39;id&#39;]}\n{data}&#34;)
+                return None
+        filtered_data = {&#39;name&#39;: data[&#39;name&#39;], &#39;id&#39;: data[&#39;id&#39;]}
+        filtered_data.update(data[&#39;equipment&#39;])
+        if data[&#39;weapon&#39;] is not None:
+                filtered_data.update(data[&#39;weapon&#39;])
+                filtered_data[&#39;attack_speed&#39;] *= 0.6  # Convert attack_speed into [attacks/second]
+        filtered_data[&#39;weight&#39;] = data[&#39;weight&#39;] if data[&#39;weight&#39;] is not None else 0.0
+        return filtered_data</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.get_equipment_by_id"><code class="name flex">
+<span>def <span class="ident">get_equipment_by_id</span></span>(<span>id, slot=None, equipment_data=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_equipment_by_id(id, slot=None, equipment_data=None):
+        if equipment_data is None:
+                equipment_data = get_equipment_data()
+
+        for equipment_slot, equipment_slot_data in equipment_data.items():
+                if slot is not None and (equipment_slot != slot):
+                        continue
+                for item_id, data in equipment_slot_data.items():
+                        if item_id == id:
+                                return data
+        raise ValueError(f&#34;Equipment with id {id} could not be found.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.get_equipment_by_name"><code class="name flex">
+<span>def <span class="ident">get_equipment_by_name</span></span>(<span>name, slot=None, equipment_data=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_equipment_by_name(name, slot=None, equipment_data=None):
+        if slot:
+                assert slot in SLOTS, f&#34;slot is {slot} but must be one of: {SLOTS}&#34;
+        if equipment_data is None:
+                equipment_data = get_equipment_data()
+        for equipment_slot, equipment_slot_data in equipment_data.items():
+                if slot is not None and (equipment_slot != slot):
+                        continue
+                for item_id, data in equipment_slot_data.items():
+                        if name.lower() == data[&#39;name&#39;].lower():
+                                return data
+        raise ValueError(f&#34;Equipment with name &#39;{name}&#39; could not be found.&#34;)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.get_equipment_data"><code class="name flex">
+<span>def <span class="ident">get_equipment_data</span></span>(<span>force_update=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_equipment_data(force_update=False):
+        data = {}
+        for slot in SLOTS:
+                data[slot] = get_equipment_slot_data(slot, force_update=force_update)
+        return data</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.get_equipment_slot_data"><code class="name flex">
+<span>def <span class="ident">get_equipment_slot_data</span></span>(<span>slot, force_update=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_equipment_slot_data(slot, force_update=False):
+        file_name = f&#39;items-{slot}.json&#39;
+        file_path = config.resource_path(Path(f&#34;combat/data/{file_name}&#34;))
+        if not file_path.exists() or force_update:
+                r = requests.get(SLOT_BASE_URL+&#39;/&#39;+file_name)
+
+                with open(file_path, &#39;w&#39;) as f:
+                        f.write(r.text)
+
+        with open(file_path, &#39;r&#39;) as f:
+                return json.load(f)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="osrsmath.combat.player.Player"><code class="flex name class">
+<span>class <span class="ident">Player</span></span>
+<span>(</span><span>levels)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Player:
+        def __init__(self, levels):
+                self.levels = levels
+                self.current_health = self.levels[&#39;current_health&#39;] if &#39;current_health&#39; in self.levels else None
+                self.gear = {slot: None for slot in SLOTS if &#39;2h&#39; not in slot}
+                self.combat_style = None
+
+        ### EQUIPMENT ##################################################################################
+        def equip(self, equipment):
+                slot = equipment[&#39;slot&#39;]
+                if slot == &#39;2h&#39;:
+                        self.unequip(&#39;weapon&#39;)
+                        self.unequip(&#39;shield&#39;)
+                        slot = &#39;weapon&#39;
+                elif slot == &#39;shield&#39; and (self.gear[&#39;weapon&#39;] and self.gear[&#39;weapon&#39;][&#39;slot&#39;] == &#39;2h&#39;):
+                        self.unequip(&#39;weapon&#39;)
+                assert slot != &#39;2h&#39;
+                self.gear[slot] = equipment
+
+        def equip_by_id(self, id, equipment_data=None):
+                self.equip(filter_equipment(get_equipment_by_id(id, slot=None, equipment_data=equipment_data)))
+
+        def equip_by_name(self, name, equipment_data=None):
+                self.equip(filter_equipment(get_equipment_by_name(name, slot=None, equipment_data=equipment_data)))
+
+        def unequip(self, slot):
+                self.gear[slot] = None
+
+        ### GETTERS ##################################################################################
+        def get_stances(self):
+                return {stance[&#39;combat_style&#39;]: stance for stance in self.gear[&#39;weapon&#39;][&#39;stances&#39;]}
+
+        def get_combat_type(self):
+                &#34;&#34;&#34; Returns Melee, Ranged, or Magic based on experience gained. &#34;&#34;&#34;
+                if self.combat_style is None:
+                        return None
+                if &#39;ranged&#39; in self.get_stances()[self.combat_style][&#39;experience&#39;]:
+                        return &#39;Ranged&#39;
+                if &#39;magic&#39; in self.get_stances()[self.combat_style][&#39;experience&#39;]:
+                        return &#39;Magic&#39;
+                return {
+                        &#39;stab&#39;: &#39;Melee&#39;,
+                        &#39;slash&#39;: &#39;Melee&#39;,
+                        &#39;crush&#39;: &#39;Melee&#39;,
+                        &#39;ranged&#39;: &#39;Ranged&#39;,
+                        &#39;magic&#39;: &#39;Magic&#39;,
+                }[self.get_stances()[self.combat_style][&#39;attack_type&#39;]]
+
+        def get_equipment_names(self):
+                &#34;&#34;&#34; Returns a list of the worn equipment names. &#34;&#34;&#34;
+                return [e[&#39;name&#39;] for e in self.gear.values() if e]
+
+        def get_stats(self):
+                overall = {}
+                for slot, equipment in self.gear.items():
+                        assert slot != &#39;2h&#39;  # 2h slot is not used, 2h&#39;s go into weapon slot.
+                        if equipment is None:
+                                continue
+                        for stat, value in equipment.items():
+                                if stat in (&#39;name&#39;, &#39;requirements&#39;, &#39;slot&#39;, &#39;id&#39;, &#39;stances&#39;, &#39;attack_speed&#39;, &#39;weapon_type&#39;):
+                                        continue
+                                if stat in overall:
+                                        overall[stat] += value
+                                else:
+                                        overall[stat] = value
+                overall[&#39;stances&#39;] = self.gear[&#39;weapon&#39;][&#39;stances&#39;]
+                overall[&#39;attack_speed&#39;] = self.gear[&#39;weapon&#39;][&#39;attack_speed&#39;]
+                overall[&#39;weapon_type&#39;] = self.gear[&#39;weapon&#39;][&#39;weapon_type&#39;]
+                return overall
+
+
+        ### DAMAGE ##################################################################################
+        def can_attack(self):
+                pass
+
+        def get_damage_parameters(self):
+                stats = self.get_stats()
+                stances = self.get_stances()
+                if self.get_combat_type() == &#39;Melee&#39;:
+                        return {
+                                &#39;offensive_equipment_bonus&#39;: stats[&#39;melee_strength&#39;],
+                                &#39;offensive_skill&#39;: &#39;strength&#39;,
+                                &#39;offensive_stance_bonus&#39;: {&#39;aggressive&#39;: 3, &#39;controlled&#39;: 1}.get(stances[self.combat_style][&#39;attack_style&#39;], 0),
+                                &#39;accuracy_equipment_bonus&#39;: stats[&#39;attack_&#39; + stances[self.combat_style][&#39;attack_type&#39;]],
+                                &#39;accuracy_skill&#39;: &#39;attack&#39;,
+                                &#39;accuracy_stance_bonus&#39;: {&#39;accurate&#39;: 3, &#39;controlled&#39;:1}.get(stances[self.combat_style][&#39;attack_style&#39;], 0),
+                        }
+                elif self.get_combat_type() == &#39;Ranged&#39;:
+                        return {
+                                &#39;offensive_equipment_bonus&#39;: stats[&#39;ranged_strength&#39;],
+                                &#39;offensive_skill&#39;: &#39;ranged&#39;,
+                                &#39;offensive_stance_bonus&#39;: {&#39;accurate&#39;: 3}.get(stances[self.combat_style][&#39;attack_style&#39;], 0),
+                                &#39;accuracy_equipment_bonus&#39;: stats[&#39;attack_ranged&#39;],
+                                &#39;accuracy_skill&#39;: &#39;ranged&#39;,
+                                &#39;accuracy_stance_bonus&#39;: {&#39;accurate&#39;: 3}.get(stances[self.combat_style][&#39;attack_style&#39;], 0),
+                        }
+                elif self.get_combat_type() == &#39;Magic&#39;:
+                        raise ValueError(&#34;Magic is not supported&#34;)
+                else:
+                        raise ValueError(&#34;Could not identify combat type&#34;)
+
+
+        def get_max_hit(self, potion, prayer):
+                dmg = self.get_damage_parameters()
+
+                other = boosts.Equipment.none()
+                other.update(boosts.other(self.get_equipment_names(), self))
+                special_attack_bonus = 1  # Special attacks are not implemented
+                multipler = 1  # Ignoring flooring order, since there is no official documentation
+                return damage.Standard().max_hit(
+                        dmg[&#39;offensive_equipment_bonus&#39;],
+                        self.levels[dmg[&#39;offensive_skill&#39;]],
+                        potion(self.levels[dmg[&#39;offensive_skill&#39;]]),
+                        prayer(dmg[&#39;offensive_skill&#39;]),
+                        other[dmg[&#39;offensive_skill&#39;]],
+                        dmg[&#39;offensive_stance_bonus&#39;],
+                        1, multipler
+                )
+
+        def get_attack_roll(self, potion, prayer):
+                dmg = self.get_damage_parameters()
+                stances = self.get_stances()
+
+                other = boosts.Equipment.none()
+                other.update(boosts.other(self.get_equipment_names(), self))
+                multipler = 1  # Ignoring flooring order, since there is no official documentation
+
+                return damage.Standard().max_attack_roll(
+                        dmg[&#39;accuracy_equipment_bonus&#39;],
+                        self.levels[dmg[&#39;accuracy_skill&#39;]],
+                        potion(self.levels[dmg[&#39;accuracy_skill&#39;]]),
+                        prayer(dmg[&#39;accuracy_skill&#39;]),
+                        other[dmg[&#39;accuracy_skill&#39;]],
+                        dmg[&#39;accuracy_stance_bonus&#39;],
+                        multipler
+                )
+
+        def get_defence_roll(self, attacker_attack_type, potion, prayer, multipler, using_special=False):
+                assert not using_special, &#34;Special attacks are not implemented&#34;
+                stats = self.get_stats()
+                stances = self.get_stances()
+
+                other = boosts.Equipment.none()
+                other.update(boosts.other(self.get_equipment_names()))
+                multipler = 1  # Ignoring flooring order, since there is no official documentation
+                if self.get_combat_type() in (&#39;Melee&#39;, &#39;Ranged&#39;):
+                        return damage.Standard().max_defence_roll(
+                                stats[&#39;defence_&#39; + attacker_attack_type],
+                                self.levels[&#39;defence&#39;],
+                                potion(self.levels[&#39;defence&#39;]),
+                                prayer(&#39;defence&#39;),
+                                other[&#39;defence&#39;],
+                                {&#39;longrange&#39;: 3, &#39;defensive&#39;: 3, &#39;controlled&#39;: 1,}.get(stances[self.combat_style][&#39;attack_style&#39;], 0),
+                                multipler
+                        )
+                elif self.get_combat_type() == &#39;Magic&#39;:
+                        raise ValueError(&#34;Magic is not supported&#34;)
+                else:
+                        raise ValueError(&#34;Could not identify combat type&#34;)
+
+        @staticmethod
+        def get_accuracy(attack_roll, opponent_defence_roll):
+                return damage.accuracy(attack_roll, opponent_defence_roll)
+
+        ### EXPERIENCE ##################################################################################
+        def xp_rate(self, states, opponents):
+                attack_type = self.get_stances()[self.combat_style][&#39;attack_type&#39;]
+                if attack_type is None:
+                        attack_type = self.get_combat_type().lower()
+
+                speed_bonus = -0.6 if self.get_stances()[self.combat_style][&#39;boosts&#39;] == &#34;attack speed by 1 tick&#34; else 0
+                return experience.xp_rate(
+                        attack_type,
+                        self.get_stats()[&#39;attack_speed&#39;] + speed_bonus,
+                        states, opponents
+                )
+
+        def time_to_level(self, states, opponents):
+                training = self.get_stances()[self.combat_style][&#39;experience&#39;]
+                if training == &#39;shared&#39;:
+                        raise ValueError(&#34;Only direct experience is allowed, not shared&#34;)
+
+                return experience.time_to_level(self.levels[training], self.xp_rate(states, opponents))
+
+        ### OTHER ##################################################################################
+        def print(self):
+                padding = max(len(slot) for slot in self.gear.keys())
+                print(&#34;Levels:&#34;)
+                for stat, level in self.levels.items():
+                        print(f&#34;\t{stat}: {level}&#34;)
+
+                print(&#34;Equipment:&#34;)
+                for slot, equipment in self.gear.items():
+                        print(f&#34;\t{slot:{padding}}: {equipment[&#39;name&#39;] if equipment else None}&#34;)
+
+                print(&#34;Stats:&#34;)
+                for stat, value in self.get_stats().items():
+                        if stat in (&#39;stances&#39;, &#39;weapon_type&#39;):
+                                continue
+                        print(f&#34;\t{stat}: {value}&#34;)
+
+                print(&#34;Attack Stances:&#34;, &#39;, &#39;.join([f&#34;[{k}: {v[&#39;attack_type&#39;]}, {v[&#39;experience&#39;]}]&#34; for k, v in self.get_stances().items()]))
+                print(f&#34;Currently Using {self.combat_style}&#34;, end=&#39; &#39; if self.combat_style else &#39;\n&#39;)
+                if self.combat_style:
+                        print(f&#34;which trains {self.get_stances()[self.combat_style][&#39;experience&#39;]} ({self.get_combat_type()})&#34;)</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="osrsmath.combat.player.Player.get_accuracy"><code class="name flex">
+<span>def <span class="ident">get_accuracy</span></span>(<span>attack_roll, opponent_defence_roll)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def get_accuracy(attack_roll, opponent_defence_roll):
+        return damage.accuracy(attack_roll, opponent_defence_roll)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="osrsmath.combat.player.Player.can_attack"><code class="name flex">
+<span>def <span class="ident">can_attack</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def can_attack(self):
+        pass</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.Player.equip"><code class="name flex">
+<span>def <span class="ident">equip</span></span>(<span>self, equipment)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def equip(self, equipment):
+        slot = equipment[&#39;slot&#39;]
+        if slot == &#39;2h&#39;:
+                self.unequip(&#39;weapon&#39;)
+                self.unequip(&#39;shield&#39;)
+                slot = &#39;weapon&#39;
+        elif slot == &#39;shield&#39; and (self.gear[&#39;weapon&#39;] and self.gear[&#39;weapon&#39;][&#39;slot&#39;] == &#39;2h&#39;):
+                self.unequip(&#39;weapon&#39;)
+        assert slot != &#39;2h&#39;
+        self.gear[slot] = equipment</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.Player.equip_by_id"><code class="name flex">
+<span>def <span class="ident">equip_by_id</span></span>(<span>self, id, equipment_data=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def equip_by_id(self, id, equipment_data=None):
+        self.equip(filter_equipment(get_equipment_by_id(id, slot=None, equipment_data=equipment_data)))</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.Player.equip_by_name"><code class="name flex">
+<span>def <span class="ident">equip_by_name</span></span>(<span>self, name, equipment_data=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def equip_by_name(self, name, equipment_data=None):
+        self.equip(filter_equipment(get_equipment_by_name(name, slot=None, equipment_data=equipment_data)))</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.Player.get_attack_roll"><code class="name flex">
+<span>def <span class="ident">get_attack_roll</span></span>(<span>self, potion, prayer)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_attack_roll(self, potion, prayer):
+        dmg = self.get_damage_parameters()
+        stances = self.get_stances()
+
+        other = boosts.Equipment.none()
+        other.update(boosts.other(self.get_equipment_names(), self))
+        multipler = 1  # Ignoring flooring order, since there is no official documentation
+
+        return damage.Standard().max_attack_roll(
+                dmg[&#39;accuracy_equipment_bonus&#39;],
+                self.levels[dmg[&#39;accuracy_skill&#39;]],
+                potion(self.levels[dmg[&#39;accuracy_skill&#39;]]),
+                prayer(dmg[&#39;accuracy_skill&#39;]),
+                other[dmg[&#39;accuracy_skill&#39;]],
+                dmg[&#39;accuracy_stance_bonus&#39;],
+                multipler
+        )</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.Player.get_combat_type"><code class="name flex">
+<span>def <span class="ident">get_combat_type</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns Melee, Ranged, or Magic based on experience gained.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_combat_type(self):
+        &#34;&#34;&#34; Returns Melee, Ranged, or Magic based on experience gained. &#34;&#34;&#34;
+        if self.combat_style is None:
+                return None
+        if &#39;ranged&#39; in self.get_stances()[self.combat_style][&#39;experience&#39;]:
+                return &#39;Ranged&#39;
+        if &#39;magic&#39; in self.get_stances()[self.combat_style][&#39;experience&#39;]:
+                return &#39;Magic&#39;
+        return {
+                &#39;stab&#39;: &#39;Melee&#39;,
+                &#39;slash&#39;: &#39;Melee&#39;,
+                &#39;crush&#39;: &#39;Melee&#39;,
+                &#39;ranged&#39;: &#39;Ranged&#39;,
+                &#39;magic&#39;: &#39;Magic&#39;,
+        }[self.get_stances()[self.combat_style][&#39;attack_type&#39;]]</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.Player.get_damage_parameters"><code class="name flex">
+<span>def <span class="ident">get_damage_parameters</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_damage_parameters(self):
+        stats = self.get_stats()
+        stances = self.get_stances()
+        if self.get_combat_type() == &#39;Melee&#39;:
+                return {
+                        &#39;offensive_equipment_bonus&#39;: stats[&#39;melee_strength&#39;],
+                        &#39;offensive_skill&#39;: &#39;strength&#39;,
+                        &#39;offensive_stance_bonus&#39;: {&#39;aggressive&#39;: 3, &#39;controlled&#39;: 1}.get(stances[self.combat_style][&#39;attack_style&#39;], 0),
+                        &#39;accuracy_equipment_bonus&#39;: stats[&#39;attack_&#39; + stances[self.combat_style][&#39;attack_type&#39;]],
+                        &#39;accuracy_skill&#39;: &#39;attack&#39;,
+                        &#39;accuracy_stance_bonus&#39;: {&#39;accurate&#39;: 3, &#39;controlled&#39;:1}.get(stances[self.combat_style][&#39;attack_style&#39;], 0),
+                }
+        elif self.get_combat_type() == &#39;Ranged&#39;:
+                return {
+                        &#39;offensive_equipment_bonus&#39;: stats[&#39;ranged_strength&#39;],
+                        &#39;offensive_skill&#39;: &#39;ranged&#39;,
+                        &#39;offensive_stance_bonus&#39;: {&#39;accurate&#39;: 3}.get(stances[self.combat_style][&#39;attack_style&#39;], 0),
+                        &#39;accuracy_equipment_bonus&#39;: stats[&#39;attack_ranged&#39;],
+                        &#39;accuracy_skill&#39;: &#39;ranged&#39;,
+                        &#39;accuracy_stance_bonus&#39;: {&#39;accurate&#39;: 3}.get(stances[self.combat_style][&#39;attack_style&#39;], 0),
+                }
+        elif self.get_combat_type() == &#39;Magic&#39;:
+                raise ValueError(&#34;Magic is not supported&#34;)
+        else:
+                raise ValueError(&#34;Could not identify combat type&#34;)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.Player.get_defence_roll"><code class="name flex">
+<span>def <span class="ident">get_defence_roll</span></span>(<span>self, attacker_attack_type, potion, prayer, multipler, using_special=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_defence_roll(self, attacker_attack_type, potion, prayer, multipler, using_special=False):
+        assert not using_special, &#34;Special attacks are not implemented&#34;
+        stats = self.get_stats()
+        stances = self.get_stances()
+
+        other = boosts.Equipment.none()
+        other.update(boosts.other(self.get_equipment_names()))
+        multipler = 1  # Ignoring flooring order, since there is no official documentation
+        if self.get_combat_type() in (&#39;Melee&#39;, &#39;Ranged&#39;):
+                return damage.Standard().max_defence_roll(
+                        stats[&#39;defence_&#39; + attacker_attack_type],
+                        self.levels[&#39;defence&#39;],
+                        potion(self.levels[&#39;defence&#39;]),
+                        prayer(&#39;defence&#39;),
+                        other[&#39;defence&#39;],
+                        {&#39;longrange&#39;: 3, &#39;defensive&#39;: 3, &#39;controlled&#39;: 1,}.get(stances[self.combat_style][&#39;attack_style&#39;], 0),
+                        multipler
+                )
+        elif self.get_combat_type() == &#39;Magic&#39;:
+                raise ValueError(&#34;Magic is not supported&#34;)
+        else:
+                raise ValueError(&#34;Could not identify combat type&#34;)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.Player.get_equipment_names"><code class="name flex">
+<span>def <span class="ident">get_equipment_names</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a list of the worn equipment names.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_equipment_names(self):
+        &#34;&#34;&#34; Returns a list of the worn equipment names. &#34;&#34;&#34;
+        return [e[&#39;name&#39;] for e in self.gear.values() if e]</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.Player.get_max_hit"><code class="name flex">
+<span>def <span class="ident">get_max_hit</span></span>(<span>self, potion, prayer)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_max_hit(self, potion, prayer):
+        dmg = self.get_damage_parameters()
+
+        other = boosts.Equipment.none()
+        other.update(boosts.other(self.get_equipment_names(), self))
+        special_attack_bonus = 1  # Special attacks are not implemented
+        multipler = 1  # Ignoring flooring order, since there is no official documentation
+        return damage.Standard().max_hit(
+                dmg[&#39;offensive_equipment_bonus&#39;],
+                self.levels[dmg[&#39;offensive_skill&#39;]],
+                potion(self.levels[dmg[&#39;offensive_skill&#39;]]),
+                prayer(dmg[&#39;offensive_skill&#39;]),
+                other[dmg[&#39;offensive_skill&#39;]],
+                dmg[&#39;offensive_stance_bonus&#39;],
+                1, multipler
+        )</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.Player.get_stances"><code class="name flex">
+<span>def <span class="ident">get_stances</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_stances(self):
+        return {stance[&#39;combat_style&#39;]: stance for stance in self.gear[&#39;weapon&#39;][&#39;stances&#39;]}</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.Player.get_stats"><code class="name flex">
+<span>def <span class="ident">get_stats</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_stats(self):
+        overall = {}
+        for slot, equipment in self.gear.items():
+                assert slot != &#39;2h&#39;  # 2h slot is not used, 2h&#39;s go into weapon slot.
+                if equipment is None:
+                        continue
+                for stat, value in equipment.items():
+                        if stat in (&#39;name&#39;, &#39;requirements&#39;, &#39;slot&#39;, &#39;id&#39;, &#39;stances&#39;, &#39;attack_speed&#39;, &#39;weapon_type&#39;):
+                                continue
+                        if stat in overall:
+                                overall[stat] += value
+                        else:
+                                overall[stat] = value
+        overall[&#39;stances&#39;] = self.gear[&#39;weapon&#39;][&#39;stances&#39;]
+        overall[&#39;attack_speed&#39;] = self.gear[&#39;weapon&#39;][&#39;attack_speed&#39;]
+        overall[&#39;weapon_type&#39;] = self.gear[&#39;weapon&#39;][&#39;weapon_type&#39;]
+        return overall</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.Player.print"><code class="name flex">
+<span>def <span class="ident">print</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print(self):
+        padding = max(len(slot) for slot in self.gear.keys())
+        print(&#34;Levels:&#34;)
+        for stat, level in self.levels.items():
+                print(f&#34;\t{stat}: {level}&#34;)
+
+        print(&#34;Equipment:&#34;)
+        for slot, equipment in self.gear.items():
+                print(f&#34;\t{slot:{padding}}: {equipment[&#39;name&#39;] if equipment else None}&#34;)
+
+        print(&#34;Stats:&#34;)
+        for stat, value in self.get_stats().items():
+                if stat in (&#39;stances&#39;, &#39;weapon_type&#39;):
+                        continue
+                print(f&#34;\t{stat}: {value}&#34;)
+
+        print(&#34;Attack Stances:&#34;, &#39;, &#39;.join([f&#34;[{k}: {v[&#39;attack_type&#39;]}, {v[&#39;experience&#39;]}]&#34; for k, v in self.get_stances().items()]))
+        print(f&#34;Currently Using {self.combat_style}&#34;, end=&#39; &#39; if self.combat_style else &#39;\n&#39;)
+        if self.combat_style:
+                print(f&#34;which trains {self.get_stances()[self.combat_style][&#39;experience&#39;]} ({self.get_combat_type()})&#34;)</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.Player.time_to_level"><code class="name flex">
+<span>def <span class="ident">time_to_level</span></span>(<span>self, states, opponents)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def time_to_level(self, states, opponents):
+        training = self.get_stances()[self.combat_style][&#39;experience&#39;]
+        if training == &#39;shared&#39;:
+                raise ValueError(&#34;Only direct experience is allowed, not shared&#34;)
+
+        return experience.time_to_level(self.levels[training], self.xp_rate(states, opponents))</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.Player.unequip"><code class="name flex">
+<span>def <span class="ident">unequip</span></span>(<span>self, slot)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def unequip(self, slot):
+        self.gear[slot] = None</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.Player.xp_rate"><code class="name flex">
+<span>def <span class="ident">xp_rate</span></span>(<span>self, states, opponents)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def xp_rate(self, states, opponents):
+        attack_type = self.get_stances()[self.combat_style][&#39;attack_type&#39;]
+        if attack_type is None:
+                attack_type = self.get_combat_type().lower()
+
+        speed_bonus = -0.6 if self.get_stances()[self.combat_style][&#39;boosts&#39;] == &#34;attack speed by 1 tick&#34; else 0
+        return experience.xp_rate(
+                attack_type,
+                self.get_stats()[&#39;attack_speed&#39;] + speed_bonus,
+                states, opponents
+        )</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="osrsmath.combat.player.PlayerBuilder"><code class="flex name class">
+<span>class <span class="ident">PlayerBuilder</span></span>
+<span>(</span><span>stats, equipment_data=None)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PlayerBuilder:
+        def __init__(self, stats, equipment_data=None):
+                self.player = Player(stats)
+                self.equipment_data = get_equipment_data() if equipment_data is None else equipment_data
+
+        def equip(self, equipment):
+                if type(equipment) == str:
+                        self.player.equip_by_name(equipment, self.equipment_data)
+                else:
+                        for e in equipment:
+                                self.player.equip_by_name(e, self.equipment_data)
+                return self
+
+        def get(self):
+                return self.player</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="osrsmath.combat.player.PlayerBuilder.equip"><code class="name flex">
+<span>def <span class="ident">equip</span></span>(<span>self, equipment)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def equip(self, equipment):
+        if type(equipment) == str:
+                self.player.equip_by_name(equipment, self.equipment_data)
+        else:
+                for e in equipment:
+                        self.player.equip_by_name(e, self.equipment_data)
+        return self</code></pre>
+</details>
+</dd>
+<dt id="osrsmath.combat.player.PlayerBuilder.get"><code class="name flex">
+<span>def <span class="ident">get</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get(self):
+        return self.player</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="osrsmath.combat" href="index.html">osrsmath.combat</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="osrsmath.combat.player.filter_equipment" href="#osrsmath.combat.player.filter_equipment">filter_equipment</a></code></li>
+<li><code><a title="osrsmath.combat.player.get_equipment_by_id" href="#osrsmath.combat.player.get_equipment_by_id">get_equipment_by_id</a></code></li>
+<li><code><a title="osrsmath.combat.player.get_equipment_by_name" href="#osrsmath.combat.player.get_equipment_by_name">get_equipment_by_name</a></code></li>
+<li><code><a title="osrsmath.combat.player.get_equipment_data" href="#osrsmath.combat.player.get_equipment_data">get_equipment_data</a></code></li>
+<li><code><a title="osrsmath.combat.player.get_equipment_slot_data" href="#osrsmath.combat.player.get_equipment_slot_data">get_equipment_slot_data</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="osrsmath.combat.player.Player" href="#osrsmath.combat.player.Player">Player</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.combat.player.Player.can_attack" href="#osrsmath.combat.player.Player.can_attack">can_attack</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.equip" href="#osrsmath.combat.player.Player.equip">equip</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.equip_by_id" href="#osrsmath.combat.player.Player.equip_by_id">equip_by_id</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.equip_by_name" href="#osrsmath.combat.player.Player.equip_by_name">equip_by_name</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.get_accuracy" href="#osrsmath.combat.player.Player.get_accuracy">get_accuracy</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.get_attack_roll" href="#osrsmath.combat.player.Player.get_attack_roll">get_attack_roll</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.get_combat_type" href="#osrsmath.combat.player.Player.get_combat_type">get_combat_type</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.get_damage_parameters" href="#osrsmath.combat.player.Player.get_damage_parameters">get_damage_parameters</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.get_defence_roll" href="#osrsmath.combat.player.Player.get_defence_roll">get_defence_roll</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.get_equipment_names" href="#osrsmath.combat.player.Player.get_equipment_names">get_equipment_names</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.get_max_hit" href="#osrsmath.combat.player.Player.get_max_hit">get_max_hit</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.get_stances" href="#osrsmath.combat.player.Player.get_stances">get_stances</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.get_stats" href="#osrsmath.combat.player.Player.get_stats">get_stats</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.print" href="#osrsmath.combat.player.Player.print">print</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.time_to_level" href="#osrsmath.combat.player.Player.time_to_level">time_to_level</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.unequip" href="#osrsmath.combat.player.Player.unequip">unequip</a></code></li>
+<li><code><a title="osrsmath.combat.player.Player.xp_rate" href="#osrsmath.combat.player.Player.xp_rate">xp_rate</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="osrsmath.combat.player.PlayerBuilder" href="#osrsmath.combat.player.PlayerBuilder">PlayerBuilder</a></code></h4>
+<ul class="">
+<li><code><a title="osrsmath.combat.player.PlayerBuilder.equip" href="#osrsmath.combat.player.PlayerBuilder.equip">equip</a></code></li>
+<li><code><a title="osrsmath.combat.player.PlayerBuilder.get" href="#osrsmath.combat.player.PlayerBuilder.get">get</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
