@@ -4,7 +4,8 @@ multiprocess.freeze_support()
 from osrsmath.apps.optimize.gui_single import Ui_MainWindow
 from pathlib import Path
 
-from osrsmath.combat.player import Player, get_equipment_data
+from osrsmath.combat.fighter import Fighter
+from osrsmath.general.player import EquipmentPool
 from osrsmath.combat.monsters import get_monster_data
 from pprint import pprint as pp
 from PySide2 import QtCore, QtGui, QtWidgets
@@ -240,10 +241,27 @@ class GUI(Ui_MainWindow):
 
 			ignore = self.ignore_adjust_panel.get_ignore()
 			adjust = self.ignore_adjust_panel.get_adjust()
-			potion = getattr(Potions, self.optimize_panel.potions.currentText())
+			
+			potion_name = self.optimize_panel.potions.currentText()
+			if (potion_name == 'magic' and training_skill != 'magic') or (potion_name == 'ranging' and training_skill != 'ranged'):
+				QtWidgets.QMessageBox(
+					QtWidgets.QMessageBox.Warning, 'Invalid Potion Input', "The potion you are using doesn't match the training skill."
+				).exec_()
+				return
+			potion = getattr(Potions, potion_name)
 			potion_attributes = self.optimize_panel.potion_attributes.currentText()
-			prayer = getattr(Prayers, self.optimize_panel.prayers.currentText())
+		
+			prayer_name = self.optimize_panel.prayers.currentText()
+			if (prayer_name == 'augury' and training_skill != 'magic') or\
+				 (prayer_name == 'rigour' and training_skill != 'ranged') or\
+				 	((prayer_name == 'chivalry' or prayer_name == 'piety') and training_skill not in ['attack', 'strength', 'defence']):
+				QtWidgets.QMessageBox(
+					QtWidgets.QMessageBox.Warning, 'Invalid Potion Input', "The potion you are using doesn't match the training skill."
+				).exec_()
+				return
+			prayer = getattr(Prayers, prayer_name)
 			prayer_attributes = self.optimize_panel.prayer_attributes.currentText()
+			
 			if potion != Potions.none and self.optimize_panel.boosting_scheme.currentText() == 'Dose After':
 				skill = self.optimize_panel.below_skill.currentText()
 				try:
@@ -259,6 +277,9 @@ class GUI(Ui_MainWindow):
 			else:
 				boost = lambda p: BoostingSchemes(p, prayer, prayer_attributes).constant(potion, potion_attributes)
 
+			fighter = Fighter(stats)
+			fighter.set_spell(self.optimize_panel.entities['spell'].get() if training_skill == 'magic' else None)
+			
 			# Time and Evaluate Solution
 			t0 = time.time()
 			self.update_status(f'Step (1/2). Generating Sets...')
@@ -266,7 +287,7 @@ class GUI(Ui_MainWindow):
 			t1 = time.time()
 			self.update_status(f'Step (2/2). Evaluating {len(sets)} Sets...')
 			(s, xp, stance), xps = get_best_set(
-				stats,
+				fighter,
 				training_skill,
 				boost,
 				monsters,
@@ -301,22 +322,17 @@ class GUI(Ui_MainWindow):
 
 			# Display Offensive Attributes
 			tab = self.optimize_panel.best_in_slot_bonuses
-			player = Player({})
-			for slot, item_name in s.items():
-				player.equip_by_name(item_name)
-			equipment_stats = player.get_stats()
+			fighter.equipment.undress()
+			fighter.equipment.wear(*list(s.values()))
+			fighter.set_stance(stance)
+			equipment_stats = fighter.equipment.get_stats()
 			for i, stat in enumerate(['attack_stab', 'attack_slash', 'attack_crush', 'attack_ranged', 'attack_magic',
 										'melee_strength', 'ranged_strength', 'magic_damage', 'attack_speed']):
 				tab.setItem(i, 0, QtWidgets.QTableWidgetItem(str(round(equipment_stats[stat], 2))))
 			tab.setItem(9, 0, QtWidgets.QTableWidgetItem(str("")))
 
 			# Additional Messages
-			player = Player(stats)
-			player.combat_style = stance
-			[player.equip_by_name(e) for e in s.values()]
-			M = player.get_max_hit(potion, prayer)
-			print(M)
-
+			print(f"Max hit: [{fighter.get_max_hit(Potions.none, Prayers.none)}, {fighter.get_max_hit(potion, prayer)}]")
 			report = f"Solved in {t2-t0:.2f}s ({t1-t0:.2f}s, {t2-t1:.2f}s) using {len(sets)} sets, giving {xp/1000:.2f}k xp/h."
 			print(report, stance)
 			self.update_status(report)

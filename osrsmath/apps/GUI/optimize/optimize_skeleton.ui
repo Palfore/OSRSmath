@@ -14,293 +14,7 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="7" column="1" colspan="4">
-    <widget class="QComboBox" name="below_skill">
-     <item>
-      <property name="text">
-       <string>attack</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>strength</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>defence</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="5" column="5" colspan="3">
-    <widget class="QComboBox" name="potion_attributes">
-     <item>
-      <property name="text">
-       <string>accuracy</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>damage</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>accuracy and damage</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="16" column="7" rowspan="11" colspan="3">
-    <widget class="QTableWidget" name="best_in_slot_bonuses">
-     <property name="showGrid">
-      <bool>true</bool>
-     </property>
-     <attribute name="horizontalHeaderStretchLastSection">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="verticalHeaderStretchLastSection">
-      <bool>false</bool>
-     </attribute>
-     <row>
-      <property name="text">
-       <string>Stab</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Slash</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Crush</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Ranged</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Magic</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Melee Str</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Ranged Str</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Magic Str</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Speed</string>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string>Cost</string>
-      </property>
-     </row>
-     <column>
-      <property name="text">
-       <string>Bonuses</string>
-      </property>
-      <property name="textAlignment">
-       <set>AlignCenter</set>
-      </property>
-     </column>
-     <item row="0" column="0">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="flags">
-       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-      </property>
-     </item>
-     <item row="1" column="0">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="flags">
-       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-      </property>
-     </item>
-     <item row="2" column="0">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="flags">
-       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-      </property>
-     </item>
-     <item row="3" column="0">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="flags">
-       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-      </property>
-     </item>
-     <item row="4" column="0">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="flags">
-       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-      </property>
-     </item>
-     <item row="5" column="0">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="flags">
-       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-      </property>
-     </item>
-     <item row="6" column="0">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="flags">
-       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-      </property>
-     </item>
-     <item row="7" column="0">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="flags">
-       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-      </property>
-     </item>
-     <item row="8" column="0">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="flags">
-       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-      </property>
-     </item>
-     <item row="9" column="0">
-      <property name="text">
-       <string/>
-      </property>
-      <property name="flags">
-       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="13" column="7">
-    <widget class="QCheckBox" name="elite_void">
-     <property name="text">
-      <string>Elite Void</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1" colspan="4">
-    <widget class="QComboBox" name="training_skill">
-     <item>
-      <property name="text">
-       <string>attack</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>strength</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>defence</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>ranged</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>magic</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="12" column="7">
-    <widget class="QCheckBox" name="void_knight">
-     <property name="text">
-      <string>Void</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="5">
-    <widget class="QCheckBox" name="slayer_helm">
-     <property name="text">
-      <string>Slayer Helm</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="14" column="0">
-    <widget class="QPushButton" name="evaluate">
-     <property name="text">
-      <string>Evaluate!</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Potions</string>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="3">
-    <widget class="QLineEdit" name="dharok">
-     <property name="text">
-      <string>0</string>
-     </property>
-     <property name="maxLength">
-      <number>2</number>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_6">
-     <property name="text">
-      <string>Train</string>
-     </property>
-    </widget>
-   </item>
-   <item row="14" column="1" colspan="9">
-    <widget class="QProgressBar" name="progressBar">
-     <property name="value">
-      <number>0</number>
-     </property>
-    </widget>
-   </item>
-   <item row="16" column="0" colspan="6">
+   <item row="17" column="0" colspan="6">
     <widget class="QFrame" name="frame">
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -484,10 +198,7 @@
      </layout>
     </widget>
    </item>
-   <item row="5" column="1" colspan="4">
-    <widget class="QComboBox" name="potions"/>
-   </item>
-   <item row="10" column="5" colspan="3">
+   <item row="11" column="5" colspan="3">
     <widget class="QComboBox" name="prayer_attributes">
      <item>
       <property name="text">
@@ -506,7 +217,7 @@
      </item>
     </widget>
    </item>
-   <item row="5" column="8" colspan="2">
+   <item row="6" column="8" colspan="2">
     <widget class="QComboBox" name="boosting_scheme">
      <item>
       <property name="text">
@@ -520,17 +231,310 @@
      </item>
     </widget>
    </item>
-   <item row="13" column="8">
-    <widget class="QCheckBox" name="berserker_necklace">
+   <item row="6" column="1" colspan="4">
+    <widget class="QComboBox" name="potions"/>
+   </item>
+   <item row="8" column="1" colspan="4">
+    <widget class="QComboBox" name="below_skill">
+     <item>
+      <property name="text">
+       <string>attack</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>strength</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>defence</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="6" column="5" colspan="3">
+    <widget class="QComboBox" name="potion_attributes">
+     <item>
+      <property name="text">
+       <string>accuracy</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>damage</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>accuracy and damage</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="14" column="7">
+    <widget class="QCheckBox" name="elite_void">
      <property name="text">
-      <string>Bers. Neck.</string>
+      <string>Elite Void</string>
      </property>
      <property name="checked">
       <bool>true</bool>
      </property>
     </widget>
    </item>
+   <item row="17" column="7" rowspan="11" colspan="3">
+    <widget class="QTableWidget" name="best_in_slot_bonuses">
+     <property name="showGrid">
+      <bool>true</bool>
+     </property>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderStretchLastSection">
+      <bool>false</bool>
+     </attribute>
+     <row>
+      <property name="text">
+       <string>Stab</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Slash</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Crush</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Ranged</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Magic</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Melee Str</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Ranged Str</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Magic Str</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Speed</string>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string>Cost</string>
+      </property>
+     </row>
+     <column>
+      <property name="text">
+       <string>Bonuses</string>
+      </property>
+      <property name="textAlignment">
+       <set>AlignCenter</set>
+      </property>
+     </column>
+     <item row="0" column="0">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="1" column="0">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="2" column="0">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="3" column="0">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="4" column="0">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="5" column="0">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="6" column="0">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="7" column="0">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="8" column="0">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+     <item row="9" column="0">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="flags">
+       <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+      </property>
+     </item>
+    </widget>
+   </item>
    <item row="13" column="5">
+    <widget class="QCheckBox" name="slayer_helm">
+     <property name="text">
+      <string>Slayer Helm</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="0">
+    <widget class="QPushButton" name="evaluate">
+     <property name="text">
+      <string>Evaluate!</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Potions</string>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="7">
+    <widget class="QCheckBox" name="void_knight">
+     <property name="text">
+      <string>Void</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" colspan="4">
+    <widget class="QComboBox" name="training_skill">
+     <item>
+      <property name="text">
+       <string>attack</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>strength</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>defence</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>ranged</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>magic</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Train</string>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="3">
+    <widget class="QLineEdit" name="dharok">
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="maxLength">
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="1" colspan="9">
+    <widget class="QProgressBar" name="progressBar">
+     <property name="value">
+      <number>0</number>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="2">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>&lt;Dharok HP&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="0">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>Other</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="5">
     <widget class="QCheckBox" name="salve_amulet">
      <property name="text">
       <string>Salve Amulet</string>
@@ -540,24 +544,20 @@
      </property>
     </widget>
    </item>
-   <item row="12" column="2">
-    <widget class="QLabel" name="label_7">
-     <property name="text">
-      <string>&lt;Dharok HP&gt;</string>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="0">
-    <widget class="QLabel" name="label_8">
-     <property name="text">
-      <string>Other</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="0">
+   <item row="11" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
       <string>Prayer</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="8">
+    <widget class="QCheckBox" name="berserker_necklace">
+     <property name="text">
+      <string>Bers. Neck.</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -568,7 +568,10 @@
      </property>
     </widget>
    </item>
-   <item row="12" column="8">
+   <item row="11" column="1" colspan="4">
+    <widget class="QComboBox" name="prayers"/>
+   </item>
+   <item row="13" column="8">
     <widget class="QCheckBox" name="obsidian">
      <property name="text">
       <string>Obsidian</string>
@@ -578,30 +581,20 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="8">
+   <item row="8" column="8">
     <widget class="QLineEdit" name="redose_level">
      <property name="maxLength">
       <number>2</number>
      </property>
     </widget>
    </item>
-   <item row="10" column="1" colspan="4">
-    <widget class="QComboBox" name="prayers"/>
-   </item>
-   <item row="7" column="5" colspan="3">
+   <item row="8" column="5" colspan="3">
     <widget class="QLabel" name="label_5">
      <property name="enabled">
       <bool>true</bool>
      </property>
      <property name="text">
       <string>boost below</string>
-     </property>
-    </widget>
-   </item>
-   <item row="15" column="2">
-    <widget class="QCheckBox" name="show_histogram">
-     <property name="text">
-      <string>Show Histogram</string>
      </property>
     </widget>
    </item>
@@ -615,10 +608,31 @@
      </property>
     </widget>
    </item>
+   <item row="16" column="2">
+    <widget class="QCheckBox" name="show_histogram">
+     <property name="text">
+      <string>Show Histogram</string>
+     </property>
+    </widget>
+   </item>
    <item row="4" column="7">
     <widget class="QLineEdit" name="cpu_cores">
      <property name="text">
       <string>0</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" colspan="4">
+    <widget class="QComboBox" name="spell">
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="spell_label">
+     <property name="text">
+      <string>Spell</string>
      </property>
     </widget>
    </item>

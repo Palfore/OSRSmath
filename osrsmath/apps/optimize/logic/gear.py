@@ -1,5 +1,5 @@
 from osrsmath.general.player import EquipmentPool
-from osrsmath.general.fighter import bonus_to_triangle
+from osrsmath.combat.fighter import bonus_to_triangle
 from collections import defaultdict
 import fnmatch
 
@@ -80,10 +80,10 @@ def get_equipable_gear(gear, player_stats, ignore, adjustments):
 class Weapon:
 	@staticmethod
 	def stance_can_train(stance: dict, skill, allow_controlled=False):
-		print(stance, skill)
 		if stance['experience'] is None:  # Like Dinh's bulwark, on block
 			return False
 		if allow_controlled:
+			print("Warning: Untested")
 			if stance['experience'] == 'shared':  # Melee
 				return True
 			if stance['experience'] == 'ranged and defence':
@@ -91,15 +91,26 @@ class Weapon:
 			if stance['experience'] == 'magic and defence':
 				return skill in ('magic', 'defence')
 		
-		return skill in stance['experience']
+		if skill in ('magic', 'ranged'):
+			if skill == 'magic' and stance['experience'] == 'magic':
+				return True
+			elif skill == 'ranged' and stance['experience'] == 'ranged':
+				return True
+			else:
+				return False
+		else:
+			return skill in stance['experience']
 
 	@staticmethod
 	def stance_can_use(stance, attack_type):
 		assert attack_type in ['stab', 'slash', 'crush', 'ranged', 'magic']
-		if stance['attack_type'] is not None:
-			return stance['attack_type'] == attack_type
-		else:  # Mage and Ranged
+		if stance['attack_type'] is None:  # Ranged
 			return attack_type in stance['experience']
+		if stance['attack_type'] in ('defensive casting', 'spellcasting'):
+			return True
+		else:
+			return stance['attack_type'] == attack_type
+			
 
 	@staticmethod
 	def stance_can_do(stance, skill, attack_type, allow_controlled=False):

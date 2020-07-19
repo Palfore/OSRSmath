@@ -3,7 +3,8 @@ from osrsmath.apps.optimize.logic.gear import (
 	get_offensive_bonuses, get_offensive_equipment, get_equipable_gear, meets_requirements, Weapon
 )
 from osrsmath.apps.optimize.logic.evaluation import mmap, eval_set
-from osrsmath.combat.player import get_equipment_by_name
+from osrsmath.general.player import EquipmentPool
+from osrsmath.combat.fighter import stance_to_style, bonus_to_triangle
 from collections import defaultdict
 from pprint import pprint
 import itertools
@@ -42,10 +43,14 @@ def get_armour_sets(attack_style, gear, weapon):
 	if attack_style == 'ranged':
 		if "karil's crossbow" in weapon['name'].lower():
 			gear['ammo'] = [a for a in gear['ammo'] if a['name'].lower() == 'bolt racks']
-		if "crystal bow" in weapon['name'].lower():
+		elif "crystal bow" in weapon['name'].lower():
 			gear['ammo'] = []
-		if "craw's bow" in weapon['name'].lower():
+		elif "craw's bow" in weapon['name'].lower():
 			gear['ammo'] = []
+		elif "dorgeshuun crossbow" in weapon['name'].lower():
+			gear['ammo'] = [a for a in gear['ammo'] if a['name'].lower() == 'bone bolts']
+		elif ("lizard" in weapon['name'].lower()) or ("salamander" in weapon['name'].lower()):
+			gear['ammo'] = [a for a in gear['ammo'] if a['name'].lower() in ('guam tar', 'marrentill tar', 'tarromin tar', 'harralander tar')]
 		else:
 			name_requirements = {
 				'bows': 'arrow',
@@ -56,8 +61,6 @@ def get_armour_sets(attack_style, gear, weapon):
 			}[weapon['weapon']['weapon_type']]
 			
 			gear['ammo'] = [a for a in gear['ammo'] if name_requirements in a['name']]
-
-		# gear['ammo'] = gear['ammo'].items()
 	reduced_equipment = [[
 		(slot, e['name']) for e in get_unique_equipment(attack_style, equipment)
 	] for slot, equipment in gear.items()]
@@ -107,7 +110,6 @@ class Solver:
 	def get_equipment_sets(self, attack_type, weapon_names, remove_slots):
 		s = []
 		for weapon in get_unique_equipment(attack_type, weapon_names):
-			# print(weapon['name'], weapon['weapon']['weapon_type'])
 			s.extend(self.get_weapon_sets(attack_type, weapon, remove_slots))
 		return s
 
@@ -131,9 +133,10 @@ class Solver:
 		s = []
 		for stance in weapon['weapon']['stances']:
 			if Weapon.stance_can_do(stance, self.training_skill, attack_type, allow_controlled=False):
+				# print(attack_type, stance, stance_to_style(bonus_to_triangle(attack_type), stance))
 				s.extend([
 					(stance['combat_style'], [('weapon', weapon['name']), *a])
-						for a in get_armour_sets('ranged' if stance['attack_type'] is None else stance['attack_type'], armour, weapon)
+						for a in get_armour_sets( stance_to_style(bonus_to_triangle(attack_type), stance), armour, weapon)
 				])
 		return s
 
@@ -193,18 +196,18 @@ def get_sets(training_skill, player_stats, defenders, ignore, adjustments, consi
 			solver.add_special_set(*special_set)
 	return solver.solve()
 
-def get_best_set(player_stats: dict, training_skill, states, defenders, sets, include_shared_xp=True, progress_callback=None, num_cores=0):
+def get_best_set(fighter, training_skill, states, defenders, sets, include_shared_xp=True, progress_callback=None, num_cores=0):
 	""" Returns the equipment set that provides the highest experience rate for the training_skill.
-		@param player_stats: {'attack': 40, ...}
+		@param fighter Fighter class instance
 		@param training_skill: 'attack'
 		@param sets: [{'cape': 'Fire cape', ...}, {'cape': 'Legends cape', ...}, ...] """
 	sets = mmap(
-		lambda s: eval_set(player_stats, training_skill, states, defenders, s, include_shared_xp),
+		lambda s: eval_set(fighter, training_skill, states, defenders, s, include_shared_xp),
 		sets,
 		progress_callback if progress_callback else lambda x: None,
 		num_cores=num_cores
 	)
 	if not sets:
-		return None, 0, None
+		return (None, 0, None), None
 
 	return max(sets, key=lambda x: x[1]), [s[1] for s in sets]  # x[1] -> xp rate

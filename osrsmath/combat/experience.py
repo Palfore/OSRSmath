@@ -47,7 +47,7 @@ def time_to_level(current_level, experience_rate):
 	return experience_required_to_level_up_to(current_level + 1) / experience_rate
 
 if __name__ == '__main__':
-	from osrsmath.combat.player import PlayerBuilder
+	from osrsmath.combat.fighter import PlayerBuilder
 	from osrsmath.combat.boosts import BoostingSchemes
 	from osrsmath.combat.monsters import Monster
 

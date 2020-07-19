@@ -88,17 +88,20 @@ class Monster:
 
 	def get_defence_roll(self, attacker_attack_type):
 		combat_type = {
-			'stab': 'Melee', 'slash': 'Melee', 'crush': 'Melee', 'ranged': 'Ranged', 'magic': 'Magic'
+			'stab': 'melee', 'slash': 'melee', 'crush': 'melee', 'ranged': 'ranged', 'magic': 'magic'
 		}[attacker_attack_type]
 
-		if combat_type in ('Melee', 'Ranged'):
+		if combat_type in ('melee', 'ranged'):
 			return damage.Standard().max_defence_roll(
 				self.stats['defence_' + attacker_attack_type],
 				self.levels['defence'],
 				0, 1, 1, 1, 1
 			)
-		elif combat_type == 'Magic':
-			raise ValueError("Magic is not supported")
+		elif combat_type == 'magic':
+			return damage.Magic().max_defence_roll(
+				self.stats['defence_magic'],
+				self.levels['magic'],
+			)
 		else:
 			raise ValueError("Could not identify combat type")
 

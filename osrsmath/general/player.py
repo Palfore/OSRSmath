@@ -58,7 +58,7 @@ class EquipmentPool(object):
 			with open(file_path, 'r') as f:
 				equipment[slot] = {k: EquipmentPool.filter(v) if filter else v for k, v in json.load(f).items()}
 		return equipment
-		
+
 	@staticmethod
 	def filter(data):
 		if data is None:
@@ -66,7 +66,7 @@ class EquipmentPool(object):
 		if not all((data['equipable_by_player'], data['equipable'], )):
 			# raise ValueError(f"Equipment not equipable by player: {data['name']}, {data['id']}\n{data}")
 			return None
-		filtered_data = {'name': data['name'], 'id': data['id']}
+		filtered_data = {'name': data['name'], 'id': data['id'], 'wiki_url': data['wiki_url']}
 		filtered_data.update(data['equipment'])
 		if data['weapon'] is not None:
 			filtered_data.update(data['weapon'])
@@ -78,7 +78,7 @@ class EquipmentPool(object):
 
 class Equipment:
 	""" Only the weapon slot exists, no 2h. """
-	FIST = {
+	UNARMED = {
 		'punch': {
 			'attack_style': 'accurate',
 			'attack_type': 'crush',
@@ -111,8 +111,14 @@ class Equipment:
 
 	def wear(self, *names: str):
 		""" Equips a piece of equipment by name. """
+		pool = EquipmentPool()
 		for name in names:
-			self.equip(EquipmentPool().by_name(name))
+			self.equip(pool.by_name(name))
+
+	def undress(self):
+		""" Unequips all equipment. """
+		for slot in self.gear:
+			self.unequip(slot)
 	
 	def equip(self, equipment: dict):
 		""" Equips a piece of equipment by slot. """
@@ -147,7 +153,7 @@ class Equipment:
 		These are not yet exhaustive options.
 		"""
 		if self.gear['weapon'] is None:
-			return Equipment.FIST
+			return Equipment.UNARMED
 		return {stance['combat_style']: stance for stance in self.gear['weapon']['stances']}
 
 	def get_names(self):

@@ -1,6 +1,6 @@
 from osrsmath.apps.path.path import *
 from osrsmath.apps.path.printers import *
-from osrsmath.combat.player import get_equipment_data
+from osrsmath.combat.fighter import get_equipment_data
 from osrsmath.combat.boosts import BoostingSchemes, Potions
 from pprint import pprint
 import copy

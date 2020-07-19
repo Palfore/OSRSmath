@@ -1,4 +1,4 @@
-from osrsmath.combat.player import Player
+from osrsmath.combat.fighter import Player
 from matplotlib import cm
 import matplotlib.pyplot as plt
 import osrsmath.config as config

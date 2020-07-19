@@ -4,10 +4,9 @@
 	an official source on the flooring order. If anyone does, please contact me or update this.
 
 	In addition, negative attack bonuses are not handled since their implementation is unknown.
-
-	@todo: Add magic
 """
 
+from osrsmath.combat.spells import get_spell
 from math import floor
 
 def effective_level(level, B_pot, B_pray, B_other, B_style, constant):
@@ -31,10 +30,14 @@ def accuracy(max_attacker_roll, max_defender_roll):
 		return A_max / (2 * D_max + 2)
 
 class Standard:
-	def _base_damage(self, E_str, str_level, B_pot, B_pray, B_other, B_style):
+	def max_hit(self, E_str, str_level, B_pot, B_pray, B_other, B_style, B_SA, multiplier):
+		""" B_other gets applied inside floor, multiplier gets applied outside. """
 		C = [1.3, 1/10., 1/80., 1/640.]
 		S_eff = effective_level(str_level, B_pot, B_pray, B_other, B_style, 0)
-		return C[0] + C[1]*S_eff + C[2]*E_str + C[3]*E_str*S_eff
+		base_damage = C[0] + C[1]*S_eff + C[2]*E_str + C[3]*E_str*S_eff
+		M = floor(base_damage * B_SA) * multiplier
+		assert M >= 1, [E_str, str_level, B_pot, B_pray, B_other, B_style, B_SA, multiplier]
+		return floor(M)
 
 	def max_attack_roll(self, E_att, att_level, B_pot, B_pray, B_other, B_style, multiplier):
 		A_eff = effective_level(att_level, B_pot, B_pray, B_other, B_style, 8)
@@ -44,14 +47,23 @@ class Standard:
 		D_eff = effective_level(def_level, B_pot, B_pray, B_other, B_style, 8)
 		return floor(D_eff*(E_def + 64)*multiplier)
 
-	def max_hit(self, E_str, str_level, B_pot, B_pray, B_other, B_style, B_SA, multiplier):
-		""" B_other gets applied inside floor, multiplier gets applied outside. """
-		M = floor(self._base_damage(E_str, str_level, B_pot, B_pray, B_other, B_style) * B_SA) * multiplier
-		assert M >= 1, [E_str, str_level, B_pot, B_pray, B_other, B_style, B_SA, multiplier]
-		return floor(M)
 
-class Melee(Standard):  # Alias
-	pass
+class Magic:
+	def max_hit(self, spell, E_str, str_level, B_pot, B_pray, B_other, B_SA, multipler):
+		""" 
+			str_level on matters for magic dart, salamanders, and trident of the seas/swamp. 
+			Potions only boost damage for those spells
+			There are no prayers that increase magic damage
+			Also tome of fire, chaos gauntlets
+		"""
+		base_damage = get_spell(spell)['max_hit']
+		return floor(base_damage * (1 + E_str/100))
 
-class Ranged(Standard):  # Alias
-	pass
+	def max_attack_roll(self, E_att, att_level, B_pot, B_pray, B_other, B_style, multiplier):
+		M_eff = effective_level(att_level, B_pot, B_pray, B_other, 0, 8)
+		return floor(M_eff * (E_att + 64))
+
+	def max_defence_roll(self, E_def, magic_level):
+		""" Only PvM is supported now """
+		return magic_level * (64 + E_def)
+

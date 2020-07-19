@@ -2,7 +2,7 @@
 # from osrsmath.apps.optimize import get_sets, get_best_set
 # from osrsmath.combat.experience import combat_level
 # from osrsmath.combat.monsters import Monster
-# from osrsmath.combat.player import PlayerBuilder, get_equipment_data
+# from osrsmath.combat.fighter import PlayerBuilder, get_equipment_data
 # from osrsmath.combat.experience import get_time_to_level, time_dependent_model_xp
 # from osrsmath.combat.boosts import BoostingSchemes, Potions
 # from osrsmath.combat import successful_hits
