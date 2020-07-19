@@ -64,7 +64,14 @@ PROSPECTOR = {
 class Miner:
         &#34;&#34;&#34; A miner class, tailored for motherload mine. &#34;&#34;&#34;
         
-        def __init__(self):
+        def __init__(self, xp_per_paydirt: float=XP_PER_PAYDIRT):
+                &#34;&#34;&#34; Miner constructor.
+                Args:
+                        xp_per_paydirt: The amount of experience gained per paydirt mined.
+                &#34;&#34;&#34;
+
+                self.xp_per_paydirt = xp_per_paydirt
+
                 self.current_boost = 1
                 &#34;&#34;&#34; The current experience boost multipler. &#34;&#34;&#34;
 
@@ -87,7 +94,7 @@ class Miner:
                 Returns:
                         The amount of experience obtained on average.
                 &#34;&#34;&#34;
-                return XP_PER_PAYDIRT * num_ores * self.current_boost
+                return self.xp_per_paydirt * num_ores * self.current_boost
 
         def obtain(self, item: str) -&gt; None:
                 &#34;&#34;&#34; Updates the miner based on the effect of obtaining a piece of the prospector kit. 
@@ -106,9 +113,9 @@ class Miner:
                 return tuple(self._kit)
 
 
-def base_xp() -&gt; float:
+def base_xp(xp_per_paydirt=XP_PER_PAYDIRT) -&gt; float:
         &#34;&#34;&#34; Returns the xp gained while obtaining the prospector kit without boosts. &#34;&#34;&#34;
-        return sum(v[&#39;cost&#39;] / NUGGET_CHANCE * XP_PER_PAYDIRT for v in PROSPECTOR.values())</code></pre>
+        return sum(v[&#39;cost&#39;] / NUGGET_CHANCE * xp_per_paydirt for v in PROSPECTOR.values())</code></pre>
 </details>
 </section>
 <section>
@@ -119,7 +126,7 @@ def base_xp() -&gt; float:
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
 <dt id="osrsmath.mining.motherload_mine.base_xp"><code class="name flex">
-<span>def <span class="ident">base_xp</span></span>(<span>) -> float</span>
+<span>def <span class="ident">base_xp</span></span>(<span>xp_per_paydirt=60) -> float</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Returns the xp gained while obtaining the prospector kit without boosts.</p></div>
@@ -127,9 +134,9 @@ def base_xp() -&gt; float:
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def base_xp() -&gt; float:
+<pre><code class="python">def base_xp(xp_per_paydirt=XP_PER_PAYDIRT) -&gt; float:
         &#34;&#34;&#34; Returns the xp gained while obtaining the prospector kit without boosts. &#34;&#34;&#34;
-        return sum(v[&#39;cost&#39;] / NUGGET_CHANCE * XP_PER_PAYDIRT for v in PROSPECTOR.values())</code></pre>
+        return sum(v[&#39;cost&#39;] / NUGGET_CHANCE * xp_per_paydirt for v in PROSPECTOR.values())</code></pre>
 </details>
 </dd>
 </dl>
@@ -139,9 +146,16 @@ def base_xp() -&gt; float:
 <dl>
 <dt id="osrsmath.mining.motherload_mine.Miner"><code class="flex name class">
 <span>class <span class="ident">Miner</span></span>
+<span>(</span><span>xp_per_paydirt: float = 60)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>A miner class, tailored for motherload mine.</p></div>
+<div class="desc"><p>A miner class, tailored for motherload mine. </p>
+<p>Miner constructor.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>xp_per_paydirt</code></strong></dt>
+<dd>The amount of experience gained per paydirt mined.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -149,7 +163,14 @@ def base_xp() -&gt; float:
 <pre><code class="python">class Miner:
         &#34;&#34;&#34; A miner class, tailored for motherload mine. &#34;&#34;&#34;
         
-        def __init__(self):
+        def __init__(self, xp_per_paydirt: float=XP_PER_PAYDIRT):
+                &#34;&#34;&#34; Miner constructor.
+                Args:
+                        xp_per_paydirt: The amount of experience gained per paydirt mined.
+                &#34;&#34;&#34;
+
+                self.xp_per_paydirt = xp_per_paydirt
+
                 self.current_boost = 1
                 &#34;&#34;&#34; The current experience boost multipler. &#34;&#34;&#34;
 
@@ -172,7 +193,7 @@ def base_xp() -&gt; float:
                 Returns:
                         The amount of experience obtained on average.
                 &#34;&#34;&#34;
-                return XP_PER_PAYDIRT * num_ores * self.current_boost
+                return self.xp_per_paydirt * num_ores * self.current_boost
 
         def obtain(self, item: str) -&gt; None:
                 &#34;&#34;&#34; Updates the miner based on the effect of obtaining a piece of the prospector kit. 
@@ -235,7 +256,7 @@ def base_xp() -&gt; float:
         Returns:
                 The amount of experience obtained on average.
         &#34;&#34;&#34;
-        return XP_PER_PAYDIRT * num_ores * self.current_boost</code></pre>
+        return self.xp_per_paydirt * num_ores * self.current_boost</code></pre>
 </details>
 </dd>
 <dt id="osrsmath.mining.motherload_mine.Miner.kit"><code class="name flex">

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.8.1" />
-<title>osrsmath.results.woodcutting.optimal_trees API documentation</title>
+<title>osrsmath.results.mining.varying_paydirt API documentation</title>
 <meta name="description" content="" />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
@@ -18,88 +18,60 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>osrsmath.results.woodcutting.optimal_trees</code></h1>
+<h1 class="title">Module <code>osrsmath.results.mining.varying_paydirt</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from osrsmath.woodcutting.entities import get_best_axe, trees
-from osrsmath.woodcutting.rates import get_xp_rate, get_optimal_training_order
+<pre><code class="python">from osrsmath.mining.motherload_mine import Miner, base_xp, PROSPECTOR
+import matplotlib.patches as mpatches
+import matplotlib.pyplot as plt
+from pprint import pprint
+import itertools
+
+def get_optimal_kit(paydirt_xp):
+        experience = {}
+        for item1, item2, item3, item4 in itertools.permutations(PROSPECTOR):
+                miner = Miner(xp_per_paydirt=paydirt_xp)
+                miner.obtain(item1)
+                miner.obtain(item2)
+                miner.obtain(item3)
+                miner.obtain(item4)
+                experience[miner.kit()] = miner.experience_gained - base_xp(paydirt_xp)
+        return {&#39;&#39;.join(l[0] for l in k): v for k, v in sorted(experience.items(), key=lambda x: x[1])}
 
 if __name__ == &#39;__main__&#39;:
-        from pprint import pprint
+        file_prefix=&#39;varying_paydirt&#39;
+        data = {}
+        for paydirt_xp in range(2, 10_000):
+                x = list(reversed(list(enumerate(reversed(get_optimal_kit(paydirt_xp).keys()), 1))))
+                data[paydirt_xp] = {y: i for i, y in x}
 
-        get_xp_rate(&#39;normal&#39;, get_best_axe(1), 1)
-        
-        pprint(get_optimal_training_order())
-        # Normal: 1-14
-        # Oak: 15-36
-        # Teak: 37-69
-        # mahogany 70-99
+        plot = {}
+        for key in data[60]:
+                plot[key] = ((
+                        list(data.keys()), [
+                        datum[key] for paydirt_xp, datum in data.items()
+                ]))
 
-        
-        # This should give 190/255 logs every 2.4 seconds
-        # or (190/255)/2.4 logs every second
-        # at 85 xp/log this gives 85*(190/255)/2.4 xp/second
-        # print(get_xp_rate(&#39;teak&#39;, &#39;dragon&#39;, 99), 85*(190/255)/2.4 * 60*60)
-        # print(get_xp_rate(&#39;teak&#39;, &#39;dragon&#39;, 1), 85*(60/255)/2.4 * 60*60)
-        
-        from mpl_toolkits.mplot3d import axes3d
-        import matplotlib.pyplot as plt
-        import numpy as np
-        fig = plt.figure()
-        ax = fig.add_subplot(111, projection=&#39;3d&#39;)
-        def tree_at_level(level):
-                for tree, data in trees.items():
-                        if data[&#39;level&#39;] == level:
-                                return tree
-                raise ValueError(&#34;No level found&#34;)
-
-        @np.vectorize
-        def f(x, y):
-                return get_xp_rate(tree_at_level(y), get_best_axe(x), x) / 1_000
+        for x_max in [100, 1_000, 10_000]:
+                fig, ax = plt.subplots()
+                fig.set_size_inches(16, 8)
+                for i, (key, (x, y)) in enumerate(plot.items()):
+                        plt.plot(x[:x_max], y[:x_max], label=key)
+                plt.plot([60, 60], [0, 25], color=&#39;black&#39;)
+                plt.ylabel(&#39;Ranking&#39;, fontsize=18)
+                plt.xlabel(&#39;Paydirt Experience&#39;, fontsize=18)
+                ax.tick_params(axis=&#39;both&#39;, which=&#39;major&#39;, labelsize=16)
+                ax.tick_params(axis=&#39;both&#39;, which=&#39;minor&#39;, labelsize=10)
+                plt.legend(loc=&#39;right&#39;)
+                plt.savefig(f&#39;{file_prefix}.{x_max}.pdf&#39;)
+                plt.savefig(f&#39;{file_prefix}.{x_max}.png&#39;)
 
 
-        x = list(range(1, 99+1))
-        y = [data[&#39;level&#39;] for tree, data in trees.items()]
-        X, Y = np.meshgrid(x, y)
-        Z = f(X, Y)
-        ax.plot_wireframe(X, Y, Z)
-
-        y = [35]
-        X, Y = np.meshgrid(x, y)
-        Z = f(X, Y) + 3
-        ax.plot_wireframe(X, Y, Z, color=&#39;red&#39;, linewidth=5)
-
-        y = [50, 60, 75, 90]
-        X, Y = np.meshgrid(x, y)
-        Z = f(X, Y) + 3
-        ax.plot_wireframe(X, Y, Z, color=&#39;green&#39;, linewidth=5)
-        
-        ax.view_init(32, -146)
-        plt.xlabel(&#39;Woodcutting Level&#39;)
-        plt.ylabel(&#39;Tree Level&#39;)
-        ax.set_zlabel(&#39;Experience Rate [k/h]&#39;)
-        plt.show()
-        # plt.savefig(&#39;experience.pdf&#39;)
-
-
-        # for angle in range(0, 360):
-        #     ax.view_init(30, angle)
-        #     plt.draw()
-        #     plt.pause(.001)
-
-        # print(&#34;This is the teak xp rate at 99 using different axes&#34;)
-        # for axe_name in axes:
-        #       print(axes[axe_name][&#39;level&#39;], get_xp_rate(&#39;teak&#39;, axe_name, 1))
-        # print()
-
-        # print(&#34;This is the teak xp rate using the best axe at all levels&#34;)
-        # for level in range(1, 99+1):
-        #       print(level, get_xp_rate(&#39;teak&#39;, get_best_axe(level), level))
-        # print()</code></pre>
+                                        </code></pre>
 </details>
 </section>
 <section>
@@ -107,6 +79,30 @@ if __name__ == &#39;__main__&#39;:
 <section>
 </section>
 <section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="osrsmath.results.mining.varying_paydirt.get_optimal_kit"><code class="name flex">
+<span>def <span class="ident">get_optimal_kit</span></span>(<span>paydirt_xp)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_optimal_kit(paydirt_xp):
+        experience = {}
+        for item1, item2, item3, item4 in itertools.permutations(PROSPECTOR):
+                miner = Miner(xp_per_paydirt=paydirt_xp)
+                miner.obtain(item1)
+                miner.obtain(item2)
+                miner.obtain(item3)
+                miner.obtain(item4)
+                experience[miner.kit()] = miner.experience_gained - base_xp(paydirt_xp)
+        return {&#39;&#39;.join(l[0] for l in k): v for k, v in sorted(experience.items(), key=lambda x: x[1])}</code></pre>
+</details>
+</dd>
+</dl>
 </section>
 <section>
 </section>
@@ -119,7 +115,12 @@ if __name__ == &#39;__main__&#39;:
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="osrsmath.results.woodcutting" href="index.html">osrsmath.results.woodcutting</a></code></li>
+<li><code><a title="osrsmath.results.mining" href="index.html">osrsmath.results.mining</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="osrsmath.results.mining.varying_paydirt.get_optimal_kit" href="#osrsmath.results.mining.varying_paydirt.get_optimal_kit">get_optimal_kit</a></code></li>
 </ul>
 </li>
 </ul>

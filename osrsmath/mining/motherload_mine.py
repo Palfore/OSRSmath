@@ -33,7 +33,14 @@ PROSPECTOR = {
 class Miner:
 	""" A miner class, tailored for motherload mine. """
 	
-	def __init__(self):
+	def __init__(self, xp_per_paydirt: float=XP_PER_PAYDIRT):
+		""" Miner constructor.
+		Args:
+			xp_per_paydirt: The amount of experience gained per paydirt mined.
+		"""
+
+		self.xp_per_paydirt = xp_per_paydirt
+
 		self.current_boost = 1
 		""" The current experience boost multipler. """
 
@@ -56,7 +63,7 @@ class Miner:
 		Returns:
 			The amount of experience obtained on average.
 		"""
-		return XP_PER_PAYDIRT * num_ores * self.current_boost
+		return self.xp_per_paydirt * num_ores * self.current_boost
 
 	def obtain(self, item: str) -> None:
 		""" Updates the miner based on the effect of obtaining a piece of the prospector kit. 
@@ -75,6 +82,6 @@ class Miner:
 		return tuple(self._kit)
 
 
-def base_xp() -> float:
+def base_xp(xp_per_paydirt=XP_PER_PAYDIRT) -> float:
 	""" Returns the xp gained while obtaining the prospector kit without boosts. """
-	return sum(v['cost'] / NUGGET_CHANCE * XP_PER_PAYDIRT for v in PROSPECTOR.values())
+	return sum(v['cost'] / NUGGET_CHANCE * xp_per_paydirt for v in PROSPECTOR.values())

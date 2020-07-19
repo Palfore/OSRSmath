@@ -55,8 +55,8 @@ if __name__ == '__main__':
 	plt.xlabel('Woodcutting Level')
 	plt.ylabel('Tree Level')
 	ax.set_zlabel('Experience Rate [k/h]')
-	# plt.show()
-	plt.savefig('experience.pdf')
+	plt.show()
+	# plt.savefig('experience.pdf')
 
 
 	# for angle in range(0, 360):

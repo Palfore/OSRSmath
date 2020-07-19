@@ -40,8 +40,10 @@ def convert_axe(rate: Tuple[int, float, str], axe: dict) -> Tuple[int, float]:
 # A fit is used to predict Mahogany, yew, magic, and redwood.
 # Interestingly, the exponent coefficients seem similar.
 def _estimate_45(tree_requirement):
+	return 45, 0.7942 / exp(0.054*tree_requirement), 'adamant'
 	return 45, 0.7945 / exp(0.055*tree_requirement), 'adamant'
 def _estimate_77(tree_requirement):
+	return 77, 1.7413 / exp(0.049*tree_requirement), 'bronze'
 	return 77, 1.7413 / exp(0.051*tree_requirement), 'bronze'
 
 trees = {
