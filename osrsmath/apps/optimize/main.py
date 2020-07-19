@@ -225,7 +225,6 @@ class GUI(Ui_MainWindow):
 
 		try:
 			self.optimize_panel.progressBar.setValue(0)
-			equipment_data = get_equipment_data()
 			monsters = {name: Monster(**m) for name, m in self.optimize_panel.data.monsters.items()}
 			if not monsters:
 				QtWidgets.QMessageBox(
@@ -263,7 +262,7 @@ class GUI(Ui_MainWindow):
 			# Time and Evaluate Solution
 			t0 = time.time()
 			self.update_status(f'Step (1/2). Generating Sets...')
-			sets = get_sets(training_skill, stats, monsters, ignore, adjust, equipment_data, special_sets, progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)))
+			sets = get_sets(training_skill, stats, monsters, ignore, adjust, special_sets, progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)))
 			t1 = time.time()
 			self.update_status(f'Step (2/2). Evaluating {len(sets)} Sets...')
 			(s, xp, stance), xps = get_best_set(

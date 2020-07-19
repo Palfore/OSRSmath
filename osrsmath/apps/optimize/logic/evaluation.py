@@ -1,4 +1,5 @@
-from osrsmath.combat.player import PlayerBuilder
+# from osrsmath.combat.player import PlayerBuilder
+from osrsmath.general.fighter import Fighter
 from osrsmath.combat.experience import xp_rate
 import multiprocess
 import time
@@ -23,12 +24,13 @@ def mmap(f, items, callback, interval=0.025, num_cores=0):
 def eval_set(player_stats: dict, training_skill, states, defenders, s, include_shared_xp=True):
 	try:
 		combat_style, s = s
-		player = PlayerBuilder(player_stats).equip(s.values()).get()
-		stance = player.get_stances()[combat_style]
-		player.combat_style = stance['combat_style']
+		player = Fighter(player_stats)
+		player.equipment.wear(*s.values())
+		stance = player.equipment.get_stances()[combat_style]
+		player.set_stance(combat_style)
 		xp = xp_rate(
-			stance['attack_type'],
-			player.get_stats()['attack_speed'],
+			'ranged' if stance['attack_type'] is None else stance['attack_type'],
+			player.equipment.get_stats()['attack_speed'],
 			states(player),
 			defenders,
 			'MarkovChain'

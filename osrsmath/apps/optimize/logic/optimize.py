@@ -1,6 +1,6 @@
 from osrsmath.apps.optimize.logic.utility import get_maximum_sets
 from osrsmath.apps.optimize.logic.gear import (
-	get_offensive_bonuses, get_offensive_melee_equipment, get_equipable_gear, meets_requirements, Weapon
+	get_offensive_bonuses, get_offensive_equipment, get_equipable_gear, meets_requirements, Weapon
 )
 from osrsmath.apps.optimize.logic.evaluation import mmap, eval_set
 from osrsmath.combat.player import get_equipment_by_name
@@ -28,7 +28,7 @@ def get_unique_equipment(attack_style, slot_equipment):
 		unique_equipment, getter=lambda x: x[1].values()  # x[1] -> stats
 	)]
 
-def get_armour_sets(attack_style, gear):
+def get_armour_sets(attack_style, gear, weapon):
 	''' Returns sets of load-outs, where each set is uniquely-maximal.
 		@param attack_style The attack style which determines maximal-ness.
 		@param gear The gear to consider.
@@ -39,6 +39,25 @@ def get_armour_sets(attack_style, gear):
 	if 'shield' in gear:
 		assert '2h' not in gear
 
+	if attack_style == 'ranged':
+		if "karil's crossbow" in weapon['name'].lower():
+			gear['ammo'] = [a for a in gear['ammo'] if a['name'].lower() == 'bolt racks']
+		if "crystal bow" in weapon['name'].lower():
+			gear['ammo'] = []
+		if "craw's bow" in weapon['name'].lower():
+			gear['ammo'] = []
+		else:
+			name_requirements = {
+				'bows': 'arrow',
+				'crossbows': 'bolt',
+				'grenade': 'NO VALID OPTIONS',
+				'thrown_weapons': 'NO VALID OPTIONS',
+				'chinchompas': 'NO VALID OPTIONS',
+			}[weapon['weapon']['weapon_type']]
+			
+			gear['ammo'] = [a for a in gear['ammo'] if name_requirements in a['name']]
+
+		# gear['ammo'] = gear['ammo'].items()
 	reduced_equipment = [[
 		(slot, e['name']) for e in get_unique_equipment(attack_style, equipment)
 	] for slot, equipment in gear.items()]
@@ -46,12 +65,14 @@ def get_armour_sets(attack_style, gear):
 
 
 class Solver:
-	def __init__(self, training_skill, player_stats, ignore, adjustments, equipment_data, progress_callback=None):
+	def __init__(self, training_skill, player_stats, ignore, adjustments, progress_callback=None):
 		self.training_skill = training_skill
 		self.player_stats = player_stats
 		self.callback = progress_callback if progress_callback else lambda x: None
+
+		self.triangle = {'attack': 'melee', 'strength': 'melee', 'defence': 'melee', 'ranged': 'ranged', 'magic': 'magic'}[training_skill]
 		self.gear = get_equipable_gear(
-			get_offensive_melee_equipment(equipment_data), player_stats, ignore, adjustments
+			get_offensive_equipment(self.triangle), player_stats, ignore, adjustments
 		)
 		self.special_sets = []
 
@@ -67,7 +88,7 @@ class Solver:
 		self.special_sets.append((weapons, gear))
 
 	def solve(self):
-		attack_types = ['stab', 'slash', 'crush']
+		attack_types = {'melee': ['stab', 'slash', 'crush'], 'ranged': ['ranged'], 'magic': ['magic']}[self.triangle]
 		equipment_sets = []
 		M = len(attack_types)*(len(self.special_sets) + 1)
 		i = 1
@@ -86,6 +107,7 @@ class Solver:
 	def get_equipment_sets(self, attack_type, weapon_names, remove_slots):
 		s = []
 		for weapon in get_unique_equipment(attack_type, weapon_names):
+			# print(weapon['name'], weapon['weapon']['weapon_type'])
 			s.extend(self.get_weapon_sets(attack_type, weapon, remove_slots))
 		return s
 
@@ -111,7 +133,7 @@ class Solver:
 			if Weapon.stance_can_do(stance, self.training_skill, attack_type, allow_controlled=False):
 				s.extend([
 					(stance['combat_style'], [('weapon', weapon['name']), *a])
-						for a in get_armour_sets(stance['attack_type'], armour)
+						for a in get_armour_sets('ranged' if stance['attack_type'] is None else stance['attack_type'], armour, weapon)
 				])
 		return s
 
@@ -122,7 +144,7 @@ class Solver:
 		]
 
 
-def get_sets(training_skill, player_stats, defenders, ignore, adjustments, equipment_data, considered_sets, progress_callback=None):
+def get_sets(training_skill, player_stats, defenders, ignore, adjustments, considered_sets, progress_callback=None):
 	sets = {
 		'void_knight': (None, {
 				'body': 'Void knight top',
@@ -164,7 +186,7 @@ def get_sets(training_skill, player_stats, defenders, ignore, adjustments, equip
 			}
 		)
 	}
-	solver = Solver(training_skill, player_stats, ignore, adjustments, equipment_data, progress_callback)
+	solver = Solver(training_skill, player_stats, ignore, adjustments, progress_callback)
 	for name, special_set in sets.items():
 		if name in considered_sets:
 			print(name)
