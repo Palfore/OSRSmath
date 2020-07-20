@@ -1,6 +1,5 @@
 def get_spell(spell_name: str):
 	spell_name = spell_name.lower().strip()
-	print(spell_name)
 	try:
 		return {**STANDARD, **ANCIENT}[spell_name]
 	except KeyError as e:

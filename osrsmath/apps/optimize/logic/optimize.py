@@ -176,7 +176,7 @@ def get_sets(training_skill, player_stats, defenders, ignore, adjustments, consi
 				'neck': 'Berserker necklace'
 		}),
 		'slayer_helm': (None, {
-			'head': 'Slayer helmet'
+			'head': 'Slayer helmet (i)'
 		}),
 		'salve_amulet': (None, {
 			'neck': 'Salve amulet'

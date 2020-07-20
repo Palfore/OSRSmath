@@ -31,7 +31,7 @@ def eval_set(fighter, training_skill, states, defenders, s, include_shared_xp=Tr
 		defenders,
 		'MarkovChain'
 	)
-	# print(s, '|', f"{xp/1000:.2f}")
+	print(s, '|', f"{xp/1000:.2f}")
 	return s, xp, combat_style
 
 

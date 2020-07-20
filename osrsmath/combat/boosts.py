@@ -133,8 +133,10 @@ def other(equipment, player):
 		return Equipment.salve_amulet_i()
 
 	if any(e in equipment for e in ('black mask', 'slayer helmet')):
+		print('black_mask')
 		return Equipment.black_mask()
 	if any(e in equipment for e in ('black mask (i)', 'slayer helmet (i)')):
+		print('black_mask i')
 		return Equipment.black_mask_i()
 
 	if all(e in equipment for e in ('void knight gloves', 'void knight top', 'void knight robe')):
