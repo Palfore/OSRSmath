@@ -55,6 +55,8 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 			'prayers': Savable.DropDown(self.prayers, None),
 			'prayer_attributes': Savable.DropDown(self.prayer_attributes, None),
 			'spell': Savable.DropDown(self.spell, None),
+			'function': Savable.DropDown(self.function, None),
+			'start_end': Savable.LineEdit(self.start_end, 'asd1,1,1-99,99,99'),
 
 			**{s: Savable.CheckBox(getattr(self, s), True) for s in self.special_sets if s != 'dharok'},
 			'dharok': Savable.LineEdit(self.dharok, 1),
@@ -81,6 +83,7 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		self.prayers.addItem(prayer_names.pop(prayer_names.index('none')))  # Place 'none' first
 		self.prayers.addItems(prayer_names)
 
+		self.function.currentIndexChanged.connect(self.on_function_select)
 		self.training_skill.currentIndexChanged.connect(self.on_training_skill_select)
 		self.potions.currentIndexChanged.connect(self.on_potion_select)
 		self.boosting_scheme.currentIndexChanged.connect(self.on_boost_scheme_select)
@@ -90,6 +93,8 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		self.cpu_cores.setValidator(QtGui.QIntValidator(0, os.cpu_count()))  # Apparently, it only validate the # of digits
 		self.cpu_cores.setToolTip(f'0 will use all cores. You have {os.cpu_count()}.')
 
+		self.on_function_select()
+		self.on_training_skill_select()
 		self.on_boost_scheme_select()
 		self.on_potion_select()
 		self.on_prayer_select()
@@ -108,6 +113,7 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		self.spell.addItems(spells)
 		self.spell.setCompleter(completer)
 		self.spell.completer().setCompletionMode(QtWidgets.QCompleter.PopupCompletion)
+
 
 	def get_selected_sets(self):
 		return [s for s in self.special_sets if (
@@ -130,6 +136,12 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		p = Path(equipment['wiki_url'])
 		url = p.parent/quote(p.name)
 		webbrowser.open(str(url))
+
+	def on_function_select(self):
+		if self.function.currentText() == 'Train':
+			self.stackedWidget.setCurrentIndex(0)
+		else:
+			self.stackedWidget.setCurrentIndex(1)
 
 	def on_training_skill_select(self):
 		if self.training_skill.currentText() == 'magic':
