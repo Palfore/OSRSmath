@@ -80,11 +80,12 @@ class Solver:
 		self.special_sets = []
 
 	def add_special_set(self, weapons, gear):
-		gear = {s: get_equipment_by_name(g) for s, g in gear.items()}
+		pool = EquipmentPool()
+		gear = {s: pool.by_name(g) for s, g in gear.items()}
 		if not all(meets_requirements(self.player_stats, g) for g in gear.values()):
 			return
 		if weapons:
-			weapons = [get_equipment_by_name(w) for w in weapons]
+			weapons = [pool.by_name(w) for w in weapons]
 			weapons = [w for w in weapons if meets_requirements(self.player_stats, w)]
 			if not weapons:
 				return

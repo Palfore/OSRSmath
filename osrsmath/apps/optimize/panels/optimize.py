@@ -2,7 +2,7 @@ from osrsmath.apps.GUI.optimize.optimize_skeleton import Ui_Form
 from osrsmath.apps.GUI.shared.widgets import Savable
 from PySide2 import QtCore, QtGui, QtWidgets
 
-from osrsmath.general.player import EquipmentPool
+from osrsmath.general.player import EquipmentPoolFiltered
 import osrsmath.combat.boosts as boosts
 import inspect
 import webbrowser
@@ -116,7 +116,7 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		)]
 
 	def open_link(self, slot):
-		pool = EquipmentPool()
+		pool = EquipmentPoolFiltered()
 		item = getattr(self, slot).currentText()
 		try:
 			equipment = pool.by_name(item)

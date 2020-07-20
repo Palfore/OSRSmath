@@ -21,7 +21,7 @@ def get_offensive_equipment(triangle):
 	# Filter for only melee weapons since other attack styles aren't handled yet
 	# Also only equipment that gives offensive bonuses, since that is what we're optimizing
 	offensive_equipment = defaultdict(list)
-	for slot, equipment in EquipmentPool().get_equipment(filter=False).items():
+	for slot, equipment in EquipmentPool().equipment.items():
 		if slot == "weapon" or slot ==  "2h":
 			for weapon in equipment.values():
 				if has_offensive_bonuses(weapon, triangle):
@@ -104,8 +104,10 @@ class Weapon:
 	@staticmethod
 	def stance_can_use(stance, attack_type):
 		assert attack_type in ['stab', 'slash', 'crush', 'ranged', 'magic']
-		if stance['attack_type'] is None:  # Ranged
-			return attack_type in stance['experience']
+		if stance['attack_type'] is None:
+			if stance['experience'] is None:  # Dinh's bulwark
+				return False
+			return attack_type in stance['experience']  # Ranged
 		if stance['attack_type'] in ('defensive casting', 'spellcasting'):
 			return True
 		else:

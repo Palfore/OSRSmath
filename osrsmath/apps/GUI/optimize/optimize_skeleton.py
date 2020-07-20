@@ -212,6 +212,8 @@ class Ui_Form(object):
         self.below_skill.addItem("")
         self.below_skill.addItem("")
         self.below_skill.addItem("")
+        self.below_skill.addItem("")
+        self.below_skill.addItem("")
         self.below_skill.setObjectName(u"below_skill")
 
         self.gridLayout.addWidget(self.below_skill, 8, 1, 1, 4)
@@ -480,6 +482,8 @@ class Ui_Form(object):
         self.below_skill.setItemText(0, QCoreApplication.translate("Form", u"attack", None))
         self.below_skill.setItemText(1, QCoreApplication.translate("Form", u"strength", None))
         self.below_skill.setItemText(2, QCoreApplication.translate("Form", u"defence", None))
+        self.below_skill.setItemText(3, QCoreApplication.translate("Form", u"ranged", None))
+        self.below_skill.setItemText(4, QCoreApplication.translate("Form", u"magic", None))
 
         self.potion_attributes.setItemText(0, QCoreApplication.translate("Form", u"accuracy", None))
         self.potion_attributes.setItemText(1, QCoreApplication.translate("Form", u"damage", None))

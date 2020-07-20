@@ -251,6 +251,16 @@
        <string>defence</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>ranged</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>magic</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="6" column="5" colspan="3">

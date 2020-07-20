@@ -5,7 +5,6 @@ from osrsmath.apps.optimize.gui_single import Ui_MainWindow
 from pathlib import Path
 
 from osrsmath.combat.fighter import Fighter
-from osrsmath.general.player import EquipmentPool
 from osrsmath.combat.monsters import get_monster_data
 from pprint import pprint as pp
 from PySide2 import QtCore, QtGui, QtWidgets
@@ -96,6 +95,8 @@ class GUI(Ui_MainWindow):
 		Dose after means:
 			"Take a dose after the [skill] *boost* drops below [a threshold]".
 			Useful for normal potion usage. Constant is better for overloads.
+			If the skill isn't actually boosted, it will just use the boost countdown
+			for that skill using the selected potion.
 
 		3. Choose a prayer, and what it boosts.
 			level1,2,3 are the successive prayers.
@@ -256,14 +257,14 @@ class GUI(Ui_MainWindow):
 				 (prayer_name == 'rigour' and training_skill != 'ranged') or\
 				 	((prayer_name == 'chivalry' or prayer_name == 'piety') and training_skill not in ['attack', 'strength', 'defence']):
 				QtWidgets.QMessageBox(
-					QtWidgets.QMessageBox.Warning, 'Invalid Potion Input', "The potion you are using doesn't match the training skill."
+					QtWidgets.QMessageBox.Warning, 'Invalid Potion Input', "The prayer you are using doesn't match the training skill."
 				).exec_()
 				return
 			prayer = getattr(Prayers, prayer_name)
 			prayer_attributes = self.optimize_panel.prayer_attributes.currentText()
 			
 			if potion != Potions.none and self.optimize_panel.boosting_scheme.currentText() == 'Dose After':
-				skill = self.optimize_panel.below_skill.currentText()
+				below_skill = self.optimize_panel.below_skill.currentText()
 				try:
 					redose_level = int(self.optimize_panel.redose_level.text())
 				except ValueError:
@@ -272,7 +273,7 @@ class GUI(Ui_MainWindow):
 					).exec_()
 					return
 				boost = lambda p: BoostingSchemes(p, prayer, prayer_attributes).potion_when_skill_under(
-					potion, skill, redose_level, potion_attributes
+					potion, below_skill, redose_level, potion_attributes
 				)
 			else:
 				boost = lambda p: BoostingSchemes(p, prayer, prayer_attributes).constant(potion, potion_attributes)
