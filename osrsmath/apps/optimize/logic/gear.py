@@ -58,11 +58,11 @@ def meets_requirements(player_stats, equipment):
 			return False
 	return True
 
-def get_equipable_gear(gear, player_stats, ignore, adjustments):
+def get_equipable_gear(training_skill, gear, player_stats, ignore, adjustments):
 	equipable = defaultdict(list)
-	for i, (slot, slot_equipment) in enumerate(gear.items(), 1):
+	for slot, slot_equipment in gear.items():
 		for equipment in slot_equipment:
-			if any(fnmatch.fnmatch(equipment['name'], i) for i in ignore):  # matches with wildcard support
+			if any(fnmatch.fnmatch(equipment['name'], item) for item in ignore):  # matches with wildcard support
 				 continue
 
 			if equipment['name'] in adjustments:
@@ -74,32 +74,24 @@ def get_equipable_gear(gear, player_stats, ignore, adjustments):
 					equipment['equipment']['requirements'] = None
 				else:
 					continue
+
+			# You must be able to train the desired skill, if you are a weapon
+			if slot == '2h' or slot == 'weapon':
+				if not any(Weapon.stance_can_train(stance, training_skill) \
+						for stance in equipment['weapon']['stances']):
+					continue
 			equipable[slot].append(equipment)
 	return equipable
 
 class Weapon:
 	@staticmethod
-	def stance_can_train(stance: dict, skill, allow_controlled=False):
+	def stance_can_train(stance: dict, skill):
 		if stance['experience'] is None:  # Like Dinh's bulwark, on block
 			return False
-		if allow_controlled:
-			print("Warning: Untested")
-			if stance['experience'] == 'shared':  # Melee
-				return True
-			if stance['experience'] == 'ranged and defence':
-				return skill in ('ranged', 'defence')
-			if stance['experience'] == 'magic and defence':
-				return skill in ('magic', 'defence')
-		
-		if skill in ('magic', 'ranged'):
-			if skill == 'magic' and stance['experience'] == 'magic':
-				return True
-			elif skill == 'ranged' and stance['experience'] == 'ranged':
-				return True
-			else:
-				return False
-		else:
-			return skill in stance['experience']
+
+		if stance['experience'] == 'shared':  # Melee
+			return skill == 'controlled'
+		return skill == stance['experience']
 
 	@staticmethod
 	def stance_can_use(stance, attack_type):
@@ -115,8 +107,8 @@ class Weapon:
 			
 
 	@staticmethod
-	def stance_can_do(stance, skill, attack_type, allow_controlled=False):
-		train = Weapon.stance_can_train(stance, skill, allow_controlled)
+	def stance_can_do(stance, skill, attack_type):
+		train = Weapon.stance_can_train(stance, skill)
 		use = Weapon.stance_can_use(stance, attack_type)
 		return train and use
 
@@ -126,6 +118,6 @@ class Weapon:
 	def can_train(self, skill):
 		return bool(self.get_skill_stances(skill))
 
-	def get_skill_stances(self, skill, allow_controlled=False):
+	def get_skill_stances(self, skill):
 		return [stance for stance in self.weapon['weapon']['stances']
-		           if Weapon.stance_can_train(stance, skill, allow_controlled)]
+		           if Weapon.stance_can_train(stance, skill)]

@@ -2,6 +2,7 @@ from osrsmath.apps.GUI.optimize.optimize_skeleton import Ui_Form
 from osrsmath.apps.GUI.shared.widgets import Savable
 from PySide2 import QtCore, QtGui, QtWidgets
 
+from osrsmath.combat.spells import STANDARD, ANCIENT
 from osrsmath.general.player import EquipmentPoolFiltered
 import osrsmath.combat.boosts as boosts
 import inspect
@@ -71,17 +72,14 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 				lambda _=None, slot=slot: self.open_link(slot)
 			)
 
+		def get_members(cls):
+			members = inspect.getmembers(cls, predicate=inspect.isfunction)
+			members.sort(key=lambda m: inspect.getsourcelines(m[1])[1])
+			names, functions = list(zip(*members))
+			return names
 
-
-		potion_names = list(list(zip(*inspect.getmembers(boosts.Potions, predicate=inspect.isfunction)))[0])
-		assert 'none' in potion_names
-		self.potions.addItem(potion_names.pop(potion_names.index('none')))  # Place 'none' first
-		self.potions.addItems(potion_names)
-
-		prayer_names = list(list(zip(*inspect.getmembers(boosts.Prayers, predicate=inspect.isfunction)))[0])
-		assert 'none' in prayer_names
-		self.prayers.addItem(prayer_names.pop(prayer_names.index('none')))  # Place 'none' first
-		self.prayers.addItems(prayer_names)
+		self.potions.addItems(get_members(boosts.Potions))
+		self.prayers.addItems(get_members(boosts.Prayers))
 
 		self.function.currentIndexChanged.connect(self.on_function_select)
 		self.training_skill.currentIndexChanged.connect(self.on_training_skill_select)
@@ -106,7 +104,6 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		shortcut.activated.connect(self.remove_selected_monster)
 
 		# Populate spells
-		from osrsmath.combat.spells import STANDARD, ANCIENT
 		spells = list(STANDARD.keys()) + list(ANCIENT.keys())
 		completer = QtWidgets.QCompleter(spells)
 		self.spell.clear()

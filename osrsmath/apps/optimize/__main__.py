@@ -2,16 +2,19 @@ import multiprocess
 multiprocess.freeze_support()
 
 from osrsmath.apps.optimize.gui_single import Ui_MainWindow
-from pathlib import Path
-
-from osrsmath.combat.fighter import Fighter
+from osrsmath.apps.optimize.logic.optimize import get_sets, get_best_sets
+from osrsmath.combat.boosts import BoostingSchemes, Prayers, Potions
 from osrsmath.combat.monsters import get_monster_data
-from pprint import pprint as pp
-from PySide2 import QtCore, QtGui, QtWidgets
-
+from osrsmath.combat.monsters import Monster
+from osrsmath.combat.fighter import Fighter
 import osrsmath.apps.GUI.resources
-import textwrap
 import osrsmath.config as config
+
+from PySide2 import QtCore, QtGui, QtWidgets
+from pprint import pprint
+from pathlib import Path
+import textwrap
+import time
 import glob
 import os
 
@@ -118,11 +121,18 @@ class GUI(Ui_MainWindow):
 	def setupUi(self, MainWindow):
 		super().setupUi(MainWindow)
 		self.load_defaults()
+		self.loadouts = []
 		self.monster_panel.add.clicked.connect(self.add_monster)
 		self.optimize_panel.evaluate.clicked.connect(self.on_evaluate)
+		self.optimize_panel.dec_selected_set.clicked.connect(lambda: self.change_selected_set(change=-1))
+		self.optimize_panel.inc_selected_set.clicked.connect(lambda: self.change_selected_set(change=+1))
+		self.optimize_panel.selected_set_index.returnPressed.connect(
+			lambda: self.change_selected_set(index=int(self.optimize_panel.selected_set_index.text()))
+		)
 		self.optimize_panel.opponents.itemDoubleClicked.connect(
 			lambda item: self.monster_panel.fill_monster(item.text(), self.optimize_panel.data.monsters[item.text()])
 		)
+		self.optimize_panel.selected_set_index.setValidator(QtGui.QIntValidator())
 
 		self.actionOverview.triggered.connect(lambda: QtWidgets.QMessageBox(QtWidgets.QMessageBox.Information,
 			'Help - Overview', self.OVERVIEW_TEXT
@@ -220,15 +230,10 @@ class GUI(Ui_MainWindow):
 		self.MainWindow.statusBar().showMessage(message)
 
 	def on_evaluate(self):
-		from osrsmath.apps.optimize.logic.optimize import get_sets, get_best_set
-		from osrsmath.combat.monsters import Monster
-		from osrsmath.combat.boosts import BoostingSchemes, Prayers, Potions
-		import time
-
 		try:
 			self.optimize_panel.progressBar.setValue(0)
-			monsters = {name: Monster(**m) for name, m in self.optimize_panel.data.monsters.items()}
-			if not monsters:
+			self.monsters = {name: Monster(**m) for name, m in self.optimize_panel.data.monsters.items()}
+			if not self.monsters:
 				QtWidgets.QMessageBox(
 					QtWidgets.QMessageBox.Warning, 'Invalid Number of Monsters', "You haven't selected enough monsters."
 				).exec_()
@@ -253,9 +258,9 @@ class GUI(Ui_MainWindow):
 			potion_attributes = self.optimize_panel.potion_attributes.currentText()
 		
 			prayer_name = self.optimize_panel.prayers.currentText()
-			if (prayer_name == 'augury' and training_skill != 'magic') or\
-				 (prayer_name == 'rigour' and training_skill != 'ranged') or\
-				 	((prayer_name == 'chivalry' or prayer_name == 'piety') and training_skill not in ['attack', 'strength', 'defence']):
+			if (prayer_name == 'augury' and training_skill not in ['magic', 'magic and defence']) or\
+				 (prayer_name == 'rigour' and training_skill not in ['ranged', 'ranged and defence']) or\
+				 	((prayer_name == 'chivalry' or prayer_name == 'piety') and training_skill not in ['attack', 'strength', 'defence', 'controlled']):
 				QtWidgets.QMessageBox(
 					QtWidgets.QMessageBox.Warning, 'Invalid Potion Input', "The prayer you are using doesn't match the training skill."
 				).exec_()
@@ -278,20 +283,22 @@ class GUI(Ui_MainWindow):
 			else:
 				boost = lambda p: BoostingSchemes(p, prayer, prayer_attributes).constant(potion, potion_attributes)
 
-			fighter = Fighter(stats)
-			fighter.set_spell(self.optimize_panel.entities['spell'].get() if training_skill == 'magic' else None)
+			self.fighter = Fighter(stats)
+			self.fighter.set_spell(self.optimize_panel.entities['spell'].get() if 'magic' in training_skill else None)
 			
 			# Time and Evaluate Solution
 			t0 = time.time()
 			self.update_status(f'Step (1/2). Generating Sets...')
-			sets = get_sets(training_skill, stats, monsters, ignore, adjust, special_sets, progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)))
+			sets = get_sets(training_skill, stats, self.monsters, ignore, adjust,
+				special_sets, progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i))
+			)
 			t1 = time.time()
 			self.update_status(f'Step (2/2). Evaluating {len(sets)} Sets...')
-			(s, xp, stance), xps = get_best_set(
-				fighter,
+			self.loadouts = get_best_sets(  # [(s, xp, stance), ...]
+				self.fighter,
 				training_skill,
 				boost,
-				monsters,
+				self.monsters,
 				sets,
 				include_shared_xp=False,
 				progress_callback=lambda i: self.optimize_panel.progressBar.setValue(int(i)),
@@ -299,7 +306,8 @@ class GUI(Ui_MainWindow):
 			)
 			t2 = time.time()
 			self.update_status('Finished ...')
-			if s is None:
+			
+			if not self.loadouts:
 				self.update_status('No results found.')
 				return
 
@@ -308,43 +316,14 @@ class GUI(Ui_MainWindow):
 				plt.title('Xp/h Histogram')
 				plt.ylabel('Frequency')
 				plt.xlabel('Xp/h')
-				plt.hist(xps)
+				plt.hist([xp for x, xp, stance in self.loadouts])
 				plt.show()
 
-
-			# Display Optimal Equipment
-			for slot in slots:
-				equipment_list = getattr(self.optimize_panel, slot)
-				equipment_list.clear()
-				if slot == 'weapon':
-					equipment_list.addItem(s.get('weapon') if 'weapon' in s else s.get('2h'))
-				else:
-					equipment_list.addItem(s.get(slot))
-
-			# Display Offensive Attributes
-			tab = self.optimize_panel.best_in_slot_bonuses
-			fighter.equipment.undress()
-			fighter.equipment.wear(*list(s.values()))
-			fighter.set_stance(stance)
-			equipment_stats = fighter.equipment.get_stats()
-			for i, stat in enumerate(['attack_stab', 'attack_slash', 'attack_crush', 'attack_ranged', 'attack_magic',
-										'melee_strength', 'ranged_strength', 'magic_damage', 'attack_speed']):
-				tab.setItem(i, 0, QtWidgets.QTableWidgetItem(str(round(equipment_stats[stat], 2))))
-			tab.setItem(9, 0, QtWidgets.QTableWidgetItem(str("")))
-
-			# Additional Messages
-			print(f"Max hit: [{fighter.get_max_hit(Potions.none, Prayers.none)}, {fighter.get_max_hit(potion, prayer)}]")
-			report = f"Solved in {t2-t0:.2f}s ({t1-t0:.2f}s, {t2-t1:.2f}s) using {len(sets)} sets, giving {xp/1000:.2f}k xp/h."
-			print(report, stance)
+			self.optimize_panel.num_sets.setText(f"{len(self.loadouts)} Sets")
+			self.display_equipment(0)
+			report = f"Solved in {t2-t0:.2f}s ({t1-t0:.2f}s, {t2-t1:.2f}s) using {len(self.loadouts)} sets"
+			print(report)
 			self.update_status(report)
-
-			hit_rate = xp/4  # Assume 4xp per hit
-			total_hitpoints = sum(monster.levels['hitpoints'] for name, monster in monsters.items())
-			kill_time = total_hitpoints / hit_rate
-			self.optimize_panel.xp_rate.setText(f"{xp/1000:,.2f}k")
-			self.optimize_panel.attack_stance.setText(f"{stance}")
-			self.optimize_panel.kill_time.setText(f"{3600*kill_time:,.2f}s")
-			self.optimize_panel.kills_per_hour.setText(f"{1/kill_time:,.2f}")
 		except Exception as e:
 			import traceback
 			tb = traceback.format_exc()
@@ -356,6 +335,60 @@ class GUI(Ui_MainWindow):
 				'Error Encountered',
 				f"{e}\n{tb}"
 			).exec_()
+
+	def change_selected_set(self, change=None, index=None):
+		if change is None and index is None:
+			raise ValueError("Only one of change or index can be specified.")
+
+		if change is not None:
+			if not self.loadouts:
+				return
+			if len(self.loadouts) == 0:
+				return
+			elif len(self.loadouts) == 1:
+				i = 0
+			else:
+				i = int(self.optimize_panel.selected_set_index.text())
+				i = (i + change) % len(self.loadouts)
+		elif index is not None:
+			i = max(0, min(index, len(self.loadouts)-1))
+		else:
+			assert False, "Logic Error!"
+		self.optimize_panel.selected_set_index.setText(str(i))
+		self.display_equipment(i)
+
+	def display_equipment(self, i):
+		if not self.loadouts:
+			return
+		self.optimize_panel.selected_set_index.setText(str(i))
+		loadout, xp, stance = self.loadouts[i]
+		for slot in slots:
+			equipment_list = getattr(self.optimize_panel, slot)
+			equipment_list.clear()
+			if slot == 'weapon':
+				equipment_list.addItem(loadout.get('weapon') if 'weapon' in loadout else loadout.get('2h'))
+			else:
+				equipment_list.addItem(loadout.get(slot))
+
+		# Display Offensive Attributes
+		tab = self.optimize_panel.best_in_slot_bonuses
+		self.fighter.equipment.undress()
+		self.fighter.equipment.wear(*list(loadout.values()))
+		self.fighter.set_stance(stance)
+		equipment_stats = self.fighter.equipment.get_stats()
+		for i, stat in enumerate(['attack_stab', 'attack_slash', 'attack_crush', 'attack_ranged', 'attack_magic',
+									'melee_strength', 'ranged_strength', 'magic_damage', 'attack_speed']):
+			tab.setItem(i, 0, QtWidgets.QTableWidgetItem(str(round(equipment_stats[stat], 2))))
+		tab.setItem(9, 0, QtWidgets.QTableWidgetItem(str("")))
+
+		hit_rate = xp/4  # Assume 4xp per hit
+		total_hitpoints = sum(monster.levels['hitpoints'] for name, monster in self.monsters.items())
+		kill_time = total_hitpoints / hit_rate
+		self.optimize_panel.xp_rate.setText(f"{xp/1000:,.2f}k")
+		self.optimize_panel.attack_stance.setText(f"{stance}")
+		self.optimize_panel.kill_time.setText(f"{3600*kill_time:,.2f}s")
+		self.optimize_panel.kills_per_hour.setText(f"{1/kill_time:,.2f}")
+
 
 	def get_data_path(self, file):
 		return config.resource_path(f"apps/optimize/data/{file}")

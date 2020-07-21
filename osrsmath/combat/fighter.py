@@ -11,6 +11,7 @@ def bonus_to_triangle(attack_bonus: str):
 
 	Args:
 		attack_bonus: One of stab, slash, crush, ranged, magic.
+			or "defensive casting"
 
 	Returns:
 		One of melee, ranged, magic.

@@ -5,16 +5,16 @@ class Potions:
 	""" Namespace for different potion boost calculations.
 		These are change in level since potion boosts are additive. """
 	@staticmethod
-	def overload(level):
-		return Potions.super(level)
-
-	@staticmethod
-	def super(level):
-		return floor(0.15*level + 5)
+	def none(_=None):
+		return 0
 
 	@staticmethod
 	def normal(level):
 		return floor(0.10*level + 3)
+
+	@staticmethod
+	def super(level):
+		return floor(0.15*level + 5)
 
 	@staticmethod
 	def ranging(level):
@@ -25,36 +25,21 @@ class Potions:
 		return 4
 
 	@staticmethod
-	def none(_=None):
-		return 0
+	def overload(level):
+		return Potions.super(level)
+
 
 class Prayers:
 	""" Namespace for different prayer boost calculations.
 		These are percentage increases in level since prayer boosts are multiplicative. """
 	
 	@staticmethod
-	def piety(skill):
-		multipliers = {
-			'attack': 1.20,
-			'strength': 1.23,
-			'defence': 1.25
-		}
-		assert skill in multipliers
-		return multipliers[skill]
+	def none(_=None):
+		return 1
 
 	@staticmethod
-	def chivalry(skill):
-		multipliers = {
-			'attack': 1.15,
-			'strength': 1.18,
-			'defence': 1.20
-		}
-		assert skill in multipliers
-		return multipliers[skill]
-
-	@staticmethod
-	def level3(skill):
-		x = 1.15
+	def level1(skill):
+		x = 1.05
 		multipliers = {
 			'attack': x,
 			'strength': x,
@@ -81,8 +66,8 @@ class Prayers:
 		return multipliers[skill]
 
 	@staticmethod
-	def level1(skill):
-		x = 1.05
+	def level3(skill):
+		x = 1.15
 		multipliers = {
 			'attack': x,
 			'strength': x,
@@ -95,8 +80,24 @@ class Prayers:
 		return multipliers[skill]
 
 	@staticmethod
-	def none(_=None):
-		return 1
+	def chivalry(skill):
+		multipliers = {
+			'attack': 1.15,
+			'strength': 1.18,
+			'defence': 1.20
+		}
+		assert skill in multipliers
+		return multipliers[skill]
+
+	@staticmethod
+	def piety(skill):
+		multipliers = {
+			'attack': 1.20,
+			'strength': 1.23,
+			'defence': 1.25
+		}
+		assert skill in multipliers
+		return multipliers[skill]
 
 	@staticmethod
 	def rigour(skill):
@@ -133,10 +134,8 @@ def other(equipment, player):
 		return Equipment.salve_amulet_i()
 
 	if any(e in equipment for e in ('black mask', 'slayer helmet')):
-		print('black_mask')
 		return Equipment.black_mask()
 	if any(e in equipment for e in ('black mask (i)', 'slayer helmet (i)')):
-		print('black_mask i')
 		return Equipment.black_mask_i()
 
 	if all(e in equipment for e in ('void knight gloves', 'void knight top', 'void knight robe')):

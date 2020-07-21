@@ -73,9 +73,9 @@ class Solver:
 		self.player_stats = player_stats
 		self.callback = progress_callback if progress_callback else lambda x: None
 
-		self.triangle = {'attack': 'melee', 'strength': 'melee', 'defence': 'melee', 'ranged': 'ranged', 'magic': 'magic'}[training_skill]
+		self.triangle = {'attack': 'melee', 'strength': 'melee', 'defence': 'melee', 'controlled': 'melee', 'ranged': 'ranged', 'ranged and defence': 'ranged', 'magic': 'magic', 'magic and defence': 'magic'}[training_skill]
 		self.gear = get_equipable_gear(
-			get_offensive_equipment(self.triangle), player_stats, ignore, adjustments
+			training_skill, get_offensive_equipment(self.triangle), player_stats, ignore, adjustments
 		)
 		self.special_sets = []
 
@@ -133,8 +133,7 @@ class Solver:
 		armour = remove(self.gear, *ignore)
 		s = []
 		for stance in weapon['weapon']['stances']:
-			if Weapon.stance_can_do(stance, self.training_skill, attack_type, allow_controlled=False):
-				# print(attack_type, stance, stance_to_style(bonus_to_triangle(attack_type), stance))
+			if Weapon.stance_can_do(stance, self.training_skill, attack_type):
 				s.extend([
 					(stance['combat_style'], [('weapon', weapon['name']), *a])
 						for a in get_armour_sets( stance_to_style(bonus_to_triangle(attack_type), stance), armour, weapon)
@@ -193,22 +192,29 @@ def get_sets(training_skill, player_stats, defenders, ignore, adjustments, consi
 	solver = Solver(training_skill, player_stats, ignore, adjustments, progress_callback)
 	for name, special_set in sets.items():
 		if name in considered_sets:
-			print(name)
+			# print(name)
 			solver.add_special_set(*special_set)
 	return solver.solve()
+
+def get_best_sets(fighter, training_skill, states, defenders, sets, include_shared_xp=True, progress_callback=None, num_cores=0):
+	""" Returns the equipment set that provides the highest experience rate for the training_skill.
+		@param fighter Fighter class instance
+		@param training_skill: 'attack'
+		@param sets: [{'cape': 'Fire cape', ...}, {'cape': 'Legends cape', ...}, ...] """
+	loadouts = mmap(
+		lambda s: eval_set(fighter, training_skill, states, defenders, s, include_shared_xp),
+		sets,
+		progress_callback if progress_callback else lambda x: None,
+		num_cores=num_cores
+	)
+	if not loadouts:
+		return []
+	return list(reversed(sorted(loadouts, key=lambda x: x[1])))  # x[1] -> xp rate
+
 
 def get_best_set(fighter, training_skill, states, defenders, sets, include_shared_xp=True, progress_callback=None, num_cores=0):
 	""" Returns the equipment set that provides the highest experience rate for the training_skill.
 		@param fighter Fighter class instance
 		@param training_skill: 'attack'
 		@param sets: [{'cape': 'Fire cape', ...}, {'cape': 'Legends cape', ...}, ...] """
-	sets = mmap(
-		lambda s: eval_set(fighter, training_skill, states, defenders, s, include_shared_xp),
-		sets,
-		progress_callback if progress_callback else lambda x: None,
-		num_cores=num_cores
-	)
-	if not sets:
-		return (None, 0, None), None
-
-	return max(sets, key=lambda x: x[1]), [s[1] for s in sets]  # x[1] -> xp rate
+	return get_best_sets[0]
