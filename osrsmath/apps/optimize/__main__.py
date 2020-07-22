@@ -120,6 +120,11 @@ class GUI(Ui_MainWindow):
 
 	def setupUi(self, MainWindow):
 		super().setupUi(MainWindow)
+
+		icon = QtGui.QIcon()
+		icon.addFile(str(config.resource_path("apps/GUI/images/logo.png")), QtCore.QSize(), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+		MainWindow.setWindowIcon(icon)
+
 		self.load_defaults()
 		self.loadouts = []
 		self.monster_panel.add.clicked.connect(self.add_monster)

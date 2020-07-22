@@ -51,6 +51,8 @@ def get_armour_sets(attack_style, gear, weapon):
 			gear['ammo'] = [a for a in gear['ammo'] if a['name'].lower() == 'bone bolts']
 		elif ("lizard" in weapon['name'].lower()) or ("salamander" in weapon['name'].lower()):
 			gear['ammo'] = [a for a in gear['ammo'] if a['name'].lower() in ('guam tar', 'marrentill tar', 'tarromin tar', 'harralander tar')]
+		elif "ballista" in weapon['name'].lower():
+			gear['ammo'] = [a for a in gear['ammo'] if 'javalin' in a['name'].lower()]
 		else:
 			name_requirements = {
 				'bows': 'arrow',
