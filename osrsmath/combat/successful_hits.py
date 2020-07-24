@@ -203,22 +203,24 @@ class MarkovChain(Model):
 	Percent error for `turns_to_kill` when compared to simulation:
 	.. image:: HEAD/results/part_II/models/MarkovChain.png
 	"""
+	def __init__(self, safe=True):
+		self.safe = True
 
 	def turns_to_kill(self, h_0, M):
 		validate(h_0=h_0, M=M)
 		# pylint: disable=bad-continuation
 
-
-		# Emperically, catastrophic error occurs above the line defined by two points:
-		ax, ay = (0, 0)
-		bx, by = (50, 1000)
-		m = (by - ay) / (bx - ax)
-		b = ay - m*ax
-		line = lambda x: m*x + b
-		if h_0 > line(M):
-		# if M <= 10 and h_0 > 30:
-			# Instead the asymptotic behavior is used.
-			return MarkovChainApproximation().turns_to_kill(h_0, M)
+		if self.safe:
+			# Empirically, catastrophic error occurs above the line defined by two points:
+			ax, ay = (0, 0)
+			bx, by = (50, 1000)
+			m = (by - ay) / (bx - ax)
+			b = ay - m*ax
+			line = lambda x: m*x + b
+			if h_0 > line(M):
+			# if M <= 10 and h_0 > 30:
+				# Instead the asymptotic behavior is used.
+				return MarkovChainApproximation().turns_to_kill(h_0, M)
 		return sum(
 			(
 				(((M + 1) / M)**(h_0 - M*i)) *

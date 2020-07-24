@@ -155,13 +155,13 @@ def get_sets(training_skill, player_stats, defenders, ignore, adjustments, consi
 				'body': 'Void knight top',
 				'legs': 'Void knight robe',
 				'hands': 'Void knight gloves',
-				'head': 'Void melee helm'
+				'head': ('Void ranger helm' if 'ranged' in training_skill else ('Void mage helm' if 'magic' in training_skill else 'Void melee helm'))
 		}),
 		'elite_void': (None, {
 				'body': 'Elite void top',
 				'legs': 'Elite void robe',
 				'hands': 'Void knight gloves',
-				'head': 'Void melee helm'
+				'head': ('Void ranger helm' if 'ranged' in training_skill else ('Void mage helm' if 'magic' in training_skill else 'Void melee helm'))
 		}),
 		'obsidian': ([
 				'Toktz-xil-ek', 'Toktz-xil-ak', 'Tzhaar-ket-em', 'Tzhaar-ket-om', 'Tzhaar-ket-om (t)'
