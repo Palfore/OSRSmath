@@ -7,76 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>714</width>
-    <height>738</height>
+    <height>755</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="4" column="1" colspan="6">
-    <widget class="QStackedWidget" name="stackedWidget">
-     <property name="currentIndex">
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="page">
-      <layout class="QGridLayout" name="gridLayout_5">
-       <item row="0" column="0">
-        <widget class="QComboBox" name="training_skill">
-         <item>
-          <property name="text">
-           <string>attack</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>strength</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>defence</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>controlled</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>ranged</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>ranged and defence</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>magic</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>magic and defence</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="page_2">
-      <layout class="QGridLayout" name="gridLayout_4">
-       <item row="0" column="0">
-        <widget class="QLineEdit" name="start_end"/>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-   </item>
-   <item row="18" column="0" colspan="7">
+   <item row="19" column="0" colspan="7">
     <widget class="QFrame" name="frame">
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -297,12 +235,98 @@
      </layout>
     </widget>
    </item>
-   <item row="13" column="2">
-    <widget class="QLabel" name="label_7">
-     <property name="text">
-      <string>&lt;Dharok HP&gt;</string>
+   <item row="4" column="1" colspan="6">
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="page">
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="0">
+        <widget class="QComboBox" name="training_skill">
+         <item>
+          <property name="text">
+           <string>attack</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>strength</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>defence</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>controlled</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>ranged</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>ranged and defence</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>magic</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>magic and defence</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="page_2">
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <widget class="QLineEdit" name="start_end"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="16" column="1" colspan="8">
+    <widget class="QProgressBar" name="progressBar">
+     <property name="value">
+      <number>0</number>
      </property>
     </widget>
+   </item>
+   <item row="5" column="1" colspan="5">
+    <widget class="QComboBox" name="spell">
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="16" column="9">
+    <widget class="QCheckBox" name="show_histogram">
+     <property name="text">
+      <string>Show Histogram</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="11">
+    <widget class="QListWidget" name="opponents">
+     <property name="horizontalScrollMode">
+      <enum>QAbstractItemView::ScrollPerItem</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="1" colspan="5">
+    <widget class="QComboBox" name="prayers"/>
    </item>
    <item row="14" column="9">
     <widget class="QCheckBox" name="berserker_necklace">
@@ -311,26 +335,6 @@
      </property>
      <property name="checked">
       <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="13" column="3">
-    <widget class="QLineEdit" name="dharok">
-     <property name="text">
-      <string>0</string>
-     </property>
-     <property name="maxLength">
-      <number>2</number>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="1" colspan="5">
-    <widget class="QComboBox" name="prayers"/>
-   </item>
-   <item row="11" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Prayer</string>
      </property>
     </widget>
    </item>
@@ -344,13 +348,17 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="8">
-    <widget class="QLabel" name="label_11">
-     <property name="toolTip">
-      <string>Number of cores to use during calculations, high values might cause lag.</string>
-     </property>
+   <item row="11" column="0">
+    <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>CPU Cores:</string>
+      <string>Prayer</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="9">
+    <widget class="QLineEdit" name="cpu_cores">
+     <property name="text">
+      <string>0</string>
      </property>
     </widget>
    </item>
@@ -364,10 +372,13 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="9">
-    <widget class="QLineEdit" name="cpu_cores">
+   <item row="4" column="8">
+    <widget class="QLabel" name="label_11">
+     <property name="toolTip">
+      <string>Number of cores to use during calculations, high values might cause lag.</string>
+     </property>
      <property name="text">
-      <string>0</string>
+      <string>CPU Cores:</string>
      </property>
     </widget>
    </item>
@@ -388,7 +399,28 @@
      </property>
     </widget>
    </item>
-   <item row="18" column="8" rowspan="11" colspan="3">
+   <item row="16" column="0">
+    <widget class="QPushButton" name="evaluate">
+     <property name="text">
+      <string>Evaluate!</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="9" colspan="2">
+    <widget class="QComboBox" name="boosting_scheme">
+     <item>
+      <property name="text">
+       <string>Constant</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dose After</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="19" column="8" rowspan="11" colspan="3">
     <widget class="QTableWidget" name="best_in_slot_bonuses">
      <property name="showGrid">
       <bool>true</bool>
@@ -546,37 +578,6 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="9" colspan="2">
-    <widget class="QComboBox" name="boosting_scheme">
-     <item>
-      <property name="text">
-       <string>Constant</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Dose After</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="13" column="8">
-    <widget class="QCheckBox" name="void_knight">
-     <property name="text">
-      <string>Void</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="15" column="0">
-    <widget class="QPushButton" name="evaluate">
-     <property name="text">
-      <string>Evaluate!</string>
-     </property>
-    </widget>
-   </item>
    <item row="13" column="6">
     <widget class="QCheckBox" name="slayer_helm">
      <property name="text">
@@ -587,10 +588,10 @@
      </property>
     </widget>
    </item>
-   <item row="14" column="8">
-    <widget class="QCheckBox" name="elite_void">
+   <item row="13" column="8">
+    <widget class="QCheckBox" name="void_knight">
      <property name="text">
-      <string>Elite Void</string>
+      <string>Void</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -616,6 +617,23 @@
      </item>
     </widget>
    </item>
+   <item row="14" column="8">
+    <widget class="QCheckBox" name="elite_void">
+     <property name="text">
+      <string>Elite Void</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="spell_label">
+     <property name="text">
+      <string>Spell</string>
+     </property>
+    </widget>
+   </item>
    <item row="6" column="6" colspan="3">
     <widget class="QComboBox" name="potion_attributes">
      <item>
@@ -633,13 +651,6 @@
        <string>accuracy and damage</string>
       </property>
      </item>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="spell_label">
-     <property name="text">
-      <string>Spell</string>
-     </property>
     </widget>
    </item>
    <item row="8" column="6" colspan="3">
@@ -695,31 +706,55 @@
      </item>
     </widget>
    </item>
-   <item row="5" column="1" colspan="5">
-    <widget class="QComboBox" name="spell">
-     <property name="editable">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="15" column="1" colspan="8">
-    <widget class="QProgressBar" name="progressBar">
-     <property name="value">
-      <number>0</number>
-     </property>
-    </widget>
-   </item>
-   <item row="15" column="9">
-    <widget class="QCheckBox" name="show_histogram">
+   <item row="13" column="3" colspan="3">
+    <widget class="QLineEdit" name="dharok">
      <property name="text">
-      <string>Show Histogram</string>
+      <string>0</string>
+     </property>
+     <property name="maxLength">
+      <number>2</number>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="11">
-    <widget class="QListWidget" name="opponents">
-     <property name="horizontalScrollMode">
-      <enum>QAbstractItemView::ScrollPerItem</enum>
+   <item row="13" column="1" colspan="2">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>&lt;Dharok HP&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="1" colspan="2">
+    <widget class="QCheckBox" name="thammaron">
+     <property name="text">
+      <string>Thammaron</string>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="1" colspan="2">
+    <widget class="QCheckBox" name="viggoras">
+     <property name="text">
+      <string>Viggoras</string>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="3">
+    <widget class="QCheckBox" name="DHCB">
+     <property name="text">
+      <string>DHCB</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="3">
+    <widget class="QCheckBox" name="DHL">
+     <property name="text">
+      <string>DHL</string>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="6">
+    <widget class="QCheckBox" name="crawsbow">
+     <property name="text">
+      <string>Craw's bow</string>
      </property>
     </widget>
    </item>

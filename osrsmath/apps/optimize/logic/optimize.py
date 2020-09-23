@@ -3,7 +3,7 @@ from osrsmath.apps.optimize.logic.gear import (
 	get_offensive_bonuses, get_offensive_equipment, get_equipable_gear, meets_requirements, Weapon
 )
 from osrsmath.apps.optimize.logic.evaluation import mmap, eval_set
-from osrsmath.general.player import EquipmentPool
+from osrsmath.combat.equipment import EquipmentPool
 from osrsmath.combat.fighter import stance_to_style, bonus_to_triangle
 from collections import defaultdict
 from pprint import pprint
@@ -54,15 +54,15 @@ def get_armour_sets(attack_style, gear, weapon):
 		elif "ballista" in weapon['name'].lower():
 			gear['ammo'] = [a for a in gear['ammo'] if 'javalin' in a['name'].lower()]
 		else:
-			name_requirements = {
+			ammo_requirement = {
 				'bows': 'arrow',
 				'crossbows': 'bolt',
-				'grenade': 'NO VALID OPTIONS',
-				'thrown_weapons': 'NO VALID OPTIONS',
-				'chinchompas': 'NO VALID OPTIONS',
+				'grenade': None,
+				'thrown_weapons': None,
+				'chinchompas': None,
 			}[weapon['weapon']['weapon_type']]
 			
-			gear['ammo'] = [a for a in gear['ammo'] if name_requirements in a['name']]
+			gear['ammo'] = [a for a in gear['ammo'] if ammo_requirement and (ammo_requirement in a['name'])]
 	reduced_equipment = [[
 		(slot, e['name']) for e in get_unique_equipment(attack_style, equipment)
 	] for slot, equipment in gear.items()]
@@ -189,12 +189,31 @@ def get_sets(training_skill, player_stats, defenders, ignore, adjustments, consi
 				'body': "Dharok's platebody",
 				'legs': "Dharok's platelegs",
 			}
+		),
+		'thammaron': ([
+			"Thammaron's sceptre"
+			], {}
+		),
+		'viggoras': ([
+			"Viggora's chainmace"
+			], {}
+		),
+		'DHL': ([
+			"Dragon hunter lance"
+			], {}
+		),
+		'DHCB': ([
+			"Dragon hunter crossbow"
+			], {}
+		),
+		'crawsbow': ([
+			"Craw's bow"
+			], {}
 		)
 	}
 	solver = Solver(training_skill, player_stats, ignore, adjustments, progress_callback)
 	for name, special_set in sets.items():
 		if name in considered_sets:
-			# print(name)
 			solver.add_special_set(*special_set)
 	return solver.solve()
 

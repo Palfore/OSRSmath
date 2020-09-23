@@ -1,4 +1,4 @@
-from osrsmath.general.player import EquipmentPool
+from osrsmath.combat.equipment import EquipmentPool
 from osrsmath.combat.fighter import bonus_to_triangle
 from collections import defaultdict
 import fnmatch

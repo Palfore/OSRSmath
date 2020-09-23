@@ -56,8 +56,11 @@ class Magic:
 			There are no prayers that increase magic damage
 			Also tome of fire, chaos gauntlets
 		"""
+		# print(E_str, str_level, B_other)
 		base_damage = get_spell(spell)['max_hit']
-		return floor(base_damage * (1 + E_str/100))
+		answer = base_damage
+		answer *= floor(1 + E_str/100*B_other)
+		return answer
 
 	def max_attack_roll(self, E_att, att_level, B_pot, B_pray, B_other, B_style, multiplier):
 		M_eff = effective_level(att_level, B_pot, B_pray, B_other, 0, 8)

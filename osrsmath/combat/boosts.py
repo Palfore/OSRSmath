@@ -118,12 +118,30 @@ class Prayers:
 		return multipliers[skill]
 
 def other(equipment, player):
+	""" Warning: The current implementation only supports a single 'other' bonus. """
 	equipment = [e.lower() for e in equipment]
 
 	# The order here is important, salve amulet does not stack with black mask
 	# The wiki says "only the salve amulet's bonuses will be applied". Not sure
 	# if this is because its better, or if it always applies regardless of the variant.
 	# Because it's easier to implement, we'll just assume salve takes priority.
+	if 'dragon hunter lance' in equipment:
+		print('1')
+		return Equipment.dragon_hunter_lance()
+	if 'dragon hunter crossbow' in equipment:
+		print('2')
+		return Equipment.dragon_hunter_crossbow()
+
+	if "craw's bow" in equipment:
+		print('3')
+		return Equipment.craws_bow()
+	if "thammaron's sceptre" in equipment:
+		print('4')
+		return Equipment.thammarons_sceptre()
+	if "viggora's chainmace" in equipment:
+		print('5')
+		return Equipment.viggoras_chainmace()
+
 	if 'salve amulet (ei)' in equipment:
 		return Equipment.salve_amulet_i()
 	if 'salve amulet (e)' in equipment:
@@ -173,8 +191,8 @@ class Equipment:
 	@staticmethod
 	def none():
 		return {
-			'strength': 1,
 			'attack': 1,
+			'strength': 1,
 			'defence': 1,
 			'ranged': 1,
 			'ranged_strength': 1,
@@ -309,6 +327,41 @@ class Equipment:
 	def dharok(hp_lost):
 		return {
 			'strength': 1 + (hp_lost / 100)
+		}
+
+	@staticmethod
+	def dragon_hunter_crossbow():
+		return {
+			'ranged': 1.3,
+			'ranged_strength': 1.3
+		}
+
+	@staticmethod
+	def dragon_hunter_lance():
+		return {
+			'attack': 1.2,
+			'strength': 1.2,
+		}
+
+	@staticmethod
+	def craws_bow():
+		return {
+			'ranged': 1.5,
+			'ranged_strength': 10.5,
+		}
+
+	@staticmethod
+	def thammarons_sceptre():
+		return {
+			'magic': 298,
+			'magic_strength': 1.25,
+		}
+
+	@staticmethod
+	def viggoras_chainmace():
+		return {
+			'attack': 1.5,
+			'strength': 1.5
 		}
 
 class BoostingSchemes:

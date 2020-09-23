@@ -3,7 +3,7 @@ from osrsmath.apps.GUI.shared.widgets import Savable
 from PySide2 import QtCore, QtGui, QtWidgets
 
 from osrsmath.combat.spells import STANDARD, ANCIENT
-from osrsmath.general.player import EquipmentPoolFiltered
+from osrsmath.combat.equipment import EquipmentPoolFiltered
 import osrsmath.combat.boosts as boosts
 import inspect
 import webbrowser
@@ -39,6 +39,11 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 			'elite_void',
 			'berserker_necklace',
 			'salve_amulet',
+			'thammaron',
+			'viggoras',
+			'DHL',
+			'DHCB',
+			'crawsbow',
 		]
 		self.entities = {
 			'monsters': Savable.Entity(
