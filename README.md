@@ -1,6 +1,6 @@
 # The Mathematics and Optimization of OSRS
 
-The purpose of this project is to accurately model [Old School Runescape](https://oldschool.runescape.com/) mechanics in order to optimize or analyze game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. In particular, combat is a particularly rewarding application, as very complex problems that were previously unsolved for decades can now be.
+The purpose of this project is to accurately model [Old School Runescape](https://oldschool.runescape.com/) mechanics in order to optimize or analyze game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. In particular, combat is a particularly rewarding application since it has many layers. This project is currently in progress, so if you notice anything please feel free to open a ticket and let me know!
 
 If you're interested, you can join the [discord](https://discord.gg/4SXcKQh) to discuss anything! Or if you would prefer watching a video, you can checkout the [video series](https://www.youtube.com/watch?v=7N9UJX70Z5I&list=PLm3INE_scU5s8NQWmw0fxKtA_6SVxDOc7).
 
@@ -95,7 +95,7 @@ The html documentation uses [`pdoc3`](https://pypi.org/project/pdoc3/) which can
 
 ### Tests
 
-The `unittest` module is used for testing. Navigate to the `tests` directory and run the command `python3 -m unittest`
+The `unittest` module is used for testing. Navigate to the `tests` directory and run the command `python3 -m unittest`. The tests are currently out of date, and are being re-written. If anyone is knowledgeable about combat game mechanics (max hit & accuracy calculations, tick manipulation), feel free to message me as I'm not too familiar and would appreciate the help.
 
 ## Authors
 
