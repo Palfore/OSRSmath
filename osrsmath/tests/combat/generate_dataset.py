@@ -1,5 +1,6 @@
 """ These are the possible, reputable, sources of max hits and accuracy.
 		Bitterkoekje: Seems to be 2 years (as of 2020) out of date.
+			I think this link only works for me: https://docs.google.com/spreadsheets/d/1llfZAUzUeApmg_m5VNa3YmXeOEw6MVKxpzHWFimWgTs/edit#gid=158500257
 		That other thing: Gui is much more difficult to automate.
 
 	Calculator needs to have opponent manually set to "Custom NPC"
@@ -99,6 +100,26 @@ class Calculator:
 
 	}
 
+	@staticmethod
+	def get_list_of_weapons(download=False):
+		if not download:
+			return ["3rd age longsword", "Abyssal bludgeon", "Abyssal dagger", "Abyssal tentacle", "Abyssal whip", "Adamant pickaxe", "Ancient mace", "Arclight", "Armadyl godsword", "Bandos godsword", "Barrelchest anchor", "Black salamander", "Bone dagger", "Brine sabre", "Crystal halberd", "Darklight", "Dharok's greataxe", "Dinh's Bulwark", "Dragon 2h sword", "Dragon battleaxe", "Dragon claws", "Dragon dagger", "Dragon halberd", "Dragon hasta", "Dragon hunter lance", "Dragon longsword", "Dragon mace", "Dragon pickaxe", "Dragon scimitar", "Dragon spear", "Dragon sword", "Dragon warhammer", "Elder maul", "Event rpg", "Fixed device", "Gadderhammer", "Ghrazi rapier", "Granite hammer", "Granite longsword", "Granite maul", "Guthan's warspear", "Hill giant club", "Keris", "Leaf-bladed spear", "Leaf-bladed sword", "Leaf-bladed battleaxe", "Maple blackjack", "Maple blackjack (o)", "Maple blackjack (d)", "Obsidian dagger", "Obsidian mace", "Obsidian maul", "Obsidian sword", "Rune 2h sword", "Rune battleaxe", "Rune claws", "Rune dagger", "Rune halberd", "Rune hasta", "Rune longsword", "Rune mace", "Rune scimitar", "Rune spear", "Rune sword", "Rune pickaxe", "Rune warhammer", "Saradomin's blessed sword", "Saradomin godsword", "Saradomin sword", "Scythe of Vitur (uncharged)", "Scythe of Vitur", "Slayer's staff", "Staff of light", "Enchanted slayer's staff", "Red topaz machete", "Staff of the dead", "Torag's hammers", "Wolfbane", "Verac's flail", "Viggora's chainmace", "Zamorakian spear", "Zamorakian hasta", "Zamorak godsword", "Adamant scimitar", "Mithril scimitar", "Black scimitar", "White scimitar", "Steel scimitar", "Iron scimitar", "Bronze scimitar", "3rd age bow", "Armadyl crossbow", "Black chinchompa", "Chinchompa", "Crystal bow", "Craw's bow", "Dark bow", "Dart", "Dorgeshuun crossbow", "Dragon crossbow", "Dragon hunter crossbow", "Dragon thrownaxe", "Rune crossbow", "Hunter's crossbow", "Adamant crossbow", "Mithril crossbow", "Steel crossbow", "Iron crossbow", "Bronze crossbow", "Bluerite crossbow", "Rune thrownaxe", "Heavy ballista", "Karil's crossbow", "Knife", "Light ballista", "Magic compositebow", "Magic longbow", "Magic shortbow", "Magic shortbow (i)", "Yew shortbow", "Maple shortbow", "Willow shortbow", "Oak shortbow", "Shortbow", "Red chinchompa", "Seercull", "Toxic blowpipe", "Twisted bow", "Ahrim's staff", "Ancient staff", "God staff", "Iban staff (u)", "Kodai wand", "Master wand", "Thammaron's sceptre", "Sanguinesti staff", "Trident of the seas", "Trident of the swamp", "Toxic staff of the dead", "3rd age wand", "Void knight mace", "Mystic smoke staff", "Smoke battlestaff", "Mystic lava staff", "Mystic mud staff", "Mystic dust staff", "Mystic mist staff", "Mystic steam staff", "Air battlestaff", "Water battlestaff", "Earth battlestaff", "Fire battlestaff"]
+		weapons = []
+		move_to(Calculator.cells['weapon'])
+		text = None
+		i = 2
+		while text != 'Fire battlestaff':  # Last item in list
+			clear()
+			pyautogui.press('enter')
+			for _ in range(i):
+				pyautogui.press('down')
+			pyautogui.press('enter')
+			pyautogui.press('up')
+			text = read_text().strip()
+			print(text)
+			i += 1
+		return weapons
+
 	def set_player_levels(self, stats: dict):
 		move_to(self.cells['player_stats'])
 		for stat in self.player_stat_order:
@@ -120,68 +141,95 @@ class Calculator:
 			clear()
 			write_text(str(bonuses[stat])+'\n')
 
-	def set_player_bonuses(self, weapon, style, attack_bonus, strength_bonus):
-		write_text_to(cells['weapon'], weapon)
+	def set_player_weapon(self, weapon, style):
+		# Chance weapon and style
+		write_text_to(self.cells['weapon'], weapon)
 		clear()
-		write_text('\n*'+style+'*')
+		write_text(f'\n*{style}*')
+		sleep(0.2)
+		pyautogui.press('esc')
+
+		# Error Checking
 		move('right', 1)
 		move('up', 2)
-		sleep(0.3)
+		sleep(0.5)
 		error = read_text()
 		if 'N/A' in error:
-			raise
+			raise ValueError(f"Weapon '{weapon}' could not be evaluated.")
 		move('down', 1)
 		error = read_text()
 		if 'N/A' in error:
-			raise
+			raise ValueError(f"Weapon '{weapon}' could not be evaluated.")
 
-		move_to(cells['custom_attack'])
+	def set_player_bonuses(self, attack_bonus, strength_bonus):
+		move_to(self.cells['custom_attack'])
 		write_text(str(attack_bonus))
 		move('right', 1)
 		move('up', 1)
 		write_text(str(strength_bonus))
-		
 
 	def get_summary(self):
-		m = int(read_text_from(cells['maxhit']))
+		m = int(read_text_from(self.cells['maxhit']))
 		move('down', 2)
 		a = float(read_text().strip('%'))
 		return m, a
 
+from osrsmath.combat.equipment import EquipmentPool
+from pprint import pprint
 
-# 1. get list of weapons and associated attack styles
-# 2. generate a random player, and opponent.
-# 3. select a random sample of weapons and evaluate them,
-# 4. goto 2, until satisfied.
 focus_window("Copy of DPS calculator by Bitterkoekje")
 calculator = Calculator()
-# calculator.set_player_levels({
-# 	'attack': 70,
-# 	'strength': 99,
-# 	'defence': 99,
-# 	'magic': 99,
-# 	'ranged': 99,
-# 	'hitpoints': 99,
-# 	'prayer': 99,
-# })
-# calculator.set_opponent_levels({
-# 	'attack': 70,
-# 	'strength': 99,
-# 	'defence': 99,
-# 	'magic': 99,
-# 	'ranged': 99,
-# 	'hitpoints': 99,
-# })
-# calculator.set_opponent_bonuses({
-# 	'stab': 25,
-# 	'slash': 50,
-# 	'crush': 75,
-# 	'magic': 38,
-# 	'ranged': 20
-# })
-# calculator.set_player_bonuses(
-# 	'Dragon Sword',
-# 	'aggressive',
-# 	40, 50
-# )
-print(calculator.get_summary())
+print('(1) Starting')
+print('(2) Getting List of Weapons')
+weapons = calculator.get_list_of_weapons()
+print('(3) Setting Player Levels')
+calculator.set_player_levels({
+	'attack': 70,
+	'strength': 99,
+	'defence': 99,
+	'magic': 99,
+	'ranged': 99,
+	'hitpoints': 99,
+	'prayer': 99,
+})
+print('(4) Setting Opponent Levels')
+calculator.set_opponent_levels({
+	'attack': 70,
+	'strength': 99,
+	'defence': 99,
+	'magic': 99,
+	'ranged': 99,
+	'hitpoints': 99,
+})
+print('(5) Setting Player Bonuses')
+calculator.set_player_bonuses(40, 50)
+print('(6) Setting Opponent Bonuses')
+calculator.set_opponent_bonuses({
+	'stab': 25,
+	'slash': 50,
+	'crush': 75,
+	'magic': 38,
+	'ranged': 20
+})
+
+print('(7) Evaluating Weapons...')
+pool = EquipmentPool()
+for name in weapons:
+	try:
+		attributes = pool.by_name(name)
+	except Exception as e:
+		print('Failed', name)
+		continue
+
+	for stance in attributes['weapon']['stances']:
+		try:
+			pyautogui.press('esc')
+			calculator.set_player_weapon(
+				name, stance['attack_style']
+			)
+			print(name, stance['combat_style'], calculator.get_summary())
+		except Exception as e:
+		# 	print('Failed:', name, stance['attack_style'])
+			pass
+
+print('(7) Finished')
