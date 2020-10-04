@@ -1,7 +1,8 @@
 """ These are the possible, reputable, sources of max hits and accuracy.
-		Bitterkoekje: Seems to be 2 years (as of 2020) out of date.
+		1. Bitterkoekje: Seems to be 2 years (as of 2020) out of date.
 			I think this link only works for me: https://docs.google.com/spreadsheets/d/1llfZAUzUeApmg_m5VNa3YmXeOEw6MVKxpzHWFimWgTs/edit#gid=158500257
-		That other thing: Gui is much more difficult to automate.
+		2. That other thing: Gui is much more difficult to automate.
+		3. Updated version of Bitterkoekje. https://docs.google.com/spreadsheets/d/1wBXIlvAmqoQpu5u9XBfD4B0PW7D8owyO_CnRDiTHBKQ/edit#gid=158500257
 
 	Calculator needs to have opponent manually set to "Custom NPC"
 

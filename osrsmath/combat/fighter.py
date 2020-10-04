@@ -67,7 +67,7 @@ class Fighter(Player):
 		"""
 		self.spell = spell
 
-	def get_combat_type(self):
+	def get_combat_type(self):  # rename to combat class
 		""" Returns Melee, Ranged, or Magic based on experience gained.
 	
 		Raises:
@@ -101,55 +101,85 @@ class Fighter(Player):
 		return attack_speed
 
 	def get_max_hit(self, potion, prayer, arena):
-		combat_type = self.get_combat_type()
-		stances = self.loadout.stances
-		if combat_type == 'melee':
-			style_bonus = {'aggressive': 3, 'controlled': 1}.get(stances[self.stance]['attack_style'], 0)
-			strength = self.levels['strength']
+		combat_class = self.get_combat_type()
+		attack_style = 'aggressive' ##
+		if combat_class == 'melee':
+			equipment_strength_bonus = 12 
+
+			potion_bonus = {
+				'Strength potion': int(self.levels['strength']*(10/100) + 3),
+				'Super strength potion': int(self.levels['strength']*(15/100) + 5),
+				'Overload (+)': int(self.levels['strength']*(16/100) + 6)
+			}[potion]
+
+			prayer_bonus = {
+				'Burst of Strength': 0.05,
+				'Superhuman Strength': 0.10,
+				'Ultimate 2': 0.,
+				'Chivalry': 0.18,
+				'Piety': 0.23,
+			}[prayer]
+
+			style_bonus = {
+				'aggressive': 11,
+				'controlled': 9
+			}.get(attack_style, 8)
+
+			void_bonus = 1.1 if wearing_melee_void else 1
+			visable_strength_level = self.levels['strength'] + potion_bonus
+			effective_strength = int(int(int(visable_strength_level*prayer_bonus)*style_bonus)*void_bonus)
+			m_base = int(0.5 + effective_strength*(64 + equipment_strength_bonus)/640)
+
+
+		# combat_type = self.get_combat_type()
+		# stances = self.loadout.stances
+		# if combat_type == 'melee':
+		# 	style_bonus = {'aggressive': 3, 'controlled': 1}.get(stances[self.stance]['attack_style'], 0)
+		# 	strength = self.levels['strength']
 			
-			effective_strength = floor(strength + potion(strength))
-			effective_strength += {'aggressive': 11, 'controlled': 8}.get(stances[self.stance]['attack_style'], 0)
-			for name, special_equipment in SPECIAL_EQUIPMENT.items():
-				if special_equipment.applies(arena):
-					effective_strength = floor(effective_strength * special_equipment.melee_damage_pre(arena))
+		# 	effective_strength = floor(strength + potion(strength))
+		# 	effective_strength += {'aggressive': 11, 'controlled': 8}.get(stances[self.stance]['attack_style'], 0)
+		# 	for name, special_equipment in SPECIAL_EQUIPMENT.items():
+		# 		if special_equipment.applies(arena):
+		# 			effective_strength = floor(effective_strength * special_equipment.melee_damage_pre(arena))
 			
-			base_damage = floor(0.5 + effective_strength * (64 + self.loadout.bonuses.melee_strength)/640)
+		# 	base_damage = floor(0.5 + effective_strength * (64 + self.loadout.bonuses.melee_strength)/640)
 
-			for name, special_equipment in SPECIAL_EQUIPMENT.items():
-				if special_equipment.applies(arena):
-					base_damage = floor(base_damage * special_equipment.melee_damage_post(arena))
+		# 	for name, special_equipment in SPECIAL_EQUIPMENT.items():
+		# 		if special_equipment.applies(arena):
+		# 			base_damage = floor(base_damage * special_equipment.melee_damage_post(arena))
 
-			return floor(base_damage)
+		# 	return floor(base_damage)
 
-		elif combat_type == 'ranged':
-			style_bonus = {'accurate': 3}.get(stances[self.stance]['attack_style'], 0)
-			ranged = self.levels['ranged']
-			other = 1
+		# elif combat_type == 'ranged':
+		# 	style_bonus = {'accurate': 3}.get(stances[self.stance]['attack_style'], 0)
+		# 	ranged = self.levels['ranged']
+		# 	other = 1
 
-			if self.is_wearing_void_range:
-				other *= 1.1
-			if self.is_wearing_elite_void_range:
-				other *= 1.125
-			if self.is_wearing_slayer_helm:
-				other *= 1.15
+		# 	if self.is_wearing_void_range:
+		# 		other *= 1.1
+		# 	if self.is_wearing_elite_void_range:
+		# 		other *= 1.125
+		# 	if self.is_wearing_slayer_helm:
+		# 		other *= 1.15
 
-			effective_strength = floor(
-				(ranged + potion(ranged)) * prayer(ranged) * other + style_bonus
-			)
+		# 	effective_strength = floor(
+		# 		(ranged + potion(ranged)) * prayer(ranged) * other + style_bonus
+		# 	)
 
-			base_damage = sum([
-				1.3,
-				effective_strength / 10,
-				self.loadout.bonuses.ranged_strength / 80,
-				effective_strength * self.loadout.bonuses.ranged_strength / 640
-			])
+		# 	base_damage = sum([
+		# 		1.3,
+		# 		effective_strength / 10,
+		# 		self.loadout.bonuses.ranged_strength / 80,
+		# 		effective_strength * self.loadout.bonuses.ranged_strength / 640
+		# 	])
 
-			# Ignore dark bow & bolt effects
-			if self.is_wearing_twisted_bow:
-				M = max(opponent.magic_level, opponent.magic_accuracy)
-				D = 250 + (3*M - 14)/100 - (3*M/10 - 100)**2 / 100
-				base_damage *= D / 100
-			return floor(base_damage)
+		# 	# Ignore dark bow & bolt effects
+		# 	if self.is_wearing_twisted_bow:
+		# 		M = max(opponent.magic_level, opponent.magic_accuracy)
+		# 		D = 250 + (3*M - 14)/100 - (3*M/10 - 100)**2 / 100
+		# 		base_damage *= D / 100
+		# 	return floor(base_damage)
 
 
 

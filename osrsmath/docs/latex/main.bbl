@@ -31,6 +31,10 @@ Quests.
 Combat triangle.
 \newblock \url{https://oldschool.runescape.wiki/w/Combat_triangle}.
 
+\bibitem{wiki:attribute}
+Monster attribute.
+\newblock \url{https://oldschool.runescape.wiki/w/Monster_attribute}.
+
 \bibitem{wiki:max_hit}
 Maximum hit.
 \newblock \url{https://oldschool.runescape.wiki/w/Maximum_hit}.
@@ -47,5 +51,9 @@ Maximum melee hit.
 \bibitem{wiki:max_ranged}
 Maximum ranged hit.
 \newblock \url{https://oldschool.runescape.wiki/w/Maximum_ranged_hit}.
+
+\bibitem{wiki:max_magic}
+Maximum magic hit.
+\newblock \url{https://oldschool.runescape.wiki/w/Maximum_magic_hit}.
 
 \end{thebibliography}

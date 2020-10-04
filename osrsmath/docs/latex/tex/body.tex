@@ -24,7 +24,7 @@
 		\end{figure}
 
 		\newpage
-		To understand player and optimize decisions, we will be mathematically modeling the in-game mechanics. A surprising variety of mathematical concepts and techniques will be encountered. Additionally, algorithms derived from computer science are required to solve some of these problems. This serves as an exciting \textit{field} to explore, with a plethora of interesting results and visuals. Some of the details require high level mathematical solutions/descriptions. With the interest of being digestible by a broad audience with varying proficiencies, many arduous solutions are moved to the appendices.
+		To understand player decisions and optimize them, we will be mathematically modeling the in-game mechanics. A surprising variety of mathematical concepts and techniques will be encountered. Additionally, algorithms derived from computer science are required to solve some of these problems. This serves as an exciting \textit{field} to explore, with a plethora of interesting results and visuals. Some of the details require high level mathematical solutions/descriptions. With the interest of being digestible by a broad audience with varying proficiencies, many arduous solutions are moved to the appendices.
 		\vspace{2em}
 		\newline
 		This text accompanies an open-source codebase titled \href{https://github.com/Palfore/OSRSmath}{``OSRSmath''} that can be found on Github. In addition, there is a video series titled \href{https://www.youtube.com/watch?v=7N9UJX70Z5I&list=PLm3INE_scU5s8NQWmw0fxKtA_6SVxDOc7&ab_channel=Palfore}{``Optimizing Runescape''} that covers some of these solutions. Finally, a \href{https://discord.gg/4SXcKQh}{Discord Chat Room} exists for related discussions.
@@ -34,10 +34,32 @@
 		% Oldschool Runescape is a massively multiplayer online role-playing game (MMORPG) which features combat. In combat, players are awarded experience for damage dealt to their opponents (often called monsters). After a certain amount of experience is gained the player may level up, improving the abilities in combat. The mechanics of combat involve accuracy, maximum damage, attack speed, among other details. There have been several attempts to quantify the experience rates according to a player's, and their opponent's levels and equipment. Although they are quite accurate, there are additional corrections that can be applied. Additionally extensions to more complex fighting scenarios has not been performed. We will be specifically considering applications to the Nightmare Zone, a common method of training combat. This game is played with long term investments and considerations in mind, as many achievements are achieved over periods of months or even years. In this sense, even minor optimizations can result in real-world savings for the player. Furthermore, the codebase that accompanies this article can be found at: \url{https://github.com/Palfore/OSRS-Combat}. This allows for more advanced use of the derived formulas (such as in optimization problems).
 
 	\part{Combat}
+	\section*{List of In-Game Terms and Associated Values}
+		\begin{enumerate}
+			\item Combat Class: One of $[\texttt{melee, ranged, magic}]$
+			\item Attack Type: One of $[\texttt{stab, slash, crush, ranged, magic}]$
+			\item Combat Style: The name of the attack.
+				\begin{enumerate}
+					\item For the \texttt{melee} combat class: One of [\texttt{punch, kick, chop, hack, smash, block, pound, pummel, slash, lunge, jab, swipe, fend, spike, impale, reap, flick, lash, deflect, bash, focus, scorch}]
+					\item For the \texttt{ranged} combat class: One of [\texttt{accurate, rapid, longrange, short fuse, medium fuse, long fuse, flare}]
+					\item For the \texttt{magic} combat class: One of [\texttt{spell, spell (defensive), blaze, accurate, longrange}]. The latter two only apply to \texttt{Powered staves}.
+				\end{enumerate}
+			\item Attack Style:
+				\begin{enumerate}
+					\item For the \texttt{melee} combat class: One of $[\texttt{accurate, aggressive, defensive, controlled}]$
+					\item For the \texttt{ranged} combat class: One of $[\texttt{accurate, rapid, longrange}]$
+					\item For the \texttt{melee} combat class: One of [$\texttt{standard, defensive}]$
+				\end{enumerate} 
+			\item Attack Speed: The number of ticks between attacks. Integer between 1 and 15.
+			\item Attack Interval: The number of second between attacks. Real number between 0.6s and 9s.
+		\end{enumerate}
+
 	\chapter{Overview}
 		In this chapter, we will discuss the various factors involved in combat. We will consider combat in two stages. The first considers an autonomous fight in which the player performs no actions once the initial conditions of the fight have been specified. Analyzing this system will allow us to calculate quantities like the expected number of attacks required to defeat an opponent, and the probability of winning a fight. The second considers active player decisions that occur during combat. This will allow us to investigate the effect of performing actions on the aforementioned quantities. \textit{Policies} may be defined to mathematically model a player's decision. As an example, a player may use a healing item any time throughout a fight. To handle this, we can consider a specific policy whereby the player will use a healing item when health is below some threshold. Investigating this threshold will provide some insight.
 
-		It is interesting to note that although the descriptions of in-game mechanics likely have no real-world connections (since they are somewhat arbitrarily decided by the game's developers), the mathematics that can be applied to the dynamic variables resulting from these mechanics can actually be applied, and generalized to real-world settings. There is a large body of information that can be found on the \href{https://oldschool.runescape.wiki/w/Combat}{Official Wiki} that provides a greater overview, however we will discuss those that are most relevant.
+		It is interesting to note that although the descriptions of in-game mechanics likely have no real-world connections (since they are somewhat arbitrarily decided by the game's developers), the mathematics that can be applied to the dynamic variables resulting from these mechanics can actually be applied, and generalized to real-world settings. We will begin with a discussion of the most relevant mechanics, however there is an additional large body of information that can be found on the \href{https://oldschool.runescape.wiki/w/Combat}{Official Wiki} that provides a greater overview.
+
+		In the broadest scope, we define an entity that participates in combat as a \textit{fighter}, $\mathcal{F}$. In general, it is easier to formulate things in terms of an \textit{attacker}, $\mathcal{A}$, and \textit{defender} $\mathcal{D}$, where typically the player is considered the attacker. Thus, $\mathcal{F} \in \{\mathcal{A}, \mathcal{D}\}$. Due to the large number of dependencies, we will need many sub- and super- scripts. For notational convenience, we will occasionally use $(\mathcal{A}|\cdot)$ and $(\mathcal{D}|\cdot)$ to denote that a quantity (represented by $\cdot$) relates to either the attacker or defender, respectively. We will expand on, and define these objects in the following sections.
 
 		\section{Autonomous Mechanics}
 			\subsection{Combat Skills, Combat Triangle and Attack Styles}
@@ -45,41 +67,79 @@
 
 				Some skills provide benefits to all fighters, while others are specific to the style:
 				\begin{enumerate}
-					\item Attack: Increases the accuracy of a melee fighter.
-					\item Strength: Increases the maximum damage a melee fighter can do in a single attack.
-					\item Ranged: Increases the accuracy and maximum damage of a ranged fighter.
-					\item Magic: Most spells have a constant damage (with more powerful spells being unlocked at higher levels). Accuracy however is generally increased with higher magic. In addition, defence against magical attacks is partially determined by the player's magic level.
-					\item Defence: Decreases the probability an opponent will do damage to the player.
-					\item Prayer: Acts as a depleteable resource that can boost combat skills.
-					\item Hitpoints: Increases the amount of damage a player can receive before the lose a fight.
+					\item Attack, $L_a$: Increases the accuracy of a melee attacker.
+					\item Strength $L_s$: Increases the maximum damage a melee attacker can do in a single attack.
+					\item Ranged $L_r$: Increases the accuracy and maximum damage of a ranged attacker.
+					\item Magic $L_m$: Most spells have a constant damage (with more powerful spells being unlocked at higher levels), also some scale with magic level. Accuracy however is generally increased with higher magic. In addition, defence against magical attacks is partially determined by the player's magic level.
+					\item Defence $L_d$: Decreases the probability that the opponent will have a sucessful attack.
+					\item Prayer $L_p$: Acts as a depleteable resource that can boost combat skills.
+					\item Hitpoints $L_h$: Increases the amount of damage a player can receive before they lose a fight.
 				\end{enumerate}
+				The set of all combat levels is denoted $\{L\}$.
 
-				Every weapon has a set of \textit{Attack Styles} that allow a player to change which combat skill they train. In addition the attack style provides a small bonus to combat. Prayer is the only skill that cannot be trained directly through combat. Hitpoints is another exception in that a proportion of the experience awarded to the skill associated with the player's attack style is given to hitpoints.
-
-			\subsection{Ticks and Attack Speed}
-				At a fundamental level the entire game operates on a tick-based system. Every 0.6 seconds (called a tick) the game updates. This discretizes the possible game states, and typically means we will be dealing with sums in place of integrals, and recursive equations in place of differential equations.
-
-				A series of precise player actions known as tick-manipulation take advantage of this system to perform multiple actions in a single tick, or to take advantage of mechanisms like tick-eating, allowing a player to survive otherwise fatal attacks.
-
-				Once a player begins attacking an opponent, the fight continues until either is defeated, or one runs away. The attacks occur at an interval associated with the particular attack type. Different weapons have different \textit{Attack Speeds}, typically between 3-9 game ticks (1.8s - 5.4s). On each attack, the player's accuracy will determine the probability of a \textit{Successful Hit}. On a sucessful hit, a number between 0 and the player's maximum hit will be uniformly sampled as the damage the player does.
+				Every weapon has a set of \textit{attack styles} that allow a player to change which combat skill they train. In addition, the attack style may provide a small bonus to combat. Prayer is the only skill that cannot be trained directly through combat. Hitpoints is another exception in that a proportion of the experience awarded to the skill associated with the player's attack style is given to hitpoints.
 
 			\subsection{Equipment Bonuses}
-				A player can equip items that provide combat bonuses. There are 11 equipment slots: Head, cape, necklace, ammo, weapon, torso, shield, legs, hands, feet, ring. There are 5 attack styles: stab, slash, crush, magic, ranged, as shown in Fig.~\ref{fig:equipment_stats_and_triangle}. Where the first three are melee attack styles. Equipment may provide bonuses to accuracy and defence for any of these styles. In addition, melee strength, ranged strength, and magic damage provide bonuses to damage associated with the combat class the player is using.
+				Let's begin discussing a fighter's equipment by defining an \textit{item}, $\mathcal{I}$. Equipable items can be worn in one of 11 slots, and so $\mathcal{I}^\text{slot}$ represents the item in a given \textit{slot}, where
+				\begin{align}
+					\text{slot} \in \{\text{head, cape, neck, ammo, weapon, torso, shield, legs, hands, feet, ring}\}.
+				\end{align}
+				Each item has some associated item bonuses. Most of these are static, however some bonuses are conditional or special and depend on the attacker's environment $\mathcal{A} |\mathcal{E}$. This may include considerations about the opponent and, for example, whether they are \texttt{undead}. This will be expanded at the end of this section. Regardless of the details, the equipment bonuses that an item has come from an operator, $\hat{\mathcal{I}}^\text{slot}_E$ in the sense that it only has concrete values when acting on other information. The bonuses that an item can have are then given by,
+				\begin{align}
+					\vec{\mathcal{I}}^{\text{slot}}_E = \hat{\mathcal{I}}^\text{slot}_E (\mathcal{A} |\mathcal{E}).
+				\end{align}
+				The elements of this vector are given by,
+				\begin{align}
+					\vec{\mathcal{I}}^{\text{slot}}_E = (
+						&A_\text{stab}, A_\text{slash}, A_\text{crush}, A_\text{magic}, A_\text{ranged}, \\
+						&D_\text{stab}, D_\text{slash}, D_\text{crush}, D_\text{magic}, D_\text{ranged}, \\
+						&S_w, S_r, S_m, P, \{\mathcal{O}\}).
+				\end{align}
+				There are many terms to define, so we will explain them here. $A$, $D$, and $S$ refers to the attack, defensive, and strength bonuses, respectively. The first three attack and defence bonuses listed are associated with melee weapons, the last two are magic, and ranged, respectively. There are three strength or damage bonuses coming from the combat triangle, in the order above we have: melee/warrior, ranged, and magic. The prayer bonuse, $P$ affects how long bonuses from the prayer skill can last without recharging. Finally, the set $\{\mathcal{O}\}$ refers to special/other bonuses that arise from unique items (for example, multiple total accuracy by some factor).
+
+				The resulting bonuses that a fighter has, $\vec{\mathcal{F}}|E$ is given as the sum over all the slots,
+				\begin{align}
+					\mathcal{F}|\vec{E} = \sum_\text{slot$\in$\{slots\}} \hat{\mathcal{I}}^\text{slot}_E (\mathcal{F}|\mathcal{E}).
+				\end{align} % Note if not all bonuses are additive, a special sum operator can be defined.
+				The in-game interface indicating these values is shown in Fig.~\ref{fig:equipment_stats_and_triangle}. There are a number of conditional effects that may not appear in this interface. To better quantify the equipment bonus operator, we list the possible conditions/factors that are involved in determining an item's bonus:
+				\begin{enumerate}
+					\item Attacker equipment $\{\mathcal{A}|\mathcal{I}^\text{slot}\}_\text{slots}$, and attack style, $\mathcal{A}|\mathcal{S}$ (which also implies the combat class)
+					\item Attacker levels, $\mathcal{A}|\{L\}$
+					\item Attacker attribute, $\mathcal{A}_\text{attr.}$. The only current on is whether a particular \texttt{Diary} is completed.
+					\item Defender equipment, $\{\mathcal{D}|\mathcal{I}^\text{slot}\}_\text{slots}$ (eg: dragonfire protection, fire/water weapons)
+					\item Defender levels, $\mathcal{D}|\{L\}$ % accuracy
+					\item Defender attribute, $\mathcal{D}_\text{attr.}$. Different \emph{species} may have weaknesses, and a list can be found in Ref.~\cite{wiki:attribute}. Additionally whether the opponent is located in the \texttt{Wilderness} or is a slayer task monster may also play a role. 
+				\end{enumerate}
+				This overview allows us to better define the environment, as
+				\begin{align}
+					\mathcal{F}|\mathcal{E} \equiv \left\{
+						\{\mathcal{A}|\mathcal{I}^\text{slot}\}_\text{slots},
+						\mathcal{A}|\mathcal{S},
+						\mathcal{A}|\{L\},
+						\mathcal{A}_\text{attr.},
+						\{\mathcal{D}|\mathcal{I}^\text{slot}\}_\text{slots},
+						\mathcal{D}|\{L\},
+						\mathcal{D}_\text{attr.}
+					\right\},
+				\end{align}
 
 				\begin{figure}
 					\centering
 					\includegraphics[width=\linewidth]{img/combat/Equipment_Stats_interface_and_triangle.png}
-					\caption{The attack styles, equipment slots and associated equipment bonuses (left) along with a depiction of the combat triangle (right). The attack styles for the \texttt{Dragon Claws} are Chop, Slash, Lunge, Block and give experience specifically to Attack, Strength, shared, and Defence, respectively. Shared means experience is split equally. In the equipment panel, the player is not wearing any equipment which results in 0 bonuses for all attributes. Starting with the bottom left of the combat triangle, a mage has advantage over the melee equipment typically worn by a melee fighter, a melee warrior has an advantage over the equipment typically worn by a ranged fighter, and ditto for ranged to mage.
+					\caption{The attack styles (left), equipment slots and associated equipment bonuses (middle) along with a depiction of the combat triangle (right). The attack styles for the \texttt{Dragon Claws} are Chop, Slash, Lunge, Block and give experience specifically to Attack, Strength, shared, and Defence, respectively. Shared means experience is split equally. In the equipment panel, the player is not wearing any equipment which results in 0 bonuses for all attributes. Starting with the bottom left of the combat triangle, a mage has advantage over the melee equipment typically worn by a melee fighter, a melee warrior has an advantage over the equipment typically worn by a ranged fighter, and ditto for ranged to mage.
 					}
 					\label{fig:equipment_stats_and_triangle}
 				\end{figure}
 
-				Certain monsters or weapons provide conditional or alternate bonuses. For example, a \texttt{Salve Amulet} can improve damage against undead opponents. This is important to note, as it means that an equipment does not have a concrete bonus unless an opponent is specified. Later on, we will see how an \texttt{Arena} is defined to handle this.
+			\subsection{Ticks and Attack Speed}
+				At a fundamental level the entire game operates on a tick-based system. Every 0.6 seconds (called a tick) the game updates. This discretizes the possible game states, and typically means we will be dealing with sums in place of integrals, and recursive equations in place of differential equations.
 
+				Once an attacker begins combat with an opponent, the fight continues until either is defeated, or one runs away. The attacks occur at an interval associated with the weapon. Different weapons have different \textit{Attack Speeds}, typically between 3-9 game ticks (1.8s - 5.4s). The attacker's attack speed $\mathcal{A}|s$, is the number of ticks between attacks. On each attack, the player's accuracy will determine the probability of a \textit{successful hit}. On a sucessful hit, a number between 0 and the player's maximum hit will be uniformly sampled as the damage the player does.
+
+				A notable consequence of this tick-based system is that a series of precise player actions known as tick-manipulation allows players to perform multiple actions in a single tick, or to take advantage of mechanisms like tick-eating, allowing a player to survive otherwise fatal attacks.
 
 			\subsection{Summary}
-				A player has some combat skill levels. A player will (typically) equip some armour and a weapon. They will select an attack style, which selects the skill they will receive experience in, and which equipment bonuses plays a roll in the accuracy calculation. The problem then reduces to considering an accuracy and maximum hit. Once a fight begins, an attack occurs every couple of ticks. If the attack is successful, a uniform integer between 0 and their max hit is delivered to the opponent, reducing their current hit points. Once a fighter's health reaches 0, the fight is over.
-
+				A fighter has some combat skill levels and will (typically) equip some armour and a weapon. They will select an attack style, which selects the skill they will receive experience in, and which equipment bonuses plays a roll in the accuracy calculation. The problem then reduces to considering an accuracy and maximum hit. Once a fight begins, an attack occurs every couple of ticks. If the attack is successful, a uniform integer between 0 and their max hit is delivered to the opponent, reducing their current hit points. Once a fighter's health reaches 0, the fight is over.
 
 		
 		\section{Agency}
@@ -92,19 +152,10 @@
 			\subsection{Item Switching and Movement}
 				Different items, moving around. Attack delays etc.
 
-		\section{Definitions}
-			The above has largely been a conceptual overview. To carry out our analysis, we need to define several terms:
-			\begin{enumerate}
-				\item $L_a, L_s, L_d, L_r, L_m, L_p, L_h$ are the attack, strength, defence, ranged, magic, prayer, and hitpoints levels.
-				\item $B_\text{potion}, B_\text{prayer}, B_\text{other}$ are the bonuses due to potions, prayers, and other special considerations.
-				\item $\mathcal{S}$ is the bonus due to attack style.
-				\item $A_\text{stab}, A_\text{slash}, A_\text{crush}, A_\text{magic}, A_\text{ranged}$ are the accuracy equipment bonuses.
-				\item $D_\text{stab}, D_\text{slash}, D_\text{crush}, D_\text{magic}, D_\text{ranged}$ are the accuracy equipment bonuses.
-				\item $S_w, S_r, S_m$ are the melee (warrior), ranged, and magic damage equipment bonuses.
-			\end{enumerate}
-
 	\chapter{Maximum Hits}
-		These formula are largely given by Ref.~\cite{wiki:max_hit}. There are very many exceptions, special, and edge cases and so to verify these equations we compare them to a dataset extracted from Ref.~\cite{bitter:dps_calculator}, a well-established resource.\footnote{This is a damage calculator made in google sheets created by Bitterkoekje. To extract a benchmarking dataset from this graphical resource, the python based GUI automation library, PyAutoGUI was used.} We will not consider special attacks for now.
+		These formula are largely given by Ref.~\cite{wiki:max_hit}. There are very many exceptions, special, and edge cases and so to verify these equations we compare them to a dataset extracted from Ref.~\cite{bitter:dps_calculator}, a well-established resource.\footnote{This is a damage calculator made in google sheets and was created by Bitterkoekje. To extract a benchmarking dataset from this graphical resource, the python based GUI automation library, PyAutoGUI was used to acquire a random sample.} We will not consider special attacks for now.
+		
+		There are several bonuses that will be used through this chapter: $B_\text{potion}, B_\text{prayer}, B_\text{other}$ are the bonuses due to potions, prayers, and other special considerations.
 		\section{Melee}
 			The maximum melee hit is given by:
 			\begin{align}
@@ -142,14 +193,14 @@
 
 		\section{Magic}
 			Magic differs slightly, so we need a few additional definitions.
-			First we define $m_\text{spell}$ as the base max hit of the player's spell/staff. A list of exceptions can be found in Ref.~\cite{wiki:max_magic}. 
+			First we define $m_\text{spell}$ as the base max hit of the player's spell/staff. Some of these depend on the player's magic level. A list of these can be found in Ref.~\cite{wiki:max_magic}. 
 			Then there are several special items, listed below as an associated bonus $B_\text{other}$ and either an additive toggle $\bar \delta_\text{item}$ which is 1 or 0 based on the accompanying condition or a multiplicative toggle $\delta_\text{item}$ which is either $B_\text{other}^\text{item}$ or 1 based on the accompanying condition.
 			\begin{enumerate}
 				\item $B_\text{other}^\text{chaos}=3, \bar\delta_\text{chaos}$ if a \texttt{bolt} spell is used along with \texttt{Chaos gauntlets}.
-				\item $B_\text{other}^\text{tome}=1.5, \delta_\text{tome}$ if a \texttt{fire} spell is used along with \texttt{Tome of fire}.
-				\item $B_\text{other}^\text{castlewars}=1.2, \delta_\text{castlewars}$ if a \texttt{flag bearer} is attacked while using a \texttt{Castle wars bracelet}.
-				\item $B_\text{other}^\text{salve}=\textit{varies}, \delta_\text{salve}$ if an \texttt{undead} is attack while using any variant of the \texttt{salve amulet}.
-				\item $B_\text{other}^\text{slayer}=1.15, \delta_\text{slayer}$ if a \texttt{slayer task monster} is attack while using any variant of the \texttt{imbued black mask}.
+				\item $B_\text{other}^\text{tome}=1.5, \delta_\text{tome}$ if a \texttt{fire} spell is used along with a \texttt{Tome of fire}.
+				\item $B_\text{other}^\text{castlewars}=1.2, \delta_\text{castlewars}$ if a \texttt{Castle wars bracelet} is worn while attacking a \texttt{flag bearer}.
+				\item $B_\text{other}^\text{salve}=\textit{varies}, \delta_\text{salve}$ if any variant of the \texttt{salve amulet} is worn while attacking an \texttt{undead}.
+				\item $B_\text{other}^\text{slayer}=1.15, \delta_\text{slayer}$ if any variant of the \texttt{imbued black mask} is worn while attacking \texttt{slayer task monster}.
 			\end{enumerate}
 
 			Then the maximum magic hit is given by:
