@@ -52,6 +52,7 @@
 				\end{enumerate} 
 			\item Attack Speed: The number of ticks between attacks. Integer between 1 and 15.
 			\item Attack Interval: The number of second between attacks. Real number between 0.6s and 9s.
+			\item Attribute: When referring to an opponent/monster, their \texttt{attribute} is one of $[\texttt{Demon, Draconic, Fiery, Kalphite, Leafy, Penance, Shade, Undead, Vampyre, Xerician}]$. In addition, we expand this to also include properties like: $[\texttt{On slayer task, In wilderness}]$.
 		\end{enumerate}
 
 	\chapter{Overview}
@@ -80,48 +81,41 @@
 				Every weapon has a set of \textit{attack styles} that allow a player to change which combat skill they train. In addition, the attack style may provide a small bonus to combat. Prayer is the only skill that cannot be trained directly through combat. Hitpoints is another exception in that a proportion of the experience awarded to the skill associated with the player's attack style is given to hitpoints.
 
 			\subsection{Equipment Bonuses}
-				Let's begin discussing a fighter's equipment by defining an \textit{item}, $\mathcal{I}$. Equipable items can be worn in one of 11 slots, and so $\mathcal{I}^\text{slot}$ represents the item in a given \textit{slot}, where
+				Let's begin discussing a fighter's equipment by defining an \textit{item}, $\mathcal{I}$. Equipable items can be worn in one of 11 slots. We let $\mathcal{I}^\text{slot}$ represent the item in a given \textit{slot}, where
 				\begin{align}
 					\text{slot} \in \{\text{head, cape, neck, ammo, weapon, torso, shield, legs, hands, feet, ring}\}.
 				\end{align}
-				Each item has some associated item bonuses. Most of these are static, however some bonuses are conditional or special and depend on the attacker's environment $\mathcal{A} |\mathcal{E}$. This may include considerations about the opponent and, for example, whether they are \texttt{undead}. This will be expanded at the end of this section. Regardless of the details, the equipment bonuses that an item has come from an operator, $\hat{\mathcal{I}}^\text{slot}_E$ in the sense that it only has concrete values when acting on other information. The bonuses that an item can have are then given by,
+				Each item has some associated equipment bonuses. Most of these are constant, however some bonuses are conditional. The constant bonuses can be represented as a vector:
 				\begin{align}
-					\vec{\mathcal{I}}^{\text{slot}}_E = \hat{\mathcal{I}}^\text{slot}_E (\mathcal{A} |\mathcal{E}).
-				\end{align}
-				The elements of this vector are given by,
-				\begin{align}
-					\vec{\mathcal{I}}^{\text{slot}}_E = (
+					\vec{\mathcal{I}}^{\text{slot}}_c = (
 						&A_\text{stab}, A_\text{slash}, A_\text{crush}, A_\text{magic}, A_\text{ranged}, \\
 						&D_\text{stab}, D_\text{slash}, D_\text{crush}, D_\text{magic}, D_\text{ranged}, \\
-						&S_w, S_r, S_m, P, \{\mathcal{O}\}).
+						&S_w, S_r, S_m, P, w, r).
 				\end{align}
-				There are many terms to define, so we will explain them here. $A$, $D$, and $S$ refers to the attack, defensive, and strength bonuses, respectively. The first three attack and defence bonuses listed are associated with melee weapons, the last two are magic, and ranged, respectively. There are three strength or damage bonuses coming from the combat triangle, in the order above we have: melee/warrior, ranged, and magic. The prayer bonuse, $P$ affects how long bonuses from the prayer skill can last without recharging. Finally, the set $\{\mathcal{O}\}$ refers to special/other bonuses that arise from unique items (for example, multiple total accuracy by some factor).
+				There are many terms to define, so we will explain them here. $A$, $D$, and $S$ refers to the attack, defensive, and strength bonuses, respectively. The attack and defence bonuses are associated with the different attack types, while the strength bonuses are associated with the combat class [SEE LIST OF TERMS]. The first three attack and defence bonuses listed are associated with melee combat, the last two are associated with magic, and ranged, respectively. There is a strength bonus associated with each combat class. In the order above we have: melee/warrior, ranged, then magic. The prayer bonuse, $P$ affects how long bonuses from the prayer skill can last without recharging. $w$ is the weight of the item. Finally, if the item is a weapon, $r$ is the attack rate given by $r=1/s$, where $s$ is the weapon attack speed. If it is not a weapon, $r=0$. Note that we use the rate since every other bonuses improves fighter ability. This allows us to use a basic comparison operator (at the cost of using real numbers instead of integers).
 
-				The resulting bonuses that a fighter has, $\vec{\mathcal{F}}|E$ is given as the sum over all the slots,
+				The total equipment bonuses that a fighter has, $\vec{\mathcal{F}}|E$ is given as the sum over all the slots,
 				\begin{align}
-					\mathcal{F}|\vec{E} = \sum_\text{slot$\in$\{slots\}} \hat{\mathcal{I}}^\text{slot}_E (\mathcal{F}|\mathcal{E}).
-				\end{align} % Note if not all bonuses are additive, a special sum operator can be defined.
-				The in-game interface indicating these values is shown in Fig.~\ref{fig:equipment_stats_and_triangle}. There are a number of conditional effects that may not appear in this interface. To better quantify the equipment bonus operator, we list the possible conditions/factors that are involved in determining an item's bonus:
-				\begin{enumerate}
-					\item Attacker equipment $\{\mathcal{A}|\mathcal{I}^\text{slot}\}_\text{slots}$, and attack style, $\mathcal{A}|\mathcal{S}$ (which also implies the combat class)
-					\item Attacker levels, $\mathcal{A}|\{L\}$
-					\item Attacker attribute, $\mathcal{A}_\text{attr.}$. The only current on is whether a particular \texttt{Diary} is completed.
-					\item Defender equipment, $\{\mathcal{D}|\mathcal{I}^\text{slot}\}_\text{slots}$ (eg: dragonfire protection, fire/water weapons)
-					\item Defender levels, $\mathcal{D}|\{L\}$ % accuracy
-					\item Defender attribute, $\mathcal{D}_\text{attr.}$. Different \emph{species} may have weaknesses, and a list can be found in Ref.~\cite{wiki:attribute}. Additionally whether the opponent is located in the \texttt{Wilderness} or is a slayer task monster may also play a role. 
-				\end{enumerate}
-				This overview allows us to better define the environment, as
-				\begin{align}
-					\mathcal{F}|\mathcal{E} \equiv \left\{
-						\{\mathcal{A}|\mathcal{I}^\text{slot}\}_\text{slots},
-						\mathcal{A}|\mathcal{S},
-						\mathcal{A}|\{L\},
-						\mathcal{A}_\text{attr.},
-						\{\mathcal{D}|\mathcal{I}^\text{slot}\}_\text{slots},
-						\mathcal{D}|\{L\},
-						\mathcal{D}_\text{attr.}
-					\right\},
+					\mathcal{F}|\vec{E} = \sum_\text{slot$\in$\{slots\}} \hat{\mathcal{I}}^\text{slot}_c (\mathcal{F}|\mathcal{E}).
 				\end{align}
+				The in-game interface indicating these values is shown in Fig.~\ref{fig:equipment_stats_and_triangle}. There are a number of conditional effects that may not appear in this interface. 
+
+				The conditional bonuses can be further divided in to special/attribute, bonuses and equipment set bonuses. Monsters may have a particular weakness due to their so-called attribute. For example, a \texttt{Iron dragon} would be \texttt{dragonic}, and \texttt{dragonbane} weapons would provide an accuracy and damage multiplier. In this sense, we can consider these bonuses to be dependent on information that the item itself does not know, and so we represent these special bonuses as an operator $\hat{\mathcal{I}}$. When acting on a fighter's environment $\mathcal{F} |\mathcal{E}$, these bonuses become concrete:
+				\begin{align}
+					\vec{\mathcal{I}}_s = \hat{\mathcal{I}}_s (\mathcal{F} |\mathcal{E})
+				\end{align}
+				The total bonuses from all the player's items can be represented as:
+				\begin{align}
+					\vec{\mathcal{I}} = \hat{\mathcal{I}}_s (\mathcal{F} |\mathcal{E}) \cup \sum_{\text{slot $\in$ \{slots\}}} \vec{\mathcal{I}}^\text{slot}_c,
+				\end{align}
+				Set effects are also similar except that they are conditional on equipment the player is wearing. For this reason, (and the fact that there are other special cases), we group all these effects into the special bonus operator, $\hat{\mathcal{I}}_s$ from above.
+
+				The definition of environment is intentionally vague, as there are a myriad of conditions, essentially limited only by developer imagination and infrastructure. Some of these conditions/dependencies include: attacker \& opponent equipment \& levels, attack style (which implies combat class), whether a particular \texttt{Diary} is completed, the \texttt{attribute} of the opponent, and so on. The elements and details of $\vec{\mathcal{I}}$ are also purposefully vague, as there is an additional caveat that makes these a bit trickier to handle both mathematically but more-so programatically. Unlike the constant bonuses, which can be added together, special bonuses are generally multiplicative but also make use of intermediate \textit{flooring}. This makes the special bonus operator non-commutative, since the order does effect the rounding.\footnote{The \textit{specific} ordering of the flooring operations is taken from ref.~[bitter-dps calc]. Although, this author is unsure if that ordering is arbitrary, but we assume not. [Reference max hit section?]} This means that a vector representing special bonuses would essentially have as many elements as the number of special items! So it is often easier to work on each bonus type with different methods. For this reason, special effects and constant bonuses are treated independent, making the union above is more symbolic rather than practical.
+
+				
+				% for equipment reduction: non-commutative means we need an additional element in the bonuses vector for each special item, or at least for each group of them. This makes reducing it not nearly as effective and so the difference between carrying that out and simply iterating over all of the desired sets is small.
+				
+
 
 				\begin{figure}
 					\centering
@@ -130,6 +124,7 @@
 					}
 					\label{fig:equipment_stats_and_triangle}
 				\end{figure}
+
 
 			\subsection{Ticks and Attack Speed}
 				At a fundamental level the entire game operates on a tick-based system. Every 0.6 seconds (called a tick) the game updates. This discretizes the possible game states, and typically means we will be dealing with sums in place of integrals, and recursive equations in place of differential equations.
