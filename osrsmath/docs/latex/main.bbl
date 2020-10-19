@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{bestreamer:10_most_played_mmorpgs_of_2020}
 10 most played mmorpgs of 2020.
@@ -14,6 +14,11 @@ Top 6 most popular mmorpgs sorted by population (2020).
 Ranking the 15 best mmorpgs of all time.
 \newblock \url{https://www.thegamer.com/best-mmorpgs-ever-wow-runescape/}.
 \newblock Retrieved October 02, 2020.
+
+\bibitem{misplacedme:relative_player_counts}
+Misplacedme.
+\newblock Relative player counts in runescape.
+\newblock \url{https://www.misplaceditems.com/rs_tools/graph/}.
 
 \bibitem{wiki:skills}
 Skills.
