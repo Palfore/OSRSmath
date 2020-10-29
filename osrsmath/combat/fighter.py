@@ -1,6 +1,67 @@
 from osrsmath.combat.items import ITEM_DATABASE
 from osrsmath.combat.damage import damage
+
+def satisfies_requirement(requirement, gear):
+	def UPTO(metal):
+		metals = ["Bronze", "Iron", "Steel", "Mithril", "Adamant", "Rune", "Amethyst", "Dragon"]
+		desired_metals = metals[:metals.index(metal)+1]
+		return (
+			[f"{metal} arrow" for metal in desired_metals] +
+			[f"{metal} fire arrow" for metal in desired_metals] +
+			(["Broad arrows"] if 'Amethyst' in desired_metals else [])  # broad can be used in bows that can use amethyst
+		)
+
+	HAS_AMMO = 'ammo' in gear
+	ammo = gear['ammo'] if HAS_AMMO else None
+	weapon = gear['weapon']
+	return {
+		"CANNOT_ATTACK": False,
+		"NO_AMMO": (not HAS_AMMO) or ('blessing' in ammo['name']) or ('grapple' in ammo['name']),
+		"OGRE_ARROWS": HAS_AMMO and ammo['name'] == 'Ogre arrow',
+		"BRUTAL_ARROWS": HAS_AMMO and ammo['name'].endswith('brutal'),
+		"TRAINING_ARROWS": HAS_AMMO and ammo['name'] == 'Training arrows',
+		"UPTO IRON": HAS_AMMO and ammo['name'] in UPTO("Iron"),
+		"UPTO STEEL": HAS_AMMO and ammo['name'] in UPTO("Steel"),
+		"UPTO MITHRIL": HAS_AMMO and ammo['name'] in UPTO("Mithril"),
+		"UPTO ADAMANT": HAS_AMMO and ammo['name'] in UPTO("Adamant"),
+		"UPTO RUNE": HAS_AMMO and ammo['name'] in UPTO("Rune"),
+		"UPTO AMETHYST": HAS_AMMO and ammo['name'] in UPTO("Amethyst"),
+		"UPTO DRAGON": HAS_AMMO and ammo['name'] in UPTO("Dragon"),
+	}[requirement]
+
+def can_attack(stance, gear):
+	if stance['experience'] is None:
+		return False
 	
+	if stance['combat_class'] == 'ranged':
+		requirements = {
+			"CANNOT_ATTACK": ["Craw's bow (u)"],
+			"NO_AMMO": [
+				"New crystal bow (i)", "Starter bow", "Craw's bow", "Corrupted bow (basic)", "Corrupted bow (attuned)",
+				"Corrupted bow (perfected)", "Crystal bow (basic)", "Crystal bow (attuned)", "Crystal bow (perfected)",
+				"Crystal bow", "Crystal bow"
+			],
+			"OGRE_ARROWS": ["Ogre bow"],
+			"BRUTAL_ARROWS": ["Comp ogre bow"],
+			"TRAINING_ARROWS": ["Training bow"],
+			"UPTO IRON": ["Cursed goblin bow", "Rain bow", "Shortbow", "Longbow"],
+			"UPTO STEEL": ["Signed oak bow", "Oak shortbow", "Oak longbow"],
+			"UPTO MITHRIL": ["Willow longbow", "Willow shortbow", "Willow comp bow"],
+			"UPTO ADAMANT": ["Maple longbow", "Maple shortbow"],
+			"UPTO RUNE": ["Yew longbow", "Yew shortbow", "Yew comp bow"],
+			"UPTO AMETHYST": ["Magic shortbow", "Magic longbow", "Magic comp bow", "Seercull", "Magic shortbow (i)"],
+			"UPTO DRAGON": ["3rd age bow", "Dark bow", "Twisted bow"],
+		}
+
+		for requirement, weapons in requirements.items():
+			weapon = gear['weapon']['name']
+			if weapon in weapons:
+				return satisfies_requirement(requirement, gear)
+
+		return False
+	return False
+	
+
 class Fighter:
 	EQUIPMENT_SLOTS = ['ammo', 'body', 'cape', 'feet', 'hands', 'head', 'legs', 'neck', 'ring', 'shield', 'weapon']
 	ALLOWED_ATTRIBUTES = ['kalphite', 'shade', 'dragonic', 'leafy', 'wilderness', 'demon', 'undead', 'slayer_task', 'vampyre']
@@ -73,9 +134,7 @@ class Fighter:
 		raise NotImplementedError
 
 	def can_attack(self):
-		if self.stance['experience'] is None:
-			return False
-		return True
+		return can_attack(self.stance, self.gear)
 
 	def max_hit(self, opponent):
 		if self.stance is None:
@@ -95,19 +154,40 @@ class Fighter:
 
 
 if __name__ == '__main__':
-	from osrsmath.combat.damage import CannotAttackException
-	opponent = Fighter(100, {'strength': 50}, [], attributes=['kalphite'])
+	from pprint import pprint
+	# from osrsmath.combat.damage import CannotAttackException, ExcludedClassException
+	# opponent = Fighter(100, {'strength': 50}, [], attributes=['kalphite'])
+	# for weapon_id in ITEM_DATABASE.get_slot('weapon') + ITEM_DATABASE.get_slot('2h'):
+	# 	weapon = ITEM_DATABASE.get(weapon_id)['name']
+	# 	fighter = Fighter(90, {'strength': 50}, [weapon, 'Mithril arrow'])
+	# 	for stance in fighter.get_stances():
+	# 		fighter.set_stance(stance)
+	# 		try:
+	# 			m = fighter.max_hit(opponent)
+	# 			fighter.can_attack()
+	# 		# 	if m == -1:
+	# 		# 		continue
+	# 		# 	# if not isinstance(m, int):
+	# 		# 	# if m != None and m != 0:
+	# 		# 	print(stance, weapon, m)
+	# 		except CannotAttackException as e:
+	# 			print('Skipping', stance, weapon, f"due to {str(e)}")
+	# 		except ExcludedClassException as e:
+	# 			pass
+
+	# for weapon_id in ITEM_DATABASE.get_slot('weapon') + ITEM_DATABASE.get_slot('2h'):
+	# 	weapon = ITEM_DATABASE.get(weapon_id)
+	# 	if weapon['weapon']['weapon_type'] == 'bows':
+	# 		print(weapon['name'])
+	# exit()
 	for weapon_id in ITEM_DATABASE.get_slot('weapon') + ITEM_DATABASE.get_slot('2h'):
-		weapon = ITEM_DATABASE.get(weapon_id)['name']
-		fighter = Fighter(90, {'strength': 50}, [weapon])
-		for stance in fighter.get_stances():
-			fighter.set_stance(stance)
-			try:
-				m = fighter.max_hit(opponent)
-				if m == -1:
-					continue
-				# if not isinstance(m, int):
-				# if m != None and m != 0:
-				print(stance, weapon, m)
-			except CannotAttackException as e:
-				print('Skipping', stance, weapon, f"due to {str(e)}")
+		weapon = ITEM_DATABASE.get(weapon_id)
+		for ammo_id in ITEM_DATABASE.get_slot('ammo'):
+			ammo = ITEM_DATABASE.get(ammo_id)
+			# pprint(ammo)
+			a = can_attack({'experience': True, 'combat_class': 'ranged'}, {
+				'weapon': weapon,
+				'ammo': ammo
+			})
+			if a:
+				print(weapon['name'], ammo['name'], a)
