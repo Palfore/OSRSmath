@@ -213,7 +213,7 @@ weapons = calculator.get_list_of_weapons()
 # })
 
 print('(7) Evaluating Weapons...')
-conversion = {
+conversion = {  # Excel capitalizes some words, among other differences
 	"Dinh's Bulwark": "Dinh's bulwark",
 	"Obsidian dagger": "Toktz-xil-ek",
 	"Obsidian mace": "Tzhaar-ket-em",
@@ -221,6 +221,8 @@ conversion = {
 	"Obsidian sword": "Toktz-xil-ak",
 	"Maple blackjack (o)": "Maple blackjack(o)",
 	"Maple blackjack (d)": "Maple blackjack(d)",
+	"Scythe of Vitur (uncharged)": "Scythe of vitur (uncharged)",
+	"Scythe of Vitur": "Scythe of vitur",
 }
 for name in weapons:
 	database_name = conversion.get(name, name)

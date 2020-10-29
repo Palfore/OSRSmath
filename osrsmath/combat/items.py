@@ -3,21 +3,41 @@ import osrsmath.config as config
 import json
 from copy import deepcopy
 
+def get_combat_class(stance):
+	""" Returns one of ranged, magic, melee, or None if the stance cannot do damage. """
+	if stance['experience'] is None:
+		return None  # No combat class, since weapon cannot do damage
+	if 'ranged' in stance['experience']:
+		return 'ranged'
+	elif 'magic' in stance['experience']:
+		return 'magic'
+	elif any(stance['attack_type'] == melee_type for melee_type in ['stab', 'slash', 'crush']):
+		return 'melee'
+	else:
+		raise LogicError(f"Something went wrong determining combat class for stance: {stance}")
+
 class ItemDatabase:
+	SLOTS = ['2h', 'ammo', 'body', 'cape', 'feet', 'hands', 'head', 'legs', 'neck', 'ring', 'shield', 'weapon']
+
 	def __init__(self):
 		self.items = ItemDatabase.get_equipment()
 		self.IDs = {item['name']: ID for ID, item in self.items.items()}
+		self.slots = {slot: [] for slot in self.SLOTS}
+		for ID, item in self.items.items():
+			self.slots[item['equipment']['slot']].append(ID)
 
-	def find(self, name):
+	def get_slot(self, slot: str):
+		return self.slots[slot]
+
+	def find(self, name: str):
 		if name not in self.IDs:
 			raise KeyError(f'Could not find item named "{name}" in the item database.')
 		return self.get(self.IDs[name])
 		
-	def get(self, ID):
+	def get(self, ID: int):
 		if ID not in self.items:
 			raise KeyError(f'Could not find item with id {ID} in the item database.')
 		return self.items[ID]
-
 
 	@staticmethod
 	def get_equipment(force_update=False):
@@ -27,11 +47,11 @@ class ItemDatabase:
 			]}
 			# Convert stances from a list to a dictionary
 			if partial['weapon'] is not None:
-				partial['weapon']['stances'] = {s['combat_style']: s for s in partial['weapon']['stances']}
+				partial['weapon']['stances'] = {s['combat_style']: {**s, 'combat_class': get_combat_class(s)} for s in partial['weapon']['stances']}
 			return partial
 
 		equipment = {}
-		for slot in ['2h', 'ammo', 'body', 'cape', 'feet', 'hands', 'head', 'legs', 'neck', 'ring', 'shield', 'weapon']:
+		for slot in ItemDatabase.SLOTS:
 			file_name = f'items-{slot}.json'
 			file_path = config.resource_path(Path(f"combat/data/{file_name}"))
 			if not file_path.exists() or force_update:
