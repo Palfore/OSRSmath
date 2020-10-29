@@ -94,11 +94,10 @@ class Calculator:
 		"opponent_stats": "T5",
 		"opponent_bonuses": "Z5", # bonuses are at AB5, but multiple letters aren't handled.
 		
-		"weapon": "E17",
-		"spell": "E19",
-		"custom_attack": "G30",
-		"custom_strength": "H30",
-
+		"weapon": "E19",
+		"spell": "E21",
+		"custom_attack": "G32",
+		"custom_strength": "H32",
 	}
 
 	@staticmethod
@@ -153,7 +152,7 @@ class Calculator:
 		# Error Checking
 		move('right', 1)
 		move('up', 2)
-		sleep(0.5)
+		sleep(2)
 		error = read_text()
 		if 'N/A' in error:
 			raise ValueError(f"Weapon '{weapon}' could not be evaluated.")
@@ -175,51 +174,61 @@ class Calculator:
 		a = float(read_text().strip('%'))
 		return m, a
 
-from osrsmath.combat.equipment import EquipmentPool
+from osrsmath.combat.items import ITEM_DATABASE
 from pprint import pprint
 
-focus_window("Copy of DPS calculator by Bitterkoekje")
+focus_window("Copy of DPS Calculator - Google Sheets")
 calculator = Calculator()
 print('(1) Starting')
 print('(2) Getting List of Weapons')
 weapons = calculator.get_list_of_weapons()
-print('(3) Setting Player Levels')
-calculator.set_player_levels({
-	'attack': 70,
-	'strength': 99,
-	'defence': 99,
-	'magic': 99,
-	'ranged': 99,
-	'hitpoints': 99,
-	'prayer': 99,
-})
-print('(4) Setting Opponent Levels')
-calculator.set_opponent_levels({
-	'attack': 70,
-	'strength': 99,
-	'defence': 99,
-	'magic': 99,
-	'ranged': 99,
-	'hitpoints': 99,
-})
-print('(5) Setting Player Bonuses')
-calculator.set_player_bonuses(40, 50)
-print('(6) Setting Opponent Bonuses')
-calculator.set_opponent_bonuses({
-	'stab': 25,
-	'slash': 50,
-	'crush': 75,
-	'magic': 38,
-	'ranged': 20
-})
+# print('(3) Setting Player Levels')
+# calculator.set_player_levels({
+# 	'attack': 70,
+# 	'strength': 99,
+# 	'defence': 99,
+# 	'magic': 99,
+# 	'ranged': 99,
+# 	'hitpoints': 99,
+# 	'prayer': 99,
+# })
+# print('(4) Setting Opponent Levels')
+# calculator.set_opponent_levels({
+# 	'attack': 70,
+# 	'strength': 99,
+# 	'defence': 99,
+# 	'magic': 99,
+# 	'ranged': 99,
+# 	'hitpoints': 99,
+# })
+# print('(5) Setting Player Bonuses')
+# calculator.set_player_bonuses(40, 50)
+# print('(6) Setting Opponent Bonuses')
+# calculator.set_opponent_bonuses({
+# 	'stab': 25,
+# 	'slash': 50,
+# 	'crush': 75,
+# 	'magic': 38,
+# 	'ranged': 20
+# })
 
 print('(7) Evaluating Weapons...')
-pool = EquipmentPool()
+conversion = {
+	"Dinh's Bulwark": "Dinh's bulwark",
+	"Obsidian dagger": "Toktz-xil-ek",
+	"Obsidian mace": "Tzhaar-ket-em",
+	"Obsidian maul": "Tzhaar-ket-om",
+	"Obsidian sword": "Toktz-xil-ak",
+	"Maple blackjack (o)": "Maple blackjack(o)",
+	"Maple blackjack (d)": "Maple blackjack(d)",
+}
 for name in weapons:
+	database_name = conversion.get(name, name)
+	
 	try:
-		attributes = pool.by_name(name)
+		attributes = ITEM_DATABASE.find(database_name)
 	except Exception as e:
-		print('Failed', name)
+		print('Failed', name, e)
 		continue
 
 	for stance in attributes['weapon']['stances']:
@@ -228,9 +237,20 @@ for name in weapons:
 			calculator.set_player_weapon(
 				name, stance['attack_style']
 			)
-			print(name, stance['combat_style'], calculator.get_summary())
-		except Exception as e:
-		# 	print('Failed:', name, stance['attack_style'])
+
+			from osrsmath.combat.damage import melee_damage, Opponent
+			m = melee_damage(stance, [database_name], Opponent(), 
+				118, attributes['equipment']['melee_strength'] + 50, 1.0
+			)
+
+			sleep(1)
+			excel_m, excel_a = calculator.get_summary()
+			if excel_m != m:
+				raise ValueError(f'Disagreement: {excel_m}, {m}')
+			print(name, stance['combat_style'], excel_m, m, )
+		except pyautogui.FailSafeException:
 			pass
+		except Exception as e:
+			print('Failed:', name, stance['attack_style'], str(e))
 
 print('(7) Finished')
