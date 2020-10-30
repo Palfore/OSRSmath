@@ -1,64 +1,213 @@
 from osrsmath.combat.items import ITEM_DATABASE
 from osrsmath.combat.damage import damage
 
-def satisfies_requirement(requirement, gear):
-	def UPTO(metal):
-		metals = ["Bronze", "Iron", "Steel", "Mithril", "Adamant", "Rune", "Amethyst", "Dragon"]
-		desired_metals = metals[:metals.index(metal)+1]
-		return (
-			[f"{metal} arrow" for metal in desired_metals] +
-			[f"{metal} fire arrow" for metal in desired_metals] +
-			(["Broad arrows"] if 'Amethyst' in desired_metals else [])  # broad can be used in bows that can use amethyst
-		)
+class NoAmmoPolicyFoundError(ValueError):
+	pass
 
-	HAS_AMMO = 'ammo' in gear
-	ammo = gear['ammo'] if HAS_AMMO else None
+def satisfies_bow_requirements(gear):
+	# Barbarian assault ammo is ignored.
+	def UPTO(level, projectile):
+		""" Returns a list of arrows that can be used by a bow, whose best usable arrow is made of the given metal. """
+		dart_metals      = ["Bronze", "Iron", "Steel", "Black", "Mithril", "Adamant", "Rune", "Dragon"]
+		knife_metals     = ["Bronze", "Iron", "Steel", "Black", "Mithril", "Adamant", "Rune", "Dragon"]
+		thrownaxe_metals = ["Bronze", "Iron", "Steel",          "Mithril", "Adamant", "Rune", "Dragon"]
+		projectiles = {
+			"arrows": {
+				"Bronze"  : ["Bronze arrows", "Bronze fire arrows"],
+				"Iron"    : ["Iron arrows", "Iron fire arrows"],
+				"Steel"   : ["Steel arrows", "Steel fire arrows"],
+				"Mithril" : ["Mithril arrows", "Mithril fire arrows"],
+				"Adamant" : ["Adamant arrows", "Adamant fire arrows"],
+				"Rune"    : ["Rune arrows", "Rune fire arrows", "Ice arrows"],
+				"Amethyst": ["Amethyst arrows", "Amethyst fire arrows", "Broad arrows"],
+				"Dragon"  : ["Dragon arrows", "Dragon fire arrows"],
+			},
+			"bolts": {
+				"Bronze" : ["Bronze bolts", "Opal bolts (e)", "Barbed bolts"],
+				"Blurite": ["Blurite bolts", "Jade bolts (e)"],
+				"Iron"   : ["Iron bolts", "Pearl bolts (e)", "Silver bolts"],
+				"Steel"  : ["Steel bolts", "Topaz bolts (e)"],
+				"Mithril": ["Mithril bolts", "Sapphire bolts (e)", "Emerald bolts (e)"],
+				"Adamant": ["Adamant bolts", "Ruby bolts (e)", "Diamond bolts (e)"],
+				"Rune"   : ["Runite bolts", "Dragonstone bolts (e)", "Onyx bolts (e)", "Broad bolts", "Amethyst broad bolts"],
+				"Dragon" : ["Dragon bolts", "Opal dragon bolts (e)", "Jade dragon bolts (e)", "Pearl dragon bolts (e)", 
+				    "Topaz dragon bolts (e)", "Sapphire dragon bolts (e)", "Emerald dragon bolts (e)", 
+				    "Ruby dragon bolts (e)", "Diamond dragon bolts (e)", "Dragonstone dragon bolts (e)", 
+				    "Onyx dragon bolts (e)"],
+			},
+			"darts": {
+				None: [] + 
+					[f"{m} dart" for m in dart_metals] + 
+					[f"{m} dart(p)" for m in dart_metals] + 
+					[f"{m} dart(p+)" for m in dart_metals] + 
+					[f"{m} dart(p++)" for m in dart_metals]
+			},
+			"knives": {
+				None: [] + 
+					[f"{m} knife" for m in dart_metals] + 
+					[f"{m} knife(p)" for m in dart_metals] + 
+					[f"{m} knife(p+)" for m in dart_metals] + 
+					[f"{m} knife(p++)" for m in dart_metals]
+			},
+			"thrownaxe": {
+				None: [f"{m} thrownaxe" for m in thrownaxe_metals] + ["Morrigan's throwing axe"]
+			}
+		}
+		return sum([
+			items for i, (metal, items) in enumerate(projectiles[projectile].items())
+			if i >= list(projectiles[projectile].keys()).index(level)
+		], [])
+
+	has_ammo = 'ammo' in gear
+	ammo = gear['ammo'] if has_ammo else None
+	policies =  {
+		"CANNOT_ATTACK": {
+			'valid': False,
+			'weapons': ["Craw's bow (u)"]
+		},
+		"NO_AMMO": {
+			'valid': (not has_ammo) or ('blessing' in ammo['name']) or ('grapple' in ammo['name']),
+			'weapons': [
+				# Bows
+				"New crystal bow (i)", "Starter bow", "Craw's bow", "Corrupted bow (basic)", "Corrupted bow (attuned)",
+				"Corrupted bow (perfected)", "Crystal bow (basic)", "Crystal bow (attuned)", "Crystal bow (perfected)",
+				"Crystal bow", "Crystal bow",
+				# Crossbows (there are none)
+				# Thrown
+				*UPTO(None, "darts"),
+				*UPTO(None, "knives"),
+				*UPTO(None, "thrownaxe"),
+				"Morrigan's javelin",
+				"Chinchompa", "Red chinchompa", "Black chinchompa",
+				"Toktz-xil-ul", "Holy water", "Mud pie",
+			],
+		},
+		"OGRE_ARROWS": {
+			'valid': has_ammo and ammo['name'] == 'Ogre arrow',
+			'weapons': ["Ogre bow"],
+		},
+		"BRUTAL_ARROWS": {
+			'valid': has_ammo and ammo['name'].endswith('brutal'),
+			'weapons': ["Comp ogre bow"],
+		},
+		"TRAINING_ARROWS": {
+			'valid': has_ammo and ammo['name'] == 'Training arrows',
+			'weapons': ["Training bow"],
+		},
+		"UPTO_IRON_ARROWS": {
+			'valid': has_ammo and ammo['name'] in UPTO("Iron", "arrows"),
+			'weapons': ["Cursed goblin bow", "Rain bow", "Shortbow", "Longbow"],
+		},
+		"UPTO_STEEL_ARROWS": {
+			'valid': has_ammo and ammo['name'] in UPTO("Steel", "arrows"),
+			'weapons': ["Signed oak bow", "Oak shortbow", "Oak longbow"],
+		},
+		"UPTO_MITHRIL_ARROWS": {
+			'valid': has_ammo and ammo['name'] in UPTO("Mithril", "arrows"),
+			'weapons': ["Willow longbow", "Willow shortbow", "Willow comp bow"],
+		},
+		"UPTO_ADAMANT_ARROWS": {
+			'valid': has_ammo and ammo['name'] in UPTO("Adamant", "arrows"),
+			'weapons': ["Maple longbow", "Maple shortbow"],
+		},
+		"UPTO_RUNE_ARROWS": {
+			'valid': has_ammo and ammo['name'] in UPTO("Rune", "arrows"),
+			'weapons': ["Yew longbow", "Yew shortbow", "Yew comp bow"],
+		},
+		"UPTO_AMETHYST_ARROWS": {
+			'valid': has_ammo and ammo['name'] in UPTO("Amethyst", "arrows"),
+			'weapons': ["Magic shortbow", "Magic longbow", "Magic comp bow", "Seercull", "Magic shortbow (i)"],
+		},
+		"UPTO_DRAGON_ARROWS": {
+			'valid': has_ammo and ammo['name'] in UPTO("Dragon", "arrows"),
+			'weapons': ["3rd age bow", "Dark bow", "Twisted bow"],
+		},
+
+		"BONE_BOLTS": {
+			'valid': has_ammo and ammo['name'] == "Bone bolts",
+			'weapons': ['Dorgeshuun crossbow']
+		},
+		"BOLT_RACKS": {
+			'valid': has_ammo and ammo['name'] == "Bolt racks",
+			'weapons': ["Karil's crossbow", "Karil's crossbow 100", "Karil's crossbow 75", "Karil's crossbow 50", "Karil's crossbow 25"]
+		},
+		"KEBIT_BOLTS" :{
+			'valid': has_ammo and ammo['name'] in ["Kebbit bolts", "Long kebbit bolts"],
+			'weapons': ["Hunters' crossbow"]
+		},
+		"UPTO_BRONZE_BOLTS": {
+			'valid': has_ammo and ammo['name'] in UPTO("Iron", "bolts"),
+			'weapons': ["Crossbow", "Phoenix crossbow", "Bronze crossbow"],
+		},
+		"UPTO_BLURITE_BOLTS": {
+			'valid': has_ammo and ammo['name'] in UPTO("Iron", "bolts"),
+			'weapons': ["Blurite crossbow"],
+		},
+		"UPTO_IRON_BOLTS": {
+			'valid': has_ammo and ammo['name'] in UPTO("Iron", "bolts"),
+			'weapons': ["Iron crossbow"],
+		},
+		"UPTO_STEEL_BOLTS": {
+			'valid': has_ammo and ammo['name'] in UPTO("Steel", "bolts"),
+			'weapons': ["Steel crossbow"],
+		},
+		"UPTO_MITHRIL_BOLTS": {
+			'valid': has_ammo and ammo['name'] in UPTO("Mithril", "bolts"),
+			'weapons': ["Mithril crossbow"],
+		},
+		"UPTO_ADAMANT_BOLTS": {
+			'valid': has_ammo and ammo['name'] in UPTO("Adamant", "bolts"),
+			'weapons': ["Adamant crossbow"],
+		},
+		"UPTO_RUNE_BOLTS": {
+			'valid': has_ammo and ammo['name'] in UPTO("Rune", "bolts"),
+			'weapons': ["Rune crossbow"],
+		},
+		"UPTO_DRAGON_BOLTS": {
+			'valid': has_ammo and ammo['name'] in UPTO("Dragon", "bolts"),
+			'weapons': ["Dragon crossbow", "Armadyl crossbow", "Dragon hunter crossbow"],
+		},
+
+		"JAVELINS": {  # Morrigan's is the only jav that can be used w/o a ballista.
+			'valid': has_ammo and ammo['name'].endswith('javelin') and ammo['name'] != "Morrigan's javelin",
+			'weapons': ["Light ballista", "Heavy ballista"]
+		},
+
+		"GUAM_TAR": {
+			'valid': has_ammo and ammo['name'] == "Guam tar",
+			'weapons': ['Swamp lizard']
+		},
+		"MARRENTILL_TAR": {
+			'valid': has_ammo and ammo['name'] == "Marrentill tar",
+			'weapons': ['Orange salamander']
+		},
+		"TARROMIN_TAR": {
+			'valid': has_ammo and ammo['name'] == "Tarromin tar",
+			'weapons': ['Red salamander']
+		},
+		"HARRALANDER_TAR": {
+			'valid': has_ammo and ammo['name'] == "Harralander tar",
+			'weapons': ['Black salamander']
+		},
+
+		"DARTS": {
+			'valid': has_ammo and ammo['name'].endswith('dart'),
+			'weapons': ['Toxic blowpipe']
+		}
+	}
+
 	weapon = gear['weapon']
-	return {
-		"CANNOT_ATTACK": False,
-		"NO_AMMO": (not HAS_AMMO) or ('blessing' in ammo['name']) or ('grapple' in ammo['name']),
-		"OGRE_ARROWS": HAS_AMMO and ammo['name'] == 'Ogre arrow',
-		"BRUTAL_ARROWS": HAS_AMMO and ammo['name'].endswith('brutal'),
-		"TRAINING_ARROWS": HAS_AMMO and ammo['name'] == 'Training arrows',
-		"UPTO IRON": HAS_AMMO and ammo['name'] in UPTO("Iron"),
-		"UPTO STEEL": HAS_AMMO and ammo['name'] in UPTO("Steel"),
-		"UPTO MITHRIL": HAS_AMMO and ammo['name'] in UPTO("Mithril"),
-		"UPTO ADAMANT": HAS_AMMO and ammo['name'] in UPTO("Adamant"),
-		"UPTO RUNE": HAS_AMMO and ammo['name'] in UPTO("Rune"),
-		"UPTO AMETHYST": HAS_AMMO and ammo['name'] in UPTO("Amethyst"),
-		"UPTO DRAGON": HAS_AMMO and ammo['name'] in UPTO("Dragon"),
-	}[requirement]
+	for policy, details in policies.items():
+		if weapon['name'] in details['weapons']:
+			return details['valid']
+	raise NoAmmoPolicyFoundError(f'''The ammo policy could not be found for the ranged weapon "{weapon['name']}".''')
 
 def can_attack(stance, gear):
 	if stance['experience'] is None:
 		return False
 	
 	if stance['combat_class'] == 'ranged':
-		requirements = {
-			"CANNOT_ATTACK": ["Craw's bow (u)"],
-			"NO_AMMO": [
-				"New crystal bow (i)", "Starter bow", "Craw's bow", "Corrupted bow (basic)", "Corrupted bow (attuned)",
-				"Corrupted bow (perfected)", "Crystal bow (basic)", "Crystal bow (attuned)", "Crystal bow (perfected)",
-				"Crystal bow", "Crystal bow"
-			],
-			"OGRE_ARROWS": ["Ogre bow"],
-			"BRUTAL_ARROWS": ["Comp ogre bow"],
-			"TRAINING_ARROWS": ["Training bow"],
-			"UPTO IRON": ["Cursed goblin bow", "Rain bow", "Shortbow", "Longbow"],
-			"UPTO STEEL": ["Signed oak bow", "Oak shortbow", "Oak longbow"],
-			"UPTO MITHRIL": ["Willow longbow", "Willow shortbow", "Willow comp bow"],
-			"UPTO ADAMANT": ["Maple longbow", "Maple shortbow"],
-			"UPTO RUNE": ["Yew longbow", "Yew shortbow", "Yew comp bow"],
-			"UPTO AMETHYST": ["Magic shortbow", "Magic longbow", "Magic comp bow", "Seercull", "Magic shortbow (i)"],
-			"UPTO DRAGON": ["3rd age bow", "Dark bow", "Twisted bow"],
-		}
-
-		for requirement, weapons in requirements.items():
-			weapon = gear['weapon']['name']
-			if weapon in weapons:
-				return satisfies_requirement(requirement, gear)
-
-		return False
+		return satisfies_bow_requirements(gear)
 	return False
 	
 
@@ -156,6 +305,20 @@ class Fighter:
 if __name__ == '__main__':
 	from pprint import pprint
 	# from osrsmath.combat.damage import CannotAttackException, ExcludedClassException
+
+	weapon = ITEM_DATABASE.find('3rd age longsword')
+	m = damage(weapon['weapon']['stances']['slash'], {
+			'weapon': weapon, None: ITEM_DATABASE.create_dummy({
+				'attack_slash': 40,
+				'melee_strength': 50,
+				'attack_ranged': 40,
+				'ranged_strength': 50,
+			})
+		}, Fighter(100, {}, []), {
+			'strength': 118,
+		}, None)
+	print(m)
+
 	# opponent = Fighter(100, {'strength': 50}, [], attributes=['kalphite'])
 	# for weapon_id in ITEM_DATABASE.get_slot('weapon') + ITEM_DATABASE.get_slot('2h'):
 	# 	weapon = ITEM_DATABASE.get(weapon_id)['name']
@@ -180,14 +343,16 @@ if __name__ == '__main__':
 	# 	if weapon['weapon']['weapon_type'] == 'bows':
 	# 		print(weapon['name'])
 	# exit()
-	for weapon_id in ITEM_DATABASE.get_slot('weapon') + ITEM_DATABASE.get_slot('2h'):
-		weapon = ITEM_DATABASE.get(weapon_id)
-		for ammo_id in ITEM_DATABASE.get_slot('ammo'):
-			ammo = ITEM_DATABASE.get(ammo_id)
-			# pprint(ammo)
-			a = can_attack({'experience': True, 'combat_class': 'ranged'}, {
-				'weapon': weapon,
-				'ammo': ammo
-			})
-			if a:
-				print(weapon['name'], ammo['name'], a)
+	
+
+	# for weapon_id in ITEM_DATABASE.get_slot('weapon') + ITEM_DATABASE.get_slot('2h'):
+	# 	weapon = ITEM_DATABASE.get(weapon_id)
+	# 	for ammo_id in ITEM_DATABASE.get_slot('ammo'):
+	# 		ammo = ITEM_DATABASE.get(ammo_id)
+	# 		# pprint(ammo)
+	# 		a = can_attack({'experience': True, 'combat_class': 'ranged'}, {
+	# 			'weapon': weapon,
+	# 			'ammo': ammo
+	# 		})
+	# 		if a:
+	# 			print(weapon['name'], ammo['name'], a)

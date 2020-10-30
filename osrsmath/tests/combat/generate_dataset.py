@@ -103,7 +103,8 @@ class Calculator:
 	@staticmethod
 	def get_list_of_weapons(download=False):
 		if not download:
-			return ["3rd age longsword", "Abyssal bludgeon", "Abyssal dagger", "Abyssal tentacle", "Abyssal whip", "Adamant pickaxe", "Ancient mace", "Arclight", "Armadyl godsword", "Bandos godsword", "Barrelchest anchor", "Black salamander", "Bone dagger", "Brine sabre", "Crystal halberd", "Darklight", "Dharok's greataxe", "Dinh's Bulwark", "Dragon 2h sword", "Dragon battleaxe", "Dragon claws", "Dragon dagger", "Dragon halberd", "Dragon hasta", "Dragon hunter lance", "Dragon longsword", "Dragon mace", "Dragon pickaxe", "Dragon scimitar", "Dragon spear", "Dragon sword", "Dragon warhammer", "Elder maul", "Event rpg", "Fixed device", "Gadderhammer", "Ghrazi rapier", "Granite hammer", "Granite longsword", "Granite maul", "Guthan's warspear", "Hill giant club", "Keris", "Leaf-bladed spear", "Leaf-bladed sword", "Leaf-bladed battleaxe", "Maple blackjack", "Maple blackjack (o)", "Maple blackjack (d)", "Obsidian dagger", "Obsidian mace", "Obsidian maul", "Obsidian sword", "Rune 2h sword", "Rune battleaxe", "Rune claws", "Rune dagger", "Rune halberd", "Rune hasta", "Rune longsword", "Rune mace", "Rune scimitar", "Rune spear", "Rune sword", "Rune pickaxe", "Rune warhammer", "Saradomin's blessed sword", "Saradomin godsword", "Saradomin sword", "Scythe of Vitur (uncharged)", "Scythe of Vitur", "Slayer's staff", "Staff of light", "Enchanted slayer's staff", "Red topaz machete", "Staff of the dead", "Torag's hammers", "Wolfbane", "Verac's flail", "Viggora's chainmace", "Zamorakian spear", "Zamorakian hasta", "Zamorak godsword", "Adamant scimitar", "Mithril scimitar", "Black scimitar", "White scimitar", "Steel scimitar", "Iron scimitar", "Bronze scimitar", "3rd age bow", "Armadyl crossbow", "Black chinchompa", "Chinchompa", "Crystal bow", "Craw's bow", "Dark bow", "Dart", "Dorgeshuun crossbow", "Dragon crossbow", "Dragon hunter crossbow", "Dragon thrownaxe", "Rune crossbow", "Hunter's crossbow", "Adamant crossbow", "Mithril crossbow", "Steel crossbow", "Iron crossbow", "Bronze crossbow", "Bluerite crossbow", "Rune thrownaxe", "Heavy ballista", "Karil's crossbow", "Knife", "Light ballista", "Magic compositebow", "Magic longbow", "Magic shortbow", "Magic shortbow (i)", "Yew shortbow", "Maple shortbow", "Willow shortbow", "Oak shortbow", "Shortbow", "Red chinchompa", "Seercull", "Toxic blowpipe", "Twisted bow", "Ahrim's staff", "Ancient staff", "God staff", "Iban staff (u)", "Kodai wand", "Master wand", "Thammaron's sceptre", "Sanguinesti staff", "Trident of the seas", "Trident of the swamp", "Toxic staff of the dead", "3rd age wand", "Void knight mace", "Mystic smoke staff", "Smoke battlestaff", "Mystic lava staff", "Mystic mud staff", "Mystic dust staff", "Mystic mist staff", "Mystic steam staff", "Air battlestaff", "Water battlestaff", "Earth battlestaff", "Fire battlestaff"]
+			# "Dart" is in the excel sheet, but I have no idea what it's supposed to be, so its removed.
+			return ["3rd age longsword", "Abyssal bludgeon", "Abyssal dagger", "Abyssal tentacle", "Abyssal whip", "Adamant pickaxe", "Ancient mace", "Arclight", "Armadyl godsword", "Bandos godsword", "Barrelchest anchor", "Black salamander", "Bone dagger", "Brine sabre", "Crystal halberd", "Darklight", "Dharok's greataxe", "Dinh's Bulwark", "Dragon 2h sword", "Dragon battleaxe", "Dragon claws", "Dragon dagger", "Dragon halberd", "Dragon hasta", "Dragon hunter lance", "Dragon longsword", "Dragon mace", "Dragon pickaxe", "Dragon scimitar", "Dragon spear", "Dragon sword", "Dragon warhammer", "Elder maul", "Event rpg", "Fixed device", "Gadderhammer", "Ghrazi rapier", "Granite hammer", "Granite longsword", "Granite maul", "Guthan's warspear", "Hill giant club", "Keris", "Leaf-bladed spear", "Leaf-bladed sword", "Leaf-bladed battleaxe", "Maple blackjack", "Maple blackjack (o)", "Maple blackjack (d)", "Obsidian dagger", "Obsidian mace", "Obsidian maul", "Obsidian sword", "Rune 2h sword", "Rune battleaxe", "Rune claws", "Rune dagger", "Rune halberd", "Rune hasta", "Rune longsword", "Rune mace", "Rune scimitar", "Rune spear", "Rune sword", "Rune pickaxe", "Rune warhammer", "Saradomin's blessed sword", "Saradomin godsword", "Saradomin sword", "Scythe of Vitur (uncharged)", "Scythe of Vitur", "Slayer's staff", "Staff of light", "Enchanted slayer's staff", "Red topaz machete", "Staff of the dead", "Torag's hammers", "Wolfbane", "Verac's flail", "Viggora's chainmace", "Zamorakian spear", "Zamorakian hasta", "Zamorak godsword", "Adamant scimitar", "Mithril scimitar", "Black scimitar", "White scimitar", "Steel scimitar", "Iron scimitar", "Bronze scimitar", "3rd age bow", "Armadyl crossbow", "Black chinchompa", "Chinchompa", "Crystal bow", "Craw's bow", "Dark bow", "Dorgeshuun crossbow", "Dragon crossbow", "Dragon hunter crossbow", "Dragon thrownaxe", "Rune crossbow", "Hunter's crossbow", "Adamant crossbow", "Mithril crossbow", "Steel crossbow", "Iron crossbow", "Bronze crossbow", "Bluerite crossbow", "Rune thrownaxe", "Heavy ballista", "Karil's crossbow", "Knife", "Light ballista", "Magic compositebow", "Magic longbow", "Magic shortbow", "Magic shortbow (i)", "Yew shortbow", "Maple shortbow", "Willow shortbow", "Oak shortbow", "Shortbow", "Red chinchompa", "Seercull", "Toxic blowpipe", "Twisted bow", "Ahrim's staff", "Ancient staff", "God staff", "Iban staff (u)", "Kodai wand", "Master wand", "Thammaron's sceptre", "Sanguinesti staff", "Trident of the seas", "Trident of the swamp", "Toxic staff of the dead", "3rd age wand", "Void knight mace", "Mystic smoke staff", "Smoke battlestaff", "Mystic lava staff", "Mystic mud staff", "Mystic dust staff", "Mystic mist staff", "Mystic steam staff", "Air battlestaff", "Water battlestaff", "Earth battlestaff", "Fire battlestaff"]
 		weapons = []
 		move_to(Calculator.cells['weapon'])
 		text = None
@@ -233,16 +234,25 @@ for name in weapons:
 		print('Failed', name, e)
 		continue
 
-	for stance in attributes['weapon']['stances']:
+	for stance in attributes['weapon']['stances'].values():
 		try:
 			pyautogui.press('esc')
 			calculator.set_player_weapon(
 				name, stance['attack_style']
 			)
 
-			from osrsmath.combat.damage import melee_damage, Opponent
-			m = melee_damage(stance, [database_name], Opponent(), 
-				118, attributes['equipment']['melee_strength'] + 50, 1.0
+			from osrsmath.combat.damage import damage
+			from osrsmath.combat.fighter import Fighter
+			m = damage(stance, {
+					'weapon': attributes, 
+					None: ITEM_DATABASE.create_dummy({
+						'attack_slash': 40,
+						'melee_strength': 50,
+						'attack_ranged': 40,
+						'ranged_strength': 50,
+				})}, Fighter(100, {}, []), {
+					'strength': 118, 'ranged': 112,
+				}, None
 			)
 
 			sleep(1)
@@ -253,6 +263,9 @@ for name in weapons:
 		except pyautogui.FailSafeException:
 			pass
 		except Exception as e:
-			print('Failed:', name, stance['attack_style'], str(e))
+			import sys
+			exc_type, exc_obj, exc_tb = sys.exc_info()
+		    fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+			print('Failed:', name, stance['attack_style'], exc_type, fname, exc_tb.tb_lineno)
 
 print('(7) Finished')

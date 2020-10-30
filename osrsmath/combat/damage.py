@@ -13,7 +13,6 @@ def damage(stance, gear, opponent, effective_levels, prayers):
 	assert prayers is None
 	
 	if stance['combat_class'] == 'melee':
-		raise ExcludedClassException("Melee")
 		return melee_damage(
 			stance,
 			[i['name'] for i in gear.values()],
@@ -27,13 +26,12 @@ def damage(stance, gear, opponent, effective_levels, prayers):
 			stance,
 			[i['name'] for i in gear.values()],
 			opponent,
-			effective_levels['strength'],
-			sum(i['equipment']['melee_strength'] for i in gear.values()),
+			effective_levels['ranged'],
+			sum(i['equipment']['ranged_strength'] for i in gear.values()),
 			prayer_multiplier=1.0
 		)
 	elif stance['combat_class'] == 'magic':
 		raise ExcludedClassException("Magic")
-		pass
 	else:
 		raise CannotAttackException(f"No combat class could be determined for {stance['combat_style']}.")
 
@@ -96,7 +94,7 @@ def melee_damage(stance, equipment, opponent, effective_strength_level, equipmen
 		m = floor(m*7/6)
 	elif opponent.has_attribute('undead') and any(e in equipment for e in ['Salve amulet (e)', 'Salve amulet (ei)']):
 		m = floor(m*1.2)
-	elif opponent.has_attribute('slayer_task') and any(e in equipment for e in ['Black mask', 'Slayer helmet', 'Slayer helmet (i)']):
+	elif opponent.has_attribute('slayer_task') and any(e in equipment for e in ['Black mask', 'Black mask (i)', 'Slayer helmet', 'Slayer helmet (i)']):
 		m = floor(m*7/6)
 
 	if opponent.has_attribute('demon') and 'Arclight' in equipment:
@@ -172,18 +170,20 @@ def ranged_damage(stance, equipment, opponent, effective_strength_level, equipme
 	if stance['attack_style'] not in valid_attack_styles:
 		raise CannotAttackException(f'Invalid attack style in given stance: {stance}. Must be one of {valid_attack_styles}.')
 
+
 	# Leafy creatures can only be damaged by leaf-bladed equipment.
-	# if opponent.has_attribute('leafy') and not any(f'Leaf-bladed {e}' in equipment for e in ['battleaxe', 'spear', 'sword']):
-	# 	return 0
+	if opponent.has_attribute('leafy') and not any(e in equipment for e in ['Broad bolts', 'Broad arrows']):
+		return 0
 
 	# Calculate base damage
-	stance_bonus = {'aggressive': 11, 'controlled': 9}.get(stance['attack_style'], 8)
-	void_bonus = 1.1 if all([
-		'Void ranger helm' in equipment,
-		'Void knight top' in equipment or 'Elite void top' in equipment,
-		'Void knight robe' in equipment or 'Elite void robe' in equipment,
-		'Void knight gloves' in equipment
-	]) else 1.0
+	stance_bonus = {'accurate': 11}.get(stance['attack_style'], 8)
+	void_bonus = 1.0
+	if 'Void ranger helm' in equipment and 'Void knight gloves' in equipment:
+		if 'Void knight top' in equipment and 'Void knight robe' in equipment:
+			void_bonus = 1.1
+		elif 'Elite void top' in equipment and 'Elite void robe' in equipment:
+			void_bonus = 1.125
+
 	m_0 = floor(
 		0.5 + (64 + equipment_strength) / 640 * floor(
 			floor(
@@ -194,65 +194,27 @@ def ranged_damage(stance, equipment, opponent, effective_strength_level, equipme
 
 	# This logic is primarily translated from https://docs.google.com/spreadsheets/d/14ddt-IrH3dmcB7REE1y5AZD51I6dGBfFehQrHp1j1iQ/edit#gid=196557
 	m = m_0
-	return m
+	if opponent.has_attribute('undead') and any(e in equipment for e in ['Salve amulet (i)']):
+		m = floor(m*7/6)
+	elif opponent.has_attribute('undead') and any(e in equipment for e in ['Salve amulet (ei)']):
+		m = floor(m*1.2)
+	elif opponent.has_attribute('slayer_task') and any(e in equipment for e in ['Black mask (i)', 'Slayer helmet (i)']):
+		m = floor(m*1.15)
 
-def ranged_damage(stance, equipment, opponent, effective_strength_level, equipment_strength, prayer_multiplier):
-	""" Calculates the maximum hit for a given setup.
+	if opponent.has_attribute('dragonic') and 'Dragon hunter crossbow' in equipment:
+		m = floor(m*1.3)
+	elif opponent.has_attribute('wilderness') and "Craw's bow" in equipment:
+		m = floor(m*1.5)
+	elif "Twisted bow" in equipment:
+		cap = 350 if raids else 250
+		magic = min(max(opponent.levels['magic'], opponent.equipment['magic_attack']), cap)
+		m = int(m * (2.5 + int(3*magic - 14) - int(0.3*magic - 140)**2) / 100)
 
-	Args:
-		stance: dict
-			stance['attack_type'] must be a valid attack type.
-			stance['attack_style'] must be a valid attack style.
-	Notes:
-		No damage caps are applied. This damage is the typically attack, so if a weapon can occasionally hit extra damage (verac, keris, etc)
-		this is not considered here. Vampyres aren't handled fully, silverlight bonus isn't known, there are likely other exceptions.
-
-	"""
-	# Exceptions
-	salamanders = {
-		'Black salamander': 'Harralander tar', 'Red salamander': 'Tarromin tar',
-		'Orange salamander': 'Marrentill tar', 'Swamp lizard': 'Guam tar'
-	}
-	for salamander, tar in salamanders.items():
-		if salamander in equipment:
-			if tar not in equipment:
-				raise CannotAttackException(f'{salamander} require {tar} as ammunition for all attack styles.')
-
-			if stance['combat_style'] == 'Flare':
-				print(stance['attack_style'])
-				# stance['attack_style'] = 'aggressive'  # The database attack style is None, but should be aggressive for melee.
-			else:
-				# The player may be able to attack, but this is an invalid way to call this code since it's not ranged.
-				raise ValueError(f'Salamanders can only deal ranged damage using the Flare combat style, not {stance["combat_style"]}.')
-
-	valid_attack_types = [None]
-	valid_attack_styles = [None]
-	if stance['attack_type'] not in valid_attack_types:
-		raise CannotAttackException(f'Invalid attack type in given stance: {stance}. Must be one of {valid_attack_types}.')
-		# raise CannotAttackException(f'Invalid attack type in given stance: {stance}. Must be one of [ranged].')
-	if stance['attack_style'] not in valid_attack_styles:
-		raise CannotAttackException(f'Invalid attack style in given stance: {stance}. Must be one of {valid_attack_styles}.')
-
-	# Leafy creatures can only be damaged by leaf-bladed equipment.
-	# if opponent.has_attribute('leafy') and not any(f'Leaf-bladed {e}' in equipment for e in ['battleaxe', 'spear', 'sword']):
-	# 	return 0
-
-	# Calculate base damage
-	stance_bonus = {'aggressive': 11, 'controlled': 9}.get(stance['attack_style'], 8)
-	void_bonus = 1.1 if all([
-		'Void ranger helm' in equipment,
-		'Void knight top' in equipment or 'Elite void top' in equipment,
-		'Void knight robe' in equipment or 'Elite void robe' in equipment,
-		'Void knight gloves' in equipment
-	]) else 1.0
-	m_0 = floor(
-		0.5 + (64 + equipment_strength) / 640 * floor(
-			floor(
-				effective_strength_level * prayer_multiplier + stance_bonus
-			) * void_bonus
-		)
-	)
-
-	# This logic is primarily translated from https://docs.google.com/spreadsheets/d/14ddt-IrH3dmcB7REE1y5AZD51I6dGBfFehQrHp1j1iQ/edit#gid=196557
-	m = m_0
+	if all(f'Crystal {e}' in equipment for e in ['helm', 'body', 'legs', 'bow']):
+		m = floor(m*(1 + 
+			(0.003 if "Crystal helm" in equipment else 0) +
+			(0.003 if "Crystal body" in equipment else 0) +
+			(0.003 if "Crystal legs" in equipment else 0) +
+			(0.006 if all(f"Crystal {e}" in equipment for e in ['helm', 'body', 'legs']) else 0)
+		))
 	return m

@@ -40,6 +40,17 @@ class ItemDatabase:
 		return self.items[ID]
 
 	@staticmethod
+	def create_dummy(equipment, weapon=None, name="dummy", ID=None, weight=0.0):
+		return {
+			'name': name,
+			'id': ID,
+			'weight': weight,
+			'wiki_url': "",
+			"equipment": equipment,
+			"weapon": weapon,
+		}
+
+	@staticmethod
 	def get_equipment(force_update=False):
 		def filter(i):
 			partial = {k: v for k, v in i.items() if k in [
@@ -48,6 +59,9 @@ class ItemDatabase:
 			# Convert stances from a list to a dictionary
 			if partial['weapon'] is not None:
 				partial['weapon']['stances'] = {s['combat_style']: {**s, 'combat_class': get_combat_class(s)} for s in partial['weapon']['stances']}
+			
+			# For some reason, "Mithril crossbow" is called "Mith crossbow".
+			partial['name'] = "Mithril crossbow" if partial['name'] == 'Mith crossbow' else partial['name']
 			return partial
 
 		equipment = {}
@@ -78,6 +92,8 @@ ITEM_DATABASE = ItemDatabase()
 
 if __name__ == '__main__':
 	from pprint import pprint
-	pprint(ITEM_DATABASE.get(24792))
-	pprint(ITEM_DATABASE.find("Dragon scimitar"))
+	# pprint(ITEM_DATABASE.get(24792))
+	# pprint(ITEM_DATABASE.find("Mithril crossbow"))
 	# pprint(ITEM_DATABASE.find("Unarmed"))
+	import sys
+	pprint(ITEM_DATABASE.find(sys.argv[1]))
