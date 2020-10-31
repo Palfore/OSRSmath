@@ -60,8 +60,15 @@ class ItemDatabase:
 			if partial['weapon'] is not None:
 				partial['weapon']['stances'] = {s['combat_style']: {**s, 'combat_class': get_combat_class(s)} for s in partial['weapon']['stances']}
 			
-			# For some reason, "Mithril crossbow" is called "Mith crossbow".
+			## Corrections
+			# For some reason, "Mithril crossbow" is incorrectly called "Mith crossbow".
 			partial['name'] = "Mithril crossbow" if partial['name'] == 'Mith crossbow' else partial['name']
+			
+			# Salamander's incorrectly have None as the attack style
+			if partial['name'] in ["Black salamander", "Red salamander", "Orange salamander", "Swamp lizard"]:
+				partial['weapon']['stances']['scorch']['attack_style'] = "aggressive"
+				partial['weapon']['stances']['scorch']['attack_style'] = "ranged"
+				partial['weapon']['stances']['scorch']['attack_style'] = "magic"
 			return partial
 
 		equipment = {}
@@ -92,8 +99,8 @@ ITEM_DATABASE = ItemDatabase()
 
 if __name__ == '__main__':
 	from pprint import pprint
-	# pprint(ITEM_DATABASE.get(24792))
-	# pprint(ITEM_DATABASE.find("Mithril crossbow"))
-	# pprint(ITEM_DATABASE.find("Unarmed"))
 	import sys
-	pprint(ITEM_DATABASE.find(sys.argv[1]))
+	try:
+		pprint(ITEM_DATABASE.find(sys.argv[1]))
+	except IndexError:
+		print("Incorrect call. Use `python items.py name_of_item` to print item stats.")

@@ -1,18 +1,24 @@
+""" Notes:
+	No damage caps are applied. This damage is the typically attack, so if a weapon can occasionally hit extra damage (verac, keris, etc)
+	this is not considered here. Vampyres aren't handled fully, silverlight bonus isn't known, there are likely other exceptions.
+	Effects that occur with certain probabilities are not considered here (but will be elsewhere).
+	Logic is primarily translated from https://docs.google.com/spreadsheets/d/14ddt-IrH3dmcB7REE1y5AZD51I6dGBfFehQrHp1j1iQ/edit#gid=196557
+"""
 from math import floor
 from osrsmath.combat.items import ITEM_DATABASE
+from osrsmath.combat.spells import SPELLBOOK
 from pprint import pprint 
 
 class CannotAttackException(ValueError):
 	pass
 
-class ExcludedClassException(ValueError):
-	pass
-
-def damage(stance, gear, opponent, effective_levels, prayers):
-	# Player must be in a valid state.
-	assert prayers is None
+def damage(stance, gear, opponent, effective_levels, prayers, spell=None):
+	# Assumes everything is valid, i.e. player.can_attack() == True
+	assert not prayers  # Not yet handled
 	
 	if stance['combat_class'] == 'melee':
+		if spell is not None:
+			raise ValueError(f'The spell is set to "{spell}", but should be None.')
 		return melee_damage(
 			stance,
 			[i['name'] for i in gear.values()],
@@ -22,6 +28,8 @@ def damage(stance, gear, opponent, effective_levels, prayers):
 			prayer_multiplier=1.0
 		)
 	elif stance['combat_class'] == 'ranged':
+		if spell is not None:
+			raise ValueError(f'The spell is set to "{spell}", but should be None.')
 		return ranged_damage(
 			stance,
 			[i['name'] for i in gear.values()],
@@ -31,7 +39,14 @@ def damage(stance, gear, opponent, effective_levels, prayers):
 			prayer_multiplier=1.0
 		)
 	elif stance['combat_class'] == 'magic':
-		raise ExcludedClassException("Magic")
+		return magic_damage(
+			spell,
+			stance,
+			[i['name'] for i in gear.values()],
+			opponent,
+			effective_levels['magic'],
+			sum(i['equipment']['magic_damage'] for i in gear.values()),
+		)
 	else:
 		raise CannotAttackException(f"No combat class could be determined for {stance['combat_style']}.")
 
@@ -42,27 +57,7 @@ def melee_damage(stance, equipment, opponent, effective_strength_level, equipmen
 		stance: dict
 			stance['attack_type'] must be a valid attack type.
 			stance['attack_style'] must be a valid attack style.
-	Notes:
-		No damage caps are applied. This damage is the typically attack, so if a weapon can occasionally hit extra damage (verac, keris, etc)
-		this is not considered here. Vampyres aren't handled fully, silverlight bonus isn't known, there are likely other exceptions.
-
 	"""
-	# Exceptions
-	salamanders = {
-		'Black salamander': 'Harralander tar', 'Red salamander': 'Tarromin tar',
-		'Orange salamander': 'Marrentill tar', 'Swamp lizard': 'Guam tar'
-	}
-	for salamander, tar in salamanders.items():
-		if salamander in equipment:
-			if tar not in equipment:
-				raise CannotAttackException(f'{salamander} require {tar} as ammunition for all attack styles.')
-
-			if stance['combat_style'] == 'scorch':
-				stance['attack_style'] = 'aggressive'  # The database attack style is None, but should be aggressive for melee.
-			else:
-				# The player may be able to attack, but this is an invalid way to call this code since it's not melee.
-				raise ValueError(f'Salamanders can only deal melee damage using the Scorch combat style, not {stance["combat_style"]}.')
-
 	if stance['attack_type'] not in ['slash', 'stab', 'crush']:
 		raise CannotAttackException(f'Invalid attack type in given stance: {stance}. Must be one of [slash, stab, crush].')
 	if stance['attack_style'] not in ['accurate', 'aggressive', 'controlled', 'defensive']:
@@ -88,7 +83,6 @@ def melee_damage(stance, equipment, opponent, effective_strength_level, equipmen
 		)
 	)
 
-	# This logic is primarily translated from https://docs.google.com/spreadsheets/d/14ddt-IrH3dmcB7REE1y5AZD51I6dGBfFehQrHp1j1iQ/edit#gid=196557
 	m = m_0
 	if opponent.has_attribute('undead') and any(e in equipment for e in ['Salve amulet', 'Salve amulet (i)']):
 		m = floor(m*7/6)
@@ -140,36 +134,13 @@ def ranged_damage(stance, equipment, opponent, effective_strength_level, equipme
 		stance: dict
 			stance['attack_type'] must be a valid attack type.
 			stance['attack_style'] must be a valid attack style.
-	Notes:
-		No damage caps are applied. This damage is the typically attack, so if a weapon can occasionally hit extra damage (verac, keris, etc)
-		this is not considered here. Vampyres aren't handled fully, silverlight bonus isn't known, there are likely other exceptions.
-
 	"""
-	# Exceptions
-	salamanders = {
-		'Black salamander': 'Harralander tar', 'Red salamander': 'Tarromin tar',
-		'Orange salamander': 'Marrentill tar', 'Swamp lizard': 'Guam tar'
-	}
-	for salamander, tar in salamanders.items():
-		if salamander in equipment:
-			if tar not in equipment:
-				raise CannotAttackException(f'{salamander} require {tar} as ammunition for all attack styles.')
-
-			if stance['combat_style'] == 'Flare':
-				print(stance['attack_style'])
-				# stance['attack_style'] = 'aggressive'  # The database attack style is None, but should be aggressive for melee.
-			else:
-				# The player may be able to attack, but this is an invalid way to call this code since it's not ranged.
-				raise ValueError(f'Salamanders can only deal ranged damage using the Flare combat style, not {stance["combat_style"]}.')
-
 	valid_attack_types = [None]
 	valid_attack_styles = [None]
 	if stance['attack_type'] not in valid_attack_types:
 		raise CannotAttackException(f'Invalid attack type in given stance: {stance}. Must be one of {valid_attack_types}.')
-		# raise CannotAttackException(f'Invalid attack type in given stance: {stance}. Must be one of [ranged].')
 	if stance['attack_style'] not in valid_attack_styles:
 		raise CannotAttackException(f'Invalid attack style in given stance: {stance}. Must be one of {valid_attack_styles}.')
-
 
 	# Leafy creatures can only be damaged by leaf-bladed equipment.
 	if opponent.has_attribute('leafy') and not any(e in equipment for e in ['Broad bolts', 'Broad arrows']):
@@ -192,7 +163,6 @@ def ranged_damage(stance, equipment, opponent, effective_strength_level, equipme
 		)
 	)
 
-	# This logic is primarily translated from https://docs.google.com/spreadsheets/d/14ddt-IrH3dmcB7REE1y5AZD51I6dGBfFehQrHp1j1iQ/edit#gid=196557
 	m = m_0
 	if opponent.has_attribute('undead') and any(e in equipment for e in ['Salve amulet (i)']):
 		m = floor(m*7/6)
@@ -217,4 +187,105 @@ def ranged_damage(stance, equipment, opponent, effective_strength_level, equipme
 			(0.003 if "Crystal legs" in equipment else 0) +
 			(0.006 if all(f"Crystal {e}" in equipment for e in ['helm', 'body', 'legs']) else 0)
 		))
+	return m
+
+
+def magic_damage(spell, stance, equipment, opponent, effective_strength_level, equipment_strength):
+	""" Calculates the maximum hit for a given setup.
+
+	Args:
+		stance: dict
+			stance['attack_type'] must be a valid attack type.
+			stance['attack_style'] must be a valid attack style.
+
+	Note:
+		A player can wield an powered weapon, but still cast a normal spell (using the book).
+	"""
+	valid_attack_types = ['spellcasting', 'defensive casting', None]
+	valid_attack_styles = ['magic', None]
+	if stance['attack_type'] not in valid_attack_types:
+		raise CannotAttackException(f'Invalid attack type in given stance: {stance}. Must be one of {valid_attack_types}.')
+	if stance['attack_style'] not in valid_attack_styles:
+		raise CannotAttackException(f'Invalid attack style in given stance: {stance}. Must be one of {valid_attack_styles}.')
+
+	# Leafy creatures can only be damaged by leaf-bladed equipment.
+	if opponent.has_attribute('leafy') and spell != 'Magic dart':
+		return 0
+	
+	# if SPELLBOOK.requires_undead(spell) and not opponent.has_attribute('undead'):
+	# 	raise cant attack. # move this somewhere else
+	# if SPELLBOOK.requires_iban(spell) and "Iban's staff" not in equipment:
+	# 	raise cant attack # move this somewhere else
+
+	# Calculate base damage	
+	if spell is None:  # Powered weapons
+		if 'Trident of the seas' in equipment:
+			m_0 = int(effective_strength_level / 3 - 5)
+		elif 'Trident of the swamp' in equipment:
+			m_0 = int(effective_strength_level / 3 - 2)
+		elif 'Sanguinesti staff' in equipment:
+			m_0 = int(effective_strength_level / 3 - 1)
+		elif 'Crystal staff (basic)' in equipment or 'Corrupted staff (basic)' in equipment:
+			m_0 = int(effective_strength_level / 3 - 10)
+		elif 'Crystal staff (attuned)' in equipment or 'Corrupted staff (attuned)' in equipment:
+			m_0 = int(effective_strength_level / 3 - 2)
+		elif 'Crystal staff (perfected)' in equipment or 'Corrupted staff (perfected)' in equipment:
+			m_0 = int(effective_strength_level / 3 + 6)
+		elif 'Black salamander' in equipment:
+			m_0 = int(0.5 + effective_strength_level * (64 + 92) / 640)
+		elif 'Red salamander' in equipment:
+			m_0 = int(0.5 + effective_strength_level * (64 + 77) / 640)
+		elif 'Orange salamander' in equipment:
+			m_0 = int(0.5 + effective_strength_level * (64 + 59) / 640)
+		elif 'Swamp lizard' in equipment:
+			m_0 = int(0.5 + effective_strength_level * (64 + 56) / 640)
+	else:
+		if spell == 'Magic dart':
+			if "Slayer's staff (e)" in equipment:
+				m_0 = int(13 + effective_strength_level / 6)
+			else: 
+				m_0 = int(10 + effective_strength_level / 10)
+		else:
+			m_0 = SPELLBOOK.get(spell)['max_hit']
+			if opponent.has_attribute('charge') and SPELLBOOK.can_charge(spell, equipment):
+				m_0 += 10
+
+		if 'Chaos gauntlets' in equipment and SPELLBOOK.is_bolt(spell):
+			m_0 += 3
+
+	# Calculate multiplier
+	multiplier = 1 + equipment_strength / 100
+	if any(staff in equipment for staff in ['Mystic smoke staff', 'Smoke battlestaff']) and SPELLBOOK.is_standard(spell):
+		multiplier += 0.1
+	if "Thammaron's sceptre" in equipment:
+		multiplier += 0.25
+	if opponent.has_attribute('undead') and any(e in equipment for e in ['Salve amulet (i)']):
+		multiplier += 0.15
+	elif opponent.has_attribute('undead') and any(e in equipment for e in ['Salve amulet (ei)']):
+		multiplier += 0.20
+	if 'Void mage helm' in equipment and 'Void knight gloves' in equipment:
+		if 'Elite void top' in equipment and 'Elite void robe' in equipment:
+			multiplier += 0.025
+
+	# Dawnbringer seems like an exception (?), its calculation is very confusing.
+	if 'Dawnbringer' in equipment:
+		m = int(int(effective_strength_level * multiplier) / 6 - 1)
+	else:
+		pre_slayer = m = int(m_0 * multiplier)
+
+	if opponent.has_attribute('undead') and any(e in equipment for e in ['Salve amulet (i)']):
+		pass  # Final block executes/applies only if these first two aren't active.
+	elif opponent.has_attribute('undead') and any(e in equipment for e in ['Salve amulet (ei)']):
+		pass		
+	elif opponent.has_attribute('slayer_task') and any(e in equipment for e in ['Black mask (i)', 'Slayer helmet (i)']):
+		m = floor(m*1.15)
+
+	if SPELLBOOK.is_fire(spell) and 'Tome of fire' in equipment:
+		m = floor(m*1.5)
+
+	if "Eldritch nightmare staff" in equipment:
+		m = int(int((44 - int( (99 - min(effective_strength_level, 99)) / 2.27           )) * m) * pre_slayer)
+	elif "Volatile staff" in equipment:
+		m = int(int((0  - int( (0  - min(effective_strength_level, 99)) * (7/12) + (7/6) )) * m) * pre_slayer)
+
 	return m

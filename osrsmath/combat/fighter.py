@@ -213,7 +213,8 @@ def can_attack(stance, gear):
 
 class Fighter:
 	EQUIPMENT_SLOTS = ['ammo', 'body', 'cape', 'feet', 'hands', 'head', 'legs', 'neck', 'ring', 'shield', 'weapon']
-	ALLOWED_ATTRIBUTES = ['kalphite', 'shade', 'dragonic', 'leafy', 'wilderness', 'demon', 'undead', 'slayer_task', 'vampyre']
+	ALLOWED_ATTRIBUTES = ['kalphite', 'shade', 'dragonic', 'leafy', 'wilderness', 'demon', 
+	                      'undead', 'slayer_task', 'vampyre', 'charge']
 	
 	def __init__(self, hitpoints: int, levels: dict, equipment: list, attributes: list=None):
 		if hitpoints <= 0:
@@ -297,26 +298,30 @@ class Fighter:
 		m = self.max_hit(opponent)
 		a = self.accuracy(opponent)
 		return {**{
-			0: 1 - a * m / (m + 1)}, **{
-			c: a / (m + 1) for c in range(1, m+1)
-		}}
+			0: 1 - a * m / (m + 1)},
+			**{
+				c: a / (m + 1) for c in range(1, m+1)
+			}
+		}
 
 
 if __name__ == '__main__':
 	from pprint import pprint
 	# from osrsmath.combat.damage import CannotAttackException, ExcludedClassException
+	m = damage(ITEM_DATABASE.find("Dawnbringer")['weapon']['stances']['accurate'], 
+		{'weapon': ITEM_DATABASE.find("Dawnbringer")}, 
+		Fighter(100, {}, []), {'magic': 90}, prayers=[], spell=None)
+	print(m)
 
-	weapon = ITEM_DATABASE.find('3rd age longsword')
-	m = damage(weapon['weapon']['stances']['slash'], {
+	weapon = ITEM_DATABASE.find('Slayer\'s staff (e)')
+	m = damage(weapon['weapon']['stances']['spell'], {
 			'weapon': weapon, None: ITEM_DATABASE.create_dummy({
-				'attack_slash': 40,
-				'melee_strength': 50,
-				'attack_ranged': 40,
-				'ranged_strength': 50,
+				'magic_attack': 40,
+				'magic_damage': 0.0,
 			})
 		}, Fighter(100, {}, []), {
-			'strength': 118,
-		}, None)
+			'magic': 70,
+		}, [], spell="Magic dart")
 	print(m)
 
 	# opponent = Fighter(100, {'strength': 50}, [], attributes=['kalphite'])
