@@ -1,0 +1,44 @@
+Wintertodt is a skilling boss that is primarily fought (in a manner similar to a minigame moreso than combat) for \texttt{firemaking} experience, either solo or as part of a (large) group. Experience is gained from actions during the fight, with a bonus awarded for players that have contributed enough. The bonus provides experience and \texttt{supply crates} which contain valuable resources.
+
+The general game play is as follows: A player will chop \texttt{logs}, and either collect them ``as is'' or fletch them into \texttt{kindling} (providing more points and experience per action, but costing time). They will then burn them in a \texttt{brazier}. The cold occasionally snuffs out the fire and the player will have to relight it, granting points and \texttt{firemaking} experience. Each \texttt{braizer} has an associated \texttt{Pyromancer} who needs to be revived before relighting, if they died.Sometimes the \texttt{braizer} will actually break (due to the high temperatures) and the player will repair it, providing \texttt{construction} experience and some points. During the battle the player will take damage scaling with their health and firemaking level.
+
+We will be attempting to determine the number of games required to get to 99 firemaking. To handle the scope of this training method, we will be using the following considerations:
+\begin{enumerate}
+	\item Points will only be obtained through firemaking (so fixing/relighting \texttt{braziers} and healing \texttt{Pyromancers} will be ignored). In practice, this is reasonable since on large worlds other players typically perform this anyway.
+\end{enumerate}
+
+Definitions:
+\begin{enumerate}
+	\item The player's \texttt{woodcutting} and \texttt{firemaking} levels be represented by $L_{wc}$ and $L_{fm}$ respectively.
+	\item Each action rewards xp proportional to the skill level. The proportionalities for cutting, fletching, burning a log, and burning a kindling are given by $c=0.3, f=0.6, l=3, k=3.8$.
+	\item The \texttt{firemaking} experience for logs and kindling are $E_l=l L_{fm}$ and $E_k = kL_{fm}$.
+	\item Assume the player has a target of $T$ points during a game. $P_l=10$ points are given for burning a log, $P_k=25$ are given for burning kindling.
+	\item The bonus experience at the end of a round is given by $BL_{fm}$, $B=100$. It's important to note that the level may change during the game.
+\end{enumerate}
+
+Let's first assume that the player fletches no logs. We note that a player may level up during the course of a fight, and so for an exact solution, we need to consider the experience gained on a per action basis. We will label the experience at $k$ kills, and $a$ actions as $E_a^k$. Starting with $E_0^k$ experience, the player's experience after $a$ actions during a kill is governed by:
+\begin{align}
+	E_a^k(E_0^k)\,\,|\,\,E_{n+1}^k = E_n^k + l\mathcal{L}(E_n^k).
+\end{align}
+% which simply states that the player gains $l\mathcal{L}(E_n)$ per log burned, where $\mathcal{L}$ is the function that determines the level given an amount of experience. This is given by:
+% \begin{align}
+% 	\mathcal{L}(\epsilon) &= \sum_{L=1}^{99} L\prod(\epsilon; \mathcal{E}(L-1), \mathcal{E}(L+1)) \\
+% 	E_{n+1} &= E_{n} + l\sum_{L=1}^{99} L\prod(E_n; \mathcal{E}(L-1), \mathcal{E}(L+1)),
+% \end{align}
+
+There is no current analytic formula for $\mathcal{L}$, so we will leave this as a recursive equation for now. To obtain the target number of points, the player needs to burn $T/P_l$ logs. The total experience gained after a fight (including the bonus experience) is then,
+\begin{align}
+	E^k_{\left\lceil T / P_l\right\rceil}(E_0) + B\mathcal{L}(E^k_{\left\lceil T / P_l\right\rceil}(E_0)).
+\end{align}
+Finally, the experience gained after a kill is:
+\begin{align}
+	E^{k+1}_0 = E^k_{\left\lceil T / P_l\right\rceil}(E_0) + B\mathcal{L}(E^k_{\left\lceil T / P_l\right\rceil}(E_0)).
+\end{align}
+
+
+\section{Applications}
+	\begin{enumerate}
+		\item Time to max from 50. (Number of kills) times (time per kill estimate).
+		\item Number of crates from 50. 
+		\item Value of creates given base stats: 1, 40, 75, 99.
+	\end{enumerate}
