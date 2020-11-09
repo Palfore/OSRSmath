@@ -1,5 +1,4 @@
 from osrsmath.general.skills import LEVEL_CAP, EXPERIENCE_CAP, level, experience
-from bisect import bisect_left
 from math import ceil
 
 ACTIONS = {
@@ -73,10 +72,12 @@ def upper_bound_on_kills(xp_to_gain, target_points):
 	return ceil(xp_to_gain / (multiplier * REQUIRED_LEVEL))
 
 def kills_for_xp(initial_fm_xp, final_fm_xp, target_points, policy):
-	max_kills = upper_bound_on_kills(final_fm_xp - initial_fm_xp, target_points)
 	fm = Firemaker(initial_fm_xp, policy)
-	xp = [fm.E0] + [fm.kill(target_points, 1) for _ in range(max_kills+1)]
-	return bisect_left(xp, final_fm_xp, lo=0, hi=max_kills)
+	kills = 0
+	while fm.xp < final_fm_xp:
+		fm.kill(target_points)
+		kills += 1
+	return kills
 
 def hours_for_xp(initial_fm_xp, final_fm_xp, target_points, policy, minutes_per_game_estimate):
 	return minutes_per_game_estimate * kills_for_xp(initial_fm_xp, final_fm_xp, target_points, policy) / 60
@@ -142,13 +143,13 @@ class Firemaker:
 
 if __name__ == '__main__':
 	import matplotlib.pyplot as plt
+	import time
 	e50, e99 = experience(50), experience(99)
 
 	## Upper bound on kills required to max, assuming always wins.
+	start = time.time()
 	print(kills_for_xp(e50, e99, POINTS_REQUIRED, Policies.kindling_only))
 	print(hours_for_xp(e50, e99, POINTS_REQUIRED, Policies.roots_only, minutes_per_game_estimate=5))
-	# might also want to plot time to max.
-	
 	## Plotting kills vs points for 50-99 fm, for different policies
 	policies = {
 		'Upper Bound': [],
@@ -171,6 +172,7 @@ if __name__ == '__main__':
 	plt.ylim(0, 3000)
 	plt.legend(loc='upper right', prop={'size': 14})
 	plt.grid('on')
+	print(time.time() - start)
 	plt.show()
 
 	## Plotting grand exchange value from 50-99 firemaking, for different base levels & points per game,
