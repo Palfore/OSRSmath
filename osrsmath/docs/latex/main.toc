@@ -44,5 +44,8 @@
 \contentsline {section}{\numberline {C.5}Summary}{39}{section.1.C.5}%
 \contentsline {section}{\numberline {C.6}Comments}{39}{section.1.C.6}%
 \contentsline {part}{II\hspace {1em}Woodcutting}{40}{part.2}%
-\contentsline {part}{III\hspace {1em}Mining}{41}{part.3}%
-\contentsline {part}{IV\hspace {1em}Quests}{42}{part.4}%
+\contentsline {part}{III\hspace {1em}Firemaking}{41}{part.3}%
+\contentsline {chapter}{\numberline {1}Wintertodt}{42}{appendix.3.1}%
+\contentsline {section}{\numberline {1.1}Applications}{43}{section.3.1.1}%
+\contentsline {part}{IV\hspace {1em}Mining}{44}{part.4}%
+\contentsline {part}{V\hspace {1em}Quests}{45}{part.5}%
