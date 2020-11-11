@@ -35,21 +35,28 @@ class TestPolicies(unittest.TestCase):
 	def setUp(self):
 		self.fm = Firemaker(500_000, None)
 
+	def test_empty_policies_return_empty_list(self):
+		self.assertEqual(Policies.roots_only(self.fm, 0), [])
+		self.assertEqual(Policies.kindling_only(self.fm, 0), [])
+		self.assertEqual(Policies.kindling_till_bonus(self.fm, 0), [])
+		self.assertEqual(Policies.kindling_till_x(self.fm, 0, 430), [])
+
 	def test_roots_only(self):
-		Policies.roots_only(self.fm, 2000)
-		self.assertEqual(self.fm.xp, self.fm.E0 + 2000/10*66*3)
+		self.assertEqual(Policies.roots_only(self.fm, 2000), [('root', ceil(2000 / 10))])
 
 	def test_kindling_only(self):
-		Policies.kindling_only(self.fm, 2000)
-		self.assertEqual(self.fm.xp, self.fm.E0 + 2000/25*66*3.8)
+		self.assertEqual(Policies.kindling_only(self.fm, 2000), [('kindling', ceil(2000 / 25))])
 
 	def test_kindling_till_x(self):
-		Policies.kindling_till_x(self.fm, 2000, 610)
-		self.assertEqual(self.fm.xp, self.fm.E0 + ceil((2000 - 25*ceil(610/25))/10)*66*3 + ceil(610/25)*66*3.8)
+		self.assertEqual(Policies.kindling_till_x(self.fm, 2000, 610), [
+			('kindling', ceil(610 / 25)), 
+			('root', ceil( (2000 - 25 * ceil(610 / 25)) / 10 ))
+		])
 
-	def test_kindling_till_x_below_threshold(self):
-		Policies.kindling_till_x(self.fm, 420, 610)
-		self.assertEqual(self.fm.xp, self.fm.E0 + ceil((420 - 25*ceil(420/25))/10)*66*3 + ceil(420/25)*66*3.8)
+	def test_kindling_till_x_but_T_is_below_threshold(self):
+		self.assertEqual(Policies.kindling_till_x(self.fm, 420, 610), [
+			('kindling', ceil(min(420, 610) / 25))
+		])
 
 
 class TestFiremaker(unittest.TestCase):

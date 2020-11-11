@@ -1,0 +1,10 @@
+The experience required to reach a level $L$ is given by,
+\begin{align}\label{eq:xp_given_level}
+	\mathcal{L}^{-1}(L) &\equiv \left \lfloor \frac{1}{4} \sum_{l=1}^{L-1} \left \lfloor l + 300\cdot2^{l/7} \right \rfloor \right\rfloor\\
+	&\approx \frac{1}{8}\left( L^2 - L + 600\frac{2^{L/7} - 2^{1/7}}{2^{1/7}-1}\right).
+\end{align}
+The level of a skill with $E$ experience is defined as:
+\begin{align}\label{eq:level_given_xp}
+	\mathcal{L}(E).
+\end{align}
+No analytic form has been found for this equation, however it can be straightforwardly evaluated by numerically inverting Eq.~(\ref{eq:xp_given_level}).

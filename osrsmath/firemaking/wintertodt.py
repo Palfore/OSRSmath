@@ -83,13 +83,16 @@ def hours_for_xp(initial_fm_xp, final_fm_xp, target_points, policy, minutes_per_
 	return minutes_per_game_estimate * kills_for_xp(initial_fm_xp, final_fm_xp, target_points, policy) / 60
 
 class Policies:
+	""" Returns a sequence of actions in terms of (action, count) pairs. """
 	@staticmethod
 	def roots_only(firemaker, target_points):
-		firemaker.burn('root', n=actions_to_target('root', target_points))
+		n = actions_to_target('root', target_points)
+		return [('root', n)] if n > 0 else []
 
 	@staticmethod
 	def kindling_only(firemaker, target_points):
-		firemaker.burn('kindling', n=actions_to_target('kindling', target_points))
+		n = actions_to_target('kindling', target_points)
+		return [('kindling', n)] if n > 0 else []
 
 	@staticmethod
 	def kindling_till_x(firemaker, target_points, x):
@@ -98,10 +101,8 @@ class Policies:
 		points_remaining = max(target_points - points_from_kindling, 0)
 		num_roots = actions_to_target('root', points_remaining)
 		points_from_roots = ACTIONS['kindling']['points'] * num_roots
-
 		assert points_from_kindling + points_from_roots >= target_points
-		firemaker.burn('kindling', num_kindling)
-		firemaker.burn('root', num_roots)
+		return ([('kindling', num_kindling)] if num_kindling > 0 else []) + ([('root', num_roots)] if num_roots > 0 else [])
 
 	@staticmethod
 	def kindling_till_bonus(firemaker, target_points):
@@ -126,20 +127,31 @@ class Firemaker:
 			self._gain_xp(ACTIONS[item]['multiplier'] * level(self.xp))
 		return self.xp
 
+	def perform_action(self, action, n=1):
+		if action in BURNING_ACTIONS:
+			return self.burn(action, n=n)
+		raise NotImplementedError("Only burning actions are currently supported.")
+
 	def kill(self, target_points=500, k=1):  # By roots only
 		if target_points < 0:
 			raise ValueError(f"Cannot obtain a negative amount ({target_points}) of points.")
 		if k < 0:
 			raise ValueError(f"Cannot perform a negative number ({k}) of kills.")
+			
+		for fight in range(k):
+			# Carry out the actions within the fight.
+			for action, count in self.policy(self, target_points):
+				self.perform_action(action, n=count)
 
-		for _ in range(k):
-			self.policy(self, target_points)
+			# If you win, gain the bonus experience.
 			if target_points >= POINTS_REQUIRED:
 				self._gain_xp(bonus_experience(self.xp))
 		return self.xp
 
 	def _gain_xp(self, xp):
 		self.xp = min(round(self.xp + xp, 1), EXPERIENCE_CAP)
+
+
 
 if __name__ == '__main__':
 	import matplotlib.pyplot as plt

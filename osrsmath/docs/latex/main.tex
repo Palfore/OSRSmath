@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage[toc,page]{appendix}
 \graphicspath{{../../}} % results/ will reference results.
+\usepackage{xr}
 
 %%% Multiple Appendicies
 \makeatletter
@@ -21,6 +22,10 @@
 	\addcontentsline{toc}{section}{Introduction}
 		\input{tex/introduction.tex}
 	
+	\part{General}
+		\chapter{Experience and Levels}\label{chp:experience_and_levels}
+			\input{tex/general/experience_and_levels.tex}
+
 	\part{Combat}
 		\input{tex/combat/list_of_terms.tex}
 		\input{tex/combat/overview.tex}
