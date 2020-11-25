@@ -1,9 +1,10 @@
 from osrsmath.apps.optimize.logic.utility import get_maximum_sets
 from osrsmath.apps.optimize.logic.gear import (
-	get_offensive_bonuses, get_offensive_melee_equipment, get_equipable_gear, meets_requirements, Weapon
+	get_offensive_bonuses, get_offensive_equipment, get_equipable_gear, meets_requirements, Weapon
 )
 from osrsmath.apps.optimize.logic.evaluation import mmap, eval_set
-from osrsmath.combat.player import get_equipment_by_name
+from osrsmath.combat.equipment import EquipmentPool
+from osrsmath.combat.fighter import stance_to_style, bonus_to_triangle
 from collections import defaultdict
 from pprint import pprint
 import itertools
@@ -28,7 +29,7 @@ def get_unique_equipment(attack_style, slot_equipment):
 		unique_equipment, getter=lambda x: x[1].values()  # x[1] -> stats
 	)]
 
-def get_armour_sets(attack_style, gear):
+def get_armour_sets(attack_style, gear, weapon):
 	''' Returns sets of load-outs, where each set is uniquely-maximal.
 		@param attack_style The attack style which determines maximal-ness.
 		@param gear The gear to consider.
@@ -39,6 +40,29 @@ def get_armour_sets(attack_style, gear):
 	if 'shield' in gear:
 		assert '2h' not in gear
 
+	if attack_style == 'ranged':
+		if "karil's crossbow" in weapon['name'].lower():
+			gear['ammo'] = [a for a in gear['ammo'] if a['name'].lower() == 'bolt racks']
+		elif "crystal bow" in weapon['name'].lower():
+			gear['ammo'] = []
+		elif "craw's bow" in weapon['name'].lower():
+			gear['ammo'] = []
+		elif "dorgeshuun crossbow" in weapon['name'].lower():
+			gear['ammo'] = [a for a in gear['ammo'] if a['name'].lower() == 'bone bolts']
+		elif ("lizard" in weapon['name'].lower()) or ("salamander" in weapon['name'].lower()):
+			gear['ammo'] = [a for a in gear['ammo'] if a['name'].lower() in ('guam tar', 'marrentill tar', 'tarromin tar', 'harralander tar')]
+		elif "ballista" in weapon['name'].lower():
+			gear['ammo'] = [a for a in gear['ammo'] if 'javalin' in a['name'].lower()]
+		else:
+			ammo_requirement = {
+				'bows': 'arrow',
+				'crossbows': 'bolt',
+				'grenade': None,
+				'thrown_weapons': None,
+				'chinchompas': None,
+			}[weapon['weapon']['weapon_type']]
+			
+			gear['ammo'] = [a for a in gear['ammo'] if ammo_requirement and (ammo_requirement in a['name'])]
 	reduced_equipment = [[
 		(slot, e['name']) for e in get_unique_equipment(attack_style, equipment)
 	] for slot, equipment in gear.items()]
@@ -46,28 +70,31 @@ def get_armour_sets(attack_style, gear):
 
 
 class Solver:
-	def __init__(self, training_skill, player_stats, ignore, adjustments, equipment_data, progress_callback=None):
+	def __init__(self, training_skill, player_stats, ignore, adjustments, progress_callback=None):
 		self.training_skill = training_skill
 		self.player_stats = player_stats
 		self.callback = progress_callback if progress_callback else lambda x: None
+
+		self.triangle = {'attack': 'melee', 'strength': 'melee', 'defence': 'melee', 'controlled': 'melee', 'ranged': 'ranged', 'ranged and defence': 'ranged', 'magic': 'magic', 'magic and defence': 'magic'}[training_skill]
 		self.gear = get_equipable_gear(
-			get_offensive_melee_equipment(equipment_data), player_stats, ignore, adjustments
+			training_skill, get_offensive_equipment(self.triangle), player_stats, ignore, adjustments
 		)
 		self.special_sets = []
 
 	def add_special_set(self, weapons, gear):
-		gear = {s: get_equipment_by_name(g) for s, g in gear.items()}
+		pool = EquipmentPool()
+		gear = {s: pool.by_name(g) for s, g in gear.items()}
 		if not all(meets_requirements(self.player_stats, g) for g in gear.values()):
 			return
 		if weapons:
-			weapons = [get_equipment_by_name(w) for w in weapons]
+			weapons = [pool.by_name(w) for w in weapons]
 			weapons = [w for w in weapons if meets_requirements(self.player_stats, w)]
 			if not weapons:
 				return
 		self.special_sets.append((weapons, gear))
 
 	def solve(self):
-		attack_types = ['stab', 'slash', 'crush']
+		attack_types = {'melee': ['stab', 'slash', 'crush'], 'ranged': ['ranged'], 'magic': ['magic']}[self.triangle]
 		equipment_sets = []
 		M = len(attack_types)*(len(self.special_sets) + 1)
 		i = 1
@@ -108,10 +135,10 @@ class Solver:
 		armour = remove(self.gear, *ignore)
 		s = []
 		for stance in weapon['weapon']['stances']:
-			if Weapon.stance_can_do(stance, self.training_skill, attack_type, allow_controlled=False):
+			if Weapon.stance_can_do(stance, self.training_skill, attack_type):
 				s.extend([
 					(stance['combat_style'], [('weapon', weapon['name']), *a])
-						for a in get_armour_sets(stance['attack_type'], armour)
+						for a in get_armour_sets( stance_to_style(bonus_to_triangle(attack_type), stance), armour, weapon)
 				])
 		return s
 
@@ -122,19 +149,19 @@ class Solver:
 		]
 
 
-def get_sets(training_skill, player_stats, defenders, ignore, adjustments, equipment_data, considered_sets, progress_callback=None):
+def get_sets(training_skill, player_stats, defenders, ignore, adjustments, considered_sets, progress_callback=None):
 	sets = {
 		'void_knight': (None, {
 				'body': 'Void knight top',
 				'legs': 'Void knight robe',
 				'hands': 'Void knight gloves',
-				'head': 'Void melee helm'
+				'head': ('Void ranger helm' if 'ranged' in training_skill else ('Void mage helm' if 'magic' in training_skill else 'Void melee helm'))
 		}),
 		'elite_void': (None, {
 				'body': 'Elite void top',
 				'legs': 'Elite void robe',
 				'hands': 'Void knight gloves',
-				'head': 'Void melee helm'
+				'head': ('Void ranger helm' if 'ranged' in training_skill else ('Void mage helm' if 'magic' in training_skill else 'Void melee helm'))
 		}),
 		'obsidian': ([
 				'Toktz-xil-ek', 'Toktz-xil-ak', 'Tzhaar-ket-em', 'Tzhaar-ket-om', 'Tzhaar-ket-om (t)'
@@ -150,7 +177,7 @@ def get_sets(training_skill, player_stats, defenders, ignore, adjustments, equip
 				'neck': 'Berserker necklace'
 		}),
 		'slayer_helm': (None, {
-			'head': 'Slayer helmet'
+			'head': 'Slayer helmet (i)'
 		}),
 		'salve_amulet': (None, {
 			'neck': 'Salve amulet'
@@ -162,27 +189,53 @@ def get_sets(training_skill, player_stats, defenders, ignore, adjustments, equip
 				'body': "Dharok's platebody",
 				'legs': "Dharok's platelegs",
 			}
+		),
+		'thammaron': ([
+			"Thammaron's sceptre"
+			], {}
+		),
+		'viggoras': ([
+			"Viggora's chainmace"
+			], {}
+		),
+		'DHL': ([
+			"Dragon hunter lance"
+			], {}
+		),
+		'DHCB': ([
+			"Dragon hunter crossbow"
+			], {}
+		),
+		'crawsbow': ([
+			"Craw's bow"
+			], {}
 		)
 	}
-	solver = Solver(training_skill, player_stats, ignore, adjustments, equipment_data, progress_callback)
+	solver = Solver(training_skill, player_stats, ignore, adjustments, progress_callback)
 	for name, special_set in sets.items():
 		if name in considered_sets:
-			print(name)
 			solver.add_special_set(*special_set)
 	return solver.solve()
 
-def get_best_set(player_stats: dict, training_skill, states, defenders, sets, include_shared_xp=True, progress_callback=None, num_cores=0):
+def get_best_sets(fighter, training_skill, states, defenders, sets, include_shared_xp=True, progress_callback=None, num_cores=0):
 	""" Returns the equipment set that provides the highest experience rate for the training_skill.
-		@param player_stats: {'attack': 40, ...}
+		@param fighter Fighter class instance
 		@param training_skill: 'attack'
 		@param sets: [{'cape': 'Fire cape', ...}, {'cape': 'Legends cape', ...}, ...] """
-	sets = mmap(
-		lambda s: eval_set(player_stats, training_skill, states, defenders, s, include_shared_xp),
+	loadouts = mmap(
+		lambda s: eval_set(fighter, training_skill, states, defenders, s, include_shared_xp),
 		sets,
 		progress_callback if progress_callback else lambda x: None,
 		num_cores=num_cores
 	)
-	if not sets:
-		return None, 0, None
+	if not loadouts:
+		return []
+	return list(reversed(sorted(loadouts, key=lambda x: x[1])))  # x[1] -> xp rate
 
-	return max(sets, key=lambda x: x[1]), [s[1] for s in sets]  # x[1] -> xp rate
+
+def get_best_set(fighter, training_skill, states, defenders, sets, include_shared_xp=True, progress_callback=None, num_cores=0):
+	""" Returns the equipment set that provides the highest experience rate for the training_skill.
+		@param fighter Fighter class instance
+		@param training_skill: 'attack'
+		@param sets: [{'cape': 'Fire cape', ...}, {'cape': 'Legends cape', ...}, ...] """
+	return get_best_sets[0]

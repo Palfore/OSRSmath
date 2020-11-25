@@ -1,0 +1,116 @@
+The average damage described in Section \ref{sec:average_damage} can be expanded to give,
+\begin{align}
+	\langle D \rangle_\text{overall} &= \frac{1}{h_0}\left(
+		\sum_{n=M+1}^{h_{0}}\frac{M}{2} +
+		\sum_{n=1}^{y} \frac{n}{2}\left(2 - \frac{n + 1}{M+1}\right)
+	\right) \\
+	&= \frac{1}{h_0}\left(
+		\frac{M}{2}(h_0-y) +
+		\sum_{n=1}^{y}n - \frac{1}{2}\sum_{n=1}^yn\frac{n + 1}{M+1}
+	\right) \\
+	&= \frac{1}{2h_0}\left(
+		Mh_0-My + y(y+1)
+		 - \frac{1}{2({M+1})}\sum_{n=1}^y(n^2 + n)
+	\right) \\
+	&= \frac{1}{2h_0}\left(
+		Mh_0-My + y(y+1) - \frac{y(y+1)}{2({M+1})}
+		 - \frac{y(n+1)(2y+1)}{6({M+1})}
+	\right) \\
+	&= \frac{1}{2h_0({M+1})}\left(
+		M^{2}h_{0}-M^{2}y+My^{2}+yM+Mh_{0}-My - \frac{y^3-y}{3}
+	\right) \\
+	&= \frac{y(y+1)}{h_0({M+1})}\left(
+		\frac{M(M+1)h_{0}}{2y(y+1)}+\frac{(y-M)M}{2(y+1)} - \frac{y-1}{6}
+	\right) \\
+	&= \frac{y(y+1)}{h_0({M+1})}\left(
+		\frac{M(M+1)h_{0}}{2y(y+1)}+\frac{(y-M)M}{2(y+1)} +\frac{y+1}{2} -\frac{1}{3}(2y+1)
+	\right)
+	\label{eq:app-average-damage-original}
+\end{align}
+where $y=\min(M, h_0)$. In the second line, we used:
+\begin{align}
+	\sum_{a+1}^b1&=\begin{cases}
+			b-a&\text{ if } b>a\\
+			0 &\text{ else }
+		\end{cases}\\
+		&=b-\begin{cases}
+			a &\text{ if } b>a\\
+			0 &\text{ else }
+		\end{cases}\\
+		&=b-\min(a, b)
+\end{align}
+To finish, let's focus on,
+\begin{align}
+	 &\frac{M(M+1)h_{0}}{2y(y+1)}+\frac{(y-M)M}{2(y+1)} +\frac{y+1}{2} \\
+	=&\frac{1}{2y(y+1)}\Big[ M(M+1)h_{0}+y(y-M)M +y(y+1)^2 \Big]\\
+	=&\frac{1}{2y(y+1)}\Big[ M^2h_{0}+Mh_0+My^2-M^2y +y^3+2y^2+y \Big].\label{eq:app-average-damage-bracket}
+\end{align}
+This is a hard equation to simplify since the $M$'s and $h_0$'s are implicitly embedded in the $y$'s, but if you play with it long enough you can ``discover'' a way to simplify it - a form \textit{power reduction} that relies on getting rid of as many $y$'s as possible.
+
+\section{Power Reduction}
+	I'd like to preface the next part by saying the final result can easily be determined by plugging in $m$ as the $\min$, and $h_0$ as the $\min$ and combining the result. In this instance it works out nicely, but we will focus on general machinery to solve these problems assuming the solution was not so nice. Our goal here is to pull the $m$'s and $h_0$'s out of $y$. To do this, let's see if there is a way to construct $y^2$ from the other variables, specifically only using $y^1$. We know that if $M < h_0$, we need a term like $M^2$, and in the opposite case, we need a term like $h_0^2$,
+	\begin{align}
+		y^2 \sim M^2 \text{ or } h_0^2.
+	\end{align}
+	Based on this, we should be able to use $\min$ to switch between these two. So if we write the first term using $y$, we'd have something like $My$, which is true when $M$ is the minimum. If it isn't the minimum, there should be a second term which cancels the now $Mh_0$ term plus the required $h_0^2$ term:
+	\begin{align}
+		y^2 = My + h_0(y - M)\,\,\,\,\,(!)
+	\end{align}
+	Using the same logic, we can inductively deduce,
+	\begin{align}
+		\boxed{y^{n+1} = My^n + h_0^n(y - M) = My^n + h_0^ny - Mh_0^n.}
+	\end{align}
+	(and as an identity for the math people, with $\gamma = \min(a, b)$):
+	\begin{align}
+		\boxed{\gamma^{n+1} = a\gamma^n + b^n(\gamma - a) = a\gamma^n + b^n\gamma - ab^n}
+	\end{align}
+	In fact, this holds for $\max$ as well, or any \emph{similar} piece-wise function.
+	Writing this as a recursive sequence by letting $g(n)=\gamma^n$ yields,
+	\begin{align}
+		g(n+1) = ag(n) + b^n(g(1) - a),
+	\end{align}
+	Under the initial condition $g(1)=\gamma$, \href{https://www.wolframalpha.com/input/?i=g%28n%2B1%29%3Da*g%28n%29%2Bb%5En%28C-a%29}{WolframAlpha} gives the general solution as,
+	\begin{align}
+		g(n) = a^n + (\gamma - a)\frac{a^n - b^n}{a - b} \\
+		\boxed{g(n) = a^n + (\gamma - a)\sum_{i=0}^{n-1} a^{n-i-1}b^j,}
+	\end{align}
+	where the second line uses the difference of powers formula. This could have been solved by hand, but we've had enough fun with recursion in the other sections! This yields,
+	\begin{align}
+		g(1) &= \gamma\\
+		g(2) &= a^2 + (\gamma - a)(a + b) \\
+			&= a^2 + a\gamma - a^2  + b\gamma - ab \\
+			&= a\gamma + b(\gamma - a) \\
+		g(3) &= a^3 + (\gamma - a)\frac{a^3 - b^3}{a - b} \\
+			&= a^3 + (\gamma - a)(a^2 + ab + b^2) \\
+			&= a^3 + \gamma a^2 + \gamma ab + \gamma b^2 - a^3 - a^2b - ab^2 \\
+			&= \gamma a^2 + \gamma ab + \gamma b^2 - a^2b - ab^2.
+	\end{align}
+	These agree with the original iterative equation. Okay, so this is a bit overkill since at most $y^3$ appears, so having general powers isn't too helpful. Nonetheless, we can now reduce the powers of $y$ in the original equation, and see how that simplifies things.
+\section{Simplifying}
+	We can now reduce the bracketed term in Eq.~\ref{eq:app-average-damage-bracket}:
+	\begin{align}
+	 	&\phantom{=}M^2h_0+Mh_0+My^2                   -M^2y + y^3                                    +2y^2+y \\
+	 	&=M^{2}h_{0}+Mh_{0}+M^{2}y+h_{0}yM-h_{0}M^{2}-M^{2}y+yM^{2}+yMh_{0}+yh_{0}^{2}+\\
+	 		&\phantom{=========} -M^{2}h_{0}-h_{0}^{2}M+2My+2h_{0}y-2h_{0}M+y\\
+	 	&=\left(-M^{2}y+yM^{2}+M^{2}y+yMh_{0}+yh_{0}^{2}+2My+2h_{0}y+y+h_{0}yM\right)+\\
+	 		&\phantom{=========} \left(M^{2}h_{0}+Mh_{0}-h_{0}M^{2}+-M^{2}h_{0}-h_{0}^{2}M-2h_{0}M\right)\\
+	 	&=\left(2My+2h_{0}y+y+2yMh_{0}+M^{2}y+yh_{0}^{2}\right)+\left(-M^{2}h_{0}-h_{0}^{2}M-h_{0}M\right)
+	\end{align}
+	Having eliminated the ``hidden'' variables, let's try to re-group into powers of $y$:
+	\begin{align}
+	 	&=y^{2}+\left(My+h_{0}y+y+2yMh_{0}+M^{2}y+yh_{0}^{2}\right)+\left(-M^{2}h_{0}-h_{0}^{2}M\right)\\
+	 	&=2y^{2}+y+2yMh_{0}+M^{2}y+yh_{0}^{2}+-M^{2}h_{0}-h_{0}^{2}M+Mh_{0}\\
+	 	&=y^{2}M+y+y^{2}+y^{2}h_{0}+y^{2}+Mh_{0}\\
+	 	&=y\left(yM+yh_{0}+y+M+h_{0}+1\right)\\
+	 	&=y\left(y+1\right)\left(M+h_{0}+1\right)
+	\end{align}
+	Putting this into the corresponding term in Eq.~\ref{eq:app-average-damage-original} gives
+	\begin{align}
+		\frac{1}{2y(y+1)}y(y+1)\left(M+h_{0}+1\right) = \frac{1}{2}\left(M+h_{0}+1\right)
+	\end{align}
+	and so finally we arrive at,
+	\begin{align}
+		\boxed{\langle D \rangle_\text{overall} = \frac{y(y+1)}{h_0({M+1})}\left[
+			 \frac{1}{2}\left(M+h_{0} + 1\right) -\frac{1}{3}(2y+1)
+		\right]}.
+	\end{align}

@@ -2,7 +2,8 @@ from osrsmath.apps.GUI.optimize.optimize_skeleton import Ui_Form
 from osrsmath.apps.GUI.shared.widgets import Savable
 from PySide2 import QtCore, QtGui, QtWidgets
 
-from osrsmath.combat.player import get_equipment_by_name
+from osrsmath.combat.spells import STANDARD, ANCIENT
+from osrsmath.combat.equipment import EquipmentPoolFiltered
 import osrsmath.combat.boosts as boosts
 import inspect
 import webbrowser
@@ -38,6 +39,11 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 			'elite_void',
 			'berserker_necklace',
 			'salve_amulet',
+			'thammaron',
+			'viggoras',
+			'DHL',
+			'DHCB',
+			'crawsbow',
 		]
 		self.entities = {
 			'monsters': Savable.Entity(
@@ -54,6 +60,9 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 			'redose_level': Savable.LineEdit(self.redose_level, None),
 			'prayers': Savable.DropDown(self.prayers, None),
 			'prayer_attributes': Savable.DropDown(self.prayer_attributes, None),
+			'spell': Savable.DropDown(self.spell, None),
+			'function': Savable.DropDown(self.function, None),
+			'start_end': Savable.LineEdit(self.start_end, 'asd1,1,1-99,99,99'),
 
 			**{s: Savable.CheckBox(getattr(self, s), True) for s in self.special_sets if s != 'dharok'},
 			'dharok': Savable.LineEdit(self.dharok, 1),
@@ -68,18 +77,17 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 				lambda _=None, slot=slot: self.open_link(slot)
 			)
 
+		def get_members(cls):
+			members = inspect.getmembers(cls, predicate=inspect.isfunction)
+			members.sort(key=lambda m: inspect.getsourcelines(m[1])[1])
+			names, functions = list(zip(*members))
+			return names
 
+		self.potions.addItems(get_members(boosts.Potions))
+		self.prayers.addItems(get_members(boosts.Prayers))
 
-		potion_names = list(list(zip(*inspect.getmembers(boosts.Potions, predicate=inspect.isfunction)))[0])
-		assert 'none' in potion_names
-		self.potions.addItem(potion_names.pop(potion_names.index('none')))  # Place 'none' first
-		self.potions.addItems(potion_names)
-
-		prayer_names = list(list(zip(*inspect.getmembers(boosts.Prayers, predicate=inspect.isfunction)))[0])
-		assert 'none' in prayer_names
-		self.prayers.addItem(prayer_names.pop(prayer_names.index('none')))  # Place 'none' first
-		self.prayers.addItems(prayer_names)
-
+		self.function.currentIndexChanged.connect(self.on_function_select)
+		self.training_skill.currentIndexChanged.connect(self.on_training_skill_select)
 		self.potions.currentIndexChanged.connect(self.on_potion_select)
 		self.boosting_scheme.currentIndexChanged.connect(self.on_boost_scheme_select)
 		self.prayers.currentIndexChanged.connect(self.on_prayer_select)
@@ -88,6 +96,8 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		self.cpu_cores.setValidator(QtGui.QIntValidator(0, os.cpu_count()))  # Apparently, it only validate the # of digits
 		self.cpu_cores.setToolTip(f'0 will use all cores. You have {os.cpu_count()}.')
 
+		self.on_function_select()
+		self.on_training_skill_select()
 		self.on_boost_scheme_select()
 		self.on_potion_select()
 		self.on_prayer_select()
@@ -98,6 +108,15 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		shortcut = QtWidgets.QShortcut(QtGui.QKeySequence(QtCore.Qt.Key_Backspace), self.opponents); # For mac
 		shortcut.activated.connect(self.remove_selected_monster)
 
+		# Populate spells
+		spells = list(STANDARD.keys()) + list(ANCIENT.keys())
+		completer = QtWidgets.QCompleter(spells)
+		self.spell.clear()
+		self.spell.addItems(spells)
+		self.spell.setCompleter(completer)
+		self.spell.completer().setCompletionMode(QtWidgets.QCompleter.PopupCompletion)
+
+
 	def get_selected_sets(self):
 		return [s for s in self.special_sets if (
 			(s == 'dharok' and int(self.entities[s].get())) != 0 or
@@ -105,20 +124,34 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		)]
 
 	def open_link(self, slot):
+		pool = EquipmentPoolFiltered()
 		item = getattr(self, slot).currentText()
 		try:
-			equipment = get_equipment_by_name(item)
+			equipment = pool.by_name(item)
 		except ValueError as e:
 			QtWidgets.QMessageBox(
 				QtWidgets.QMessageBox.Warning, 'Wiki Link not Found', str(e)
 			).exec_()
 			return
 
-		pprint(equipment)
 		# Encode ending (item name) to "%xx escape" format.
-		p = Path(get_equipment_by_name(item)['wiki_url'])
+		p = Path(equipment['wiki_url'])
 		url = p.parent/quote(p.name)
 		webbrowser.open(str(url))
+
+	def on_function_select(self):
+		if self.function.currentText() == 'Train':
+			self.stackedWidget.setCurrentIndex(0)
+		else:
+			self.stackedWidget.setCurrentIndex(1)
+
+	def on_training_skill_select(self):
+		if self.training_skill.currentText() == 'magic':
+			enable(self.spell)
+			enable(self.spell_label)
+		else:
+			disable(self.spell)
+			disable(self.spell_label)
 
 	def on_prayer_select(self):
 		if self.prayers.currentText() == 'none':

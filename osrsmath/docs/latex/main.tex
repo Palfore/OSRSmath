@@ -1,13 +1,59 @@
 \documentclass[10pt,a4paper]{report}
 \usepackage{mystyle}
-\usepackage{geometry}
-\geometry{margin=1.5in}
-
+\usepackage[margin=1.5in]{geometry}
+\usepackage{amsmath}
+\usepackage[toc,page]{appendix}
 \graphicspath{{../../}} % results/ will reference results.
+\usepackage{xr}
+
+%%% Multiple Appendicies
+\makeatletter
+  \@addtoreset{chapter}{part}
+  \@addtoreset{@ppsaveapp}{part}
+\makeatother
+
+
 \begin{document}
+	\subfile{tex/title}
+	\tableofcontents
+	\newpage
 
-\subfile{tex/title}
+	\section*{Introduction}
+	\addcontentsline{toc}{section}{Introduction}
+		\input{tex/introduction.tex}
+	
+	\part{General}
+		\chapter{Experience and Levels}\label{chp:experience_and_levels}
+			\input{tex/general/experience_and_levels.tex}
 
-\subfile{tex/body.tex}
+	\part{Combat}
+		\input{tex/combat/list_of_terms.tex}
+		\input{tex/combat/overview.tex}
+		\input{tex/combat/max_hits.tex}
+		\input{tex/combat/accuracy.tex}
+		\input{tex/combat/models.tex}
+		\chapter{Optimizing Player Equipment}
+			\input{tex/combat/optimizing_player_equipment}
+		\chapter{Optimizing Training Order}
+			\section{Dijkstra's algorithm}
+		
+		\begin{appendices}
+			\chapter{Justifying the Recursive Model Approximation}\label{app:analytic_form_attempt}
+				\input{tex/combat/appendix/recursive_approximation}
+			\chapter{Power Reduction in the Piecewise Recursive Model}
+				\input{tex/combat/appendix/power_reduction}
+			\chapter{Fighting Probabilities}
+				\input{tex/combat/appendix/probability}
+		\end{appendices}
+
+	\part{Woodcutting}
+	\part{Firemaking}
+		\chapter{Wintertodt}
+			\input{tex/firemaking/wintertodt}
+	\part{Mining}
+	\part{Quests}
+
+\bibliographystyle{unsrt}
+\bibliography{main}
 
 \end{document}

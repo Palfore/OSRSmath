@@ -97,7 +97,6 @@ class MonsterPanel(QtWidgets.QWidget, Ui_Monsters):
 		self.nmz_only_changed()
 		self.on_select()
 
-
 		self.nmz_only.setToolTip(self.ADD_TOOLTIP)
 		self.add.setToolTip(self.NMZ_ONLY_TOOLTIP)
 

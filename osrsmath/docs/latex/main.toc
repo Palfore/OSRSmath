@@ -1,39 +1,55 @@
-\contentsline {part}{I\hspace {1em}Modeling Combat}{4}{part.1}%
-\contentsline {chapter}{\numberline {1}Basics}{5}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Maximum Hit}{5}{section.1.1}%
-\contentsline {subsubsection}{Magic}{6}{equation.1.1.4}%
-\contentsline {section}{\numberline {1.2}Accuracy}{6}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Experience and Damage Per Second}{7}{section.1.3}%
-\contentsline {chapter}{\numberline {2}Models}{8}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Crude Model}{9}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Health after $n$ attacks}{9}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Attacks until $h$ health}{9}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2.2}Average}{9}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Average Damage}{9}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Attacks to kill}{10}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}Recursive Model}{10}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Expected Damage per Hit}{10}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Health after $n$ attacks}{11}{subsection.2.3.2}%
-\contentsline {subsubsection}{Approximate Solution}{13}{equation.2.3.33}%
-\contentsline {subsection}{\numberline {2.3.3}Attacks until $h$ health}{14}{subsection.2.3.3}%
-\contentsline {section}{\numberline {2.4}Approximately Analytic Recursion}{14}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Health after $n$ attacks}{14}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Attacks until $h$ health}{15}{subsection.2.4.2}%
-\contentsline {section}{\numberline {2.5}Health Regeneration}{15}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Comparisons}{16}{section.2.6}%
-\contentsline {part}{II\hspace {1em}Applications}{19}{part.2}%
-\contentsline {chapter}{\numberline {3}Nightmare Zone}{20}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Experimental Considerations}{20}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Validation}{20}{subsection.3.1.1}%
-\contentsline {subsubsection}{Time-Dependent Boosts}{22}{figure.caption.9}%
-\contentsline {subsubsection}{Comparisons}{22}{equation.3.1.1}%
-\contentsline {chapter}{\numberline {4}Optimal Equipment}{24}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Optimal Training Order}{26}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Improvements}{30}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Conclusion}{31}{chapter.7}%
-\contentsline {chapter}{Appendices}{32}{section*.13}%
-\contentsline {chapter}{\numberline {A}Average Damage}{33}{appendix.1.A}%
-\contentsline {section}{\numberline {A.1}Power Reduction}{34}{section.1.A.1}%
-\contentsline {section}{\numberline {A.2}Simplifying}{35}{section.1.A.2}%
-\contentsline {chapter}{\numberline {B}Recursive Analytic Solution Attempt}{36}{appendix.1.B}%
-\contentsline {chapter}{\numberline {C}Recursive Approximation Justification}{38}{appendix.1.C}%
+\contentsline {section}{Introduction}{3}{Doc-Start}%
+\contentsline {part}{I\hspace {1em}General}{5}{part.1}%
+\contentsline {chapter}{\numberline {1}Experience and Levels}{6}{chapter.1.1}%
+\contentsline {part}{II\hspace {1em}Combat}{7}{part.2}%
+\contentsline {chapter}{\numberline {1}Overview}{9}{chapter.2.1}%
+\contentsline {section}{\numberline {1.1}Autonomous Mechanics}{9}{section.2.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Combat Skills, Combat Triangle and Attack Styles}{9}{subsection.2.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Equipment Bonuses}{10}{subsection.2.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Ticks and Attack Speed}{11}{subsection.2.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Summary}{12}{subsection.2.1.1.4}%
+\contentsline {section}{\numberline {1.2}Agency}{12}{section.2.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Special Attacks}{12}{subsection.2.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Temporary Boosts and Healing}{12}{subsection.2.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Item Switching and Movement}{12}{subsection.2.1.2.3}%
+\contentsline {chapter}{\numberline {2}Maximum Hits}{13}{chapter.2.2}%
+\contentsline {section}{\numberline {2.1}Melee}{13}{section.2.2.1}%
+\contentsline {section}{\numberline {2.2}Ranged}{13}{section.2.2.2}%
+\contentsline {section}{\numberline {2.3}Magic}{13}{section.2.2.3}%
+\contentsline {chapter}{\numberline {3}Accuracy}{15}{chapter.2.3}%
+\contentsline {chapter}{\numberline {4}Models}{16}{chapter.2.4}%
+\contentsline {section}{\numberline {4.1}Important Quantities}{16}{section.2.4.1}%
+\contentsline {section}{\numberline {4.2}Crude}{16}{section.2.4.2}%
+\contentsline {section}{\numberline {4.3}Averaged Piecewise}{16}{section.2.4.3}%
+\contentsline {section}{\numberline {4.4}Piecewise}{16}{section.2.4.4}%
+\contentsline {section}{\numberline {4.5}Markov Chain}{16}{section.2.4.5}%
+\contentsline {chapter}{\numberline {5}Optimizing Player Equipment}{17}{chapter.2.5}%
+\contentsline {section}{\numberline {5.1}The Projection Vector}{17}{section.2.5.1}%
+\contentsline {section}{\numberline {5.2}Set Reduction}{18}{section.2.5.2}%
+\contentsline {chapter}{\numberline {6}Optimizing Training Order}{20}{chapter.2.6}%
+\contentsline {section}{\numberline {6.1}Dijkstra's algorithm}{20}{section.2.6.1}%
+\contentsline {chapter}{Appendices}{21}{section*.3}%
+\contentsline {chapter}{\numberline {A}Justifying the Recursive Model Approximation}{22}{appendix.1.A}%
+\contentsline {chapter}{\numberline {B}Power Reduction in the Piecewise Recursive Model}{24}{appendix.1.B}%
+\contentsline {section}{\numberline {B.1}Power Reduction}{25}{section.1.B.1}%
+\contentsline {section}{\numberline {B.2}Simplifying}{26}{section.1.B.2}%
+\contentsline {chapter}{\numberline {C}Fighting Probabilities}{27}{appendix.1.C}%
+\contentsline {section}{\numberline {C.1}Definitions}{27}{section.1.C.1}%
+\contentsline {section}{\numberline {C.2}Recursive Equation}{27}{section.1.C.2}%
+\contentsline {section}{\numberline {C.3}Solution}{28}{section.1.C.3}%
+\contentsline {subsection}{\numberline {C.3.1}Corner}{29}{subsection.1.C.3.1}%
+\contentsline {subsection}{\numberline {C.3.2}Top}{29}{subsection.1.C.3.2}%
+\contentsline {subsection}{\numberline {C.3.3}Left}{30}{subsection.1.C.3.3}%
+\contentsline {subsection}{\numberline {C.3.4}Interior}{30}{subsection.1.C.3.4}%
+\contentsline {subsection}{\numberline {C.3.5}Obtaining Power Series}{34}{subsection.1.C.3.5}%
+\contentsline {section}{\numberline {C.4}Summing over $L$}{39}{section.1.C.4}%
+\contentsline {section}{\numberline {C.5}Summary}{41}{section.1.C.5}%
+\contentsline {section}{\numberline {C.6}Comments}{41}{section.1.C.6}%
+\contentsline {part}{III\hspace {1em}Woodcutting}{42}{part.3}%
+\contentsline {part}{IV\hspace {1em}Firemaking}{43}{part.4}%
+\contentsline {chapter}{\numberline {1}Wintertodt}{44}{appendix.4.1}%
+\contentsline {section}{\numberline {1.1}Large groups}{45}{section.4.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Within a Fight}{46}{subsection.4.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Across Fights}{46}{subsection.4.1.1.2}%
+\contentsline {part}{V\hspace {1em}Mining}{47}{part.5}%
+\contentsline {part}{VI\hspace {1em}Quests}{48}{part.6}%

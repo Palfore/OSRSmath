@@ -1,6 +1,6 @@
 # from jsoncomment import JsonComment
 # from osrsmath.apps.optimize import get_sets, get_best_set
-# from osrsmath.combat.player import get_equipment_data
+# from osrsmath.combat.fighter import get_equipment_data
 # from osrsmath.combat.experience import combat_level
 # from osrsmath.combat.monsters import Monster
 # from osrsmath.combat.boosts import BoostingSchemes

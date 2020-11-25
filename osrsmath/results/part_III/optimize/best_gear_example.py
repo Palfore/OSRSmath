@@ -12,7 +12,7 @@
 
 # from jsoncomment import JsonComment
 # from osrsmath.apps.optimize import get_sets, eval_set, load, get_best_set
-# from osrsmath.combat.player import get_equipment_data
+# from osrsmath.combat.fighter import get_equipment_data
 # from osrsmath.combat.experience import combat_level
 # from osrsmath.combat.monsters import Monster
 # from osrsmath.combat.boosts import BoostingSchemes, Prayers, Potions
@@ -23,7 +23,7 @@
 
 # from jsoncomment import JsonComment
 # from osrsmath.combat.monsters import Monster, get_monster_data
-# from osrsmath.combat.player import PlayerBuilder, get_equipment_data, get_equipment_by_name
+# from osrsmath.combat.fighter import PlayerBuilder, get_equipment_data, get_equipment_by_name
 # from osrsmath.combat.rates import experience_per_hour
 # from osrsmath.combat.experience import combat_level, xp_rate
 # from osrsmath.combat.boosts import BoostingSchemes

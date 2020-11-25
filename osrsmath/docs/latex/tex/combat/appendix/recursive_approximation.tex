@@ -1,0 +1,41 @@
+We begin with Eq.~(\ref{eq:simplified_recursion}) which we will restate here with $h_m\to x_n$:
+\begin{align}
+	x_{n+1} = x_n - \frac{x_n}{2}\left(2 - \frac{x_n + 1}{M+1} \right).
+\end{align}
+This formulation looks similar to Newtons method for finding the root of $f(x)$, which is given as
+\begin{align}
+	x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}.
+\end{align}
+After some algebra we find that,
+\begin{align}
+	\frac{f(x_n)}{f'(x_n)} = x_n(1-\gamma x_n).
+\end{align}
+This can be easily solved for $f(x)$ since this is a separable equation:
+\begin{align}
+	\frac{df}{f} &= \frac{dx}{x(1-\gamma x)} \\
+	\int \frac{df}{f} &= \int \frac{dx}{x(1-\gamma x)} \\
+	\ln(f) &= \ln|x| - \ln|\gamma x - 1| + C \\
+	f(x) &= e^C |x||\gamma x - 1|
+\end{align}
+The error, $\epsilon$ in the next iteration of Newtons method is given as,
+\begin{align}
+	\epsilon_{n+1} = \epsilon_{n}^2 \left | \frac{f''(r)}{2f'(r)} \right |,
+\end{align}
+where $r$ is the root we desire. In this case the root we want is,
+\begin{align}
+	\lim_{n\to\infty} x_n = 0
+\end{align}
+since this corresponds to the health reaching zero. The ratio becomes,
+\begin{align}
+	\left| \frac{f''(r)}{2f'(r)} \right| = \gamma,
+\end{align}
+which simplifies the error equation to,
+\begin{align}
+	\epsilon_{n+1} = \gamma \epsilon_{n}^2.
+\end{align}
+This is exactly the same recursive equation we had before! Except that now we have error in health instead of health. So how does this connect? Since we already know the root value (which is 0), the error becomes the upper bound on the health. This means that if we have an error of, for example, 1 that the health must be below that. So, by solving $\epsilon=h$ we can find the number of iterations required to reach below that health. This solution is already given earlier but in the context of error we have,
+\begin{align}
+	\epsilon_{n} = \frac{1}{\gamma}\left( \frac{1}{2} - \gamma \right)^{2^{n}} \\
+	n = \log_2 \log_{\frac{1}{2} - \gamma} (\gamma \epsilon).
+\end{align}
+This has done two things: justify the use exclusion of the $h_m$ term in the original recursive equation (instead of excluding $h^2_m$), and provided a second interpretation of the meaning of $h = 1$. The error comes from a Taylor series, but interestingly all higher order terms die off so this is actually exact. This suggests that for higher precision, the assumption that $\epsilon$ is small is violated and the Taylor series formulation no longer holds.
