@@ -1,6 +1,6 @@
 # The Mathematics and Optimization of OSRS
 
-The purpose of this project is to accurately model [Old School Runescape](https://oldschool.runescape.com/) mechanics in order to optimize or analyze game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. In particular, combat is a particularly rewarding application since it has many layers. This project is currently in progress, so if you notice anything please feel free to open a ticket and let me know!
+The purpose of this project is to accurately model [Old School Runescape](https://oldschool.runescape.com/) mechanics in order to optimize or analyze game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. In particular, combat is a particularly rewarding application since it has many layers. This project is currently in progress, so if you notice anything please feel free to open a ticket and let me know! 
 
 If you're interested, you can join the [discord](https://discord.gg/4SXcKQh) to discuss anything! Or if you would prefer watching a video, you can checkout the [video series](https://www.youtube.com/watch?v=7N9UJX70Z5I&list=PLm3INE_scU5s8NQWmw0fxKtA_6SVxDOc7).
 
@@ -8,11 +8,13 @@ There are three components to this project:
 
 ### 1. Applications
 
-These application provide useful functionalities for end users. Once installed, they can be run using the command: `python -m [Module Location]`.
+These applications provide useful functionalities for end users. Once installed, they can be run using the command: `python -m [Module Location]`.
+Note: The combat code/app is currently being rewritten (after an exploration phase), install via `pip` to explore the interface. Download the codebase to explore other code like firemaking. Once the combat code is ready the `pip` library will be updated. Some of the following instructions may be out of date.
 
 | Application        | Module Location           | Description  |
 | ------------- |:-------------:| :-----|
 | Optimize | `osrsmath.apps.optimize` | What is the most efficient equipment to wear when fighting a given opponent? |
+| Wintertodt | `osrsmath.firemaking.wintertodt` | How many kills are required to reach a given firemaking level? |
 
 [//]: # (| Path | `osrsmath.apps.path` | What is the most mathematically efficient way to get from a set of starting attack, strength, and defence levels, to a final set of levels? This is currently not user-friendly. |)
 
