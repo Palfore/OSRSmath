@@ -16,19 +16,19 @@ class TestWintertodt(unittest.TestCase):
 			with self.subTest(level=l):
 				self.assertEqual(bonus_experience(experience(l)), l*100)
 
-	def test_insuffient_points_gives_zero_crates(self):
-		self.assertEqual(crates_per_kill(400), 0)
+	def test_insuffient_points_gives_zero_rolls(self):
+		self.assertEqual(rolls_per_kill(400), 0)
 
-	def test_crates_per_kill(self):
+	def test_rolls_per_kill(self):
 		# https://oldschool.runescape.wiki/w/Supply_crate#Drop_mechanic
-		self.assertEqual(crates_per_kill(500), 2)
-		self.assertEqual(crates_per_kill(505), 2.01)
-		self.assertEqual(crates_per_kill(750), 2.5)
-		self.assertEqual(crates_per_kill(1005), 3.01)
-		self.assertEqual(crates_per_kill(1500), 4)
+		self.assertEqual(rolls_per_kill(500), 2)
+		self.assertEqual(rolls_per_kill(505), 2.01)
+		self.assertEqual(rolls_per_kill(750), 2.5)
+		self.assertEqual(rolls_per_kill(1005), 3.01)
+		self.assertEqual(rolls_per_kill(1500), 4)
 	
-	def test_excess_points_gives_maximum(self):
-		self.assertEqual(crates_per_kill(10_000_000), 28)
+	def test_excess_points_gives_maximum_rolls(self):
+		self.assertEqual(rolls_per_kill(10_000_000), 28)
 
 
 class TestPolicies(unittest.TestCase):
@@ -104,10 +104,6 @@ class TestFiremaker(unittest.TestCase):
 		self.assertEqual(fm.kill(target_points=600, k=1), fm.E0 + 2_340 + 8_601 + 6_100)
 
 class TestKills(unittest.TestCase):
-	def test_upper_bound_on_kills(self):
-		self.assertEqual(upper_bound_on_kills(743_042 - 65_123, 400), ceil((743_042 - 65_123) / ((400/25)*3.8*50)))
-		self.assertEqual(upper_bound_on_kills(743_042 - 65_123, 610), ceil((743_042 - 65_123) / ((610/25)*3.8*50)))
-
 	def test_kills_for_xp(self):
 		# Work backwords: How much experience gained after num_kill kills at a given level?
 		num_kills = 1000

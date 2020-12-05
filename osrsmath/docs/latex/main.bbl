@@ -21,27 +21,51 @@ Misplacedme.
 \newblock \url{https://www.misplaceditems.com/rs_tools/graph/}.
 
 \bibitem{wiki:skills}
-Skills.
+Wiki.
+\newblock Skills.
 \newblock \url{https://oldschool.runescape.wiki/w/Skills}.
 
 \bibitem{wiki:experience}
-Experience.
+Wiki.
+\newblock Experience.
 \newblock \url{https://oldschool.runescape.wiki/w/Experience}.
 
 \bibitem{wiki:quests}
-Quests.
+Wiki.
+\newblock Quests.
 \newblock \url{https://oldschool.runescape.wiki/w/Quests}.
 
 \bibitem{wiki:combat_triangle}
-Combat triangle.
+Wiki.
+\newblock Combat triangle.
 \newblock \url{https://oldschool.runescape.wiki/w/Combat_triangle}.
 
 \bibitem{wiki:max_ranged}
-Maximum ranged hit.
+Wiki.
+\newblock Maximum ranged hit.
 \newblock \url{https://oldschool.runescape.wiki/w/Maximum_ranged_hit}.
 
 \bibitem{wiki:max_magic}
-Maximum magic hit.
+Wiki.
+\newblock Maximum magic hit.
 \newblock \url{https://oldschool.runescape.wiki/w/Maximum_magic_hit}.
+
+\bibitem{wiki:wintertodt_supply_crates}
+Wiki.
+\newblock Calculator:wintertodt supply crate.
+\newblock
+  \url{https://oldschool.runescape.wiki/w/Calculator:Wintertodt_supply_crate}.
+\newblock Retrieved November 04, 2020.
+
+\bibitem{HereticAcinonyx:wintertodt_99_value}
+HereticAcinonyx.
+\newblock Loot from 50-99 fm at wintertodt post-nerf (level 1 skills).
+\newblock \url{https://imgur.com/r/2007scape/WKrov}.
+
+\bibitem{osrsbox:wintertodt_damage}
+OSRSBox.
+\newblock Analysis of wintertodt damage at 10 hitpoints.
+\newblock
+  \url{https://www.osrsbox.com/blog/2020/07/04/analysing-wintertodt-damage-at-10-hitpoints/}.
 
 \end{thebibliography}
