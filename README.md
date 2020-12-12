@@ -100,7 +100,7 @@ This open-source project is licensed under the MIT License - see the [LICENSE](L
 ### Code
 
 * [osrsbox](https://pypi.org/project/osrsbox/) - Provides Data files
-* [dijkstar](https://pypi.org/project/Dijkstar/) - Implements the Dijkstra Algorithm in Python
+* [dijkstar](https://pypi.org/project/Dijkstar/) - Implements Dijkstra's Algorithm in Python
 
 ### Knowledge
 * [OSRSBox melee dps](https://www.osrsbox.com/blog/2019/01/22/calculating-melee-dps-in-osrs/)
