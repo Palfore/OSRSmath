@@ -1,6 +1,6 @@
 # The Mathematics and Optimization of OSRS
 
-The purpose of this project is to accurately model [Old School Runescape](https://oldschool.runescape.com/) mechanics in order to optimize or analyze game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. In particular, combat is a particularly rewarding application since it has many layers. This project is currently in progress, so if you notice anything please feel free to open a ticket and let me know! 
+The purpose of this project is to model the game mechanics of [Old School Runescape](https://oldschool.runescape.com/) for the purpose of optimizing player decisions or analyzing game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. Combat is a particularly rewarding application since it has many layers. This project is currently in progress, so if you notice anything please feel free to open a ticket or join the discord and let me know!
 
 If you're interested, you can join the [discord](https://discord.gg/4SXcKQh) to discuss anything! Or if you would prefer watching a video, you can checkout the [video series](https://www.youtube.com/watch?v=7N9UJX70Z5I&list=PLm3INE_scU5s8NQWmw0fxKtA_6SVxDOc7).
 
@@ -8,8 +8,8 @@ There are three components to this project:
 
 ### 1. Applications
 
-These applications provide useful functionalities for end users. Once installed, they can be run using the command: `python -m [Module Location]`.
-Note: The combat code/app is currently being rewritten (after an exploration phase), install via `pip` to explore the interface. Download the codebase to explore other code like firemaking. Once the combat code is ready the `pip` library will be updated. Some of the following instructions may be out of date.
+These applications provide useful functionalities for players (a.k.a. end users). Once installed, they can be run using the command: `python -m [Module Location]`.
+Note: The combat code/app is currently being rewritten (after an exploration phase), the `pip` library won't be updated until the app is working again. You can still install the old version using the latest version of the `pip` libary. In the meantime, download the codebase to explore other code like firemaking. Some of the following instructions may be out of date.
 
 | Application        | Module Location           | Description  |
 | ------------- |:-------------:| :-----|
@@ -22,11 +22,11 @@ Note: The combat code/app is currently being rewritten (after an exploration pha
 
 ### 2. Library
 
-For developers, they can use the basic functionalities (like modeling combat or potion boosts) to build their own applications. The code is available on [PyPi](https://pypi.org/project/osrsmath/), and can be installed using `pip3 install osrsmath`. Within their own code the can import functionalities using `import osrsmath.[module_of_interest]`. Download the source, and check out the documentation for the modules at `OSRSmath/osrsmath/docs/html/osrsmath/index.html` to see what can be done.
+For developers, they can use the basic functionalities to build their own applications. The code is available on [PyPi](https://pypi.org/project/osrsmath/), and can be installed using `pip3 install osrsmath`. Within their own code the can import functionalities using `import osrsmath.[module_of_interest]`. Download the source, and check out the documentation for the modules at `OSRSmath/osrsmath/docs/html/osrsmath/index.html` to see what can be done.
 
 ### 3. Documentation
 
-Coherent and comprehensive documentation doesn't really exist regarding the math behind osrs. This project provides a [document](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/main.pdf) that attempts to fill this gap. It also documents its source code, which can be viewed by downloading the source and navigating to `osrsmath/docs/html/osrsmath/index.html`. In future, it would be nice to host this online.
+Documentation doesn't really exist regarding the math behind osrs. This project aims to provide a [document](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/main.pdf) that attempts to fill this gap. This project also documents its source code (mostly), which can be viewed by downloading the source and navigating to `osrsmath/docs/html/osrsmath/index.html`. In future, it would be nice to host this online.
 
 ## Installing
 
@@ -38,8 +38,6 @@ This application was written in the programming language [`Python`](https://www.
 2. Once it is installed, open a terminal (MacOS/Linux) or command prompt (Windows). 
 3. Type the command `pip3 install --upgrade pip` then `pip3 install osrsmath` to install this program.
 4. Then type `python3 -m osrsmath.apps.[app_name]` to run an application. For example, replace `[app_name]` with `optimize` to run the optimize application.
-
-You might also consider trying the executables directly, although there are currently installation issues, particularly on MacOS so this isn't currently recommended. To do this, navigate to [GitHub releases](https://github.com/Palfore/OSRSmath/releases) and download the latest version (Asset) for your system. Unzip, and run!
 
 ### Developer
 1. Open a terminal/command prompt.
@@ -65,19 +63,6 @@ These installation methods have been tested on:
 	`Windows 10` (v1909)
 
 ## Developing
-### Packaging:
-These are instructions for creating app executables:
-1. Type `pip3 install PyInstaller`
-2. On MacOS, `python<=3.6.3` is required since PyInstaller on macos isn't supported after that.
-   On Windows, the app store version of Python (3.8) doesn't work.
-3. Navigate to the `Application` folder of the app you want to create an executable for.
-4. Type `python3 package.py`.
-5. Symbolic links should then be created to `dist/main/main[.exe]`, the should be named osrsmath-[app_name].
-
-On MacOS, the application has to be signed. I don't know the Mac ecosystem very well, however these websites helped me:
-1. https://github.com/pyinstaller/pyinstaller/wiki/Recipe-OSX-Code-Signing
-2. https://stackoverflow.com/questions/16845169/error-when-trying-to-obtain-a-certificate-the-specified-item-could-not-be-found
-3. https://apple.stackexchange.com/questions/254380/why-am-i-getting-an-invalid-active-developer-path-when-attempting-to-use-git-a
 
 ### GUI Development:
 These are instructions for creating & modifying the GUI design:
@@ -103,7 +88,7 @@ The `unittest` module is used for testing. Navigate to the `tests` directory and
 
 * **Nawar Ismail** - [Palfore](https://www.palfore.com/)
 
-If you are interested in contributing, check out the [issues section](https://github.com/Palfore/OSRSmath/issues) on GitHub.
+If you are interested in contributing, check out the [issues section](https://github.com/Palfore/OSRSmath/issues) on GitHub or join the Discord.
 
 <!-- See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project. -->
 
@@ -115,7 +100,7 @@ This open-source project is licensed under the MIT License - see the [LICENSE](L
 ### Code
 
 * [osrsbox](https://pypi.org/project/osrsbox/) - Provides Data files
-* [dijkstar](https://pypi.org/project/Dijkstar/) - Implements the dijkstra Algorithm
+* [dijkstar](https://pypi.org/project/Dijkstar/) - Implements the Dijkstra Algorithm in Python
 
 ### Knowledge
 * [OSRSBox melee dps](https://www.osrsbox.com/blog/2019/01/22/calculating-melee-dps-in-osrs/)
