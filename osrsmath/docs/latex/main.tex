@@ -12,10 +12,12 @@
   \@addtoreset{@ppsaveapp}{part}
 \makeatother
 
-\renewcommand\maketitle{} % https://tex.stackexchange.com/questions/362202/latex-error-no-title-given-for-latex-output-by-lyx
-
+% \renewcommand\maketitle{} % https://tex.stackexchange.com/questions/362202/latex-error-no-title-given-for-latex-output-by-lyx
+\usepackage{pdfpages}
+% \input{tex/title}
 \begin{document}
-	\subfile{tex/title}
+	% \maketitle
+	\includepdf{tex/title}
 	\tableofcontents
 	\newpage
 
@@ -39,9 +41,9 @@
 			\section{Dijkstra's algorithm}
 		
 		\begin{appendices}
-			\chapter{Justifying the Recursive Model Approximation}\label{app:analytic_form_attempt}
+			\chapter{Justifying the Recursive Model Approximation}\label{combat-app:recursive_justification}
 				\input{tex/combat/appendix/recursive_approximation}
-			\chapter{Power Reduction in the Piecewise Recursive Model}
+			\chapter{Power Reduction in the Piecewise Recursive Model}\label{combat-app:power_reduction}
 				\input{tex/combat/appendix/power_reduction}
 			\chapter{Fighting Probabilities}
 				\input{tex/combat/appendix/probability}
