@@ -110,6 +110,7 @@ class Calculator:
 				'magic': ["Black salamander", "Slayer's staff", "Staff of light", "Enchanted slayer's staff", "Staff of the dead", "Ahrim's staff", "Ancient staff", "God staff", "Iban staff (u)", "Kodai wand", "Master wand", "Thammaron's sceptre", "Sanguinesti staff", "Trident of the seas", "Trident of the swamp", "Toxic staff of the dead", "3rd age wand", "Void knight mace", "Mystic smoke staff", "Smoke battlestaff", "Mystic lava staff", "Mystic mud staff", "Mystic dust staff", "Mystic mist staff", "Mystic steam staff", "Air battlestaff", "Water battlestaff", "Earth battlestaff", "Fire battlestaff"],
 			}
 			return {**weapons, **{'all': list(set(sum(weapons.values(), [])))}}[combat_class]
+		
 		weapons = []
 		move_to(Calculator.cells['weapon'])
 		text = None
@@ -187,36 +188,8 @@ focus_window("Copy of DPS Calculator - Google Sheets")
 calculator = Calculator()
 print('(1) Starting')
 print('(2) Getting List of Weapons')
-weapons = calculator.get_list_of_weapons("magic")
-# print('(3) Setting Player Levels')
-# calculator.set_player_levels({
-# 	'attack': 70,
-# 	'strength': 99,
-# 	'defence': 99,
-# 	'magic': 99,
-# 	'ranged': 99,
-# 	'hitpoints': 99,
-# 	'prayer': 99,
-# })
-# print('(4) Setting Opponent Levels')
-# calculator.set_opponent_levels({
-# 	'attack': 70,
-# 	'strength': 99,
-# 	'defence': 99,
-# 	'magic': 99,
-# 	'ranged': 99,
-# 	'hitpoints': 99,
-# })
-# print('(5) Setting Player Bonuses')
-# calculator.set_player_bonuses(40, 50)
-# print('(6) Setting Opponent Bonuses')
-# calculator.set_opponent_bonuses({
-# 	'stab': 25,
-# 	'slash': 50,
-# 	'crush': 75,
-# 	'magic': 38,
-# 	'ranged': 20
-# })
+weapons = calculator.get_list_of_weapons("melee")
+
 
 print('(7) Evaluating Weapons...')
 conversion = {  # Excel capitalizes some words, among other differences
@@ -230,6 +203,8 @@ conversion = {  # Excel capitalizes some words, among other differences
 	"Scythe of Vitur (uncharged)": "Scythe of vitur (uncharged)",
 	"Scythe of Vitur": "Scythe of vitur",
 }
+
+dataset = []
 for name in weapons:
 	database_name = conversion.get(name, name)
 	
@@ -249,30 +224,29 @@ for name in weapons:
 				name, stance['attack_style']
 			)
 
-			from osrsmath.combat.damage import damage
-			from osrsmath.combat.fighter import Fighter
-			# m = damage(stance, {
-			# 		'weapon': attributes, 
-			# 		None: ITEM_DATABASE.create_dummy({
-			# 			'attack_slash': 40,
-			# 			'melee_strength': 50,
-			# 			'attack_ranged': 40,
-			# 			'ranged_strength': 50,
-			# 	})}, Fighter(100, {}, []), {
-			# 		'strength': 118, 'ranged': 112,
-			# 	}, None
-			# )
-
-			# Magic
-			m = damage(stance, {'weapon': attributes}, Fighter(100, {}, []), {'magic': 70}, [], spell="Water wave")
+			data = {
+				'weapon': database_name,
+				'stance': stance['attack_style'],
+				'player_levels': {s: randint(1, 99) for s in ['attack', 'strength', 'defence', 'magic', 'ranged', 'hitpoints', 'prayer']},
+				'opponent_levels': {s: randint(1, 99) for s in ['attack', 'strength', 'defence', 'magic', 'ranged', 'hitpoints']},
+				'opponent_bonuses': {s: randint(0, 100) for s in ['stab', 'slash', 'crush', 'magic', 'ranged']},
+				'attack_bonus': randint(1, 50),
+				'strength_bonus': randint(1, 50)
+			}
+			
+			calculator.set_player_levels(data['player_levels'])
+			calculator.set_opponent_levels(data['opponent_levels'])
+			calculator.set_player_bonuses(data['attack_bonus'], data['strength_bonus'])
+			calculator.set_opponent_bonuses(data['opponent_bonuses'])
 
 			sleep(1)
 			excel_m, excel_a = calculator.get_summary()
-			if excel_m != m:
-				print(f'Disagreement ({name}, {stance["combat_style"]}): {excel_m}, {m}')
-			else:
-				# print(name, stance['combat_style'], excel_m, m, )
-				pass
+			data['m'] = excel_m
+			data['a'] = excel_a
+
+			dataset.append(data)
+
+			
 		except pyautogui.FailSafeException:
 			exit()
 		except Exception as e:
@@ -280,5 +254,6 @@ for name in weapons:
 			exc_type, exc_obj, exc_tb = sys.exc_info()
 			fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
 			print('Failed:', name, stance['attack_style'], exc_type, fname, exc_tb.tb_lineno, e)
-
+import json
+json.dump(datset, open('dataset.json'), indent=4)
 print('(7) Finished')

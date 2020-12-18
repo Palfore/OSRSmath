@@ -50,19 +50,19 @@
 \contentsline {section}{\numberline {C.3}Solution}{39}{section.1.C.3}%
 \contentsline {subsection}{\numberline {C.3.1}Corner}{40}{subsection.1.C.3.1}%
 \contentsline {subsection}{\numberline {C.3.2}Top}{40}{subsection.1.C.3.2}%
-\contentsline {subsection}{\numberline {C.3.3}Left}{41}{subsection.1.C.3.3}%
-\contentsline {subsection}{\numberline {C.3.4}Interior}{41}{subsection.1.C.3.4}%
-\contentsline {subsection}{\numberline {C.3.5}Obtaining Power Series}{45}{subsection.1.C.3.5}%
-\contentsline {section}{\numberline {C.4}Summing over $L$}{50}{section.1.C.4}%
-\contentsline {section}{\numberline {C.5}Summary}{52}{section.1.C.5}%
-\contentsline {section}{\numberline {C.6}Comments}{52}{section.1.C.6}%
-\contentsline {part}{III\hspace {1em}Woodcutting}{53}{part.3}%
-\contentsline {part}{IV\hspace {1em}Firemaking}{54}{part.4}%
-\contentsline {chapter}{\numberline {1}Wintertodt}{55}{appendix.4.1}%
-\contentsline {section}{\numberline {1.1}Large groups}{56}{section.4.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Within a Fight}{57}{subsection.4.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Across Fights}{57}{subsection.4.1.1.2}%
-\contentsline {subsection}{\numberline {1.1.3}Kill Count, Time to Level, and Reward Value}{58}{subsection.4.1.1.3}%
-\contentsline {section}{\numberline {1.2}Future Work}{60}{section.4.1.2}%
-\contentsline {part}{V\hspace {1em}Mining}{62}{part.5}%
-\contentsline {part}{VI\hspace {1em}Quests}{63}{part.6}%
+\contentsline {subsection}{\numberline {C.3.3}Left}{40}{subsection.1.C.3.3}%
+\contentsline {subsection}{\numberline {C.3.4}Interior}{40}{subsection.1.C.3.4}%
+\contentsline {subsection}{\numberline {C.3.5}Obtaining Power Series}{44}{subsection.1.C.3.5}%
+\contentsline {section}{\numberline {C.4}Summing over $L$}{45}{section.1.C.4}%
+\contentsline {section}{\numberline {C.5}Summary}{48}{section.1.C.5}%
+\contentsline {section}{\numberline {C.6}Comments}{48}{section.1.C.6}%
+\contentsline {part}{III\hspace {1em}Woodcutting}{49}{part.3}%
+\contentsline {part}{IV\hspace {1em}Firemaking}{50}{part.4}%
+\contentsline {chapter}{\numberline {1}Wintertodt}{51}{appendix.4.1}%
+\contentsline {section}{\numberline {1.1}Large groups}{52}{section.4.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Within a Fight}{53}{subsection.4.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Across Fights}{53}{subsection.4.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Kill Count, Time to Level, and Reward Value}{54}{subsection.4.1.1.3}%
+\contentsline {section}{\numberline {1.2}Future Work}{56}{section.4.1.2}%
+\contentsline {part}{V\hspace {1em}Mining}{58}{part.5}%
+\contentsline {part}{VI\hspace {1em}Quests}{59}{part.6}%

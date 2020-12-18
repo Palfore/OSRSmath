@@ -67,6 +67,118 @@ class Solution:
 				s += self.G(h, i, p) * S
 		return A + s
 
+
+
+class Solution2:
+	def __init__(self, c):
+		self.c = c
+		self.m = max(self.c.keys())
+
+	@lru_cache(maxsize=256)
+	def P(self, h, L):
+		if L*self.m < h:
+			return 0
+
+		# Assumes self.c starts with 0
+		d = np.polynomial.polynomial.polypow(list(self.c.values()), L - 1)
+		a = lambda j: sum(self.c[i] for i in range(j, self.m +1)) * d[h - j]
+
+		lower = max(1, h + self.m - self.m*L)
+		upper = min(h, self.m)
+		return sum(a(j) for j in range(lower, upper +1))
+
+
+
+if __name__ == '__main__':
+	import osrsmath.combat.distributions as distributions
+	import numpy as np
+	import copy
+	from pprint import pprint as pp
+	a = 0.75
+	m = 20
+	# c = distributions.standard(m, a)
+	c = distributions.graardor('melee')
+	distributions.DamageDistribution(c).plot().show()
+	
+	s = s1 = Solution(a, m)
+	s2 = Solution2(c)
+
+	import matplotlib.pyplot as plt
+	for h in range(10, 100+1, 10):
+		Ls = list(range(1, 25))
+		Ps = [s2.P(h, L) for L in Ls]
+		plt.plot(Ls, Ps, label=f"h={h}")
+	plt.title("Probability of Dying Against General Graardor after $L$ Attacks.")
+	plt.ylabel("Probability")
+	plt.xlabel("$L$")
+	plt.legend()
+	plt.show()
+	exit()
+
+	for h in range(1, 100):
+		S1 = 0
+		S2 = 0
+		for L in range(1, 100):
+			p1 = s1.P(h, L)
+			p2 = s2.P(h, L)
+			S1 += p1
+			S2 += p2
+			# print(h, L, p1, p2, abs(p2 - p1) < 1e-8)
+		print(S1, S2)
+
+
+
+
+
+
+
+	# def d(k, coefficients):
+	# 	return np.polynomial.polynomial.polypow(coefficients, k)
+
+	# INF = 50
+	# g1 = lambda x, y: sum(sum(s.P(h, L)*x**L*y**h for L in range(1, INF)) for h in range(1, INF))
+	# g2 = lambda x, y: sum(
+	# 	sum(
+	# 		sum(
+	# 			c[h] * (m - h + 1) * d(k - 1, list(c.values()))[j] * y**(j + h) * x**k
+	# 		for j in range(0, (k-1)*m + 1))
+	# 	for h in range(1, m+1))
+	# for k in range(1, INF))
+	# import numpy as np
+	# for x in np.linspace(0, 1, 10):
+	# 	for y in np.linspace(0, 1, 10):
+	# 		y1, y2 = g1(x, y), g2(x, y)
+	# 		print(x, y, y1, y2, y2-y1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+exit()
+
+
+
+
+
+
+
 class Duel:
 	INFINITY = 100  # The outer sum doesn't have an analytic form (yet at least) so this crude cutoff is being used.
 	                # For long fights, this might cause issues.

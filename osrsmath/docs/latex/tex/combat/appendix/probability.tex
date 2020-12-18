@@ -1,36 +1,29 @@
 \section{Definitions}
 \begin{align}
-c_+ &= \frac{a}{m+1} \\
-c_* &= mc_+ \\
-c_0 &= 1 - c_* \\
+c_i & \text{ is the probability of doing $i$ damage} \\
+c_0 & \text{ is the probability of doing zero damage} \\
+c_+ &= 1 - c_0 \text{ is the probability of doing damage} \\
+m & \text{ is the largest non-zero probability from $c_i$} \\
 \end{align}
 
 \section{Recursive Equation}
-The probability the player does $n$ damage to their opponent is given by:
-\begin{equation}\label{eq:probability_of_n_damage}
-	P(X=n) = \begin{cases}
-    c_0, & \text{if } n=0\\
-    c_+, & \text{if } 1 \leq n \leq m\\
-    0, & \text{for } n < 0 \text{ or } m < n
-    \end{cases}
-\end{equation}
-To be explicit, this tells us that $c_0$ is the probability of hitting a zero, and $c_+$ is the probability of doing damage. In one turn, the opponent can be brought to a given health $i$, from their initial health $h$ according to the transition probability, 
+In one attack, the opponent can be brought to a given health $i$, from their initial health $h$ according to the transition probability, 
 \begin{align}
 	\pi_{h, i} &= \begin{cases}
 		P(X=h - i) & \text{if } i > 0 \\
-		P(X\ge h) & \text{if } i = 0
+		P(X \ge h) & \text{if } i = 0
     \end{cases}
 \end{align}
-as given in Nukelawe's work. The probability they are killed in $L$ turns can be given by the sum of the probabilities the opponent was brought to $i$, then killed in $L - 1$ turns:
+The probability they are killed in $L$ turns can be given by the sum of the probabilities the opponent was brought to $i$, then killed in $L - 1$ turns:
 \begin{align}
 	P_{h, L} &= \sum_{i=0}^\infty \pi_{h, i} P_{i, L-1}\\
 	&= \cancel{\pi_{h, 0} P_{0, L-1}} + \pi_{h, h} P_{h, L-1} + \sum_{i=1}^{h-1} \pi_{h, i} P_{i, L-1} + \sum_{i=h+1}^\infty \pi_{h, i} P_{i, L-1}\\
 	&= c_0P_{h, L-1} + \sum_{i=1}^{h-1} \pi_{h, i} P_{i, L-1} + \cancel{\sum_{i=h+1}^\infty \pi_{h, i} P_{i, L-1}}\\
-	P_{h, L} &= c_0P_{h, L-1} + c_+\sum_{i=\max(h-m, 1)}^{h-1} P_{i, L-1}\\
+	P_{h, L} &= c_0P_{h, L-1} + \sum_{i=\max(h-m, 1)}^{h-1} c_{h-i} P_{i, L-1}\\
 \end{align}
-where in the second line, the $i=0, h$ terms are explicitly considered, and the remaining sum is split in two. In the third line, $\pi_{h, i}$ would correspond to healing (and the $n=0$ condition in Eq.~(\ref{eq:probability_of_n_damage})) and is therefore zero. In the final line, we get the lower bound by considering that 
+where in the second line, the $i=0, h$ terms are explicitly considered, and the remaining sum is split in two. In the third line, $\pi_{h, i}$ would correspond to healing which we are taking to be zero. In the final line, we get the lower bound by considering that 
 \begin{align}
-	1\leq i \leq h-1 \implies& \pi_{h, i} = c_+ \text{ if } 1\leq h - i \leq m \text{ otherwise } 0,\,\,\, \\
+	1\leq i \leq h-1 \implies& \pi_{h, i} = c_{h-i} \text{ if } 1\leq h - i \leq m \text{ otherwise } 0,\,\,\, \\
 	\implies& 1\leq h - i \text{ and } h - i \leq m\\
 	&\therefore  i\leq h - 1 \text{ and } h - m \leq i.
 \end{align}
@@ -38,270 +31,17 @@ Since the first condition is already met, we have that $i \geq h - m$, but $i$ a
 
 
 
-% \section{Probability of killing in $L$ turns}
-% 	The probability of a fight ending in $L$ turns is given by the recursive equation:
-% 	\begin{align}\label{eq:recursion}
-% 		P_h(L) &= c_0P_h(L - 1) + c_+ \sum_{i=\max(h - m, 1)}^{h-1} P_i(L-1),\,\,\, L \ge 2\\
-% 		P_h(1) &= c_+ \max(m - h + 1, 0)
-% 	\end{align}
-% 	The origin of this equation is omitted until I have time to fill it in. This is a 2-dimensional coupled recursive equation.
-% 	The coupling involved in the sum makes this particularly difficult. Figure~\ref{fig:grid} shows the indicies included in the sum.
-% 	\begin{figure}
-% 		\centering
-% 		\includegraphics[width=0.5\linewidth]{grid.png}
-% 		\caption{The indices used in the sum found in Eq.\ref{eq:recursion}.}
-% 		\label{fig:grid}
-% 	\end{figure}
-
-
-% 	I was unsuccessful in directly tackling this equation 
-% 	using generating functions. Instead I will manually solve several $h$ values using that technique and attempt to combine them.
-
-% 	\subsection{$h=1$}
-% 		The recursive equation to solve is:
-% 		\begin{align}
-% 			P_{1, L} &= c_0P_{1, L - 1},\,\,\, L \ge 2
-% 		\end{align}
-% 		where subscripts are used for notational convenience.
-
-% 		Using a generating function:
-% 		\begin{align}
-% 			g_1(x) &= \sum_{L=1}^\infty P_{1, L} x^L \\
-% 			&= P_{1,1}x + \sum_{L=2}^\infty c_0P_{1, L - 1} x^L \\
-% 			&= P_{1,1}x + \sum_{L=1}^\infty c_0P_{1, L} x^{L+1} \\
-% 			&= P_{1,1}x + c_0x\sum_{L=1}^\infty P_{1, L} x^{L} \\
-% 			&= P_{1,1}x + c_0xg_1(x) \\
-% 			\implies g_1(x) &= \frac{P_{1,1}x}{1 - c_0x} = \frac{P_{1,1}}{c_0}\frac{c_0x}{1 - c_0x}\\
-% 			&= \frac{P_{1,1}}{c_0}\sum_{L=0}^\infty c_0^Lx^L\\
-% 			\implies P_{1, L} &= P_{1,1}c_0^{L-1}\\
-% 			P_{1, L} &= c_+\max(m, 0)c_0^{L-1}
-% 		\end{align}
-% 		In the second line the first term in the sum is pulled out since the recursive equation is not defined for it.
-
-% 	\subsection{$h=2$}
-% 		The recursive equation to solve is:
-% 		\begin{align}
-% 			P_{2, L} &= c_0P_{2, L - 1} + c_+P_{1, L-1},\,\,\, L \ge 2
-% 		\end{align}
-% 		Notice that the sum now contributes a term.
-
-% 		Using a generating function:
-% 		\begin{align}
-% 			g_2(x) &= \sum_{L=1}^\infty P_{2, L} x^L \\
-% 			&= P_{2, 1}x + \sum_{L=2}^\infty [c_0P_{2, L - 1} + c_+P_{1, L-1}] x^L \\
-% 			&= P_{2, 1}x + c_0\sum_{L=2}^\infty P_{2, L - 1}x^L + c_+\sum_{L=2}^\infty P_{1, L-1} x^L \\
-% 			&= P_{2, 1}x + c_0\sum_{L=1}^\infty P_{2, L}x^{L+1} + c_+\sum_{L=1}^\infty P_{1, L} x^{L+1} \\
-% 			&= P_{2, 1}x + c_0xg_2(x) + c_+xg_1(x) \\
-% 			\implies g_2(x) &= \frac{P_{2,1}x + c_+xg_1(x)}{1 - c_0x} \\
-% 			&= \frac{P_{2,1}}{c_0}\frac{c_0x}{1 - c_0x} + \frac{c_+xg_1(x)}{1 - c_0x} \\
-% 			&= \frac{P_{2,1}}{c_0}\left(\frac{c_0x}{1 - c_0x}\right)^1 + \frac{P_{1,1}c_+}{c_0^2}\left(\frac{c_0x}{1 - c_0x}\right)^2
-% 		\end{align}
-% 		Let's take a moment to analyze the bracketed terms since a pattern is forming. Consider the denominator:
-% 		\begin{align} % https://en.wikipedia.org/wiki/Negative_binomial_distribution
-% 			(1 - y)^{-r} = \sum_{k=0}^\infty {k+r-1 \choose k} y^k.
-% 		\end{align}
-% 		We desire the above multiplied by $y^r$:
-% 		\begin{align}
-% 			\left(\frac{y}{1 - y}\right)^r &= \sum_{k=0}^\infty {k+r-1 \choose k} y^{k+r} \\
-% 			&= \sum_{k=r}^\infty {k-1 \choose k - r} y^{k}
-% 		\end{align}
-% 		Noting that $y = c_0x$, we can continue:
-% 		\begin{align}
-% 			g_2(x) &= \frac{P_{2,1}}{c_0} \sum_{k=1}^\infty {k-1 \choose k - 1} (c_0x)^{k} + \frac{P_{1,1}c_+}{c_0^2}\sum_{k=2}^\infty{k-1 \choose k - 2} (c_0x)^{k} \\
-% 			&= P_{2,1}x + \frac{P_{2,1}}{c_0} \sum_{k=2}^\infty {k-1 \choose k - 1} (c_0x)^{k} + \frac{P_{1,1}c_+}{c_0^2}\sum_{k=2}^\infty{k-1 \choose k - 2} (c_0x)^{k} \\
-% 			&= P_{2,1}x + \sum_{k=2}^\infty \left[P_{2,1}c_0^{k-1}  {k-1 \choose k - 1} + c_+P_{1,1}c_0^{k-2}{k-1 \choose k - 2}\right] x^{k}\\
-% 		\end{align}
-% 		Thus for $L>=2$
-% 		\begin{align}
-% 			\implies P_{2, L} = P_{2,1}c_0^{L-1}  {L-1 \choose L - 1} + c_+P_{1,1}c_0^{L-2}{L-1 \choose L - 2}
-% 		\end{align}
-% 		Now, I made a point of keeping things general, but to simplify:
-% 		\begin{align}
-% 			P_{2, L} &= P_{2,1}c_0^{L-1} + c_+P_{1,1}c_0^{L-2}L\\
-% 			&= \left(P_{2,1} + c_+P_{1,1} \right)c_0^{L-1}
-% 		\end{align}
-% 		and
-% 		\begin{align}
-% 			P_{2, L} &= c_0^{L-1}P_{2,1} + c_+P_{1,L}\\
-% 			P_{2, L} &= c_+\max(m-1, 0)c_0^{L-1} + c_+c_*c_0^{L-1}
-% 		\end{align}
-
-% 	\subsection{$h=3$}
-% 		This function is now piecewise so let's split it.
-% 		\subsubsection{$m=1$}
-% 		The recursive equation to solve is:
-% 		\begin{align}
-% 			P_{3, L} &= c_0P_{3, L - 1} + c_+P_{2, L-1},\,\,\, L \ge 2
-% 		\end{align}
-
-% 		Using a generating function:
-% 		\begin{align}
-% 			g_3(x) &= \sum_{L=1}^\infty P_{3, L} x^L \\
-% 			&= P_{3, 1}x + \sum_{L=2}^\infty [c_0P_{3, L - 1} + c_+P_{2, L-1}] x^L \\
-% 			&= P_{3, 1}x + c_0\sum_{L=2}^\infty P_{3, L - 1}x^L + c_+\sum_{L=2}^\infty P_{2, L-1} x^L \\
-% 			&= P_{3, 1}x + c_0\sum_{L=1}^\infty P_{3, L}x^{L+1} + c_+\sum_{L=1}^\infty P_{2, L} x^{L+1} \\
-% 			&= P_{3, 1}x + c_0xg_3(x) + c_+xg_2(x) \\
-% 			\implies g_3(x) &= \frac{P_{3,1}x + c_+xg_2(x)}{1 - c_0x} \\
-% 		\end{align}
-% 		Let's stop here since the generating function seems to have a pattern, let's see what happens if we look at $m>1$:
-% 		\subsubsection{$m>1$}
-% 		\begin{align}
-% 			P_{3, L} &= c_0P_{3, L - 1} + c_+ P_{1, L-1} + c_+ P_{2, L-1},\,\,\, L \ge 2\\
-% 		\end{align}
-
-% 		Using a generating function:
-% 		\begin{align}
-% 			g_3(x) &= \sum_{L=1}^\infty P_{3, L} x^L \\
-% 			&= P_{3, 1}x + \sum_{L=2}^\infty [c_0P_{3, L - 1} + c_+ P_{1, L-1} + c_+ P_{2, L-1}] x^L \\
-% 			&= P_{3, 1}x + c_0\sum_{L=2}^\infty P_{3, L - 1}x^L + c_+\sum_{L=2}^\infty P_{1, L-1} x^L + c_+\sum_{L=2}^\infty P_{2, L-1} x^L \\
-% 			&= P_{3, 1}x + c_0xg_3(x) + c_+xg_1(x) + c_+xg_2(x) \\
-% 			\implies g_3(x) &= \frac{x}{1-c_0x}\left[P_{3,1} + c_+g_1(x) + c_+g_2(x)\right] \\
-% 		\end{align}
-% 		Now we can see that whatever terms show up in the recursive equation, show up in the generating function and so:
-% 		\begin{align}
-% 			g_h(x) &= \frac{x}{1-c_0x}\left[P_{n,1} + c_+\sum_{k=\min(m-h, 1)}^{h-1}g_k(x)\right].
-% 		\end{align}
-% 		Since the indicies only depend on h, we can argue that ``for a fixed $x$'' our equation has the form:
-% 		\begin{align}
-% 			f_h &= a\sum_{k=\delta_h}^{h-1}f_k + b,\,\,\, h \ge d + 1.
-% 		\end{align}
-% 		This is still non-trivial so let's try to simplify by removing the constant $b$. We will do this by finding a constant $c$ such that is cancels with b.
-% 		\begin{align}
-% 			(f_h + c)&= a\sum_{k=\delta_h}^{h-1}(f_k + c) + b \\
-% 			f_h + c &= a\sum_{k=\delta_h}^{h-1}f_k + a\sum_{k=a}^{h-1}c + b \\
-% 			f_h &= a\sum_{k=\delta_h}^{h-1}f_k + (a|I| - 1)c + b \\
-% 		\end{align}
-% 		Thus $b$ will vanish if:
-% 		\begin{align}
-% 			(a|I| - 1)c + b &=0 \\
-% 			c &= \frac{b}{1-a|I|} \\
-% 		\end{align}
-% 		Now
-% 		\begin{align}
-% 			f_h &= a\sum_{k=\delta_h}^{h-1}f_k + b \implies w_h = a\sum_{k=\delta_h}^{h-1}w_k,
-% 		\end{align}
-% 		where $w_k = f_h + c$. Solving this recurrence requires another generating function (not to be confused with any previous):
-% 		\begin{align}
-% 			g(x) &= \sum_{i=\delta_h}^\infty w_i x^i \\
-% 			&= w_{\delta_h}x^{\delta_h} + \sum_{i=\delta_h+1}^\infty w_i x^i \\
-% 			&= w_{\delta_h}x^{\delta_h} + a\sum_{i=\delta_h+1}^\infty \sum_{k=\delta_i}^{i-1}w_k x^i \\
-% 			&= w_{\delta_h}x^{\delta_h} + a\sum_{i=\delta_h}^\infty \sum_{k=\delta_i}^{i}w_k x^{i+1} \\
-% 			&= w_{\delta_h}x^{\delta_h} + ax\sum_{i=\delta_h}^\infty \sum_{k=\delta_i}^{i}w_k x^{i} \\
-% 			&= w_{\delta_h}x^{\delta_h} + ax\left[\sum_{i={\delta_h}}^\infty w_i x^{i} +  \sum_{i={\delta_h}}^\infty\sum_{k={\delta_h}}^{i-1}w_k x^{i} \right]\\
-% 			&= w_{\delta_h}x^{\delta_h} + ax\left[g(x) + \sum_{i={\delta_h}}^\infty\sum_{k={\delta_h}}^{i}w_k x^{i+1} \right]\\
-% 			% &= w_{\delta_h}x^{\delta_h} + ax\left[g(x) + \left[xg(x) + \sum_{i=d}^\infty\sum_{k=d}^{i}w_k x^{i+1} \right] \right]\\
-% 			% &= w_{\delta_h}x^{\delta_h} + a\left(xg(x) + x^2g(x) + x^3g(x) + ... \right)\\
-% 			% &= w_{\delta_h}x^{\delta_h} + ag(x)\left(x + x^2 + x^3 + ... \right)\\
-% 			% &= w_{\delta_h}x^{\delta_h} + ag(x)\sum_{i=1}^\infty x^i\\
-% 			% \implies g(x) &= \frac{w_d x^d}{1 - a\sum_{i=1}^\infty x^i}\\
-% 		\end{align}
-% 		part
-% 		\begin{align}
-% 			g(x) &= \frac{w_d x^d}{1 - a\left(\sum_{i=1}^\infty x^i +1 - 1\right)}\\
-% 			g(x) &= \frac{w_d x^d}{1 - a\left(\frac{1}{1-x} - 1\right)}\\
-% 			g(x) &= \frac{w_d x^d}{1 - a\frac{1}{1-x} + a}\\
-% 			g(x) &= \frac{w_d x^d(1-x)}{1 - x - a + a(1-x)}\\
-% 			g(x) &= \frac{w_d x^d(1-x)}{1 - (1 + a)x}\\
-% 			g(x) &= \frac{w_d x^d(1-x)}{1 - (1 + a)x}\\
-% 			g(x) &= w_d x^d(1-x)\sum_{i=0}^\infty(1+a)^ix^i\\
-% 			g(x) &= w_d x^d\left(\sum_{i=0}^\infty(1+a)^ix^i - \sum_{i=0}^\infty(1+a)^ix^{i+1}\right)\\
-% 			g(x) &= w_d x^d\left(1 + \sum_{i=1}^\infty(1+a)^ix^i - \sum_{i=1}^\infty(1+a)^{i-1}x^{i}\right)\\
-% 			g(x) &= w_d x^d\left(1 + \sum_{i=1}^\infty\left[(1+a)^i - (1+a)^{i-1}\right] x^{i}\right)\\
-% 			g(x) &= w_d x^d\left(1 + \sum_{i=1}^\infty (1+a)^{i-1}\left[1+a - 1\right] x^{i}\right)\\
-% 			g(x) &= w_d x^d\left(1 + \sum_{i=1}^\infty\left[a(1+a)^{i-1}\right] x^{i}\right)\\
-% 			g(x) &= w_d x^d + \sum_{i=1}^\infty\left[w_d a(1+a)^{i-1}\right] x^{i+d}\\
-% 			g(x) &= w_d x^d + \sum_{i=d+1}^\infty \left[w_d a(1+a)^{i-d-1}\right] x^{i}\\
-% 			\implies w_i(x) &= w_d a(1+a)^{i-d-1},\,\,\,i >= d + 1\\
-% 		\end{align}
-% 		% \begin{align}
-% 		% 	g(x) &= \frac{w_d x}{1 - a\left(\sum_{i=d}^\infty x^i + \sum_{i=0}^{d-1} x^i - \sum_{i=0}^{d-1} x^i \right)}\\
-% 		% 	g(x) &= \frac{w_d x}{1 - a\left(\frac{1}{1-x}- \sum_{i=0}^{d-1} x^i \right)}\\
-% 		% 	g(x) &= \frac{w_d x}{1 - a\frac{1}{1-x} - a\sum_{i=0}^{d-1} x^i}\\
-% 		% 	g(x) &= \frac{w_d x(1-x)}{1-x - a - a(1-x)\sum_{i=0}^{d-1} x^i }\\
-% 		% 	g(x) &= \frac{w_d x(1-x)}{1-x - a - a\left(\sum_{i=0}^{d-1} x^i - \sum_{i=0}^{d-1} x^{i+1} \right)}\\
-% 		% 	g(x) &= \frac{w_d x(1-x)}{1-x - a - a\left(1 -  x^d \right)}\\
-% 		% 	g(x) &= w_d\frac{x(1-x)}{1-(x +  ax^d)}
-% 		% \end{align}
-% 		% Let $y=x+ax^d$
-% 		% \begin{align}
-% 		% 	g(x) &= w_dx(1-x)\frac{1}{1-y}\\
-% 		% 	&= w_dx(1-x)\sum_{i=0}^\infty y^i\\
-% 		% 	&= w_dx(1-x)\sum_{i=0}^\infty (x + ax^d)^i\\
-% 		% 	&= w_dx(1-x)\sum_{i=0}^\infty \sum_{k=0}^i {i \choose k} a^ix^{i-k+bk}\\
-% 		% \end{align}
-% 		% To put this in the form of our generating function let:
-% 		% \begin{align}
-% 		% 	j=i+(b-1)k\\
-% 		% 	k=(j-i)/(b - 1)\\
-% 		% 	k=0\implies j=i\\
-% 		% 	k=i\implies j=bi\\
-% 		% 	a_{p, q} = {p \choose q}a^p
-% 		% \end{align}
-% 		% \begin{align}
-% 		% 	g(x) &= w_dx(1-x)\sum_{i=0}^\infty \sum_{k=0}^i a_{i, k} x^{i-k+bk}\\
-% 		% 	&= w_dx(1-x)\sum_{i=0}^\infty \sum_{j=i}^{di} a_{i, \frac{j-i}{b-1}} x^j\\
-% 		% 	&= w_d\sum_{i=0}^\infty \left[ x\sum_{j=i}^{di} a_{i, \frac{j-i}{b-1}} x^j -x^2 \sum_{j=i}^{di} a_{i, \frac{j-i}{b-1}} x^j\right]\\
-% 		% 	&= w_d\sum_{i=0}^\infty \left[ \sum_{j=i}^{di} a_{i, \frac{j-i}{b-1}} x^{j+1} - \sum_{j=i}^{di} a_{i, \frac{j-i}{b-1}} x^{j+2}\right]\\
-% 		% 	&= w_d\sum_{i=0}^\infty \left[ \sum_{j=i+1}^{di} a_{i, \frac{j-i-1}{b-1}} x^{j} - \sum_{j=i+2}^{di} a_{i, \frac{j-i-2}{b-1}} x^{j}\right]\\
-% 		% 	&= w_d\sum_{i=0}^\infty \left[ a_{i, \frac{i+1-i-1}{b-1}} x^{i+1} + \sum_{j=i+2}^{di} a_{i, \frac{j-i-1}{b-1}} x^{j} - \sum_{j=i+2}^{di} a_{i, \frac{j-i-2}{b-1}} x^{j}\right]\\
-% 		% 	&= w_d\sum_{i=0}^\infty \left[ a_{i, \frac{i+1-i-1}{b-1}} x^{i+1} + \sum_{j=i+2}^{di} \left(a_{i, \frac{j-i-1}{b-1}} x^{j} - a_{i, \frac{j-i-2}{b-1}} \right)x^{j}\right]\\
-% 		% 	&= w_d\sum_{i=0}^\infty  a_{i, \frac{i+1-i-1}{b-1}} x^{i+1} + w_d\sum_{i=0}^\infty\sum_{j=i+2}^{di} \left(a_{i, \frac{j-i-1}{b-1}} x^{j} - a_{i, \frac{j-i-2}{b-1}} \right)x^{j}\\
-% 		% \end{align}
-% 		\begin{align}
-% 			&=\sum_{i=0}^\infty x^i \sum_{j=0}^{i-1-\lfloor{i/b}\rfloor} {i \choose j/(b-1)}\\
-% 			\therefore w_h &= \sum_{j=0}^{h-1-\lfloor{h/b}\rfloor} {h \choose j/(b-1)}\\
-% 			f_h &= \sum_{j=0}^{h-1-\lfloor{h/b}\rfloor} {h \choose j/(b-1)} + \frac{b}{1-a|I|}\\
-% 			g_h(x) &= \sum_{j=0}^{h-1-\lfloor{h/b}\rfloor} {h \choose j/(b-1)} + \frac{b}{1-a|I|}\\
-% 		\end{align}
-	
-	
-% 	\subsection{Whole attempt}
-% 		Let $I$ be the set of $i$'s satisfying $\max(h - m, 1) \ge i \ge h - 1$.
-% 		Let $a_h=\max(m - h + 1, 0)$.
-% 		The recursive equation to solve is:
-% 		\begin{align}
-% 			P_{h, L} &= c_0P_{h, L - 1} + c_+ \sum_{i\in I} P_{i, L-1},\,\,\, L \ge 2\\
-% 		\end{align}
-% 		Using a generating function:
-% 		\begin{align}
-% 			g(x, y) &= \sum_{h=1}^\infty\sum_{L=1}^\infty P_{h, L} y^h x^L \\
-% 			&= \sum_{h=1}^\infty \left[P_{h, 1} xy^h + \sum_{L=2}^\infty P_{h, L} y^h x^L \right]\\
-% 			&= \sum_{h=1}^\infty \left[c_+ a_h xy^h + \sum_{L=2}^\infty \left(c_0P_{h, L - 1} + c_+ \sum_{i\in I} P_{i, L-1}\right) y^h x^L\right]\\
-% 			&= c_+x\sum_{h=1}^\infty a_h y^h + \sum_{h=1}^\infty \left[c_0\sum_{L=2}^\infty P_{h, L - 1}y^h x^L + c_+ \sum_{L=2}^\infty\sum_{i\in I} P_{i, L-1}y^h x^L \right]\\
-% 			&= c_+x\sum_{h=1}^\infty a_hy^h + \sum_{h=1}^\infty \left[c_0\sum_{L=1}^\infty P_{h, L}y^h x^{L+1} + c_+ \sum_{L=1}^\infty\sum_{i\in I} P_{i, L}y^h x^{L+1} \right]\\
-% 			&= c_+x\sum_{h=1}^\infty a_hy^h + c_0x\sum_{h=1}^\infty \sum_{L=1}^\infty P_{h, L}y^h x^{L} + c_+x \sum_{h=1}^\infty \sum_{L=1}^\infty\sum_{i\in I} P_{i, L}y^h x^L \\
-% 			&= c_+x\sum_{h=1}^\infty a_hy^h + c_0xg(x, y) + c_+x\sum_{h=1}^\infty \sum_{L=1}^\infty\sum_{i\in I} P_{i, L}y^h x^L\\
-% 		\end{align}
-% 		\begin{align}
-% 		\implies g(x, y) &= \frac{c_+}{c_0}\frac{c_0x}{1 - c_0x}\left[\sum_{h=1}^\infty a_hy^h +\sum_{h=1}^\infty \sum_{L=1}^\infty\sum_{i\in I} P_{i, L}y^h x^L \right]\\
-% 		 &= \frac{c_+}{c_0}\left[\sum_{k=1}^\infty c_0^kx^k\sum_{h=1}^\infty a_hy^h +\sum_{k=1}^\infty c_0^kx^k \sum_{h=1}^\infty \sum_{L=1}^\infty\sum_{i\in I} P_{i, L}y^h x^L \right]\\
-% 		 &= \frac{c_+}{c_0}\left[ \sum_{k=1}^\infty c_0^k\sum_{h=1}^\infty a_hy^hx^k +\sum_{k=1}^\infty \sum_{h=1}^\infty \sum_{L=1}^\infty\sum_{i\in I} c_0^kP_{i, L}y^h x^{L+k} \right]\\
-% 		 &= \frac{c_+}{c_0}\left[ \sum_{k=1}^\infty c_0^k\sum_{h=1}^\infty a_hy^hx^k +\sum_{k=1}^\infty \sum_{j=k+1}^\infty \sum_{h=1}^\infty\sum_{i\in I} c_0^kP_{i, j-k}y^h x^{j} \right]\\
-% 		 &= \frac{c_+}{c_0}\left[ \sum_{k=1}^\infty c_0^k\sum_{h=1}^\infty a_hy^hx^k +\sum_{n=1}^\infty \sum_{k=n+1}^\infty \left(\sum_{h=1}^\infty\sum_{i\in I} c_0^nP_{i, k-n}y^h \right) x^{k} \right]\\
-% 		 &= \frac{c_+}{c_0}\left[ \sum_{k=1}^\infty c_0^k\sum_{h=1}^\infty a_hy^hx^k +\sum_{n=1}^\infty \sum_{k=n+1}^\infty a_{n,k}(y) x^{k} \right]\\
-% 		 &= \frac{c_+}{c_0}\left[ \sum_{n=1}^\infty c_0^n\sum_{h=1}^\infty a_hy^hx^n + \sum_{n=1}^\infty \sum_{k=1}^{n-1} a_{k,n}(y) x^{n} \right]\\
-% 		 &= \sum_{n=1}^\infty\left[ \frac{c_+}{c_0} c_0^n\sum_{h=1}^\infty a_hy^hx^n + \frac{c_+}{c_0} \sum_{k=1}^{n-1} a_{k,n}(y) \right]x^{n}\\
-% 		 \implies\sum_{h=1}^\infty P_{h, L} y^h&= \frac{c_+}{c_0} c_0^k\sum_{h=1}^\infty a_h y^hx^n + \frac{c_+}{c_0} \sum_{k=1}^{n-1} a_{k,n}(y)\\
-% 		 \sum_{h=1}^\infty P_{h, L} y^h &= \frac{c_+}{c_0} c_0^n\sum_{h=1}^\infty a_h y^h + \frac{c_+}{c_0} \sum_{h=1}^\infty\sum_{k=1}^{n-1} \sum_{i\in I} c_0^kP_{i, n-k}y^h\\
-% 		 \sum_{h=1}^\infty P_{h, L} y^h &= \sum_{h=1}^\infty\left[ c_+c_0^{L-1} a_h + \frac{c_+}{c_0} \sum_{k=1}^{L-1} \sum_{i\in I} c_0^kP_{i, L-k} \right] y^h\\
-% 		 \implies P_{h, L} &= c_+c_0^{L-1} \max(m - h + 1, 0) + c_+ \sum_{k=1}^{L-1} \sum_{i\in I} c_0^{k-1}P_{i, L-k}
-% 		 \end{align}
-% 		 \begin{equation}
-% 		 \boxed{\therefore P_{h, L} = c_+c_0^{L-1} \max(m - h + 1, 0) + c_+ \sum_{k=1}^{L-1} \sum_{i\in I} c_0^{k-1}P_{i, L-k}}
-% 		 \end{equation}
-
-
-% 	\subsection{Second Whole Attempt}
 \section{Solution}
 	The recursive equation to solve is:
 	\begin{align}
-		P_{h, L} &= c_0P_{h, L - 1} + c_+ \sum_{i\in I_h} P_{i, L-1},\,\,\, L \ge 2, h \ge 1\\ % maybe 2
+		P_{h, L} &= c_0P_{h, L - 1} + \sum_{i\in I_h} c_{h-i} P_{i, L-1},\,\,\, L \ge 2, h \ge 1\\ % maybe 2
 	\end{align}
-	where $I_h$ is the set of integers satisfying $h - 1 \ge i \ge \max(h - m, 1)$. The initial conditions are given by:
+	where $I_h$ is the set of integers satisfying $h - 1 \ge i \ge \max(h - m, 1)$. The boundary conditions are given by:
 	\begin{align}
-		P_{h, 1} &= c_+ \max(m - h + 1, 0)\\
-		P_{1, L} &= c_* c_0^{L-1}\\
-		P_{1, 1} &= c_*
+		P_{h, 1} &= \sum_{i=h}^m c_i \text{ (P of doing more than h damage)} \\
+		 &= \theta(m - h) \sum_{i=h}^m c_i \\
+		P_{1, L} &= c_+ c_0^{L-1} \text{ (P of missing $L-1$ times, then hitting any damage}\\
+		P_{1, 1} &= c_+ \text{ (P of doing any damage)}
 	\end{align}
 	
 	Using a generating function:
@@ -318,42 +58,43 @@ Since the first condition is already met, we have that $i \geq h - m$, but $i$ a
 	\subsection{Corner} 
 	Let's focus on each term at a time, starting with the corner:
 	\begin{align}
-		xyP_{1, 1} = xyc_*
+		xyP_{1, 1} = xyc_+
 	\end{align}
 	\subsection{Top}
 	For the top, lets first note that $\max(m - h + 1, 0)$ is non-zero when $m - h + 1 \ge 1 \implies m \ge h$. Then,
 	\begin{align}
-		x\sum_{h=2}^\infty P_{h, 1} y^h &= c_+x \sum_{h=2}^\infty\max(m - h + 1, 0)y^h\\
-		&= c_+x \sum_{h=2}^m (m - h + 1)y^h\\
+		x\sum_{h=2}^\infty P_{h, 1} y^h &= x \sum_{h=2}^\infty \theta(m - h)\sum_{i=h}^m c_i y^h\\
+		&= x\sum_{h=2}^m \sum_{i=h}^m c_i y^h \\
 	\end{align}
 	\subsection{Left}
 	Now the left:
 	\begin{align}
-		y\sum_{L=2}^\infty P_{1,L} x^L &= y\sum_{L=2}^\infty c_* c_0^{L-1} x^L \\
-		&= y\frac{c_*}{c_0}\sum_{L=2}^\infty (c_0x)^L \\
-		&= y\frac{c_*}{c_0}\left[\sum_{L=0}^\infty (c_0x)^L - 1 - c_0x\right]\\
-		&= y\frac{c_*}{c_0}\left[\frac{1}{1-c_0x} - 1 - c_0x\right]\\
-		&= y\frac{c_*}{c_0}\frac{1}{1-c_0x}\left[1 - (1-c_0x) - (1-c_0x)c_0x\right]\\
-		&= y\frac{c_*}{c_0}\frac{1}{1-c_0x}\left[c_0^2x^2\right]\\
-		&= y\frac{c_*}{c_0}\frac{c_0^2x^2}{1-c_0x}\\
+		y\sum_{L=2}^\infty P_{1,L} x^L &= y\sum_{L=2}^\infty c_+ c_0^{L-1} x^L \\
+		&= y\frac{c_+}{c_0}\sum_{L=2}^\infty (c_0x)^L \\
+		&= y\frac{c_+}{c_0}\left[\sum_{L=0}^\infty (c_0x)^L - 1 - c_0x\right]\\
+		&= y\frac{c_+}{c_0}\left[\frac{1}{1-c_0x} - 1 - c_0x\right]\\
+		&= y\frac{c_+}{c_0}\frac{1}{1-c_0x}\left[1 - (1-c_0x) - (1-c_0x)c_0x\right]\\
+		&= y\frac{c_+}{c_0}\frac{1}{1-c_0x}\left[c_0^2x^2\right]\\
+		&= y\frac{c_+}{c_0}\frac{c_0^2x^2}{1-c_0x}\\
 	\end{align}
 	\subsection{Interior}
 	Now the interior:
 	\begin{align}
-		\sum_{L=2}^\infty\sum_{h=2}^\infty P_{h, L} y^hx^L &= \sum_{L=2}^\infty\sum_{h=2}^\infty \left(c_0P_{h, L - 1} + c_+ \sum_{i\in I_h} P_{i, L-1}\right) y^hx^L\\
-		&= \sum_{L=2}^\infty\sum_{h=2}^\infty c_0P_{h, L - 1}y^hx^L + c_+ \sum_{L=2}^\infty\sum_{h=2}^\infty\sum_{i\in I_h} P_{i, L-1}y^hx^L\\
+		\sum_{L=2}^\infty\sum_{h=2}^\infty P_{h, L} y^hx^L &= \sum_{L=2}^\infty\sum_{h=2}^\infty \left(c_0P_{h, L - 1} + \sum_{i\in I_h} c_{h-i}P_{i, L-1}\right) y^hx^L\\
+		&= \sum_{L=2}^\infty\sum_{h=2}^\infty c_0P_{h, L - 1}y^hx^L + \sum_{L=2}^\infty\sum_{h=2}^\infty\sum_{i\in I_h} c_{h-i}P_{i, L-1}y^hx^L\\
 		\mathcal{I}(x, y)&= G(x, y) + R(x, y).
 	\end{align}
-	Let us also tackle this individually, starting with the `g' term:
+	Let us also tackle this individually, starting with the $G$ term:
 	\begin{align}
-		\sum_{L=2}^\infty\sum_{h=2}^\infty c_0P_{h, L - 1}y^hx^L &= c_0\sum_{L=1}^\infty\sum_{h=2}^\infty P_{h, L}y^hx^{L+1}\\
+		G(x, y) = \sum_{L=2}^\infty\sum_{h=2}^\infty c_0P_{h, L - 1}y^hx^L &= c_0\sum_{L=1}^\infty\sum_{h=2}^\infty P_{h, L}y^hx^{L+1}\\
 		&= c_0x\sum_{L=1}^\infty\sum_{h=2}^\infty P_{h, L}y^hx^L\\
 		&= c_0x\sum_{L=1}^\infty\left( \sum_{h=1}^\infty P_{h, L}y^hx^L -  P_{1, L}yx^L\right)\\
 		&= c_0x\sum_{L=1}^\infty\sum_{h=1}^\infty P_{h, L}y^hx^L -  c_0xy\sum_{L=1}^\infty P_{1, L}x^L\\
-		&= c_0xg(x, y) -  c_* c_0xy\sum_{L=1}^\infty c_0^{L-1}x^L\\
-		&= c_0xg(x, y) -  c_* c_0x^2y\sum_{L=1}^\infty c_0^{L-1}x^{L-1}\\
-		&= c_0xg(x, y) -  c_* c_0 x^2y \sum_{L=0}^\infty c_0^{L}x^L\\
-		&= c_0xg(x, y) -  \frac{c_* c_0x^2y}{1-c_0x}\\
+		&= c_0xg(x, y) -  c_+ c_0xy\sum_{L=1}^\infty c_0^{L-1}x^L\\
+		&= c_0xg(x, y) -  c_+ c_0x^2y\sum_{L=1}^\infty c_0^{L-1}x^{L-1}\\
+		&= c_0xg(x, y) -  c_+ c_0 x^2y \sum_{L=0}^\infty c_0^{L}x^L\\
+		&= c_0xg(x, y) -  \frac{c_+ c_0x^2y}{1-c_0x}\\
+		&= c_0xg(x, y) -  y\frac{c_+}{c_0}\frac{c_0^2x^2}{1-c_0x}
 	\end{align}
 	
 	% Followed by $R$. 
@@ -374,22 +115,22 @@ Since the first condition is already met, we have that $i \geq h - m$, but $i$ a
 			0 & \text{ otherwise } \\
 		\end{cases}
 	\end{align}
-	Now solving $R(x, y)= c_+ \sum_{L=2}^\infty\sum_{h=2}^\infty\sum_{i\in I} P_{i, L-1}y^hx^L$ gives:
+	Now solving $R(x, y)= \sum_{L=2}^\infty\sum_{h=2}^\infty\sum_{i\in I} c_{h-i}P_{i, L-1}y^hx^L$ gives:
 	\begin{align}
-		R(x, y) &= c_+ \sum_{L=2}^\infty\sum_{h=2}^\infty\sum_{i=\max(h-m, 1)}^{h-1} P_{i, L-1}y^hx^L\\
-		&= c_+x \sum_{L=1}^\infty\sum_{h=2}^\infty\sum_{i=\max(h-m, 1)}^{h-1} P_{i, L}y^hx^L\\
-		&= c_+xy \sum_{L=1}^\infty\sum_{h=1}^\infty\sum_{i=\max(h-m+1, 1)}^{h} P_{i, L}y^hx^L\\
-		&= c_+xy \sum_{L=1}^\infty\sum_{h=1}^\infty\left(P_{h, L}\delta_m^1 + \sum_{i=\max(h-m+1, 1)}^{h-1} P_{i, L}\right)y^hx^L\\
-		&= c_+xy \sum_{L=1}^\infty\sum_{h=1}^\infty P_{h, L}x^L\delta_m^1 + c_+xy \sum_{L=1}^\infty\sum_{h=1}^\infty\sum_{i=\max(h-m+1, 1)}^{h-1} P_{i, L}y^hx^L\\
+		R(x, y) &= \sum_{L=2}^\infty\sum_{h=2}^\infty\sum_{i=\max(h-m, 1)}^{h-1} c_{h-i}P_{i, L-1}y^hx^L\\
+		&= x \sum_{L=1}^\infty\sum_{h=2}^\infty\sum_{i=\max(h-m, 1)}^{h-1} c_{h-i}P_{i, L}y^hx^L\\
+		&= xy \sum_{L=1}^\infty\sum_{h=1}^\infty\sum_{i=\max(h-m+1, 1)}^{h} c_{h-i}P_{i, L}y^hx^L\\
+		&= xy \sum_{L=1}^\infty\sum_{h=1}^\infty\left(c_0P_{h, L}\delta_m^1 + \sum_{i=\max(h-m+1, 1)}^{h-1} c_{h-i}P_{i, L}\right)y^hx^L\\
+		&= c_0xy \sum_{L=1}^\infty\sum_{h=1}^\infty P_{h, L}x^L\delta_m^1 + xy \sum_{L=1}^\infty\sum_{h=1}^\infty\sum_{i=\max(h-m+1, 1)}^{h-1} c_{h-i}P_{i, L}y^hx^L\\
 	\end{align}
 	Notice that the $h=1$ term in the second set of sums yields 0.
 	\begin{align}
-		&= c_+xy g(x, y)\delta_h^1 + c_+xy \sum_{L=1}^\infty\sum_{h=2}^\infty\sum_{i=\max(h-m+1, 1)}^{h-1} P_{i, L}y^hx^L\\
-		&= c_+xy g(x, y)\delta_h^1 + c_+xy^2 \sum_{L=1}^\infty\sum_{h=1}^\infty\sum_{i=\max(h-m+2, 1)}^{h} P_{i, L}y^hx^L\\
-		&= c_+xy g(x, y)\delta_h^1 + c_+xy^2 \sum_{L=1}^\infty\sum_{h=1}^\infty\left(\sum_{i=\max(h-m+2, 1)}^{h} P_{i, L}\right)y^hx^L\\
-		&= c_+xy g(x, y)\delta_h^1 + c_+xy^2 \sum_{L=1}^\infty\sum_{h=1}^\infty\left(P_{i, L}\delta_m^2 + \sum_{i=\max(h-m+2, 1)}^{h} P_{i, L}\right)y^hx^L\\
-		&= c_+xy g(x, y)\delta_h^1 + c_+xy^2 \sum_{L=1}^\infty\sum_{h=1}^\infty P_{i, L}\delta_m^2 + c_+xy^2 \sum_{L=1}^\infty\sum_{h=1}^\infty\sum_{i=\max(h-m+2, 1)}^{h} P_{i, L}y^hx^L\\
-		&= c_+xy g(x, y)\delta_h^1 + c_+xy^2 g(x, y)\delta_m^2 + c_+xy^2 \sum_{L=1}^\infty\sum_{h=1}^\infty\sum_{i=\max(h-m+2, 1)}^{h} P_{i, L}y^hx^L\\
+		&= c_0 xy g(x, y)\delta_h^1 + xy \sum_{L=1}^\infty\sum_{h=2}^\infty\sum_{i=\max(h-m+1, 1)}^{h-1} c_{h-i}P_{i, L}y^hx^L\\
+		&= c_0xy g(x, y)\delta_h^1 + xy^2 \sum_{L=1}^\infty\sum_{h=1}^\infty\sum_{i=\max(h-m+2, 1)}^{h} c_{h-i}P_{i, L}y^hx^L\\
+		&= c_0xy g(x, y)\delta_h^1 + xy^2 \sum_{L=1}^\infty\sum_{h=1}^\infty\left(\sum_{i=\max(h-m+2, 1)}^{h} c_{h-i}P_{i, L}\right)y^hx^L\\
+		&= c_0xy g(x, y)\delta_h^1 + xy^2 \sum_{L=1}^\infty\sum_{h=1}^\infty\left(P_{i, L}\delta_m^2 + \sum_{i=\max(h-m+2, 1)}^{h} c_{h-i}P_{i, L}\right)y^hx^L\\
+		&= c_0xy g(x, y)\delta_h^1 + xy^2 \sum_{L=1}^\infty\sum_{h=1}^\infty P_{i, L}\delta_m^2 + c_+xy^2 \sum_{L=1}^\infty\sum_{h=1}^\infty\sum_{i=\max(h-m+2, 1)}^{h} c_{h-i}P_{i, L}y^hx^L\\
+		&= c_0xy g(x, y)\delta_h^1 + xy^2 g(x, y)\delta_m^2 + xy^2 \sum_{L=1}^\infty\sum_{h=1}^\infty\sum_{i=\max(h-m+2, 1)}^{h} c_{h-i} P_{i, L}y^hx^L\\
 	\end{align}
 	These series continues until the `engine' producing terms has no more. The number of terms in this series is given by the maximum $n$ that is non-zero:
 	\begin{align}
@@ -414,21 +155,21 @@ Since the first condition is already met, we have that $i \geq h - m$, but $i$ a
 	% 	&= c_+ xg(x, y) \frac{1}{1-y} \\
 	% \end{align}
 	Now let's combine everything:
-	\begin{align}
-		g(x, y) &= xyc_* + c_+x \sum_{h=2}^m (m - h + 1)y^h + \cancel{y\frac{c_*}{c_0}\frac{c_0^2x^2}{1-c_0x}} + c_0xg(x, y) - \cancel{\frac{c_* c_0x^2y}{1-c_0x}} +  c_+ x g(x, y)\sum_{i=1}^m y^i\\
-		&= c_+x \sum_{h=1}^m (m - h + 1)y^h + c_0xg(x, y) + c_+ x g(x, y)\sum_{i=1}^m y^i
+	\begin{align} 
+		g(x, y) &= xyc_+ + x \sum_{h=2}^m \sum_{i=h}^{m}c_i y^h + \cancel{y\frac{c_+}{c_0}\frac{c_0^2x^2}{1-c_0x}} + c_0xg(x, y) - \cancel{y\frac{c_+}{c_0}\frac{c_0^2x^2}{1-c_0x}} +  x g(x, y)\sum_{i=1}^m c_{i} y^i\\
+		&= x \sum_{h=1}^m\sum_{i=h}^{m}c_i y^h + c_0xg(x, y) + x g(x, y)\sum_{i=1}^m c_{i} y^i
 	\end{align}
 	Isolating for $g(x, y)$:
 	\begin{align}
-		g(x, y) - c_0xg(x, y) - c_+ x g(x, y)\sum_{i=1}^m y^i &= c_+x \sum_{h=1}^m (m - h + 1)y^h\\
-		\left(1 - c_0x - c_+ x\sum_{i=1}^m y^i\right)g(x, y) &= c_+x \sum_{h=1}^m (m - h + 1)y^h\\
-		g(x, y) &= x\frac{ c_+ \sum_{h=1}^m (m - h + 1)y^h}{1 - \left(c_0 + c_+ \sum_{i=1}^m y^i\right)x}\\
-		g(x, y) = \sum_{h=1}^\infty\sum_{L=1}^\infty P_{h, L} y^h x^L &= x\frac{c_+ \sum_{h=1}^m (m - h + 1)y^h}{1 - \left(c_0 + c_+ \sum_{i=1}^m y^i\right)x}
+		g(x, y) - c_0xg(x, y) - x g(x, y)\sum_{i=1}^m c_{i} y^i &= x \sum_{h=1}^m\sum_{i=h}^{m}c_i y^h  \\
+		g(x, y)\left[1 - c_0x - x \sum_{i=1}^m c_{i} y^i\right] &= x \sum_{h=1}^m\sum_{i=h}^{m}c_i y^h  \\
+		g(x, y)\left[1 - x \sum_{i=0}^m c_{i} y^i\right] &= x \sum_{h=1}^m\sum_{i=h}^{m}c_i y^h  \\
+		g(x, y) &= \frac{x \sum_{h=1}^m\sum_{i=h}^{m}c_i y^h}{1 - x \sum_{i=0}^m c_{i} y^i}
 	\end{align}
 	To simplify, let's define:
 	\begin{align}
-		T(y) &= c_+ \sum_{h=1}^m (m - h + 1)y^h\\
-		B(y) &= c_0 + c_+ \sum_{i=1}^m y^i\\
+		T(y) &= \sum_{h=1}^m \sum_{i=h}^{m}c_i y^h\\
+		B(y) &= \sum_{i=0}^m c_i y^i\\
 	\end{align}
 	Now $g(x, y)$ can be written as,
 	\begin{align}
@@ -458,161 +199,45 @@ Since the first condition is already met, we have that $i \geq h - m$, but $i$ a
 	\end{align}
 	We need to workout $B^k(y)$:
 	\begin{align}
-	B^k(y) &= \left( c_0 + c_+ \sum_{j=1}^m y^j\right)^k  \\
-		&= \sum_{i=0}^k {k \choose i} c_0^{k-i} c_+^i \left(\sum_{j=1}^m y^j\right)^i  \\
-		&= c_0^k \sum_{i=0}^k {k \choose i}  \left(\frac{c_+}{c_0}\right)^i \left( \sum_{j=1}^m y^j\right)^i  \\
+		B^k(y) &= \left( \sum_{j=0}^m c_j y^j\right)^k \\
+		&= \sum_{j=0}^{km} d_j^k y^j,
 	\end{align}
-	Now, we would like to handle the last term,
+	where $d_j^k$ is the $j$'th element of the $k$'th convolution of $c$, which doesn't have an analytic form. In practice the \texttt{numpy} function \texttt{numpy.polynomial.polynomial.polypow} can be used to compute this. Then,
+	% https://en.wikipedia.org/wiki/Discrete_Fourier_transform#Polynomial_multiplication
+	% https://caps.gsfc.nasa.gov/simpson/pubs/series.pdf also
 	\begin{align}
-	\left( \sum_{j=1}^m y^j \right)^i &=  \left( \sum_{j=0}^m y^j - 1 \right)^i \\
-		&= \left( \frac{1 - y^{m+1}}{1 - y} - 1 \right)^i \\
-		&= \left( \frac{1 - y^{m+1} - 1 + y}{1 - y} \right)^i\\
-		&= \frac{(y - y^{m+1})^i}{(1 - y)^i} \\
-		&= (y - y^{m+1})^i \cdot \sum_{j=0}^\infty {j+i-1\choose j}y^j \\
-		&= (y - y^{m+1})^i \cdot \sum_{j=0}^\infty {j+i-1\choose j}y^j \\
-		&= \sum_{l=0}^i {i \choose l} (-1)^l y^{i+lm} \cdot \sum_{j=0}^\infty {j+i-1\choose j}y^j \\
-		&= \sum_{j=0}^\infty\sum_{l=0}^i  (-1)^l  {i \choose l} {j+i-1\choose j}y^{i+j+lm} \\
-	\end{align}
-	where in the first line, Eq.~(\ref{eq:binomial_special}) was used. In the second line, Eq.~(\ref{eq:sub_binomial}) was used. We also note that the expansion requires $i>1$.
-	We can simplify this by defining,
-	\begin{align}
-		a_{l, j}^i \equiv (-1)^l  {i \choose l} {j+i-1\choose j}
-	\end{align}
-	leaving us with
-	\begin{equation}
-		\left( \sum_{j=1}^m y^j \right)^i = y^i\sum_{j=0}^\infty\sum_{l=0}^i  a_{l, j}^i y^{j+lm} \\
-	\end{equation}
-
-	This needs to be cast as a regular power series. For this, we turn to a visual proof [Omitted], which yields:
-	\begin{equation}
-		\sum_{j=0}^\infty \sum_{l=0}^i a_{l, j}^i y^{j + ml} = \sum_{j=0}^\infty \left( \sum_{l=0}^{\min(\lfloor j / m \rfloor, i)} a_{l, j-ml}^i\right)y^j.
-	\end{equation}
-	If we define,
-	\begin{align}
-		A_{j, i} \equiv \sum_{l=0}^{\min(\lfloor j / m \rfloor, i)} a_{l, j-ml}^i,
-	\end{align}
-	then,
-	\begin{equation}
-		\sum_{j=0}^\infty \sum_{l=0}^i a_{l, j}^i y^{j+ml} = \sum_{j=0}^\infty A_{j, i}y^j.
-	\end{equation}
-
-
-
-	And so,
-	\begin{equation}
-		\left( \sum_{j=1}^m y^j \right)^i = y^i\sum_{j=0}^\infty A_{j, i}y^j. \\
-	\end{equation}
-	Expanding fully gives,
-	\begin{equation}
-		\left( \sum_{j=1}^m y^j \right)^i = \sum_{j=0}^\infty \left[ \sum_{l=0}^{\min(\lfloor j/m\rfloor, i)} (-1)^l {i \choose l} {j - ml + i - 1 \choose j - ml} \right]y^{i+j}. \\
-	\end{equation}
-	Returning to $B^k(y)$:
-	\begin{align}
-		B^k(y) &= c_0^k \sum_{i=0}^k {k \choose i}  \left(\frac{c_+}{c_0}\right)^i \left( \sum_{j=1}^m y^j\right)^i\\
-		&= c_0^k  \left[ 1 + \sum_{i=1}^k {k \choose i}  \left(\frac{c_+}{c_0}\right)^i  \sum_{j=0}^\infty A_{j, i}y^{i+j}\right]\\
-		&= c_0^k  \left[ 1 +  \sum_{j=0}^\infty\sum_{i=1}^k {k \choose i}  \left(\frac{c_+}{c_0}\right)^i  A_{j, i}y^{i+j}\right]\\
-		% &= c_0^k  \left[ 1 +  \sum_{j=0}^\infty\left(\sum_{n=j+1}^{j+k} {k \choose n-j}  \left(\frac{c_+}{c_0}\right)^{n-j}  A_{j, n-j}\right)y^n\right]\\
-	\end{align}
-
-	To handle this, we'll define,
-	\begin{align}
-		D_{i, j}^k = {k \choose i}  \left(\frac{c_+}{c_0}\right)^i  A_{j, i},
-	\end{align}
-	making,
-	\begin{align}
-		B^k(y) = c_0^k  \left[ 1 +  \sum_{j=0}^\infty\sum_{i=1}^k D_{i, j}^k y^{i+j}\right],
-	\end{align}
-	and make use of the identity [visual proof is also omitted]:
-	\begin{align}
-		\sum_{j=0}^\infty \sum_{i=1}^k a_{i, j} y^{i+j} = \sum_{j=1}^\infty\left( \sum_{i=1}^{\min(j, k)}a_{i, j-i} \right) y^j.
-	\end{align}
-	This leaves us with,
-	\begin{align}
-		B^k(y) = c_0^k  \left[ 1 +  \sum_{j=1}^\infty\left( \sum_{i=1}^{\min(j, k)}D_{i, j-i}^k \right) y^j\right].
-	\end{align}
-	We further simplify:
-	\begin{align}
-		F_{j, k} \equiv \sum_{i=1}^{\min(j, k)}D_{i, j-i}^k,
-	\end{align}
-	leaving us finally with:
-	\begin{align}
-		B^k(y) = c_0^k  \left[ 1 +  \sum_{j=1}^\infty F_{j, k} y^j\right].
-	\end{align}
-
-	So our original formula becomes,
-	\begin{align}
-		\frac{1}{1-B(y)x} &= \sum_{k=0}^\infty c_0^k  \left[ 1 +  \sum_{j=1}^\infty F_{j, k} y^j\right] x^k \\
-		\implies\frac{x}{1-B(y)x} &= \sum_{k=1}^\infty c_0^{k-1}  \left[ 1 +  \sum_{j=1}^\infty F_{j, k-1} y^j\right] x^{k} \\
-		&= \sum_{k=1}^\infty c_0^{k-1}x^{k} +  \sum_{k=1}^\infty \sum_{j=1}^\infty c_0^{k-1} F_{j, k-1} y^jx^{k} \\
+		\frac{1}{1-B(y)x} &= \sum_{k=0}^\infty \left[ \sum_{j=0}^{km} d_j^k y^j \right] x^k \\
+		\implies\frac{x}{1-B(y)x} &= \sum_{k=0}^\infty \left[ \sum_{j=0}^{km} d_j^k y^j \right] x^{k+1} \\
+		&= \sum_{k=1}^\infty \sum_{j=0}^{(k-1)m} d_j^{k-1} y^j x^k
 	\end{align}
 
 	Multiplying by $T(y)$ gives back our generating function:
 	\begin{align}
-		g(x, y) = \frac{T(y)x}{1-B(y)x} &= T(y)\sum_{k=1}^\infty c_0^{k-1}x^{k} +  T(y)\sum_{k=1}^\infty \sum_{j=1}^\infty c_0^{k-1} F_{j, k-1} y^jx^{k} \\
-		&= c_+ \sum_{h=1}^m (m - h + 1)y^h\sum_{k=1}^\infty c_0^{k-1}x^{k} +  T(y)\sum_{k=1}^\infty \sum_{j=1}^\infty c_0^{k-1} F_{j, k-1} y^jx^{k} \\
-		&= \sum_{h=1}^m \sum_{k=1}^\infty \left[ c_+ c_0^{k-1}(m - h + 1) \right]y^hx^{k} +  T(y)\sum_{k=1}^\infty \sum_{j=1}^\infty c_0^{k-1} F_{j, k-1} y^jx^{k} \\
+		g(x, y) = \frac{T(y)x}{1-B(y)x} &= T(y)\sum_{k=1}^\infty \sum_{j=0}^{(k-1)m} d_j^{k-1} y^j x^k\\
+		&= \sum_{h=1}^m \sum_{i=h}^{m}c_i y^h \cdot \sum_{k=1}^\infty \sum_{j=0}^{(k-1)m} d_j^{k-1} y^j x^k\\
+		&= \sum_{h=1}^m  \sum_{k=1}^\infty \sum_{j=0}^{(k-1)m} \sum_{i=h}^{m} c_i d_j^{k-1} y^{j+h} x^k\\
+		&= \sum_{h=1}^m  \sum_{k=1}^\infty \sum_{j=0}^{(k-1)m} a_{h, j}^k y^{j+h} x^k,
 	\end{align}
-	Focusing on the second series:
+	where $a_{h, j}^k \equiv \sum_{i=h}^{m} c_i d_j^{k-1}$. We make use of the identity (visual proof omitted)
 	\begin{align}
-		T(y)\sum_{k=1}^\infty \sum_{j=1}^\infty c_0^{k-1} F_{j, k-1} y^jx^{k} &= c_+ \sum_{h=1}^m (m - h + 1)y^h\sum_{k=1}^\infty \sum_{j=1}^\infty c_0^{k-1} F_{j, k-1} y^jx^{k}\\
-		&=  \sum_{h=1}^m \sum_{k=1}^\infty \sum_{j=1}^\infty c_+c_0^{k-1} (m - h + 1)F_{j, k-1} y^{j+h}x^{k}\\
-		&=  \sum_{k=1}^\infty  \left[ \sum_{j=1}^\infty \sum_{h=1}^m c_+c_0^{k-1} (m - h + 1)F_{j, k-1} y^{j+h}\right]x^{k}\\
+		\sum_{i=1}^N \sum_{j=0}^M a_{i, j}y^{i+j} = \sum_{p=1}^{N+M}\left[ \sum_{j=\max(1, p-M)}^{\min(p, N)} a_{j, p-j}\right]y^p
 	\end{align}
-	Defining
+	with $h=i, j=j, N=m, M=(k-1)m$ to obtain:
 	\begin{align}
-		H_{j, h}^k &\equiv   c_+c_0^{k-1} (m - h + 1)F_{j, k-1},
+		g(x, y) &= \sum_{k=1}^\infty \sum_{p=1}^{km} \left[\sum_{j=\max(1, p+(1-k)m)}^{\min(p, m)} a_{j, p-j}^k \right]y^px^k\\
+		 &= \sum_{L=1}^\infty \sum_{h=1}^{Lm} \left[\sum_{j=\max(1, h+(1-L)m)}^{\min(h, m)} a_{j, h-j}^L \right]y^h x^L\\
+		 &= \sum_{L=1}^\infty \sum_{h=1}^{\infty} \left[\theta(Lm-h)\sum_{j=\max(1, h+(1-L)m)}^{\min(h, m)} a_{j, h-j}^L \right]y^h x^L
 	\end{align}
-	makes,
+	where $\theta(x)$ is the Heaviside function. Extracting out $P_{h, L}$, we get,
 	\begin{align}
-		T(y)\sum_{k=1}^\infty \sum_{j=1}^\infty c_0^{k-1} F_{j, k-1} y^jx^{k} &=  \sum_{k=1}^\infty  \left[ \sum_{j=1}^\infty \sum_{h=1}^m H_{j, h}^k y^{j+h}\right]x^{k}\\
-		&=  \sum_{k=1}^\infty  \left[ \sum_{j=1}^\infty \sum_{h=1}^{\min(j, m)} H_{j-h, h}^k y^j\right]x^{k}\\
-		&=  \sum_{k=1}^\infty \sum_{j=1}^\infty \left(\sum_{h=1}^{\min(j, m)} H_{j-h, h}^k \right) y^jx^{k}\\
+		P_{h, L} &= \theta(Lm-h)\sum_{j=\max(1, h+m-mL)}^{\min(h, m)} a_{j, h-j}^L \\
+		P_{h, L} &= \theta(Lm-h)\sum_{j=\max(1, h+m-mL)}^{\min(h, m)} \sum_{i=h}^m c_i d_{h-j}^{L-1}
 	\end{align}
-	So,
-	\begin{align}
-		g(x, y) &= \sum_{L=1}^\infty \sum_{h=1}^m  c_+ c_0^{L-1}(m - h + 1) y^hx^L + \sum_{L=1}^\infty \sum_{h=1}^\infty \left(\sum_{i=1}^{\min(h, m)} H_{h-i, i}^L \right) y^hx^{L}\\
-		&= \sum_{L=1}^\infty \sum_{h=1}^\infty \theta(m-h) c_+ c_0^{L-1}(m - h + 1) y^hx^L + \sum_{L=1}^\infty \sum_{h=1}^\infty \left(\sum_{i=1}^{\min(h, m)} H_{h-i, i}^L \right) y^hx^{L}\\
-		&= \sum_{L=1}^\infty \sum_{h=1}^\infty \left[ \theta(m-h)c_+ c_0^{L-1}(m - h + 1) + \sum_{i=1}^{\min(h, m)} H_{h-i, i}^L\right] y^hx^{L}\\
-	\end{align}
-	where $\theta(x)$ is the Heaviside function. And at last, we obtain:
+	And so we end with:
 	\begin{equation}
-		P_{h, L} = \theta(m-h)c_+ c_0^{L-1}(m - h + 1) + \sum_{i=1}^{\min(h, m)} H_{h-i, i}^L
+		\boxed{\therefore P_{h, L} = \theta(Lm-h)\sum_{j=\max(1, h+m-mL)}^{\min(h, m)} \sum_{i=h}^m c_i d_{h-j}^{L-1} }
 	\end{equation}
-	\begin{equation}
-		\boxed{\therefore P_{h, L} = c_+ c_0^{L-1}\max(m - h + 1, 0) + \sum_{i=1}^{\min(h, m)} H_{h-i, i}^L }
-	\end{equation}
-	%P_{h, L} =\frac{P_{1, L}P_{h, 1}}{P_{1,1}} + \sum_{i=1}^{\min(h, m)} H_{h-i, i}^L\\
-	We can unravel $H$ using:
-	\begin{align}
-		H_{j, h}^k &\equiv   c_+c_0^{k-1} (m - h + 1)F_{j, k-1},\\
-		F_{j, k} &\equiv \sum_{i=1}^{\min(j, k)}D_{i, j-i}^k,\\
-		D_{i, j}^k &= {k \choose i}  \left(\frac{c_+}{c_0}\right)^i  A_{j, i},\\
-		A_{j, i} &\equiv \sum_{l=0}^{\min(\lfloor j / m \rfloor, i)} a_{l, j-ml}^i,\\
-		a_{l, j}^i &\equiv (-1)^l  {i \choose l} {j+i-1\choose j}\\
-	\end{align}
-	to get:
-	\begin{align}
-		H_{h-i, i}^L &= c_+c_0^{L-1} (m - i + 1)F_{h-i, L-1}\\
-		&= C_ic_0^{L-1} \sum_{p=1}^{\min_{h-i}^{L-1}} D_{p, h-i-p}^{L-1}\\
-		&= C_ic_0^{L-1} \sum_{p=1}^{\min_{h-i}^{L-1}} {L-1 \choose p}  \left(\frac{c_+}{c_0}\right)^p  A_{h-i-p, p}\\
-		&= C_ic_0^{L-1} \sum_{p=1}^{\min_{h-i}^{L-1}} {L-1 \choose p}  \left(\frac{c_+}{c_0}\right)^p  \sum_{l=0}^{\min_{\lfloor (h-i-p) / m \rfloor}^{p}} a_{l, h-i-p-ml}^p\\
-		&= C_ic_0^{L-1} \sum_{p=1}^{\min_{h-i}^{L-1}} {L-1 \choose p}  \left(\frac{c_+}{c_0}\right)^p  \sum_{l=0}^{\min_{\lfloor (h-i-p) / m \rfloor}^{p}} (-1)^l  {p \choose l} {h-i-ml-1\choose h-i-ml-p}\\
-		&= C_i c_0^{L-1}\sum_{p=1}^{\min_{h-i}^{L-1}} {L-1 \choose p}  G(h, i, p)\\
-		%F_{h-i, k-1} &\equiv \sum_{p=1}^{\min(h-i, k-1)}D_{p, h-i-p}^{k-1},\\
-		%D_{p, h-i-p}^{k-1} &= {k-1 \choose p}  \left(\frac{c_+}{c_0}\right)^p  A_{h-i-p, p},\\
-		%A_{h-i-p, p} &\equiv \sum_{l=0}^{\min_{\lfloor (h-i-p) / m \rfloor}^{p}} a_{l, h-i-p-ml}^p,\\
-		% a_{l, h-i-p-ml}^p &\equiv (-1)^l  {p \choose l} {h-i-ml-1\choose h-i-p-ml}\\
-	\end{align}
-	where $C_i = c_+(m - i + 1)$ and 
-	\begin{align}
-		G(h, i, p) &\equiv \left(\frac{c_+}{c_0}\right)^p  \sum_{l=0}^{\min_{\lfloor (h-i-p) / m \rfloor}^{p}} (-1)^l  {p \choose l} {h-i-ml-1\choose h-i-ml-p}.
-	\end{align}
-	% Expanding $H$ and identifying the boundary conditions yields,
-	% \begin{equation}
-	% 	\boxed{P_{h, L} = \frac{P_{1, L}P_{h, 1}}{P_{1,1}} + c_+c_0^{L-1} \sum_{i=1}^{\min^h_m} \sum_{l=1}^{\min^{h - i}_{L - 1}} \sum_{q=0}^{\min^{\lfloor\frac{h - i - l}{m}\rfloor}_l} (-1)^q(m - i + 1) \left( \frac{c_+}{c_0} \right)^l {L- 1 \choose l}  {l \choose q} {h - i - mq -1 \choose h - i - mq - l},}
-	% \end{equation}
-	% where the notation $\min(a, b) \equiv \min^a_b \equiv \min^b_a$ was used to shorten the expression.
-
+	
 
 	\section{Summing over $L$}
 		Often, the following quantity needs to be evaluated for further applications, like the probability of winning a fight:
