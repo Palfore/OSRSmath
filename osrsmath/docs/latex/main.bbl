@@ -40,15 +40,16 @@ Wiki.
 \newblock Combat triangle.
 \newblock \url{https://oldschool.runescape.wiki/w/Combat_triangle}.
 
-\bibitem{wiki:max_ranged}
-Wiki.
-\newblock Maximum ranged hit.
-\newblock \url{https://oldschool.runescape.wiki/w/Maximum_ranged_hit}.
+\bibitem{bitter:dps_calculator}
+Dps calculator by bitterkoekje.
+\newblock
+  \url{https://docs.google.com/spreadsheets/d/1wzy1VxNWEAAc0FQyDAdpiFggAfn5U6RGPp2CisAHZW8/edit#gid=158500257}.
 
-\bibitem{wiki:max_magic}
-Wiki.
-\newblock Maximum magic hit.
-\newblock \url{https://oldschool.runescape.wiki/w/Maximum_magic_hit}.
+\bibitem{nukelawe:osrs-markov}
+Nukelawe.
+\newblock Markov chain analysis of overkill and natural regeneration in osrs
+  combat.
+\newblock \url{https://github.com/Nukelawe/osrs-markov/blob/master/main.pdf}.
 
 \bibitem{wiki:wintertodt_supply_crates}
 Wiki.

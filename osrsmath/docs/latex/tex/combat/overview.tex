@@ -69,6 +69,8 @@ It is interesting to note that although the descriptions of in-game mechanics li
 			\label{fig:equipment_stats_and_triangle}
 		\end{figure}
 
+	\subsection{Max Hits and Accuracy}
+		Due to the large complexity and number of exceptions in the game, defining mathematical formulas for max hit and accuracy is very difficult/tedious. Instead, programming is the language for this. If you want to learn more about how max hits and accuracies are calculated see Ref.~\cite{bitter:dps_calculator}. You can also view a python translation of that code in the combat directory of the codebase accompanying this document.
 
 	\subsection{Ticks and Attack Speed}
 		At a fundamental level the entire game operates on a tick-based system. Every 0.6 seconds (called a tick) the game updates. This discretizes the possible game states, and typically means we will be dealing with sums in place of integrals, and recursive equations in place of differential equations.
