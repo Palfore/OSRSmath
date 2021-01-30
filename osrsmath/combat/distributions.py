@@ -1,7 +1,9 @@
+from functools import lru_cache
 import matplotlib.pyplot as plt
 from pprint import pprint as pp
 import numpy as np
 from math import floor
+import random
 
 class DamageDistribution:
 	def __init__(self, c: dict):
@@ -13,6 +15,8 @@ class DamageDistribution:
 		# Fill in missing entries
 		for i in range(self.min, self.max):
 			self.c[i] = self[i]
+
+		self.c_plus = sum(self[i] for i in range(1, self.max +1))
 
 	def __add__(self, other):
 		m = min(self.min, other.min)
@@ -30,6 +34,11 @@ class DamageDistribution:
 
 	def __getitem__(self, damage):
 		return self.c.get(damage, 0)
+
+	def draw(self, amount=None):
+		if amount is None:  # None means 1, but return float instead of list
+			return self.draw(1)[0]
+		return random.choices(list(self.c.keys()), weights=list(self.c.values()), k=amount)
 	
 	def cdf(self, a=None, b=None):
 		if a is None:
@@ -37,6 +46,70 @@ class DamageDistribution:
 		if b is None:
 			b = self.max
 		return sum(self[i] for i in range(a, b+1))
+
+	def simulate(self, h, L, f, N=10000):
+		# How many times does the opponent have f health on the L'th attack?
+		# if f==0, how many times is the opponent killed on the L'th attack?
+
+		count = 0
+		for _ in range(N):
+			H = h
+			
+			turns = 0
+			while H > 0:
+				turns += 1
+				H -= self.draw()
+				H = max(H, 0)
+
+				if turns == L and H == f:
+					count += 1
+				elif H < f:
+					break
+
+		return count / N
+
+	@lru_cache(maxsize=256)
+	def p(self, h, L, f):  # developing function
+		if L == 1:
+			if f > 0:
+				return self[h - f]
+			else:
+				return sum(self[i] for i in range(h - f, self.max +1))
+		if h == 1:
+			if f == 1:
+				return self[0]**L
+			if f == 0:
+				return self[0]**(L-1) * self.c_plus
+
+		return (
+			self[0] * self.p(h, L-1, f) +
+			sum(self[h-i]*self.p(i, L-1, f) for i in range(max(h - self.max, 1, f+1), h-1 +1))
+		)
+		# return (
+		# 	self[0] * self.p(h, L-1, f) +
+		# 	sum(self[h-i]*self.p(i, L-1, f) for i in range(max(h - self.max, 1, f+1), h-1))
+		# )
+
+
+	def P(self, h, L, f=0):  # Math solution
+		assert f <= h
+		if L*self.max < h:
+			return 0
+
+		assert list(self.c.keys())[0] == 0, "Assumes self.c starts with 0"
+		c_values = list(self.c.values())
+
+		if f >= 1:
+			c_values = [c_values[0]] + [(c if (i in range(max(h-self.max, 1, f), h-1 +1)) else 0) for i, c in enumerate(c_values[1:])]
+
+		d = np.polynomial.polynomial.polypow(c_values, L - 1)
+		a = lambda j: (
+			sum(self[i] for i in range(j, self.max+1)) if f == 0 else (self[j - f])
+		)* d[h - j]
+
+		lower = max(1, h + self.max - self.max*L)
+		upper = min(h, self.max)
+		return sum(a(j) if (h-j) else 0 for j in range(lower, upper +1))
 
 	@property
 	def mean(self):
@@ -177,6 +250,37 @@ def graardor(praying=None):
 	
 
 if __name__ == '__main__':
+
+	from osrsmath.combat.temp.probabilities import Solution2
+	import matplotlib.pyplot as plt
+	# c = scythe(10, 0.6)
+	# dd = DamageDistribution(c)
+	# # dd.plot().show()
+	
+	# Showing that f=0 both methods agree
+	# s2 = Solution2(c)
+	# h = 50
+	# Ls = list(range(1, 25))
+	# plt.plot(Ls, [s2.P(h, L) for L in Ls], label=f"s1")
+	# plt.plot(Ls, [dd.P(h, L, 0) for L in Ls], label=f"dd")
+
+
+	# plt.title("Probability of Dying Against General Graardor after $L$ Attacks.")
+	# plt.ylabel("Probability")
+	# plt.xlabel("$L$")
+	# plt.legend()
+	# plt.show()
+	# exit()
+
+	# Showing that draw works
+	# dd = DamageDistribution(scythe(50, 0.8))
+	# plt.plot(list(range(0, dd.max+1)), [dd.c[i] for i in range(0, dd.max+1)], label='Pray=Melee')
+	# plt.hist(dd.draw(10000), bins=range(1+dd.max+1), density=True)
+	# plt.show()
+	# exit()
+
+
+
 	Dm = DamageDistribution(graardor('melee'))
 	Dr = DamageDistribution(graardor('ranged'))
 	Dn = DamageDistribution(graardor(None))

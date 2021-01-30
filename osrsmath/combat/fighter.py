@@ -1,5 +1,8 @@
 from osrsmath.combat.items import ITEM_DATABASE
 from osrsmath.combat.damage import damage
+import osrsmath.combat.accuracy as accuracy
+import osrsmath.combat.defence as defence
+import osrsmath.combat.distributions as distributions
 
 class NoAmmoPolicyFoundError(ValueError):
 	pass
@@ -209,9 +212,8 @@ def can_attack(stance, gear):
 	if stance['combat_class'] == 'ranged':
 		return satisfies_bow_requirements(gear)
 	return False
-	
 
-class Fighter:
+class Player:
 	EQUIPMENT_SLOTS = ['ammo', 'body', 'cape', 'feet', 'hands', 'head', 'legs', 'neck', 'ring', 'shield', 'weapon']
 	ALLOWED_ATTRIBUTES = ['kalphite', 'shade', 'dragonic', 'leafy', 'wilderness', 'demon', 
 	                      'undead', 'slayer_task', 'vampyre', 'charge']
@@ -286,24 +288,47 @@ class Fighter:
 	def can_attack(self):
 		return can_attack(self.stance, self.gear)
 
+class Fighter(Player):
+
 	def max_hit(self, opponent):
 		if self.stance is None:
 			raise ValueError('Fighter stance has not been set. Check `Fighter.set_stance` and `Fighter.get_stances` for more info.')
-		return damage(self.stance, self.gear, opponent, self.levels, prayers=None)
+		return damage(self.stance, self.gear, opponent, self.levels, prayers=[], spell=None)
+
+	def attack_roll(self, opponent):
+		return accuracy.attack_roll(self.stance, self.gear, opponent, self.levels, prayers=[], spell=None)
+
+	def defence_roll(self, opponent):
+		return defence.defence_roll(self.stance, self.gear, opponent, self.levels, prayers=[], spell=None)
 
 	def accuracy(self, opponent):
-		return 1.0
+		return accuracy.accuracy(self.attack_roll(opponent), opponent.defence_roll(self))
 
 	def damage_distribution(self, opponent):
-		m = self.max_hit(opponent)
-		a = self.accuracy(opponent)
-		return {**{
-			0: 1 - a * m / (m + 1)},
-			**{
-				c: a / (m + 1) for c in range(1, m+1)
-			}
-		}
+		return distributions.standard(self.max_hit(opponent), self.accuracy(opponent))
 
+	def expected_turns_to_kill(self, opponent, threshold=1e-6):
+		P = distributions.DamageDistribution(self.damage_distribution(opponent)).P
+		E, s, L = 0, 0, 1
+		
+		while s <= (1 - threshold):  # Can't sum all the way to 1
+			p = P(opponent.hitpoints, L)
+			s += p
+			E += L*p
+			L += 1
+		return E
+
+	def variance(self, opponent, threshold=1e-6):
+		P = distributions.DamageDistribution(self.damage_distribution(opponent)).P
+		V, s, L = 0, 0, 1
+		E = self.expected_turns_to_kill(opponent, threshold)
+
+		while s <= (1 - threshold):  # Can't sum all the way to 1
+			p = P(opponent.hitpoints, L)
+			s += p
+			V += L**2*p
+			L += 1
+		return V - E**2
 
 if __name__ == '__main__':
 	from pprint import pprint
