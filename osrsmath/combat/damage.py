@@ -16,9 +16,17 @@ def damage(stance, gear, opponent, effective_levels, prayers, spell=None):
 	# Assumes everything is valid, i.e. player.can_attack() == True
 	assert not prayers  # Not yet handled
 	
-	if stance['combat_class'] == 'melee':
-		if spell is not None:
-			raise ValueError(f'The spell is set to "{spell}", but should be None.')
+	# If casting a spell, or using a magic attack
+	if spell is not None or stance['combat_class'] == 'magic':
+		return magic_damage(
+			spell,
+			stance,
+			[i['name'] for i in gear.values()],
+			opponent,
+			effective_levels['magic'],
+			sum(i['equipment']['magic_damage'] for i in gear.values()),
+		)
+	elif stance['combat_class'] == 'melee':
 		return melee_damage(
 			stance,
 			[i['name'] for i in gear.values()],
@@ -28,8 +36,6 @@ def damage(stance, gear, opponent, effective_levels, prayers, spell=None):
 			prayer_multiplier=1.0
 		)
 	elif stance['combat_class'] == 'ranged':
-		if spell is not None:
-			raise ValueError(f'The spell is set to "{spell}", but should be None.')
 		return ranged_damage(
 			stance,
 			[i['name'] for i in gear.values()],
@@ -38,17 +44,8 @@ def damage(stance, gear, opponent, effective_levels, prayers, spell=None):
 			sum(i['equipment']['ranged_strength'] for i in gear.values()),
 			prayer_multiplier=1.0
 		)
-	elif stance['combat_class'] == 'magic':
-		return magic_damage(
-			spell,
-			stance,
-			[i['name'] for i in gear.values()],
-			opponent,
-			effective_levels['magic'],
-			sum(i['equipment']['magic_damage'] for i in gear.values()),
-		)
 	else:
-		raise CannotAttackException(f"No combat class could be determined for {stance['combat_style']}.")
+		raise ValueError(f"No combat class could be determined for {stance['combat_style']}.")
 
 def melee_damage(stance, equipment, opponent, effective_strength_level, equipment_strength, prayer_multiplier):
 	""" Calculates the maximum hit for a given setup.
@@ -58,10 +55,12 @@ def melee_damage(stance, equipment, opponent, effective_strength_level, equipmen
 			stance['attack_type'] must be a valid attack type.
 			stance['attack_style'] must be a valid attack style.
 	"""
-	if stance['attack_type'] not in ['slash', 'stab', 'crush']:
-		raise CannotAttackException(f'Invalid attack type in given stance: {stance}. Must be one of [slash, stab, crush].')
-	if stance['attack_style'] not in ['accurate', 'aggressive', 'controlled', 'defensive']:
-		raise CannotAttackException(f'Invalid attack style in given stance: {stance}. Must be one of [accurate, aggressive, controlled, defensive].')
+	valid_attack_types = ['slash', 'stab', 'crush']
+	valid_attack_styles = ['accurate', 'aggressive', 'controlled', 'defensive']
+	if stance['attack_type'] not in valid_attack_types:
+		raise CannotAttackException(f'Invalid attack type in given stance: {stance}. Must be one of {valid_attack_types}.')
+	if stance['attack_style'] not in valid_attack_styles:
+		raise CannotAttackException(f'Invalid attack style in given stance: {stance}. Must be one of {valid_attack_styles}.')
 
 	# Leafy creatures can only be damaged by leaf-bladed equipment.
 	if opponent.has_attribute('leafy') and not any(f'Leaf-bladed {e}' in equipment for e in ['battleaxe', 'spear', 'sword']):
@@ -147,7 +146,9 @@ def ranged_damage(stance, equipment, opponent, effective_strength_level, equipme
 		return 0
 
 	# Calculate base damage
-	stance_bonus = {'accurate': 11}.get(stance['attack_style'], 8)
+	# For range - for whatever reason - the attack style is always None.
+	# To get the stance bonus, the combat style is either: accurate, short fuse, and flare (although I'm not sure about the last two).
+	stance_bonus = {'accurate': 11, 'flare': 11, 'short fuse': 11}.get(stance['combat_style'], 8)
 	void_bonus = 1.0
 	if 'Void ranger helm' in equipment and 'Void knight gloves' in equipment:
 		if 'Void knight top' in equipment and 'Void knight robe' in equipment:
@@ -178,9 +179,11 @@ def ranged_damage(stance, equipment, opponent, effective_strength_level, equipme
 	elif "Twisted bow" in equipment:
 		cap = 350 if raids else 250
 		magic = min(max(opponent.levels['magic'], opponent.equipment['magic_attack']), cap)
-		m = int(m * (2.5 + int(3*magic - 14) - int(0.3*magic - 140)**2) / 100)
+		tbow_multipler = (2.5 + int(3*magic - 14) - int(0.3*magic - 140)**2) / 100
+		assert 0 <= tbow_multipler <= 2.5
+		m = int(m * tbow_multipler)
 
-	if all(f'Crystal {e}' in equipment for e in ['helm', 'body', 'legs', 'bow']):
+	if ('Crystal bow' in equipment) and any(f'Crystal {e}' in equipment for e in ['helm', 'body', 'legs']):
 		m = floor(m*(1 + 
 			(0.003 if "Crystal helm" in equipment else 0) +
 			(0.003 if "Crystal body" in equipment else 0) +
@@ -201,13 +204,10 @@ def magic_damage(spell, stance, equipment, opponent, effective_strength_level, e
 	Note:
 		A player can wield an powered weapon, but still cast a normal spell (using the book).
 	"""
-	valid_attack_types = ['spellcasting', 'defensive casting', None]
-	valid_attack_styles = ['magic', None]
-	if stance['attack_type'] not in valid_attack_types:
-		raise CannotAttackException(f'Invalid attack type in given stance: {stance}. Must be one of {valid_attack_types}.')
-	if stance['attack_style'] not in valid_attack_styles:
-		raise CannotAttackException(f'Invalid attack style in given stance: {stance}. Must be one of {valid_attack_styles}.')
-
+	if spell is None:
+		if stance['weapon_type'] != 'trident-class_weapons':
+			raise ValueError("Without a spell, only trident-class_weapons can attack with magic.")
+			
 	# Leafy creatures can only be damaged by leaf-bladed equipment.
 	if opponent.has_attribute('leafy') and spell != 'Magic dart':
 		return 0
