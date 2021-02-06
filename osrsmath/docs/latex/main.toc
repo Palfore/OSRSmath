@@ -37,7 +37,7 @@
 \contentsline {subsection}{\numberline {3.3.1}Interior}{27}{subsection.2.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}Obtaining Power Series}{30}{subsection.2.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}Applying Boundary Conditions}{32}{subsection.2.3.3.3}%
-\contentsline {section}{\numberline {3.4}Actual Fights}{32}{section.2.3.4}%
+\contentsline {section}{\numberline {3.4}Fight Outcomes}{32}{section.2.3.4}%
 \contentsline {chapter}{\numberline {4}Optimizing Player Equipment}{33}{chapter.2.4}%
 \contentsline {section}{\numberline {4.1}The Projection Vector}{33}{section.2.4.1}%
 \contentsline {section}{\numberline {4.2}Set Reduction}{34}{section.2.4.2}%

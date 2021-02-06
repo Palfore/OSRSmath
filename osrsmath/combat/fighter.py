@@ -3,6 +3,9 @@ from osrsmath.combat.damage import damage
 import osrsmath.combat.accuracy as accuracy
 import osrsmath.combat.defence as defence
 import osrsmath.combat.distributions as distributions
+from osrsmath.general.constants import TICK_DURATION
+from functools import lru_cache
+import numpy as np
 
 class NoAmmoPolicyFoundError(ValueError):
 	pass
@@ -146,9 +149,9 @@ def satisfies_bow_requirements(gear):
 			'valid': has_ammo and ammo['name'] in UPTO("Iron", "bolts"),
 			'weapons': ["Blurite crossbow"],
 		},
-		"UPTO_IRON_BOLTS": {
+		"UPTO_IRON_BOLTS": { # dxbow can't use silver, but UPTO("iron bolts") includes this.
 			'valid': has_ammo and ammo['name'] in UPTO("Iron", "bolts"),
-			'weapons': ["Iron crossbow"],
+			'weapons': ["Iron crossbow", "Dorgeshuun crossbow"],
 		},
 		"UPTO_STEEL_BOLTS": {
 			'valid': has_ammo and ammo['name'] in UPTO("Steel", "bolts"),
@@ -223,6 +226,7 @@ class Player:
 			raise ValueError(f"Fighter health must be positive, not {hitpoints}.")
 		self.hitpoints = hitpoints
 		self.levels = levels
+		self.spell = None
 
 		## Assign Attributes
 		attributes = attributes if attributes is not None else []
@@ -250,7 +254,7 @@ class Player:
 				raise ValueError(f"Multiple items in {slot} slot: {self.gear[slot]['name']} and {name}")
 			self.gear[slot] = item
 		
-		# If there is no weapon, equip a fist-like weapon (since unarmed isn't an actual weapon).
+		# If there is no weapon, use Unarmed.
 		if self.gear['weapon'] is None:
 			self.gear['weapon'] = ITEM_DATABASE.find('Unarmed')
 		
@@ -278,6 +282,9 @@ class Player:
 			raise ValueError(f'Combat style "{combat_style}" not in stances: {list(stances.keys())}')
 		self.stance = stances[combat_style]
 
+	def set_spell(self, spell):
+		self.spell = spell
+
 	def can_train(self, skill, shared=False):
 		if not self.can_attack():
 			return False
@@ -288,47 +295,108 @@ class Player:
 	def can_attack(self):
 		return can_attack(self.stance, self.gear)
 
-class Fighter(Player):
 
+class Fighter(Player):
 	def max_hit(self, opponent):
 		if self.stance is None:
 			raise ValueError('Fighter stance has not been set. Check `Fighter.set_stance` and `Fighter.get_stances` for more info.')
-		return damage(self.stance, self.gear, opponent, self.levels, prayers=[], spell=None)
-
-	def attack_roll(self, opponent):
-		return accuracy.attack_roll(self.stance, self.gear, opponent, self.levels, prayers=[], spell=None)
-
-	def defence_roll(self, opponent):
-		return defence.defence_roll(self.stance, self.gear, opponent, self.levels, prayers=[], spell=None)
+		return damage(self.stance, self.gear, opponent, self.levels, prayers=[], spell=self.spell)
 
 	def accuracy(self, opponent):
 		return accuracy.accuracy(self.attack_roll(opponent), opponent.defence_roll(self))
+	
+	def attack_speed(self):
+		speed = self.gear['weapon']['weapon']['attack_speed']
+		if self.stance['boosts'] == 'attack speed by 1 tick':
+			speed -= 1
+		return speed
+
+	def attack_interval(self):
+		return self.attack_speed() * TICK_DURATION
+
+	def attack_roll(self, opponent):
+		return accuracy.attack_roll(self.stance, self.gear, opponent, self.levels, prayers=[], spell=self.spell)
+
+	def defence_roll(self, opponent):
+		return defence.defence_roll(self.stance, self.gear, opponent, self.levels, prayers=[], spell=self.spell)
 
 	def damage_distribution(self, opponent):
-		return distributions.standard(self.max_hit(opponent), self.accuracy(opponent))
+		def distribution_as_dict():
+			weapon = self.gear.get('weapon', {'name': None})['name']
+			if weapon == 'Keris' and opponent.has_attribute('kalphite'):
+				return distributions.keris(self.max_hit(opponent), self.accuracy(opponent))
+			
+			return distributions.standard(self.max_hit(opponent), self.accuracy(opponent))
+		return distributions.DamageDistribution(distribution_as_dict())
 
-	def expected_turns_to_kill(self, opponent, threshold=1e-6):
-		P = distributions.DamageDistribution(self.damage_distribution(opponent)).P
-		E, s, L = 0, 0, 1
+
+class Duel:
+	def __init__(self, attacker, defender, delays=(0, 0), tol=1e-4):
+		# Assumes equal attack speeds
+		self.attacker = attacker
+		self.defender = defender
+		self.delay1, self.delay2 = delays
+		self.P_attacker = distributions.KillDistribution(self.attacker.damage_distribution(self.defender), self.defender.hitpoints, tol=tol)
+		self.P_defender = distributions.KillDistribution(self.defender.damage_distribution(self.attacker), self.attacker.hitpoints, tol=tol)
+
+	def P_top(self, p=0.05):
+		""" Of the possible killing times, this returns the probability of 
+		    having a kill time in the top p%. 
 		
-		while s <= (1 - threshold):  # Can't sum all the way to 1
-			p = P(opponent.hitpoints, L)
-			s += p
-			E += L*p
-			L += 1
-		return E
+		    May be useful for speed running.
+		"""
+		# For p=0.05, find the L that gives 95% of the data to the left.
+		# Summing from that L to inf gives the desired probability.
+		if not (0 <= p <= 1):
+			raise ValueError(f"p must be between 0 and 1, not {p}.")
+		L_top = self.P_attacker.quantile(1 - p)
+		return sum(self.P_attacker.pmf(L) for L in range(L_top, self.P_attacker.cutoff))
 
-	def variance(self, opponent, threshold=1e-6):
-		P = distributions.DamageDistribution(self.damage_distribution(opponent)).P
-		V, s, L = 0, 0, 1
-		E = self.expected_turns_to_kill(opponent, threshold)
+	def expected_turns_to_kill(self):
+		return sum(L*self.P_attacker.pmf(L) for L in range(1, self.P_attacker.cutoff))
+	
+	def expected_turns_to_die(self):
+		return sum(L*self.P_defender.pmf(L) for L in range(1, self.P_defender.cutoff))	
 
-		while s <= (1 - threshold):  # Can't sum all the way to 1
-			p = P(opponent.hitpoints, L)
-			s += p
-			V += L**2*p
-			L += 1
-		return V - E**2
+	def expected_fight_duration(self):
+		# Should I be concerned with draw?
+		return min(self.expected_turns_to_kill(), self.expected_turns_to_die())
+
+	def P_win(self):
+		T1 = range(self.delay1, self.attacker.attack_speed()*self.P_attacker.cutoff, self.attacker.attack_speed())
+		T2 = range(self.delay2, self.defender.attack_speed()*self.P_defender.cutoff, self.defender.attack_speed())
+		return sum(
+			self.P_attacker.pmf(L1) * sum(
+				self.P_defender.pmf(L2)
+				for L2, tau in enumerate(T2, 1) if tau > t
+			) for L1, t in enumerate(T1, 1)
+		)
+			
+	def P_lose(self):
+		T1 = range(self.delay2, self.defender.attack_speed()*self.P_defender.cutoff, self.defender.attack_speed())
+		T2 = range(self.delay1, self.attacker.attack_speed()*self.P_attacker.cutoff, self.attacker.attack_speed())
+		return sum(
+			self.P_defender.pmf(L1) * sum(
+				self.P_attacker.pmf(L2)
+				for L2, tau in enumerate(T2, 1) if tau > t
+			) for L1, t in enumerate(T1, 1)
+		)
+
+	def P_draw(self):
+		# Makes use of the intersection of arithmetic progression
+		# https://math.stackexchange.com/questions/1656120/formula-to-find-the-first-intersection-of-two-arithmetic-progressions
+		
+		# An easier (read: quicker to implement) approach is to manually find the first two meeting points.
+		T1 = range(self.delay2, self.defender.attack_speed()*self.P_defender.cutoff, self.defender.attack_speed())
+		T2 = range(self.delay1, self.attacker.attack_speed()*self.P_attacker.cutoff, self.attacker.attack_speed())
+		Ts = set(T1).intersection(T2)  # Ticks where both fighters attack at the same time
+		return sum(self.P_defender.pmf(T1.index(t))*self.P_attacker.pmf(T2.index(t)) for t in Ts)
+
+	def outcomes(self):
+		""" Returns the probability of (winning, drawing, losing). """
+		w, d = self.P_win(), self.P_draw()
+		return w, d, 1 - w - d  # Fast
+		# return w, d, self.P_lose() # Full
 
 if __name__ == '__main__':
 	from pprint import pprint

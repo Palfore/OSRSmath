@@ -56,9 +56,12 @@ class ItemDatabase:
 			partial = {k: v for k, v in i.items() if k in [
 				'name', 'id', 'weight', 'wiki_url', 'equipment', 'weapon'
 			]}
-			# Convert stances from a list to a dictionary
+			
+			## Convert stances from a list to a dictionary
 			if partial['weapon'] is not None:
-				partial['weapon']['stances'] = {s['combat_style']: {**s, 'combat_class': get_combat_class(s)} for s in partial['weapon']['stances']}
+				partial['weapon']['stances'] = {
+					s['combat_style']: s for s in partial['weapon']['stances']
+				}
 			
 			## Corrections
 			# For some reason, "Mithril crossbow" is incorrectly called "Mith crossbow".
@@ -69,6 +72,20 @@ class ItemDatabase:
 				partial['weapon']['stances']['scorch']['attack_style'] = "aggressive"
 				partial['weapon']['stances']['scorch']['attack_style'] = "ranged"
 				partial['weapon']['stances']['scorch']['attack_style'] = "magic"
+
+			# Crystal staff is a powered staff
+			if 'Crystal staff (' in partial['name']:
+				partial['weapon']['weapon_type'] = 'trident-class_weapons'
+
+			## Add useful information to stance
+			if partial['weapon'] is not None:
+				partial['weapon']['stances'] = {
+					k: {**s, 
+						'combat_class': get_combat_class(s),
+						'weapon_type': partial['weapon']['weapon_type'],
+					} for k, s in partial['weapon']['stances'].items()
+				}
+			
 			return partial
 
 		equipment = {}

@@ -4,25 +4,75 @@ from pprint import pprint as pp
 import numpy as np
 from math import floor
 import random
+import osrsmath.combat.accuracy as accuracy
+
+class KillDistribution:
+	def __init__(self, damage_distribution, opponent_health, f=0, tol=1e-6):
+		self.dd = damage_distribution
+		self.h = opponent_health
+		self.tol = tol
+		self.f = f  # Final health
+		assert f == 0, "Non-zero final health is not yet handled."
+
+		self.fastest = int(np.ceil( (self.h - self.f) / self.dd.max)) # Earliest L to bring an opponent to f health
+		self.cutoff = self.quantile(p=1)  # L corresponding to 1-tol cdf (used for summing to infinity)
+
+	@lru_cache(maxsize=256)
+	def pmf(self, L, f=0):
+		""" Returns the probability mass function. """
+		# These is possibly an issue with using other distributions (keris, etc)
+		# I'm not yet sure exactly what's causing issues, but it's likely something like 0 probabilities or non-sequential
+		# values. A good place to start is investigating polypow. 
+		# print(lower, upper, h, self.dd.max, -self.dd.max*L, L)
+		assert list(self.dd.c.keys()) == list(range(self.dd.min, self.dd.max+1)), "Assumes sequential values"
+		assert f == 0, "Non-zero final health is not yet handled."
+		assert f <= self.h
+		if L*self.dd.max < self.h:
+			return 0
+
+		assert list(self.dd.c.keys())[0] == 0, "Assumes self.c starts with 0"
+		c_values = list(self.dd.c.values())
+
+		if f >= 1:
+			c_values = [c_values[0]] + [(c if (i in range(max(self.h-self.dd.max, 1, f), self.h-1 +1)) else 0) for i, c in enumerate(c_values[1:])]
+
+		d = np.polynomial.polynomial.polypow(c_values, L - 1)
+		a = lambda j: (
+			sum(self.dd[i] for i in range(j, self.dd.max+1)) if f == 0 else (self.dd[j - f])
+		)* d[self.h - j]
+
+		lower = max(1, self.h + self.dd.max - self.dd.max*L)
+		upper = min(self.h, self.dd.max)
+		return sum(a(j) if (self.h-j) else 0 for j in range(lower, upper +1)) 
+
+	def quantile(self, p):
+		if not (0 <= p <= 1):
+			raise ValueError(f"p must be between 0 and 1, not {p}.")
+
+		s, L = 0, self.fastest
+		while s < p - self.tol:
+			s += self.pmf(L, self.f)
+			L += 1
+		return L
+		
 
 class DamageDistribution:
 	def __init__(self, c: dict):
 		self.c = c
 		s = sum(list(self.c.values()))
 		if abs(s - 1) >= 1e-8:
-			raise ValueError(f"The cumulative distribution sums to {s}, not one.")
+			raise ValueError(f"The distribution sums to {s}, not one.")
 
-		# Fill in missing entries
-		for i in range(self.min, self.max):
-			self.c[i] = self[i]
-
-		self.c_plus = sum(self[i] for i in range(1, self.max +1))
-
+		assert self.min == 0  # No negatives allowed yet
+		self.c = {i: self[i] for i in range(self.min, self.max+1)} # Fill in missing entries
+		self.c_plus = self.cdf(a=1)
+		
 	def __add__(self, other):
 		m = min(self.min, other.min)
 		M = max(self.max, other.max)
-		assert self.min == 0
-		assert other.min == 0
+
+		assert self.min == 0  # np.convolve might require this assumption
+		assert other.min == 0  # But this should be checked if allowing negatives.
 
 		con = list(np.convolve(
 			[self[i] for i in range(m, M+1)],
@@ -47,69 +97,31 @@ class DamageDistribution:
 			b = self.max
 		return sum(self[i] for i in range(a, b+1))
 
-	def simulate(self, h, L, f, N=10000):
-		# How many times does the opponent have f health on the L'th attack?
-		# if f==0, how many times is the opponent killed on the L'th attack?
+	@staticmethod
+	def join(original, other, probability_of_other):
+		""" Returns the distribution that combines self and other with a relative probability.
+	
+		So if there is an x chance of drawing damage from distribution A, 
+		and a (1-x) probability of drawing damage from distribution B, 
+		then A.join(B, x) gives the new damage distribution.
+		"""
+		p_b = probability_of_other
+		p_a = 1 - p_b
+		M = max( max(list(original.keys())), max(list(other.keys())) )
+		c = {}
+		for d in range(0, M + 1):
+			c[d] = p_a*original.get(d, 0) + p_b*other.get(d, 0)
+		return c
 
-		count = 0
-		for _ in range(N):
-			H = h
-			
-			turns = 0
-			while H > 0:
-				turns += 1
-				H -= self.draw()
-				H = max(H, 0)
-
-				if turns == L and H == f:
-					count += 1
-				elif H < f:
-					break
-
-		return count / N
-
-	@lru_cache(maxsize=256)
-	def p(self, h, L, f):  # developing function
-		if L == 1:
-			if f > 0:
-				return self[h - f]
-			else:
-				return sum(self[i] for i in range(h - f, self.max +1))
-		if h == 1:
-			if f == 1:
-				return self[0]**L
-			if f == 0:
-				return self[0]**(L-1) * self.c_plus
-
-		return (
-			self[0] * self.p(h, L-1, f) +
-			sum(self[h-i]*self.p(i, L-1, f) for i in range(max(h - self.max, 1, f+1), h-1 +1))
-		)
-		# return (
-		# 	self[0] * self.p(h, L-1, f) +
-		# 	sum(self[h-i]*self.p(i, L-1, f) for i in range(max(h - self.max, 1, f+1), h-1))
-		# )
-
-
-	def P(self, h, L, f=0):  # Math solution
-		assert f <= h
-		if L*self.max < h:
-			return 0
-
-		assert list(self.c.keys())[0] == 0, "Assumes self.c starts with 0"
-		c_values = list(self.c.values())
-
-		if f >= 1:
-			c_values = [c_values[0]] + [(c if (i in range(max(h-self.max, 1, f), h-1 +1)) else 0) for i, c in enumerate(c_values[1:])]
-
-		d = np.polynomial.polynomial.polypow(c_values, L - 1)
-		a = lambda j: (
-			sum(self[i] for i in range(j, self.max+1)) if f == 0 else (self[j - f])
-		)* d[h - j]
-
-		lower = max(1, h + self.max - self.max*L)
-		upper = min(h, self.max)
-		return sum(a(j) if (h-j) else 0 for j in range(lower, upper +1))
+	@staticmethod
+	def scale(original, scaling):
+		""" Returns the distribution where damage is scaled by the scaling factor.
+		"""
+		c = {}
+		for d, p in original.items():
+			d = floor(d * scaling)
+			c[d] = c.get(d, 0) + p
+		return c
 
 	@property
 	def mean(self):
@@ -123,30 +135,6 @@ class DamageDistribution:
 	def min(self):
 		return list(self.c.keys())[0]
 
-	def plot(self):
-		plt.bar(range(len(self.c)), [100*v for v in list(self.c.values())], align='center')
-		plt.axvline(self.mean, color='red')
-		# plt.xticks(range(len(self.c)), list(self.c.keys()))
-		plt.xlabel('Damage')
-		plt.ylabel('Probability')
-		return plt
-
-def _join(c_a, c_b, p_b):
-	p_a = 1 - p_b
-	M = max( max(list(c_a.keys())), max(list(c_b.keys())) )
-	c = {}
-	for d in range(0, M + 1):
-		c[d] = p_a*c_a.get(d, 0) + p_b*c_b.get(d, 0)
-	return c
-
-def _transform(distribution, scaling):
-	c = {}
-	for d, p in distribution.items():
-		d = floor(d * scaling)
-		c[d] = c.get(d, 0) + p
-	return c
-
-
 def standard(m, a):
 	c_plus = a / (m + 1)
 	c_0 = 1 - m * c_plus
@@ -158,33 +146,33 @@ def standard(m, a):
 
 def keris(m, a):
 	normal = standard(m, a)
-	triple = _transform(normal, 3)
-	return _join(normal, triple, 1/51)
+	triple = DamageDistribution.scale(normal, 3)
+	return DamageDistribution.join(normal, triple, 1/51)
 
 def verac(m, a):
 	normal = standard(m, a)
 	perfect = {d+1: p for d, p in standard(m, 1).items()}
-	return _join(normal, perfect, 1/4)
+	return DamageDistribution.join(normal, perfect, 1/4)
 
 def gadderhammer(m, a):
 	normal = standard(m, a)
-	double = _transform(normal, 2)
-	return _join(normal, double, 5/100)
+	double = DamageDistribution.scale(normal,2)
+	return DamageDistribution.join(normal, double, 5/100)
 
 def ahrim(m, a):
 	normal = standard(m, a)
-	boosted = _transform(normal, 1.3)
-	return _join(normal, boosted, 25/100)
+	boosted = DamageDistribution.scale(normal,1.3)
+	return DamageDistribution.join(normal, boosted, 25/100)
 
 def karil(m, a):
 	normal = standard(m, a)
-	boosted = _transform(normal, 1.5)
-	return _join(normal, boosted, 25/100)
+	boosted = DamageDistribution.scale(normal,1.5)
+	return DamageDistribution.join(normal, boosted, 25/100)
 
 def scythe(m, a):
 	normal = standard(m, a)
-	half = _transform(normal, 0.5)
-	quarter = _transform(normal, 0.25)
+	half = DamageDistribution.scale(normal, 0.5)
+	quarter = DamageDistribution.scale(normal,0.25)
 	return (  # Acts like 3 separate fighters
 		DamageDistribution(normal) +
 		DamageDistribution(half) +
@@ -195,7 +183,7 @@ def opal(m, a, visible_ranged_level, diary=True):
 	increase = floor(0.1*visible_ranged_level)
 	normal = standard(m, a)
 	bolt = standard(m + increase, a)
-	return _join(normal, bolt, (5.5/100) if diary else (5/100))
+	return DamageDistribution.join(normal, bolt, (5.5/100) if diary else (5/100))
 
 def pearl(m, a, visible_ranged_level, fiery, diary=True):
 	if fiery:
@@ -204,27 +192,33 @@ def pearl(m, a, visible_ranged_level, fiery, diary=True):
 		increase = floor(visible_ranged_level/20)
 	normal = standard(m, a)
 	bolt = standard(m + increase, a)
-	return _join(normal, bolt, (6.6/100) if diary else (6/100))
+	return DamageDistribution.join(normal, bolt, (6.6/100) if diary else (6/100))
 
 def diamond(m, a, diary=True):
 	increase = floor(0.15*m)
 	normal = standard(m, a)
 	bolt = standard(m + increase, 1)
-	return _join(normal, bolt, (11/100) if diary else (10/100))
+	return DamageDistribution.join(normal, bolt, (11/100) if diary else (10/100))
 
 def dragon(m, a, visible_ranged_level, diary=True):
 	increase = floor(0.2*visible_ranged_level)
 	normal = standard(m, a)
 	bolt = standard(m + increase, a)
-	return _join(normal, bolt, (6.6/100) if diary else (6/100))
+	return DamageDistribution.join(normal, bolt, (6.6/100) if diary else (6/100))
 
 def onyx(m, a, diary=True):
 	increase = floor(0.2*m)
 	normal = standard(m, a)
 	bolt = standard(m + increase, a)
-	return _join(normal, bolt, (11/100) if diary else (10/100))
+	return DamageDistribution.join(normal, bolt, (11/100) if diary else (10/100))
 
-	
+def brimstone_ring(m, attack_roll, defence_roll):
+	# assumes magic attack
+	normal_accuracy = accuracy.accuracy(attack_roll, defence_roll)
+	special_accuracy = accuracy.accuracy(attack_roll, int(0.9*defence_roll))
+	normal = standard(m, normal_accuracy)
+	special = standard(m, special_accuracy)
+	return DamageDistribution.join(normal, special, 25/100)
 
 def graardor(praying=None):
 	# This is a back-of-envelope calculation
@@ -237,7 +231,7 @@ def graardor(praying=None):
 
 	melee = standard(0 if 'melee' == praying else 60, 0.54)
 	ranged = standard(0 if 'ranged' == praying else 35, 0.60)
-	combined = _join(melee, ranged, 1/3)
+	combined = DamageDistribution.join(melee, ranged, 1/3)
 	
 	general = DamageDistribution(combined)
 	stack = DamageDistribution(standard(15, 0.25))

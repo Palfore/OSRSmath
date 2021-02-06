@@ -256,14 +256,27 @@
 			\end{equation}
 			for which the solution has not yet been determined. To carry this out, the derivation in this chapter needs to be modified.
 
-		\section{Actual Fights}
-			Under the assumption that both players have the same attack speed\footnote{and possibly that the player attacks first, although I'd have to think about this.}, the probability of winning, drawing, and losing is given by:
+		\section{Fight Outcomes}
+			% Under the assumption that both players have the same attack speed and both players start attacking on the same tick, the probability of winning, drawing, and losing is given by:
+			% \begin{align}
+			% 	P_\text{win} &= \sum_{L=1}^\infty \sum_{l=L+1}^\infty P_{h_\text{player}, l}^{m_\text{opponent}} P_{h_\text{opponent}, L}^{m_\text{player}}\\
+			% 	P_\text{draw} &= \sum_{L=1}^\infty P_{h_\text{player}, L}^{m_\text{opponent}} P_{h_\text{opponent}, L}^{m_\text{player}}\\
+			% 	P_\text{lose} &= \sum_{L=1}^\infty \sum_{l=L+1}^\infty P_{h_\text{opponent}, l}^{m_\text{player}} P_{h_\text{player}, L}^{m_\text{opponent}}.
+			% \end{align}
+			% Additionally, $P_\text{win} + P_\text{lose} + P_\text{draw} = 1$. 
+
+			To determine the outcome of a fight, we have to consider how the attacker and defender's attacks interplay. Let's define the first tick in a fight as $t=0$. Then, the attacker may have some initial delay, $\Delta_1$, while attacking every $w_1$ ticks. Then, the attacker makes an attack on the following ticks:
 			\begin{align}
-				P_\text{win} &= \sum_{L=1}^\infty \sum_{l=L+1}^\infty P_{h_\text{player}, l}^{m_\text{opponent}} P_{h_\text{opponent}, L}^{m_\text{player}}\\
-				P_\text{draw} &= \sum_{L=1}^\infty P_{h_\text{player}, L}^{m_\text{opponent}} P_{h_\text{opponent}, L}^{m_\text{player}}\\
-				P_\text{lose} &= \sum_{L=1}^\infty \sum_{l=L+1}^\infty P_{h_\text{opponent}, l}^{m_\text{player}} P_{h_\text{player}, L}^{m_\text{opponent}}.
+				T_1 \equiv \{w_1i + \Delta_1 \,|\, 0 \le i \le T_1^\text{max}\}.
 			\end{align}
-			Additionally, $P_\text{win} + P_\text{lose} + P_\text{draw} = 1$.
+			where $T_1^\text{max}$ is introduced as a cut-off where $P^1(t) < \epsilon\,\forall t \ge T_1^\text{max}$, to avoid summing to infinity. Similarly, for the defender:
+			\begin{align}
+				T_2 \equiv \{w_2i + \Delta_2 \,|\, 0 \le i \le T_2^\text{max}\}.
+			\end{align}
+			Then the probability of winning can be given by:
+			\begin{align}
+				P_\text{win} &= \sum_{t \in T_1} \sum_{\substack{\tau \in T_2 \\ \tau > t}} P_{\tau}^{1} P_{t}^{2} \\
+			\end{align}
 
 		% \newpage
 		% 	First, given a player's max hit of $m$ and an opponent's initial health of $h$, we define:

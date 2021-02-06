@@ -1,0 +1,1 @@
+TICK_DURATION = 0.6  # Measured in seconds

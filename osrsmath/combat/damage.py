@@ -12,6 +12,7 @@ from pprint import pprint
 class CannotAttackException(ValueError):
 	pass
 
+
 def damage(stance, gear, opponent, effective_levels, prayers, spell=None):
 	# Assumes everything is valid, i.e. player.can_attack() == True
 	assert not prayers  # Not yet handled
@@ -46,6 +47,7 @@ def damage(stance, gear, opponent, effective_levels, prayers, spell=None):
 		)
 	else:
 		raise ValueError(f"No combat class could be determined for {stance['combat_style']}.")
+
 
 def melee_damage(stance, equipment, opponent, effective_strength_level, equipment_strength, prayer_multiplier):
 	""" Calculates the maximum hit for a given setup.
@@ -125,6 +127,7 @@ def melee_damage(stance, equipment, opponent, effective_strength_level, equipmen
 		m = floor(m*4/3)
 
 	return m
+
 
 def ranged_damage(stance, equipment, opponent, effective_strength_level, equipment_strength, prayer_multiplier):
 	""" Calculates the maximum hit for a given setup.

@@ -122,7 +122,6 @@ def melee_attack_roll(stance, equipment, opponent, visible_attack_level, equipme
 	return a
 
 
-
 def ranged_attack_roll(stance, equipment, opponent, visible_attack_level, equipment_attack, prayer_multiplier):
 	""" Calculates the maximum attack roll for a given setup.
 
@@ -189,7 +188,6 @@ def ranged_attack_roll(stance, equipment, opponent, visible_attack_level, equipm
 	return a
 
 
-
 def magic_attack_roll(spell, stance, equipment, opponent, visible_magic_level, equipment_attack, prayer_multiplier):
 	""" Calculates the maximum hit for a given setup.
 
@@ -247,7 +245,6 @@ def magic_attack_roll(spell, stance, equipment, opponent, visible_magic_level, e
 		a = floor(a*1.2)
 	elif opponent.has_attribute('slayer_task') and any(e in equipment for e in ['Black mask (i)', 'Slayer helmet (i)']):
 		a = floor(a*1.15)
-
 	
 	return a
 
