@@ -110,7 +110,7 @@
 
 			\begin{figure}
 				\centering
-				\includegraphics[width=\linewidth]{results/part_II/average_damage.pdf}
+				\includegraphics[width=\linewidth]{examples/combat/old/part_II/average_damage.pdf}
 				\caption{The average damage of an attack with a maximum hit of $M$ on an opponent with $h$ health. The black line is the piecewise boundary.}
 				\label{fig:average_d}
 			\end{figure}
@@ -325,11 +325,11 @@ return t + time_to_kill(h)
 			\centering
 			\begin{subfigure}{0.5\linewidth}
 				\centering
-				\includegraphics[width=\linewidth]{results/part_II/turns_to_kill.pdf}
+				\includegraphics[width=\linewidth]{examples/combat/old/part_II/turns_to_kill.pdf}
 			\end{subfigure}%
 			\begin{subfigure}{0.5\linewidth}
 				\centering
-				\includegraphics[width=\linewidth]{results/part_II/turns_to_kill_zoom.pdf}
+				\includegraphics[width=\linewidth]{examples/combat/old/part_II/turns_to_kill_zoom.pdf}
 			\end{subfigure}
 			\caption{
 				The number of successful turns to kill an opponent that has $h_0$ health, given that the attacker's max hit is $M$. The MarkovChain (hot colors) and Crude (cool colors) methods are shown. However, due to the scale of the left plot they are indistinguishable. The right plot shows a smaller region which allows for a comparison.
@@ -338,7 +338,7 @@ return t + time_to_kill(h)
 
 		\begin{figure}
 			\centering
-			\includegraphics[width=\linewidth]{results/part_II/errors.pdf}
+			\includegraphics[width=\linewidth]{examples/combat/old/part_II/errors.pdf}
 			\caption{
 				A comparison between different models. The percent relative error with respect to the simulations are shown.
 			}\label{fig:comparison}
@@ -346,7 +346,7 @@ return t + time_to_kill(h)
 
 		\begin{figure}
 			\centering
-			\includegraphics[width=\linewidth]{results/part_II/best_model.pdf}
+			\includegraphics[width=\linewidth]{examples/combat/old/part_II/best_model.pdf}
 			\caption{
 				The model which agrees best with simulation, for different initial healths, and maximum hits. The final plot shows a comparison which includes all models. Since the MarkovChain (MC) models have very low errors, they occlude the other details. So, the other plots only include a subset of models. The leftmost only shows Crude, Average, and Recursive. The middle plot additionally includes MarkovChainApprox (MCApprox). Several interesting trends are discussed in the main body.
 			}\label{fig:best_model}

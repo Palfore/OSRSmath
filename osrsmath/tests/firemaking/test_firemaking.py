@@ -1,4 +1,4 @@
-from osrsmath.firemaking.wintertodt import *
+from osrsmath.skills.firemaking.wintertodt import *
 import unittest
 
 class TestWintertodt(unittest.TestCase):
@@ -83,25 +83,25 @@ class TestFiremaker(unittest.TestCase):
 
 	def test_kill_single_kill_no_level_up_or_bonus(self):
 		fm = Firemaker(500_000, self.policy)  # Far from level up
-		self.assertEqual(fm.kill(target_points=400, k=1), fm.E0 + 7_920)
+		self.assertEqual(fm.kill(target_points=400), fm.E0 + 7_920)
 
 	def test_kill_single_kill_no_level_up(self):
 		fm = Firemaker(500_000, self.policy)  # Far from level up
-		self.assertEqual(fm.kill(target_points=500, k=1), fm.E0 + 9_900 + 6_600)
+		self.assertEqual(fm.kill(target_points=500), fm.E0 + 9_900 + 6_600)
 
 	def test_kill_single_kill_level_up_no_bonus(self):
 		fm = Firemaker(300_000, self.policy)  # close to level up
 		# 2288 xp to level up. Level 60 gives 3*60=180 xp/root, so 13 roots are required
 		# giving 2,340 experience. 400/10=40 roots need to be chopped total, leaving 27 left.
 		# 27*3*61=4,941 experience from that. Total is then 2,340 + 4,941
-		self.assertEqual(fm.kill(target_points=400, k=1), fm.E0 + 2_340 + 4_941)
+		self.assertEqual(fm.kill(target_points=400), fm.E0 + 2_340 + 4_941)
 
 	def test_kill_single_kill_level_up_and_bonus(self):
 		fm = Firemaker(300_000, self.policy)  # close to level up
 		# 2288 xp to level up. Level 60 gives 3*60=180 xp/root, so 13 roots are required
 		# giving 2,340 experience. 600/10=60 roots need to be chopped total, leaving 47 left.
 		# 47*3*61=4,941 experience from that. Bonus is 61*100=6_100. Total is then 2,340 + 4,941
-		self.assertEqual(fm.kill(target_points=600, k=1), fm.E0 + 2_340 + 8_601 + 6_100)
+		self.assertEqual(fm.kill(target_points=600), fm.E0 + 2_340 + 8_601 + 6_100)
 
 class TestKills(unittest.TestCase):
 	def test_kills_for_xp(self):
@@ -110,7 +110,7 @@ class TestKills(unittest.TestCase):
 		start_level = 50
 		points_per_kill = 50
 		fm = Firemaker(experience(start_level), Policies.roots_only)
-		fm.kill(points_per_kill, num_kills)
+		[fm.kill(points_per_kill) for _ in range(num_kills)]
 		xp_gained = fm.xp - fm.E0
 		self.assertEqual(kills_for_xp(fm.E0, fm.xp, points_per_kill, Policies.roots_only), num_kills)
 
