@@ -1,8 +1,15 @@
 # The Mathematics and Optimization of OSRS
 
-The purpose of this project is to study the game mechanics of [Old School Runescape](https://oldschool.runescape.com/) to optimize player decisions and analyze game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. The central focus is the combat system since it is particularly interesting. This project is currently in progress, so things are likely to be broken!
+The purpose of this project is to study the game mechanics of [Old School Runescape](https://oldschool.runescape.com/) to optimize player decisions and analyze game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. The central focus is the combat system since it is particularly interesting. This project is currently in progress, so things are likely to be broken! I don't know much about the details of the combat system (which is a really interesting problem), so I'm stuck. If you are knowledgable about tick-mechanics and dps calculations, and would like to help, please reach out on the discord.
 
-If you're interested, you can join the [discord](https://discord.gg/4SXcKQh) to discuss anything! Or if you would prefer watching a video, you can checkout the [video series](https://www.youtube.com/watch?v=7N9UJX70Z5I&list=PLm3INE_scU5s8NQWmw0fxKtA_6SVxDOc7).
+If you're interested, you can join the [discord](https://discord.gg/4SXcKQh) to discuss anything! You can also checkout these reddit posts:
+1. [A Physicist's Guide to Re-balancing Combat - Damage Distributions (3.4k upvotes)](https://www.reddit.com/r/2007scape/comments/mwvjzc/a_physicists_guide_to_rebalancing_combat_damage/)
+2. [I made a "Quest Tree" for OSRS (1.1k upvotes)](https://www.reddit.com/r/2007scape/comments/kbu6a8/mathematical_model_of_wintertodt_time_to_99/)
+3. [Mathematical Model of Wintertodt & Time to 99 (~450 upvotes)](https://www.reddit.com/r/2007scape/comments/kbu6a8/mathematical_model_of_wintertodt_time_to_99/)
+4. [Mathematically Optimal Order to Train Melee Combat (~350 upvotes)](https://www.reddit.com/r/2007scape/comments/ffctp0/mathematically_optimal_order_to_train_melee_combat/)
+5. [The Mathematics of OSRS Combat (~50 upvotes)](https://www.reddit.com/r/2007scape/comments/faz5et/the_mathematics_of_osrs_combat/)
+
+Or if you would prefer watching a video, you can checkout the [video series](https://www.youtube.com/watch?v=7N9UJX70Z5I&list=PLm3INE_scU5s8NQWmw0fxKtA_6SVxDOc7).
 
 There are three components to this project:
 
