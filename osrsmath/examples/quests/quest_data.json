@@ -1,0 +1,5927 @@
+[
+    {
+        "name": "Romeo & Juliet",
+        "url": "https://oldschool.runescape.wiki/w/Romeo_%26_Juliet",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "4 January 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Rob L",
+            "Paul Gower"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Demon Slayer",
+        "url": "https://oldschool.runescape.wiki/w/Demon_Slayer",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "4 January 2001",
+        "members": false,
+        "series": "Demon Slayer",
+        "difficulty": "Novice",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Shield of Arrav",
+        "url": "https://oldschool.runescape.wiki/w/Shield_of_Arrav",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "4 January 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Greg V"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "The Restless Ghost",
+        "url": "https://oldschool.runescape.wiki/w/The_Restless_Ghost",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Prayer",
+                1125
+            ]
+        ],
+        "released": "4 January 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Ernest the Chicken",
+        "url": "https://oldschool.runescape.wiki/w/Ernest_the_Chicken",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "21 January 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Vampyre Slayer",
+        "url": "https://oldschool.runescape.wiki/w/Vampyre_Slayer",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Attack",
+                4825
+            ]
+        ],
+        "released": "28 January 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Very Short",
+        "combat": true
+    },
+    {
+        "name": "Imp Catcher",
+        "url": "https://oldschool.runescape.wiki/w/Imp_Catcher",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Magic",
+                875
+            ]
+        ],
+        "released": "16 February 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Prince Ali Rescue",
+        "url": "https://oldschool.runescape.wiki/w/Prince_Ali_Rescue",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "28 February 2001",
+        "members": false,
+        "series": "Kharidian",
+        "difficulty": "Novice",
+        "developer": [
+            "Rob L",
+            "Paul Gower"
+        ],
+        "length": "Very Short",
+        "combat": true
+    },
+    {
+        "name": "Doric's Quest",
+        "url": "https://oldschool.runescape.wiki/w/Doric%27s_Quest",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Mining",
+                1300
+            ]
+        ],
+        "released": "6 April 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Rob L"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Black Knights' Fortress",
+        "url": "https://oldschool.runescape.wiki/w/Black_Knights%27_Fortress",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "6 April 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Witch's Potion",
+        "url": "https://oldschool.runescape.wiki/w/Witch%27s_Potion",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Magic",
+                325
+            ]
+        ],
+        "released": "6 April 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Very Short",
+        "combat": true
+    },
+    {
+        "name": "The Knight's Sword",
+        "url": "https://oldschool.runescape.wiki/w/The_Knight%27s_Sword",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Mining",
+                10
+            ]
+        ],
+        "rewards": [
+            [
+                "Smithing",
+                12725
+            ]
+        ],
+        "released": "6 April 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Goblin Diplomacy",
+        "url": "https://oldschool.runescape.wiki/w/Goblin_Diplomacy",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Crafting",
+                200
+            ]
+        ],
+        "released": "8 May 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Pirate's Treasure",
+        "url": "https://oldschool.runescape.wiki/w/Pirate%27s_Treasure",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "11 June 2001",
+        "members": false,
+        "series": "Pirate",
+        "difficulty": "Novice",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Very Short",
+        "combat": true
+    },
+    {
+        "name": "Dragon Slayer I",
+        "url": "https://oldschool.runescape.wiki/w/Dragon_Slayer_I",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Strength",
+                18650
+            ],
+            [
+                "Defence",
+                18650
+            ]
+        ],
+        "released": "23 September 2001",
+        "members": false,
+        "series": "Dragonkin",
+        "difficulty": "Experienced",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Rune Mysteries",
+        "url": "https://oldschool.runescape.wiki/w/Rune_Mysteries",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "1 December 2003",
+        "members": false,
+        "series": "Order of Wizards",
+        "difficulty": "Novice",
+        "developer": [
+            "James B"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Misthalin Mystery",
+        "url": "https://oldschool.runescape.wiki/w/Misthalin_Mystery",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Crafting",
+                600
+            ]
+        ],
+        "released": "26 January 2017",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Mod Jed",
+            "Mod TomH",
+            "Mod West",
+            "Mod Ash"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "The Corsair Curse",
+        "url": "https://oldschool.runescape.wiki/w/The_Corsair_Curse",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "7 December 2017",
+        "members": false,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Mod Ash"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "X Marks the Spot",
+        "url": "https://oldschool.runescape.wiki/w/X_Marks_the_Spot",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "7 February 2019",
+        "members": false,
+        "series": "Great Kourend",
+        "difficulty": "Novice",
+        "developer": [
+            "Mod Ed"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Below Ice Mountain",
+        "url": "https://oldschool.runescape.wiki/w/Below_Ice_Mountain",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "14 April 2021",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Mod Oasis",
+            "Mod Tide"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Sheep Shearer",
+        "url": "https://oldschool.runescape.wiki/w/Sheep_Shearer",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Crafting",
+                150
+            ]
+        ],
+        "released": "4 January 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Cook's Assistant",
+        "url": "https://oldschool.runescape.wiki/w/Cook%27s_Assistant",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Cooking",
+                300
+            ]
+        ],
+        "released": "4 January 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Druidic Ritual",
+        "url": "https://oldschool.runescape.wiki/w/Druidic_Ritual",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Herblore",
+                250
+            ]
+        ],
+        "released": "27 February 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Lost City",
+        "url": "https://oldschool.runescape.wiki/w/Lost_City",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                31
+            ],
+            [
+                "Woodcutting",
+                36
+            ]
+        ],
+        "rewards": [],
+        "released": "27 February 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Witch's House",
+        "url": "https://oldschool.runescape.wiki/w/Witch%27s_House",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Hitpoints",
+                6325
+            ]
+        ],
+        "released": "27 February 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Very Short",
+        "combat": true
+    },
+    {
+        "name": "Merlin's Crystal",
+        "url": "https://oldschool.runescape.wiki/w/Merlin%27s_Crystal",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "27 February 2002",
+        "members": true,
+        "series": "Camelot",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Heroes' Quest",
+        "url": "https://oldschool.runescape.wiki/w/Heroes%27_Quest",
+        "quest_requirements": [
+            "Shield of Arrav",
+            "Dragon Slayer I",
+            "Lost City",
+            "Merlin's Crystal"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                53
+            ],
+            [
+                "Fishing",
+                53
+            ],
+            [
+                "Herblore",
+                25
+            ],
+            [
+                "Mining",
+                50
+            ]
+        ],
+        "rewards": [
+            [
+                "Attack",
+                3075
+            ],
+            [
+                "Defence",
+                3075
+            ],
+            [
+                "Strength",
+                3075
+            ],
+            [
+                "Hitpoints",
+                3075
+            ],
+            [
+                "Ranged",
+                2075
+            ],
+            [
+                "Fishing",
+                2725
+            ],
+            [
+                "Cooking",
+                2825
+            ],
+            [
+                "Woodcutting",
+                1575
+            ],
+            [
+                "Firemaking",
+                1575
+            ],
+            [
+                "Smithing",
+                2257
+            ],
+            [
+                "Mining",
+                2575
+            ],
+            [
+                "Herblore",
+                1325
+            ]
+        ],
+        "released": "27 February 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Experienced",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Scorpion Catcher",
+        "url": "https://oldschool.runescape.wiki/w/Scorpion_Catcher",
+        "quest_requirements": [
+            "Alfred Grimhand's Barcrawl"
+        ],
+        "skill_requirements": [
+            [
+                "Prayer",
+                31
+            ]
+        ],
+        "rewards": [
+            [
+                "Strength",
+                6625
+            ]
+        ],
+        "released": "25 March 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Family Crest",
+        "url": "https://oldschool.runescape.wiki/w/Family_Crest",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Mining",
+                40
+            ],
+            [
+                "Smithing",
+                40
+            ],
+            [
+                "Magic",
+                59
+            ],
+            [
+                "Crafting",
+                40
+            ]
+        ],
+        "rewards": [],
+        "released": "9 April 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Experienced",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Fishing Contest",
+        "url": "https://oldschool.runescape.wiki/w/Fishing_Contest",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Fishing",
+                10
+            ]
+        ],
+        "rewards": [
+            [
+                "Fishing",
+                2437
+            ]
+        ],
+        "released": "28 May 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Tribal Totem",
+        "url": "https://oldschool.runescape.wiki/w/Tribal_Totem",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Thieving",
+                21
+            ]
+        ],
+        "rewards": [
+            [
+                "Thieving",
+                1775
+            ]
+        ],
+        "released": "30 April 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Monk's Friend",
+        "url": "https://oldschool.runescape.wiki/w/Monk%27s_Friend",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Woodcutting",
+                2000
+            ]
+        ],
+        "released": "28 May 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Tom W"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Temple of Ikov",
+        "url": "https://oldschool.runescape.wiki/w/Temple_of_Ikov",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Thieving",
+                42
+            ],
+            [
+                "Ranged",
+                40
+            ]
+        ],
+        "rewards": [
+            [
+                "Ranged",
+                10500
+            ],
+            [
+                "Fletching",
+                8000
+            ]
+        ],
+        "released": "17 June 2002",
+        "members": true,
+        "series": "Mahjarrat",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Clock Tower",
+        "url": "https://oldschool.runescape.wiki/w/Clock_Tower",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "17 June 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Tom W"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Holy Grail",
+        "url": "https://oldschool.runescape.wiki/w/Holy_Grail",
+        "quest_requirements": [
+            "Merlin's Crystal"
+        ],
+        "skill_requirements": [
+            [
+                "Attack",
+                20
+            ]
+        ],
+        "rewards": [
+            [
+                "Prayer",
+                11000
+            ],
+            [
+                "Defence",
+                15300
+            ]
+        ],
+        "released": "23 July 2002",
+        "members": true,
+        "series": "Camelot",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Tree Gnome Village",
+        "url": "https://oldschool.runescape.wiki/w/Tree_Gnome_Village",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Attack",
+                11450
+            ]
+        ],
+        "released": "23 July 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Tom W"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Fight Arena",
+        "url": "https://oldschool.runescape.wiki/w/Fight_Arena",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Attack",
+                12175
+            ],
+            [
+                "Thieving",
+                2175
+            ]
+        ],
+        "released": "23 July 2002",
+        "members": true,
+        "series": "Mahjarrat",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Paul Gower"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Hazeel Cult",
+        "url": "https://oldschool.runescape.wiki/w/Hazeel_Cult",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Thieving",
+                1500
+            ]
+        ],
+        "released": "15 August 2002",
+        "members": true,
+        "series": "Mahjarrat",
+        "difficulty": "Novice",
+        "developer": [
+            "Tom W"
+        ],
+        "length": "Very Short",
+        "combat": true
+    },
+    {
+        "name": "Sheep Herder",
+        "url": "https://oldschool.runescape.wiki/w/Sheep_Herder",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "15 August 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Tom W"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Plague City",
+        "url": "https://oldschool.runescape.wiki/w/Plague_City",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Mining",
+                2425
+            ]
+        ],
+        "released": "27 August 2002",
+        "members": true,
+        "series": "Elf",
+        "difficulty": "Novice",
+        "developer": [
+            "Paul Gower",
+            "Tom W"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Sea Slug",
+        "url": "https://oldschool.runescape.wiki/w/Sea_Slug",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                30
+            ]
+        ],
+        "rewards": [
+            [
+                "Fishing",
+                7175
+            ]
+        ],
+        "released": "9 September 2002",
+        "members": true,
+        "series": "Temple Knight",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Tom W"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Waterfall Quest",
+        "url": "https://oldschool.runescape.wiki/w/Waterfall_Quest",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Strength",
+                13750
+            ],
+            [
+                "Attack",
+                13750
+            ]
+        ],
+        "released": "24 September 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Tom W"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Jungle Potion",
+        "url": "https://oldschool.runescape.wiki/w/Jungle_Potion",
+        "quest_requirements": [
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [
+            [
+                "Herblore",
+                3
+            ]
+        ],
+        "rewards": [
+            [
+                "Herblore",
+                775
+            ]
+        ],
+        "released": "23 October 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Tytn H"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "The Grand Tree",
+        "url": "https://oldschool.runescape.wiki/w/The_Grand_Tree",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Agility",
+                25
+            ]
+        ],
+        "rewards": [
+            [
+                "Attack",
+                18400
+            ],
+            [
+                "Agility",
+                7900
+            ],
+            [
+                "Magic",
+                2150
+            ]
+        ],
+        "released": "12 December 2002",
+        "members": true,
+        "series": "Gnome",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Tom W"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Underground Pass",
+        "url": "https://oldschool.runescape.wiki/w/Underground_Pass",
+        "quest_requirements": [
+            "Plague City",
+            "Biohazard"
+        ],
+        "skill_requirements": [
+            [
+                "Ranged",
+                25
+            ]
+        ],
+        "rewards": [
+            [
+                "Agility",
+                3000
+            ],
+            [
+                "Attack",
+                3000
+            ]
+        ],
+        "released": "3 March 2003",
+        "members": true,
+        "series": "Elf",
+        "difficulty": "Experienced",
+        "developer": [
+            "Tom W"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Observatory Quest",
+        "url": "https://oldschool.runescape.wiki/w/Observatory_Quest",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Crafting",
+                2250
+            ],
+            [
+                "Attack",
+                875
+            ],
+            [
+                "Strength",
+                875
+            ],
+            [
+                "Hitpoints",
+                875
+            ],
+            [
+                "Defence",
+                875
+            ]
+        ],
+        "released": "17 March 2003",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "James B"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "The Tourist Trap",
+        "url": "https://oldschool.runescape.wiki/w/The_Tourist_Trap",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Fletching",
+                10
+            ],
+            [
+                "Smithing",
+                20
+            ]
+        ],
+        "rewards": [],
+        "released": "14 April 2003",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Tytn H"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Watchtower",
+        "url": "https://oldschool.runescape.wiki/w/Watchtower",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Magic",
+                14
+            ],
+            [
+                "Thieving",
+                15
+            ],
+            [
+                "Agility",
+                25
+            ],
+            [
+                "Herblore",
+                14
+            ],
+            [
+                "Mining",
+                40
+            ]
+        ],
+        "rewards": [
+            [
+                "Magic",
+                15250
+            ]
+        ],
+        "released": "7 May 2003",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Ian T"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Dwarf Cannon",
+        "url": "https://oldschool.runescape.wiki/w/Dwarf_Cannon",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Crafting",
+                750
+            ]
+        ],
+        "released": "27 May 2003",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Tom W"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Murder Mystery",
+        "url": "https://oldschool.runescape.wiki/w/Murder_Mystery",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Crafting",
+                1406
+            ]
+        ],
+        "released": "9 June 2003",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "James B"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "The Dig Site",
+        "url": "https://oldschool.runescape.wiki/w/The_Dig_Site",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Agility",
+                10
+            ],
+            [
+                "Herblore",
+                10
+            ],
+            [
+                "Thieving",
+                25
+            ]
+        ],
+        "rewards": [],
+        "released": "9 July 2003",
+        "members": true,
+        "series": "Mahjarrat",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Ian T"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Gertrude's Cat",
+        "url": "https://oldschool.runescape.wiki/w/Gertrude%27s_Cat",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Cooking",
+                1525
+            ]
+        ],
+        "released": "28 July 2003",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Tom W"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Legends' Quest",
+        "url": "https://oldschool.runescape.wiki/w/Legends%27_Quest",
+        "quest_requirements": [
+            "Shield of Arrav",
+            "Dragon Slayer I",
+            "Lost City",
+            "Merlin's Crystal",
+            "Heroes' Quest",
+            "Family Crest",
+            "Plague City",
+            "Waterfall Quest",
+            "Jungle Potion",
+            "Underground Pass",
+            "Shilo Village",
+            "Biohazard"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                50
+            ],
+            [
+                "Crafting",
+                50
+            ],
+            [
+                "Herblore",
+                45
+            ],
+            [
+                "Magic",
+                56
+            ],
+            [
+                "Mining",
+                52
+            ],
+            [
+                "Prayer",
+                42
+            ],
+            [
+                "Smithing",
+                50
+            ],
+            [
+                "Strength",
+                50
+            ],
+            [
+                "Thieving",
+                50
+            ],
+            [
+                "Woodcutting",
+                50
+            ]
+        ],
+        "rewards": [],
+        "released": "20 August 2003",
+        "members": true,
+        "series": "None",
+        "difficulty": "Master",
+        "developer": [
+            "Tytn H"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Death Plateau",
+        "url": "https://oldschool.runescape.wiki/w/Death_Plateau",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Attack",
+                3000
+            ]
+        ],
+        "released": "9 August 2004",
+        "members": true,
+        "series": "Troll",
+        "difficulty": "Novice",
+        "developer": [
+            "Jon S"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Eadgar's Ruse",
+        "url": "https://oldschool.runescape.wiki/w/Eadgar%27s_Ruse",
+        "quest_requirements": [
+            "Druidic Ritual",
+            "Death Plateau",
+            "Troll Stronghold"
+        ],
+        "skill_requirements": [
+            [
+                "Herblore",
+                31
+            ]
+        ],
+        "rewards": [
+            [
+                "Herblore",
+                11000
+            ]
+        ],
+        "released": "5 October 2004",
+        "members": true,
+        "series": "Troll",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Chris S"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Big Chompy Bird Hunting",
+        "url": "https://oldschool.runescape.wiki/w/Big_Chompy_Bird_Hunting",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Fletching",
+                5
+            ],
+            [
+                "Cooking",
+                30
+            ],
+            [
+                "Ranged",
+                30
+            ]
+        ],
+        "rewards": [
+            [
+                "Fletching",
+                262
+            ],
+            [
+                "Cooking",
+                1470
+            ],
+            [
+                "Ranged",
+                735
+            ]
+        ],
+        "released": "18 May 2004",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Tytn H"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Elemental Workshop I",
+        "url": "https://oldschool.runescape.wiki/w/Elemental_Workshop_I",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Smithing",
+                20
+            ],
+            [
+                "Crafting",
+                20
+            ]
+        ],
+        "rewards": [
+            [
+                "Crafting",
+                5000
+            ],
+            [
+                "Smithing",
+                5000
+            ]
+        ],
+        "released": "2 June 2004",
+        "members": true,
+        "series": "Elemental Workshop",
+        "difficulty": "Novice",
+        "developer": [
+            "Dylan C"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Nature Spirit",
+        "url": "https://oldschool.runescape.wiki/w/Nature_Spirit",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Crafting",
+                3000
+            ],
+            [
+                "Defence",
+                2000
+            ],
+            [
+                "Hitpoints",
+                2000
+            ]
+        ],
+        "released": "13 July 2004",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Tytn H"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Priest in Peril",
+        "url": "https://oldschool.runescape.wiki/w/Priest_in_Peril",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "29 June 2004",
+        "members": true,
+        "series": "Myreque",
+        "difficulty": "Novice",
+        "developer": [
+            "James B"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Regicide",
+        "url": "https://oldschool.runescape.wiki/w/Regicide",
+        "quest_requirements": [
+            "Plague City",
+            "Underground Pass",
+            "Biohazard"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                10
+            ],
+            [
+                "Agility",
+                56
+            ]
+        ],
+        "rewards": [
+            [
+                "Agility",
+                13750
+            ]
+        ],
+        "released": "20 September 2004",
+        "members": true,
+        "series": "Elf",
+        "difficulty": "Experienced",
+        "developer": [
+            "Dylan C"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Tai Bwo Wannai Trio",
+        "url": "https://oldschool.runescape.wiki/w/Tai_Bwo_Wannai_Trio",
+        "quest_requirements": [
+            "Jungle Potion"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                15
+            ],
+            [
+                "Cooking",
+                30
+            ],
+            [
+                "Fishing",
+                5
+            ]
+        ],
+        "rewards": [
+            [
+                "Cooking",
+                5000
+            ],
+            [
+                "Fishing",
+                5000
+            ],
+            [
+                "Attack",
+                2500
+            ],
+            [
+                "Strength",
+                2500
+            ]
+        ],
+        "released": "14 September 2004",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Rahul V"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Troll Stronghold",
+        "url": "https://oldschool.runescape.wiki/w/Troll_Stronghold",
+        "quest_requirements": [
+            "Death Plateau"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                15
+            ]
+        ],
+        "rewards": [],
+        "released": "24 August 2004",
+        "members": true,
+        "series": "Troll",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Chris S"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Shades of Mort'ton",
+        "url": "https://oldschool.runescape.wiki/w/Shades_of_Mort%27ton",
+        "quest_requirements": [
+            "Priest in Peril"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Herblore",
+                15
+            ],
+            [
+                "Firemaking",
+                5
+            ]
+        ],
+        "rewards": [
+            [
+                "Herblore",
+                2000
+            ],
+            [
+                "Crafting",
+                2000
+            ],
+            [
+                "Herblore",
+                335
+            ]
+        ],
+        "released": "18 October 2004",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Tytn H"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "The Fremennik Trials",
+        "url": "https://oldschool.runescape.wiki/w/The_Fremennik_Trials",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Fletching",
+                25
+            ],
+            [
+                "Woodcutting",
+                40
+            ],
+            [
+                "Crafting",
+                40
+            ]
+        ],
+        "rewards": [],
+        "released": "2 November 2004",
+        "members": true,
+        "series": "Fremennik",
+        "difficulty": "Intermediate",
+        "developer": [
+            "James B"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Horror from the Deep",
+        "url": "https://oldschool.runescape.wiki/w/Horror_from_the_Deep",
+        "quest_requirements": [
+            "Alfred Grimhand's Barcrawl"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                35
+            ]
+        ],
+        "rewards": [
+            [
+                "Magic",
+                4662
+            ],
+            [
+                "Strength",
+                4662
+            ],
+            [
+                "Ranged",
+                4662
+            ]
+        ],
+        "released": "17 November 2004",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "James B"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Throne of Miscellania",
+        "url": "https://oldschool.runescape.wiki/w/Throne_of_Miscellania",
+        "quest_requirements": [
+            "Shield of Arrav",
+            "Dragon Slayer I",
+            "Lost City",
+            "Merlin's Crystal",
+            "Heroes' Quest",
+            "The Fremennik Trials"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "29 November 2004",
+        "members": true,
+        "series": "Miscellania",
+        "difficulty": "Experienced",
+        "developer": [
+            "Chris S",
+            "Jonathan S"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Monkey Madness I",
+        "url": "https://oldschool.runescape.wiki/w/Monkey_Madness_I",
+        "quest_requirements": [
+            "Tree Gnome Village",
+            "The Grand Tree"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "6 December 2004",
+        "members": true,
+        "series": "Gnome",
+        "difficulty": "Master",
+        "developer": [
+            "Rahul V"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Haunted Mine",
+        "url": "https://oldschool.runescape.wiki/w/Haunted_Mine",
+        "quest_requirements": [
+            "Priest in Peril"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                35
+            ]
+        ],
+        "rewards": [
+            [
+                "Strength",
+                22000
+            ]
+        ],
+        "released": "21 December 2004",
+        "members": true,
+        "series": "None",
+        "difficulty": "Experienced",
+        "developer": [
+            "Ian G"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Troll Romance",
+        "url": "https://oldschool.runescape.wiki/w/Troll_Romance",
+        "quest_requirements": [
+            "Death Plateau",
+            "Troll Stronghold"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                28
+            ]
+        ],
+        "rewards": [
+            [
+                "Agility",
+                8000
+            ],
+            [
+                "Strength",
+                4000
+            ]
+        ],
+        "released": "5 January 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Simon S"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "In Search of the Myreque",
+        "url": "https://oldschool.runescape.wiki/w/In_Search_of_the_Myreque",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Nature Spirit",
+            "Priest in Peril"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                25
+            ]
+        ],
+        "rewards": [
+            [
+                "Attack",
+                600
+            ],
+            [
+                "Defence",
+                600
+            ],
+            [
+                "Strength",
+                600
+            ],
+            [
+                "Hitpoints",
+                600
+            ],
+            [
+                "Crafting",
+                600
+            ]
+        ],
+        "released": "10 January 2005",
+        "members": true,
+        "series": "Myreque",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Tytn H"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Creature of Fenkenstrain",
+        "url": "https://oldschool.runescape.wiki/w/Creature_of_Fenkenstrain",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Thieving",
+                25
+            ]
+        ],
+        "rewards": [
+            [
+                "Thieving",
+                1000
+            ]
+        ],
+        "released": "31 January 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Martin B"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Roving Elves",
+        "url": "https://oldschool.runescape.wiki/w/Roving_Elves",
+        "quest_requirements": [
+            "Plague City",
+            "Waterfall Quest",
+            "Underground Pass",
+            "Regicide",
+            "Biohazard"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                56
+            ]
+        ],
+        "rewards": [
+            [
+                "Strength",
+                10000
+            ]
+        ],
+        "released": "7 February 2005",
+        "members": true,
+        "series": "Elf",
+        "difficulty": "Experienced",
+        "developer": [
+            "Dylan C"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Ghosts Ahoy",
+        "url": "https://oldschool.runescape.wiki/w/Ghosts_Ahoy",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                25
+            ],
+            [
+                "Cooking",
+                20
+            ]
+        ],
+        "rewards": [
+            [
+                "Prayer",
+                2400
+            ]
+        ],
+        "released": "15 February 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Martin B"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "One Small Favour",
+        "url": "https://oldschool.runescape.wiki/w/One_Small_Favour",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "Druidic Ritual",
+            "Jungle Potion",
+            "Shilo Village"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                36
+            ],
+            [
+                "Crafting",
+                25
+            ],
+            [
+                "Herblore",
+                18
+            ],
+            [
+                "Smithing",
+                30
+            ]
+        ],
+        "rewards": [],
+        "released": "28 February 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Experienced",
+        "developer": [
+            "Tytn H"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Mountain Daughter",
+        "url": "https://oldschool.runescape.wiki/w/Mountain_Daughter",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Agility",
+                20
+            ]
+        ],
+        "rewards": [
+            [
+                "Prayer",
+                2000
+            ],
+            [
+                "Attack",
+                1000
+            ]
+        ],
+        "released": "7 March 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Vincent Van M"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Between a Rock...",
+        "url": "https://oldschool.runescape.wiki/w/Between_a_Rock...",
+        "quest_requirements": [
+            "Fishing Contest",
+            "Dwarf Cannon"
+        ],
+        "skill_requirements": [
+            [
+                "Defence",
+                30
+            ],
+            [
+                "Mining",
+                40
+            ],
+            [
+                "Smithing",
+                50
+            ]
+        ],
+        "rewards": [
+            [
+                "Defence",
+                5000
+            ],
+            [
+                "Mining",
+                5000
+            ],
+            [
+                "Smithing",
+                5000
+            ]
+        ],
+        "released": "21 March 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Experienced",
+        "developer": [
+            "Vincent Van M"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "The Feud",
+        "url": "https://oldschool.runescape.wiki/w/The_Feud",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Thieving",
+                30
+            ]
+        ],
+        "rewards": [
+            [
+                "Thieving",
+                15000
+            ]
+        ],
+        "released": "4 April 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Chris J"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "The Golem",
+        "url": "https://oldschool.runescape.wiki/w/The_Golem",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Thieving",
+                25
+            ]
+        ],
+        "rewards": [
+            [
+                "Thieving",
+                1000
+            ],
+            [
+                "Crafting",
+                1000
+            ]
+        ],
+        "released": "11 April 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "John A"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Desert Treasure",
+        "url": "https://oldschool.runescape.wiki/w/Desert_Treasure",
+        "quest_requirements": [
+            "Temple of Ikov",
+            "Plague City",
+            "Waterfall Quest",
+            "The Tourist Trap",
+            "The Dig Site",
+            "Death Plateau",
+            "Priest in Peril",
+            "Troll Stronghold"
+        ],
+        "skill_requirements": [
+            [
+                "Thieving",
+                53
+            ],
+            [
+                "Magic",
+                50
+            ],
+            [
+                "Firemaking",
+                50
+            ],
+            [
+                "Slayer",
+                10
+            ]
+        ],
+        "rewards": [
+            [
+                "Magic",
+                20000
+            ]
+        ],
+        "released": "18 April 2005",
+        "members": true,
+        "series": "Mahjarrat",
+        "difficulty": "Master",
+        "developer": [
+            "James B"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Icthlarin's Little Helper",
+        "url": "https://oldschool.runescape.wiki/w/Icthlarin%27s_Little_Helper",
+        "quest_requirements": [
+            "Gertrude's Cat"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Thieving",
+                4500
+            ],
+            [
+                "Agility",
+                4000
+            ],
+            [
+                "Woodcutting",
+                4000
+            ]
+        ],
+        "released": "26 April 2005",
+        "members": true,
+        "series": "Kharidian",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Chris J"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Tears of Guthix",
+        "url": "https://oldschool.runescape.wiki/w/Tears_of_Guthix",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                49
+            ],
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Mining",
+                20
+            ]
+        ],
+        "rewards": [
+            [
+                "Crafting",
+                1000
+            ]
+        ],
+        "released": "4 May 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "John A"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "The Lost Tribe",
+        "url": "https://oldschool.runescape.wiki/w/The_Lost_Tribe",
+        "quest_requirements": [
+            "Goblin Diplomacy",
+            "Rune Mysteries"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                13
+            ],
+            [
+                "Thieving",
+                13
+            ],
+            [
+                "Mining",
+                17
+            ]
+        ],
+        "rewards": [
+            [
+                "Mining",
+                3000
+            ]
+        ],
+        "released": "31 May 2005",
+        "members": true,
+        "series": "Dorgeshuun",
+        "difficulty": "Intermediate",
+        "developer": [
+            "John A"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "The Giant Dwarf",
+        "url": "https://oldschool.runescape.wiki/w/The_Giant_Dwarf",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                12
+            ],
+            [
+                "Firemaking",
+                16
+            ],
+            [
+                "Magic",
+                33
+            ],
+            [
+                "Thieving",
+                14
+            ]
+        ],
+        "rewards": [
+            [
+                "Mining",
+                2500
+            ],
+            [
+                "Smithing",
+                2500
+            ],
+            [
+                "Crafting",
+                2500
+            ],
+            [
+                "Magic",
+                1500
+            ],
+            [
+                "Thieving",
+                1500
+            ],
+            [
+                "Firemaking",
+                1500
+            ]
+        ],
+        "released": "31 May 2005",
+        "members": true,
+        "series": "Red Axe",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Vincent M"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Recruitment Drive",
+        "url": "https://oldschool.runescape.wiki/w/Recruitment_Drive",
+        "quest_requirements": [
+            "Black Knights' Fortress",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "27 June 2005",
+        "members": true,
+        "series": "Temple Knight",
+        "difficulty": "Novice",
+        "developer": [
+            "James B"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Mourning's End Part I",
+        "url": "https://oldschool.runescape.wiki/w/Mourning%27s_End_Part_I",
+        "quest_requirements": [
+            "Sheep Herder",
+            "Plague City",
+            "Waterfall Quest",
+            "Underground Pass",
+            "Big Chompy Bird Hunting",
+            "Regicide",
+            "Roving Elves",
+            "Biohazard"
+        ],
+        "skill_requirements": [
+            [
+                "Ranged",
+                60
+            ],
+            [
+                "Thieving",
+                50
+            ]
+        ],
+        "rewards": [
+            [
+                "Thieving",
+                25000
+            ],
+            [
+                "Hitpoints",
+                25000
+            ]
+        ],
+        "released": "19 July 2005",
+        "members": true,
+        "series": "Elf",
+        "difficulty": "Master",
+        "developer": [
+            "Dylan C"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Forgettable Tale...",
+        "url": "https://oldschool.runescape.wiki/w/Forgettable_Tale...",
+        "quest_requirements": [
+            "Fishing Contest",
+            "The Giant Dwarf"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                22
+            ],
+            [
+                "Farming",
+                17
+            ]
+        ],
+        "rewards": [
+            [
+                "Cooking",
+                5000
+            ],
+            [
+                "Farming",
+                5000
+            ]
+        ],
+        "released": "26 July 2005",
+        "members": true,
+        "series": "Red Axe",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Vincent van M"
+        ],
+        "length": "Long",
+        "combat": false
+    },
+    {
+        "name": "Garden of Tranquillity",
+        "url": "https://oldschool.runescape.wiki/w/Garden_of_Tranquillity",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril",
+            "Creature of Fenkenstrain"
+        ],
+        "skill_requirements": [
+            [
+                "Farming",
+                25
+            ]
+        ],
+        "rewards": [
+            [
+                "Farming",
+                5000
+            ]
+        ],
+        "released": "30 August 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Martin B"
+        ],
+        "length": "Long",
+        "combat": false
+    },
+    {
+        "name": "A Tail of Two Cats",
+        "url": "https://oldschool.runescape.wiki/w/A_Tail_of_Two_Cats",
+        "quest_requirements": [
+            "Gertrude's Cat",
+            "Icthlarin's Little Helper"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "26 September 2005",
+        "members": true,
+        "series": "Dragonkin",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Jonathan S"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Wanted!",
+        "url": "https://oldschool.runescape.wiki/w/Wanted!",
+        "quest_requirements": [
+            "Black Knights' Fortress",
+            "Goblin Diplomacy",
+            "Rune Mysteries",
+            "Druidic Ritual",
+            "Priest in Peril",
+            "The Lost Tribe",
+            "Recruitment Drive",
+            "Enter the Abyss"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Slayer",
+                5000
+            ]
+        ],
+        "released": "17 October 2005",
+        "members": true,
+        "series": "Temple Knight",
+        "difficulty": "Intermediate",
+        "developer": [
+            "James B"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Mourning's End Part II",
+        "url": "https://oldschool.runescape.wiki/w/Mourning%27s_End_Part_II",
+        "quest_requirements": [
+            "Sheep Herder",
+            "Plague City",
+            "Waterfall Quest",
+            "Underground Pass",
+            "Big Chompy Bird Hunting",
+            "Regicide",
+            "Roving Elves",
+            "Mourning's End Part I",
+            "Biohazard"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Agility",
+                20000
+            ]
+        ],
+        "released": "17 October 2005",
+        "members": true,
+        "series": "Elf",
+        "difficulty": "Master",
+        "developer": [
+            "Dylan C",
+            "Graham B"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Rum Deal",
+        "url": "https://oldschool.runescape.wiki/w/Rum_Deal",
+        "quest_requirements": [
+            "Jungle Potion",
+            "Big Chompy Bird Hunting",
+            "Priest in Peril",
+            "Zogre Flesh Eaters"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                42
+            ],
+            [
+                "Fishing",
+                50
+            ],
+            [
+                "Farming",
+                40
+            ],
+            [
+                "Prayer",
+                47
+            ],
+            [
+                "Slayer",
+                42
+            ]
+        ],
+        "rewards": [
+            [
+                "Fishing",
+                7000
+            ],
+            [
+                "Prayer",
+                7000
+            ],
+            [
+                "Farming",
+                7000
+            ]
+        ],
+        "released": "31 October 2005",
+        "members": true,
+        "series": "Pirate",
+        "difficulty": "Experienced",
+        "developer": [
+            "Anthony W"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Shadow of the Storm",
+        "url": "https://oldschool.runescape.wiki/w/Shadow_of_the_Storm",
+        "quest_requirements": [
+            "Demon Slayer",
+            "The Golem"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                30
+            ]
+        ],
+        "rewards": [],
+        "released": "14 November 2005",
+        "members": true,
+        "series": "Demon Slayer",
+        "difficulty": "Intermediate",
+        "developer": [
+            "John A"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Making History",
+        "url": "https://oldschool.runescape.wiki/w/Making_History",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Crafting",
+                1000
+            ],
+            [
+                "Prayer",
+                1000
+            ]
+        ],
+        "released": "22 November 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Tim C"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Ratcatchers",
+        "url": "https://oldschool.runescape.wiki/w/Ratcatchers",
+        "quest_requirements": [
+            "Gertrude's Cat",
+            "Icthlarin's Little Helper",
+            "The Giant Dwarf"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Thieving",
+                4500
+            ]
+        ],
+        "released": "28 November 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Chris J"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Spirits of the Elid",
+        "url": "https://oldschool.runescape.wiki/w/Spirits_of_the_Elid",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Magic",
+                33
+            ],
+            [
+                "Ranged",
+                37
+            ],
+            [
+                "Mining",
+                37
+            ],
+            [
+                "Thieving",
+                37
+            ]
+        ],
+        "rewards": [
+            [
+                "Prayer",
+                8000
+            ],
+            [
+                "Thieving",
+                1000
+            ],
+            [
+                "Magic",
+                1000
+            ]
+        ],
+        "released": "5 December 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Paul G"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Devious Minds",
+        "url": "https://oldschool.runescape.wiki/w/Devious_Minds",
+        "quest_requirements": [
+            "Doric's Quest",
+            "Black Knights' Fortress",
+            "Goblin Diplomacy",
+            "Rune Mysteries",
+            "Druidic Ritual",
+            "Death Plateau",
+            "Priest in Peril",
+            "Troll Stronghold",
+            "The Lost Tribe",
+            "Recruitment Drive",
+            "Wanted!",
+            "Enter the Abyss"
+        ],
+        "skill_requirements": [
+            [
+                "Smithing",
+                65
+            ],
+            [
+                "Runecraft",
+                50
+            ],
+            [
+                "Fletching",
+                50
+            ]
+        ],
+        "rewards": [
+            [
+                "Fletching",
+                5000
+            ],
+            [
+                "Runecraft",
+                5000
+            ],
+            [
+                "Smithing",
+                6500
+            ]
+        ],
+        "released": "19 December 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Experienced",
+        "developer": [
+            "Graham B"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "The Hand in the Sand",
+        "url": "https://oldschool.runescape.wiki/w/The_Hand_in_the_Sand",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Thieving",
+                17
+            ],
+            [
+                "Crafting",
+                49
+            ]
+        ],
+        "rewards": [
+            [
+                "Thieving",
+                1000
+            ],
+            [
+                "Crafting",
+                9000
+            ]
+        ],
+        "released": "10 January 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Marion C"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Enakhra's Lament",
+        "url": "https://oldschool.runescape.wiki/w/Enakhra%27s_Lament",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                50
+            ],
+            [
+                "Firemaking",
+                45
+            ],
+            [
+                "Prayer",
+                43
+            ],
+            [
+                "Magic",
+                39
+            ]
+        ],
+        "rewards": [
+            [
+                "Crafting",
+                7000
+            ],
+            [
+                "Mining",
+                7000
+            ],
+            [
+                "Firemaking",
+                7000
+            ],
+            [
+                "Magic",
+                7000
+            ]
+        ],
+        "released": "23 January 2006",
+        "members": true,
+        "series": "Mahjarrat",
+        "difficulty": "Experienced",
+        "developer": [
+            "Isobel H"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Cabin Fever",
+        "url": "https://oldschool.runescape.wiki/w/Cabin_Fever",
+        "quest_requirements": [
+            "Pirate's Treasure",
+            "Jungle Potion",
+            "Big Chompy Bird Hunting",
+            "Priest in Peril",
+            "Rum Deal",
+            "Zogre Flesh Eaters"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                42
+            ],
+            [
+                "Crafting",
+                45
+            ],
+            [
+                "Smithing",
+                50
+            ],
+            [
+                "Ranged",
+                40
+            ]
+        ],
+        "rewards": [
+            [
+                "Crafting",
+                7000
+            ],
+            [
+                "Smithing",
+                7000
+            ],
+            [
+                "Agility",
+                7000
+            ]
+        ],
+        "released": "7 February 2006",
+        "members": true,
+        "series": "Pirate",
+        "difficulty": "Experienced",
+        "developer": [
+            "Anthony W"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Fairytale I - Growing Pains",
+        "url": "https://oldschool.runescape.wiki/w/Fairytale_I_-_Growing_Pains",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Lost City",
+            "Nature Spirit",
+            "Priest in Peril"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Farming",
+                3500
+            ],
+            [
+                "Attack",
+                2000
+            ],
+            [
+                "Magic",
+                1000
+            ]
+        ],
+        "released": "27 February 2006",
+        "members": true,
+        "series": "Fairytale",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Greg V"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "In Aid of the Myreque",
+        "url": "https://oldschool.runescape.wiki/w/In_Aid_of_the_Myreque",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Nature Spirit",
+            "Priest in Peril",
+            "In Search of the Myreque"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                25
+            ],
+            [
+                "Crafting",
+                25
+            ],
+            [
+                "Mining",
+                15
+            ],
+            [
+                "Magic",
+                7
+            ]
+        ],
+        "rewards": [
+            [
+                "Attack",
+                2000
+            ],
+            [
+                "Strength",
+                2000
+            ],
+            [
+                "Crafting",
+                2000
+            ],
+            [
+                "Defence",
+                2000
+            ]
+        ],
+        "released": "22 March 2006",
+        "members": true,
+        "series": "Myreque",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Tytn H"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "A Soul's Bane",
+        "url": "https://oldschool.runescape.wiki/w/A_Soul%27s_Bane",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Defence",
+                500
+            ],
+            [
+                "Hitpoints",
+                500
+            ]
+        ],
+        "released": "3 April 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Tim C"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Rag and Bone Man I",
+        "url": "https://oldschool.runescape.wiki/w/Rag_and_Bone_Man_I",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Cooking",
+                500
+            ],
+            [
+                "Prayer",
+                500
+            ]
+        ],
+        "released": "10 April 2006",
+        "members": true,
+        "series": "Rag and Bone Man",
+        "difficulty": "Novice",
+        "developer": [
+            "Anthony W"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Swan Song",
+        "url": "https://oldschool.runescape.wiki/w/Swan_Song",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Rune Mysteries",
+            "Druidic Ritual",
+            "Jungle Potion",
+            "Priest in Peril",
+            "Creature of Fenkenstrain",
+            "One Small Favour",
+            "Garden of Tranquillity",
+            "Shilo Village"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                66
+            ],
+            [
+                "Cooking",
+                62
+            ],
+            [
+                "Fishing",
+                62
+            ],
+            [
+                "Smithing",
+                45
+            ],
+            [
+                "Firemaking",
+                42
+            ],
+            [
+                "Crafting",
+                40
+            ]
+        ],
+        "rewards": [
+            [
+                "Magic",
+                15000
+            ],
+            [
+                "Prayer",
+                10000
+            ],
+            [
+                "Fishing",
+                10000
+            ]
+        ],
+        "released": "2 May 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Master",
+        "developer": [
+            "Ashleigh B"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Royal Trouble",
+        "url": "https://oldschool.runescape.wiki/w/Royal_Trouble",
+        "quest_requirements": [
+            "Shield of Arrav",
+            "Dragon Slayer I",
+            "Lost City",
+            "Merlin's Crystal",
+            "Heroes' Quest",
+            "The Fremennik Trials",
+            "Throne of Miscellania"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                40
+            ],
+            [
+                "Slayer",
+                40
+            ]
+        ],
+        "rewards": [
+            [
+                "Agility",
+                5000
+            ],
+            [
+                "Slayer",
+                5000
+            ],
+            [
+                "Hitpoints",
+                5000
+            ]
+        ],
+        "released": "22 May 2006",
+        "members": true,
+        "series": "Miscellania",
+        "difficulty": "Experienced",
+        "developer": [
+            "Isobel H"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Death to the Dorgeshuun",
+        "url": "https://oldschool.runescape.wiki/w/Death_to_the_Dorgeshuun",
+        "quest_requirements": [
+            "Goblin Diplomacy",
+            "Rune Mysteries",
+            "The Lost Tribe"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                23
+            ],
+            [
+                "Thieving",
+                23
+            ]
+        ],
+        "rewards": [
+            [
+                "Thieving",
+                2000
+            ],
+            [
+                "Ranged",
+                2000
+            ]
+        ],
+        "released": "21 June 2006",
+        "members": true,
+        "series": "Dorgeshuun",
+        "difficulty": "Intermediate",
+        "developer": [
+            "John A"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Fairytale II - Cure a Queen",
+        "url": "https://oldschool.runescape.wiki/w/Fairytale_II_-_Cure_a_Queen",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Lost City",
+            "Nature Spirit",
+            "Priest in Peril",
+            "Fairytale I - Growing Pains"
+        ],
+        "skill_requirements": [
+            [
+                "Thieving",
+                40
+            ],
+            [
+                "Farming",
+                49
+            ],
+            [
+                "Herblore",
+                57
+            ]
+        ],
+        "rewards": [
+            [
+                "Herblore",
+                3500
+            ],
+            [
+                "Thieving",
+                2500
+            ]
+        ],
+        "released": "11 July 2006",
+        "members": true,
+        "series": "Fairytale",
+        "difficulty": "Experienced",
+        "developer": [
+            "Greg V"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Lunar Diplomacy",
+        "url": "https://oldschool.runescape.wiki/w/Lunar_Diplomacy",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "Druidic Ritual",
+            "Lost City",
+            "Jungle Potion",
+            "The Fremennik Trials",
+            "Shilo Village"
+        ],
+        "skill_requirements": [
+            [
+                "Herblore",
+                5
+            ],
+            [
+                "Crafting",
+                61
+            ],
+            [
+                "Defence",
+                40
+            ],
+            [
+                "Firemaking",
+                49
+            ],
+            [
+                "Magic",
+                65
+            ],
+            [
+                "Mining",
+                60
+            ],
+            [
+                "Woodcutting",
+                55
+            ]
+        ],
+        "rewards": [
+            [
+                "Magic",
+                5000
+            ],
+            [
+                "Runecraft",
+                5000
+            ]
+        ],
+        "released": "24 July 2006",
+        "members": true,
+        "series": "Fremennik",
+        "difficulty": "Experienced",
+        "developer": [
+            "Tim C",
+            "James B"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "The Eyes of Glouphrie",
+        "url": "https://oldschool.runescape.wiki/w/The_Eyes_of_Glouphrie",
+        "quest_requirements": [
+            "The Grand Tree"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                5
+            ],
+            [
+                "Magic",
+                46
+            ]
+        ],
+        "rewards": [
+            [
+                "Magic",
+                12000
+            ],
+            [
+                "Woodcutting",
+                2500
+            ],
+            [
+                "Runecraft",
+                6000
+            ],
+            [
+                "Construction",
+                250
+            ]
+        ],
+        "released": "15 August 2006",
+        "members": true,
+        "series": "Gnome",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Chihiro Y"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Darkness of Hallowvale",
+        "url": "https://oldschool.runescape.wiki/w/Darkness_of_Hallowvale",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Nature Spirit",
+            "Priest in Peril",
+            "In Search of the Myreque",
+            "In Aid of the Myreque"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                5
+            ],
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Thieving",
+                22
+            ],
+            [
+                "Agility",
+                26
+            ],
+            [
+                "Crafting",
+                32
+            ],
+            [
+                "Magic",
+                33
+            ],
+            [
+                "Strength",
+                40
+            ]
+        ],
+        "rewards": [
+            [
+                "Agility",
+                7000
+            ],
+            [
+                "Thieving",
+                6000
+            ],
+            [
+                "Construction",
+                2000
+            ]
+        ],
+        "released": "4 September 2006",
+        "members": true,
+        "series": "Myreque",
+        "difficulty": "Experienced",
+        "developer": [
+            "Tytn H"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "The Slug Menace",
+        "url": "https://oldschool.runescape.wiki/w/The_Slug_Menace",
+        "quest_requirements": [
+            "Black Knights' Fortress",
+            "Goblin Diplomacy",
+            "Rune Mysteries",
+            "Druidic Ritual",
+            "Sea Slug",
+            "Priest in Peril",
+            "The Lost Tribe",
+            "Recruitment Drive",
+            "Wanted!",
+            "Enter the Abyss"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                30
+            ],
+            [
+                "Runecraft",
+                30
+            ],
+            [
+                "Slayer",
+                30
+            ],
+            [
+                "Thieving",
+                30
+            ]
+        ],
+        "rewards": [
+            [
+                "Crafting",
+                3500
+            ],
+            [
+                "Runecraft",
+                3500
+            ],
+            [
+                "Thieving",
+                3500
+            ]
+        ],
+        "released": "20 September 2006",
+        "members": true,
+        "series": "Temple Knight",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Chris LC"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Elemental Workshop II",
+        "url": "https://oldschool.runescape.wiki/w/Elemental_Workshop_II",
+        "quest_requirements": [
+            "Elemental Workshop I"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                20
+            ],
+            [
+                "Smithing",
+                30
+            ]
+        ],
+        "rewards": [
+            [
+                "Smithing",
+                7500
+            ],
+            [
+                "Crafting",
+                7500
+            ]
+        ],
+        "released": "2 October 2006",
+        "members": true,
+        "series": "Elemental Workshop",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Dylan C"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "My Arm's Big Adventure",
+        "url": "https://oldschool.runescape.wiki/w/My_Arm%27s_Big_Adventure",
+        "quest_requirements": [
+            "Druidic Ritual",
+            "Jungle Potion",
+            "Death Plateau",
+            "Eadgar's Ruse",
+            "Troll Stronghold",
+            "The Feud"
+        ],
+        "skill_requirements": [
+            [
+                "Farming",
+                29
+            ],
+            [
+                "Woodcutting",
+                10
+            ]
+        ],
+        "rewards": [
+            [
+                "Herblore",
+                10000
+            ],
+            [
+                "Farming",
+                5000
+            ]
+        ],
+        "released": "23 October 2006",
+        "members": true,
+        "series": "Troll",
+        "difficulty": "Experienced",
+        "developer": [
+            "Ashleigh B"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Enlightened Journey",
+        "url": "https://oldschool.runescape.wiki/w/Enlightened_Journey",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                20
+            ],
+            [
+                "Farming",
+                30
+            ],
+            [
+                "Crafting",
+                36
+            ]
+        ],
+        "rewards": [
+            [
+                "Crafting",
+                2000
+            ],
+            [
+                "Farming",
+                3000
+            ],
+            [
+                "Woodcutting",
+                1500
+            ],
+            [
+                "Firemaking",
+                4000
+            ]
+        ],
+        "released": "6 November 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Nancy J"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Eagles' Peak",
+        "url": "https://oldschool.runescape.wiki/w/Eagles%27_Peak",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Hunter",
+                27
+            ]
+        ],
+        "rewards": [
+            [
+                "Hunter",
+                2500
+            ]
+        ],
+        "released": "28 November 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Ian Gower"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Animal Magnetism",
+        "url": "https://oldschool.runescape.wiki/w/Animal_Magnetism",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Ernest the Chicken",
+            "Priest in Peril"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                18
+            ],
+            [
+                "Crafting",
+                19
+            ],
+            [
+                "Ranged",
+                30
+            ],
+            [
+                "Woodcutting",
+                35
+            ]
+        ],
+        "rewards": [
+            [
+                "Woodcutting",
+                2500
+            ]
+        ],
+        "released": "12 December 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Matt H"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Contact!",
+        "url": "https://oldschool.runescape.wiki/w/Contact!",
+        "quest_requirements": [
+            "Prince Ali Rescue",
+            "Gertrude's Cat",
+            "Icthlarin's Little Helper"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Thieving",
+                7000
+            ]
+        ],
+        "released": "10 January 2007",
+        "members": true,
+        "series": "Kharidian",
+        "difficulty": "Experienced",
+        "developer": [
+            "Chris J",
+            "Matt H"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Cold War",
+        "url": "https://oldschool.runescape.wiki/w/Cold_War",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Hunter",
+                10
+            ],
+            [
+                "Agility",
+                30
+            ],
+            [
+                "Crafting",
+                30
+            ],
+            [
+                "Construction",
+                34
+            ],
+            [
+                "Thieving",
+                15
+            ]
+        ],
+        "rewards": [
+            [
+                "Crafting",
+                2000
+            ],
+            [
+                "Agility",
+                5000
+            ],
+            [
+                "Construction",
+                1500
+            ]
+        ],
+        "released": "29 January 2007",
+        "members": true,
+        "series": "Penguin",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Nancy J"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "The Fremennik Isles",
+        "url": "https://oldschool.runescape.wiki/w/The_Fremennik_Isles",
+        "quest_requirements": [
+            "The Fremennik Trials"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                20
+            ]
+        ],
+        "rewards": [
+            [
+                "Construction",
+                5000
+            ],
+            [
+                "Crafting",
+                5000
+            ],
+            [
+                "Woodcutting",
+                10000
+            ]
+        ],
+        "released": "6 February 2007",
+        "members": true,
+        "series": "Fremennik",
+        "difficulty": "Experienced",
+        "developer": [
+            "Chihiro Y",
+            "Ben W",
+            "Douglas H"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "The Great Brain Robbery",
+        "url": "https://oldschool.runescape.wiki/w/The_Great_Brain_Robbery",
+        "quest_requirements": [
+            "Pirate's Treasure",
+            "Jungle Potion",
+            "Big Chompy Bird Hunting",
+            "Priest in Peril",
+            "Creature of Fenkenstrain",
+            "Rum Deal",
+            "Cabin Fever",
+            "Zogre Flesh Eaters",
+            "Recipe for Disaster/Freeing Pirate Pete",
+            "Recipe for Disaster/Defeating the Culinaromancer"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                16
+            ],
+            [
+                "Construction",
+                30
+            ],
+            [
+                "Prayer",
+                50
+            ]
+        ],
+        "rewards": [
+            [
+                "Prayer",
+                6000
+            ],
+            [
+                "Crafting",
+                3000
+            ],
+            [
+                "Construction",
+                2000
+            ]
+        ],
+        "released": "6 March 2007",
+        "members": true,
+        "series": "Pirate",
+        "difficulty": "Experienced",
+        "developer": [
+            "Anthony W"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "What Lies Below",
+        "url": "https://oldschool.runescape.wiki/w/What_Lies_Below",
+        "quest_requirements": [
+            "Rune Mysteries"
+        ],
+        "skill_requirements": [
+            [
+                "Runecraft",
+                35
+            ]
+        ],
+        "rewards": [
+            [
+                "Runecraft",
+                8000
+            ],
+            [
+                "Defence",
+                2000
+            ]
+        ],
+        "released": "27 March 2007",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Danny J"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Olaf's Quest",
+        "url": "https://oldschool.runescape.wiki/w/Olaf%27s_Quest",
+        "quest_requirements": [
+            "The Fremennik Trials"
+        ],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                40
+            ],
+            [
+                "Woodcutting",
+                50
+            ]
+        ],
+        "rewards": [
+            [
+                "Defence",
+                12000
+            ]
+        ],
+        "released": "10 April 2007",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Anthony W"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Another Slice of H.A.M.",
+        "url": "https://oldschool.runescape.wiki/w/Another_Slice_of_H.A.M.",
+        "quest_requirements": [
+            "Goblin Diplomacy",
+            "Rune Mysteries",
+            "The Dig Site",
+            "The Lost Tribe",
+            "The Giant Dwarf",
+            "Death to the Dorgeshuun"
+        ],
+        "skill_requirements": [
+            [
+                "Attack",
+                15
+            ],
+            [
+                "Prayer",
+                25
+            ]
+        ],
+        "rewards": [
+            [
+                "Mining",
+                3000
+            ],
+            [
+                "Prayer",
+                3000
+            ]
+        ],
+        "released": "24 April 2007",
+        "members": true,
+        "series": "Dorgeshuun",
+        "difficulty": "Intermediate",
+        "developer": [
+            "John A"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Dream Mentor",
+        "url": "https://oldschool.runescape.wiki/w/Dream_Mentor",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "Druidic Ritual",
+            "Lost City",
+            "Jungle Potion",
+            "Death Plateau",
+            "Eadgar's Ruse",
+            "Troll Stronghold",
+            "The Fremennik Trials",
+            "Lunar Diplomacy",
+            "Shilo Village"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Hitpoints",
+                15000
+            ],
+            [
+                "Magic",
+                10000
+            ]
+        ],
+        "released": "15 May 2007",
+        "members": true,
+        "series": "None",
+        "difficulty": "Master",
+        "developer": [
+            "Tim C"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Grim Tales",
+        "url": "https://oldschool.runescape.wiki/w/Grim_Tales",
+        "quest_requirements": [
+            "Witch's House"
+        ],
+        "skill_requirements": [
+            [
+                "Farming",
+                45
+            ],
+            [
+                "Herblore",
+                52
+            ],
+            [
+                "Thieving",
+                58
+            ],
+            [
+                "Agility",
+                59
+            ],
+            [
+                "Woodcutting",
+                71
+            ]
+        ],
+        "rewards": [
+            [
+                "Farming",
+                4000
+            ],
+            [
+                "Herblore",
+                5000
+            ],
+            [
+                "Hitpoints",
+                5000
+            ],
+            [
+                "Woodcutting",
+                14000
+            ],
+            [
+                "Agility",
+                6000
+            ],
+            [
+                "Thieving",
+                6000
+            ]
+        ],
+        "released": "4 June 2007",
+        "members": true,
+        "series": "None",
+        "difficulty": "Master",
+        "developer": [
+            "Danny J"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "King's Ransom",
+        "url": "https://oldschool.runescape.wiki/w/King%27s_Ransom",
+        "quest_requirements": [
+            "Black Knights' Fortress",
+            "Rune Mysteries",
+            "Druidic Ritual",
+            "Merlin's Crystal",
+            "Holy Grail",
+            "Jungle Potion",
+            "Murder Mystery",
+            "One Small Favour",
+            "Shilo Village"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                45
+            ],
+            [
+                "Defence",
+                65
+            ]
+        ],
+        "rewards": [],
+        "released": "24 July 2007",
+        "members": true,
+        "series": "Camelot",
+        "difficulty": "Experienced",
+        "developer": [
+            "Nancy J"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Shilo Village",
+        "url": "https://oldschool.runescape.wiki/w/Shilo_Village",
+        "quest_requirements": [
+            "Jungle Potion"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Agility",
+                32
+            ]
+        ],
+        "rewards": [
+            [
+                "Crafting",
+                3875
+            ]
+        ],
+        "released": "27 January 2003",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Tytn H"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Biohazard",
+        "url": "https://oldschool.runescape.wiki/w/Biohazard",
+        "quest_requirements": [
+            "Plague City"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Thieving",
+                1250
+            ]
+        ],
+        "released": "23 October 2002",
+        "members": true,
+        "series": "Elf",
+        "difficulty": "Novice",
+        "developer": [
+            "Tom W"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Tower of Life",
+        "url": "https://oldschool.runescape.wiki/w/Tower_of_Life",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Construction",
+                10
+            ]
+        ],
+        "rewards": [
+            [
+                "Construction",
+                1000
+            ],
+            [
+                "Crafting",
+                500
+            ],
+            [
+                "Thieving",
+                500
+            ]
+        ],
+        "released": "19 February 2007",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Tim C"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Rag and Bone Man II",
+        "url": "https://oldschool.runescape.wiki/w/Rag_and_Bone_Man_II",
+        "quest_requirements": [
+            "Waterfall Quest",
+            "The Fremennik Trials",
+            "Horror from the Deep",
+            "Creature of Fenkenstrain",
+            "Rag and Bone Man I",
+            "Zogre Flesh Eaters",
+            "Skippy and the Mogres"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                40
+            ],
+            [
+                "Defence",
+                20
+            ]
+        ],
+        "rewards": [
+            [
+                "Prayer",
+                5000
+            ]
+        ],
+        "released": "10 April 2006",
+        "members": true,
+        "series": "Rag and Bone Man",
+        "difficulty": "Experienced",
+        "developer": [
+            "Anthony W"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Land of the Goblins",
+        "url": "https://oldschool.runescape.wiki/w/Land_of_the_Goblins",
+        "quest_requirements": [
+            "Goblin Diplomacy",
+            "Rune Mysteries",
+            "Fishing Contest",
+            "The Dig Site",
+            "The Lost Tribe",
+            "The Giant Dwarf",
+            "Death to the Dorgeshuun",
+            "Another Slice of H.A.M."
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                38
+            ],
+            [
+                "Fishing",
+                40
+            ],
+            [
+                "Thieving",
+                45
+            ],
+            [
+                "Herblore",
+                48
+            ]
+        ],
+        "rewards": [
+            [
+                "Agility",
+                8000
+            ],
+            [
+                "Fishing",
+                8000
+            ],
+            [
+                "Thieving",
+                8000
+            ],
+            [
+                "Herblore",
+                8000
+            ]
+        ],
+        "released": "9 February 2022",
+        "members": true,
+        "series": "Dorgeshuun",
+        "difficulty": "Experienced",
+        "developer": [
+            "John A",
+            "Mod Ed"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Zogre Flesh Eaters",
+        "url": "https://oldschool.runescape.wiki/w/Zogre_Flesh_Eaters",
+        "quest_requirements": [
+            "Jungle Potion",
+            "Big Chompy Bird Hunting"
+        ],
+        "skill_requirements": [
+            [
+                "Smithing",
+                4
+            ],
+            [
+                "Herblore",
+                8
+            ],
+            [
+                "Ranged",
+                30
+            ]
+        ],
+        "rewards": [
+            [
+                "Fletching",
+                2000
+            ],
+            [
+                "Ranged",
+                2000
+            ],
+            [
+                "Herblore",
+                2000
+            ]
+        ],
+        "released": "17 May 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Tytn H"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Monkey Madness II",
+        "url": "https://oldschool.runescape.wiki/w/Monkey_Madness_II",
+        "quest_requirements": [
+            "Tree Gnome Village",
+            "The Grand Tree",
+            "Watchtower",
+            "Death Plateau",
+            "Troll Stronghold",
+            "Monkey Madness I",
+            "The Eyes of Glouphrie",
+            "Enlightened Journey",
+            "Recipe for Disaster/Freeing King Awowogei"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                69
+            ],
+            [
+                "Crafting",
+                70
+            ],
+            [
+                "Hunter",
+                60
+            ],
+            [
+                "Agility",
+                55
+            ],
+            [
+                "Thieving",
+                55
+            ],
+            [
+                "Firemaking",
+                60
+            ]
+        ],
+        "rewards": [
+            [
+                "Slayer",
+                25000
+            ],
+            [
+                "Agility",
+                20000
+            ],
+            [
+                "Thieving",
+                15000
+            ],
+            [
+                "Hunter",
+                15000
+            ]
+        ],
+        "released": "6 May 2016",
+        "members": true,
+        "series": "Gnome",
+        "difficulty": "Grandmaster",
+        "developer": [
+            "Mod Jed",
+            "Ian Gower",
+            "Mod Ash",
+            "Mod Maz",
+            "Mod Bond",
+            "Mod Ian"
+        ],
+        "length": "Very Long",
+        "combat": true
+    },
+    {
+        "name": "Client of Kourend",
+        "url": "https://oldschool.runescape.wiki/w/Client_of_Kourend",
+        "quest_requirements": [
+            "X Marks the Spot"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "20 April 2017",
+        "members": true,
+        "series": "Great Kourend",
+        "difficulty": "Novice",
+        "developer": [
+            "Mod Wolf"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "The Queen of Thieves",
+        "url": "https://oldschool.runescape.wiki/w/The_Queen_of_Thieves",
+        "quest_requirements": [
+            "X Marks the Spot",
+            "Client of Kourend"
+        ],
+        "skill_requirements": [
+            [
+                "Thieving",
+                20
+            ]
+        ],
+        "rewards": [
+            [
+                "Thieving",
+                2000
+            ]
+        ],
+        "released": "9 November 2017",
+        "members": true,
+        "series": "Great Kourend",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Mod Ed"
+        ],
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Bone Voyage",
+        "url": "https://oldschool.runescape.wiki/w/Bone_Voyage",
+        "quest_requirements": [
+            "The Dig Site"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "7 September 2017",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Mod Jed"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Dragon Slayer II",
+        "url": "https://oldschool.runescape.wiki/w/Dragon_Slayer_II",
+        "quest_requirements": [
+            "Shield of Arrav",
+            "The Restless Ghost",
+            "Ernest the Chicken",
+            "Dragon Slayer I",
+            "Rune Mysteries",
+            "X Marks the Spot",
+            "Druidic Ritual",
+            "Lost City",
+            "Merlin's Crystal",
+            "Heroes' Quest",
+            "Family Crest",
+            "Plague City",
+            "Waterfall Quest",
+            "Jungle Potion",
+            "Underground Pass",
+            "The Dig Site",
+            "Gertrude's Cat",
+            "Legends' Quest",
+            "Death Plateau",
+            "Eadgar's Ruse",
+            "Priest in Peril",
+            "Troll Stronghold",
+            "The Fremennik Trials",
+            "Ghosts Ahoy",
+            "Icthlarin's Little Helper",
+            "A Tail of Two Cats",
+            "Lunar Diplomacy",
+            "Animal Magnetism",
+            "Dream Mentor",
+            "Shilo Village",
+            "Biohazard",
+            "Client of Kourend",
+            "Bone Voyage"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                75
+            ],
+            [
+                "Smithing",
+                70
+            ],
+            [
+                "Mining",
+                68
+            ],
+            [
+                "Crafting",
+                62
+            ],
+            [
+                "Agility",
+                60
+            ],
+            [
+                "Thieving",
+                60
+            ],
+            [
+                "Construction",
+                50
+            ],
+            [
+                "Hitpoints",
+                50
+            ]
+        ],
+        "rewards": [
+            [
+                "Smithing",
+                25000
+            ],
+            [
+                "Mining",
+                18000
+            ],
+            [
+                "Agility",
+                15000
+            ],
+            [
+                "Thieving",
+                15000
+            ]
+        ],
+        "released": "4 January 2018",
+        "members": true,
+        "series": "Dragonkin",
+        "difficulty": "Grandmaster",
+        "developer": [
+            "Mod Ed"
+        ],
+        "length": "Very Long",
+        "combat": true
+    },
+    {
+        "name": "The Depths of Despair",
+        "url": "https://oldschool.runescape.wiki/w/The_Depths_of_Despair",
+        "quest_requirements": [
+            "X Marks the Spot",
+            "Client of Kourend"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                18
+            ]
+        ],
+        "rewards": [
+            [
+                "Agility",
+                1500
+            ]
+        ],
+        "released": "9 November 2017",
+        "members": true,
+        "series": "Great Kourend",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Mod Ed"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Recipe for Disaster/Another Cook's Quest",
+        "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Another_Cook%27s_Quest",
+        "quest_requirements": [
+            "Cook's Assistant"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                10
+            ]
+        ],
+        "rewards": [],
+        "released": "15 March 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Special",
+        "developer": [
+            "James B"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Recipe for Disaster/Freeing the Goblin generals",
+        "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_the_Goblin_generals",
+        "quest_requirements": [
+            "Goblin Diplomacy",
+            "Cook's Assistant",
+            "Recipe for Disaster/Another Cook's Quest"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Cooking",
+                1000
+            ],
+            [
+                "Farming",
+                1000
+            ],
+            [
+                "Crafting",
+                1000
+            ]
+        ],
+        "released": "15 March 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Special",
+        "developer": [
+            "James B"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Recipe for Disaster/Freeing the Mountain Dwarf",
+        "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_the_Mountain_Dwarf",
+        "quest_requirements": [
+            "Cook's Assistant",
+            "Fishing Contest",
+            "Recipe for Disaster/Another Cook's Quest"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Slayer",
+                1000
+            ],
+            [
+                "Cooking",
+                1000
+            ]
+        ],
+        "released": "15 March 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Special",
+        "developer": [
+            "James B"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Recipe for Disaster/Freeing Evil Dave",
+        "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_Evil_Dave",
+        "quest_requirements": [
+            "Demon Slayer",
+            "Cook's Assistant",
+            "Gertrude's Cat",
+            "The Golem",
+            "Shadow of the Storm",
+            "Recipe for Disaster/Another Cook's Quest"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                25
+            ]
+        ],
+        "rewards": [
+            [
+                "Cooking",
+                7000
+            ]
+        ],
+        "released": "15 March 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Special",
+        "developer": [
+            "James B"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Recipe for Disaster/Freeing Pirate Pete",
+        "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_Pirate_Pete",
+        "quest_requirements": [
+            "Cook's Assistant",
+            "Recipe for Disaster/Another Cook's Quest"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                31
+            ]
+        ],
+        "rewards": [
+            [
+                "Cooking",
+                1000
+            ],
+            [
+                "Crafting",
+                1000
+            ],
+            [
+                "Fishing",
+                1000
+            ],
+            [
+                "Smithing",
+                1000
+            ]
+        ],
+        "released": "15 March 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Special",
+        "developer": [
+            "James B"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Recipe for Disaster/Freeing the Lumbridge Guide",
+        "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_the_Lumbridge_Guide",
+        "quest_requirements": [
+            "Demon Slayer",
+            "The Restless Ghost",
+            "Cook's Assistant",
+            "Witch's House",
+            "Plague City",
+            "Murder Mystery",
+            "Big Chompy Bird Hunting",
+            "Nature Spirit",
+            "Priest in Peril",
+            "Biohazard",
+            "Recipe for Disaster/Another Cook's Quest"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                40
+            ]
+        ],
+        "rewards": [
+            [
+                "Cooking",
+                2500
+            ],
+            [
+                "Magic",
+                2500
+            ]
+        ],
+        "released": "15 March 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Special",
+        "developer": [
+            "James B"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Recipe for Disaster/Freeing Sir Amik Varze",
+        "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_Sir_Amik_Varze",
+        "quest_requirements": [
+            "Shield of Arrav",
+            "Dragon Slayer I",
+            "Cook's Assistant",
+            "Lost City",
+            "Merlin's Crystal",
+            "Heroes' Quest",
+            "Family Crest",
+            "Plague City",
+            "Waterfall Quest",
+            "Jungle Potion",
+            "Underground Pass",
+            "Legends' Quest",
+            "Shilo Village",
+            "Biohazard",
+            "Recipe for Disaster/Another Cook's Quest"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Cooking",
+                4000
+            ],
+            [
+                "Hitpoints",
+                4000
+            ]
+        ],
+        "released": "15 March 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Special",
+        "developer": [
+            "James B"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Recipe for Disaster/Freeing King Awowogei",
+        "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_King_Awowogei",
+        "quest_requirements": [
+            "Cook's Assistant",
+            "Tree Gnome Village",
+            "The Grand Tree",
+            "Monkey Madness I",
+            "Recipe for Disaster/Another Cook's Quest"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                70
+            ],
+            [
+                "Agility",
+                48
+            ]
+        ],
+        "rewards": [
+            [
+                "Cooking",
+                10000
+            ],
+            [
+                "Agility",
+                10000
+            ]
+        ],
+        "released": "15 March 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Special",
+        "developer": [
+            "James B"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Recipe for Disaster/Freeing Skrach Uglogwee",
+        "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_Skrach_Uglogwee",
+        "quest_requirements": [
+            "Cook's Assistant",
+            "Big Chompy Bird Hunting",
+            "Recipe for Disaster/Another Cook's Quest"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                41
+            ],
+            [
+                "Firemaking",
+                20
+            ]
+        ],
+        "rewards": [
+            [
+                "Woodcutting",
+                1500
+            ],
+            [
+                "Cooking",
+                1500
+            ],
+            [
+                "Crafting",
+                1500
+            ],
+            [
+                "Ranged",
+                1500
+            ]
+        ],
+        "released": "15 March 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Special",
+        "developer": [
+            "James B"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "A Taste of Hope",
+        "url": "https://oldschool.runescape.wiki/w/A_Taste_of_Hope",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Nature Spirit",
+            "Priest in Peril",
+            "In Search of the Myreque",
+            "In Aid of the Myreque",
+            "Darkness of Hallowvale"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                48
+            ],
+            [
+                "Agility",
+                45
+            ],
+            [
+                "Attack",
+                40
+            ],
+            [
+                "Herblore",
+                40
+            ],
+            [
+                "Slayer",
+                38
+            ]
+        ],
+        "rewards": [],
+        "released": "24 May 2018",
+        "members": true,
+        "series": "Myreque",
+        "difficulty": "Experienced",
+        "developer": [
+            "Mod Ed"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Tale of the Righteous",
+        "url": "https://oldschool.runescape.wiki/w/Tale_of_the_Righteous",
+        "quest_requirements": [
+            "X Marks the Spot",
+            "Client of Kourend"
+        ],
+        "skill_requirements": [
+            [
+                "Strength",
+                16
+            ],
+            [
+                "Mining",
+                10
+            ]
+        ],
+        "rewards": [],
+        "released": "19 April 2018",
+        "members": true,
+        "series": "Great Kourend",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Mod Ed",
+            "Mod Kieren"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Making Friends with My Arm",
+        "url": "https://oldschool.runescape.wiki/w/Making_Friends_with_My_Arm",
+        "quest_requirements": [
+            "Romeo & Juliet",
+            "The Restless Ghost",
+            "Rune Mysteries",
+            "Druidic Ritual",
+            "Jungle Potion",
+            "Death Plateau",
+            "Eadgar's Ruse",
+            "Priest in Peril",
+            "Troll Stronghold",
+            "Creature of Fenkenstrain",
+            "One Small Favour",
+            "The Feud",
+            "Garden of Tranquillity",
+            "Swan Song",
+            "My Arm's Big Adventure",
+            "Cold War",
+            "Shilo Village"
+        ],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                66
+            ],
+            [
+                "Mining",
+                72
+            ],
+            [
+                "Construction",
+                35
+            ],
+            [
+                "Agility",
+                68
+            ]
+        ],
+        "rewards": [
+            [
+                "Construction",
+                2000
+            ],
+            [
+                "Firemaking",
+                5000
+            ],
+            [
+                "Mining",
+                10000
+            ],
+            [
+                "Agility",
+                10000
+            ]
+        ],
+        "released": "6 September 2018",
+        "members": true,
+        "series": "Troll",
+        "difficulty": "Master",
+        "developer": [
+            "Mod Ash",
+            "Mod Munro"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Recipe for Disaster/Defeating the Culinaromancer",
+        "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Defeating_the_Culinaromancer",
+        "quest_requirements": [
+            "Temple of Ikov",
+            "Waterfall Quest",
+            "The Tourist Trap",
+            "The Dig Site",
+            "Death Plateau",
+            "Priest in Peril",
+            "Troll Stronghold",
+            "Horror from the Deep",
+            "Desert Treasure",
+            "Recipe for Disaster/Freeing the Goblin generals",
+            "Recipe for Disaster/Freeing the Mountain Dwarf",
+            "Recipe for Disaster/Freeing Evil Dave",
+            "Recipe for Disaster/Freeing Pirate Pete",
+            "Recipe for Disaster/Freeing the Lumbridge Guide",
+            "Recipe for Disaster/Freeing Sir Amik Varze",
+            "Recipe for Disaster/Freeing King Awowogei",
+            "Recipe for Disaster/Freeing Skrach Uglogwee",
+            "Alfred Grimhand's Barcrawl"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "15 March 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Special",
+        "developer": [
+            "James B"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Song of the Elves",
+        "url": "https://oldschool.runescape.wiki/w/Song_of_the_Elves",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Sheep Herder",
+            "Plague City",
+            "Waterfall Quest",
+            "Underground Pass",
+            "Big Chompy Bird Hunting",
+            "Priest in Peril",
+            "Regicide",
+            "Roving Elves",
+            "Mourning's End Part I",
+            "Mourning's End Part II",
+            "Making History",
+            "Biohazard"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                70
+            ],
+            [
+                "Construction",
+                70
+            ],
+            [
+                "Farming",
+                70
+            ],
+            [
+                "Herblore",
+                70
+            ],
+            [
+                "Hunter",
+                70
+            ],
+            [
+                "Mining",
+                70
+            ],
+            [
+                "Smithing",
+                70
+            ],
+            [
+                "Woodcutting",
+                70
+            ]
+        ],
+        "rewards": [
+            [
+                "Agility",
+                20000
+            ],
+            [
+                "Construction",
+                20000
+            ],
+            [
+                "Farming",
+                20000
+            ],
+            [
+                "Herblore",
+                20000
+            ],
+            [
+                "Hunter",
+                20000
+            ],
+            [
+                "Mining",
+                20000
+            ],
+            [
+                "Smithing",
+                20000
+            ],
+            [
+                "Woodcutting",
+                20000
+            ]
+        ],
+        "released": "25 July 2019",
+        "members": true,
+        "series": "Elf",
+        "difficulty": "Grandmaster",
+        "developer": [
+            "Mod Ed",
+            "Mod Curse",
+            "Mod Lenny",
+            "Mod Gee",
+            "Mod Ghost",
+            "Mod West",
+            "Mod Ian",
+            "Mod Slippers",
+            "Mod Surma"
+        ],
+        "length": "Very Long",
+        "combat": true
+    },
+    {
+        "name": "The Ascent of Arceuus",
+        "url": "https://oldschool.runescape.wiki/w/The_Ascent_of_Arceuus",
+        "quest_requirements": [
+            "X Marks the Spot",
+            "Client of Kourend"
+        ],
+        "skill_requirements": [
+            [
+                "Hunter",
+                12
+            ]
+        ],
+        "rewards": [
+            [
+                "Hunter",
+                1500
+            ],
+            [
+                "Runecraft",
+                500
+            ]
+        ],
+        "released": "10 January 2019",
+        "members": true,
+        "series": "Great Kourend",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Mod Ed"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "The Forsaken Tower",
+        "url": "https://oldschool.runescape.wiki/w/The_Forsaken_Tower",
+        "quest_requirements": [
+            "X Marks the Spot",
+            "Client of Kourend"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Mining",
+                500
+            ],
+            [
+                "Smithing",
+                500
+            ]
+        ],
+        "released": "10 January 2019",
+        "members": true,
+        "series": "Great Kourend",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Mod Ed"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "The Fremennik Exiles",
+        "url": "https://oldschool.runescape.wiki/w/The_Fremennik_Exiles",
+        "quest_requirements": [
+            "Shield of Arrav",
+            "Dragon Slayer I",
+            "Rune Mysteries",
+            "Druidic Ritual",
+            "Lost City",
+            "Merlin's Crystal",
+            "Heroes' Quest",
+            "Jungle Potion",
+            "The Fremennik Trials",
+            "Mountain Daughter",
+            "Lunar Diplomacy",
+            "The Fremennik Isles",
+            "Shilo Village"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                65
+            ],
+            [
+                "Slayer",
+                60
+            ],
+            [
+                "Smithing",
+                60
+            ],
+            [
+                "Fishing",
+                60
+            ],
+            [
+                "Runecraft",
+                55
+            ]
+        ],
+        "rewards": [
+            [
+                "Slayer",
+                15000
+            ],
+            [
+                "Crafting",
+                15000
+            ],
+            [
+                "Runecraft",
+                5000
+            ]
+        ],
+        "released": "26 September 2019",
+        "members": true,
+        "series": "Fremennik",
+        "difficulty": "Master",
+        "developer": [
+            "Mod Ed",
+            "Mod Wolf"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Sins of the Father",
+        "url": "https://oldschool.runescape.wiki/w/Sins_of_the_Father",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Vampyre Slayer",
+            "Nature Spirit",
+            "Priest in Peril",
+            "In Search of the Myreque",
+            "In Aid of the Myreque",
+            "Darkness of Hallowvale",
+            "A Taste of Hope"
+        ],
+        "skill_requirements": [
+            [
+                "Woodcutting",
+                62
+            ],
+            [
+                "Fletching",
+                60
+            ],
+            [
+                "Crafting",
+                56
+            ],
+            [
+                "Agility",
+                52
+            ],
+            [
+                "Attack",
+                50
+            ],
+            [
+                "Slayer",
+                50
+            ],
+            [
+                "Magic",
+                49
+            ]
+        ],
+        "rewards": [],
+        "released": "4 June 2020",
+        "members": true,
+        "series": "Myreque",
+        "difficulty": "Master",
+        "developer": [
+            "Mod Ed"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "A Kingdom Divided",
+        "url": "https://oldschool.runescape.wiki/w/A_Kingdom_Divided",
+        "quest_requirements": [
+            "X Marks the Spot",
+            "Client of Kourend",
+            "The Queen of Thieves",
+            "The Depths of Despair",
+            "Tale of the Righteous",
+            "The Ascent of Arceuus",
+            "The Forsaken Tower",
+            "Architectural Alliance"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                54
+            ],
+            [
+                "Thieving",
+                52
+            ],
+            [
+                "Woodcutting",
+                52
+            ],
+            [
+                "Herblore",
+                50
+            ],
+            [
+                "Mining",
+                42
+            ],
+            [
+                "Crafting",
+                38
+            ],
+            [
+                "Magic",
+                35
+            ]
+        ],
+        "rewards": [],
+        "released": "16 June 2021",
+        "members": true,
+        "series": "Great Kourend",
+        "difficulty": "Experienced",
+        "developer": [
+            "Mod Ed"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "A Porcine of Interest",
+        "url": "https://oldschool.runescape.wiki/w/A_Porcine_of_Interest",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Slayer",
+                1000
+            ]
+        ],
+        "released": "10 September 2020",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "developer": [
+            "Mod Mack",
+            "Mod Ry"
+        ],
+        "length": "Very Short",
+        "combat": true
+    },
+    {
+        "name": "Getting Ahead",
+        "url": "https://oldschool.runescape.wiki/w/Getting_Ahead",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                30
+            ],
+            [
+                "Construction",
+                26
+            ]
+        ],
+        "rewards": [
+            [
+                "Crafting",
+                4000
+            ],
+            [
+                "Construction",
+                3200
+            ]
+        ],
+        "released": "25 November 2020",
+        "members": true,
+        "series": "Twisted Tales",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Mod Ed"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "A Night at the Theatre",
+        "url": "https://oldschool.runescape.wiki/w/A_Night_at_the_Theatre",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Nature Spirit",
+            "Priest in Peril",
+            "In Search of the Myreque",
+            "In Aid of the Myreque",
+            "Darkness of Hallowvale",
+            "A Taste of Hope"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "3 June 2021",
+        "members": true,
+        "series": "None",
+        "difficulty": "Master",
+        "developer": [
+            "Mod Ed"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Beneath Cursed Sands",
+        "url": "https://oldschool.runescape.wiki/w/Beneath_Cursed_Sands",
+        "quest_requirements": [
+            "Prince Ali Rescue",
+            "Gertrude's Cat",
+            "Icthlarin's Little Helper",
+            "Contact!"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                62
+            ],
+            [
+                "Crafting",
+                55
+            ],
+            [
+                "Firemaking",
+                55
+            ]
+        ],
+        "rewards": [
+            [
+                "Agility",
+                20000
+            ]
+        ],
+        "released": "27 April 2022",
+        "members": true,
+        "series": "Kharidian",
+        "difficulty": "Master",
+        "developer": [
+            "Mod Ed"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Temple of the Eye",
+        "url": "https://oldschool.runescape.wiki/w/Temple_of_the_Eye",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "Enter the Abyss"
+        ],
+        "skill_requirements": [
+            [
+                "Runecraft",
+                10
+            ]
+        ],
+        "rewards": [
+            [
+                "Runecraft",
+                5000
+            ]
+        ],
+        "released": "23 March 2022",
+        "members": true,
+        "series": "Order of Wizards",
+        "difficulty": "Intermediate",
+        "developer": [
+            "Mod Ed",
+            "Mod Husky"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Alfred Grimhand's Barcrawl",
+        "url": "https://oldschool.runescape.wiki/w/Alfred_Grimhand%27s_Barcrawl",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "25 March 2002",
+        "members": true,
+        "series": "None",
+        "developer": [
+            "Andrew Gower"
+        ],
+        "difficulty": "Novice",
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Architectural Alliance",
+        "url": "https://oldschool.runescape.wiki/w/Architectural_Alliance",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Mining",
+                42
+            ]
+        ],
+        "rewards": [],
+        "released": "3 March 2016",
+        "members": true,
+        "series": "Great Kourend",
+        "developer": [
+            "Unknown"
+        ],
+        "difficulty": "Experienced",
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Bear Your Soul",
+        "url": "https://oldschool.runescape.wiki/w/Bear_Your_Soul",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "19 May 2016",
+        "members": true,
+        "series": "Great Kourend",
+        "developer": [
+            "Ashleigh B"
+        ],
+        "difficulty": "Intermediate",
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Curse of the Empty Lord",
+        "url": "https://oldschool.runescape.wiki/w/Curse_of_the_Empty_Lord",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Desert Treasure"
+        ],
+        "skill_requirements": [
+            [
+                "Thieving",
+                53
+            ],
+            [
+                "Prayer",
+                31
+            ]
+        ],
+        "rewards": [],
+        "released": "26 July 2005",
+        "members": true,
+        "series": "Mahjarrat",
+        "developer": [
+            "James B"
+        ],
+        "difficulty": "Experienced",
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Daddy's Home",
+        "url": "https://oldschool.runescape.wiki/w/Daddy%27s_Home",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "26 August 2020",
+        "members": true,
+        "series": "None",
+        "developer": [
+            "Ashleigh B"
+        ],
+        "difficulty": "Novice",
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "The Enchanted Key",
+        "url": "https://oldschool.runescape.wiki/w/The_Enchanted_Key",
+        "quest_requirements": [
+            "Making History"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "22 November 2005",
+        "members": true,
+        "series": "None",
+        "developer": [
+            "Tim C"
+        ],
+        "difficulty": "Intermediate",
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Enter the Abyss",
+        "url": "https://oldschool.runescape.wiki/w/Enter_the_Abyss",
+        "quest_requirements": [
+            "Rune Mysteries"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Runecraft",
+                1000
+            ]
+        ],
+        "released": "13 June 2005",
+        "members": true,
+        "series": "Order of Wizards",
+        "developer": [
+            "Andrew Gower"
+        ],
+        "difficulty": "Novice",
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Family Pest",
+        "url": "https://oldschool.runescape.wiki/w/Family_Pest",
+        "quest_requirements": [
+            "Family Crest"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "1 September 2016",
+        "members": true,
+        "series": "None",
+        "developer": [
+            "Unknown"
+        ],
+        "difficulty": "Intermediate",
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "The Frozen Door",
+        "url": "https://oldschool.runescape.wiki/w/The_Frozen_Door",
+        "quest_requirements": [
+            "Desert Treasure"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                70
+            ],
+            [
+                "Hitpoints",
+                70
+            ],
+            [
+                "Ranged",
+                70
+            ],
+            [
+                "Strength",
+                70
+            ]
+        ],
+        "rewards": [],
+        "released": "16 December 2021",
+        "members": true,
+        "series": "None",
+        "developer": [
+            "Unknown"
+        ],
+        "difficulty": "Master",
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "The General's Shadow",
+        "url": "https://oldschool.runescape.wiki/w/The_General%27s_Shadow",
+        "quest_requirements": [
+            "Fight Arena",
+            "Desert Treasure",
+            "Curse of the Empty Lord"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Slayer",
+                2000
+            ]
+        ],
+        "released": "12 February 2007",
+        "members": true,
+        "series": "Mahjarrat",
+        "developer": [
+            "Nancy J"
+        ],
+        "difficulty": "Experienced",
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Hopespear's Will",
+        "url": "https://oldschool.runescape.wiki/w/Hopespear%27s_Will",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Desert Treasure",
+            "Fairytale II - Cure a Queen",
+            "Land of the Goblins"
+        ],
+        "skill_requirements": [
+            [
+                "Prayer",
+                50
+            ]
+        ],
+        "rewards": [],
+        "released": "9 February 2022",
+        "members": true,
+        "series": "Dorgeshuun",
+        "developer": [
+            "John A",
+            "Mod Ed"
+        ],
+        "difficulty": "Master",
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "In Search of Knowledge",
+        "url": "https://oldschool.runescape.wiki/w/In_Search_of_Knowledge",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "4 July 2019",
+        "members": true,
+        "series": "None",
+        "developer": [
+            "Mod Husky"
+        ],
+        "difficulty": "Experienced",
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Lair of Tarn Razorlor",
+        "url": "https://oldschool.runescape.wiki/w/Lair_of_Tarn_Razorlor",
+        "quest_requirements": [
+            "Haunted Mine"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                40
+            ]
+        ],
+        "rewards": [
+            [
+                "Slayer",
+                5000
+            ]
+        ],
+        "released": "22 January 2007",
+        "members": true,
+        "series": "None",
+        "developer": [
+            "Unknown"
+        ],
+        "difficulty": "Experienced",
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Mage Arena I",
+        "url": "https://oldschool.runescape.wiki/w/Mage_Arena_I",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Magic",
+                60
+            ]
+        ],
+        "rewards": [],
+        "released": "22 September 2003",
+        "members": true,
+        "series": "None",
+        "developer": [
+            "Unknown"
+        ],
+        "difficulty": "Experienced",
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Mage Arena II",
+        "url": "https://oldschool.runescape.wiki/w/Mage_Arena_II",
+        "quest_requirements": [
+            "Mage Arena I"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                75
+            ]
+        ],
+        "rewards": [],
+        "released": "23 November 2017",
+        "members": true,
+        "series": "None",
+        "developer": [
+            "Mod Jed"
+        ],
+        "difficulty": "Master",
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Skippy and the Mogres",
+        "url": "https://oldschool.runescape.wiki/w/Skippy_and_the_Mogres",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Cooking",
+                20
+            ]
+        ],
+        "rewards": [],
+        "released": "24 October 2005",
+        "members": true,
+        "series": "None",
+        "developer": [
+            "Anthony W"
+        ],
+        "difficulty": "Novice",
+        "length": "Very Short",
+        "combat": false
+    }
+]
