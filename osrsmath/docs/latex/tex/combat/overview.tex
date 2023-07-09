@@ -83,12 +83,97 @@ It is interesting to note that although the descriptions of in-game mechanics li
 		A fighter has some combat skill levels and will (typically) equip some armour and a weapon. They will select an attack style, which selects the skill they will receive experience in, and which equipment bonuses plays a roll in the accuracy calculation. The problem then reduces to considering an accuracy and maximum hit. Once a fight begins, an attack occurs every couple of ticks. If the attack is successful, a uniform integer between 0 and their max hit is delivered to the opponent, reducing their current hit points. Once a fighter's health reaches 0, the fight is over.
 
 
-\section{Agency}
-	\subsection{Special Attacks}
-		Certain weapons have the ability to use a special attack, typically dealing additional damage, but may also reduce the opponent's levels temporarily.
+\section{Agency \& Decisions}
+	The autonomous mechanics allow us to predict the outcome of a fight given that neither the player nor the opponent can alter the game state. To describe more advanced combat, like fighting bosses, players, or high-level monsters, we must consider the ability of a fighter to perform actions. In the simplest incarnation, a fighter can be represented as a vector containing five values:
+	\begin{equation}
+		\vec{F}=(H, m, a, w, t),
+	\end{equation}
+	where $H$ is the fighter's current health, $m$ is the max hit, $a$ is the accuracy, $w$ is the weapon attack speed, and $t$ is the tick counter. The tick counter in this context is the number of ticks until the player can attack again. This ignores mechanics like \texttt{poison} and attacks with non-standard damage distributions but acts as a good base. More complex interactions would require increasing the number of considerations. For a fight that involves two combatants $\vec{F}_1$ and $\vec{F}_2$, the game state can be represented as a concatenation of the two fighters: 
+	\begin{equation}
+		\vec{G}\equiv \vec{F}_1\oplus \vec{F}_2.
+	\end{equation}
 
-	\subsection{Temporary Boosts and Healing}
-		Potions provide temporary boosts to skill levels.
+	\subsection{Actions}
+		In general, we consider a model $\hat M$ (this may be a computation algorithm, or a human brain) that aims to maximize certain objectives, like the probability of winning a fight. On each game tick, this model would consider the game state and produce a set of actions to perform,
+		\begin{equation}
+			\hat M \vec{G} = \vec{D}.
+		\end{equation}
+		To provide a concrete representation of this decision vector, we consider that each element corresponds to an action. The value of an element could be taken to be the \textit{confidence} in performing that action. A natural representation would be letting each confidence be a real number $\in [-1, 1]$, where values above 0 would result in that action being performed. These confidences are converted to actions through a sort of look up operator, $\hat{\mathcal{A}}$,
+		\begin{equation}
+			\hat{\mathcal{A}} \vec{D} = \vec{\theta}.
+		\end{equation}
+		which act on the game state to generate the next state.
+		\begin{equation}
+			\hat{\mathcal{\theta}} \vec{G}_n = \vec{G}_{n+1},
+		\end{equation}
+		where now a subscript $n$ is used to denote the turn number.
 
-	\subsection{Item Switching and Movement}
-		Different items, moving around. Attack delays etc.
+		There are several different actions that are possible, and several may occur on the same game tick.
+		\begin{enumerate}
+			\item Attack: $\hat A_1$ | if $F_1^t = 0$: $F_1^t \to F_1^w, F_2^H - \mathcal{D}(F_1^m, F_1^a)$,
+			\item Tick-Down: $\hat T_1$ | if $F_1^t \neq 0 : F_1^t \to F_1^t - 1$,
+		\end{enumerate}
+		where $\mathcal{D}$ is the damage distribution function which draws a random number corresponding to the damage inflicted.
+
+		As an example, if both fighters decide to attack, then the game state would change as follows:
+		\begin{equation}
+			\hat{T}_1\hat{T}_2\hat{A}_1\hat{A}_2 \vec{G}_n = \vec{G}_{n+1}.
+		\end{equation}
+		We will make the assumption that all actions are processed on the previous game state, i.e. the ordering of actions doesn't matter since they all act directly on $\vec{G}_n$:
+		\begin{equation}
+			\hat{A}_1\hat{A}_2 \vec{G}_n = \hat{A}_2\hat{A}_1 \vec{G}_n.
+		\end{equation}
+
+		If we consider that the game state after $n$ turns depends on the models of both fighters, then a reasonable objective for the first fighter is:
+		\begin{equation}
+			\arg \min_{\hat M_1} n\,|\, F_2^H (G_{n}^{\hat M_1, \hat M_2}) = 0, F_1^H (G_{n}^{\hat M_1, \hat M_2}) > 0\,\,\,\forall\,\,\, \hat M_2.
+		\end{equation}
+		In other words, the player is trying to find the model (decision-making scheme) that minimizes the number of turns for the second fighter's health to reach 0, while staying alive, for an arbitrary opponent model.  [But this is a random process].
+		 
+	\subsection{Machine Learning}
+		For humans, these decisions making skills can be incredibly quick and precise [cite high-level tri-briding or something]. The ingenious ways that players have been able to take advantage of the game mechanics to develop a wide range of interesting behavior is really fascinating. The intricacies and reactions involved result in numerous interesting approaches to combat:
+		\begin{enumerate}
+			\item Pures:
+			\item 1-Iteming
+			\item Hybriding
+			\item Tri-bridding
+			\item Dwh Pure
+			\item Tick-Eating
+			\item Poison
+			\item Kiting
+		\end{enumerate}
+		In addition, there have been many technical feats that take advantage of intricate mechanics to win impressive challenges under heavy restrictions:
+		\begin{enumerate}
+			\item The succession of Combat Level [59, 40, 25, 13, 9, 4,] and ultimately 3 (the lowest possible) \texttt{Fire Capes}.
+			\item No-iteming Corp
+		\end{enumerate}
+
+		To study these solutions, and to gain insight into the decisions that players make, we aim to make use of machine learning techniques to solve this complex problem. Assuming that the networks will be able to find similar solutions to these problems as the humans, it would be fascinating to formally describe what the players are processing and what features they consider when they react in certain ways. Without delving into the details, we will be employing feed-forward neural networks as the model which will be optimized to solve this problem. This will required the use of reinforcement learning techniques since exact solutions (the optimal set of decisions in a fight) is not known for any cases and would not be able to be generated in general.  [the optimiZatino of this ishard ]
+
+	\subsection{Genetic Algorithm}
+		% World
+		% Population
+		% Creature
+		% Genome
+		% Gene
+
+		% Fitness Function
+		% Mutations
+		% Selection
+
+	
+
+
+
+
+
+
+	% \subsection{Special Attacks}
+	% 	Certain weapons have the ability to use a special attack, typically dealing additional damage, but may also reduce the opponent's levels temporarily.
+
+	% \subsection{Temporary Boosts and Healing}
+	% 	Potions provide temporary boosts to skill levels.
+
+	% \subsection{Item Switching and Movement}
+	% 	Different items, moving around. Attack delays etc.
+

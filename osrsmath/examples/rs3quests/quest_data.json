@@ -1,0 +1,5114 @@
+[
+    {
+        "name": "Imp Catcher",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Cook's Assistant",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "The Knight's Sword",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Mining",
+                10
+            ],
+            [
+                "Cooking",
+                10
+            ],
+            [
+                "Smithing",
+                10
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Rune Mysteries",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Pirate's Treasure",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Goblin Diplomacy",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "The Restless Ghost",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Vampyre Slayer",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Shield of Arrav",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Ernest the Chicken",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Dragon Slayer",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Prayer",
+                37
+            ],
+            [
+                "Crafting",
+                8
+            ],
+            [
+                "Smithing",
+                20
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Lost City",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                31
+            ],
+            [
+                "Woodcutting",
+                36
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Elemental Workshop I",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Smithing",
+                20
+            ],
+            [
+                "Crafting",
+                20
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Royal Trouble",
+        "quest_requirements": [
+            "Shield of Arrav",
+            "Dragon Slayer",
+            "Lost City",
+            "Heroes' Quest",
+            "The Fremennik Trials",
+            "Throne of Miscellania",
+            "Merlin's Crystal",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                40
+            ],
+            [
+                "Slayer",
+                40
+            ],
+            [
+                "Prayer",
+                43
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Swan Song",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "The Restless Ghost",
+            "Priest in Peril",
+            "One Small Favour",
+            "Jungle Potion",
+            "Garden of Tranquillity",
+            "Creature of Fenkenstrain",
+            "Shilo Village",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                66
+            ],
+            [
+                "Cooking",
+                62
+            ],
+            [
+                "Fishing",
+                62
+            ],
+            [
+                "Smithing",
+                45
+            ],
+            [
+                "Firemaking",
+                42
+            ],
+            [
+                "Crafting",
+                40
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Recruitment Drive",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Herblore",
+                3
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Priest in Peril",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Monkey Madness",
+        "quest_requirements": [
+            "The Grand Tree",
+            "Tree Gnome Village"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Lunar Diplomacy",
+        "quest_requirements": [
+            "Lost City",
+            "The Fremennik Trials",
+            "Jungle Potion",
+            "Shilo Village"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                61
+            ],
+            [
+                "Defence",
+                40
+            ],
+            [
+                "Firemaking",
+                49
+            ],
+            [
+                "Mining",
+                60
+            ],
+            [
+                "Herblore",
+                5
+            ],
+            [
+                "Magic",
+                65
+            ],
+            [
+                "Woodcutting",
+                55
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Rum Deal",
+        "quest_requirements": [
+            "Priest in Peril",
+            "Big Chompy Bird Hunting",
+            "Zogre Flesh Eaters",
+            "Jungle Potion"
+        ],
+        "skill_requirements": [
+            [
+                "Farming",
+                40
+            ],
+            [
+                "Crafting",
+                42
+            ],
+            [
+                "Prayer",
+                47
+            ],
+            [
+                "Fishing",
+                50
+            ],
+            [
+                "Slayer",
+                42
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Desert Treasure",
+        "quest_requirements": [
+            "Priest in Peril",
+            "Temple of Ikov",
+            "Plague City",
+            "Troll Stronghold",
+            "The Tourist Trap",
+            "Waterfall Quest",
+            "The Dig Site",
+            "Death Plateau"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                10
+            ],
+            [
+                "Firemaking",
+                50
+            ],
+            [
+                "Magic",
+                50
+            ],
+            [
+                "Thieving",
+                53
+            ],
+            [
+                "Mining",
+                50
+            ],
+            [
+                "Woodcutting",
+                75
+            ],
+            [
+                "Agility",
+                47
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Heroes' Quest",
+        "quest_requirements": [
+            "Shield of Arrav",
+            "Dragon Slayer",
+            "Lost City",
+            "Merlin's Crystal",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                53
+            ],
+            [
+                "Fishing",
+                53
+            ],
+            [
+                "Herblore",
+                25
+            ],
+            [
+                "Defence",
+                25
+            ],
+            [
+                "Mining",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Death to the Dorgeshuun",
+        "quest_requirements": [
+            "Goblin Diplomacy",
+            "The Lost Tribe"
+        ],
+        "skill_requirements": [
+            [
+                "Thieving",
+                23
+            ],
+            [
+                "Agility",
+                23
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "A Fairy Tale II - Cure a Queen",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Lost City",
+            "Priest in Peril",
+            "A Fairy Tale I - Growing Pains",
+            "Nature Spirit",
+            "Jungle Potion"
+        ],
+        "skill_requirements": [
+            [
+                "Thieving",
+                40
+            ],
+            [
+                "Farming",
+                49
+            ],
+            [
+                "Herblore",
+                57
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Eyes of Glouphrie",
+        "quest_requirements": [
+            "The Grand Tree"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                5
+            ],
+            [
+                "Magic",
+                46
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Between a Rock...",
+        "quest_requirements": [
+            "Dwarf Cannon",
+            "Fishing Contest"
+        ],
+        "skill_requirements": [
+            [
+                "Defence",
+                30
+            ],
+            [
+                "Mining",
+                40
+            ],
+            [
+                "Smithing",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Temple of Ikov",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Thieving",
+                42
+            ],
+            [
+                "Ranged",
+                40
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Rag and Bone Man",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "A Soul's Bane",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "In Aid of the Myreque",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril",
+            "Shades of Mort'ton",
+            "Nature Spirit",
+            "In Search of the Myreque"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                25
+            ],
+            [
+                "Magic",
+                7
+            ],
+            [
+                "Mining",
+                15
+            ],
+            [
+                "Mining",
+                30
+            ],
+            [
+                "Smithing",
+                30
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Sea Slug",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                30
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Sheep Herder",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Big Chompy Bird Hunting",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Cooking",
+                30
+            ],
+            [
+                "Ranged",
+                30
+            ],
+            [
+                "Fletching",
+                5
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Fremennik Trials",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                40
+            ],
+            [
+                "Fletching",
+                25
+            ],
+            [
+                "Woodcutting",
+                40
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Darkness of Hallowvale",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril",
+            "In Aid of the Myreque",
+            "Nature Spirit",
+            "In Search of the Myreque"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                5
+            ],
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Thieving",
+                22
+            ],
+            [
+                "Agility",
+                26
+            ],
+            [
+                "Crafting",
+                32
+            ],
+            [
+                "Magic",
+                33
+            ],
+            [
+                "Strength",
+                40
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Shades of Mort'ton",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Firemaking",
+                5
+            ],
+            [
+                "Herblore",
+                15
+            ]
+        ],
+        "rewards": [
+            [
+                "Herblore",
+                335
+            ]
+        ]
+    },
+    {
+        "name": "Murder Mystery",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Plague City",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Legends' Quest",
+        "quest_requirements": [
+            "Shield of Arrav",
+            "Dragon Slayer",
+            "Lost City",
+            "Heroes' Quest",
+            "Plague City",
+            "Underground Pass",
+            "Biohazard",
+            "Merlin's Crystal",
+            "Jungle Potion",
+            "Waterfall Quest",
+            "Shilo Village",
+            "Family Crest",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                50
+            ],
+            [
+                "Crafting",
+                50
+            ],
+            [
+                "Herblore",
+                45
+            ],
+            [
+                "Magic",
+                56
+            ],
+            [
+                "Mining",
+                52
+            ],
+            [
+                "Prayer",
+                42
+            ],
+            [
+                "Smithing",
+                50
+            ],
+            [
+                "Strength",
+                50
+            ],
+            [
+                "Thieving",
+                50
+            ],
+            [
+                "Woodcutting",
+                50
+            ],
+            [
+                "Ranged",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Scorpion Catcher",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Prayer",
+                31
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Slug Menace",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Recruitment Drive",
+            "Priest in Peril",
+            "Sea Slug",
+            "Wanted!",
+            "The Lost Tribe"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                30
+            ],
+            [
+                "Runecraft",
+                30
+            ],
+            [
+                "Slayer",
+                30
+            ],
+            [
+                "Thieving",
+                30
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Underground Pass",
+        "quest_requirements": [
+            "Plague City",
+            "Biohazard"
+        ],
+        "skill_requirements": [
+            [
+                "Ranged",
+                25
+            ],
+            [
+                "Agility",
+                50
+            ],
+            [
+                "Prayer",
+                43
+            ],
+            [
+                "Thieving",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Throne of Miscellania",
+        "quest_requirements": [
+            "Shield of Arrav",
+            "Dragon Slayer",
+            "Lost City",
+            "Heroes' Quest",
+            "The Fremennik Trials",
+            "Merlin's Crystal",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Ghosts Ahoy",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                25
+            ],
+            [
+                "Cooking",
+                20
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Biohazard",
+        "quest_requirements": [
+            "Plague City"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "A Fairy Tale I - Growing Pains",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Lost City",
+            "Priest in Peril",
+            "Nature Spirit",
+            "Jungle Potion"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Regicide",
+        "quest_requirements": [
+            "Plague City",
+            "Underground Pass",
+            "Biohazard"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                56
+            ],
+            [
+                "Crafting",
+                10
+            ],
+            [
+                "Agility",
+                60
+            ],
+            [
+                "Agility",
+                56
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Nature Spirit",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                18
+            ],
+            [
+                "Smithing",
+                20
+            ],
+            [
+                "Crafting",
+                18
+            ],
+            [
+                "Prayer",
+                10
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Elemental Workshop II",
+        "quest_requirements": [
+            "Elemental Workshop I"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                20
+            ],
+            [
+                "Smithing",
+                30
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Horror from the Deep",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Agility",
+                35
+            ],
+            [
+                "Prayer",
+                43
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Holy Grail",
+        "quest_requirements": [
+            "Merlin's Crystal"
+        ],
+        "skill_requirements": [
+            [
+                "Attack",
+                30
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "In Search of the Myreque",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril",
+            "Nature Spirit"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                25
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Merlin's Crystal",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Tears of Guthix",
+        "quest_requirements": [
+            "Death to the Dorgeshuun",
+            "The Lost Tribe"
+        ],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                49
+            ],
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Smithing",
+                20
+            ],
+            [
+                "Crafting",
+                49
+            ],
+            [
+                "Crafting",
+                49
+            ],
+            [
+                "Thieving",
+                36
+            ],
+            [
+                "Smithing",
+                20
+            ],
+            [
+                "Crafting",
+                49
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "One Small Favour",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "Jungle Potion",
+            "Shilo Village",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [
+            [
+                "Herblore",
+                18
+            ],
+            [
+                "Crafting",
+                25
+            ],
+            [
+                "Smithing",
+                30
+            ],
+            [
+                "Agility",
+                36
+            ],
+            [
+                "Herblore",
+                20
+            ],
+            [
+                "Mining",
+                20
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Zogre Flesh Eaters",
+        "quest_requirements": [
+            "Big Chompy Bird Hunting",
+            "Jungle Potion"
+        ],
+        "skill_requirements": [
+            [
+                "Prayer",
+                40
+            ],
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Herblore",
+                8
+            ],
+            [
+                "Strength",
+                20
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Wanted!",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Recruitment Drive",
+            "Priest in Peril",
+            "The Lost Tribe"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Rat Catchers",
+        "quest_requirements": [
+            "Gertrude's Cat",
+            "Icthlarin's Little Helper",
+            "Stolen Hearts",
+            "Diamond in the Rough"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Gertrude's Cat",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "My Arm's Big Adventure",
+        "quest_requirements": [
+            "The Feud",
+            "Jungle Potion",
+            "Eadgar's Ruse",
+            "Troll Stronghold",
+            "Druidic Ritual",
+            "Death Plateau"
+        ],
+        "skill_requirements": [
+            [
+                "Woodcutting",
+                10
+            ],
+            [
+                "Farming",
+                29
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Enlightened Journey",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                20
+            ],
+            [
+                "Farming",
+                30
+            ],
+            [
+                "Crafting",
+                36
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Feud",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Thieving",
+                30
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Eagles' Peak",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Hunter",
+                27
+            ],
+            [
+                "Agility",
+                25
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Jungle Potion",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Herblore",
+                3
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Observatory Quest",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "The Grand Tree",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Agility",
+                25
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Dwarf Cannon",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Fishing Contest",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Fishing",
+                10
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Animal Magnetism",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Ernest the Chicken",
+            "Priest in Peril"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                18
+            ],
+            [
+                "Crafting",
+                19
+            ],
+            [
+                "Ranged",
+                30
+            ],
+            [
+                "Woodcutting",
+                35
+            ],
+            [
+                "Thieving",
+                15
+            ],
+            [
+                "Smithing",
+                10
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Garden of Tranquillity",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril",
+            "Creature of Fenkenstrain"
+        ],
+        "skill_requirements": [
+            [
+                "Farming",
+                25
+            ]
+        ],
+        "rewards": [
+            [
+                "Farming",
+                12
+            ]
+        ]
+    },
+    {
+        "name": "Clock Tower",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Cabin Fever",
+        "quest_requirements": [
+            "Pirate's Treasure",
+            "Priest in Peril",
+            "Rum Deal",
+            "Big Chompy Bird Hunting",
+            "Zogre Flesh Eaters",
+            "Jungle Potion"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                42
+            ],
+            [
+                "Crafting",
+                45
+            ],
+            [
+                "Smithing",
+                50
+            ],
+            [
+                "Ranged",
+                40
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Creature of Fenkenstrain",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Thieving",
+                25
+            ],
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Smithing",
+                20
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Devious Minds",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Recruitment Drive",
+            "Priest in Peril",
+            "Wanted!",
+            "Troll Stronghold",
+            "The Lost Tribe",
+            "Death Plateau",
+            "What's Mine is Yours"
+        ],
+        "skill_requirements": [
+            [
+                "Runecraft",
+                50
+            ],
+            [
+                "Fletching",
+                50
+            ],
+            [
+                "Smithing",
+                65
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Eadgar's Ruse",
+        "quest_requirements": [
+            "Troll Stronghold",
+            "Druidic Ritual",
+            "Death Plateau"
+        ],
+        "skill_requirements": [
+            [
+                "Herblore",
+                31
+            ],
+            [
+                "Agility",
+                15
+            ],
+            [
+                "Prayer",
+                40
+            ],
+            [
+                "Agility",
+                47
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Troll Stronghold",
+        "quest_requirements": [
+            "Death Plateau"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                15
+            ],
+            [
+                "Thieving",
+                30
+            ],
+            [
+                "Agility",
+                47
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Enakhra's Lament",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                50
+            ],
+            [
+                "Firemaking",
+                45
+            ],
+            [
+                "Magic",
+                13
+            ],
+            [
+                "Mining",
+                45
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Fight Arena",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Monk's Friend",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Haunted Mine",
+        "quest_requirements": [
+            "Priest in Peril"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                15
+            ],
+            [
+                "Crafting",
+                35
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Forgettable Tale of a Drunken Dwarf",
+        "quest_requirements": [
+            "Fishing Contest",
+            "The Giant Dwarf"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                22
+            ],
+            [
+                "Farming",
+                17
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Contact!",
+        "quest_requirements": [
+            "Gertrude's Cat",
+            "Icthlarin's Little Helper",
+            "Stolen Hearts",
+            "Diamond in the Rough"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Shadow of the Storm",
+        "quest_requirements": [
+            "The Golem",
+            "Demon Slayer"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                30
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Witch's House",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Hazeel Cult",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Icthlarin's Little Helper",
+        "quest_requirements": [
+            "Gertrude's Cat",
+            "Stolen Hearts",
+            "Diamond in the Rough"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "The Giant Dwarf",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                12
+            ],
+            [
+                "Firemaking",
+                16
+            ],
+            [
+                "Magic",
+                33
+            ],
+            [
+                "Thieving",
+                14
+            ],
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Smithing",
+                10
+            ],
+            [
+                "Agility",
+                21
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Golem",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Thieving",
+                25
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Hand in the Sand",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Thieving",
+                17
+            ],
+            [
+                "Crafting",
+                49
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Troll Romance",
+        "quest_requirements": [
+            "Eadgar's Ruse",
+            "Troll Stronghold",
+            "Death Plateau"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                28
+            ],
+            [
+                "Woodcutting",
+                45
+            ],
+            [
+                "Mining",
+                10
+            ],
+            [
+                "Smithing",
+                10
+            ],
+            [
+                "Magic",
+                61
+            ],
+            [
+                "Prayer",
+                43
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Lost Tribe",
+        "quest_requirements": [
+            "Goblin Diplomacy"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                13
+            ],
+            [
+                "Mining",
+                17
+            ],
+            [
+                "Thieving",
+                13
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Making History",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                24
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Mountain Daughter",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Agility",
+                20
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Mourning's End Part I",
+        "quest_requirements": [
+            "Sheep Herder",
+            "Big Chompy Bird Hunting",
+            "Plague City",
+            "Underground Pass",
+            "Biohazard",
+            "Regicide",
+            "Roving Elves",
+            "Waterfall Quest"
+        ],
+        "skill_requirements": [
+            [
+                "Ranged",
+                60
+            ],
+            [
+                "Thieving",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Mourning's End Part II",
+        "quest_requirements": [
+            "Sheep Herder",
+            "Big Chompy Bird Hunting",
+            "Plague City",
+            "Underground Pass",
+            "Biohazard",
+            "Regicide",
+            "Mourning's End Part I",
+            "Roving Elves",
+            "Waterfall Quest"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "The Tourist Trap",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Fletching",
+                10
+            ],
+            [
+                "Smithing",
+                20
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Roving Elves",
+        "quest_requirements": [
+            "Plague City",
+            "Underground Pass",
+            "Biohazard",
+            "Regicide",
+            "Waterfall Quest"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Tree Gnome Village",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Cold War",
+        "quest_requirements": [
+            "Carnillean Rising"
+        ],
+        "skill_requirements": [
+            [
+                "Hunter",
+                10
+            ],
+            [
+                "Construction",
+                34
+            ],
+            [
+                "Crafting",
+                30
+            ],
+            [
+                "Agility",
+                30
+            ],
+            [
+                "Thieving",
+                15
+            ],
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Smithing",
+                20
+            ],
+            [
+                "Woodcutting",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Waterfall Quest",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "A Tail of Two Cats",
+        "quest_requirements": [
+            "Gertrude's Cat",
+            "Icthlarin's Little Helper",
+            "Stolen Hearts",
+            "Diamond in the Rough"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Spirits of the Elid",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Magic",
+                33
+            ],
+            [
+                "Ranged",
+                37
+            ],
+            [
+                "Mining",
+                37
+            ],
+            [
+                "Thieving",
+                37
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Shilo Village",
+        "quest_requirements": [
+            "Jungle Potion"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Agility",
+                32
+            ],
+            [
+                "Prayer",
+                43
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Tai Bwo Wannai Trio",
+        "quest_requirements": [
+            "Jungle Potion"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                15
+            ],
+            [
+                "Fishing",
+                5
+            ],
+            [
+                "Cooking",
+                30
+            ],
+            [
+                "Fishing",
+                65
+            ],
+            [
+                "Herblore",
+                34
+            ],
+            [
+                "Attack",
+                99
+            ],
+            [
+                "Strength",
+                99
+            ],
+            [
+                "Fishing",
+                65
+            ],
+            [
+                "Firemaking",
+                30
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Tribal Totem",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Thieving",
+                21
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Fremennik Isles",
+        "quest_requirements": [
+            "The Fremennik Trials"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                20
+            ],
+            [
+                "Crafting",
+                46
+            ],
+            [
+                "Agility",
+                40
+            ],
+            [
+                "Woodcutting",
+                56
+            ],
+            [
+                "Prayer",
+                43
+            ],
+            [
+                "Defence",
+                25
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Watchtower",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Herblore",
+                14
+            ],
+            [
+                "Magic",
+                14
+            ],
+            [
+                "Thieving",
+                15
+            ],
+            [
+                "Agility",
+                25
+            ],
+            [
+                "Mining",
+                40
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Tower of Life",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Construction",
+                10
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Great Brain Robbery",
+        "quest_requirements": [
+            "Cook's Assistant",
+            "Pirate's Treasure",
+            "The Restless Ghost",
+            "Priest in Peril",
+            "Rum Deal",
+            "Big Chompy Bird Hunting",
+            "Zogre Flesh Eaters",
+            "Jungle Potion",
+            "Cabin Fever",
+            "Creature of Fenkenstrain"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                16
+            ],
+            [
+                "Construction",
+                30
+            ],
+            [
+                "Prayer",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "What Lies Below",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Runecraft",
+                35
+            ],
+            [
+                "Mining",
+                42
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Olaf's Quest",
+        "quest_requirements": [
+            "The Fremennik Trials"
+        ],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                40
+            ],
+            [
+                "Woodcutting",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Another Slice of H.A.M.",
+        "quest_requirements": [
+            "Goblin Diplomacy",
+            "Death to the Dorgeshuun",
+            "The Giant Dwarf",
+            "The Lost Tribe",
+            "The Dig Site"
+        ],
+        "skill_requirements": [
+            [
+                "Attack",
+                15
+            ],
+            [
+                "Prayer",
+                25
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Dream Mentor",
+        "quest_requirements": [
+            "Lost City",
+            "Lunar Diplomacy",
+            "The Fremennik Trials",
+            "Jungle Potion",
+            "Eadgar's Ruse",
+            "Troll Stronghold",
+            "Shilo Village",
+            "Druidic Ritual",
+            "Death Plateau"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Grim Tales",
+        "quest_requirements": [
+            "Witch's House"
+        ],
+        "skill_requirements": [
+            [
+                "Farming",
+                45
+            ],
+            [
+                "Herblore",
+                52
+            ],
+            [
+                "Thieving",
+                58
+            ],
+            [
+                "Agility",
+                59
+            ],
+            [
+                "Woodcutting",
+                71
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "King's Ransom",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "Murder Mystery",
+            "Holy Grail",
+            "Merlin's Crystal",
+            "One Small Favour",
+            "Jungle Potion",
+            "Shilo Village",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                45
+            ],
+            [
+                "Defence",
+                65
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Path of Glouphrie",
+        "quest_requirements": [
+            "The Eyes of Glouphrie",
+            "The Grand Tree",
+            "Tree Gnome Village",
+            "Waterfall Quest"
+        ],
+        "skill_requirements": [
+            [
+                "Strength",
+                60
+            ],
+            [
+                "Thieving",
+                56
+            ],
+            [
+                "Slayer",
+                56
+            ],
+            [
+                "Ranged",
+                47
+            ],
+            [
+                "Agility",
+                45
+            ],
+            [
+                "Fletching",
+                59
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Back to my Roots",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "The Restless Ghost",
+            "Lost City",
+            "Priest in Peril",
+            "A Fairy Tale I - Growing Pains",
+            "Nature Spirit",
+            "One Small Favour",
+            "Jungle Potion",
+            "The Hand in the Sand",
+            "Shilo Village",
+            "Tribal Totem",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                55
+            ],
+            [
+                "Farming",
+                53
+            ],
+            [
+                "Slayer",
+                59
+            ],
+            [
+                "Woodcutting",
+                72
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Land of the Goblins",
+        "quest_requirements": [
+            "Goblin Diplomacy",
+            "Death to the Dorgeshuun",
+            "Fishing Contest",
+            "The Giant Dwarf",
+            "The Lost Tribe",
+            "Another Slice of H.A.M.",
+            "The Dig Site"
+        ],
+        "skill_requirements": [
+            [
+                "Prayer",
+                30
+            ],
+            [
+                "Agility",
+                36
+            ],
+            [
+                "Fishing",
+                36
+            ],
+            [
+                "Thieving",
+                36
+            ],
+            [
+                "Herblore",
+                37
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Dealing with Scabaras",
+        "quest_requirements": [
+            "Big Chompy Bird Hunting",
+            "Zogre Flesh Eaters",
+            "Gertrude's Cat",
+            "The Feud",
+            "Jungle Potion",
+            "Contact!",
+            "Icthlarin's Little Helper",
+            "Stolen Hearts",
+            "Diamond in the Rough"
+        ],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                21
+            ],
+            [
+                "Agility",
+                50
+            ],
+            [
+                "Thieving",
+                60
+            ],
+            [
+                "Strength",
+                60
+            ],
+            [
+                "Crafting",
+                60
+            ],
+            [
+                "Prayer",
+                43
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "As a First Resort",
+        "quest_requirements": [
+            "Goblin Diplomacy",
+            "Dragon Slayer",
+            "Priest in Peril",
+            "Big Chompy Bird Hunting",
+            "Zogre Flesh Eaters",
+            "Jungle Potion",
+            "Haunted Mine",
+            "The Lost Tribe",
+            "Tai Bwo Wannai Trio"
+        ],
+        "skill_requirements": [
+            [
+                "Hunter",
+                48
+            ],
+            [
+                "Firemaking",
+                51
+            ],
+            [
+                "Woodcutting",
+                58
+            ],
+            [
+                "Attack",
+                99
+            ],
+            [
+                "Strength",
+                99
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Catapult Construction",
+        "quest_requirements": [
+            "Plague City",
+            "Underground Pass",
+            "Biohazard",
+            "Regicide"
+        ],
+        "skill_requirements": [
+            [
+                "Fletching",
+                42
+            ],
+            [
+                "Construction",
+                44
+            ],
+            [
+                "Smithing",
+                30
+            ],
+            [
+                "Woodcutting",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Dig Site",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Thieving",
+                25
+            ],
+            [
+                "Agility",
+                10
+            ],
+            [
+                "Herblore",
+                10
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Kennith's Concerns",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Recruitment Drive",
+            "Priest in Peril",
+            "Sea Slug",
+            "The Slug Menace",
+            "Wanted!",
+            "The Lost Tribe"
+        ],
+        "skill_requirements": [
+            [
+                "Mining",
+                46
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Legacy of Seergaze",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril",
+            "In Aid of the Myreque",
+            "The Darkness of Hallowvale",
+            "Shades of Mort'ton",
+            "Nature Spirit",
+            "In Search of the Myreque"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                20
+            ],
+            [
+                "Agility",
+                29
+            ],
+            [
+                "Slayer",
+                31
+            ],
+            [
+                "Mining",
+                35
+            ],
+            [
+                "Firemaking",
+                40
+            ],
+            [
+                "Crafting",
+                47
+            ],
+            [
+                "Magic",
+                49
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "TokTz-Ket-Dill",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Construction",
+                50
+            ],
+            [
+                "Strength",
+                45
+            ],
+            [
+                "Crafting",
+                43
+            ],
+            [
+                "Mining",
+                40
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Perils of Ice Mountain",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Farming",
+                5
+            ],
+            [
+                "Hunter",
+                5
+            ],
+            [
+                "Thieving",
+                5
+            ],
+            [
+                "Construction",
+                5
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Rocking Out",
+        "quest_requirements": [
+            "Cook's Assistant",
+            "Pirate's Treasure",
+            "The Restless Ghost",
+            "Priest in Peril",
+            "Rum Deal",
+            "Big Chompy Bird Hunting",
+            "Zogre Flesh Eaters",
+            "Jungle Potion",
+            "Cabin Fever",
+            "Creature of Fenkenstrain",
+            "The Great Brain Robbery"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                60
+            ],
+            [
+                "Thieving",
+                63
+            ],
+            [
+                "Crafting",
+                66
+            ],
+            [
+                "Smithing",
+                69
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Smoking Kills",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Gertrude's Cat",
+            "Icthlarin's Little Helper",
+            "Stolen Hearts",
+            "Diamond in the Rough"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                35
+            ],
+            [
+                "Crafting",
+                25
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Spirit of Summer",
+        "quest_requirements": [
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [
+            [
+                "Farming",
+                26
+            ],
+            [
+                "Prayer",
+                35
+            ],
+            [
+                "Construction",
+                40
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Meeting History",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril",
+            "Making History"
+        ],
+        "skill_requirements": [
+            [
+                "Herblore",
+                3
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "All Fired Up",
+        "quest_requirements": [
+            "Priest in Peril"
+        ],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                43
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Summer's End",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Spirit of Summer"
+        ],
+        "skill_requirements": [
+            [
+                "Hunter",
+                35
+            ],
+            [
+                "Woodcutting",
+                37
+            ],
+            [
+                "Mining",
+                45
+            ],
+            [
+                "Firemaking",
+                47
+            ],
+            [
+                "Prayer",
+                55
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Defender of Varrock",
+        "quest_requirements": [
+            "The Knight's Sword",
+            "The Restless Ghost",
+            "Shield of Arrav",
+            "Priest in Peril",
+            "Temple of Ikov",
+            "Garden of Tranquillity",
+            "Creature of Fenkenstrain",
+            "What Lies Below",
+            "Family Crest",
+            "Demon Slayer"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                51
+            ],
+            [
+                "Hunter",
+                51
+            ],
+            [
+                "Smithing",
+                54
+            ],
+            [
+                "Mining",
+                59
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Swept Away",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "While Guthix Sleeps",
+        "quest_requirements": [
+            "Legends' Quest",
+            "Tears of Guthix",
+            "Wanted!",
+            "The Hand in the Sand",
+            "Dream Mentor",
+            "King's Ransom",
+            "The Path of Glouphrie",
+            "Defender of Varrock"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                25
+            ],
+            [
+                "Hunter",
+                55
+            ],
+            [
+                "Thieving",
+                60
+            ],
+            [
+                "Defence",
+                65
+            ],
+            [
+                "Farming",
+                65
+            ],
+            [
+                "Herblore",
+                65
+            ],
+            [
+                "Magic",
+                75
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Myths of the White Lands",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                30
+            ],
+            [
+                "Agility",
+                55
+            ],
+            [
+                "Woodcutting",
+                80
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "In Pyre Need",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                55
+            ],
+            [
+                "Crafting",
+                52
+            ],
+            [
+                "Fletching",
+                53
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Chosen Commander",
+        "quest_requirements": [
+            "Goblin Diplomacy",
+            "Death to the Dorgeshuun",
+            "Fishing Contest",
+            "The Giant Dwarf",
+            "The Lost Tribe",
+            "Another Slice of H.A.M.",
+            "Land of the Goblins",
+            "The Dig Site"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                46
+            ],
+            [
+                "Strength",
+                46
+            ],
+            [
+                "Thieving",
+                46
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Glorious Memories",
+        "quest_requirements": [
+            "Shield of Arrav",
+            "Dragon Slayer",
+            "Lost City",
+            "Royal Trouble",
+            "Lunar Diplomacy",
+            "Heroes' Quest",
+            "The Fremennik Trials",
+            "Throne of Miscellania",
+            "Merlin's Crystal",
+            "Jungle Potion",
+            "Mountain Daughter",
+            "Shilo Village",
+            "The Fremennik Isles",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                57
+            ],
+            [
+                "Agility",
+                50
+            ],
+            [
+                "Herblore",
+                43
+            ],
+            [
+                "Hunter",
+                41
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Tale of the Muspah",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                6
+            ],
+            [
+                "Mining",
+                8
+            ],
+            [
+                "Magic",
+                10
+            ],
+            [
+                "Woodcutting",
+                10
+            ],
+            [
+                "Crafting",
+                20
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Missing My Mummy",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril",
+            "Gertrude's Cat",
+            "Garden of Tranquillity",
+            "Creature of Fenkenstrain",
+            "Icthlarin's Little Helper",
+            "The Golem",
+            "Stolen Hearts",
+            "Diamond in the Rough"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                35
+            ],
+            [
+                "Cooking",
+                35
+            ],
+            [
+                "Crafting",
+                35
+            ],
+            [
+                "Magic",
+                35
+            ],
+            [
+                "Prayer",
+                35
+            ],
+            [
+                "Thieving",
+                25
+            ],
+            [
+                "Crafting",
+                45
+            ],
+            [
+                "Prayer",
+                45
+            ],
+            [
+                "Magic",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Hunt for Red Raktuber",
+        "quest_requirements": [
+            "Sea Slug",
+            "Cold War"
+        ],
+        "skill_requirements": [
+            [
+                "Thieving",
+                38
+            ],
+            [
+                "Construction",
+                45
+            ],
+            [
+                "Hunter",
+                45
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Curse of Arrav",
+        "quest_requirements": [
+            "The Knight's Sword",
+            "The Restless Ghost",
+            "Shield of Arrav",
+            "Priest in Peril",
+            "Temple of Ikov",
+            "Shades of Mort'ton",
+            "Gertrude's Cat",
+            "Garden of Tranquillity",
+            "Creature of Fenkenstrain",
+            "Troll Stronghold",
+            "Icthlarin's Little Helper",
+            "The Golem",
+            "Troll Romance",
+            "What Lies Below",
+            "Defender of Varrock",
+            "The Tale of the Muspah",
+            "Missing My Mummy",
+            "Family Crest",
+            "Death Plateau",
+            "Stolen Hearts",
+            "Diamond in the Rough",
+            "Demon Slayer"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                37
+            ],
+            [
+                "Agility",
+                61
+            ],
+            [
+                "Ranged",
+                64
+            ],
+            [
+                "Strength",
+                64
+            ],
+            [
+                "Mining",
+                64
+            ],
+            [
+                "Thieving",
+                66
+            ],
+            [
+                "Fletching",
+                59
+            ],
+            [
+                "Magic",
+                57
+            ],
+            [
+                "Crafting",
+                43
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Forgiveness of a Chaos Dwarf",
+        "quest_requirements": [
+            "Between a Rock...",
+            "Dwarf Cannon",
+            "Fishing Contest",
+            "Forgettable Tale of a Drunken Dwarf",
+            "The Giant Dwarf"
+        ],
+        "skill_requirements": [
+            [
+                "Hunter",
+                61
+            ],
+            [
+                "Firemaking",
+                61
+            ],
+            [
+                "Strength",
+                69
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Fur 'n Seek",
+        "quest_requirements": [
+            "Rag and Bone Man"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                25
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Within the Light",
+        "quest_requirements": [
+            "Sheep Herder",
+            "Big Chompy Bird Hunting",
+            "Plague City",
+            "Underground Pass",
+            "Biohazard",
+            "Regicide",
+            "Mourning's End Part I",
+            "Mourning's End Part II",
+            "Roving Elves",
+            "Waterfall Quest"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                69
+            ],
+            [
+                "Fletching",
+                70
+            ],
+            [
+                "Ranged",
+                75
+            ],
+            [
+                "Woodcutting",
+                75
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Elemental Workshop III",
+        "quest_requirements": [
+            "Elemental Workshop I",
+            "Elemental Workshop II"
+        ],
+        "skill_requirements": [
+            [
+                "Defence",
+                33
+            ],
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Smithing",
+                33
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "A Fairy Tale III - Battle at Ork's Rift",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Lost City",
+            "Priest in Peril",
+            "A Fairy Tale II - Cure a Queen",
+            "A Fairy Tale I - Growing Pains",
+            "Nature Spirit",
+            "Jungle Potion"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                59
+            ],
+            [
+                "Farming",
+                54
+            ],
+            [
+                "Thieving",
+                51
+            ],
+            [
+                "Crafting",
+                36
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Temple at Senntisten",
+        "quest_requirements": [
+            "The Knight's Sword",
+            "Rune Mysteries",
+            "Goblin Diplomacy",
+            "The Restless Ghost",
+            "Shield of Arrav",
+            "Recruitment Drive",
+            "Priest in Peril",
+            "Desert Treasure",
+            "Temple of Ikov",
+            "Shades of Mort'ton",
+            "Wanted!",
+            "Gertrude's Cat",
+            "Garden of Tranquillity",
+            "Creature of Fenkenstrain",
+            "Devious Minds",
+            "Troll Stronghold",
+            "Icthlarin's Little Helper",
+            "The Golem",
+            "Troll Romance",
+            "The Lost Tribe",
+            "The Tourist Trap",
+            "Waterfall Quest",
+            "What Lies Below",
+            "The Dig Site",
+            "Defender of Varrock",
+            "The Tale of the Muspah",
+            "Missing My Mummy",
+            "The Curse of Arrav",
+            "Family Crest",
+            "Death Plateau",
+            "Stolen Hearts",
+            "Diamond in the Rough",
+            "What's Mine is Yours",
+            "Demon Slayer"
+        ],
+        "skill_requirements": [
+            [
+                "Prayer",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Blood Runs Deep",
+        "quest_requirements": [
+            "Shield of Arrav",
+            "Dragon Slayer",
+            "Lost City",
+            "Royal Trouble",
+            "Lunar Diplomacy",
+            "Heroes' Quest",
+            "The Fremennik Trials",
+            "Throne of Miscellania",
+            "Horror from the Deep",
+            "Merlin's Crystal",
+            "Jungle Potion",
+            "Eadgar's Ruse",
+            "Troll Stronghold",
+            "Mountain Daughter",
+            "Shilo Village",
+            "The Fremennik Isles",
+            "Dream Mentor",
+            "Glorious Memories",
+            "Druidic Ritual",
+            "Death Plateau"
+        ],
+        "skill_requirements": [
+            [
+                "Attack",
+                75
+            ],
+            [
+                "Strength",
+                75
+            ],
+            [
+                "Slayer",
+                65
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Nomad's Requiem",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "Murder Mystery",
+            "Holy Grail",
+            "Merlin's Crystal",
+            "One Small Favour",
+            "Jungle Potion",
+            "Shilo Village",
+            "King's Ransom",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                75
+            ],
+            [
+                "Prayer",
+                70
+            ],
+            [
+                "Mining",
+                66
+            ],
+            [
+                "Hunter",
+                65
+            ],
+            [
+                "Construction",
+                60
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Rune Mechanics",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Magic",
+                27
+            ],
+            [
+                "Runecraft",
+                20
+            ],
+            [
+                "Construction",
+                25
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Blood Pact",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Buyers and Cellars",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Thieving",
+                5
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Ritual of the Mahjarrat",
+        "quest_requirements": [
+            "The Slug Menace",
+            "Enakhra's Lament",
+            "Fight Arena",
+            "Hazeel Cult",
+            "A Tail of Two Cats",
+            "Rocking Out",
+            "While Guthix Sleeps",
+            "A Fairy Tale III - Battle at Ork's Rift",
+            "The Temple at Senntisten"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                76
+            ],
+            [
+                "Agility",
+                77
+            ],
+            [
+                "Mining",
+                76
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Quiet Before the Swarm",
+        "quest_requirements": [
+            "Imp Catcher",
+            "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Recruitment Drive",
+            "Priest in Peril",
+            "Wanted!",
+            "The Lost Tribe"
+        ],
+        "skill_requirements": [
+            [
+                "Attack",
+                35
+            ],
+            [
+                "Strength",
+                42
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Love Story",
+        "quest_requirements": [
+            "Cook's Assistant",
+            "Rune Mysteries",
+            "The Restless Ghost",
+            "Shield of Arrav",
+            "Dragon Slayer",
+            "Lost City",
+            "Swan Song",
+            "Priest in Peril",
+            "Heroes' Quest",
+            "Plague City",
+            "Legends' Quest",
+            "Underground Pass",
+            "Biohazard",
+            "Merlin's Crystal",
+            "One Small Favour",
+            "Jungle Potion",
+            "Garden of Tranquillity",
+            "Creature of Fenkenstrain",
+            "Waterfall Quest",
+            "Shilo Village",
+            "Family Crest",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                77
+            ],
+            [
+                "Construction",
+                68
+            ],
+            [
+                "Smithing",
+                68
+            ],
+            [
+                "Crafting",
+                67
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "A Void Dance",
+        "quest_requirements": [
+            "Imp Catcher",
+            "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Recruitment Drive",
+            "Priest in Peril",
+            "Wanted!",
+            "The Lost Tribe",
+            "Quiet Before the Swarm",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [
+            [
+                "Hunter",
+                46
+            ],
+            [
+                "Construction",
+                47
+            ],
+            [
+                "Mining",
+                47
+            ],
+            [
+                "Herblore",
+                49
+            ],
+            [
+                "Woodcutting",
+                52
+            ],
+            [
+                "Thieving",
+                54
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Gunnar's Ground",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                5
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Void Stares Back",
+        "quest_requirements": [
+            "Imp Catcher",
+            "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Recruitment Drive",
+            "Priest in Peril",
+            "Wanted!",
+            "The Lost Tribe",
+            "Quiet Before the Swarm",
+            "A Void Dance",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                80
+            ],
+            [
+                "Attack",
+                78
+            ],
+            [
+                "Strength",
+                78
+            ],
+            [
+                "Firemaking",
+                71
+            ],
+            [
+                "Construction",
+                70
+            ],
+            [
+                "Crafting",
+                70
+            ],
+            [
+                "Smithing",
+                70
+            ],
+            [
+                "Defence",
+                25
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Do No Evil",
+        "quest_requirements": [
+            "Cook's Assistant",
+            "The Restless Ghost",
+            "Ernest the Chicken",
+            "Priest in Peril",
+            "Monkey Madness",
+            "Desert Treasure",
+            "Temple of Ikov",
+            "Big Chompy Bird Hunting",
+            "Zogre Flesh Eaters",
+            "Gertrude's Cat",
+            "The Feud",
+            "Jungle Potion",
+            "The Grand Tree",
+            "Animal Magnetism",
+            "Garden of Tranquillity",
+            "Creature of Fenkenstrain",
+            "Troll Stronghold",
+            "Contact!",
+            "Shadow of the Storm",
+            "Icthlarin's Little Helper",
+            "The Golem",
+            "The Tourist Trap",
+            "Tree Gnome Village",
+            "Waterfall Quest",
+            "Dealing with Scabaras",
+            "The Dig Site",
+            "Smoking Kills",
+            "Missing My Mummy",
+            "Death Plateau",
+            "Stolen Hearts",
+            "Diamond in the Rough",
+            "Demon Slayer"
+        ],
+        "skill_requirements": [
+            [
+                "Ranged",
+                50
+            ],
+            [
+                "Construction",
+                64
+            ],
+            [
+                "Crafting",
+                68
+            ],
+            [
+                "Magic",
+                70
+            ],
+            [
+                "Thieving",
+                70
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "King of the Dwarves",
+        "quest_requirements": [
+            "Between a Rock...",
+            "My Arm's Big Adventure",
+            "The Feud",
+            "Jungle Potion",
+            "Dwarf Cannon",
+            "Fishing Contest",
+            "Eadgar's Ruse",
+            "Troll Stronghold",
+            "Forgettable Tale of a Drunken Dwarf",
+            "The Giant Dwarf",
+            "Forgiveness of a Chaos Dwarf",
+            "Druidic Ritual",
+            "Death Plateau"
+        ],
+        "skill_requirements": [
+            [
+                "Mining",
+                68
+            ],
+            [
+                "Smithing",
+                70
+            ],
+            [
+                "Strength",
+                77
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Prisoner of Glouphrie",
+        "quest_requirements": [
+            "The Eyes of Glouphrie",
+            "Plague City",
+            "Underground Pass",
+            "Biohazard",
+            "Regicide",
+            "The Grand Tree",
+            "Roving Elves",
+            "Tree Gnome Village",
+            "Waterfall Quest",
+            "The Path of Glouphrie"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                64
+            ],
+            [
+                "Construction",
+                62
+            ],
+            [
+                "Runecraft",
+                61
+            ],
+            [
+                "Thieving",
+                64
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Elemental Workshop IV",
+        "quest_requirements": [
+            "Elemental Workshop I",
+            "Elemental Workshop II",
+            "Elemental Workshop III"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                41
+            ],
+            [
+                "Runecraft",
+                39
+            ],
+            [
+                "Thieving",
+                39
+            ],
+            [
+                "Defence",
+                40
+            ],
+            [
+                "Smithing",
+                42
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "A Clockwork Syringe",
+        "quest_requirements": [
+            "Cook's Assistant",
+            "Pirate's Treasure",
+            "The Restless Ghost",
+            "Priest in Peril",
+            "Rum Deal",
+            "Big Chompy Bird Hunting",
+            "Zogre Flesh Eaters",
+            "Jungle Potion",
+            "Cabin Fever",
+            "Creature of Fenkenstrain",
+            "The Great Brain Robbery",
+            "Rocking Out"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                61
+            ],
+            [
+                "Construction",
+                62
+            ],
+            [
+                "Smithing",
+                74
+            ],
+            [
+                "Thieving",
+                74
+            ],
+            [
+                "Defence",
+                76
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Family Crest",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                40
+            ],
+            [
+                "Smithing",
+                40
+            ],
+            [
+                "Mining",
+                40
+            ],
+            [
+                "Magic",
+                59
+            ],
+            [
+                "Cooking",
+                45
+            ],
+            [
+                "Fishing",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Deadliest Catch",
+        "quest_requirements": [
+            "Tower of Life"
+        ],
+        "skill_requirements": [
+            [
+                "Herblore",
+                3
+            ],
+            [
+                "Hunter",
+                67
+            ],
+            [
+                "Thieving",
+                70
+            ],
+            [
+                "Fishing",
+                70
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Salt in the Wound",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Recruitment Drive",
+            "Priest in Peril",
+            "Sea Slug",
+            "The Slug Menace",
+            "Wanted!",
+            "The Lost Tribe",
+            "Kennith's Concerns"
+        ],
+        "skill_requirements": [
+            [
+                "Defence",
+                60
+            ],
+            [
+                "Herblore",
+                47
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Branches of Darkmeyer",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Shield of Arrav",
+            "Dragon Slayer",
+            "Lost City",
+            "Priest in Peril",
+            "Heroes' Quest",
+            "In Aid of the Myreque",
+            "The Darkness of Hallowvale",
+            "Plague City",
+            "Legends' Quest",
+            "Underground Pass",
+            "Biohazard",
+            "Nature Spirit",
+            "In Search of the Myreque",
+            "Merlin's Crystal",
+            "Jungle Potion",
+            "Waterfall Quest",
+            "Shilo Village",
+            "Legacy of Seergaze",
+            "Family Crest",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [
+            [
+                "Woodcutting",
+                76
+            ],
+            [
+                "Fletching",
+                70
+            ],
+            [
+                "Magic",
+                70
+            ],
+            [
+                "Slayer",
+                67
+            ],
+            [
+                "Crafting",
+                64
+            ],
+            [
+                "Farming",
+                63
+            ],
+            [
+                "Agility",
+                63
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Chef's Assistant",
+        "quest_requirements": [
+            "Cook's Assistant"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                32
+            ],
+            [
+                "Cooking",
+                38
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "One Piercing Note",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Some Like It Cold",
+        "quest_requirements": [
+            "Sea Slug",
+            "Cold War",
+            "Hunt for Red Raktuber"
+        ],
+        "skill_requirements": [
+            [
+                "Fishing",
+                65
+            ],
+            [
+                "Crafting",
+                56
+            ],
+            [
+                "Construction",
+                50
+            ],
+            [
+                "Thieving",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Plague's End",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Priest in Peril",
+            "Sheep Herder",
+            "Big Chompy Bird Hunting",
+            "Plague City",
+            "Underground Pass",
+            "Biohazard",
+            "Regicide",
+            "Making History",
+            "Mourning's End Part I",
+            "Mourning's End Part II",
+            "Roving Elves",
+            "Waterfall Quest",
+            "Catapult Construction",
+            "Within the Light"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                75
+            ],
+            [
+                "Construction",
+                75
+            ],
+            [
+                "Crafting",
+                75
+            ],
+            [
+                "Herblore",
+                75
+            ],
+            [
+                "Mining",
+                75
+            ],
+            [
+                "Prayer",
+                75
+            ],
+            [
+                "Ranged",
+                75
+            ],
+            [
+                "Woodcutting",
+                75
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Firemaker's Curse",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                74
+            ],
+            [
+                "Agility",
+                64
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Let Them Eat Pie",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Druidic Ritual",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Wolf Whistle",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Death Plateau",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "The Elder Kiln",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Magic",
+                75
+            ],
+            [
+                "Agility",
+                60
+            ],
+            [
+                "Mining",
+                40
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Song from the Depths",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Carnillean Rising",
+        "quest_requirements": [
+            "Hazeel Cult",
+            "The Blood Pact"
+        ],
+        "skill_requirements": [
+            [
+                "Thieving",
+                33
+            ],
+            [
+                "Construction",
+                31
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Stolen Hearts",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Diamond in the Rough",
+        "quest_requirements": [
+            "Stolen Hearts"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "What's Mine is Yours",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Smithing",
+                5
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Rune Memories",
+        "quest_requirements": [
+            "Rune Mysteries"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "The Brink of Extinction",
+        "quest_requirements": [
+            "The Elder Kiln"
+        ],
+        "skill_requirements": [
+            [
+                "Defence",
+                80
+            ],
+            [
+                "Smithing",
+                80
+            ],
+            [
+                "Mining",
+                72
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Demon Slayer",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "The World Wakes",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Bringing Home the Bacon",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Farming",
+                14
+            ],
+            [
+                "Construction",
+                14
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Missing, Presumed Death",
+        "quest_requirements": [
+            "The Chosen Commander",
+            "Ritual of the Mahjarrat",
+            "The World Wakes",
+            "The Death of Chivalry"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Birthright of the Dwarves",
+        "quest_requirements": [
+            "Between a Rock...",
+            "My Arm's Big Adventure",
+            "The Feud",
+            "Jungle Potion",
+            "Dwarf Cannon",
+            "Fishing Contest",
+            "Eadgar's Ruse",
+            "Troll Stronghold",
+            "Forgettable Tale of a Drunken Dwarf",
+            "The Giant Dwarf",
+            "The Fremennik Isles",
+            "Watchtower",
+            "Forgiveness of a Chaos Dwarf",
+            "King of the Dwarves",
+            "Druidic Ritual",
+            "Death Plateau"
+        ],
+        "skill_requirements": [
+            [
+                "Mining",
+                80
+            ],
+            [
+                "Smithing",
+                82
+            ],
+            [
+                "Strength",
+                85
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Death of Chivalry",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Fate of the Gods",
+        "quest_requirements": [
+            "The Slug Menace",
+            "Enakhra's Lament",
+            "Fight Arena",
+            "Hazeel Cult",
+            "A Tail of Two Cats",
+            "Rocking Out",
+            "While Guthix Sleeps",
+            "A Fairy Tale III - Battle at Ork's Rift",
+            "The Temple at Senntisten",
+            "Ritual of the Mahjarrat",
+            "The Firemaker's Curse",
+            "The World Wakes",
+            "Missing, Presumed Death"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                73
+            ],
+            [
+                "Slayer",
+                76
+            ],
+            [
+                "Magic",
+                79
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "One of a Kind",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "Murder Mystery",
+            "The Slug Menace",
+            "Holy Grail",
+            "Merlin's Crystal",
+            "One Small Favour",
+            "Gertrude's Cat",
+            "Enakhra's Lament",
+            "Fight Arena",
+            "Hazeel Cult",
+            "Icthlarin's Little Helper",
+            "A Tail of Two Cats",
+            "Shilo Village",
+            "King's Ransom",
+            "Rocking Out",
+            "While Guthix Sleeps",
+            "A Fairy Tale III - Battle at Ork's Rift",
+            "The Temple at Senntisten",
+            "Ritual of the Mahjarrat",
+            "Druidic Ritual",
+            "Diamond in the Rough",
+            "The World Wakes",
+            "Missing, Presumed Death"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                81
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "A Shadow over Ashdale",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "The Mighty Fall",
+        "quest_requirements": [
+            "Goblin Diplomacy",
+            "Death to the Dorgeshuun",
+            "My Arm's Big Adventure",
+            "The Feud",
+            "Jungle Potion",
+            "Fishing Contest",
+            "Eadgar's Ruse",
+            "Troll Stronghold",
+            "The Giant Dwarf",
+            "The Lost Tribe",
+            "What Lies Below",
+            "Another Slice of H.A.M.",
+            "Land of the Goblins",
+            "The Dig Site",
+            "The Chosen Commander",
+            "Druidic Ritual",
+            "Death Plateau",
+            "Missing, Presumed Death"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                69
+            ],
+            [
+                "Defence",
+                72
+            ],
+            [
+                "Attack",
+                79
+            ],
+            [
+                "Strength",
+                79
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Broken Home",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Dishonour among Thieves",
+        "quest_requirements": [
+            "Hazeel Cult",
+            "King's Ransom",
+            "Nomad's Requiem",
+            "Missing, Presumed Death"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                30
+            ],
+            [
+                "Thieving",
+                30
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Dimension of Disaster",
+        "quest_requirements": [
+            "The Knight's Sword",
+            "The Restless Ghost",
+            "Shield of Arrav",
+            "Priest in Peril",
+            "Temple of Ikov",
+            "Shades of Mort'ton",
+            "Gertrude's Cat",
+            "Garden of Tranquillity",
+            "Creature of Fenkenstrain",
+            "Troll Stronghold",
+            "Shadow of the Storm",
+            "Icthlarin's Little Helper",
+            "The Golem",
+            "Troll Romance",
+            "What Lies Below",
+            "Defender of Varrock",
+            "The Tale of the Muspah",
+            "Missing My Mummy",
+            "The Curse of Arrav",
+            "Family Crest",
+            "Death Plateau",
+            "Stolen Hearts",
+            "Diamond in the Rough",
+            "Demon Slayer"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Heart of Stone",
+        "quest_requirements": [
+            "Rune Mysteries",
+            "Hazeel Cult",
+            "Rune Mechanics",
+            "The Blood Pact",
+            "The Elder Kiln",
+            "Carnillean Rising",
+            "Rune Memories",
+            "Missing, Presumed Death",
+            "Fate of the Gods"
+        ],
+        "skill_requirements": [
+            [
+                "Runecraft",
+                25
+            ],
+            [
+                "Magic",
+                35
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Lord of Vampyrium",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Shield of Arrav",
+            "Dragon Slayer",
+            "Lost City",
+            "Priest in Peril",
+            "Heroes' Quest",
+            "In Aid of the Myreque",
+            "The Darkness of Hallowvale",
+            "Plague City",
+            "Legends' Quest",
+            "Underground Pass",
+            "Biohazard",
+            "Nature Spirit",
+            "In Search of the Myreque",
+            "Merlin's Crystal",
+            "Jungle Potion",
+            "Waterfall Quest",
+            "Shilo Village",
+            "Legacy of Seergaze",
+            "Family Crest",
+            "The Branches of Darkmeyer",
+            "Druidic Ritual"
+        ],
+        "skill_requirements": [
+            [
+                "Attack",
+                75
+            ],
+            [
+                "Defence",
+                75
+            ],
+            [
+                "Strength",
+                75
+            ],
+            [
+                "Construction",
+                79
+            ],
+            [
+                "Slayer",
+                78
+            ],
+            [
+                "Hunter",
+                76
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Hero's Welcome",
+        "quest_requirements": [
+            "Lost City",
+            "Lunar Diplomacy",
+            "The Fremennik Trials",
+            "The Slug Menace",
+            "Jungle Potion",
+            "Enakhra's Lament",
+            "Fight Arena",
+            "Hazeel Cult",
+            "A Tail of Two Cats",
+            "Shilo Village",
+            "Tai Bwo Wannai Trio",
+            "King's Ransom",
+            "Rocking Out",
+            "While Guthix Sleeps",
+            "A Fairy Tale III - Battle at Ork's Rift",
+            "The Temple at Senntisten",
+            "Ritual of the Mahjarrat",
+            "The World Wakes",
+            "Missing, Presumed Death",
+            "One of a Kind"
+        ],
+        "skill_requirements": [
+            [
+                "Mining",
+                67
+            ],
+            [
+                "Slayer",
+                62
+            ],
+            [
+                "Smithing",
+                67
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Light Within",
+        "quest_requirements": [
+            "The Knight's Sword",
+            "Rune Mysteries",
+            "Goblin Diplomacy",
+            "The Restless Ghost",
+            "Shield of Arrav",
+            "Recruitment Drive",
+            "Priest in Peril",
+            "Desert Treasure",
+            "Temple of Ikov",
+            "Sheep Herder",
+            "Big Chompy Bird Hunting",
+            "Shades of Mort'ton",
+            "Plague City",
+            "Underground Pass",
+            "Biohazard",
+            "Regicide",
+            "Zogre Flesh Eaters",
+            "Wanted!",
+            "Gertrude's Cat",
+            "Jungle Potion",
+            "Garden of Tranquillity",
+            "Creature of Fenkenstrain",
+            "Devious Minds",
+            "Troll Stronghold",
+            "Icthlarin's Little Helper",
+            "The Golem",
+            "Troll Romance",
+            "The Lost Tribe",
+            "Making History",
+            "Mourning's End Part I",
+            "Mourning's End Part II",
+            "The Tourist Trap",
+            "Roving Elves",
+            "Waterfall Quest",
+            "What Lies Below",
+            "As a First Resort",
+            "Catapult Construction",
+            "The Dig Site",
+            "Meeting History",
+            "Defender of Varrock",
+            "The Tale of the Muspah",
+            "Missing My Mummy",
+            "The Curse of Arrav",
+            "Within the Light",
+            "The Temple at Senntisten",
+            "Family Crest",
+            "Plague's End",
+            "Death Plateau",
+            "Stolen Hearts",
+            "Diamond in the Rough",
+            "What's Mine is Yours",
+            "Demon Slayer",
+            "The World Wakes",
+            "Missing, Presumed Death",
+            "Fate of the Gods"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                80
+            ],
+            [
+                "Crafting",
+                80
+            ],
+            [
+                "Herblore",
+                80
+            ],
+            [
+                "Prayer",
+                80
+            ],
+            [
+                "Slayer",
+                80
+            ],
+            [
+                "Woodcutting",
+                80
+            ],
+            [
+                "Crafting",
+                89
+            ],
+            [
+                "Mining",
+                81
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Call of the Ancestors",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "River of Blood",
+        "quest_requirements": [
+            "The Knight's Sword",
+            "The Restless Ghost",
+            "Shield of Arrav",
+            "Dragon Slayer",
+            "Lost City",
+            "Priest in Peril",
+            "Heroes' Quest",
+            "Temple of Ikov",
+            "In Aid of the Myreque",
+            "The Darkness of Hallowvale",
+            "Plague City",
+            "Legends' Quest",
+            "Underground Pass",
+            "Biohazard",
+            "Nature Spirit",
+            "In Search of the Myreque",
+            "Merlin's Crystal",
+            "Jungle Potion",
+            "Garden of Tranquillity",
+            "Creature of Fenkenstrain",
+            "Waterfall Quest",
+            "Shilo Village",
+            "What Lies Below",
+            "Legacy of Seergaze",
+            "All Fired Up",
+            "Defender of Varrock",
+            "Family Crest",
+            "The Branches of Darkmeyer",
+            "Druidic Ritual",
+            "Demon Slayer",
+            "The Lord of Vampyrium"
+        ],
+        "skill_requirements": [
+            [
+                "Herblore",
+                80
+            ],
+            [
+                "Attack",
+                78
+            ],
+            [
+                "Ranged",
+                78
+            ],
+            [
+                "Magic",
+                78
+            ],
+            [
+                "Firemaking",
+                76
+            ],
+            [
+                "Fletching",
+                75
+            ],
+            [
+                "Mining",
+                72
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Nomad's Elegy",
+        "quest_requirements": [
+            "Heroes' Quest",
+            "The Fremennik Trials",
+            "Legends' Quest",
+            "Throne of Miscellania",
+            "Horror from the Deep",
+            "Tears of Guthix",
+            "Wanted!",
+            "My Arm's Big Adventure",
+            "Hazeel Cult",
+            "The Hand in the Sand",
+            "Dream Mentor",
+            "King's Ransom",
+            "The Path of Glouphrie",
+            "Defender of Varrock",
+            "While Guthix Sleeps",
+            "The Chosen Commander",
+            "Glorious Memories",
+            "Blood Runs Deep",
+            "Nomad's Requiem",
+            "A Void Dance",
+            "The Void Stares Back",
+            "Carnillean Rising",
+            "Rune Memories",
+            "Missing, Presumed Death",
+            "The Mighty Fall",
+            "Dishonour among Thieves",
+            "Heart of Stone"
+        ],
+        "skill_requirements": [
+            [
+                "Mining",
+                75
+            ],
+            [
+                "Construction",
+                75
+            ],
+            [
+                "Woodcutting",
+                75
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Kindred Spirits",
+        "quest_requirements": [
+            "Tower of Life",
+            "Deadliest Catch",
+            "Missing, Presumed Death"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                60
+            ],
+            [
+                "Crafting",
+                60
+            ],
+            [
+                "Herblore",
+                60
+            ],
+            [
+                "Smithing",
+                60
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Sliske's Endgame",
+        "quest_requirements": [
+            "Lunar Diplomacy",
+            "Throne of Miscellania",
+            "A Tail of Two Cats",
+            "Tai Bwo Wannai Trio",
+            "King's Ransom",
+            "Nomad's Requiem",
+            "The Void Stares Back",
+            "The World Wakes",
+            "Missing, Presumed Death",
+            "The Death of Chivalry",
+            "One of a Kind",
+            "The Mighty Fall",
+            "Dishonour among Thieves",
+            "Heart of Stone",
+            "Hero's Welcome",
+            "The Light Within",
+            "Nomad's Elegy",
+            "Kindred Spirits",
+            "Children of Mah"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Children of Mah",
+        "quest_requirements": [
+            "Hazeel Cult",
+            "Meeting History",
+            "The Temple at Senntisten",
+            "Blood Runs Deep",
+            "Ritual of the Mahjarrat",
+            "Plague's End",
+            "The World Wakes",
+            "Missing, Presumed Death",
+            "Fate of the Gods",
+            "Dishonour among Thieves",
+            "The Light Within"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Gower Quest",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Beneath Cursed Tides",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Attack",
+                30
+            ],
+            [
+                "Strength",
+                30
+            ],
+            [
+                "Magic",
+                30
+            ],
+            [
+                "Mining",
+                30
+            ],
+            [
+                "Smithing",
+                30
+            ],
+            [
+                "Woodcutting",
+                30
+            ],
+            [
+                "Firemaking",
+                30
+            ],
+            [
+                "Cooking",
+                30
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Extinction",
+        "quest_requirements": [
+            "A Tail of Two Cats",
+            "King's Ransom",
+            "The World Wakes",
+            "Missing, Presumed Death",
+            "The Death of Chivalry",
+            "One of a Kind",
+            "Hero's Welcome",
+            "Nomad's Elegy",
+            "Kindred Spirits",
+            "Sliske's Endgame",
+            "Children of Mah",
+            "The Needle Skips",
+            "You Are It",
+            "Desperate Times",
+            "Desperate Measures",
+            "City of Senntisten",
+            "Azzanadra's Quest"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Impressing the Locals",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Evil Dave's Big Day Out",
+        "quest_requirements": [
+            "Cook's Assistant",
+            "Gertrude's Cat",
+            "Shadow of the Storm",
+            "The Golem",
+            "Demon Slayer"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                30
+            ],
+            [
+                "Cooking",
+                30
+            ],
+            [
+                "Herblore",
+                30
+            ],
+            [
+                "Magic",
+                30
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Back to the Freezer",
+        "quest_requirements": [
+            "Ernest the Chicken",
+            "Sea Slug",
+            "Cold War",
+            "Hunt for Red Raktuber",
+            "Some Like It Cold"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                37
+            ],
+            [
+                "Runecraft",
+                45
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Crocodile Tears",
+        "quest_requirements": [
+            "Big Chompy Bird Hunting",
+            "Zogre Flesh Eaters",
+            "Gertrude's Cat",
+            "The Feud",
+            "Jungle Potion",
+            "Contact!",
+            "Icthlarin's Little Helper",
+            "The Golem",
+            "Spirits of the Elid",
+            "Dealing with Scabaras",
+            "Missing My Mummy",
+            "Stolen Hearts",
+            "Diamond in the Rough",
+            "The Jack of Spades"
+        ],
+        "skill_requirements": [
+            [
+                "Hunter",
+                73
+            ],
+            [
+                "Fishing",
+                72
+            ],
+            [
+                "Woodcutting",
+                47
+            ],
+            [
+                "Agility",
+                30
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Our Man in the North",
+        "quest_requirements": [
+            "Desert Treasure",
+            "Animal Magnetism",
+            "Shadow of the Storm",
+            "Spirits of the Elid",
+            "Dealing with Scabaras",
+            "Smoking Kills",
+            "Missing My Mummy",
+            "Do No Evil",
+            "Crocodile Tears",
+            "The Jack of Spades"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "'Phite Club",
+        "quest_requirements": [
+            "Desert Treasure",
+            "Animal Magnetism",
+            "Shadow of the Storm",
+            "Spirits of the Elid",
+            "Dealing with Scabaras",
+            "Smoking Kills",
+            "Missing My Mummy",
+            "Do No Evil",
+            "The World Wakes",
+            "Crocodile Tears",
+            "Our Man in the North",
+            "The Jack of Spades"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                85
+            ],
+            [
+                "Defence",
+                85
+            ],
+            [
+                "Prayer",
+                43
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Jack of Spades",
+        "quest_requirements": [
+            "Stolen Hearts",
+            "Diamond in the Rough"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Pieces of Hate",
+        "quest_requirements": [
+            "Cook's Assistant",
+            "Pirate's Treasure",
+            "The Restless Ghost",
+            "Priest in Peril",
+            "Rum Deal",
+            "Big Chompy Bird Hunting",
+            "Zogre Flesh Eaters",
+            "Gertrude's Cat",
+            "Jungle Potion",
+            "Cabin Fever",
+            "Creature of Fenkenstrain",
+            "The Great Brain Robbery",
+            "Rocking Out",
+            "A Clockwork Syringe"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                81
+            ],
+            [
+                "Firemaking",
+                82
+            ],
+            [
+                "Agility",
+                83
+            ],
+            [
+                "Thieving",
+                85
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "The Needle Skips",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "You Are It",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Violet is Blue",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Curse of the Black Stone",
+        "quest_requirements": [
+            "Impressing the Locals"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                12
+            ],
+            [
+                "Woodcutting",
+                34
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Desperate Times",
+        "quest_requirements": [
+            "The Death of Chivalry",
+            "One of a Kind",
+            "Hero's Welcome",
+            "Nomad's Elegy",
+            "Kindred Spirits",
+            "Sliske's Endgame",
+            "Children of Mah",
+            "Impressing the Locals",
+            "The Needle Skips",
+            "You Are It",
+            "Curse of the Black Stone"
+        ],
+        "skill_requirements": [
+            [
+                "Mining",
+                50
+            ],
+            [
+                "Smithing",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Desperate Measures",
+        "quest_requirements": [
+            "The Needle Skips",
+            "You Are It",
+            "Desperate Times"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                50
+            ]
+        ],
+        "rewards": []
+    },
+    {
+        "name": "Once Upon a Slime",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Violet is Blue Too",
+        "quest_requirements": [
+            "Violet is Blue"
+        ],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Once Upon a Time in Gielinor",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "City of Senntisten",
+        "quest_requirements": [
+            "The Knight's Sword",
+            "Rune Mysteries",
+            "Goblin Diplomacy",
+            "The Restless Ghost",
+            "Shield of Arrav",
+            "Recruitment Drive",
+            "Priest in Peril",
+            "Desert Treasure",
+            "Temple of Ikov",
+            "Shades of Mort'ton",
+            "Wanted!",
+            "Gertrude's Cat",
+            "Garden of Tranquillity",
+            "Creature of Fenkenstrain",
+            "Devious Minds",
+            "Troll Stronghold",
+            "Icthlarin's Little Helper",
+            "The Golem",
+            "Troll Romance",
+            "The Lost Tribe",
+            "The Tourist Trap",
+            "Waterfall Quest",
+            "What Lies Below",
+            "The Dig Site",
+            "Defender of Varrock",
+            "The Tale of the Muspah",
+            "Missing My Mummy",
+            "The Curse of Arrav",
+            "The Temple at Senntisten",
+            "Family Crest",
+            "Death Plateau",
+            "Stolen Hearts",
+            "Diamond in the Rough",
+            "What's Mine is Yours",
+            "Demon Slayer",
+            "Azzanadra's Quest"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                75
+            ],
+            [
+                "Magic",
+                74
+            ]
+        ],
+        "rewards": [
+            [
+                "Slayer",
+                50000
+            ],
+            [
+                "Magic",
+                50000
+            ]
+        ]
+    },
+    {
+        "name": "Heartstealer",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": []
+    },
+    {
+        "name": "Azzanadra's Quest",
+        "quest_requirements": [
+            "Priest in Peril",
+            "Desert Treasure",
+            "Temple of Ikov",
+            "Troll Stronghold",
+            "The Tourist Trap",
+            "Waterfall Quest",
+            "The Dig Site",
+            "Death Plateau"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                58
+            ],
+            [
+                "Prayer",
+                58
+            ]
+        ],
+        "rewards": []
+    }
+]

@@ -1,0 +1,1949 @@
+nawar@Primary:quests$ python wiki_quest_parser.py
+>  Romeo & Juliet
+> Requirements
+None <
+
+
+>  Demon Slayer
+> Requirements
+The ability to defeat a level 27 demon aided by three level 20 Dark wizards and two level 7 Dark wizards using the Silverlight in melee. <
+
+
+>  Shield of Arrav
+> Requirements
+A trustworthy friend or partner. Players can join the official chat-channel "OSRS SOA" to look for a partner. <
+
+
+>  The Restless Ghost
+> Requirements
+Capable of killing or running away from a combat level 13 skeleton. <
+
+
+>  Ernest the Chicken
+> Requirements
+The ability to defend from a level 22 Skeleton. <
+
+
+>  Vampyre Slayer
+> Requirements
+Able to defeat a combat level 34 vampyre with a very high health recovery rate. <
+
+
+>  Imp Catcher
+> Requirements
+None <
+
+
+>  Prince Ali Rescue
+> Requirements
+The ability to get past aggressive combat level 26 jail guards. <
+
+
+>  Doric's Quest
+> Requirements
+None <
+
+
+>  Black Knights' Fortress
+> Requirements
+ 12  Quest points
+The ability to evade level 33 Black Knights <
+
+
+>  Witch's Potion
+> Requirements
+None <
+
+
+>  The Knight's Sword
+> Requirements
+ 10 Mining (boostable)
+The ability to run from level 57 ice warriors and level 53 ice giants could help. <
+
+
+>  Goblin Diplomacy
+> Requirements
+None <
+
+
+>  Pirate's Treasure
+> Requirements
+Able to defeat or run away from a Combat level 4 gardener. <
+
+
+>  Dragon Slayer I
+> Requirements
+ 32  Quest points to enter the Champions' Guild
+The ability to defeat a level 83 dragon <
+
+
+>  Rune Mysteries
+> Requirements
+None <
+
+
+>  Misthalin Mystery
+> Requirements
+None <
+
+
+>  The Corsair Curse
+> Requirements
+None <
+
+
+>  X Marks the Spot
+> Requirements
+None <
+
+
+>  Cook's Assistant
+> Requirements
+None <
+
+
+>  Below Ice Mountain
+> Requirements
+ 16 Quest points <
+
+
+>  Sheep Shearer
+> Requirements
+None <
+
+
+>  Druidic Ritual
+> Requirements
+None <
+
+
+>  Lost City
+> Requirements
+ 31 Crafting (boostable)
+ 36 Woodcutting (boostable)
+Ability to kill a level 101 Tree spirit with limited armour and weapons. <
+
+
+>  Witch's House
+> Requirements
+The ability to defeat 4 monsters from level 19 to 53 without a break. <
+
+
+>  Merlin's Crystal
+> Requirements
+Must be able to defeat a level 39 enemy. <
+
+
+>  Heroes' Quest
+> Requirements
+A partner
+ 55 Quest points
+ 53 Cooking (boostable)
+ 53 Fishing (boostable)
+ 25 Herblore (boostable)
+ 50 Mining (boostable)
+Completion of the following quests:
+Shield of Arrav
+Lost City
+Merlin's Crystal
+Dragon Slayer I <
+
+
+>  Scorpion Catcher
+> Requirements
+ 31 Prayer (not boostable)
+Completion of Alfred Grimhand's Barcrawl
+The ability to run past level 172 black demons and level 64 poison spiders <
+
+
+>  Family Crest
+> Requirements
+ 40 Mining (boostable)
+ 40 Smithing (boostable)
+ 59 Magic (boostable)
+ 40 Crafting (boostable)
+The ability to defeat a level 170 demon (can be safespotted) <
+
+
+>  Fishing Contest
+> Requirements
+ 10 Fishing (not boostable) <
+
+
+>  Tribal Totem
+^CTraceback (most recent call last):
+  File "wiki_quest_parser.py", line 117, in <module>
+    WikiQuestParser().parse_url(quest["URL"])
+  File "wiki_quest_parser.py", line 94, in parse_url
+    response = requests.get(url)
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 665, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 996, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 314, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 74, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+
+nawar@Primary:quests$ python wiki_quest_parser.py
+>  Romeo & Juliet
+> Requirements
+None <
+
+
+>  Demon Slayer
+> Requirements
+The ability to defeat a level 27 demon aided by three level 20 Dark wizards and two level 7 Dark wizards using the Silverlight in melee. <
+
+
+>  Shield of Arrav
+> Requirements
+A trustworthy friend or partner. Players can join the official chat-channel "OSRS SOA" to look for a partner. <
+
+
+>  The Restless Ghost
+> Requirements
+Capable of killing or running away from a combat level 13 skeleton. <
+
+
+>  Ernest the Chicken
+> Requirements
+The ability to defend from a level 22 Skeleton. <
+
+
+>  Vampyre Slayer
+> Requirements
+Able to defeat a combat level 34 vampyre with a very high health recovery rate. <
+
+
+>  Imp Catcher
+> Requirements
+None <
+
+
+>  Prince Ali Rescue
+> Requirements
+The ability to get past aggressive combat level 26 jail guards. <
+
+
+>  Doric's Quest
+> Requirements
+None <
+
+
+>  Black Knights' Fortress
+> Requirements
+ 12  Quest points
+The ability to evade level 33 Black Knights <
+
+
+>  Witch's Potion
+> Requirements
+None <
+
+
+>  The Knight's Sword
+> Requirements
+ 10 Mining (boostable)
+The ability to run from level 57 ice warriors and level 53 ice giants could help. <
+
+
+>  Goblin Diplomacy
+> Requirements
+None <
+
+
+>  Pirate's Treasure
+> Requirements
+Able to defeat or run away from a Combat level 4 gardener. <
+
+
+>  Dragon Slayer I
+> Requirements
+ 32  Quest points to enter the Champions' Guild
+The ability to defeat a level 83 dragon <
+
+
+>  Rune Mysteries
+> Requirements
+None <
+
+
+>  Misthalin Mystery
+> Requirements
+None <
+
+
+>  The Corsair Curse
+> Requirements
+None <
+
+
+>  X Marks the Spot
+> Requirements
+None <
+
+
+>  Cook's Assistant
+> Requirements
+None <
+
+
+>  Below Ice Mountain
+> Requirements
+ 16 Quest points <
+
+
+>  Sheep Shearer
+> Requirements
+None <
+
+
+>  Druidic Ritual
+> Requirements
+None <
+
+
+>  Lost City
+> Requirements
+ 31 Crafting (boostable)
+ 36 Woodcutting (boostable)
+Ability to kill a level 101 Tree spirit with limited armour and weapons. <
+
+
+>  Witch's House
+> Requirements
+The ability to defeat 4 monsters from level 19 to 53 without a break. <
+
+
+>  Merlin's Crystal
+> Requirements
+Must be able to defeat a level 39 enemy. <
+
+
+>  Heroes' Quest
+> Requirements
+A partner
+ 55 Quest points
+ 53 Cooking (boostable)
+ 53 Fishing (boostable)
+ 25 Herblore (boostable)
+ 50 Mining (boostable)
+Completion of the following quests:
+Shield of Arrav
+Lost City
+Merlin's Crystal
+Dragon Slayer I <
+
+
+>  Scorpion Catcher
+> Requirements
+ 31 Prayer (not boostable)
+Completion of Alfred Grimhand's Barcrawl
+The ability to run past level 172 black demons and level 64 poison spiders <
+
+
+>  Family Crest
+> Requirements
+ 40 Mining (boostable)
+ 40 Smithing (boostable)
+ 59 Magic (boostable)
+ 40 Crafting (boostable)
+The ability to defeat a level 170 demon (can be safespotted) <
+
+
+>  Fishing Contest
+> Requirements
+ 10 Fishing (not boostable) <
+
+
+>  Tribal Totem
+> Requirements
+ 21 Thieving (boostable) <
+
+
+>  Monk's Friend
+> Requirements
+The ability to run past two level 14 thieves, and one level 26. <
+
+
+>  Temple of Ikov
+> Requirements
+ 42 Thieving (boostable)
+ 40 Ranged (not boostable)
+The ability to defeat a level 84 enemy with Ranged <
+
+
+>  Clock Tower
+> Requirements
+The ability to run past level 53 Ogres <
+
+
+>  Holy Grail
+> Requirements
+Completion of the following quests:
+Merlin's Crystal
+ 20 Attack (not boostable)
+Must be able to defeat a level 120 Black Knight Titan (can be safespotted) <
+
+
+>  Tree Gnome Village
+> Requirements
+The ability to defeat a level 112 Khazard warlord <
+
+
+>  Fight Arena
+> Requirements
+The ability to defeat level 44, 63 and 137 enemies (all can be safespotted) <
+
+
+>  Hazeel Cult
+> Requirements
+Able to defeat a level 13 cultist (this applies only if you're taking Ceril's side) <
+
+
+>  Sheep Herder
+> Requirements
+None <
+
+
+>  Plague City
+> Requirements
+None <
+
+
+>  Sea Slug
+> Requirements
+ 30 Firemaking (boostable) <
+
+
+>  Waterfall Quest
+> Requirements
+The ability to withstand and evade attacks from level 86 Fire Giants and level 84 Moss Guardian without any equipment. <
+
+
+>  Jungle Potion
+> Requirements
+ 3 Herblore (boostable)
+The ability to defend against level 53 Jogres and level 46 Harpie Bug Swarms.
+Completion of Druidic Ritual <
+
+
+>  The Grand Tree
+> Requirements
+ 25 Agility (boostable)
+The ability to defeat a level 172 Black demon (safespottable for Ranged and Magic or melee using a halberd). <
+
+
+>  Underground Pass
+> Requirements
+ 25 Ranged (not boostable)
+Completion of the following quests:
+Biohazard
+Plague City <
+
+
+>  Observatory Quest
+> Requirements
+None <
+
+
+>  The Tourist Trap
+> Requirements
+ 10 Fletching (boostable)
+ 20 Smithing (boostable)
+The ability to defeat a level 47 enemy <
+
+
+>  Watchtower
+> Requirements
+ 14 Magic (boostable)
+ 15 Thieving (boostable)
+ 25 Agility (boostable)
+ 14 Herblore (boostable)
+ 40 Mining (boostable)
+The ability to defeat a level 68 Ogre and run past level 111 Blue dragons <
+
+
+>  Dwarf Cannon
+> Requirements
+None <
+
+
+>  Murder Mystery
+> Requirements
+None <
+
+
+>  The Dig Site
+> Requirements
+ 10 Agility (boostable)
+ 10 Herblore (boostable)
+ 25 Thieving (not boostable) <
+
+
+>  Gertrude's Cat
+> Requirements
+None <
+
+
+>  Legends' Quest
+> Requirements
+Note: Only the quest requirements must be met to start this quest. If you do not have the skill requirements, you may be unable to continue at certain points until you meet them.
+
+ 107 Quest points
+ 50 Agility (boostable)
+ 50 Crafting (boostable)
+ 45 Herblore (boostable)
+ 56 Magic (boostable)
+ 52 Mining (boostable)
+ 42 Prayer (boostable)
+ 50 Smithing (boostable)
+ 50 Strength (boostable)
+ 50 Thieving (boostable)
+ 50 Woodcutting (boostable)
+Completion of the following quests:
+Family Crest
+Heroes' Quest
+Shield of Arrav
+Lost City
+Merlin's Crystal
+Dragon Slayer I
+Shilo Village
+Jungle Potion
+Underground Pass
+Biohazard
+Plague City
+Waterfall Quest
+The ability to defeat a level 187 demon <
+
+
+>  Death Plateau
+> Requirements
+None <
+
+
+>  Eadgar's Ruse
+> Requirements
+Completion of the following quests:
+Druidic Ritual
+Troll Stronghold
+Death Plateau
+ 31 Herblore (boostable) <
+
+
+>  Big Chompy Bird Hunting
+> Requirements
+ 5 Fletching (boostable)
+ 30 Cooking (boostable)
+ 30 Ranged (not boostable)
+The ability to defend against level 64 wolves and level 53 ogres <
+
+
+>  Elemental Workshop I
+> Requirements
+ 20 Mining (boostable)[t 1]
+ 20 Smithing (boostable)
+ 20 Crafting (boostable) <
+
+
+>  Nature Spirit
+> Requirements
+Completion of Priest in Peril
+Partial completion of The Restless Ghost (must have obtained ghostspeak amulet) <
+
+
+>  Priest in Peril
+> Requirements
+None <
+
+
+>  Regicide
+> Requirements
+Completion of the following quests:
+Underground Pass
+Biohazard
+Plague City
+ 10 Crafting (not boostable)
+ 56 Agility (boostable)
+The ability to defeat a level 110 Tyras guard (can be safespotted) <
+
+
+>  Tai Bwo Wannai Trio
+> Requirements
+ 15 Agility (boostable)
+ 30 Cooking (not boostable)
+ 5 Fishing (boostable) (65 if you wish to catch the Raw karambwan yourself)
+Completion of  Jungle Potion <
+
+
+>  Troll Stronghold
+> Requirements
+Completion of  Death Plateau
+ 15 Agility (boostable) (47 is recommended)
+The ability to defeat a level 113 Troll General (can be safespotted) <
+
+
+>  Shades of Mort'ton
+> Requirements
+Completion of  Priest in Peril
+ 20 Crafting (boostable)
+ 15 Herblore (boostable)
+ 5 Firemaking (boostable)
+Must be able to defeat 5 level-40 Loar Shades.
+Must be able to survive an onslaught when rebuilding the Temple, and being surrounded by many players makes this much easier. <
+
+
+>  The Fremennik Trials
+> Requirements
+If crafting the lyre:
+ 25 Fletching (boostable)
+ 40 Woodcutting (boostable)
+ 40 Crafting (boostable)
+OR
+Players can kill Lanzig, Borrokar, Lensa or Freidir to obtain the lyre (1/17 chance)
+Ability to defeat a level-69 Draugen
+Ability to defeat a fairly strong warrior without armour, weapons, or spells <
+
+
+>  Horror from the Deep
+> Requirements
+ 35 Agility (boostable)
+Completion of  Alfred Grimhand's Barcrawl <
+
+
+>  Throne of Miscellania
+> Requirements
+Completion of the following quests:
+Heroes' Quest
+Shield of Arrav
+Lost City
+Merlin's Crystal
+Dragon Slayer I
+The Fremennik Trials <
+
+
+>  Monkey Madness I
+> Requirements
+Completion of the following quests:
+The Grand Tree
+Tree Gnome Village
+The ability to defeat a level 195 Jungle Demon <
+
+
+>  Haunted Mine
+> Requirements
+Completion of  Priest in Peril
+ 35 Crafting (boostable)
+The ability to defeat a level 95 enemy <
+
+
+>  Troll Romance
+> Requirements
+ 28 Agility (boostable)
+Completion of the following quests:
+Troll Stronghold
+Death Plateau
+The ability to defeat a level 113 troll <
+
+
+>  In Search of the Myreque
+> Requirements
+Completion of the following quests:
+Nature Spirit
+Priest in Peril
+The Restless Ghost
+ 25 Agility (boostable)
+The ability to defeat a level 97 foe (safespottable) <
+
+
+>  Creature of Fenkenstrain
+> Requirements
+Completion of Priest in Peril
+Partial completion of The Restless Ghost (must have obtained ghostspeak amulet)
+ 20 Crafting (boostable)
+ 25 Thieving (boostable)
+Able to defeat a level 51 monster and run past level 72 monsters <
+
+
+>  Roving Elves
+> Requirements
+Completion of the following quests:
+Regicide
+Underground Pass
+Biohazard
+Plague City
+Waterfall Quest
+The ability to defeat a level 84 enemy unarmed, with heavy restrictions
+ 56 Agility (boostable), unless travelling with a charter ship to the elven woods <
+
+
+>  Ghosts Ahoy
+> Requirements
+Completed Priest in Peril
+Partial completion of The Restless Ghost (must have obtained ghostspeak amulet)
+ 25 Agility (boostable)
+ 20 Cooking (boostable) <
+
+
+>  One Small Favour
+> Requirements
+Completion of the following quests:
+Rune Mysteries
+Shilo Village
+Jungle Potion
+Druidic Ritual
+ 36 Agility (boostable)
+ 25 Crafting (boostable)
+ 18 Herblore (boostable)
+ 30 Smithing (boostable) <
+
+
+>  Mountain Daughter
+> Requirements
+ 20 Agility (boostable)
+The ability to defeat a level 70 monster (can be safespotted) <
+
+
+>  Between a Rock...
+> Requirements
+Completion of the following quests:
+Dwarf Cannon
+Fishing Contest
+ 30 Defence (boostable) (not needed for starting the quest)
+ 40 Mining (boostable)
+ 50 Smithing (boostable)
+The ability to defeat a level 75-125 enemy (depends on how much gold you mine) <
+
+
+>  The Feud
+> Requirements
+ 30 Thieving (not boostable)
+The ability to kill a level 70 bandit and a level 75 Menaphite (both can be safespotted). <
+
+
+>  The Golem
+> Requirements
+ 20 Crafting (boostable)
+ 25 Thieving (boostable) <
+
+
+>  Desert Treasure
+> Requirements
+Completion of the following quests:
+The Dig Site
+Temple of Ikov
+The Tourist Trap
+Troll Stronghold
+Death Plateau
+Priest in Peril
+Waterfall Quest
+ 53 Thieving (not boostable)
+ 50 Magic (not boostable)
+ 50 Firemaking (boostable)
+ 10 Slayer (not boostable) or the gas mask from Plague City <
+
+
+>  Icthlarin's Little Helper
+> Requirements
+Completion of  Gertrude's Cat
+The ability to defeat a level 91 monster. <
+
+
+>  Tears of Guthix
+> Requirements
+ 43 Quest points
+ 49 Firemaking (boostable)
+ 20 Crafting (boostable) (adding the sapphire lens to a Bullseye lantern (unf) is boostable, but Bullseye lantern (empty) and Bullseye lantern is not boostable.)
+ 20 Mining (boostable) <
+
+
+>  The Lost Tribe
+> Requirements
+Completion of the following quests:
+Goblin Diplomacy
+Rune Mysteries
+ 13 Agility (boostable)
+ 13 Thieving (boostable)
+ 17 Mining (boostable) <
+
+
+>  The Giant Dwarf
+> Requirements
+ 12 Crafting (boostable)
+ 16 Firemaking (boostable)
+ 33 Magic (boostable)
+ 14 Thieving (boostable) <
+
+
+>  Recruitment Drive
+> Requirements
+Completion of the following quests:
+Black Knights' Fortress
+Druidic Ritual <
+
+
+>  Mourning's End Part I
+> Requirements
+ 60 Ranged (not boostable)
+ 50 Thieving (not boostable)
+The ability to defeat a level 11 enemy with your combat stats set to 20 each.
+Completion of the following quests:
+Roving Elves
+Regicide
+Underground Pass
+Biohazard
+Plague City
+Waterfall Quest
+Big Chompy Bird Hunting
+Sheep Herder <
+
+
+>  Forgettable Tale...
+> Requirements
+ 22 Cooking (boostable)
+ 17 Farming (boostable)
+Completion of the following quests:
+The Giant Dwarf
+Fishing Contest <
+
+
+>  Garden of Tranquillity
+> Requirements
+ 25 Farming (not boostable)
+Completion of the following quests:
+Creature of Fenkenstrain
+Priest in Peril
+The Restless Ghost <
+
+
+>  A Tail of Two Cats
+> Requirements
+Completion of the following quests:
+Icthlarin's Little Helper
+Gertrude's Cat <
+
+
+>  Wanted!
+> Requirements
+ 32 Quest points
+Completion of the following quests:
+Recruitment Drive
+Black Knights' Fortress
+Druidic Ritual
+The Lost Tribe
+Rune Mysteries
+Goblin Diplomacy
+Priest in Peril
+Partial completion of Enter the Abyss
+The ability to defeat a level 32 Black Knight. <
+
+
+>  Mourning's End Part II
+> Requirements
+Completion of the following quests:
+Mourning's End Part I
+Roving Elves
+Regicide
+Underground Pass
+Biohazard
+Plague City
+Waterfall Quest
+Big Chompy Bird Hunting
+Sheep Herder <
+
+
+>  Rum Deal
+> Requirements
+Completion of the following quests:
+Zogre Flesh Eaters
+Big Chompy Bird Hunting
+Jungle Potion
+Priest in Peril
+ 42 Crafting (boostable)
+ 50 Fishing (boostable)
+ 40 Farming (boostable)
+ 47 Prayer (boostable)
+ 42 Slayer (not boostable)
+The ability to kill a combat level 150 monster (can be safespotted) <
+
+
+>  Shadow of the Storm
+> Requirements
+ 30 Crafting (boostable)
+Completion of the following quests:
+The Golem
+Demon Slayer
+The ability to defeat a level 100 demon <
+
+
+>  Making History
+> Requirements
+Completion of the following quests:
+Priest in Peril
+Partial completion of The Restless Ghost (Until Ghostspeak amulet is obtained) <
+
+
+>  Ratcatchers
+> Requirements
+Completion of the following quests:
+Icthlarin's Little Helper
+Gertrude's Cat
+Access to Keldagrim
+The Giant Dwarf started <
+
+
+>  Spirits of the Elid
+> Requirements
+ 33 Magic (boostable)
+ 37 Ranged (boostable)
+ 37 Mining (boostable)
+ 37 Thieving (boostable)
+Ability to defeat three level 75 golems <
+
+
+>  Devious Minds
+> Requirements
+ 65 Smithing (boostable)
+ 50 Runecraft (not boostable)
+ 50 Fletching (boostable)
+Completion of the following quests:
+Wanted!
+Recruitment Drive
+Black Knights' Fortress
+Druidic Ritual
+The Lost Tribe
+Goblin Diplomacy
+Rune Mysteries
+Priest in Peril
+Troll Stronghold
+Death Plateau
+Doric's Quest
+Enter the Abyss <
+
+
+>  The Hand in the Sand
+> Requirements
+ 17 Thieving (not boostable)
+ 49 Crafting (not boostable) <
+
+
+>  Enakhra's Lament
+> Requirements
+ 50 Crafting (not boostable)
+ 45 Firemaking (boostable)
+ 43 Prayer (not boostable)
+ 39 Magic (boostable) <
+
+
+>  Cabin Fever
+> Requirements
+Completion of the following quests:
+Pirate's Treasure
+Rum Deal
+Zogre Flesh Eaters
+Big Chompy Bird Hunting
+Jungle Potion
+Priest in Peril
+ 42 Agility (not boostable)
+ 45 Crafting (not boostable)
+ 50 Smithing (not boostable)
+ 40 Ranged (not boostable) <
+
+
+>  Fairytale I - Growing Pains
+> Requirements
+Completion of the following quests:
+Lost City
+Nature Spirit
+The Restless Ghost
+Priest in Peril
+The ability to defeat a level 111 Tanglefoot with limited weaponry <
+
+
+>  Recipe for Disaster
+> Requirements
+To start the quest and finish the first chapter:
+
+ 10 Cooking (boostable)
+Completion of Cook's Assistant
+To complete all chapters of the quest:
+
+All prerequisite quest requirements
+ 175 Quest points (9 are earned for the other parts of the quest, and 79 are gained by completing all required quests)
+ 70 Cooking (boostable)
+ 48 Agility (not boostable)
+ 50 Mining (boostable)
+ 53 Fishing (boostable)
+ 53 Thieving (not boostable)
+ 25 Herblore (boostable)
+ 59 Magic (boostable)
+ 40 Smithing (boostable)
+ 50 Firemaking (unknown)
+ 40 Ranged (not boostable)
+ 40 Crafting (unknown)
+ 10 Fletching (unknown)
+ 36 Woodcutting (unknown)
+The ability to defeat high leveled monsters, several of which have to be defeated without using  Prayer
+Completion (or partial completion where stated) of the following quests:
+Fishing Contest
+Goblin Diplomacy
+Big Chompy Bird Hunting
+Murder Mystery
+Nature Spirit
+Priest in Peril
+The Restless Ghost
+Witch's House
+Gertrude's Cat
+Shadow of the Storm
+Demon Slayer
+The Golem
+Started Legends' Quest up until gaining access to the Kharazi Jungle
+Family Crest
+Heroes' Quest
+Shield of Arrav
+Lost City
+Merlin's Crystal
+Dragon Slayer I
+Shilo Village
+Jungle Potion
+Druidic Ritual
+Underground Pass
+Biohazard
+Plague City
+Monkey Madness I
+The Grand Tree
+Tree Gnome Village
+Desert Treasure
+The Dig Site
+The Tourist Trap
+Temple of Ikov
+Waterfall Quest
+Troll Stronghold
+Death Plateau
+Horror from the Deep
+Alfred Grimhand's Barcrawl <
+
+
+>  In Aid of the Myreque
+> Requirements
+Completion of the following quests:
+In Search of the Myreque
+Nature Spirit
+Priest in Peril
+The Restless Ghost
+ 25 Agility (boostable)
+ 25 Crafting (not boostable)
+ 15 Mining (not boostable)
+ 7 Magic (boostable) <
+
+
+>  A Soul's Bane
+> Requirements
+The ability to defeat level 45+ enemies. <
+
+
+>  Rag and Bone Man I
+> Requirements
+None <
+
+
+>  Swan Song
+> Requirements
+ 100 Quest points
+ 66 Magic (boostable)
+ 62 Cooking (boostable)
+ 62 Fishing (boostable)
+ 45 Smithing (boostable)
+ 42 Firemaking (boostable)
+ 40 Crafting (boostable)
+Completion of the following quests:
+One Small Favour
+Rune Mysteries
+Shilo Village
+Jungle Potion
+Druidic Ritual
+Garden of Tranquillity
+Creature of Fenkenstrain
+Priest in Peril
+The Restless Ghost
+The ability to defeat a combat level 170 monster, which is able to use Magic, Melee and can drain Prayer. <
+
+
+>  Royal Trouble
+> Requirements
+ 40 Agility (boostable)
+ 40 Slayer (boostable)
+Completion of the following quests:
+Throne of Miscellania
+Heroes' Quest
+Shield of Arrav
+Lost City
+Merlin's Crystal
+Dragon Slayer I
+The Fremennik Trials <
+
+
+>  Death to the Dorgeshuun
+> Requirements
+Completion of the following quests:
+The Lost Tribe
+Goblin Diplomacy
+Rune Mysteries
+ 23 Agility (boostable)
+ 23 Thieving (boostable)
+The ability to defeat a level 50 enemy with Melee or Magic <
+
+
+>  Fairytale II - Cure a Queen
+> Requirements
+Completion of the following quests:
+Fairytale I - Growing Pains
+Lost City
+Nature Spirit
+The Restless Ghost
+Priest in Peril
+Note: The following skill levels are required to complete the quest. These skills are not required to unlock access to fairy rings, for which you only need to progress the quest up to a certain point. However, building fairy rings in the player-owned house requires full quest completion.
+
+ 40 Thieving (not boostable)
+ 49 Farming (boostable)
+ 57 Herblore (boostable) <
+
+
+>  Lunar Diplomacy
+> Requirements
+Completion of the following quests:
+The Fremennik Trials
+Lost City
+Rune Mysteries
+Shilo Village
+Jungle Potion
+Druidic Ritual
+ 5 Herblore (not boostable)
+ 61 Crafting (not boostable)
+ 40 Defence (not boostable)
+ 49 Firemaking (not boostable)
+ 65 Magic (not boostable)
+ 60 Mining (not boostable)
+ 55 Woodcutting (not boostable)
+Note: Lokar will not talk to you if you do not have all of the required non-boostable stats.
+The ability to kill multiple level 111 monsters.
+Access to the following runic altars:
+Air
+Earth
+Fire
+Water <
+
+
+>  The Eyes of Glouphrie
+> Requirements
+Completed The Grand Tree quest
+ 5 Construction (not boostable)
+ 46 Magic (not boostable) <
+
+
+>  Darkness of Hallowvale
+> Requirements
+Completion of the following quests:
+In Aid of the Myreque
+In Search of the Myreque
+Nature Spirit
+Priest in Peril
+The Restless Ghost
+ 5 Construction (boostable)
+ 20 Mining (not boostable)
+ 22 Thieving (not boostable) Note: The level 22 Thieving requirement to begin the quest is boostable, but unhooking the latch in Meiyerditch requiring 22 Thieving cannot be boosted.
+ 26 Agility (boostable) Note: The level 26 Agility requirement to begin the quest is boostable, but the unboostable obstacles within Meiyerditch only require 25 Agility. Therefore, 25 Agility is the lowest level possible to complete the quest.
+ 32 Crafting (not boostable)
+ 33 Magic (boostable)
+ 40 Strength (not boostable)
+The ability to withstand several melee attacks from a level 169 enemy. <
+
+
+>  The Slug Menace
+> Requirements
+Completion of the following quests:
+Wanted!
+Recruitment Drive
+Black Knights' Fortress
+Druidic Ritual
+The Lost Tribe
+Rune Mysteries
+Goblin Diplomacy
+Enter the Abyss
+Priest in Peril
+Sea Slug
+ 30 Crafting (not boostable)
+ 30 Runecraft (not boostable)
+ 30 Slayer (not boostable)
+ 30 Thieving (not boostable)
+The ability to defeat a level 62 enemy with Melee.
+You must have the Commorb in your inventory to start the quest. <
+
+
+>  Elemental Workshop II
+> Requirements
+ 20 Magic (boostable)
+ 30 Smithing (boostable)
+Completion of Elemental Workshop I <
+
+
+>  My Arm's Big Adventure
+> Requirements
+ 29 Farming (boostable)
+ 10 Woodcutting (not boostable) to cut thatches and repair the fence for Tai Bwo Wannai favour, otherwise you will have to kill monsters spawned by other players
+Completion of the following quests:
+Eadgar's Ruse
+Druidic Ritual
+Troll Stronghold
+Death Plateau
+The Feud
+Jungle Potion
+At least 60% favour in the Tai Bwo Wannai Cleanup minigame before starting this quest - this will be subtracted from the total favour <
+
+
+>  Enlightened Journey
+> Requirements
+ 20 Quest points
+ 20 Firemaking (boostable)
+ 30 Farming (boostable)
+ 36 Crafting (boostable) <
+
+
+>  Eagles' Peak
+> Requirements
+ 27 Hunter (boostable) <
+
+
+>  Animal Magnetism
+> Requirements
+Completion of the following quests:
+The Restless Ghost
+Ernest the Chicken
+Priest in Peril
+ 18 Slayer (not boostable)
+ 19 Crafting (not boostable)
+ 30 Ranged (not boostable)
+ 35 Woodcutting (not boostable) <
+
+
+>  Contact!
+> Requirements
+Completion of the following quests:
+Prince Ali Rescue
+Icthlarin's Little Helper
+Gertrude's Cat <
+
+
+>  Cold War
+> Requirements
+ 10 Hunter (not boostable)
+ 30 Agility (boostable)
+ 30 Crafting (not boostable)note: the level 30 requirement to start the quest, and to make the penguin suit can be boosted, but the drums have an unboostable level 30 requirement. the agility course can be unlocked before this is required
+ 34 Construction (not boostable)
+ 15 Thieving (not boostable)
+Access to a crafting table 3 <
+
+
+>  The Fremennik Isles
+> Requirements
+Completion of The Fremennik Trials
+ 20 Construction (boostable)
+The ability to kill a level 122 Troll King (Damage can be reduced) and, separately, 10 rock throwing ice trolls in a multicombat area. <
+
+
+>  The Great Brain Robbery
+> Requirements
+ 16 Crafting (not boostable) (Cabin Fever requires 45 Crafting.)
+ 30 Construction (not boostable)
+ 50 Prayer (not boostable)
+Must have completed the following quests:
+Creature of Fenkenstrain
+Cabin Fever
+Pirate's Treasure
+Priest in Peril
+Rum Deal
+Zogre Flesh Eaters
+Big Chompy Bird Hunting
+Jungle Potion
+Pirate Pete subquest of Recipe for Disaster
+Access to a player-owned house workshop and crafting table or the Grand Exchange
+Be able to kill a level 190 monster that can disable Prayers (can be safespotted without taking damage). <
+
+
+>  What Lies Below
+> Requirements
+Completion of the following quests:
+Rune Mysteries
+ 35 Runecraft (not boostable)
+ 42 Mining (not boostable) <
+
+
+>  Olaf's Quest
+> Requirements
+Completion of The Fremennik Trials
+ 40 Firemaking (boostable)
+ 50 Woodcutting (boostable)
+The ability to defeat a level 100 monster <
+
+
+>  Another Slice of H.A.M.
+> Requirements
+ 15 Attack (not boostable)
+ 25 Prayer (not boostable)
+Completion of the following quests:
+Death to the Dorgeshuun
+The Lost Tribe
+Goblin Diplomacy
+Rune Mysteries
+The Giant Dwarf
+The Dig Site
+The ability to defeat a level 64 (using any combat style) and two level 30 enemies using either Ranged or Magic. <
+
+
+>  Dream Mentor
+> Requirements
+ 85  Combat
+Lunar Diplomacy
+The Fremennik Trials
+Lost City
+Rune Mysteries
+Shilo Village
+Jungle Potion
+Eadgar's Ruse
+Druidic Ritual
+Troll Stronghold
+Death Plateau
+The ability to defeat 4 powerful monsters without the use of prayer <
+
+
+>  Grim Tales
+> Requirements
+Completion of the following quests:
+Witch's House
+ 45 Farming (boostable)
+ 52 Herblore (boostable)
+ 58 Thieving (boostable)
+ 59 Agility (boostable) (needed twice)
+ 71  Woodcutting (boostable) (68 with Dragon axe special attack or 66 with stews)
+Ability to defeat a level 138 cloud giant—Glod <
+
+
+>  King's Ransom
+> Requirements
+ 45 Magic (not boostable)
+ 65 Defence (not boostable)
+Completion of the following quests:
+Black Knights' Fortress
+Holy Grail
+Merlin's Crystal
+Murder Mystery
+One Small Favour
+Rune Mysteries
+Druidic Ritual
+Shilo Village
+Jungle Potion <
+
+
+>  Shilo Village
+> Requirements
+Completion of  Jungle Potion
+ 20 Crafting (boostable)
+ 32 Agility (boostable)
+Must be able to defend from many Undead ones (level 61-73) and able to defeat three monsters that are about level 90. <
+
+
+>  Biohazard
+> Requirements
+Completion of Plague City <
+
+
+>  Tower of Life
+> Requirements
+ 10 Construction (not boostable) <
+
+
+>  Rag and Bone Man II
+> Requirements
+ 40 Slayer (boostable)
+ 20 Defence (not boostable) to wield a mirror shield to kill a basilisk (though not necessary; see below)
+Completed Rag and Bone Man I
+Completed Skippy and the Mogres
+Completed Horror from the Deep or partial completion of The Fremennik Trials
+Partial completion of Creature of Fenkenstrain
+Partial completion of Zogre Flesh Eaters (recommended but not strictly required)
+Partial completion of Waterfall Quest
+The ability to kill several high-level monsters <
+
+
+>  Land of the Goblins
+> Requirements
+Completion of the following quests:
+Another Slice of H.A.M.
+Death to the Dorgeshuun
+The Lost Tribe
+Goblin Diplomacy
+Rune Mysteries
+The Giant Dwarf
+The Dig Site
+Fishing Contest
+ 38 Agility (not boostable)
+ 40 Fishing (not boostable)
+ 45 Thieving (not boostable)
+ 48 Herblore (not boostable) <
+
+
+>  Zogre Flesh Eaters
+> Requirements
+Completion of the following quests:
+Big Chompy Bird Hunting
+Jungle Potion
+You must be able to defeat a level 111 enemy.
+ 4 Smithing (boostable)
+ 8 Herblore (boostable)
+ 30 Ranged (not boostable) <
+
+
+>  Monkey Madness II
+> Requirements
+Completion of the following quests:
+Enlightened Journey
+Balloon flight route to Gnome Stronghold must be unlocked to start the quest.
+The Eyes of Glouphrie
+Recipe for Disaster (Freeing King Awowogei)
+Monkey Madness I
+The Grand Tree
+Tree Gnome Village
+Troll Stronghold
+Death Plateau
+Watchtower
+ 69 Slayer (not boostable)
+ 70 Crafting (not boostable)
+ 60 Hunter (not boostable)
+ 55 Agility (not boostable)
+ 55 Thieving (not boostable)
+ 60 Firemaking (not boostable) (for Gnome Stronghold Route)
+It is beneficial to have a high Combat and Agility level. <
+
+
+>  Client of Kourend
+> Requirements
+Completion of the following quest:
+X Marks the Spot <
+
+
+>  The Queen of Thieves
+> Requirements
+Completion of the following quests:
+Client of Kourend
+X Marks the Spot
+ 20 Thieving (not boostable)
+20% Port Piscarilius favour
+Note: Use "A Favour Certificate" reward from Client of Kourend on Piscarilius for 20% favour. <
+
+
+>  Bone Voyage
+> Requirements
+100 Kudos
+Completion of the following quest:
+The Dig Site <
+
+
+>  Dragon Slayer II
+> Requirements
+ 200 Quest points
+ 75 Magic (not boostable)
+ 70 Smithing (not boostable)
+ 68 Mining (not boostable)
+ 62 Crafting (not boostable)
+ 60 Agility (not boostable) (higher recommended)
+ 60 Thieving (not boostable)
+ 50 Construction (not boostable)
+ 50 Hitpoints (not boostable)
+Completion of the following quests:
+Legends' Quest
+Family Crest
+Heroes' Quest
+Shield of Arrav
+Lost City
+Merlin's Crystal
+Dragon Slayer I
+Underground Pass
+Biohazard
+Plague City
+Waterfall Quest
+Dream Mentor
+Lunar Diplomacy
+The Fremennik Trials
+Rune Mysteries
+Shilo Village
+Jungle Potion
+Eadgar's Ruse
+Druidic Ritual
+Troll Stronghold
+Death Plateau
+A Tail of Two Cats
+Icthlarin's Little Helper
+Gertrude's Cat
+Animal Magnetism
+Ernest the Chicken
+Priest in Peril
+The Restless Ghost
+Ghosts Ahoy
+Bone Voyage
+The Dig Site
+100 Kudos
+Client of Kourend
+X Marks the Spot
+Started the Firemaking part of Barbarian Training to gain access to the Ancient Cavern <
+
+
+>  The Depths of Despair
+> Requirements
+Completion of the following quests:
+Client of Kourend
+X Marks the Spot
+ 18 Agility (not boostable)
+20% Hosidius favour
+Ability to kill a level 36 Sand Snake <
+
+
+>  Recipe for Disaster/Another Cook's Quest
+> Requirements
+ 10 Cooking (not boostable)
+Completion of Cook's Assistant <
+
+
+>  Recipe for Disaster/Freeing the Goblin generals
+> Requirements
+Completion of the following quests:
+
+Recipe for Disaster/Another Cook's Quest
+Cook's Assistant
+Goblin Diplomacy <
+
+
+>  Recipe for Disaster/Freeing the Mountain Dwarf
+> Requirements
+Completion of the following quests:
+Recipe for Disaster/Another Cook's Quest
+Cook's Assistant
+Fishing Contest
+The ability to defeat a level 13 icefiend if you don't have the ice gloves. <
+
+
+>  Recipe for Disaster/Freeing Evil Dave
+> Requirements
+ 25 Cooking (unknown)
+Completion of the following quests:
+Gertrude's Cat
+Recipe for Disaster/Another Cook's Quest
+Cook's Assistant
+Shadow of the Storm
+Demon Slayer
+The Golem <
+
+
+>  Recipe for Disaster/Freeing Pirate Pete
+> Requirements
+ 31 Cooking (unknown)
+Completion of the following quests:
+Recipe for Disaster/Another Cook's Quest
+Cook's Assistant
+The ability to defeat 5 level 30 monsters. <
+
+
+>  Recipe for Disaster/Freeing the Lumbridge Guide
+> Requirements
+ 40 Cooking (boostable)
+Completion of the following quests:
+Big Chompy Bird Hunting
+Biohazard
+Plague City
+Demon Slayer
+Murder Mystery
+Nature Spirit
+Priest in Peril
+The Restless Ghost
+Recipe for Disaster/Another Cook's Quest
+Cook's Assistant
+Witch's House <
+
+
+>  Recipe for Disaster/Freeing Sir Amik Varze
+> Requirements
+ 107 Quest points
+Access to the Kharazi Jungle
+Started Legends' Quest
+Completion of the following quests:
+Family Crest
+Heroes' Quest
+Shield of Arrav
+Lost City
+Merlin's Crystal
+Dragon Slayer I
+Recipe for Disaster/Another Cook's Quest
+Cook's Assistant
+Shilo Village
+Jungle Potion
+Underground Pass
+Biohazard
+Plague City
+Waterfall Quest
+The ability to defeat a level 227 Black dragon <
+
+
+>  Recipe for Disaster/Freeing King Awowogei
+> Requirements
+ 70 Cooking (boostable)
+ 48 Agility (not boostable)
+Completion of the following quests:
+Monkey Madness I
+The Grand Tree
+Tree Gnome Village
+Recipe for Disaster/Another Cook's Quest
+Cook's Assistant
+The ability to defeat a level 84 Big Snake <
+
+
+>  Recipe for Disaster/Freeing Skrach Uglogwee
+> Requirements
+ 41 Cooking (boostable)
+ 20 Firemaking (boostable)
+Completion of the following quests:
+Big Chompy Bird Hunting
+Recipe for Disaster/Another Cook's Quest
+Cook's Assistant <
+
+
+>  A Taste of Hope
+> Requirements
+Completion of the following quests:
+Darkness of Hallowvale
+In Aid of the Myreque
+In Search of the Myreque
+Nature Spirit
+Priest in Peril
+The Restless Ghost
+ 48 Crafting (not boostable)
+ 45 Agility (not boostable)
+ 40 Attack (not boostable)
+ 40 Herblore (not boostable)
+ 38 Slayer (not boostable) <
+
+
+>  Tale of the Righteous
+> Requirements
+Completion of the following quests:
+Client of Kourend
+X Marks the Spot
+ 16 Strength (not boostable)
+ 10 Mining (not boostable)
+20% Shayzien favour <
+
+
+>  Making Friends with My Arm
+> Requirements
+ 66 Firemaking (not boostable)
+ 72 Mining (boostable)
+ 35 Construction (boostable)
+ 68 Agility (boostable)
+It is beneficial to have a higher Agility level.
+Completion of the following quests:
+My Arm's Big Adventure
+Eadgar's Ruse
+Druidic Ritual
+Troll Stronghold
+Death Plateau
+The Feud
+Jungle Potion
+Swan Song
+One Small Favour
+Rune Mysteries
+Shilo Village
+Garden of Tranquillity
+Creature of Fenkenstrain
+Priest in Peril
+The Restless Ghost
+Cold War
+Romeo & Juliet <
+
+
+>  Recipe for Disaster/Defeating the Culinaromancer
+> Requirements
+ 175 Quest points
+Completion of the following quests:
+Desert Treasure
+The Dig Site
+Temple of Ikov
+The Tourist Trap
+Troll Stronghold
+Death Plateau
+Priest in Peril
+Waterfall Quest
+Horror from the Deep
+Alfred Grimhand's Barcrawl miniquest
+Freeing Evil Dave
+Freeing the Goblin generals
+Freeing the Lumbridge Guide
+Freeing the Mountain Dwarf
+Freeing Pirate Pete
+Freeing Sir Amik Varze
+Freeing Skrach Uglogwee
+Freeing King Awowogei
+The ability to defeat all enemies without Prayer <
+
+
+>  Song of the Elves
+> Requirements
+Completion of the following quests:
+Mourning's End Part II
+Mourning's End Part I
+Big Chompy Bird Hunting
+Sheep Herder
+Roving Elves
+Waterfall Quest
+Regicide
+Underground Pass
+Biohazard
+Plague City
+Making History
+Priest in Peril
+The Restless Ghost
+ 70 Agility (not boostable)
+ 70 Construction (not boostable)
+ 70 Farming (not boostable)
+ 70 Herblore (not boostable)
+ 70 Hunter (not boostable)
+ 70 Mining (not boostable)
+ 70 Smithing (not boostable)
+ 70 Woodcutting (not boostable) <
+
+
+>  The Ascent of Arceuus
+> Requirements
+Completion of the following quests:
+Client of Kourend
+X Marks the Spot
+ 12 Hunter (not boostable)
+20% Arceuus favour <
+
+
+>  The Forsaken Tower
+> Requirements
+Completion of the following quests:
+Client of Kourend
+X Marks the Spot
+20% Lovakengj favour <
+
+
+>  The Fremennik Exiles
+> Requirements
+No boosts allowed:
+
+ 65 Crafting (not boostable)
+ 60 Slayer (not boostable)
+ 60 Smithing (not boostable)
+ 60 Fishing (not boostable)
+ 55 Runecraft (not boostable)
+Completion of the following quests:
+The Fremennik Isles
+The Fremennik Trials
+Lunar Diplomacy
+Lost City
+Rune Mysteries
+Shilo Village
+Jungle Potion
+Druidic Ritual
+Mountain Daughter
+Heroes' Quest
+Dragon Slayer I
+Lost City
+Merlin's Crystal
+Shield of Arrav <
+
+
+>  Sins of the Father
+> Requirements
+Completion of the following quests:
+Vampyre Slayer
+A Taste of Hope
+Darkness of Hallowvale
+In Aid of the Myreque
+In Search of the Myreque
+Nature Spirit
+Priest in Peril
+The Restless Ghost
+ 62 Woodcutting (not boostable)
+ 60 Fletching (not boostable)
+ 56 Crafting (not boostable)
+ 52 Agility (not boostable)
+ 50 Attack (not boostable)
+ 50 Slayer (not boostable)
+ 49 Magic (not boostable) <
+
+
+>  A Kingdom Divided
+> Requirements
+Completion of the Architectural Alliance miniquest
+Completion of the following quests:
+The Depths of Despair
+The Queen of Thieves
+The Ascent of Arceuus
+The Forsaken Tower
+Tale of the Righteous
+The above quests all require the following quests to be completed:
+Client of Kourend
+X Marks the Spot
+ 54 Agility (not boostable)
+ 52 Thieving (not boostable)
+ 52 Woodcutting (not boostable)
+ 50 Herblore (not boostable)
+ 42 Mining (not boostable)
+ 38 Crafting (not boostable)
+ 35 Magic (not boostable) <
+
+
+>  A Porcine of Interest
+> Requirements
+None <
+
+
+>  Getting Ahead
+> Requirements
+ 30 Crafting (not boostable)
+ 26 Construction (not boostable) <
+
+
+>  A Night at the Theatre
+> Requirements
+ 90+  Combat highly recommended
+Completion of the following quests:
+A Taste of Hope
+Darkness of Hallowvale
+In Aid of the Myreque
+In Search of the Myreque
+Nature Spirit
+Priest in Peril
+The Restless Ghost <
+
+
+>  Temple of the Eye
+> Requirements
+Completion of the following quests:
+Enter the Abyss
+Rune Mysteries
+ 10 Runecraft (not boostable) <
+
+
+>  Alfred Grimhand's Barcrawl
+> Requirements
+None <
+
+
+>  Architectural Alliance
+> Requirements
+Various skills depending on the favour activities done
+
+ 42 Mining for any Lovakengj activity <
+
+
+>  Bear Your Soul
+> Requirements
+None <
+
+
+>  Curse of the Empty Lord
+> Requirements
+Started Desert Treasure and The Restless Ghost
+Requires  53 Thieving (not boostable) to obtain the Ring of visibility
+Some players will need  31 Prayer (not boostable) <
+
+
+>  Daddy's Home
+> Requirements
+None <
+
+
+>  The Enchanted Key
+> Requirements
+Finished Making History <
+
+
+>  Enter the Abyss
+> Requirements
+Completion of Rune Mysteries <
+
+
+>  Family Pest
+> Requirements
+Completion of Family Crest <
+
+
+>  The Frozen Door
+> Requirements
+Completion of Desert Treasure
+ 70 Agility (not boostable)
+ 70 Hitpoints (not boostable)
+ 70 Ranged (not boostable)
+ 70 Strength (not boostable) <
+
+
+>  The General's Shadow
+> Requirements
+Curse of the Empty Lord, for full ghostly robes
+Started Desert Treasure, for the ring of visibility
+Fight Arena <
+
+
+>  Hopespear's Will
+> Requirements
+Started The Restless Ghost
+Completion of Desert Treasure
+Completion of Fairytale II - Cure a Queen
+Completion of Land of the Goblins
+ 50 Prayer (not boostable) <
+
+
+>  In Search of Knowledge
+> Requirements
+None - but a high combat level is recommended. <
+
+
+>  Lair of Tarn Razorlor
+> Requirements
+ 40 Slayer (not boostable)
+The Haunted Mine quest is required to access Tarn's Lair. <
+
+
+>  Mage Arena I
+> Requirements
+ 60 Magic (not boostable)
+Something to cut webs <
+
+
+>  Mage Arena II
+> Requirements
+Completion of Mage Arena I
+ 75 Magic (not boostable)
+Cast Claws of Guthix, Flames of Zamorak, and Saradomin Strike each 100 times inside the Mage Arena. <
+
+
+>  Skippy and the Mogres
+> Requirements
+ 20 Cooking (boostable) <
