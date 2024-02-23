@@ -4,6 +4,7 @@ The purpose of this project is to study the game mechanics of [Old School Runesc
 
 If you are looking for more content please consider these:
 ##### a) You can check out the [Runescape Universe Interactive Visualization](https://osrsmath.palfore.com/) of all the quests.
+1. See Acknowledgements below for the [community progress on this](#quest_tree).
 
 ##### b) You can also check out these reddit posts:
 1. [A Physicist's Guide to Re-balancing Combat - Damage Distributions (3.4k upvotes)](https://www.reddit.com/r/2007scape/comments/mwvjzc/a_physicists_guide_to_rebalancing_combat_damage/)
@@ -12,13 +13,13 @@ If you are looking for more content please consider these:
 4. [Mathematically Optimal Order to Train Melee Combat (~350 upvotes)](https://www.reddit.com/r/2007scape/comments/ffctp0/mathematically_optimal_order_to_train_melee_combat/)
 5. [The Mathematics of OSRS Combat (~50 upvotes)](https://www.reddit.com/r/2007scape/comments/faz5et/the_mathematics_of_osrs_combat/)
 
-##### c) You can join the [Discord](https://discord.gg/4SXcKQh) to discuss anything! 
+##### c) You can watch the [Video Series](https://www.youtube.com/watch?v=7N9UJX70Z5I&list=PLm3INE_scU5s8NQWmw0fxKtA_6SVxDOc7) if you would prefer watching a video.
 
-##### d) You can watch the [Video Series](https://www.youtube.com/watch?v=7N9UJX70Z5I&list=PLm3INE_scU5s8NQWmw0fxKtA_6SVxDOc7) if you would prefer watching a video.
+##### d) You can join the [Discord](https://discord.gg/4SXcKQh) to discuss anything! 
 
-##### e) You can read the [Latex Article](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/main.pdf) detailing the mathematical solution. 
+##### e) You can read the [Mathematical Solutions (pdf/Latex)](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/main.pdf) if you want more detail. 
 
-##### f) You can see more on the osrsmath page on [My Website](palfore.com).
+##### f) You can see more on the OSRSmath page on [My Website](https://palfore.com/).
 
 There are three components to this project:
 
@@ -93,9 +94,21 @@ This open-source project is licensed under the MIT License - see the [LICENSE](L
 * [dijkstar](https://pypi.org/project/Dijkstar/) - Implements Dijkstra's Algorithm in Python
 
 ### Knowledge
+
+#### Combat
 * [OSRSBox melee dps](https://www.osrsbox.com/blog/2019/01/22/calculating-melee-dps-in-osrs/)
 * [DPS Calculator by Bitterkoekje](https://docs.google.com/spreadsheets/d/1wzy1VxNWEAAc0FQyDAdpiFggAfn5U6RGPp2CisAHZW8/)
 * [Forum Post by Bitterkoekje](https://web.archive.org/web/20190905124128/http://webcache.googleusercontent.com/search?q=cache:http://services.runescape.com/m=forum/forums.ws?317,318,712,65587452)
 * [Overkill by Nukelawe](https://www.reddit.com/r/2007scape/comments/4d6l7j/effects_of_overkill_on_dps/)
 * [Accuracy & Xp Rate Discussion by MachOSRS](https://www.reddit.com/r/2007scape/comments/40bvk6/accuracy_and_exphr_combat_formula/)
 * [Accuracy Discussion](https://www.reddit.com/r/2007scape/comments/5lrty0/math_inside_corrected_accuracy_formula/)
+
+#### Quest Tree
+* [(2015) I made a graph of how all ...](https://www.reddit.com/r/2007scape/comments/3aj2vj/i_made_a_graph_of_how_all_of_the_quests_in/)
+* [(2017) My Map of all Runescape's Quests](https://www.reddit.com/r/runescape/comments/5ekds7/my_map_of_all_runescapes_quests/)
+* [(2019) Quest progression tree](https://www.reddit.com/r/runescape/comments/akpq6k/quest_progression_tree/)
+* [(2020) Interactive network of all OSRS quests](https://i.imgur.com/EpvGKZ4.png)
+* [(2021) I made a "Quest Tree" for OSRS](https://www.reddit.com/r/2007scape/comments/loa4uw/i_made_a_quest_tree_for_osrs/)
+* [(2024) New Interactive Quest Visualizer OSRS](https://www.reddit.com/r/2007scape/comments/1ay2opj/new_interactive_quest_visualizer_osrs_the/)
+
+  
