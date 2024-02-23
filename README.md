@@ -1,4 +1,4 @@
-# The Mathematics and Optimization of OSRS
+# The Mathematical Optimization of OSRS
 
 The purpose of this project is to study the game mechanics of [Old School Runescape](https://oldschool.runescape.com/) to optimize player decisions and analyze game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. The central focus is the combat system since it is particularly interesting. This project is currently in progress, so things are likely to be wip or quick work.
 
