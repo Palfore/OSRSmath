@@ -3,16 +3,16 @@
 The purpose of this project is to study the game mechanics of [Old School Runescape](https://oldschool.runescape.com/) to optimize player decisions and analyze game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. The central focus is the combat system since it is particularly interesting. This project is currently in progress, so things are likely to be wip or quick work.
 
 If you are looking for more content please consider these:
-##### a) You can join the [Discord](https://discord.gg/4SXcKQh) to discuss anything! 
+##### a) You can check out the [Runescape Universe Interactive Visualization](https://osrsmath.palfore.com/) of all the quests.
 
-##### b) You can check out the [Runescape Universe Interactive Visualization](https://osrsmath.palfore.com/) of all the quests.
-
-##### c) You can also check out these reddit posts:
+##### b) You can also check out these reddit posts:
 1. [A Physicist's Guide to Re-balancing Combat - Damage Distributions (3.4k upvotes)](https://www.reddit.com/r/2007scape/comments/mwvjzc/a_physicists_guide_to_rebalancing_combat_damage/)
 2. [I made a "Quest Tree" for OSRS (1.1k upvotes)](https://www.reddit.com/r/2007scape/comments/kbu6a8/mathematical_model_of_wintertodt_time_to_99/)
 3. [Mathematical Model of Wintertodt & Time to 99 (~450 upvotes)](https://www.reddit.com/r/2007scape/comments/kbu6a8/mathematical_model_of_wintertodt_time_to_99/)
 4. [Mathematically Optimal Order to Train Melee Combat (~350 upvotes)](https://www.reddit.com/r/2007scape/comments/ffctp0/mathematically_optimal_order_to_train_melee_combat/)
 5. [The Mathematics of OSRS Combat (~50 upvotes)](https://www.reddit.com/r/2007scape/comments/faz5et/the_mathematics_of_osrs_combat/)
+
+##### c) You can join the [Discord](https://discord.gg/4SXcKQh) to discuss anything! 
 
 ##### d) You can watch the [Video Series](https://www.youtube.com/watch?v=7N9UJX70Z5I&list=PLm3INE_scU5s8NQWmw0fxKtA_6SVxDOc7) if you would prefer watching a video.
 
