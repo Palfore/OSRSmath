@@ -4,7 +4,7 @@ The purpose of this project is to study the game mechanics of [Old School Runesc
 
 If you are looking for more content please consider these:
 ##### a) You can check out the [Runescape Universe Interactive Visualization](https://osrsmath.palfore.com/) of all the quests.
-1. See Acknowledgements below for the [community progress on this](#quest_tree).
+1. See Acknowledgements below for the [community progress on this](https://github.com/Palfore/OSRSmath?tab=readme-ov-file#quest-tree).
 
 ##### b) You can also check out these reddit posts:
 1. [A Physicist's Guide to Re-balancing Combat - Damage Distributions (3.4k upvotes)](https://www.reddit.com/r/2007scape/comments/mwvjzc/a_physicists_guide_to_rebalancing_combat_damage/)
