@@ -1,8 +1,20 @@
 # The Mathematical Optimization of OSRS
 
-The purpose of this project is to study the game mechanics of [Old School Runescape](https://oldschool.runescape.com/) to optimize player decisions and analyze game play. This game is played over long periods of time (months or years) and so players are often seeking the most optimal route to their desired accomplishments. The central focus is the combat system since it is particularly interesting. This project is currently in progress, so things are likely to be wip or quick work.
+### Project Overview
+Discover the secrets hidden deep within the intricate complexity of the renowned video game [Old School Runescape (OSRS)](https://oldschool.runescape.com/). This project is dedicated to exploring the Massively Multiplayer Online (MMO) Role-Playing Game (RPG) with a totally different perspective. Join us on a tough but rewarding journey as we dive deep into the Mathematics of OldSchool Runescape. Whether it is modeling the game mechanics, optimizing player decisions, or creating powerful visuals, there is something interesting for everyone. 
 
-If you are looking for more content please consider these:
+---
+
+Video games serve as large bodies of complex problems that are heuristically solved by human players. Since this is a game that is played over months, years, and now literally decades, players have devised optimal strategies for nearly every piece of content in this iconic old video game. ["The Butterfly Technique"](https://oldschool.runescape.wiki/w/Tombs_of_Amascut/Strategies#Akkha,_Guardian_of_Het), ["Red-X'ing"](https://www.reddit.com/r/2007scape/comments/1ay2opj/new_interactive_quest_visualizer_osrs_the/), and ["Tick Manipulation"](https://oldschool.runescape.wiki/w/Tick_manipulation) are all techniques developed by players manipulating the programming of the game to complete content in a way that the developers didn't directly intend or foresee in their implementations. 
+
+These developments by players effectively match technological advancements, in the sense that they enable players to perform a task either quicker or with less resources. Players often refer to these new strategies as ["new tech"](https://www.reddit.com/r/2007scape/comments/15aw3xp/potential_new_tech_for_whisperer_easy_enragewave/). By studying these problems exactly, whether through simulation or mathematical derivation, this project gives our clueless adventurer a chance to understand their universe. Furthermore, this  project is connected to the broader concept of [Game Theory](https://en.wikipedia.org/wiki/Game_theory).
+
+
+For example, we modeled the player's progression through their combat skills (`Attack` and `Strength`) as a square grid where players start in one corner, say at level (60, 60), and the question is how does the player get to (99, 99) as fast as possible. After [modelling the governing combat equations](https://www.reddit.com/r/2007scape/comments/mwvjzc/a_physicists_guide_to_rebalancing_combat_damage/), [Dijkstra's shortest path  algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm) was used to obtain an exact solution: [the order the player should train their skills](https://www.reddit.com/r/2007scape/comments/ffctp0/mathematically_optimal_order_to_train_melee_combat/). 
+
+### Content Directory
+
+If you are looking for content please consider these:
 ##### a) You can check out the [Runescape Universe Interactive Visualization](https://osrsmath.palfore.com/) of all the quests.
 1. See Acknowledgements below for the [community progress on this](https://github.com/Palfore/OSRSmath?tab=readme-ov-file#quest-tree).
 
@@ -12,6 +24,7 @@ If you are looking for more content please consider these:
 3. [Mathematical Model of Wintertodt & Time to 99 (~450 upvotes)](https://www.reddit.com/r/2007scape/comments/kbu6a8/mathematical_model_of_wintertodt_time_to_99/)
 4. [Mathematically Optimal Order to Train Melee Combat (~350 upvotes)](https://www.reddit.com/r/2007scape/comments/ffctp0/mathematically_optimal_order_to_train_melee_combat/)
 5. [The Mathematics of OSRS Combat (~50 upvotes)](https://www.reddit.com/r/2007scape/comments/faz5et/the_mathematics_of_osrs_combat/)
+6. [New Interactive Quest Visualizer (OSRS)](https://www.reddit.com/r/2007scape/comments/1ay2opj/new_interactive_quest_visualizer_osrs_the/)
 
 ##### c) You can watch the [Video Series](https://www.youtube.com/watch?v=7N9UJX70Z5I&list=PLm3INE_scU5s8NQWmw0fxKtA_6SVxDOc7) if you would prefer watching a video.
 
@@ -20,6 +33,9 @@ If you are looking for more content please consider these:
 ##### e) You can read the [Mathematical Solutions (pdf/Latex)](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/main.pdf) if you want more detail. 
 
 ##### f) You can see more on the OSRSmath page on [My Website](https://palfore.com/).
+
+---
+_Please note that a simplification of the remaining information is pending..._
 
 There are three components to this project:
 
@@ -94,6 +110,7 @@ This open-source project is licensed under the MIT License - see the [LICENSE](L
 * [dijkstar](https://pypi.org/project/Dijkstar/) - Implements Dijkstra's Algorithm in Python
 
 ### Knowledge
+Here is a non-exhaustive link of resources/references used.
 
 #### Combat
 * [OSRSBox melee dps](https://www.osrsbox.com/blog/2019/01/22/calculating-melee-dps-in-osrs/)

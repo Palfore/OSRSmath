@@ -1,0 +1,13 @@
+pandas
+beautifulsoup4
+pyside6
+numpy
+matplotlib
+scipy
+Dijkstar
+requests
+tornado
+multiprocess
+jsoncomment
+lxml
+pyvis

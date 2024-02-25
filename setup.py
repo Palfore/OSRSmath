@@ -68,18 +68,8 @@ setup(
 	],
 	project_urls={
 	},
-	install_requires=[
-		'wheel',
-		# 'pathos',  # multiprocess used instead.
-		'PySide2',
-		'numpy',
-		'matplotlib',
-		'scipy',
-		'Dijkstar',
-		'requests',
-		'tornado',
-		'multiprocess',
-                'jsoncomment',
-	],  # Developers may need PyInstaller, and Pdoc3
-	python_requires='>=3',
+	# install_requires=[
+		# Developers may need PyInstaller, and Pdoc3
+	# ],  
+	python_requires='>=3.6',
 )
