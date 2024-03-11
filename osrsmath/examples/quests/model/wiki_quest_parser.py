@@ -1,3 +1,6 @@
+## Run python wiki_quest_parser to create the .json. Specify --overwrite to force creation.
+# In future for quest regions: https://oldschool.runescape.wiki/w/Trailblazer_League_(2020)/Guide/Quests
+
 from osrsmath.general.skills import get_skills
 from bs4 import BeautifulSoup
 from urllib.parse import quote
@@ -36,7 +39,12 @@ class WikiQuestParser:
 		self.quest_links = WikiQuestListParser().quest_links
 
 	def get_quest_data(self):
-		return [self.parse_link({'name': name, 'url': url}) for name, url in self.quest_links.items()]
+		parsed = []
+		for i, (name, url) in enumerate(self.quest_links.items(), 1):
+			print(f"Parsing Quest #{i} {name}: {url}")
+			result = self.parse_link({'name': name, 'url': url}) 
+			parsed.append(result)
+		return parsed
 
 	def parse_link(self, quest_link):
 		def find_term(term):
@@ -44,6 +52,7 @@ class WikiQuestParser:
 		def get_value():
 			return x.find("td").get_text().strip()
 
+		## This is the small supplementary table.
 		details = {"name": quest_link["name"], "url": quest_link["url"], "quest_requirements": [], "skill_requirements": [], "rewards": []}
 		response = requests.get(details['url'])
 		soup = BeautifulSoup(response.text, 'lxml')
@@ -60,11 +69,30 @@ class WikiQuestParser:
 			if find_term('developer'):  # We just want the raw names.
 				# Remove spaces, periods (used in abbreviations), text on left of : is the developers role which is discarded. Then remove text in [] or ().
 				details['developer'] = [re.sub(R"[\(\[].*?[\)\]]", "", d.replace('.', '').split(':')[-1]).strip() for d in get_value().split(',')]
-				
+					
+		## This is the large main table: "Details".
 		# Find the Requirements in the questdetails table.
 		table = soup.find("table", {"class": "questdetails"}).find('tbody')
 		for x in table.find_all("tr"):
 			contents = self.standardize(str(x.contents))  # HTML
+			if find_term('start'):
+				# The last anchor '<a>' in the Start Point text has lat/lon.
+				try:
+					start_location = x.findAll("a")[-1]
+					lat, lon = start_location["data-lat"], start_location["data-lon"]
+					details['start'] = (lat, lon)
+				except (KeyError, IndexError):
+
+					match details['name'].lower():
+						case 'the frozen door':
+							details['start'] = None  # No start location (messenger)
+						case name if name.startswith('rfd') or name.startswith('recipe for disaster'):
+							details['start'] = None  # Unspecified by wiki
+						case _:
+							print("Failed to parse", details['name'])
+							raise  # We were unable to identify the start for this quest.
+
+
 			if find_term('length'):
 				details['length'] = get_value()
 			if find_term('difficulty'):
@@ -126,16 +154,21 @@ class WikiQuestParser:
 		return details
 
 
-def load_quest_data(rename: dict):  # rename {from1: to1, ...}
+def load_quest_data(rename: dict, force: bool=False):  # rename {from1: to1, ...}
 	file_name = "parser_files/quest_data.json"
-	if os.path.exists(file_name):
+	if force or (not os.path.exists(file_name)):
+		json.dump(WikiQuestParser().get_quest_data(), open(file_name, 'w'), indent=4)
+		return load_quest_data(rename, force)
+	else:
 		text = open(file_name).read()
 		for k, v in rename.items():
 			text = text.replace(k, v)
 		return json.loads(text)
-	else:
-		json.dump(WikiQuestParser().get_quest_data(), open(file_name, 'w'), indent=4)
 
 
 if __name__ == '__main__':
-	load_quest_data(rename={'Recipe for Disaster/': 'RFD/'})
+	import argparse
+	parser = argparse.ArgumentParser(description='Scrape and Parse the Wiki Quest Data.')
+	parser.add_argument('--overwrite', action='store_true', help='Overwrite existing .json.')
+	args = parser.parse_args()
+	load_quest_data(rename={'Recipe for Disaster/': 'RFD/'}, force=args.overwrite)

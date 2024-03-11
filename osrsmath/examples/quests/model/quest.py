@@ -83,7 +83,7 @@ class Quest:
 		So, a quest is represented by three vectors.
 	"""
 
-	def __init__(self, quest_data, name=None, url=None, released=None, members=None, developer=None, combat=None, series=None, length=None, difficulty=None, skill_requirements=None, quest_requirements=None, rewards=None, completed=False):
+	def __init__(self, quest_data, name=None, url=None, released=None, members=None, developer=None, combat=None, series=None, length=None, difficulty=None, skill_requirements=None, quest_requirements=None, rewards=None, completed=False, start=None):
 		self.__dict__.update(locals())
 		self.skill_requirements = {skill: level for skill, level in skill_requirements} if skill_requirements is not None else {}
 		self.quest_requirements = set(quest_requirements) if quest_requirements is not None else set()

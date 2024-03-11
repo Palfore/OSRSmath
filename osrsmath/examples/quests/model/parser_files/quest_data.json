@@ -1,330 +1,13 @@
 [
     {
-        "name": "Romeo & Juliet",
-        "url": "https://oldschool.runescape.wiki/w/Romeo_%26_Juliet",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [],
-        "released": "4 January 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Rob L",
-            "Paul Gower"
-        ],
-        "difficulty": "Novice",
-        "length": "Short",
-        "combat": false
-    },
-    {
-        "name": "Demon Slayer",
-        "url": "https://oldschool.runescape.wiki/w/Demon_Slayer",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [],
-        "released": "4 January 2001",
-        "members": false,
-        "series": "Demon Slayer, #1",
-        "developer": [
-            "Paul Gower"
-        ],
-        "difficulty": "Novice",
-        "length": "Short",
-        "combat": true
-    },
-    {
-        "name": "Shield of Arrav",
-        "url": "https://oldschool.runescape.wiki/w/Shield_of_Arrav",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [],
-        "released": "4 January 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Greg V"
-        ],
-        "difficulty": "Novice",
-        "length": "Short",
-        "combat": true
-    },
-    {
-        "name": "Ernest the Chicken",
-        "url": "https://oldschool.runescape.wiki/w/Ernest_the_Chicken",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [],
-        "released": "21 January 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Paul Gower"
-        ],
-        "difficulty": "Novice",
-        "length": "Very Short",
-        "combat": false
-    },
-    {
-        "name": "Vampyre Slayer",
-        "url": "https://oldschool.runescape.wiki/w/Vampyre_Slayer",
+        "name": "The Restless Ghost",
+        "url": "https://oldschool.runescape.wiki/w/The_Restless_Ghost",
         "quest_requirements": [],
         "skill_requirements": [],
         "rewards": [
             [
-                "Attack",
-                4825
-            ]
-        ],
-        "released": "28 January 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Paul Gower"
-        ],
-        "difficulty": "Intermediate",
-        "length": "Very Short",
-        "combat": true
-    },
-    {
-        "name": "Imp Catcher",
-        "url": "https://oldschool.runescape.wiki/w/Imp_Catcher",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [
-            [
-                "Magic",
-                875
-            ]
-        ],
-        "released": "16 February 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Paul Gower"
-        ],
-        "difficulty": "Novice",
-        "length": "Short",
-        "combat": true
-    },
-    {
-        "name": "Prince Ali Rescue",
-        "url": "https://oldschool.runescape.wiki/w/Prince_Ali_Rescue",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [],
-        "released": "28 February 2001",
-        "members": false,
-        "series": "Kharidian, #1",
-        "developer": [
-            "Rob L",
-            "Paul Gower"
-        ],
-        "difficulty": "Novice",
-        "length": "Short",
-        "combat": true
-    },
-    {
-        "name": "Doric's Quest",
-        "url": "https://oldschool.runescape.wiki/w/Doric%27s_Quest",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [
-            [
-                "Mining",
-                1300
-            ]
-        ],
-        "released": "6 April 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Rob Law"
-        ],
-        "difficulty": "Novice",
-        "length": "Very Short",
-        "combat": false
-    },
-    {
-        "name": "Black Knights' Fortress",
-        "url": "https://oldschool.runescape.wiki/w/Black_Knights%27_Fortress",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [],
-        "released": "6 April 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Paul Gower"
-        ],
-        "difficulty": "Intermediate",
-        "length": "Very Short",
-        "combat": false
-    },
-    {
-        "name": "Witch's Potion",
-        "url": "https://oldschool.runescape.wiki/w/Witch%27s_Potion",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [
-            [
-                "Magic",
-                325
-            ]
-        ],
-        "released": "6 April 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Paul Gower"
-        ],
-        "difficulty": "Novice",
-        "length": "Very Short",
-        "combat": true
-    },
-    {
-        "name": "Goblin Diplomacy",
-        "url": "https://oldschool.runescape.wiki/w/Goblin_Diplomacy",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [
-            [
-                "Crafting",
-                200
-            ]
-        ],
-        "released": "8 May 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Paul Gower"
-        ],
-        "difficulty": "Novice",
-        "length": "Very Short",
-        "combat": false
-    },
-    {
-        "name": "Pirate's Treasure",
-        "url": "https://oldschool.runescape.wiki/w/Pirate%27s_Treasure",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [],
-        "released": "11 June 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Paul Gower"
-        ],
-        "difficulty": "Novice",
-        "length": "Very Short",
-        "combat": true
-    },
-    {
-        "name": "Dragon Slayer I",
-        "url": "https://oldschool.runescape.wiki/w/Dragon_Slayer_I",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [
-            [
-                "Strength",
-                18650
-            ],
-            [
-                "Defence",
-                18650
-            ]
-        ],
-        "released": "23 September 2001",
-        "members": false,
-        "series": "Dragonkin, #1",
-        "developer": [
-            "Paul Gower"
-        ],
-        "difficulty": "Experienced",
-        "length": "Medium",
-        "combat": true
-    },
-    {
-        "name": "Rune Mysteries",
-        "url": "https://oldschool.runescape.wiki/w/Rune_Mysteries",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [],
-        "released": "29 March 2004",
-        "members": false,
-        "series": "Order of Wizards, #1",
-        "developer": [
-            "James B"
-        ],
-        "difficulty": "Novice",
-        "length": "Short",
-        "combat": false
-    },
-    {
-        "name": "Misthalin Mystery",
-        "url": "https://oldschool.runescape.wiki/w/Misthalin_Mystery",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [
-            [
-                "Crafting",
-                600
-            ]
-        ],
-        "released": "26 January 2017",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Mod Jed",
-            "Mod TomH",
-            "Mod West",
-            "Mod Ash"
-        ],
-        "difficulty": "Novice",
-        "length": "Short",
-        "combat": false
-    },
-    {
-        "name": "X Marks the Spot",
-        "url": "https://oldschool.runescape.wiki/w/X_Marks_the_Spot",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [],
-        "released": "7 February 2019",
-        "members": false,
-        "series": "Great Kourend, #1",
-        "developer": [
-            "Mod Ed"
-        ],
-        "difficulty": "Novice",
-        "length": "Very Short",
-        "combat": false
-    },
-    {
-        "name": "Below Ice Mountain",
-        "url": "https://oldschool.runescape.wiki/w/Below_Ice_Mountain",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [],
-        "released": "14 April 2021",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Mod Oasis",
-            "Mod Tide"
-        ],
-        "difficulty": "Novice",
-        "length": "Short",
-        "combat": true
-    },
-    {
-        "name": "Sheep Shearer",
-        "url": "https://oldschool.runescape.wiki/w/Sheep_Shearer",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [
-            [
-                "Crafting",
-                150
+                "Prayer",
+                1125
             ]
         ],
         "released": "4 January 2001",
@@ -333,44 +16,11 @@
         "developer": [
             "Paul Gower"
         ],
-        "difficulty": "Novice",
-        "length": "Very Short",
-        "combat": false
-    },
-    {
-        "name": "Cook's Assistant",
-        "url": "https://oldschool.runescape.wiki/w/Cook%27s_Assistant",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [
-            [
-                "Cooking",
-                300
-            ]
-        ],
-        "released": "4 January 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Paul Gower"
+        "start": [
+            "3210",
+            "3243"
         ],
         "difficulty": "Novice",
-        "length": "Very Short",
-        "combat": false
-    },
-    {
-        "name": "The Corsair Curse",
-        "url": "https://oldschool.runescape.wiki/w/The_Corsair_Curse",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [],
-        "released": "7 December 2017",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Mod Ash"
-        ],
-        "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
     },
@@ -396,19 +46,43 @@
         "developer": [
             "Paul Gower"
         ],
+        "start": [
+            "3342",
+            "2977"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": false
     },
     {
-        "name": "The Restless Ghost",
-        "url": "https://oldschool.runescape.wiki/w/The_Restless_Ghost",
+        "name": "The Corsair Curse",
+        "url": "https://oldschool.runescape.wiki/w/The_Corsair_Curse",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "7 December 2017",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Mod Ash"
+        ],
+        "start": [
+            "3273",
+            "3030"
+        ],
+        "difficulty": "Intermediate",
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Cook's Assistant",
+        "url": "https://oldschool.runescape.wiki/w/Cook%27s_Assistant",
         "quest_requirements": [],
         "skill_requirements": [],
         "rewards": [
             [
-                "Prayer",
-                1125
+                "Cooking",
+                300
             ]
         ],
         "released": "4 January 2001",
@@ -417,9 +91,423 @@
         "developer": [
             "Paul Gower"
         ],
+        "start": [
+            "3214",
+            "3208"
+        ],
+        "difficulty": "Novice",
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Sheep Shearer",
+        "url": "https://oldschool.runescape.wiki/w/Sheep_Shearer",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Crafting",
+                150
+            ]
+        ],
+        "released": "4 January 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Paul Gower"
+        ],
+        "start": [
+            "3273",
+            "3189"
+        ],
+        "difficulty": "Novice",
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Below Ice Mountain",
+        "url": "https://oldschool.runescape.wiki/w/Below_Ice_Mountain",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "14 April 2021",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Mod Oasis",
+            "Mod Tide"
+        ],
+        "start": [
+            "3436",
+            "3002"
+        ],
         "difficulty": "Novice",
         "length": "Short",
         "combat": true
+    },
+    {
+        "name": "X Marks the Spot",
+        "url": "https://oldschool.runescape.wiki/w/X_Marks_the_Spot",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "7 February 2019",
+        "members": false,
+        "series": "Great Kourend, #1",
+        "developer": [
+            "Mod Ed"
+        ],
+        "start": [
+            "3242",
+            "3228"
+        ],
+        "difficulty": "Novice",
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Misthalin Mystery",
+        "url": "https://oldschool.runescape.wiki/w/Misthalin_Mystery",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Crafting",
+                600
+            ]
+        ],
+        "released": "26 January 2017",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Mod Jed",
+            "Mod TomH",
+            "Mod West",
+            "Mod Ash"
+        ],
+        "start": [
+            "3155",
+            "3236"
+        ],
+        "difficulty": "Novice",
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Rune Mysteries",
+        "url": "https://oldschool.runescape.wiki/w/Rune_Mysteries",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "29 March 2004",
+        "members": false,
+        "series": "Order of Wizards, #1",
+        "developer": [
+            "James B"
+        ],
+        "start": [
+            "3222",
+            "3210"
+        ],
+        "difficulty": "Novice",
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Dragon Slayer I",
+        "url": "https://oldschool.runescape.wiki/w/Dragon_Slayer_I",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Strength",
+                18650
+            ],
+            [
+                "Defence",
+                18650
+            ]
+        ],
+        "released": "23 September 2001",
+        "members": false,
+        "series": "Dragonkin, #1",
+        "developer": [
+            "Paul Gower"
+        ],
+        "start": [
+            "3360",
+            "3190"
+        ],
+        "difficulty": "Experienced",
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Pirate's Treasure",
+        "url": "https://oldschool.runescape.wiki/w/Pirate%27s_Treasure",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "11 June 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Paul Gower"
+        ],
+        "start": [
+            "3252",
+            "3052"
+        ],
+        "difficulty": "Novice",
+        "length": "Very Short",
+        "combat": true
+    },
+    {
+        "name": "Goblin Diplomacy",
+        "url": "https://oldschool.runescape.wiki/w/Goblin_Diplomacy",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Crafting",
+                200
+            ]
+        ],
+        "released": "8 May 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Paul Gower"
+        ],
+        "start": [
+            "3512",
+            "2957"
+        ],
+        "difficulty": "Novice",
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Witch's Potion",
+        "url": "https://oldschool.runescape.wiki/w/Witch%27s_Potion",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Magic",
+                325
+            ]
+        ],
+        "released": "6 April 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Paul Gower"
+        ],
+        "start": [
+            "3205",
+            "2967"
+        ],
+        "difficulty": "Novice",
+        "length": "Very Short",
+        "combat": true
+    },
+    {
+        "name": "Black Knights' Fortress",
+        "url": "https://oldschool.runescape.wiki/w/Black_Knights%27_Fortress",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "6 April 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Paul Gower"
+        ],
+        "start": [
+            "3336",
+            "2959"
+        ],
+        "difficulty": "Intermediate",
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Doric's Quest",
+        "url": "https://oldschool.runescape.wiki/w/Doric%27s_Quest",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Mining",
+                1300
+            ]
+        ],
+        "released": "6 April 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Rob Law"
+        ],
+        "start": [
+            "3451",
+            "2952"
+        ],
+        "difficulty": "Novice",
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Prince Ali Rescue",
+        "url": "https://oldschool.runescape.wiki/w/Prince_Ali_Rescue",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "28 February 2001",
+        "members": false,
+        "series": "Kharidian, #1",
+        "developer": [
+            "Rob L",
+            "Paul Gower"
+        ],
+        "start": [
+            "3163",
+            "3301"
+        ],
+        "difficulty": "Novice",
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Imp Catcher",
+        "url": "https://oldschool.runescape.wiki/w/Imp_Catcher",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Magic",
+                875
+            ]
+        ],
+        "released": "16 February 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Paul Gower"
+        ],
+        "start": [
+            "3164",
+            "3103"
+        ],
+        "difficulty": "Novice",
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Vampyre Slayer",
+        "url": "https://oldschool.runescape.wiki/w/Vampyre_Slayer",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Attack",
+                4825
+            ]
+        ],
+        "released": "28 January 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Paul Gower"
+        ],
+        "start": [
+            "3268",
+            "3098"
+        ],
+        "difficulty": "Intermediate",
+        "length": "Very Short",
+        "combat": true
+    },
+    {
+        "name": "Ernest the Chicken",
+        "url": "https://oldschool.runescape.wiki/w/Ernest_the_Chicken",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "21 January 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Paul Gower"
+        ],
+        "start": [
+            "3330",
+            "3110"
+        ],
+        "difficulty": "Novice",
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Shield of Arrav",
+        "url": "https://oldschool.runescape.wiki/w/Shield_of_Arrav",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "4 January 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Greg V"
+        ],
+        "start": [
+            "3495",
+            "3209"
+        ],
+        "difficulty": "Novice",
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Demon Slayer",
+        "url": "https://oldschool.runescape.wiki/w/Demon_Slayer",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "4 January 2001",
+        "members": false,
+        "series": "Demon Slayer, #1",
+        "developer": [
+            "Paul Gower"
+        ],
+        "start": [
+            "3424",
+            "3203"
+        ],
+        "difficulty": "Novice",
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Romeo & Juliet",
+        "url": "https://oldschool.runescape.wiki/w/Romeo_%26_Juliet",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "4 January 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Rob L",
+            "Paul Gower"
+        ],
+        "start": [
+            "3423",
+            "3211"
+        ],
+        "difficulty": "Novice",
+        "length": "Short",
+        "combat": false
     },
     {
         "name": "Druidic Ritual",
@@ -437,6 +525,10 @@
         "series": "None",
         "developer": [
             "Paul Gower"
+        ],
+        "start": [
+            "3484",
+            "2926"
         ],
         "difficulty": "Novice",
         "length": "Very Short",
@@ -463,6 +555,10 @@
         "developer": [
             "Paul Gower"
         ],
+        "start": [
+            "3205",
+            "3150"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -484,6 +580,10 @@
         "developer": [
             "Paul Gower"
         ],
+        "start": [
+            "3456",
+            "2928"
+        ],
         "difficulty": "Intermediate",
         "length": "Very Short",
         "combat": true
@@ -500,6 +600,10 @@
         "developer": [
             "Paul Gower"
         ],
+        "start": [
+            "3513",
+            "2764"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -508,8 +612,8 @@
         "name": "Heroes' Quest",
         "url": "https://oldschool.runescape.wiki/w/Heroes%27_Quest",
         "quest_requirements": [
-            "Shield of Arrav",
             "Dragon Slayer I",
+            "Shield of Arrav",
             "Lost City",
             "Merlin's Crystal"
         ],
@@ -587,6 +691,10 @@
         "developer": [
             "Paul Gower"
         ],
+        "start": [
+            "3511",
+            "2904"
+        ],
         "difficulty": "Experienced",
         "length": "Medium",
         "combat": true
@@ -614,6 +722,10 @@
         "series": "None",
         "developer": [
             "Paul Gower"
+        ],
+        "start": [
+            "3405",
+            "2701"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -648,6 +760,10 @@
         "developer": [
             "Paul Gower"
         ],
+        "start": [
+            "3404",
+            "3279"
+        ],
         "difficulty": "Experienced",
         "length": "Medium",
         "combat": true
@@ -673,6 +789,10 @@
         "series": "None",
         "developer": [
             "Paul Gower"
+        ],
+        "start": [
+            "3481",
+            "2876"
         ],
         "difficulty": "Novice",
         "length": "Very Short",
@@ -700,6 +820,10 @@
         "developer": [
             "Paul Gower"
         ],
+        "start": [
+            "3182",
+            "2791"
+        ],
         "difficulty": "Intermediate",
         "length": "Very Short",
         "combat": false
@@ -720,6 +844,10 @@
         "series": "None",
         "developer": [
             "Tom W"
+        ],
+        "start": [
+            "3209",
+            "2606"
         ],
         "difficulty": "Novice",
         "length": "Very Short",
@@ -755,6 +883,10 @@
         "developer": [
             "Paul Gower"
         ],
+        "start": [
+            "3320",
+            "2573"
+        ],
         "difficulty": "Intermediate",
         "length": "Medium",
         "combat": true
@@ -770,6 +902,10 @@
         "series": "None",
         "developer": [
             "Tom W"
+        ],
+        "start": [
+            "3249",
+            "2569"
         ],
         "difficulty": "Novice",
         "length": "Very Short",
@@ -803,6 +939,10 @@
         "developer": [
             "Paul Gower"
         ],
+        "start": [
+            "3513",
+            "2764"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -823,6 +963,10 @@
         "series": "None",
         "developer": [
             "Tom W"
+        ],
+        "start": [
+            "3169",
+            "2542"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -849,6 +993,10 @@
         "developer": [
             "Paul Gower"
         ],
+        "start": [
+            "3199",
+            "2566"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -870,6 +1018,10 @@
         "developer": [
             "Tom W"
         ],
+        "start": [
+            "3270",
+            "2566"
+        ],
         "difficulty": "Novice",
         "length": "Very Short",
         "combat": true
@@ -885,6 +1037,10 @@
         "series": "None",
         "developer": [
             "Tom W"
+        ],
+        "start": [
+            "3299",
+            "2617"
         ],
         "difficulty": "Novice",
         "length": "Short",
@@ -907,6 +1063,10 @@
         "developer": [
             "Paul Gower",
             "Tom W"
+        ],
+        "start": [
+            "3333",
+            "2569"
         ],
         "difficulty": "Novice",
         "length": "Very Short",
@@ -934,6 +1094,10 @@
         "developer": [
             "Tom W"
         ],
+        "start": [
+            "3302",
+            "2716"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": false
@@ -958,6 +1122,10 @@
         "series": "None",
         "developer": [
             "Tom W"
+        ],
+        "start": [
+            "3497",
+            "2521"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -986,6 +1154,10 @@
         "series": "None",
         "developer": [
             "Tytn H"
+        ],
+        "start": [
+            "3086",
+            "2810"
         ],
         "difficulty": "Novice",
         "length": "Short",
@@ -1021,6 +1193,10 @@
         "developer": [
             "Tom W"
         ],
+        "start": [
+            "3495",
+            "2466"
+        ],
         "difficulty": "Intermediate",
         "length": "Medium",
         "combat": true
@@ -1053,6 +1229,10 @@
         "series": "Elf, #3",
         "developer": [
             "Tom W"
+        ],
+        "start": [
+            "3293",
+            "2577"
         ],
         "difficulty": "Experienced",
         "length": "Long",
@@ -1091,6 +1271,10 @@
         "developer": [
             "James B"
         ],
+        "start": [
+            "3187",
+            "2441"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -1115,6 +1299,10 @@
         "series": "None",
         "developer": [
             "Tytn H"
+        ],
+        "start": [
+            "3113",
+            "3303"
         ],
         "difficulty": "Intermediate",
         "length": "Medium",
@@ -1158,6 +1346,10 @@
         "developer": [
             "Ian T"
         ],
+        "start": [
+            "3116",
+            "2546"
+        ],
         "difficulty": "Intermediate",
         "length": "Medium",
         "combat": true
@@ -1179,6 +1371,10 @@
         "developer": [
             "Tom W"
         ],
+        "start": [
+            "3461",
+            "2567"
+        ],
         "difficulty": "Novice",
         "length": "Short",
         "combat": false
@@ -1199,6 +1395,10 @@
         "series": "None",
         "developer": [
             "James B"
+        ],
+        "start": [
+            "3562",
+            "2741"
         ],
         "difficulty": "Novice",
         "length": "Short",
@@ -1229,6 +1429,10 @@
         "developer": [
             "Ian T"
         ],
+        "start": [
+            "3340",
+            "3361"
+        ],
         "difficulty": "Intermediate",
         "length": "Medium",
         "combat": false
@@ -1250,6 +1454,10 @@
         "developer": [
             "Tom W"
         ],
+        "start": [
+            "3412",
+            "3150"
+        ],
         "difficulty": "Novice",
         "length": "Very Short",
         "combat": false
@@ -1258,8 +1466,8 @@
         "name": "Legends' Quest",
         "url": "https://oldschool.runescape.wiki/w/Legends%27_Quest",
         "quest_requirements": [
-            "Shield of Arrav",
             "Dragon Slayer I",
+            "Shield of Arrav",
             "Druidic Ritual",
             "Lost City",
             "Merlin's Crystal",
@@ -1321,6 +1529,10 @@
         "developer": [
             "Tytn H"
         ],
+        "start": [
+            "3349",
+            "2728"
+        ],
         "difficulty": "Master",
         "length": "Long",
         "combat": true
@@ -1341,6 +1553,10 @@
         "series": "Troll, #1",
         "developer": [
             "Jon S"
+        ],
+        "start": [
+            "3528",
+            "2896"
         ],
         "difficulty": "Novice",
         "length": "Short",
@@ -1371,6 +1587,10 @@
         "series": "Troll, #3",
         "developer": [
             "Chris S"
+        ],
+        "start": [
+            "3427",
+            "2897"
         ],
         "difficulty": "Intermediate",
         "length": "Medium",
@@ -1414,6 +1634,10 @@
         "developer": [
             "Tytn H"
         ],
+        "start": [
+            "2981",
+            "2630"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -1452,6 +1676,10 @@
         "developer": [
             "Dylan C"
         ],
+        "start": [
+            "3481",
+            "2716"
+        ],
         "difficulty": "Novice",
         "length": "Very Short",
         "combat": true
@@ -1484,6 +1712,10 @@
         "developer": [
             "Tytn H"
         ],
+        "start": [
+            "9894",
+            "3440"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -1504,6 +1736,10 @@
         "series": "Myreque",
         "developer": [
             "James B"
+        ],
+        "start": [
+            "3473",
+            "3221"
         ],
         "difficulty": "Novice",
         "length": "Short",
@@ -1538,6 +1774,10 @@
         "series": "Elf, #4",
         "developer": [
             "Dylan C"
+        ],
+        "start": [
+            "3293",
+            "2577"
         ],
         "difficulty": "Experienced",
         "length": "Long",
@@ -1580,6 +1820,10 @@
         "developer": [
             "Rahul V"
         ],
+        "start": [
+            "3087",
+            "2782"
+        ],
         "difficulty": "Intermediate",
         "length": "Medium",
         "combat": true
@@ -1602,6 +1846,10 @@
         "series": "Troll, #2",
         "developer": [
             "Chris S"
+        ],
+        "start": [
+            "3528",
+            "2896"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -1647,6 +1895,10 @@
         "developer": [
             "Tytn H"
         ],
+        "start": [
+            "3279",
+            "3481"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -1676,6 +1928,10 @@
         "developer": [
             "James B"
         ],
+        "start": [
+            "3668",
+            "2658"
+        ],
         "difficulty": "Intermediate",
         "length": "Medium",
         "combat": true
@@ -1699,6 +1955,10 @@
         "developer": [
             "James B"
         ],
+        "start": [
+            "3634",
+            "2508"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -1707,8 +1967,8 @@
         "name": "Throne of Miscellania",
         "url": "https://oldschool.runescape.wiki/w/Throne_of_Miscellania",
         "quest_requirements": [
-            "Shield of Arrav",
             "Dragon Slayer I",
+            "Shield of Arrav",
             "Lost City",
             "Merlin's Crystal",
             "Heroes' Quest",
@@ -1722,6 +1982,10 @@
         "developer": [
             "Chris S",
             "Jonathan S"
+        ],
+        "start": [
+            "3859",
+            "2501"
         ],
         "difficulty": "Experienced",
         "length": "Medium",
@@ -1741,6 +2005,10 @@
         "series": "Gnome, #4",
         "developer": [
             "Rahul V"
+        ],
+        "start": [
+            "3495",
+            "2466"
         ],
         "difficulty": "Master",
         "length": "Long",
@@ -1769,6 +2037,10 @@
         "series": "None",
         "developer": [
             "Ian G"
+        ],
+        "start": [
+            "3257",
+            "3444"
         ],
         "difficulty": "Experienced",
         "length": "Short",
@@ -1802,6 +2074,10 @@
         "series": "None",
         "developer": [
             "Simon S"
+        ],
+        "start": [
+            "10065",
+            "2827"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -1849,6 +2125,10 @@
         "developer": [
             "Tytn H"
         ],
+        "start": [
+            "3477",
+            "3503"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -1882,6 +2162,10 @@
         "developer": [
             "Martin B"
         ],
+        "start": [
+            "3485",
+            "3488"
+        ],
         "difficulty": "Intermediate",
         "length": "Medium",
         "combat": true
@@ -1913,6 +2197,10 @@
         "series": "Elf, #5",
         "developer": [
             "Dylan C"
+        ],
+        "start": [
+            "3159",
+            "2206"
         ],
         "difficulty": "Experienced",
         "length": "Short",
@@ -1946,6 +2234,10 @@
         "series": "None",
         "developer": [
             "Martin B"
+        ],
+        "start": [
+            "3510",
+            "3677"
         ],
         "difficulty": "Intermediate",
         "length": "Medium",
@@ -1985,6 +2277,10 @@
         "developer": [
             "Tytn H"
         ],
+        "start": [
+            "2987",
+            "2835"
+        ],
         "difficulty": "Experienced",
         "length": "Long",
         "combat": true
@@ -2014,6 +2310,10 @@
         "series": "None",
         "developer": [
             "Vincent Van M"
+        ],
+        "start": [
+            "3672",
+            "2808"
         ],
         "difficulty": "Intermediate",
         "length": "Medium",
@@ -2060,6 +2360,10 @@
         "developer": [
             "Vincent Van M"
         ],
+        "start": [
+            "10168",
+            "2821"
+        ],
         "difficulty": "Experienced",
         "length": "Medium",
         "combat": true
@@ -2085,6 +2389,10 @@
         "series": "None",
         "developer": [
             "Chris J"
+        ],
+        "start": [
+            "3211",
+            "3302"
         ],
         "difficulty": "Intermediate",
         "length": "Medium",
@@ -2119,6 +2427,10 @@
         "series": "None",
         "developer": [
             "John A"
+        ],
+        "start": [
+            "3089",
+            "3488"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -2163,6 +2475,10 @@
         "developer": [
             "James B"
         ],
+        "start": [
+            "3043",
+            "3178"
+        ],
         "difficulty": "Master",
         "length": "Long",
         "combat": true
@@ -2193,6 +2509,10 @@
         "series": "Kharidian, #2",
         "developer": [
             "Chris J"
+        ],
+        "start": [
+            "2849",
+            "3315"
         ],
         "difficulty": "Intermediate",
         "length": "Medium",
@@ -2228,6 +2548,10 @@
         "developer": [
             "John A"
         ],
+        "start": [
+            "9516",
+            "3252"
+        ],
         "difficulty": "Intermediate",
         "length": "Very Short",
         "combat": false
@@ -2236,8 +2560,8 @@
         "name": "The Lost Tribe",
         "url": "https://oldschool.runescape.wiki/w/The_Lost_Tribe",
         "quest_requirements": [
-            "Goblin Diplomacy",
-            "Rune Mysteries"
+            "Rune Mysteries",
+            "Goblin Diplomacy"
         ],
         "skill_requirements": [
             [
@@ -2264,6 +2588,10 @@
         "series": "Dorgeshuun, #1",
         "developer": [
             "John A"
+        ],
+        "start": [
+            "3222",
+            "3210"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -2323,6 +2651,10 @@
         "developer": [
             "Vincent M"
         ],
+        "start": [
+            "10129",
+            "2842"
+        ],
         "difficulty": "Intermediate",
         "length": "Medium",
         "combat": false
@@ -2341,6 +2673,10 @@
         "series": "Temple Knight, #1",
         "developer": [
             "James B"
+        ],
+        "start": [
+            "3336",
+            "2959"
         ],
         "difficulty": "Novice",
         "length": "Short",
@@ -2385,6 +2721,10 @@
         "developer": [
             "Dylan C"
         ],
+        "start": [
+            "3159",
+            "2206"
+        ],
         "difficulty": "Master",
         "length": "Medium",
         "combat": true
@@ -2422,6 +2762,10 @@
         "developer": [
             "Vincent van M"
         ],
+        "start": [
+            "10214",
+            "2826"
+        ],
         "difficulty": "Intermediate",
         "length": "Long",
         "combat": false
@@ -2452,6 +2796,10 @@
         "developer": [
             "Martin B"
         ],
+        "start": [
+            "3477",
+            "3228"
+        ],
         "difficulty": "Intermediate",
         "length": "Long",
         "combat": false
@@ -2471,6 +2819,10 @@
         "developer": [
             "Jonathan S"
         ],
+        "start": [
+            "3558",
+            "2919"
+        ],
         "difficulty": "Intermediate",
         "length": "Medium",
         "combat": false
@@ -2479,9 +2831,9 @@
         "name": "Wanted!",
         "url": "https://oldschool.runescape.wiki/w/Wanted!",
         "quest_requirements": [
-            "Black Knights' Fortress",
-            "Goblin Diplomacy",
             "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Black Knights' Fortress",
             "Druidic Ritual",
             "Priest in Peril",
             "The Lost Tribe",
@@ -2500,6 +2852,10 @@
         "series": "Temple Knight, #2",
         "developer": [
             "James B"
+        ],
+        "start": [
+            "3373",
+            "2997"
         ],
         "difficulty": "Intermediate",
         "length": "Medium",
@@ -2532,6 +2888,10 @@
         "developer": [
             "Dylan C",
             "Graham B"
+        ],
+        "start": [
+            "3285",
+            "2838"
         ],
         "difficulty": "Master",
         "length": "Long",
@@ -2589,6 +2949,10 @@
         "developer": [
             "Anthony W"
         ],
+        "start": [
+            "3537",
+            "3678"
+        ],
         "difficulty": "Experienced",
         "length": "Medium",
         "combat": true
@@ -2612,6 +2976,10 @@
         "series": "Demon Slayer, #2",
         "developer": [
             "John A"
+        ],
+        "start": [
+            "3158",
+            "3271"
         ],
         "difficulty": "Intermediate",
         "length": "Medium",
@@ -2641,6 +3009,10 @@
         "developer": [
             "Tim C"
         ],
+        "start": [
+            "3346",
+            "2435"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": false
@@ -2665,6 +3037,10 @@
         "series": "None",
         "developer": [
             "Chris J"
+        ],
+        "start": [
+            "3412",
+            "3150"
         ],
         "difficulty": "Intermediate",
         "length": "Medium",
@@ -2712,6 +3088,10 @@
         "developer": [
             "Paul G"
         ],
+        "start": [
+            "2917",
+            "3434"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -2720,10 +3100,10 @@
         "name": "Devious Minds",
         "url": "https://oldschool.runescape.wiki/w/Devious_Minds",
         "quest_requirements": [
-            "Doric's Quest",
-            "Black Knights' Fortress",
-            "Goblin Diplomacy",
             "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Black Knights' Fortress",
+            "Doric's Quest",
             "Druidic Ritual",
             "Death Plateau",
             "Priest in Peril",
@@ -2767,6 +3147,10 @@
         "developer": [
             "Graham B"
         ],
+        "start": [
+            "3492",
+            "3406"
+        ],
         "difficulty": "Experienced",
         "length": "Short",
         "combat": true
@@ -2800,6 +3184,10 @@
         "series": "None",
         "developer": [
             "Marion C"
+        ],
+        "start": [
+            "3100",
+            "2550"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -2850,6 +3238,10 @@
         "series": "Mahjarrat, #4",
         "developer": [
             "Isobel H"
+        ],
+        "start": [
+            "2926",
+            "3191"
         ],
         "difficulty": "Experienced",
         "length": "Medium",
@@ -2905,6 +3297,10 @@
         "developer": [
             "Anthony W"
         ],
+        "start": [
+            "3496",
+            "3675"
+        ],
         "difficulty": "Experienced",
         "length": "Short",
         "combat": true
@@ -2938,6 +3334,10 @@
         "series": "Fairytale, #1",
         "developer": [
             "Greg V"
+        ],
+        "start": [
+            "3258",
+            "3077"
         ],
         "difficulty": "Intermediate",
         "length": "Medium",
@@ -2994,6 +3394,10 @@
         "developer": [
             "Tytn H"
         ],
+        "start": [
+            "9839",
+            "3506"
+        ],
         "difficulty": "Intermediate",
         "length": "Medium",
         "combat": true
@@ -3018,6 +3422,10 @@
         "series": "None",
         "developer": [
             "Tim C"
+        ],
+        "start": [
+            "3454",
+            "3308"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -3044,6 +3452,10 @@
         "developer": [
             "Anthony W"
         ],
+        "start": [
+            "3504",
+            "3360"
+        ],
         "difficulty": "Novice",
         "length": "Short",
         "combat": true
@@ -3052,8 +3464,8 @@
         "name": "Swan Song",
         "url": "https://oldschool.runescape.wiki/w/Swan_Song",
         "quest_requirements": [
-            "Rune Mysteries",
             "The Restless Ghost",
+            "Rune Mysteries",
             "Druidic Ritual",
             "Jungle Potion",
             "Priest in Peril",
@@ -3108,6 +3520,10 @@
         "developer": [
             "Ashleigh B"
         ],
+        "start": [
+            "3680",
+            "2353"
+        ],
         "difficulty": "Master",
         "length": "Medium",
         "combat": true
@@ -3116,8 +3532,8 @@
         "name": "Royal Trouble",
         "url": "https://oldschool.runescape.wiki/w/Royal_Trouble",
         "quest_requirements": [
-            "Shield of Arrav",
             "Dragon Slayer I",
+            "Shield of Arrav",
             "Lost City",
             "Merlin's Crystal",
             "Heroes' Quest",
@@ -3154,6 +3570,10 @@
         "developer": [
             "Isobel H"
         ],
+        "start": [
+            "3859",
+            "2501"
+        ],
         "difficulty": "Experienced",
         "length": "Medium",
         "combat": true
@@ -3162,8 +3582,8 @@
         "name": "Death to the Dorgeshuun",
         "url": "https://oldschool.runescape.wiki/w/Death_to_the_Dorgeshuun",
         "quest_requirements": [
-            "Goblin Diplomacy",
             "Rune Mysteries",
+            "Goblin Diplomacy",
             "The Lost Tribe"
         ],
         "skill_requirements": [
@@ -3191,6 +3611,10 @@
         "series": "Dorgeshuun, #2",
         "developer": [
             "John A"
+        ],
+        "start": [
+            "9613",
+            "3317"
         ],
         "difficulty": "Intermediate",
         "length": "Medium",
@@ -3235,6 +3659,10 @@
         "series": "Fairytale, #2",
         "developer": [
             "Greg V"
+        ],
+        "start": [
+            "3258",
+            "3077"
         ],
         "difficulty": "Experienced",
         "length": "Medium",
@@ -3298,6 +3726,10 @@
             "Tim C",
             "James B"
         ],
+        "start": [
+            "3689",
+            "2620"
+        ],
         "difficulty": "Experienced",
         "length": "Long",
         "combat": true
@@ -3341,6 +3773,10 @@
         "series": "Gnome, #2",
         "developer": [
             "Chihiro Y"
+        ],
+        "start": [
+            "9817",
+            "2406"
         ],
         "difficulty": "Intermediate",
         "length": "Medium",
@@ -3406,6 +3842,10 @@
         "developer": [
             "Tytn H"
         ],
+        "start": [
+            "9628",
+            "3494"
+        ],
         "difficulty": "Experienced",
         "length": "Long",
         "combat": true
@@ -3414,9 +3854,9 @@
         "name": "The Slug Menace",
         "url": "https://oldschool.runescape.wiki/w/The_Slug_Menace",
         "quest_requirements": [
-            "Black Knights' Fortress",
-            "Goblin Diplomacy",
             "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Black Knights' Fortress",
             "Druidic Ritual",
             "Sea Slug",
             "Priest in Peril",
@@ -3463,6 +3903,10 @@
         "developer": [
             "Chris LC"
         ],
+        "start": [
+            "3373",
+            "2997"
+        ],
         "difficulty": "Intermediate",
         "length": "Medium",
         "combat": true
@@ -3498,6 +3942,10 @@
         "series": "Elemental Workshop, #2",
         "developer": [
             "Dylan C"
+        ],
+        "start": [
+            "3335",
+            "3366"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -3539,6 +3987,10 @@
         "series": "Troll, #4",
         "developer": [
             "Ashleigh B"
+        ],
+        "start": [
+            "10056",
+            "2845"
         ],
         "difficulty": "Experienced",
         "length": "Medium",
@@ -3586,6 +4038,10 @@
         "developer": [
             "Nancy J"
         ],
+        "start": [
+            "3356",
+            "2810"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": false
@@ -3612,6 +4068,10 @@
         "developer": [
             "Ian Gower"
         ],
+        "start": [
+            "3264",
+            "2606"
+        ],
         "difficulty": "Novice",
         "length": "Short",
         "combat": true
@@ -3620,8 +4080,8 @@
         "name": "Animal Magnetism",
         "url": "https://oldschool.runescape.wiki/w/Animal_Magnetism",
         "quest_requirements": [
-            "Ernest the Chicken",
             "The Restless Ghost",
+            "Ernest the Chicken",
             "Priest in Peril"
         ],
         "skill_requirements": [
@@ -3666,6 +4126,10 @@
         "developer": [
             "Matt H"
         ],
+        "start": [
+            "3358",
+            "3093"
+        ],
         "difficulty": "Intermediate",
         "length": "Medium",
         "combat": false
@@ -3691,6 +4155,10 @@
         "developer": [
             "Chris J",
             "Matt H"
+        ],
+        "start": [
+            "2771",
+            "3281"
         ],
         "difficulty": "Experienced",
         "length": "Short",
@@ -3742,6 +4210,10 @@
         "developer": [
             "Nancy J"
         ],
+        "start": [
+            "3265",
+            "2594"
+        ],
         "difficulty": "Intermediate",
         "length": "Medium",
         "combat": true
@@ -3780,6 +4252,10 @@
             "Ben W",
             "Douglas H"
         ],
+        "start": [
+            "3710",
+            "2646"
+        ],
         "difficulty": "Experienced",
         "length": "Medium",
         "combat": true
@@ -3788,8 +4264,8 @@
         "name": "The Great Brain Robbery",
         "url": "https://oldschool.runescape.wiki/w/The_Great_Brain_Robbery",
         "quest_requirements": [
-            "Pirate's Treasure",
             "Cook's Assistant",
+            "Pirate's Treasure",
             "Druidic Ritual",
             "Jungle Potion",
             "Big Chompy Bird Hunting",
@@ -3836,6 +4312,10 @@
         "developer": [
             "Anthony W"
         ],
+        "start": [
+            "2963",
+            "3682"
+        ],
         "difficulty": "Experienced",
         "length": "Medium",
         "combat": true
@@ -3867,6 +4347,10 @@
         "series": "None",
         "developer": [
             "Danny J"
+        ],
+        "start": [
+            "3333",
+            "3266"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -3900,6 +4384,10 @@
         "developer": [
             "Anthony W"
         ],
+        "start": [
+            "3729",
+            "2724"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -3908,8 +4396,8 @@
         "name": "Another Slice of H.A.M.",
         "url": "https://oldschool.runescape.wiki/w/Another_Slice_of_H.A.M.",
         "quest_requirements": [
-            "Goblin Diplomacy",
             "Rune Mysteries",
+            "Goblin Diplomacy",
             "The Dig Site",
             "The Lost Tribe",
             "The Giant Dwarf",
@@ -3940,6 +4428,10 @@
         "series": "Dorgeshuun, #3",
         "developer": [
             "John A"
+        ],
+        "start": [
+            "5365",
+            "2733"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -3976,6 +4468,10 @@
         "series": "None",
         "developer": [
             "Tim C"
+        ],
+        "start": [
+            "10360",
+            "2343"
         ],
         "difficulty": "Master",
         "length": "Medium",
@@ -4041,6 +4537,10 @@
         "developer": [
             "Danny J"
         ],
+        "start": [
+            "3454",
+            "2891"
+        ],
         "difficulty": "Master",
         "length": "Medium",
         "combat": true
@@ -4049,8 +4549,8 @@
         "name": "King's Ransom",
         "url": "https://oldschool.runescape.wiki/w/King%27s_Ransom",
         "quest_requirements": [
-            "Black Knights' Fortress",
             "Rune Mysteries",
+            "Black Knights' Fortress",
             "Druidic Ritual",
             "Merlin's Crystal",
             "Holy Grail",
@@ -4075,6 +4575,10 @@
         "series": "Camelot, #3",
         "developer": [
             "Nancy J"
+        ],
+        "start": [
+            "3554",
+            "2742"
         ],
         "difficulty": "Experienced",
         "length": "Medium",
@@ -4109,6 +4613,10 @@
         "developer": [
             "Tytn H"
         ],
+        "start": [
+            "2951",
+            "2881"
+        ],
         "difficulty": "Intermediate",
         "length": "Medium",
         "combat": true
@@ -4131,6 +4639,10 @@
         "series": "Elf, #2",
         "developer": [
             "Tom W"
+        ],
+        "start": [
+            "3336",
+            "2592"
         ],
         "difficulty": "Novice",
         "length": "Short",
@@ -4165,6 +4677,10 @@
         "series": "None",
         "developer": [
             "Tim C"
+        ],
+        "start": [
+            "3218",
+            "2639"
         ],
         "difficulty": "Novice",
         "length": "Medium",
@@ -4204,6 +4720,10 @@
         "developer": [
             "Anthony W"
         ],
+        "start": [
+            "3507",
+            "3362"
+        ],
         "difficulty": "Experienced",
         "length": "Medium",
         "combat": true
@@ -4212,8 +4732,8 @@
         "name": "Land of the Goblins",
         "url": "https://oldschool.runescape.wiki/w/Land_of_the_Goblins",
         "quest_requirements": [
-            "Goblin Diplomacy",
             "Rune Mysteries",
+            "Goblin Diplomacy",
             "Fishing Contest",
             "The Dig Site",
             "The Lost Tribe",
@@ -4264,6 +4784,10 @@
             "John A",
             "Mod Ed"
         ],
+        "start": [
+            "9616",
+            "3319"
+        ],
         "difficulty": "Experienced",
         "length": "Medium",
         "combat": true
@@ -4309,6 +4833,10 @@
         "series": "None",
         "developer": [
             "Tytn H"
+        ],
+        "start": [
+            "3051",
+            "2444"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -4383,6 +4911,10 @@
             "Mod Bond",
             "Mod Ian"
         ],
+        "start": [
+            "3495",
+            "2466"
+        ],
         "difficulty": "Grandmaster",
         "length": "Very Long",
         "combat": true
@@ -4400,6 +4932,10 @@
         "series": "Great Kourend, #2",
         "developer": [
             "Mod Wolf"
+        ],
+        "start": [
+            "3690",
+            "1826"
         ],
         "difficulty": "Novice",
         "length": "Short",
@@ -4430,6 +4966,10 @@
         "developer": [
             "Mod Ed"
         ],
+        "start": [
+            "3782",
+            "1796"
+        ],
         "difficulty": "Intermediate",
         "length": "Very Short",
         "combat": false
@@ -4448,6 +4988,10 @@
         "developer": [
             "Mod Jed"
         ],
+        "start": [
+            "3450",
+            "3260"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": false
@@ -4456,12 +5000,12 @@
         "name": "Dragon Slayer II",
         "url": "https://oldschool.runescape.wiki/w/Dragon_Slayer_II",
         "quest_requirements": [
-            "Shield of Arrav",
-            "Ernest the Chicken",
-            "Dragon Slayer I",
-            "Rune Mysteries",
-            "X Marks the Spot",
             "The Restless Ghost",
+            "X Marks the Spot",
+            "Rune Mysteries",
+            "Dragon Slayer I",
+            "Ernest the Chicken",
+            "Shield of Arrav",
             "Druidic Ritual",
             "Lost City",
             "Merlin's Crystal",
@@ -4549,6 +5093,10 @@
         "developer": [
             "Mod Ed"
         ],
+        "start": [
+            "2868",
+            "2457"
+        ],
         "difficulty": "Grandmaster",
         "length": "Very Long",
         "combat": true
@@ -4578,6 +5126,10 @@
         "developer": [
             "Mod Ed"
         ],
+        "start": [
+            "3570",
+            "1782"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -4601,6 +5153,7 @@
         "developer": [
             "James B"
         ],
+        "start": null,
         "difficulty": "Special",
         "length": "Short",
         "combat": false
@@ -4609,8 +5162,8 @@
         "name": "Recipe for Disaster/Freeing the Goblin generals",
         "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_the_Goblin_generals",
         "quest_requirements": [
-            "Goblin Diplomacy",
             "Cook's Assistant",
+            "Goblin Diplomacy",
             "Recipe for Disaster/Another Cook's Quest"
         ],
         "skill_requirements": [],
@@ -4634,6 +5187,7 @@
         "developer": [
             "James B"
         ],
+        "start": null,
         "difficulty": "Special",
         "length": "Short",
         "combat": false
@@ -4663,6 +5217,7 @@
         "developer": [
             "James B"
         ],
+        "start": null,
         "difficulty": "Special",
         "length": "Short",
         "combat": true
@@ -4671,8 +5226,8 @@
         "name": "Recipe for Disaster/Freeing Evil Dave",
         "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_Evil_Dave",
         "quest_requirements": [
-            "Demon Slayer",
             "Cook's Assistant",
+            "Demon Slayer",
             "Gertrude's Cat",
             "The Golem",
             "Shadow of the Storm",
@@ -4696,6 +5251,7 @@
         "developer": [
             "James B"
         ],
+        "start": null,
         "difficulty": "Special",
         "length": "Medium",
         "combat": false
@@ -4737,6 +5293,7 @@
         "developer": [
             "James B"
         ],
+        "start": null,
         "difficulty": "Special",
         "length": "Medium",
         "combat": true
@@ -4745,9 +5302,9 @@
         "name": "Recipe for Disaster/Freeing the Lumbridge Guide",
         "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_the_Lumbridge_Guide",
         "quest_requirements": [
-            "Demon Slayer",
-            "Cook's Assistant",
             "The Restless Ghost",
+            "Cook's Assistant",
+            "Demon Slayer",
             "Witch's House",
             "Plague City",
             "Murder Mystery",
@@ -4779,6 +5336,7 @@
         "developer": [
             "James B"
         ],
+        "start": null,
         "difficulty": "Special",
         "length": "Short",
         "combat": false
@@ -4787,9 +5345,9 @@
         "name": "Recipe for Disaster/Freeing Sir Amik Varze",
         "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_Sir_Amik_Varze",
         "quest_requirements": [
-            "Shield of Arrav",
-            "Dragon Slayer I",
             "Cook's Assistant",
+            "Dragon Slayer I",
+            "Shield of Arrav",
             "Druidic Ritual",
             "Lost City",
             "Merlin's Crystal",
@@ -4821,6 +5379,7 @@
         "developer": [
             "James B"
         ],
+        "start": null,
         "difficulty": "Special",
         "length": "Medium",
         "combat": true
@@ -4861,6 +5420,7 @@
         "developer": [
             "James B"
         ],
+        "start": null,
         "difficulty": "Special",
         "length": "Long",
         "combat": true
@@ -4907,6 +5467,7 @@
         "developer": [
             "James B"
         ],
+        "start": null,
         "difficulty": "Special",
         "length": "Medium",
         "combat": false
@@ -4951,6 +5512,10 @@
         "developer": [
             "Mod Ed"
         ],
+        "start": [
+            "3215",
+            "3668"
+        ],
         "difficulty": "Experienced",
         "length": "Medium",
         "combat": true
@@ -4980,6 +5545,10 @@
             "Mod Ed",
             "Mod Kieren"
         ],
+        "start": [
+            "3570",
+            "1542"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -4988,9 +5557,9 @@
         "name": "Making Friends with My Arm",
         "url": "https://oldschool.runescape.wiki/w/Making_Friends_with_My_Arm",
         "quest_requirements": [
-            "Romeo & Juliet",
-            "Rune Mysteries",
             "The Restless Ghost",
+            "Rune Mysteries",
+            "Romeo & Juliet",
             "Druidic Ritual",
             "Jungle Potion",
             "Death Plateau",
@@ -5049,6 +5618,10 @@
             "Mod Ash",
             "Mod Munro"
         ],
+        "start": [
+            "10060",
+            "2841"
+        ],
         "difficulty": "Master",
         "length": "Medium",
         "combat": true
@@ -5084,6 +5657,7 @@
         "developer": [
             "James B"
         ],
+        "start": null,
         "difficulty": "Special",
         "length": "Short",
         "combat": true
@@ -5189,6 +5763,10 @@
             "Mod Slippers",
             "Mod Surma"
         ],
+        "start": [
+            "3333",
+            "2569"
+        ],
         "difficulty": "Grandmaster",
         "length": "Very Long",
         "combat": true
@@ -5222,6 +5800,10 @@
         "developer": [
             "Mod Ed"
         ],
+        "start": [
+            "3742",
+            "1700"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -5250,6 +5832,10 @@
         "developer": [
             "Mod Ed"
         ],
+        "start": [
+            "3748",
+            "1483"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": false
@@ -5258,9 +5844,9 @@
         "name": "The Fremennik Exiles",
         "url": "https://oldschool.runescape.wiki/w/The_Fremennik_Exiles",
         "quest_requirements": [
-            "Shield of Arrav",
-            "Dragon Slayer I",
             "Rune Mysteries",
+            "Dragon Slayer I",
+            "Shield of Arrav",
             "Druidic Ritual",
             "Lost City",
             "Merlin's Crystal",
@@ -5315,6 +5901,10 @@
             "Mod Ed",
             "Mod Wolf"
         ],
+        "start": [
+            "3668",
+            "2658"
+        ],
         "difficulty": "Master",
         "length": "Medium",
         "combat": true
@@ -5323,12 +5913,12 @@
         "name": "Defender of Varrock",
         "url": "https://oldschool.runescape.wiki/w/Defender_of_Varrock",
         "quest_requirements": [
-            "Romeo & Juliet",
-            "Demon Slayer",
-            "Shield of Arrav",
-            "Rune Mysteries",
-            "Below Ice Mountain",
             "The Restless Ghost",
+            "Below Ice Mountain",
+            "Rune Mysteries",
+            "Shield of Arrav",
+            "Demon Slayer",
+            "Romeo & Juliet",
             "Family Crest",
             "Temple of Ikov",
             "Priest in Peril",
@@ -5363,6 +5953,10 @@
             "Paul Gower",
             "Mod Ed"
         ],
+        "start": [
+            "3501",
+            "3283"
+        ],
         "difficulty": "Experienced",
         "length": "Medium",
         "combat": true
@@ -5371,8 +5965,8 @@
         "name": "Sins of the Father",
         "url": "https://oldschool.runescape.wiki/w/Sins_of_the_Father",
         "quest_requirements": [
-            "Vampyre Slayer",
             "The Restless Ghost",
+            "Vampyre Slayer",
             "Nature Spirit",
             "Priest in Peril",
             "In Search of the Myreque",
@@ -5416,6 +6010,10 @@
         "series": "Myreque, #5",
         "developer": [
             "Mod Ed"
+        ],
+        "start": [
+            "3319",
+            "3729"
         ],
         "difficulty": "Master",
         "length": "Long",
@@ -5470,6 +6068,10 @@
         "developer": [
             "Mod Ed"
         ],
+        "start": [
+            "3672",
+            "1664"
+        ],
         "difficulty": "Experienced",
         "length": "Long",
         "combat": true
@@ -5491,6 +6093,10 @@
         "developer": [
             "Mod Mack",
             "Mod Ry"
+        ],
+        "start": [
+            "3251",
+            "3086"
         ],
         "difficulty": "Novice",
         "length": "Very Short",
@@ -5526,6 +6132,10 @@
         "developer": [
             "Mod Ed"
         ],
+        "start": [
+            "3686",
+            "1248"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": true
@@ -5549,6 +6159,10 @@
         "series": "None",
         "developer": [
             "Mod Ed"
+        ],
+        "start": [
+            "3224",
+            "3673"
         ],
         "difficulty": "Master",
         "length": "Medium",
@@ -5589,6 +6203,10 @@
         "developer": [
             "Mod Ed"
         ],
+        "start": [
+            "2779",
+            "3309"
+        ],
         "difficulty": "Master",
         "length": "Medium",
         "combat": true
@@ -5618,6 +6236,10 @@
         "developer": [
             "Mod Ed",
             "Mod Husky"
+        ],
+        "start": [
+            "3232",
+            "3286"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -5662,6 +6284,10 @@
             "Mods Chihiro and Tytn",
             "Mod Ed"
         ],
+        "start": [
+            "3171",
+            "2540"
+        ],
         "difficulty": "Experienced",
         "length": "Medium",
         "combat": true
@@ -5687,6 +6313,10 @@
         "series": "None",
         "developer": [
             "Mod Oasis"
+        ],
+        "start": [
+            "3146",
+            "3362"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -5714,6 +6344,10 @@
         "developer": [
             "Mod Ed"
         ],
+        "start": [
+            "3472",
+            "1312"
+        ],
         "difficulty": "Intermediate",
         "length": "Short",
         "combat": false
@@ -5722,13 +6356,13 @@
         "name": "Desert Treasure II - The Fallen Empire",
         "url": "https://oldschool.runescape.wiki/w/Desert_Treasure_II_-_The_Fallen_Empire",
         "quest_requirements": [
-            "Romeo & Juliet",
-            "Doric's Quest",
-            "Black Knights' Fortress",
-            "Goblin Diplomacy",
-            "Rune Mysteries",
-            "Below Ice Mountain",
             "The Restless Ghost",
+            "Below Ice Mountain",
+            "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Black Knights' Fortress",
+            "Doric's Quest",
+            "Romeo & Juliet",
             "Druidic Ritual",
             "Temple of Ikov",
             "Fight Arena",
@@ -5797,6 +6431,10 @@
         "developer": [
             "Mod Ed"
         ],
+        "start": [
+            "2971",
+            "3511"
+        ],
         "difficulty": "Grandmaster",
         "length": "Very Long",
         "combat": true
@@ -5805,12 +6443,12 @@
         "name": "Secrets of the North",
         "url": "https://oldschool.runescape.wiki/w/Secrets_of_the_North",
         "quest_requirements": [
-            "Romeo & Juliet",
-            "Doric's Quest",
-            "Black Knights' Fortress",
-            "Goblin Diplomacy",
-            "Rune Mysteries",
             "The Restless Ghost",
+            "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Black Knights' Fortress",
+            "Doric's Quest",
+            "Romeo & Juliet",
             "Druidic Ritual",
             "Fight Arena",
             "Hazeel Cult",
@@ -5871,6 +6509,10 @@
         "developer": [
             "Mod Ed"
         ],
+        "start": [
+            "3276",
+            "2570"
+        ],
         "difficulty": "Master",
         "length": "Medium",
         "combat": true
@@ -5887,6 +6529,10 @@
         "developer": [
             "Unknown"
         ],
+        "start": [
+            "3428",
+            "3225"
+        ],
         "difficulty": "Novice",
         "length": "Short",
         "combat": false
@@ -5902,6 +6548,10 @@
         "series": "None",
         "developer": [
             "Andrew Gower"
+        ],
+        "start": [
+            "3569",
+            "2544"
         ],
         "difficulty": "Novice",
         "length": "Medium",
@@ -5925,6 +6575,10 @@
         "series": "Order of Wizards, #2",
         "developer": [
             "James B"
+        ],
+        "start": [
+            "3561",
+            "3104"
         ],
         "difficulty": "Intermediate",
         "length": "Very Short",
@@ -5950,6 +6604,10 @@
         "series": "Mahjarrat, #9",
         "developer": [
             "Nancy J"
+        ],
+        "start": [
+            "3631",
+            "2716"
         ],
         "difficulty": "Experienced",
         "length": "Medium",
@@ -6002,6 +6660,10 @@
         "developer": [
             "Unknown"
         ],
+        "start": [
+            "3488",
+            "2504"
+        ],
         "difficulty": "Experienced",
         "length": "Medium",
         "combat": true
@@ -6022,6 +6684,10 @@
         "series": "None",
         "developer": [
             "Anthony W"
+        ],
+        "start": [
+            "3195",
+            "2977"
         ],
         "difficulty": "Novice",
         "length": "Very Short",
@@ -6051,6 +6717,10 @@
         "developer": [
             "James B"
         ],
+        "start": [
+            "3445",
+            "2554"
+        ],
         "difficulty": "Experienced",
         "length": "Medium",
         "combat": false
@@ -6079,6 +6749,10 @@
         "developer": [
             "Unknown"
         ],
+        "start": [
+            "9661",
+            "3424"
+        ],
         "difficulty": "Experienced",
         "length": "Medium",
         "combat": true
@@ -6094,6 +6768,10 @@
         "series": "Great Kourend",
         "developer": [
             "Ashleigh B"
+        ],
+        "start": [
+            "3856",
+            "1815"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -6112,6 +6790,10 @@
         "series": "None",
         "developer": [
             "Tim C"
+        ],
+        "start": [
+            "3315",
+            "2658"
         ],
         "difficulty": "Intermediate",
         "length": "Medium",
@@ -6134,6 +6816,10 @@
         "developer": [
             "Unknown"
         ],
+        "start": [
+            "4716",
+            "2538"
+        ],
         "difficulty": "Experienced",
         "length": "Short",
         "combat": true
@@ -6151,6 +6837,10 @@
         "series": "None",
         "developer": [
             "Unknown"
+        ],
+        "start": [
+            "3404",
+            "3279"
         ],
         "difficulty": "Intermediate",
         "length": "Short",
@@ -6175,6 +6865,10 @@
         "developer": [
             "Mod Jed"
         ],
+        "start": [
+            "4716",
+            "2538"
+        ],
         "difficulty": "Master",
         "length": "Medium",
         "combat": true
@@ -6190,6 +6884,10 @@
         "series": "None",
         "developer": [
             "Mod Husky"
+        ],
+        "start": [
+            "9926",
+            "1840"
         ],
         "difficulty": "Experienced",
         "length": "Medium",
@@ -6215,6 +6913,10 @@
         "series": "None",
         "developer": [
             "Ashleigh B"
+        ],
+        "start": [
+            "3474",
+            "3240"
         ],
         "difficulty": "Novice",
         "length": "Short",
@@ -6251,6 +6953,7 @@
         "developer": [
             "Unknown"
         ],
+        "start": null,
         "difficulty": "Master",
         "length": "Short",
         "combat": true
@@ -6278,6 +6981,10 @@
             "John A",
             "Mod Ed"
         ],
+        "start": [
+            "4387",
+            "3742"
+        ],
         "difficulty": "Master",
         "length": "Short",
         "combat": true
@@ -6295,6 +7002,10 @@
         "series": "Kharidian, #5",
         "developer": [
             "Unknown"
+        ],
+        "start": [
+            "2718",
+            "3351"
         ],
         "difficulty": "Master",
         "length": "Medium",
@@ -6318,6 +7029,10 @@
         "series": "Mahjarrat, #11",
         "developer": [
             "Mod Ed"
+        ],
+        "start": [
+            "3292",
+            "3565"
         ],
         "difficulty": "Experienced",
         "length": "Short",

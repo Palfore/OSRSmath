@@ -85,18 +85,19 @@ class QuestViewer:
 				f"<i>Tier</i> {self.shell_lookup[quest.name]}{' - ' + quest.series if quest.series != 'None' else ''}",
 				f"<i>Length:</i> {quest.length}",
 				f"<i>Released:</i> {quest.released}",
+				f"<i>Start Coordinates:</i> {quest.start}",
 				f"<i>Developer(s):</i> {', '.join(quest.developer)}",
-				"<hr>",
+				"<hr style='padding:0;margin:0;'>" +  # Append to avoid <br> from the .join() call.
 				"<b>Requires:</b>", *[Formatter.format(prereqs, 'requires') for prereqs in chunk(list(quest.quest_requirements), 2)],
 				"<b>Progresses:</b>", *[Formatter.format(prereqs, 'progresses') for prereqs in chunk(list(self.player.quest_book.get_quests_requiring(quest.name)), 2)],
 				"<b>Needs:</b>", *[Formatter.format(prereqs, 'needs') for prereqs in chunk(list(quest.skill_requirements.items()), 2)],
 				"<b>Rewards:</b>", *[Formatter.format(prereqs, 'rewards') for prereqs in chunk(list(quest.rewards.items()), 2)],
 			])
-			self.graph.add_node(quest.name, title=hover_details, url=quest.url,
+			self.graph.add_node(quest.name, title=hover_details, url=quest.url, start=quest.start, start_x=quest.start[0] if quest.start else None, start_y=quest.start[1] if quest.start else None, 
 				shell=shell, tier=shell, difficulty=quest.difficulty, length=quest.length, series=quest.series.split(', #')[0], 
 				released=quest.released, combat=quest.combat, members=quest.members,
 				main_developer=quest.developer[0], year=int(quest.released.split(' ')[-1]),
-				level=shell+1, group=quest.series, size=15 + 50*list(self.colors['length']).index(quest.length)/len(self.colors['length']),  # Size by quest length
+				level=shell+1, group=quest.series, size=25 + 90*list(self.colors['length']).index(quest.length)/len(self.colors['length']),  # Size by quest length
 			)
 
 			# Add only the direct requirements (top level).
@@ -266,6 +267,12 @@ class QuestViewer:
 	                    '</li>'+
 	                '<li>To <b>Lookup a Quest</b> on the Wiki: <ul><li>Select a quest and press "Lookup"</li></ul></li>'+
 	                '<li><b>Animations</b> can be stopped by double clicking on the background.</li>'+
+	                '<hr>'+
+	                'Tips:'+
+	                '<ul style="text-align:left;">'+
+	                '<li>To highlight a node and its neighbors, click once to highlight the node (on mobile, drag the node).</li>'+
+	                '<li>You must press enter within the "Completed" text box to update it. [bug]</li>'+
+	                '</ul>'+
 	            '<ul>'+
 	            "'",
 			    )).\
@@ -327,7 +334,7 @@ if __name__ == '__main__':
 	    # "borderWidth": 10,
 	    "borderWidthSelected": 50,
 	    "font": {
-	      "size": 60,
+	      "size": 120,
 	      "strokeWidth": 11,
 	      "strokeColor": colors['background'],
 	    }
@@ -346,24 +353,27 @@ if __name__ == '__main__':
 	    },
 	    "hoverWidth": 8,
 	    "selectionWidth": 8,
-	    "width": 4
+	    "width": 8
 	  },
 	  "interaction": {
 	    "hover": True,
 	    "multiselect": False,
 	    "navigationButtons": False,
 	  },
-	  "physics": {
-	    "barnesHut": {
-	      "gravitationalConstant": -13100,
-	      "centralGravity": 0.5,
-	      "springLength": 200+195
-	    },
-	    "stabilization": {
-	    	"iterations": 400
-	    },
-	    "minVelocity": 0.35
-	  }
+	  'physics': {
+			'repulsion': {
+		  'centralGravity': 0.3,
+		  'springLength': 1200,
+		  'springConstant': 0.1,
+		  'nodeDistance': 1500,
+		  'damping': 0.15
+		},
+		'solver': 'repulsion',
+			'stabilization': {
+				'iterations': 800
+			},
+			'minVelocity': 0.35
+		}
 	};
 
 
