@@ -351,8 +351,8 @@ if __name__ == '__main__':
 	    "font": {
 	      "size": 0, # Hide
 	    },
-	    "hoverWidth": 8,
-	    "selectionWidth": 8,
+	    "hoverWidth": 30,
+	    "selectionWidth": 40,
 	    "width": 8
 	  },
 	  "interaction": {
@@ -365,7 +365,7 @@ if __name__ == '__main__':
 		  'centralGravity': 0.3,
 		  'springLength': 1200,
 		  'springConstant': 0.1,
-		  'nodeDistance': 1500,
+		  'nodeDistance': 4000,
 		  'damping': 0.15
 		},
 		'solver': 'repulsion',

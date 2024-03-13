@@ -92,7 +92,7 @@ color_node = function(node) {
 
     if (!node.show) {
         if (document.getElementById('toggle_completed').checked) {
-            node.color = BACKGROUND_COLOR;
+            selected_color = BACKGROUND_COLOR;
             node.physics = true;
             node.hidden = false;
         } else {
