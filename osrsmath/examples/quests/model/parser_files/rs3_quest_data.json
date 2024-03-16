@@ -1,0 +1,7631 @@
+[
+    {
+        "name": "Aftermath",
+        "url": "https://runescape.wiki/w/Aftermath",
+        "quest_requirements": [
+            "Broken Home",
+            "City of Senntisten",
+            "Desperate Measures",
+            "Desperate Times",
+            "Extinction",
+            "Eye of Het I",
+            "Eye of Het II",
+            "Sins of the Father",
+            "Twilight of the Gods"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "4 July 2022",
+        "members": true,
+        "series": "The Elder God Wars #16",
+        "difficulty": "Experienced",
+        "start": [
+            "3334",
+            "2978"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "All Fired Up",
+        "url": "https://runescape.wiki/w/All_Fired_Up",
+        "quest_requirements": [
+            "Priest in Peril"
+        ],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                43
+            ]
+        ],
+        "rewards": [],
+        "released": "26 August 2008",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3472",
+            "3221"
+        ],
+        "length": "Short to Medium",
+        "combat": false
+    },
+    {
+        "name": "Alpha vs Omega",
+        "url": "https://runescape.wiki/w/Alpha_vs_Omega",
+        "quest_requirements": [
+            "Diamond in the Rough",
+            "Ghosts Ahoy",
+            "The Jack of Spades",
+            "Remains of the Necrolord",
+            "Rune Mythos",
+            "The Spirit of War",
+            "Stolen Hearts",
+            "Tomes of the Warlock",
+            "Vessel of the Harbinger"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "7 August 2023",
+        "members": true,
+        "series": "The First Necromancer #7",
+        "difficulty": "Grandmaster",
+        "start": [
+            "1776",
+            "1074"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Ancient Awakening",
+        "url": "https://runescape.wiki/w/Ancient_Awakening",
+        "quest_requirements": [
+            "Dead and Buried",
+            "Murder on the Border",
+            "New Foundations",
+            "Unwelcome Guests"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "9 October 2023",
+        "members": true,
+        "series": "Fort Forinthry #5",
+        "difficulty": "Experienced",
+        "start": [
+            "3534",
+            "3137"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Animal Magnetism",
+        "url": "https://runescape.wiki/w/Animal_Magnetism",
+        "quest_requirements": [
+            "Ernest the Chicken",
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                19
+            ],
+            [
+                "Ranged",
+                30
+            ],
+            [
+                "Slayer",
+                18
+            ],
+            [
+                "Thieving",
+                15
+            ],
+            [
+                "Woodcutting",
+                35
+            ],
+            [
+                "Smithing",
+                10
+            ]
+        ],
+        "rewards": [],
+        "released": "12 December 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3359",
+            "3094"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Another Slice of H.A.M.",
+        "url": "https://runescape.wiki/w/Another_Slice_of_H.A.M.",
+        "quest_requirements": [
+            "Death to the Dorgeshuun",
+            "The Giant Dwarf",
+            "Goblin Diplomacy",
+            "The Lost Tribe"
+        ],
+        "skill_requirements": [
+            [
+                "Attack",
+                15
+            ],
+            [
+                "Prayer",
+                25
+            ]
+        ],
+        "rewards": [],
+        "released": "24 April 2007",
+        "members": true,
+        "series": "Cave Goblin #3",
+        "difficulty": "Intermediate",
+        "start": [
+            "5363",
+            "2734"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "As a First Resort",
+        "url": "https://runescape.wiki/w/As_a_First_Resort",
+        "quest_requirements": [
+            "Dragon Slayer",
+            "Haunted Mine",
+            "The Lost Tribe",
+            "Tai Bwo Wannai Trio"
+        ],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                51
+            ],
+            [
+                "Hunter",
+                48
+            ],
+            [
+                "Woodcutting",
+                58
+            ],
+            [
+                "Attack",
+                99
+            ]
+        ],
+        "rewards": [],
+        "released": "29 January 2008",
+        "members": true,
+        "series": "Ogre #3",
+        "difficulty": "Experienced",
+        "start": [
+            "2854",
+            "2552"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Azzanadra's Quest",
+        "url": "https://runescape.wiki/w/Azzanadra%27s_Quest",
+        "quest_requirements": [
+            "Desperate Creatures",
+            "Desperate Measures",
+            "Desperate Times",
+            "The Needle Skips",
+            "Raksha the Shadow Colossus",
+            "The Vault of Shadows",
+            "You Are It"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                58
+            ]
+        ],
+        "rewards": [],
+        "released": "22 February 2021",
+        "members": true,
+        "series": "The Elder God Wars #8",
+        "difficulty": "Experienced",
+        "start": [
+            "3569",
+            "2901"
+        ],
+        "length": "Long",
+        "combat": false
+    },
+    {
+        "name": "Back to my Roots",
+        "url": "https://runescape.wiki/w/Back_to_my_Roots",
+        "quest_requirements": [
+            "The Hand in the Sand",
+            "Tribal Totem"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                55
+            ],
+            [
+                "Farming",
+                53
+            ],
+            [
+                "Slayer",
+                59
+            ],
+            [
+                "Woodcutting",
+                72
+            ]
+        ],
+        "rewards": [],
+        "released": "9 October 2007",
+        "members": true,
+        "series": "None",
+        "difficulty": "Master",
+        "start": [
+            "3312",
+            "2635"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Back to the Freezer",
+        "url": "https://runescape.wiki/w/Back_to_the_Freezer",
+        "quest_requirements": [
+            "Cold War",
+            "Ernest the Chicken",
+            "Hunt for Red Raktuber",
+            "Sea Slug",
+            "Some Like It Cold"
+        ],
+        "skill_requirements": [
+            [
+                "Runecraft",
+                45
+            ],
+            [
+                "Slayer",
+                37
+            ]
+        ],
+        "rewards": [],
+        "released": "27 February 2017",
+        "members": true,
+        "series": "Penguin #4",
+        "difficulty": "Master",
+        "start": [
+            "3258",
+            "2615"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Battle of Forinthry",
+        "url": "https://runescape.wiki/w/Battle_of_Forinthry",
+        "quest_requirements": [
+            "Ancient Awakening",
+            "Dead and Buried",
+            "Murder on the Border",
+            "New Foundations",
+            "Unwelcome Guests"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "20 November 2023",
+        "members": true,
+        "series": "Fort Forinthry #6",
+        "difficulty": "Experienced",
+        "start": [
+            "3544",
+            "3292"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Battle of the Monolith",
+        "url": "https://runescape.wiki/w/Battle_of_the_Monolith",
+        "quest_requirements": [
+            "Azzanadra's Quest",
+            "Desperate Creatures",
+            "Desperate Measures",
+            "Desperate Times",
+            "The Needle Skips",
+            "Raksha the Shadow Colossus",
+            "The Vault of Shadows",
+            "You Are It"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "24 May 2021",
+        "members": true,
+        "series": "The Elder God Wars #9",
+        "difficulty": "Intermediate",
+        "start": [
+            "3398",
+            "3346"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Beneath Cursed Tides",
+        "url": "https://runescape.wiki/w/Beneath_Cursed_Tides",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Attack",
+                30
+            ],
+            [
+                "Cooking",
+                30
+            ],
+            [
+                "Firemaking",
+                30
+            ],
+            [
+                "Magic",
+                30
+            ],
+            [
+                "Mining",
+                30
+            ],
+            [
+                "Smithing",
+                30
+            ],
+            [
+                "Strength",
+                30
+            ],
+            [
+                "Woodcutting",
+                30
+            ]
+        ],
+        "rewards": [],
+        "released": "14 December 2015",
+        "members": false,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3184",
+            "3094"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Between a Rock...",
+        "url": "https://runescape.wiki/w/Between_a_Rock...",
+        "quest_requirements": [
+            "Dwarf Cannon",
+            "Fishing Contest"
+        ],
+        "skill_requirements": [
+            [
+                "Mining",
+                40
+            ],
+            [
+                "Smithing",
+                50
+            ]
+        ],
+        "rewards": [],
+        "released": "21 March 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Experienced",
+        "start": [
+            "10168",
+            "2824"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Big Chompy Bird Hunting",
+        "url": "https://runescape.wiki/w/Big_Chompy_Bird_Hunting",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Cooking",
+                30
+            ],
+            [
+                "Fletching",
+                5
+            ],
+            [
+                "Ranged",
+                30
+            ]
+        ],
+        "rewards": [],
+        "released": "18 May 2004",
+        "members": true,
+        "series": "Ogre #1",
+        "difficulty": "Intermediate",
+        "start": [
+            "2982",
+            "2631"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Biohazard",
+        "url": "https://runescape.wiki/w/Biohazard",
+        "quest_requirements": [
+            "Plague City"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "23 October 2002",
+        "members": true,
+        "series": "Elf (Prifddinas) #2",
+        "difficulty": "Novice",
+        "start": [
+            "3335",
+            "2591"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Birthright of the Dwarves",
+        "url": "https://runescape.wiki/w/Birthright_of_the_Dwarves",
+        "quest_requirements": [
+            "Between a Rock...",
+            "Death Plateau",
+            "Druidic Ritual",
+            "Dwarf Cannon",
+            "Eadgar's Ruse",
+            "Fishing Contest",
+            "Forgettable Tale of a Drunken Dwarf",
+            "Forgiveness of a Chaos Dwarf",
+            "The Giant Dwarf",
+            "Jungle Potion",
+            "King of the Dwarves",
+            "My Arm's Big Adventure",
+            "Troll Stronghold"
+        ],
+        "skill_requirements": [
+            [
+                "Mining",
+                80
+            ],
+            [
+                "Smithing",
+                82
+            ],
+            [
+                "Strength",
+                85
+            ]
+        ],
+        "rewards": [],
+        "released": "2 October 2013",
+        "members": true,
+        "series": "Dwarf (Red Axe) #5",
+        "difficulty": "Grandmaster",
+        "start": [
+            "10193",
+            "2879"
+        ],
+        "length": "Very Long",
+        "combat": true
+    },
+    {
+        "name": "The Blood Pact",
+        "url": "https://runescape.wiki/w/The_Blood_Pact",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "15 March 2010",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": null,
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Blood Runs Deep",
+        "url": "https://runescape.wiki/w/Blood_Runs_Deep",
+        "quest_requirements": [
+            "Dream Mentor",
+            "The Fremennik Isles",
+            "The Fremennik Trials",
+            "Glorious Memories",
+            "Horror from the Deep",
+            "Lost City",
+            "Lunar Diplomacy",
+            "Mountain Daughter",
+            "Royal Trouble",
+            "Throne of Miscellania"
+        ],
+        "skill_requirements": [
+            [
+                "Attack",
+                75
+            ],
+            [
+                "Slayer",
+                65
+            ],
+            [
+                "Strength",
+                75
+            ]
+        ],
+        "rewards": [],
+        "released": "15 December 2009",
+        "members": true,
+        "series": "Fremennik #10",
+        "difficulty": "Master",
+        "start": [
+            "3928",
+            "2088"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "The Branches of Darkmeyer",
+        "url": "https://runescape.wiki/w/The_Branches_of_Darkmeyer",
+        "quest_requirements": [
+            "The Darkness of Hallowvale",
+            "In Aid of the Myreque",
+            "In Search of the Myreque",
+            "Legacy of Seergaze",
+            "Nature Spirit"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                63
+            ],
+            [
+                "Crafting",
+                64
+            ],
+            [
+                "Farming",
+                63
+            ],
+            [
+                "Fletching",
+                70
+            ],
+            [
+                "Magic",
+                70
+            ],
+            [
+                "Slayer",
+                67
+            ],
+            [
+                "Woodcutting",
+                76
+            ]
+        ],
+        "rewards": [],
+        "released": "31 August 2011",
+        "members": true,
+        "series": "Myreque #7",
+        "difficulty": "Master",
+        "start": [
+            "3231",
+            "3490"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Bringing Home the Bacon",
+        "url": "https://runescape.wiki/w/Bringing_Home_the_Bacon",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Construction",
+                14
+            ],
+            [
+                "Farming",
+                14
+            ]
+        ],
+        "rewards": [],
+        "released": "9 July 2013",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3296",
+            "3021"
+        ],
+        "length": "Medium to Long",
+        "combat": false
+    },
+    {
+        "name": "The Brink of Extinction",
+        "url": "https://runescape.wiki/w/The_Brink_of_Extinction",
+        "quest_requirements": [
+            "The Elder Kiln"
+        ],
+        "skill_requirements": [
+            [
+                "Mining",
+                72
+            ],
+            [
+                "Smithing",
+                80
+            ]
+        ],
+        "rewards": [],
+        "released": "4 December 2012",
+        "members": true,
+        "series": "TzHaar #3",
+        "difficulty": "Grandmaster",
+        "start": [
+            "5159",
+            "4671"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Broken Home",
+        "url": "https://runescape.wiki/w/Broken_Home",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "27 October 2014",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3481",
+            "3360"
+        ],
+        "length": "Medium to Long",
+        "combat": false
+    },
+    {
+        "name": "Buyers and Cellars",
+        "url": "https://runescape.wiki/w/Buyers_and_Cellars",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Thieving",
+                5
+            ]
+        ],
+        "rewards": [],
+        "released": "28 April 2010",
+        "members": true,
+        "series": "Thieves' Guild #1",
+        "difficulty": "Novice",
+        "start": [
+            "5903",
+            "4662"
+        ],
+        "length": "Short to Medium",
+        "combat": false
+    },
+    {
+        "name": "Cabin Fever",
+        "url": "https://runescape.wiki/w/Cabin_Fever",
+        "quest_requirements": [
+            "Pirate's Treasure",
+            "Rum Deal"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                42
+            ],
+            [
+                "Crafting",
+                45
+            ],
+            [
+                "Ranged",
+                40
+            ],
+            [
+                "Smithing",
+                50
+            ]
+        ],
+        "rewards": [],
+        "released": "7 February 2006",
+        "members": true,
+        "series": "Pirate #3",
+        "difficulty": "Experienced",
+        "start": [
+            "3495",
+            "3676"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Call of the Ancestors",
+        "url": "https://runescape.wiki/w/Call_of_the_Ancestors",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "12 October 2015",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3022",
+            "3110"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Carnillean Rising",
+        "url": "https://runescape.wiki/w/Carnillean_Rising",
+        "quest_requirements": [
+            "The Blood Pact",
+            "Hazeel Cult"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                31
+            ],
+            [
+                "Thieving",
+                33
+            ]
+        ],
+        "rewards": [],
+        "released": "3 July 2012",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3280",
+            "2568"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Catapult Construction",
+        "url": "https://runescape.wiki/w/Catapult_Construction",
+        "quest_requirements": [
+            "Biohazard",
+            "Plague City",
+            "Regicide",
+            "Underground Pass"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                44
+            ],
+            [
+                "Fletching",
+                42
+            ],
+            [
+                "Smithing",
+                30
+            ],
+            [
+                "Woodcutting",
+                60
+            ]
+        ],
+        "rewards": [],
+        "released": "13 February 2008",
+        "members": true,
+        "series": "None",
+        "difficulty": "Master",
+        "start": [
+            "3187",
+            "2187"
+        ],
+        "length": "Short to Medium",
+        "combat": false
+    },
+    {
+        "name": "Chef's Assistant",
+        "url": "https://runescape.wiki/w/Chef%27s_Assistant",
+        "quest_requirements": [
+            "Cook's Assistant"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                32
+            ],
+            [
+                "Cooking",
+                38
+            ]
+        ],
+        "rewards": [],
+        "released": "11 February 2019",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3446",
+            "3143"
+        ],
+        "length": "Short to Medium",
+        "combat": false
+    },
+    {
+        "name": "Children of Mah",
+        "url": "https://runescape.wiki/w/Children_of_Mah",
+        "quest_requirements": [
+            "Dishonour among Thieves",
+            "Fate of the Gods",
+            "Hazeel Cult",
+            "The Light Within",
+            "Meeting History",
+            "Missing Presumed Death",
+            "Plague's End",
+            "The Temple at Senntisten",
+            "The World Wakes"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "21 November 2016",
+        "members": true,
+        "series": "Sliske's Game #14",
+        "difficulty": "Grandmaster",
+        "start": [
+            "3882",
+            "2729"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "The Chosen Commander",
+        "url": "https://runescape.wiki/w/The_Chosen_Commander",
+        "quest_requirements": [
+            "Another Slice of H.A.M.",
+            "Death to the Dorgeshuun",
+            "Fishing Contest",
+            "The Giant Dwarf",
+            "Goblin Diplomacy",
+            "Land of the Goblins",
+            "The Lost Tribe"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                46
+            ],
+            [
+                "Strength",
+                46
+            ],
+            [
+                "Thieving",
+                46
+            ]
+        ],
+        "rewards": [],
+        "released": "17 March 2009",
+        "members": true,
+        "series": "Cave Goblin #5",
+        "difficulty": "Experienced",
+        "start": [
+            "5341",
+            "2732"
+        ],
+        "length": "Long to Very Long",
+        "combat": true
+    },
+    {
+        "name": "City of Senntisten",
+        "url": "https://runescape.wiki/w/City_of_Senntisten",
+        "quest_requirements": [
+            "Azzanadra's Quest",
+            "Battle of the Monolith",
+            "Desperate Creatures",
+            "Desperate Measures",
+            "Desperate Times",
+            "Raksha the Shadow Colossus",
+            "The Vault of Shadows"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                74
+            ],
+            [
+                "Slayer",
+                75
+            ]
+        ],
+        "rewards": [],
+        "released": "21 June 2021",
+        "members": true,
+        "series": "The Elder God Wars #10",
+        "difficulty": "Master",
+        "start": [
+            "2877",
+            "3373"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Clock Tower",
+        "url": "https://runescape.wiki/w/Clock_Tower",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "17 June 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3251",
+            "2568"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "A Clockwork Syringe",
+        "url": "https://runescape.wiki/w/A_Clockwork_Syringe",
+        "quest_requirements": [
+            "Cabin Fever",
+            "Cook's Assistant",
+            "Creature of Fenkenstrain",
+            "The Great Brain Robbery",
+            "Pirate's Treasure",
+            "Priest in Peril",
+            "The Restless Ghost",
+            "Rocking Out",
+            "Rum Deal"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                62
+            ],
+            [
+                "Defence",
+                76
+            ],
+            [
+                "Slayer",
+                61
+            ],
+            [
+                "Smithing",
+                74
+            ],
+            [
+                "Thieving",
+                74
+            ]
+        ],
+        "rewards": [],
+        "released": "28 March 2011",
+        "members": true,
+        "series": "Pirate #6",
+        "difficulty": "Master",
+        "start": null,
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Cold War",
+        "url": "https://runescape.wiki/w/Cold_War",
+        "quest_requirements": [
+            "Carnillean Rising"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                30
+            ],
+            [
+                "Construction",
+                34
+            ],
+            [
+                "Crafting",
+                30
+            ],
+            [
+                "Hunter",
+                10
+            ],
+            [
+                "Thieving",
+                15
+            ],
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Smithing",
+                20
+            ],
+            [
+                "Woodcutting",
+                60
+            ]
+        ],
+        "rewards": [],
+        "released": "29 January 2007",
+        "members": true,
+        "series": "Penguin #1",
+        "difficulty": "Intermediate",
+        "start": null,
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Contact!",
+        "url": "https://runescape.wiki/w/Contact!",
+        "quest_requirements": [
+            "Diamond in the Rough",
+            "Gertrude's Cat",
+            "Icthlarin's Little Helper",
+            "Stolen Hearts"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "10 January 2007",
+        "members": true,
+        "series": "Desert #3",
+        "difficulty": "Master",
+        "start": [
+            "2725",
+            "3309"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Cook's Assistant",
+        "url": "https://runescape.wiki/w/Cook%27s_Assistant",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "4 January 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3215",
+            "3209"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Creature of Fenkenstrain",
+        "url": "https://runescape.wiki/w/Creature_of_Fenkenstrain",
+        "quest_requirements": [
+            "Priest in Peril",
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Thieving",
+                25
+            ],
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Smithing",
+                20
+            ]
+        ],
+        "rewards": [],
+        "released": "31 January 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3483",
+            "3488"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Crocodile Tears",
+        "url": "https://runescape.wiki/w/Crocodile_Tears",
+        "quest_requirements": [
+            "Contact!",
+            "Dealing with Scabaras",
+            "Diamond in the Rough",
+            "Gertrude's Cat",
+            "The Golem",
+            "Icthlarin's Little Helper",
+            "The Jack of Spades",
+            "Missing My Mummy",
+            "Spirits of the Elid",
+            "Stolen Hearts"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                30
+            ],
+            [
+                "Fishing",
+                72
+            ],
+            [
+                "Hunter",
+                73
+            ],
+            [
+                "Woodcutting",
+                47
+            ]
+        ],
+        "rewards": [],
+        "released": "5 June 2017",
+        "members": true,
+        "series": "Desert #7",
+        "difficulty": "Master",
+        "start": [
+            "3025",
+            "3490"
+        ],
+        "length": "Short to Medium",
+        "combat": true
+    },
+    {
+        "name": "The Curse of Arrav",
+        "url": "https://runescape.wiki/w/The_Curse_of_Arrav",
+        "quest_requirements": [
+            "Defender of Varrock",
+            "Diamond in the Rough",
+            "Family Crest",
+            "Gertrude's Cat",
+            "The Golem",
+            "Icthlarin's Little Helper",
+            "The Knight's Sword",
+            "The Lost Tribe",
+            "Missing My Mummy",
+            "Shield of Arrav",
+            "Stolen Hearts",
+            "The Tale of the Muspah",
+            "Temple of Ikov",
+            "What Lies Below"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                61
+            ],
+            [
+                "Mining",
+                64
+            ],
+            [
+                "Ranged",
+                64
+            ],
+            [
+                "Slayer",
+                37
+            ],
+            [
+                "Strength",
+                64
+            ],
+            [
+                "Thieving",
+                66
+            ],
+            [
+                "Fletching",
+                59
+            ],
+            [
+                "Magic",
+                57
+            ],
+            [
+                "Crafting",
+                43
+            ]
+        ],
+        "rewards": [],
+        "released": "21 July 2009",
+        "members": true,
+        "series": "Mahjarrat Mysteries #13",
+        "difficulty": "Master",
+        "start": [
+            "2938",
+            "3420"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Curse of the Black Stone",
+        "url": "https://runescape.wiki/w/Curse_of_the_Black_Stone",
+        "quest_requirements": [
+            "Impressing the Locals"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                12
+            ],
+            [
+                "Woodcutting",
+                34
+            ]
+        ],
+        "rewards": [],
+        "released": "25 February 2019",
+        "members": true,
+        "series": "None",
+        "difficulty": "Master",
+        "start": [
+            "3696",
+            "3442"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "The Darkness of Hallowvale",
+        "url": "https://runescape.wiki/w/The_Darkness_of_Hallowvale",
+        "quest_requirements": [
+            "In Aid of the Myreque",
+            "In Search of the Myreque",
+            "Nature Spirit",
+            "Priest in Peril",
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                26
+            ],
+            [
+                "Construction",
+                5
+            ],
+            [
+                "Crafting",
+                32
+            ],
+            [
+                "Magic",
+                33
+            ],
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Strength",
+                40
+            ],
+            [
+                "Thieving",
+                22
+            ]
+        ],
+        "rewards": [],
+        "released": "4 September 2006",
+        "members": true,
+        "series": "Myreque #5",
+        "difficulty": "Intermediate",
+        "start": [
+            "3232",
+            "3491"
+        ],
+        "length": "Very Long",
+        "combat": false
+    },
+    {
+        "name": "Daughter of Chaos",
+        "url": "https://runescape.wiki/w/Daughter_of_Chaos",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "1 August 2022",
+        "members": true,
+        "series": "Legacy of Zamorak #1",
+        "difficulty": "Intermediate",
+        "start": [
+            "3336",
+            "2984"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Dead and Buried",
+        "url": "https://runescape.wiki/w/Dead_and_Buried",
+        "quest_requirements": [
+            "Murder on the Border",
+            "New Foundations",
+            "Unwelcome Guests"
+        ],
+        "skill_requirements": [
+            [
+                "Woodcutting",
+                50
+            ]
+        ],
+        "rewards": [],
+        "released": "17 July 2023",
+        "members": true,
+        "series": "Fort Forinthry #4",
+        "difficulty": "Experienced",
+        "start": [
+            "3544",
+            "3292"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Deadliest Catch",
+        "url": "https://runescape.wiki/w/Deadliest_Catch",
+        "quest_requirements": [
+            "Tower of Life"
+        ],
+        "skill_requirements": [
+            [
+                "Fishing",
+                70
+            ],
+            [
+                "Herblore",
+                3
+            ],
+            [
+                "Hunter",
+                67
+            ],
+            [
+                "Thieving",
+                70
+            ]
+        ],
+        "rewards": [],
+        "released": "7 June 2011",
+        "members": true,
+        "series": "None",
+        "difficulty": "Master",
+        "start": [
+            "3413",
+            "2597"
+        ],
+        "length": "Short to Medium",
+        "combat": false
+    },
+    {
+        "name": "Dealing with Scabaras",
+        "url": "https://runescape.wiki/w/Dealing_with_Scabaras",
+        "quest_requirements": [
+            "Contact!",
+            "Diamond in the Rough",
+            "Gertrude's Cat",
+            "Icthlarin's Little Helper",
+            "Stolen Hearts"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                50
+            ],
+            [
+                "Firemaking",
+                21
+            ],
+            [
+                "Strength",
+                60
+            ],
+            [
+                "Thieving",
+                60
+            ]
+        ],
+        "rewards": [],
+        "released": "2 January 2008",
+        "members": true,
+        "series": "Desert #4",
+        "difficulty": "Master",
+        "start": [
+            "2727",
+            "3311"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Death Plateau",
+        "url": "https://runescape.wiki/w/Death_Plateau",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "31 January 2012",
+        "members": false,
+        "series": "Troll #1",
+        "difficulty": "Novice",
+        "start": [
+            "3561",
+            "2918"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "The Death of Chivalry",
+        "url": "https://runescape.wiki/w/The_Death_of_Chivalry",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "13 August 2013",
+        "members": false,
+        "series": "Sliske's Game #2",
+        "difficulty": "Novice",
+        "start": [
+            "3502",
+            "3051"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Death to the Dorgeshuun",
+        "url": "https://runescape.wiki/w/Death_to_the_Dorgeshuun",
+        "quest_requirements": [
+            "The Lost Tribe"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                23
+            ],
+            [
+                "Thieving",
+                23
+            ]
+        ],
+        "rewards": [],
+        "released": "21 June 2006",
+        "members": true,
+        "series": "Cave Goblin #2",
+        "difficulty": "Intermediate",
+        "start": [
+            "9612",
+            "3314"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Defender of Varrock",
+        "url": "https://runescape.wiki/w/Defender_of_Varrock",
+        "quest_requirements": [
+            "Family Crest",
+            "The Knight's Sword",
+            "Shield of Arrav",
+            "What Lies Below"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                51
+            ],
+            [
+                "Hunter",
+                51
+            ],
+            [
+                "Mining",
+                59
+            ],
+            [
+                "Smithing",
+                54
+            ]
+        ],
+        "rewards": [],
+        "released": "29 September 2008",
+        "members": true,
+        "series": "Mahjarrat Mysteries #12",
+        "difficulty": "Experienced",
+        "start": [
+            "3495",
+            "3205"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Demon Slayer",
+        "url": "https://runescape.wiki/w/Demon_Slayer",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "28 January 2013",
+        "members": false,
+        "series": "Delrith #1",
+        "difficulty": "Novice",
+        "start": [
+            "3483",
+            "3250"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Desert Treasure",
+        "url": "https://runescape.wiki/w/Desert_Treasure",
+        "quest_requirements": [
+            "Death Plateau",
+            "The Dig Site",
+            "Troll Stronghold"
+        ],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                50
+            ],
+            [
+                "Magic",
+                50
+            ],
+            [
+                "Slayer",
+                10
+            ],
+            [
+                "Thieving",
+                53
+            ],
+            [
+                "Woodcutting",
+                80
+            ]
+        ],
+        "rewards": [],
+        "released": "18 April 2005",
+        "members": true,
+        "series": "Mahjarrat Mysteries #9",
+        "difficulty": "Master",
+        "start": null,
+        "length": "Very Long",
+        "combat": true
+    },
+    {
+        "name": "Desperate Creatures",
+        "url": "https://runescape.wiki/w/Desperate_Creatures",
+        "quest_requirements": [
+            "Desperate Measures",
+            "Desperate Times",
+            "The Needle Skips",
+            "You Are It"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "21 September 2020",
+        "members": true,
+        "series": "The Elder God Wars #5",
+        "difficulty": "Intermediate",
+        "start": [
+            "3537",
+            "2892"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Desperate Measures",
+        "url": "https://runescape.wiki/w/Desperate_Measures",
+        "quest_requirements": [
+            "Desperate Times",
+            "The Needle Skips",
+            "You Are It"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                50
+            ]
+        ],
+        "rewards": [],
+        "released": "27 July 2020",
+        "members": true,
+        "series": "The Elder God Wars #4",
+        "difficulty": "Intermediate",
+        "start": [
+            "3567",
+            "2892"
+        ],
+        "length": "Very Long",
+        "combat": true
+    },
+    {
+        "name": "Desperate Times",
+        "url": "https://runescape.wiki/w/Desperate_Times",
+        "quest_requirements": [
+            "The Needle Skips",
+            "You Are It"
+        ],
+        "skill_requirements": [
+            [
+                "Mining",
+                50
+            ],
+            [
+                "Smithing",
+                50
+            ]
+        ],
+        "rewards": [],
+        "released": "13 May 2019",
+        "members": true,
+        "series": "The Elder God Wars #3",
+        "difficulty": "Intermediate",
+        "start": [
+            "3567",
+            "2892"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Devious Minds",
+        "url": "https://runescape.wiki/w/Devious_Minds",
+        "quest_requirements": [
+            "Recruitment Drive",
+            "What's Mine is Yours"
+        ],
+        "skill_requirements": [
+            [
+                "Fletching",
+                50
+            ],
+            [
+                "Runecraft",
+                50
+            ],
+            [
+                "Smithing",
+                65
+            ]
+        ],
+        "rewards": [],
+        "released": "19 December 2005",
+        "members": true,
+        "series": "Mahjarrat Mysteries #8",
+        "difficulty": "Experienced",
+        "start": [
+            "3492",
+            "3401"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Diamond in the Rough",
+        "url": "https://runescape.wiki/w/Diamond_in_the_Rough",
+        "quest_requirements": [
+            "Stolen Hearts"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "26 September 2012",
+        "members": true,
+        "series": "Ozan #2",
+        "difficulty": "Novice",
+        "start": [
+            "3157",
+            "3290"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "The Dig Site",
+        "url": "https://runescape.wiki/w/The_Dig_Site",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Agility",
+                10
+            ],
+            [
+                "Herblore",
+                10
+            ],
+            [
+                "Thieving",
+                25
+            ]
+        ],
+        "rewards": [],
+        "released": "9 July 2003",
+        "members": true,
+        "series": "Mahjarrat Mysteries #4",
+        "difficulty": "Intermediate",
+        "start": [
+            "3345",
+            "3356"
+        ],
+        "length": "Long",
+        "combat": false
+    },
+    {
+        "name": "Dimension of Disaster",
+        "url": "https://runescape.wiki/w/Dimension_of_Disaster",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "23 March 2015",
+        "members": true,
+        "series": "None",
+        "difficulty": "Special",
+        "start": [
+            "3424",
+            "3203"
+        ],
+        "length": "Very, Very Long",
+        "combat": true
+    },
+    {
+        "name": "Dishonour among Thieves",
+        "url": "https://runescape.wiki/w/Dishonour_among_Thieves",
+        "quest_requirements": [
+            "Hazeel Cult",
+            "Missing Presumed Death"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                30
+            ],
+            [
+                "Thieving",
+                30
+            ]
+        ],
+        "rewards": [],
+        "released": "23 February 2015",
+        "members": true,
+        "series": "Sliske's Game #8",
+        "difficulty": "Intermediate",
+        "start": [
+            "3486",
+            "3380"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Do No Evil",
+        "url": "https://runescape.wiki/w/Do_No_Evil",
+        "quest_requirements": [
+            "Animal Magnetism",
+            "Contact!",
+            "Cook's Assistant",
+            "Creature of Fenkenstrain",
+            "Dealing with Scabaras",
+            "Death Plateau",
+            "Demon Slayer",
+            "Desert Treasure",
+            "Diamond in the Rough",
+            "The Dig Site",
+            "Ernest the Chicken",
+            "Garden of Tranquillity",
+            "Gertrude's Cat",
+            "The Golem",
+            "The Grand Tree",
+            "Icthlarin's Little Helper",
+            "Missing My Mummy",
+            "Monkey Madness",
+            "The Restless Ghost",
+            "Shadow of the Storm",
+            "Smoking Kills",
+            "Stolen Hearts",
+            "Tree Gnome Village",
+            "Troll Stronghold"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                64
+            ],
+            [
+                "Crafting",
+                68
+            ],
+            [
+                "Magic",
+                70
+            ],
+            [
+                "Ranged",
+                50
+            ],
+            [
+                "Thieving",
+                70
+            ]
+        ],
+        "rewards": [],
+        "released": "1 December 2010",
+        "members": true,
+        "series": "Desert #8",
+        "difficulty": "Master",
+        "start": [
+            "3025",
+            "3490"
+        ],
+        "length": "Very Long",
+        "combat": true
+    },
+    {
+        "name": "Dragon Slayer",
+        "url": "https://runescape.wiki/w/Dragon_Slayer",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                8
+            ],
+            [
+                "Smithing",
+                20
+            ]
+        ],
+        "rewards": [],
+        "released": "23 September 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Experienced",
+        "start": [
+            "3362",
+            "3191"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Dream Mentor",
+        "url": "https://runescape.wiki/w/Dream_Mentor",
+        "quest_requirements": [
+            "The Fremennik Trials",
+            "Lost City",
+            "Lunar Diplomacy"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "15 May 2007",
+        "members": true,
+        "series": "Fremennik #8",
+        "difficulty": "Master",
+        "start": null,
+        "length": "Short to Medium",
+        "combat": true
+    },
+    {
+        "name": "Druidic Ritual",
+        "url": "https://runescape.wiki/w/Druidic_Ritual",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "31 January 2012",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3484",
+            "2924"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Dwarf Cannon",
+        "url": "https://runescape.wiki/w/Dwarf_Cannon",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "27 May 2003",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3460",
+            "2568"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Eadgar's Ruse",
+        "url": "https://runescape.wiki/w/Eadgar%27s_Ruse",
+        "quest_requirements": [
+            "Death Plateau",
+            "Druidic Ritual",
+            "Troll Stronghold"
+        ],
+        "skill_requirements": [
+            [
+                "Herblore",
+                31
+            ]
+        ],
+        "rewards": [],
+        "released": "5 October 2004",
+        "members": true,
+        "series": "Troll #3",
+        "difficulty": "Experienced",
+        "start": [
+            "3438",
+            "2918"
+        ],
+        "length": "Long",
+        "combat": false
+    },
+    {
+        "name": "Eagles' Peak",
+        "url": "https://runescape.wiki/w/Eagles%27_Peak",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Hunter",
+                27
+            ]
+        ],
+        "rewards": [],
+        "released": "28 November 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3264",
+            "2606"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "The Elder Kiln",
+        "url": "https://runescape.wiki/w/The_Elder_Kiln",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Agility",
+                60
+            ],
+            [
+                "Magic",
+                75
+            ],
+            [
+                "Mining",
+                40
+            ]
+        ],
+        "rewards": [],
+        "released": "14 February 2012",
+        "members": true,
+        "series": "TzHaar #2",
+        "difficulty": "Master",
+        "start": [
+            "5159",
+            "4707"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Elemental Workshop I",
+        "url": "https://runescape.wiki/w/Elemental_Workshop_I",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Smithing",
+                20
+            ]
+        ],
+        "rewards": [],
+        "released": "2 June 2004",
+        "members": true,
+        "series": "Elemental Workshop #1",
+        "difficulty": "Novice",
+        "start": [
+            "3481",
+            "2715"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Elemental Workshop II",
+        "url": "https://runescape.wiki/w/Elemental_Workshop_II",
+        "quest_requirements": [
+            "Elemental Workshop I"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                20
+            ],
+            [
+                "Smithing",
+                30
+            ]
+        ],
+        "rewards": [],
+        "released": "2 October 2006",
+        "members": true,
+        "series": "Elemental Workshop #2",
+        "difficulty": "Intermediate",
+        "start": [
+            "3343",
+            "3362"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Elemental Workshop III",
+        "url": "https://runescape.wiki/w/Elemental_Workshop_III",
+        "quest_requirements": [
+            "Elemental Workshop I",
+            "Elemental Workshop II"
+        ],
+        "skill_requirements": [
+            [
+                "Defence",
+                33
+            ],
+            [
+                "Smithing",
+                33
+            ]
+        ],
+        "rewards": [],
+        "released": "25 May 2010",
+        "members": true,
+        "series": "Elemental Workshop #3",
+        "difficulty": "Intermediate",
+        "start": [
+            "3465",
+            "2702"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Elemental Workshop IV",
+        "url": "https://runescape.wiki/w/Elemental_Workshop_IV",
+        "quest_requirements": [
+            "Elemental Workshop I",
+            "Elemental Workshop II",
+            "Elemental Workshop III"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                41
+            ],
+            [
+                "Defence",
+                40
+            ],
+            [
+                "Runecraft",
+                39
+            ],
+            [
+                "Smithing",
+                42
+            ],
+            [
+                "Thieving",
+                39
+            ]
+        ],
+        "rewards": [],
+        "released": "1 March 2011",
+        "members": true,
+        "series": "Elemental Workshop #4",
+        "difficulty": "Intermediate",
+        "start": [
+            "3408",
+            "2702"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Enakhra's Lament",
+        "url": "https://runescape.wiki/w/Enakhra%27s_Lament",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                50
+            ],
+            [
+                "Firemaking",
+                45
+            ],
+            [
+                "Magic",
+                13
+            ]
+        ],
+        "rewards": [],
+        "released": "23 January 2006",
+        "members": true,
+        "series": "Mahjarrat Mysteries #7",
+        "difficulty": "Experienced",
+        "start": [
+            "2930",
+            "3190"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Enlightened Journey",
+        "url": "https://runescape.wiki/w/Enlightened_Journey",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                36
+            ],
+            [
+                "Farming",
+                30
+            ],
+            [
+                "Firemaking",
+                20
+            ]
+        ],
+        "rewards": [],
+        "released": "6 November 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3355",
+            "2812"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Ernest the Chicken",
+        "url": "https://runescape.wiki/w/Ernest_the_Chicken",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "21 January 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3329",
+            "3112"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Evil Dave's Big Day Out",
+        "url": "https://runescape.wiki/w/Evil_Dave%27s_Big_Day_Out",
+        "quest_requirements": [
+            "Cook's Assistant",
+            "Demon Slayer",
+            "Gertrude's Cat",
+            "The Golem",
+            "Shadow of the Storm"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                30
+            ],
+            [
+                "Cooking",
+                30
+            ],
+            [
+                "Herblore",
+                30
+            ],
+            [
+                "Magic",
+                30
+            ]
+        ],
+        "rewards": [],
+        "released": "27 November 2017",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "9890",
+            "3080"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Extinction",
+        "url": "https://runescape.wiki/w/Extinction",
+        "quest_requirements": [
+            "Azzanadra's Quest",
+            "Battle of the Monolith",
+            "City of Senntisten",
+            "Desperate Measures",
+            "Desperate Times",
+            "Eye of Het I",
+            "Eye of Het II",
+            "The Needle Skips",
+            "Sins of the Father",
+            "You Are It"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "4 April 2022",
+        "members": true,
+        "series": "The Elder God Wars #14",
+        "difficulty": "Grandmaster",
+        "start": [
+            "3452",
+            "3332"
+        ],
+        "length": "Very Long",
+        "combat": true
+    },
+    {
+        "name": "Eye of Het I",
+        "url": "https://runescape.wiki/w/Eye_of_Het_I",
+        "quest_requirements": [
+            "Azzanadra's Quest",
+            "Battle of the Monolith",
+            "City of Senntisten",
+            "Desperate Creatures",
+            "Desperate Measures",
+            "Raksha the Shadow Colossus",
+            "The Vault of Shadows"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                65
+            ]
+        ],
+        "rewards": [],
+        "released": "4 January 2022",
+        "members": true,
+        "series": "The Elder God Wars #11",
+        "difficulty": "Novice",
+        "start": [
+            "3237",
+            "3322"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Eye of Het II",
+        "url": "https://runescape.wiki/w/Eye_of_Het_II",
+        "quest_requirements": [
+            "Azzanadra's Quest",
+            "Battle of the Monolith",
+            "City of Senntisten",
+            "Desperate Creatures",
+            "Eye of Het I",
+            "Raksha the Shadow Colossus",
+            "The Vault of Shadows"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "10 January 2022",
+        "members": true,
+        "series": "The Elder God Wars #12",
+        "difficulty": "Novice",
+        "start": [
+            "3237",
+            "3321"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "The Eyes of Glouphrie",
+        "url": "https://runescape.wiki/w/The_Eyes_of_Glouphrie",
+        "quest_requirements": [
+            "The Grand Tree"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                5
+            ],
+            [
+                "Magic",
+                46
+            ]
+        ],
+        "rewards": [],
+        "released": "15 August 2006",
+        "members": true,
+        "series": "Gnome #4",
+        "difficulty": "Intermediate",
+        "start": [
+            "3419",
+            "2402"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "A Fairy Tale I - Growing Pains",
+        "url": "https://runescape.wiki/w/A_Fairy_Tale_I_-_Growing_Pains",
+        "quest_requirements": [
+            "Lost City",
+            "Nature Spirit",
+            "Priest in Peril",
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "27 February 2006",
+        "members": true,
+        "series": "Fairy #2",
+        "difficulty": "Experienced",
+        "start": [
+            "3258",
+            "3077"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "A Fairy Tale II - Cure a Queen",
+        "url": "https://runescape.wiki/w/A_Fairy_Tale_II_-_Cure_a_Queen",
+        "quest_requirements": [
+            "A Fairy Tale I - Growing Pains",
+            "Lost City",
+            "Nature Spirit",
+            "Priest in Peril",
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [
+            [
+                "Farming",
+                49
+            ],
+            [
+                "Herblore",
+                57
+            ],
+            [
+                "Thieving",
+                40
+            ]
+        ],
+        "rewards": [],
+        "released": "11 July 2006",
+        "members": true,
+        "series": "Fairy #3",
+        "difficulty": "Experienced",
+        "start": [
+            "3258",
+            "3077"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "A Fairy Tale III - Battle at Ork's Rift",
+        "url": "https://runescape.wiki/w/A_Fairy_Tale_III_-_Battle_at_Ork%27s_Rift",
+        "quest_requirements": [
+            "A Fairy Tale I - Growing Pains",
+            "A Fairy Tale II - Cure a Queen",
+            "Lost City",
+            "Nature Spirit",
+            "Priest in Peril",
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                36
+            ],
+            [
+                "Farming",
+                54
+            ],
+            [
+                "Thieving",
+                51
+            ]
+        ],
+        "rewards": [],
+        "released": "13 May 2010",
+        "members": true,
+        "series": "Fairy #4",
+        "difficulty": "Experienced",
+        "start": [
+            "4239",
+            "1579"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Family Crest",
+        "url": "https://runescape.wiki/w/Family_Crest",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                40
+            ],
+            [
+                "Mining",
+                40
+            ],
+            [
+                "Smithing",
+                40
+            ],
+            [
+                "Cooking",
+                45
+            ],
+            [
+                "Fishing",
+                50
+            ]
+        ],
+        "rewards": [],
+        "released": "9 April 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Experienced",
+        "start": [
+            "3404",
+            "3280"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Fate of the Gods",
+        "url": "https://runescape.wiki/w/Fate_of_the_Gods",
+        "quest_requirements": [
+            "Missing Presumed Death"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                73
+            ],
+            [
+                "Magic",
+                79
+            ],
+            [
+                "Slayer",
+                76
+            ]
+        ],
+        "rewards": [],
+        "released": "24 March 2014",
+        "members": true,
+        "series": "Sliske's Game #5",
+        "difficulty": "Grandmaster",
+        "start": [
+            "3359",
+            "2369"
+        ],
+        "length": "Long to Very Long",
+        "combat": true
+    },
+    {
+        "name": "The Feud",
+        "url": "https://runescape.wiki/w/The_Feud",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Thieving",
+                30
+            ]
+        ],
+        "rewards": [],
+        "released": "4 April 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3210",
+            "3301"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Fight Arena",
+        "url": "https://runescape.wiki/w/Fight_Arena",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "23 July 2002",
+        "members": true,
+        "series": "Mahjarrat Mysteries #5",
+        "difficulty": "Experienced",
+        "start": [
+            "3202",
+            "2567"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "The Firemaker's Curse",
+        "url": "https://runescape.wiki/w/The_Firemaker%27s_Curse",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Agility",
+                64
+            ],
+            [
+                "Firemaking",
+                74
+            ]
+        ],
+        "rewards": [],
+        "released": "11 January 2012",
+        "members": true,
+        "series": "None",
+        "difficulty": "Master",
+        "start": [
+            "3376",
+            "2363"
+        ],
+        "length": "Very Long",
+        "combat": true
+    },
+    {
+        "name": "Fishing Contest",
+        "url": "https://runescape.wiki/w/Fishing_Contest",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Fishing",
+                10
+            ]
+        ],
+        "rewards": [],
+        "released": "28 May 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3458",
+            "2880"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Forgettable Tale of a Drunken Dwarf",
+        "url": "https://runescape.wiki/w/Forgettable_Tale_of_a_Drunken_Dwarf",
+        "quest_requirements": [
+            "Fishing Contest",
+            "The Giant Dwarf"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                22
+            ],
+            [
+                "Farming",
+                17
+            ]
+        ],
+        "rewards": [],
+        "released": "26 July 2005",
+        "members": true,
+        "series": "Dwarf (Red Axe) #2",
+        "difficulty": "Intermediate",
+        "start": [
+            "10213",
+            "2827"
+        ],
+        "length": "Long",
+        "combat": false
+    },
+    {
+        "name": "Forgiveness of a Chaos Dwarf",
+        "url": "https://runescape.wiki/w/Forgiveness_of_a_Chaos_Dwarf",
+        "quest_requirements": [
+            "Between a Rock...",
+            "Dwarf Cannon",
+            "Fishing Contest",
+            "Forgettable Tale of a Drunken Dwarf",
+            "The Giant Dwarf"
+        ],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                61
+            ],
+            [
+                "Hunter",
+                61
+            ],
+            [
+                "Strength",
+                69
+            ]
+        ],
+        "rewards": [],
+        "released": "9 September 2009",
+        "members": true,
+        "series": "Dwarf (Red Axe) #3",
+        "difficulty": "Master",
+        "start": [
+            "10213",
+            "2827"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "The Fremennik Isles",
+        "url": "https://runescape.wiki/w/The_Fremennik_Isles",
+        "quest_requirements": [
+            "The Fremennik Trials"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                40
+            ],
+            [
+                "Construction",
+                20
+            ],
+            [
+                "Crafting",
+                46
+            ],
+            [
+                "Woodcutting",
+                56
+            ]
+        ],
+        "rewards": [],
+        "released": "6 February 2007",
+        "members": true,
+        "series": "Fremennik #7",
+        "difficulty": "Experienced",
+        "start": [
+            "3710",
+            "2648"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "The Fremennik Trials",
+        "url": "https://runescape.wiki/w/The_Fremennik_Trials",
+        "quest_requirements": [
+            "In Aid of the Myreque",
+            "Swan Song"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                40
+            ],
+            [
+                "Fletching",
+                25
+            ],
+            [
+                "Woodcutting",
+                40
+            ],
+            [
+                "Slayer",
+                32
+            ],
+            [
+                "Fishing",
+                68
+            ],
+            [
+                "Thieving",
+                72
+            ]
+        ],
+        "rewards": [],
+        "released": "2 November 2004",
+        "members": true,
+        "series": "Fremennik #1",
+        "difficulty": "Intermediate",
+        "start": [
+            "3669",
+            "2657"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Fur 'n Seek",
+        "url": "https://runescape.wiki/w/Fur_%27n_Seek",
+        "quest_requirements": [
+            "Rag and Bone Man"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                25
+            ]
+        ],
+        "rewards": [],
+        "released": "10 August 2009",
+        "members": true,
+        "series": "Odd Old Man #2",
+        "difficulty": "Novice",
+        "start": [
+            "3505",
+            "3361"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Garden of Tranquillity",
+        "url": "https://runescape.wiki/w/Garden_of_Tranquillity",
+        "quest_requirements": [
+            "Creature of Fenkenstrain",
+            "Priest in Peril",
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [
+            [
+                "Farming",
+                25
+            ]
+        ],
+        "rewards": [
+            [
+                "Farming",
+                12
+            ]
+        ],
+        "released": "30 August 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3477",
+            "3227"
+        ],
+        "length": "Long",
+        "combat": false
+    },
+    {
+        "name": "Gertrude's Cat",
+        "url": "https://runescape.wiki/w/Gertrude%27s_Cat",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "28 July 2003",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3411",
+            "3151"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Ghosts Ahoy",
+        "url": "https://runescape.wiki/w/Ghosts_Ahoy",
+        "quest_requirements": [
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                25
+            ],
+            [
+                "Cooking",
+                20
+            ]
+        ],
+        "rewards": [],
+        "released": "15 February 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3509",
+            "3679"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "The Giant Dwarf",
+        "url": "https://runescape.wiki/w/The_Giant_Dwarf",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                12
+            ],
+            [
+                "Firemaking",
+                16
+            ],
+            [
+                "Magic",
+                33
+            ],
+            [
+                "Thieving",
+                14
+            ],
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Smithing",
+                10
+            ]
+        ],
+        "rewards": [],
+        "released": "31 May 2005",
+        "members": true,
+        "series": "Dwarf (Red Axe) #1",
+        "difficulty": "Intermediate",
+        "start": [
+            "10213",
+            "2827"
+        ],
+        "length": "Medium to Long",
+        "combat": false
+    },
+    {
+        "name": "Glorious Memories",
+        "url": "https://runescape.wiki/w/Glorious_Memories",
+        "quest_requirements": [
+            "The Fremennik Isles",
+            "The Fremennik Trials",
+            "Mountain Daughter",
+            "Royal Trouble",
+            "Throne of Miscellania"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                50
+            ],
+            [
+                "Herblore",
+                43
+            ],
+            [
+                "Hunter",
+                41
+            ],
+            [
+                "Magic",
+                57
+            ]
+        ],
+        "rewards": [],
+        "released": "1 April 2009",
+        "members": true,
+        "series": "Fremennik #9",
+        "difficulty": "Master",
+        "start": null,
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Goblin Diplomacy",
+        "url": "https://runescape.wiki/w/Goblin_Diplomacy",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "8 May 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": null,
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "The Golem",
+        "url": "https://runescape.wiki/w/The_Golem",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Thieving",
+                25
+            ]
+        ],
+        "rewards": [],
+        "released": "11 April 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3089",
+            "3490"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Gower Quest",
+        "url": "https://runescape.wiki/w/Gower_Quest",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "20 June 2016",
+        "members": false,
+        "series": "None",
+        "difficulty": "Experienced",
+        "start": [
+            "3355",
+            "3255"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "The Grand Tree",
+        "url": "https://runescape.wiki/w/The_Grand_Tree",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Agility",
+                25
+            ]
+        ],
+        "rewards": [],
+        "released": "12 December 2002",
+        "members": true,
+        "series": "Gnome #2",
+        "difficulty": "Experienced",
+        "start": [
+            "3495",
+            "2465"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "The Great Brain Robbery",
+        "url": "https://runescape.wiki/w/The_Great_Brain_Robbery",
+        "quest_requirements": [
+            "Cabin Fever",
+            "Cook's Assistant",
+            "Creature of Fenkenstrain",
+            "Pirate's Treasure",
+            "Priest in Peril",
+            "The Restless Ghost",
+            "Rum Deal"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                30
+            ],
+            [
+                "Crafting",
+                16
+            ],
+            [
+                "Prayer",
+                50
+            ]
+        ],
+        "rewards": [],
+        "released": "6 March 2007",
+        "members": true,
+        "series": "Pirate #4",
+        "difficulty": "Experienced",
+        "start": [
+            "2962",
+            "3682"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Grim Tales",
+        "url": "https://runescape.wiki/w/Grim_Tales",
+        "quest_requirements": [
+            "Witch's House"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                59
+            ],
+            [
+                "Farming",
+                45
+            ],
+            [
+                "Herblore",
+                52
+            ],
+            [
+                "Thieving",
+                58
+            ],
+            [
+                "Woodcutting",
+                71
+            ]
+        ],
+        "rewards": [],
+        "released": "4 June 2007",
+        "members": true,
+        "series": "None",
+        "difficulty": "Master",
+        "start": [
+            "3379",
+            "2912"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Gunnar's Ground",
+        "url": "https://runescape.wiki/w/Gunnar%27s_Ground",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                5
+            ]
+        ],
+        "rewards": [],
+        "released": "21 September 2010",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3422",
+            "3099"
+        ],
+        "length": "Short to Medium",
+        "combat": true
+    },
+    {
+        "name": "The Hand in the Sand",
+        "url": "https://runescape.wiki/w/The_Hand_in_the_Sand",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                49
+            ],
+            [
+                "Thieving",
+                17
+            ]
+        ],
+        "rewards": [],
+        "released": "10 January 2006",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3100",
+            "2552"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Haunted Mine",
+        "url": "https://runescape.wiki/w/Haunted_Mine",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Agility",
+                15
+            ],
+            [
+                "Crafting",
+                35
+            ]
+        ],
+        "rewards": [],
+        "released": "21 December 2004",
+        "members": true,
+        "series": "None",
+        "difficulty": "Experienced",
+        "start": [
+            "3258",
+            "3444"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Hazeel Cult",
+        "url": "https://runescape.wiki/w/Hazeel_Cult",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "15 August 2002",
+        "members": true,
+        "series": "Mahjarrat Mysteries #2",
+        "difficulty": "Novice",
+        "start": [
+            "3268",
+            "2567"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Heart of Stone",
+        "url": "https://runescape.wiki/w/Heart_of_Stone",
+        "quest_requirements": [
+            "The Blood Pact",
+            "Carnillean Rising",
+            "Hazeel Cult",
+            "Rune Memories",
+            "Rune Mysteries"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                35
+            ],
+            [
+                "Runecraft",
+                25
+            ]
+        ],
+        "rewards": [],
+        "released": "24 November 2014",
+        "members": true,
+        "series": "Sliske's Game #7",
+        "difficulty": "Intermediate",
+        "start": [
+            "3216",
+            "3102"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Heartstealer",
+        "url": "https://runescape.wiki/w/Heartstealer",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "8 February 2021",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3510",
+            "3090"
+        ],
+        "length": "Short to Medium",
+        "combat": false
+    },
+    {
+        "name": "Hero's Welcome",
+        "url": "https://runescape.wiki/w/Hero%27s_Welcome",
+        "quest_requirements": [
+            "The Fremennik Trials",
+            "Lost City",
+            "Lunar Diplomacy"
+        ],
+        "skill_requirements": [
+            [
+                "Mining",
+                67
+            ],
+            [
+                "Slayer",
+                62
+            ],
+            [
+                "Smithing",
+                67
+            ]
+        ],
+        "rewards": [],
+        "released": "29 June 2015",
+        "members": true,
+        "series": "Sliske's Game #9",
+        "difficulty": "Experienced",
+        "start": [
+            "3683",
+            "2631"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Heroes' Quest",
+        "url": "https://runescape.wiki/w/Heroes%27_Quest",
+        "quest_requirements": [
+            "Dragon Slayer",
+            "Shield of Arrav"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                53
+            ],
+            [
+                "Fishing",
+                53
+            ],
+            [
+                "Herblore",
+                25
+            ],
+            [
+                "Mining",
+                50
+            ],
+            [
+                "Defence",
+                25
+            ]
+        ],
+        "rewards": [],
+        "released": "27 February 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Experienced",
+        "start": [
+            "3514",
+            "2918"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Holy Grail",
+        "url": "https://runescape.wiki/w/Holy_Grail",
+        "quest_requirements": [
+            "Merlin's Crystal"
+        ],
+        "skill_requirements": [
+            [
+                "Attack",
+                30
+            ]
+        ],
+        "rewards": [],
+        "released": "23 July 2002",
+        "members": true,
+        "series": "Camelot #2",
+        "difficulty": "Intermediate",
+        "start": [
+            "3515",
+            "2764"
+        ],
+        "length": "Short to Medium",
+        "combat": true
+    },
+    {
+        "name": "Horror from the Deep",
+        "url": "https://runescape.wiki/w/Horror_from_the_Deep",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Agility",
+                35
+            ]
+        ],
+        "rewards": [],
+        "released": "17 November 2004",
+        "members": true,
+        "series": "Fremennik #3",
+        "difficulty": "Experienced",
+        "start": [
+            "3633",
+            "2508"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Housing of Parliament",
+        "url": "https://runescape.wiki/w/Housing_of_Parliament",
+        "quest_requirements": [
+            "Necromancy!"
+        ],
+        "skill_requirements": [
+            [
+                "Fishing",
+                66
+            ]
+        ],
+        "rewards": [],
+        "released": "12 February 2024",
+        "members": true,
+        "series": "City of Um #3",
+        "difficulty": "Experienced",
+        "start": [
+            "1847",
+            "1157"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Hunt for Red Raktuber",
+        "url": "https://runescape.wiki/w/Hunt_for_Red_Raktuber",
+        "quest_requirements": [
+            "Cold War",
+            "Sea Slug"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                45
+            ],
+            [
+                "Hunter",
+                45
+            ],
+            [
+                "Thieving",
+                38
+            ]
+        ],
+        "rewards": [],
+        "released": "2 June 2009",
+        "members": true,
+        "series": "Penguin #2",
+        "difficulty": "Intermediate",
+        "start": [
+            "3264",
+            "2592"
+        ],
+        "length": "Long",
+        "combat": false
+    },
+    {
+        "name": "Icthlarin's Little Helper",
+        "url": "https://runescape.wiki/w/Icthlarin%27s_Little_Helper",
+        "quest_requirements": [
+            "Diamond in the Rough",
+            "Gertrude's Cat",
+            "Stolen Hearts"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "26 April 2005",
+        "members": true,
+        "series": "Desert #1",
+        "difficulty": "Intermediate",
+        "start": [
+            "2846",
+            "3318"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Imp Catcher",
+        "url": "https://runescape.wiki/w/Imp_Catcher",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "16 February 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3148",
+            "3109"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Impressing the Locals",
+        "url": "https://runescape.wiki/w/Impressing_the_Locals",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "11 July 2016",
+        "members": true,
+        "series": "Tales of the Arc #1",
+        "difficulty": "Novice",
+        "start": [
+            "3191",
+            "3033"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "In Aid of the Myreque",
+        "url": "https://runescape.wiki/w/In_Aid_of_the_Myreque",
+        "quest_requirements": [
+            "In Search of the Myreque",
+            "Nature Spirit",
+            "Priest in Peril",
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                25
+            ],
+            [
+                "Magic",
+                7
+            ],
+            [
+                "Mining",
+                15
+            ],
+            [
+                "Mining",
+                30
+            ],
+            [
+                "Smithing",
+                30
+            ]
+        ],
+        "rewards": [],
+        "released": "22 March 2006",
+        "members": true,
+        "series": "Myreque #4",
+        "difficulty": "Intermediate",
+        "start": [
+            "9837",
+            "3506"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "In Pyre Need",
+        "url": "https://runescape.wiki/w/In_Pyre_Need",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                52
+            ],
+            [
+                "Firemaking",
+                55
+            ],
+            [
+                "Fletching",
+                53
+            ]
+        ],
+        "rewards": [],
+        "released": "6 January 2009",
+        "members": true,
+        "series": "None",
+        "difficulty": "Experienced",
+        "start": [
+            "3626",
+            "2294"
+        ],
+        "length": "Short to Medium",
+        "combat": false
+    },
+    {
+        "name": "In Search of the Myreque",
+        "url": "https://runescape.wiki/w/In_Search_of_the_Myreque",
+        "quest_requirements": [
+            "Nature Spirit",
+            "Priest in Peril",
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                25
+            ]
+        ],
+        "rewards": [],
+        "released": "10 January 2005",
+        "members": true,
+        "series": "Myreque #3",
+        "difficulty": "Intermediate",
+        "start": [
+            "3475",
+            "3503"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "It's Snow Bother",
+        "url": "https://runescape.wiki/w/It%27s_Snow_Bother",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "27 November 2023",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "9776",
+            "5207"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "The Jack of Spades",
+        "url": "https://runescape.wiki/w/The_Jack_of_Spades",
+        "quest_requirements": [
+            "Diamond in the Rough",
+            "Stolen Hearts"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "5 June 2017",
+        "members": true,
+        "series": "Ozan #3",
+        "difficulty": "Novice",
+        "start": [
+            "3150",
+            "3293"
+        ],
+        "length": "Short to Medium",
+        "combat": false
+    },
+    {
+        "name": "Jungle Potion",
+        "url": "https://runescape.wiki/w/Jungle_Potion",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Herblore",
+                3
+            ]
+        ],
+        "rewards": [],
+        "released": "23 October 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3086",
+            "2808"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Kennith's Concerns",
+        "url": "https://runescape.wiki/w/Kennith%27s_Concerns",
+        "quest_requirements": [
+            "Recruitment Drive",
+            "Sea Slug",
+            "The Slug Menace",
+            "Wanted!"
+        ],
+        "skill_requirements": [
+            [
+                "Mining",
+                46
+            ]
+        ],
+        "rewards": [],
+        "released": "11 March 2008",
+        "members": true,
+        "series": "Temple Knight #5",
+        "difficulty": "Intermediate",
+        "start": [
+            "3282",
+            "2711"
+        ],
+        "length": "Medium to Long",
+        "combat": false
+    },
+    {
+        "name": "Kili Row",
+        "url": "https://runescape.wiki/w/Kili_Row",
+        "quest_requirements": [
+            "Necromancy!"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "7 August 2023",
+        "members": true,
+        "series": "City of Um #1",
+        "difficulty": "Intermediate",
+        "start": [
+            "1807",
+            "1148"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Kindred Spirits",
+        "url": "https://runescape.wiki/w/Kindred_Spirits",
+        "quest_requirements": [
+            "Missing Presumed Death"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                60
+            ],
+            [
+                "Crafting",
+                60
+            ],
+            [
+                "Herblore",
+                60
+            ],
+            [
+                "Smithing",
+                60
+            ]
+        ],
+        "rewards": [],
+        "released": "23 May 2016",
+        "members": true,
+        "series": "Sliske's Game #13",
+        "difficulty": "Experienced",
+        "start": [
+            "3503",
+            "2884"
+        ],
+        "length": "Long",
+        "combat": false
+    },
+    {
+        "name": "King of the Dwarves",
+        "url": "https://runescape.wiki/w/King_of_the_Dwarves",
+        "quest_requirements": [
+            "Between a Rock...",
+            "Death Plateau",
+            "Druidic Ritual",
+            "Dwarf Cannon",
+            "Eadgar's Ruse",
+            "Fishing Contest",
+            "Forgettable Tale of a Drunken Dwarf",
+            "Forgiveness of a Chaos Dwarf",
+            "The Giant Dwarf",
+            "Jungle Potion",
+            "My Arm's Big Adventure",
+            "Troll Stronghold"
+        ],
+        "skill_requirements": [
+            [
+                "Mining",
+                68
+            ],
+            [
+                "Smithing",
+                70
+            ],
+            [
+                "Strength",
+                77
+            ]
+        ],
+        "rewards": [],
+        "released": "4 January 2011",
+        "members": true,
+        "series": "Dwarf (Red Axe) #4",
+        "difficulty": "Master",
+        "start": [
+            "10201",
+            "2938"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "King's Ransom",
+        "url": "https://runescape.wiki/w/King%27s_Ransom",
+        "quest_requirements": [
+            "Holy Grail",
+            "Jungle Potion",
+            "Merlin's Crystal",
+            "Murder Mystery",
+            "One Small Favour",
+            "Shilo Village"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "24 July 2007",
+        "members": true,
+        "series": "Camelot #3",
+        "difficulty": "Experienced",
+        "start": [
+            "3552",
+            "2742"
+        ],
+        "length": "Medium to Long",
+        "combat": false
+    },
+    {
+        "name": "The Knight's Sword",
+        "url": "https://runescape.wiki/w/The_Knight%27s_Sword",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Mining",
+                10
+            ],
+            [
+                "Cooking",
+                10
+            ],
+            [
+                "Smithing",
+                10
+            ]
+        ],
+        "rewards": [],
+        "released": "6 April 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3342",
+            "2977"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Land of the Goblins",
+        "url": "https://runescape.wiki/w/Land_of_the_Goblins",
+        "quest_requirements": [
+            "Another Slice of H.A.M.",
+            "Death to the Dorgeshuun",
+            "Fishing Contest",
+            "The Giant Dwarf",
+            "Goblin Diplomacy",
+            "The Lost Tribe"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                36
+            ],
+            [
+                "Fishing",
+                36
+            ],
+            [
+                "Herblore",
+                37
+            ],
+            [
+                "Prayer",
+                30
+            ],
+            [
+                "Thieving",
+                36
+            ]
+        ],
+        "rewards": [],
+        "released": "12 November 2007",
+        "members": true,
+        "series": "Cave Goblin #4",
+        "difficulty": "Experienced",
+        "start": [
+            "9612",
+            "3314"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Legacy of Seergaze",
+        "url": "https://runescape.wiki/w/Legacy_of_Seergaze",
+        "quest_requirements": [
+            "The Darkness of Hallowvale",
+            "In Aid of the Myreque",
+            "In Search of the Myreque",
+            "Nature Spirit",
+            "Priest in Peril",
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                29
+            ],
+            [
+                "Construction",
+                20
+            ],
+            [
+                "Crafting",
+                47
+            ],
+            [
+                "Firemaking",
+                40
+            ],
+            [
+                "Magic",
+                49
+            ],
+            [
+                "Mining",
+                35
+            ],
+            [
+                "Slayer",
+                31
+            ]
+        ],
+        "rewards": [],
+        "released": "22 April 2008",
+        "members": true,
+        "series": "Myreque #6",
+        "difficulty": "Experienced",
+        "start": null,
+        "length": "Long to Very Long",
+        "combat": true
+    },
+    {
+        "name": "Legends' Quest",
+        "url": "https://runescape.wiki/w/Legends%27_Quest",
+        "quest_requirements": [
+            "Dragon Slayer",
+            "Heroes' Quest",
+            "Jungle Potion",
+            "Shield of Arrav"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                50
+            ],
+            [
+                "Crafting",
+                50
+            ],
+            [
+                "Herblore",
+                45
+            ],
+            [
+                "Magic",
+                56
+            ],
+            [
+                "Mining",
+                52
+            ],
+            [
+                "Prayer",
+                42
+            ],
+            [
+                "Smithing",
+                50
+            ],
+            [
+                "Strength",
+                50
+            ],
+            [
+                "Thieving",
+                50
+            ],
+            [
+                "Woodcutting",
+                50
+            ]
+        ],
+        "rewards": [],
+        "released": "20 August 2003",
+        "members": true,
+        "series": "None",
+        "difficulty": "Master",
+        "start": null,
+        "length": "Long to Very Long",
+        "combat": true
+    },
+    {
+        "name": "Let Them Eat Pie",
+        "url": "https://runescape.wiki/w/Let_Them_Eat_Pie",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "31 January 2012",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3444",
+            "2882"
+        ],
+        "length": "Short to Medium",
+        "combat": false
+    },
+    {
+        "name": "The Light Within",
+        "url": "https://runescape.wiki/w/The_Light_Within",
+        "quest_requirements": [
+            "As a First Resort",
+            "Catapult Construction",
+            "The Curse of Arrav",
+            "Desert Treasure",
+            "Devious Minds",
+            "Fate of the Gods",
+            "Making History",
+            "Meeting History",
+            "Missing Presumed Death",
+            "Plague's End",
+            "The Temple at Senntisten",
+            "Within the Light",
+            "The World Wakes"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                80
+            ],
+            [
+                "Crafting",
+                80
+            ],
+            [
+                "Herblore",
+                80
+            ],
+            [
+                "Prayer",
+                80
+            ],
+            [
+                "Slayer",
+                80
+            ],
+            [
+                "Woodcutting",
+                80
+            ],
+            [
+                "Crafting",
+                89
+            ],
+            [
+                "Mining",
+                81
+            ]
+        ],
+        "rewards": [],
+        "released": "24 August 2015",
+        "members": true,
+        "series": "Sliske's Game #10",
+        "difficulty": "Grandmaster",
+        "start": [
+            "3351",
+            "2177"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "The Lord of Vampyrium",
+        "url": "https://runescape.wiki/w/The_Lord_of_Vampyrium",
+        "quest_requirements": [
+            "The Branches of Darkmeyer",
+            "The Darkness of Hallowvale",
+            "In Aid of the Myreque",
+            "In Search of the Myreque",
+            "Legacy of Seergaze"
+        ],
+        "skill_requirements": [
+            [
+                "Attack",
+                75
+            ],
+            [
+                "Construction",
+                79
+            ],
+            [
+                "Defence",
+                75
+            ],
+            [
+                "Hunter",
+                76
+            ],
+            [
+                "Slayer",
+                78
+            ],
+            [
+                "Strength",
+                75
+            ]
+        ],
+        "rewards": [],
+        "released": "14 September 2015",
+        "members": true,
+        "series": "Myreque #8",
+        "difficulty": "Master",
+        "start": [
+            "3168",
+            "3596"
+        ],
+        "length": "Long to Very Long",
+        "combat": true
+    },
+    {
+        "name": "Lost City",
+        "url": "https://runescape.wiki/w/Lost_City",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                31
+            ],
+            [
+                "Woodcutting",
+                36
+            ]
+        ],
+        "rewards": [],
+        "released": "27 February 2002",
+        "members": true,
+        "series": "Fairy #1",
+        "difficulty": "Experienced",
+        "start": [
+            "3145",
+            "3186"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "The Lost Tribe",
+        "url": "https://runescape.wiki/w/The_Lost_Tribe",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Agility",
+                13
+            ],
+            [
+                "Mining",
+                17
+            ],
+            [
+                "Thieving",
+                13
+            ]
+        ],
+        "rewards": [],
+        "released": "31 May 2005",
+        "members": true,
+        "series": "Cave Goblin #1",
+        "difficulty": "Intermediate",
+        "start": [
+            "3220",
+            "3211"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Love Story",
+        "url": "https://runescape.wiki/w/Love_Story",
+        "quest_requirements": [
+            "Swan Song"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                68
+            ],
+            [
+                "Crafting",
+                67
+            ],
+            [
+                "Magic",
+                77
+            ],
+            [
+                "Smithing",
+                68
+            ]
+        ],
+        "rewards": [],
+        "released": "5 July 2010",
+        "members": true,
+        "series": "Wise Old Man #2",
+        "difficulty": "Master",
+        "start": [
+            "3302",
+            "3141"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Lunar Diplomacy",
+        "url": "https://runescape.wiki/w/Lunar_Diplomacy",
+        "quest_requirements": [
+            "The Fremennik Trials",
+            "Lost City"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                61
+            ],
+            [
+                "Defence",
+                40
+            ],
+            [
+                "Firemaking",
+                49
+            ],
+            [
+                "Herblore",
+                5
+            ],
+            [
+                "Magic",
+                65
+            ],
+            [
+                "Mining",
+                60
+            ],
+            [
+                "Woodcutting",
+                55
+            ]
+        ],
+        "rewards": [],
+        "released": "24 July 2006",
+        "members": true,
+        "series": "Fremennik #6",
+        "difficulty": "Experienced",
+        "start": [
+            "3688",
+            "2620"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Making History",
+        "url": "https://runescape.wiki/w/Making_History",
+        "quest_requirements": [
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                24
+            ]
+        ],
+        "rewards": [],
+        "released": "22 November 2005",
+        "members": true,
+        "series": "Enchanted Key #1",
+        "difficulty": "Intermediate",
+        "start": [
+            "3348",
+            "2438"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Meeting History",
+        "url": "https://runescape.wiki/w/Meeting_History",
+        "quest_requirements": [
+            "Making History",
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [
+            [
+                "Herblore",
+                3
+            ]
+        ],
+        "rewards": [],
+        "released": "5 August 2008",
+        "members": true,
+        "series": "Enchanted Key #2",
+        "difficulty": "Intermediate",
+        "start": [
+            "3348",
+            "2438"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Merlin's Crystal",
+        "url": "https://runescape.wiki/w/Merlin%27s_Crystal",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "27 February 2002",
+        "members": true,
+        "series": "Camelot #1",
+        "difficulty": "Intermediate",
+        "start": null,
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "The Mighty Fall",
+        "url": "https://runescape.wiki/w/The_Mighty_Fall",
+        "quest_requirements": [
+            "Another Slice of H.A.M.",
+            "The Chosen Commander",
+            "Death to the Dorgeshuun",
+            "Fishing Contest",
+            "The Giant Dwarf",
+            "Goblin Diplomacy",
+            "Land of the Goblins",
+            "The Lost Tribe",
+            "Missing Presumed Death"
+        ],
+        "skill_requirements": [
+            [
+                "Attack",
+                79
+            ],
+            [
+                "Defence",
+                72
+            ],
+            [
+                "Slayer",
+                69
+            ],
+            [
+                "Strength",
+                79
+            ]
+        ],
+        "rewards": [],
+        "released": "2 June 2014",
+        "members": true,
+        "series": "Sliske's Game #6",
+        "difficulty": "Master",
+        "start": [
+            "5363",
+            "2733"
+        ],
+        "length": "Long to Very Long",
+        "combat": true
+    },
+    {
+        "name": "Missing My Mummy",
+        "url": "https://runescape.wiki/w/Missing_My_Mummy",
+        "quest_requirements": [
+            "Diamond in the Rough",
+            "Gertrude's Cat",
+            "The Golem",
+            "Icthlarin's Little Helper",
+            "Stolen Hearts"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                35
+            ],
+            [
+                "Cooking",
+                35
+            ],
+            [
+                "Crafting",
+                35
+            ],
+            [
+                "Magic",
+                35
+            ],
+            [
+                "Prayer",
+                35
+            ]
+        ],
+        "rewards": [],
+        "released": "19 May 2009",
+        "members": true,
+        "series": "Desert #6",
+        "difficulty": "Intermediate",
+        "start": [
+            "3259",
+            "3122"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Missing Presumed Death",
+        "url": "https://runescape.wiki/w/Missing,_Presumed_Death",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "15 October 2013",
+        "members": false,
+        "series": "Sliske's Game #3",
+        "difficulty": "Novice",
+        "start": [
+            "3486",
+            "3380"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Monk's Friend",
+        "url": "https://runescape.wiki/w/Monk%27s_Friend",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "28 May 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3210",
+            "2606"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Monkey Madness",
+        "url": "https://runescape.wiki/w/Monkey_Madness",
+        "quest_requirements": [
+            "The Grand Tree",
+            "Tree Gnome Village"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "6 December 2004",
+        "members": true,
+        "series": "Gnome #3",
+        "difficulty": "Master",
+        "start": [
+            "3495",
+            "2465"
+        ],
+        "length": "Very Long",
+        "combat": true
+    },
+    {
+        "name": "Mountain Daughter",
+        "url": "https://runescape.wiki/w/Mountain_Daughter",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Agility",
+                20
+            ]
+        ],
+        "rewards": [],
+        "released": "7 March 2005",
+        "members": true,
+        "series": "Fremennik #2",
+        "difficulty": "Intermediate",
+        "start": [
+            "3663",
+            "2794"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Mourning's End Part I",
+        "url": "https://runescape.wiki/w/Mourning%27s_End_Part_I",
+        "quest_requirements": [
+            "Big Chompy Bird Hunting",
+            "Biohazard",
+            "Plague City",
+            "Regicide",
+            "Roving Elves",
+            "Sheep Herder",
+            "Underground Pass",
+            "Waterfall Quest"
+        ],
+        "skill_requirements": [
+            [
+                "Ranged",
+                60
+            ],
+            [
+                "Thieving",
+                50
+            ]
+        ],
+        "rewards": [],
+        "released": "19 July 2005",
+        "members": true,
+        "series": "Elf (Prifddinas) #6",
+        "difficulty": "Master",
+        "start": [
+            "3146",
+            "2290"
+        ],
+        "length": "Long to Very Long",
+        "combat": true
+    },
+    {
+        "name": "Mourning's End Part II",
+        "url": "https://runescape.wiki/w/Mourning%27s_End_Part_II",
+        "quest_requirements": [
+            "Big Chompy Bird Hunting",
+            "Biohazard",
+            "Mourning's End Part I",
+            "Regicide",
+            "Roving Elves",
+            "Sheep Herder",
+            "Underground Pass",
+            "Waterfall Quest"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "17 October 2005",
+        "members": true,
+        "series": "Elf (Prifddinas) #7",
+        "difficulty": "Master",
+        "start": [
+            "3327",
+            "2544"
+        ],
+        "length": "Very Long",
+        "combat": true
+    },
+    {
+        "name": "Murder Mystery",
+        "url": "https://runescape.wiki/w/Murder_Mystery",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "9 June 2003",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3565",
+            "2742"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Murder on the Border",
+        "url": "https://runescape.wiki/w/Murder_on_the_Border",
+        "quest_requirements": [
+            "New Foundations"
+        ],
+        "skill_requirements": [
+            [
+                "Woodcutting",
+                20
+            ]
+        ],
+        "rewards": [],
+        "released": "20 March 2023",
+        "members": true,
+        "series": "Fort Forinthry #2",
+        "difficulty": "Novice",
+        "start": [
+            "3570",
+            "3302"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "My Arm's Big Adventure",
+        "url": "https://runescape.wiki/w/My_Arm%27s_Big_Adventure",
+        "quest_requirements": [
+            "Death Plateau",
+            "Druidic Ritual",
+            "Eadgar's Ruse",
+            "Jungle Potion",
+            "Troll Stronghold"
+        ],
+        "skill_requirements": [
+            [
+                "Farming",
+                29
+            ],
+            [
+                "Woodcutting",
+                10
+            ]
+        ],
+        "rewards": [],
+        "released": "23 October 2006",
+        "members": true,
+        "series": "Troll #5",
+        "difficulty": "Intermediate",
+        "start": [
+            "10058",
+            "2845"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Myths of the White Lands",
+        "url": "https://runescape.wiki/w/Myths_of_the_White_Lands",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "16 December 2008",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3243",
+            "3206"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Nature Spirit",
+        "url": "https://runescape.wiki/w/Nature_Spirit",
+        "quest_requirements": [
+            "Priest in Peril",
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                18
+            ],
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Smithing",
+                20
+            ]
+        ],
+        "rewards": [],
+        "released": "13 July 2004",
+        "members": true,
+        "series": "Myreque #2",
+        "difficulty": "Novice",
+        "start": [
+            "9895",
+            "3438"
+        ],
+        "length": "Short to Medium",
+        "combat": true
+    },
+    {
+        "name": "Necromancy!",
+        "url": "https://runescape.wiki/w/Necromancy!",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "7 August 2023",
+        "members": false,
+        "series": "The First Necromancer #1",
+        "difficulty": "Novice",
+        "start": [
+            "3312",
+            "3103"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "The Needle Skips",
+        "url": "https://runescape.wiki/w/The_Needle_Skips",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "19 November 2018",
+        "members": true,
+        "series": "The Elder God Wars #2",
+        "difficulty": "Novice",
+        "start": [
+            "3658",
+            "2224"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "New Foundations",
+        "url": "https://runescape.wiki/w/New_Foundations",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "13 February 2023",
+        "members": true,
+        "series": "Fort Forinthry #1",
+        "difficulty": "Novice",
+        "start": [
+            "3473",
+            "3217"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Nomad's Elegy",
+        "url": "https://runescape.wiki/w/Nomad%27s_Elegy",
+        "quest_requirements": [
+            "Another Slice of H.A.M.",
+            "The Blood Pact",
+            "Carnillean Rising",
+            "The Chosen Commander",
+            "Death to the Dorgeshuun",
+            "Dishonour among Thieves",
+            "Fishing Contest",
+            "The Fremennik Trials",
+            "The Giant Dwarf",
+            "Goblin Diplomacy",
+            "Hazeel Cult",
+            "Heart of Stone",
+            "Holy Grail",
+            "Imp Catcher",
+            "Jungle Potion",
+            "King's Ransom",
+            "Land of the Goblins",
+            "Merlin's Crystal",
+            "The Mighty Fall",
+            "Missing Presumed Death",
+            "Murder Mystery",
+            "Nomad's Requiem",
+            "One Small Favour",
+            "Quiet Before the Swarm",
+            "Recruitment Drive",
+            "Rune Memories",
+            "Rune Mysteries",
+            "Shilo Village",
+            "Throne of Miscellania",
+            "A Void Dance",
+            "The Void Stares Back",
+            "Wanted!"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                75
+            ],
+            [
+                "Mining",
+                75
+            ],
+            [
+                "Woodcutting",
+                75
+            ]
+        ],
+        "rewards": [],
+        "released": "15 February 2016",
+        "members": true,
+        "series": "Sliske's Game #11",
+        "difficulty": "Master",
+        "start": [
+            "3179",
+            "1888"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Nomad's Requiem",
+        "url": "https://runescape.wiki/w/Nomad%27s_Requiem",
+        "quest_requirements": [
+            "Holy Grail",
+            "Jungle Potion",
+            "King's Ransom",
+            "Merlin's Crystal",
+            "Murder Mystery",
+            "One Small Favour",
+            "Shilo Village"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                60
+            ],
+            [
+                "Hunter",
+                65
+            ],
+            [
+                "Magic",
+                75
+            ],
+            [
+                "Mining",
+                66
+            ],
+            [
+                "Prayer",
+                70
+            ]
+        ],
+        "rewards": [],
+        "released": "11 January 2010",
+        "members": true,
+        "series": "None",
+        "difficulty": "Grandmaster",
+        "start": [
+            "3178",
+            "1888"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Observatory Quest",
+        "url": "https://runescape.wiki/w/Observatory_Quest",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "17 March 2003",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3186",
+            "2439"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Olaf's Quest",
+        "url": "https://runescape.wiki/w/Olaf%27s_Quest",
+        "quest_requirements": [
+            "The Fremennik Trials"
+        ],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                40
+            ],
+            [
+                "Woodcutting",
+                50
+            ]
+        ],
+        "rewards": [],
+        "released": "10 April 2007",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3729",
+            "2726"
+        ],
+        "length": "Short to Medium",
+        "combat": true
+    },
+    {
+        "name": "Once Upon a Slime",
+        "url": "https://runescape.wiki/w/Once_Upon_a_Slime",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "10 February 2020",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3207",
+            "2956"
+        ],
+        "length": "Short to Medium",
+        "combat": false
+    },
+    {
+        "name": "Once Upon a Time in Gielinor",
+        "url": "https://runescape.wiki/w/Once_Upon_a_Time_in_Gielinor",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "22 November 2021",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3402",
+            "3219"
+        ],
+        "length": "Medium to Long",
+        "combat": false
+    },
+    {
+        "name": "One Piercing Note",
+        "url": "https://runescape.wiki/w/One_Piercing_Note",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "7 November 2011",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3165",
+            "3405"
+        ],
+        "length": "Medium to Long",
+        "combat": false
+    },
+    {
+        "name": "One Small Favour",
+        "url": "https://runescape.wiki/w/One_Small_Favour",
+        "quest_requirements": [
+            "Jungle Potion",
+            "Shilo Village"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                36
+            ],
+            [
+                "Crafting",
+                25
+            ],
+            [
+                "Herblore",
+                18
+            ],
+            [
+                "Smithing",
+                30
+            ],
+            [
+                "Herblore",
+                20
+            ],
+            [
+                "Mining",
+                20
+            ]
+        ],
+        "rewards": [],
+        "released": "28 February 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Experienced",
+        "start": [
+            "2983",
+            "2835"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "One of a Kind",
+        "url": "https://runescape.wiki/w/One_of_a_Kind",
+        "quest_requirements": [
+            "Diamond in the Rough",
+            "Gertrude's Cat",
+            "Holy Grail",
+            "Icthlarin's Little Helper",
+            "Merlin's Crystal",
+            "Missing Presumed Death",
+            "A Tail of Two Cats",
+            "The World Wakes"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                81
+            ]
+        ],
+        "rewards": [],
+        "released": "10 March 2014",
+        "members": true,
+        "series": "Sliske's Game #4",
+        "difficulty": "Grandmaster",
+        "start": [
+            "5024",
+            "1757"
+        ],
+        "length": "Long to Very Long",
+        "combat": true
+    },
+    {
+        "name": "Our Man in the North",
+        "url": "https://runescape.wiki/w/Our_Man_in_the_North",
+        "quest_requirements": [
+            "Animal Magnetism",
+            "Crocodile Tears",
+            "Dealing with Scabaras",
+            "Desert Treasure",
+            "Do No Evil",
+            "The Jack of Spades",
+            "Missing My Mummy",
+            "Shadow of the Storm",
+            "Smoking Kills",
+            "Spirits of the Elid"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "5 June 2017",
+        "members": true,
+        "series": "Desert #9",
+        "difficulty": "Master",
+        "start": [
+            "2770",
+            "3196"
+        ],
+        "length": "Short to Medium",
+        "combat": true
+    },
+    {
+        "name": "The Path of Glouphrie",
+        "url": "https://runescape.wiki/w/The_Path_of_Glouphrie",
+        "quest_requirements": [
+            "The Eyes of Glouphrie",
+            "The Grand Tree",
+            "Tree Gnome Village",
+            "Waterfall Quest"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                45
+            ],
+            [
+                "Ranged",
+                47
+            ],
+            [
+                "Slayer",
+                56
+            ],
+            [
+                "Strength",
+                60
+            ],
+            [
+                "Thieving",
+                56
+            ],
+            [
+                "Fletching",
+                59
+            ]
+        ],
+        "rewards": [],
+        "released": "3 September 2007",
+        "members": true,
+        "series": "Gnome #5",
+        "difficulty": "Experienced",
+        "start": [
+            "3167",
+            "2543"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Perils of Ice Mountain",
+        "url": "https://runescape.wiki/w/Perils_of_Ice_Mountain",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Construction",
+                5
+            ],
+            [
+                "Farming",
+                5
+            ],
+            [
+                "Hunter",
+                5
+            ],
+            [
+                "Thieving",
+                5
+            ]
+        ],
+        "rewards": [],
+        "released": "7 May 2008",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3434",
+            "3005"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "'Phite Club",
+        "url": "https://runescape.wiki/w/%27Phite_Club",
+        "quest_requirements": [
+            "Animal Magnetism",
+            "Crocodile Tears",
+            "Dealing with Scabaras",
+            "Desert Treasure",
+            "Do No Evil",
+            "The Jack of Spades",
+            "Missing My Mummy",
+            "Our Man in the North",
+            "Shadow of the Storm",
+            "Smoking Kills",
+            "Spirits of the Elid"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "5 June 2017",
+        "members": true,
+        "series": "Desert #10",
+        "difficulty": "Master",
+        "start": [
+            "2770",
+            "3196"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Pieces of Hate",
+        "url": "https://runescape.wiki/w/Pieces_of_Hate",
+        "quest_requirements": [
+            "Cabin Fever",
+            "A Clockwork Syringe",
+            "Creature of Fenkenstrain",
+            "Gertrude's Cat",
+            "The Great Brain Robbery",
+            "Pirate's Treasure",
+            "Priest in Peril",
+            "The Restless Ghost",
+            "Rocking Out",
+            "Rum Deal"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                83
+            ],
+            [
+                "Construction",
+                81
+            ],
+            [
+                "Firemaking",
+                82
+            ],
+            [
+                "Thieving",
+                85
+            ]
+        ],
+        "rewards": [],
+        "released": "19 March 2018",
+        "members": true,
+        "series": "Pirate #7",
+        "difficulty": "Grandmaster",
+        "start": [
+            "3452",
+            "2882"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Pirate's Treasure",
+        "url": "https://runescape.wiki/w/Pirate%27s_Treasure",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "11 June 2001",
+        "members": false,
+        "series": "Pirate #1",
+        "difficulty": "Novice",
+        "start": [
+            "3248",
+            "3053"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Plague City",
+        "url": "https://runescape.wiki/w/Plague_City",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "27 August 2002",
+        "members": true,
+        "series": "Elf (Prifddinas) #1",
+        "difficulty": "Novice",
+        "start": [
+            "3337",
+            "2565"
+        ],
+        "length": "Short to Medium",
+        "combat": false
+    },
+    {
+        "name": "Plague's End",
+        "url": "https://runescape.wiki/w/Plague%27s_End",
+        "quest_requirements": [
+            "Big Chompy Bird Hunting",
+            "Biohazard",
+            "Catapult Construction",
+            "Making History",
+            "Mourning's End Part I",
+            "Mourning's End Part II",
+            "Plague City",
+            "Regicide",
+            "The Restless Ghost",
+            "Roving Elves",
+            "Sheep Herder",
+            "Underground Pass",
+            "Waterfall Quest",
+            "Within the Light"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                75
+            ],
+            [
+                "Construction",
+                75
+            ],
+            [
+                "Crafting",
+                75
+            ],
+            [
+                "Herblore",
+                75
+            ],
+            [
+                "Mining",
+                75
+            ],
+            [
+                "Prayer",
+                75
+            ],
+            [
+                "Ranged",
+                75
+            ],
+            [
+                "Woodcutting",
+                75
+            ]
+        ],
+        "rewards": [],
+        "released": "11 August 2014",
+        "members": true,
+        "series": "Elf (Prifddinas) #9",
+        "difficulty": "Grandmaster",
+        "start": [
+            "3172",
+            "2352"
+        ],
+        "length": "Long to Very Long",
+        "combat": true
+    },
+    {
+        "name": "Priest in Peril",
+        "url": "https://runescape.wiki/w/Priest_in_Peril",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "29 June 2004",
+        "members": false,
+        "series": "Myreque #1",
+        "difficulty": "Novice",
+        "start": [
+            "3472",
+            "3221"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "The Prisoner of Glouphrie",
+        "url": "https://runescape.wiki/w/The_Prisoner_of_Glouphrie",
+        "quest_requirements": [
+            "Biohazard",
+            "The Eyes of Glouphrie",
+            "The Grand Tree",
+            "The Path of Glouphrie",
+            "Plague City",
+            "Regicide",
+            "Roving Elves",
+            "Tree Gnome Village",
+            "Underground Pass",
+            "Waterfall Quest"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                64
+            ],
+            [
+                "Construction",
+                62
+            ],
+            [
+                "Runecraft",
+                61
+            ],
+            [
+                "Thieving",
+                64
+            ]
+        ],
+        "rewards": [],
+        "released": "9 February 2011",
+        "members": true,
+        "series": "Gnome #6",
+        "difficulty": "Master",
+        "start": [
+            "4450",
+            "2579"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Quiet Before the Swarm",
+        "url": "https://runescape.wiki/w/Quiet_Before_the_Swarm",
+        "quest_requirements": [
+            "Imp Catcher",
+            "Recruitment Drive",
+            "Wanted!"
+        ],
+        "skill_requirements": [
+            [
+                "Attack",
+                35
+            ],
+            [
+                "Strength",
+                42
+            ]
+        ],
+        "rewards": [],
+        "released": "24 June 2010",
+        "members": true,
+        "series": "Void Knight #1",
+        "difficulty": "Intermediate",
+        "start": [
+            "3374",
+            "2996"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Rag and Bone Man",
+        "url": "https://runescape.wiki/w/Rag_and_Bone_Man",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "10 April 2006",
+        "members": true,
+        "series": "Odd Old Man #1",
+        "difficulty": "Novice",
+        "start": [
+            "3505",
+            "3361"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Raksha the Shadow Colossus",
+        "url": "https://runescape.wiki/w/Raksha,_the_Shadow_Colossus_(quest)",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "7 December 2020",
+        "members": true,
+        "series": "The Elder God Wars #6",
+        "difficulty": "Novice",
+        "start": [
+            "2138",
+            "5668"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Rat Catchers",
+        "url": "https://runescape.wiki/w/Rat_Catchers",
+        "quest_requirements": [
+            "Diamond in the Rough",
+            "Gertrude's Cat",
+            "Icthlarin's Little Helper",
+            "Stolen Hearts"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "28 November 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3411",
+            "3151"
+        ],
+        "length": "Long",
+        "combat": false
+    },
+    {
+        "name": "Recruitment Drive",
+        "url": "https://runescape.wiki/w/Recruitment_Drive",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Herblore",
+                3
+            ]
+        ],
+        "rewards": [],
+        "released": "27 June 2005",
+        "members": true,
+        "series": "Temple Knight #1",
+        "difficulty": "Novice",
+        "start": [
+            "3338",
+            "2959"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Regicide",
+        "url": "https://runescape.wiki/w/Regicide",
+        "quest_requirements": [
+            "Biohazard",
+            "Plague City",
+            "Underground Pass"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                56
+            ]
+        ],
+        "rewards": [],
+        "released": "20 September 2004",
+        "members": true,
+        "series": "Elf (Prifddinas) #4",
+        "difficulty": "Master",
+        "start": null,
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Remains of the Necrolord",
+        "url": "https://runescape.wiki/w/Remains_of_the_Necrolord",
+        "quest_requirements": [
+            "Diamond in the Rough",
+            "Ghosts Ahoy",
+            "The Jack of Spades",
+            "Necromancy!",
+            "The Restless Ghost",
+            "Rune Mythos",
+            "The Spirit of War",
+            "Stolen Hearts",
+            "Tomes of the Warlock",
+            "Vessel of the Harbinger"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "7 August 2023",
+        "members": true,
+        "series": "The First Necromancer #6",
+        "difficulty": "Master",
+        "start": [
+            "1776",
+            "1103"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "The Restless Ghost",
+        "url": "https://runescape.wiki/w/The_Restless_Ghost",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "4 January 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3205",
+            "3246"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Ritual of the Mahjarrat",
+        "url": "https://runescape.wiki/w/Ritual_of_the_Mahjarrat",
+        "quest_requirements": [
+            "Cabin Fever",
+            "The Curse of Arrav",
+            "Defender of Varrock",
+            "Desert Treasure",
+            "Devious Minds",
+            "Dream Mentor",
+            "Enakhra's Lament",
+            "A Fairy Tale I - Growing Pains",
+            "A Fairy Tale II - Cure a Queen",
+            "Fight Arena",
+            "Hazeel Cult",
+            "Icthlarin's Little Helper",
+            "Legends' Quest",
+            "The Path of Glouphrie",
+            "Pirate's Treasure",
+            "Rum Deal",
+            "Sea Slug",
+            "Shilo Village",
+            "The Slug Menace",
+            "A Tail of Two Cats",
+            "Tears of Guthix",
+            "The Temple at Senntisten",
+            "Temple of Ikov",
+            "Wanted!",
+            "While Guthix Sleeps"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                77
+            ],
+            [
+                "Crafting",
+                76
+            ],
+            [
+                "Mining",
+                76
+            ]
+        ],
+        "rewards": [],
+        "released": "14 September 2011",
+        "members": true,
+        "series": "Mahjarrat Mysteries #16",
+        "difficulty": "Grandmaster",
+        "start": [
+            "3374",
+            "2997"
+        ],
+        "length": "Very, Very Long",
+        "combat": true
+    },
+    {
+        "name": "River of Blood",
+        "url": "https://runescape.wiki/w/River_of_Blood",
+        "quest_requirements": [
+            "All Fired Up",
+            "The Branches of Darkmeyer",
+            "The Darkness of Hallowvale",
+            "Defender of Varrock",
+            "Family Crest",
+            "In Aid of the Myreque",
+            "The Knight's Sword",
+            "Legacy of Seergaze",
+            "The Lord of Vampyrium",
+            "Priest in Peril",
+            "Shield of Arrav",
+            "What Lies Below"
+        ],
+        "skill_requirements": [
+            [
+                "Attack",
+                78
+            ],
+            [
+                "Firemaking",
+                76
+            ],
+            [
+                "Fletching",
+                75
+            ],
+            [
+                "Herblore",
+                80
+            ],
+            [
+                "Magic",
+                78
+            ],
+            [
+                "Mining",
+                72
+            ],
+            [
+                "Ranged",
+                78
+            ]
+        ],
+        "rewards": [],
+        "released": "25 April 2016",
+        "members": true,
+        "series": "Myreque #9",
+        "difficulty": "Grandmaster",
+        "start": [
+            "3476",
+            "3222"
+        ],
+        "length": "Long to Very Long",
+        "combat": true
+    },
+    {
+        "name": "Rocking Out",
+        "url": "https://runescape.wiki/w/Rocking_Out",
+        "quest_requirements": [
+            "Cabin Fever",
+            "Cook's Assistant",
+            "Creature of Fenkenstrain",
+            "The Great Brain Robbery",
+            "Pirate's Treasure",
+            "Priest in Peril",
+            "The Restless Ghost",
+            "Rum Deal"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                60
+            ],
+            [
+                "Crafting",
+                66
+            ],
+            [
+                "Smithing",
+                69
+            ],
+            [
+                "Thieving",
+                63
+            ]
+        ],
+        "rewards": [],
+        "released": "11 June 2008",
+        "members": true,
+        "series": "Pirate #5",
+        "difficulty": "Master",
+        "start": [
+            "2980",
+            "3667"
+        ],
+        "length": "Long to Very Long",
+        "combat": true
+    },
+    {
+        "name": "Roving Elves",
+        "url": "https://runescape.wiki/w/Roving_Elves",
+        "quest_requirements": [
+            "Biohazard",
+            "Plague City",
+            "Regicide",
+            "Underground Pass",
+            "Waterfall Quest"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "7 February 2005",
+        "members": true,
+        "series": "Elf (Prifddinas) #5",
+        "difficulty": "Master",
+        "start": [
+            "3146",
+            "2290"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Royal Trouble",
+        "url": "https://runescape.wiki/w/Royal_Trouble",
+        "quest_requirements": [
+            "The Fremennik Trials",
+            "Throne of Miscellania"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                40
+            ],
+            [
+                "Slayer",
+                40
+            ]
+        ],
+        "rewards": [],
+        "released": "22 May 2006",
+        "members": true,
+        "series": "Fremennik #5",
+        "difficulty": "Experienced",
+        "start": [
+            "3857",
+            "2498"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Rum Deal",
+        "url": "https://runescape.wiki/w/Rum_Deal",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                42
+            ],
+            [
+                "Farming",
+                40
+            ],
+            [
+                "Fishing",
+                50
+            ],
+            [
+                "Prayer",
+                47
+            ],
+            [
+                "Slayer",
+                42
+            ]
+        ],
+        "rewards": [],
+        "released": "31 October 2005",
+        "members": true,
+        "series": "Pirate #2",
+        "difficulty": "Experienced",
+        "start": [
+            "3538",
+            "3672"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Rune Mechanics",
+        "url": "https://runescape.wiki/w/Rune_Mechanics",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Construction",
+                25
+            ],
+            [
+                "Magic",
+                27
+            ],
+            [
+                "Runecraft",
+                20
+            ]
+        ],
+        "rewards": [],
+        "released": "1 February 2010",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "4816",
+            "3625"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Rune Memories",
+        "url": "https://runescape.wiki/w/Rune_Memories",
+        "quest_requirements": [
+            "Rune Mysteries"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "28 November 2012",
+        "members": true,
+        "series": "Ariane #2",
+        "difficulty": "Novice",
+        "start": [
+            "3168",
+            "3133"
+        ],
+        "length": "Long",
+        "combat": false
+    },
+    {
+        "name": "Rune Mysteries",
+        "url": "https://runescape.wiki/w/Rune_Mysteries",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "28 November 2012",
+        "members": false,
+        "series": "Ariane #1",
+        "difficulty": "Novice",
+        "start": null,
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Rune Mythos",
+        "url": "https://runescape.wiki/w/Rune_Mythos",
+        "quest_requirements": [
+            "Necromancy!"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "7 August 2023",
+        "members": true,
+        "series": "The First Necromancer #2",
+        "difficulty": "Novice",
+        "start": [
+            "1763",
+            "1035"
+        ],
+        "length": "Short to Medium",
+        "combat": false
+    },
+    {
+        "name": "Salt in the Wound",
+        "url": "https://runescape.wiki/w/Salt_in_the_Wound",
+        "quest_requirements": [
+            "Kennith's Concerns",
+            "Recruitment Drive",
+            "Sea Slug",
+            "The Slug Menace",
+            "Wanted!"
+        ],
+        "skill_requirements": [
+            [
+                "Defence",
+                60
+            ],
+            [
+                "Herblore",
+                47
+            ]
+        ],
+        "rewards": [],
+        "released": "5 July 2011",
+        "members": true,
+        "series": "Temple Knight #6",
+        "difficulty": "Intermediate",
+        "start": [
+            "3697",
+            "3505"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Scorpion Catcher",
+        "url": "https://runescape.wiki/w/Scorpion_Catcher",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Prayer",
+                31
+            ]
+        ],
+        "rewards": [],
+        "released": "25 March 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3405",
+            "2701"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Sea Slug",
+        "url": "https://runescape.wiki/w/Sea_Slug",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                30
+            ]
+        ],
+        "rewards": [],
+        "released": "9 September 2002",
+        "members": true,
+        "series": "Temple Knight #3",
+        "difficulty": "Intermediate",
+        "start": [
+            "3300",
+            "2718"
+        ],
+        "length": "Short to Medium",
+        "combat": false
+    },
+    {
+        "name": "Shades of Mort'ton",
+        "url": "https://runescape.wiki/w/Shades_of_Mort%27ton",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Firemaking",
+                6
+            ],
+            [
+                "Herblore",
+                15
+            ]
+        ],
+        "rewards": [
+            [
+                "Herblore",
+                335
+            ]
+        ],
+        "released": "18 October 2004",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3289",
+            "3489"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Shadow of the Storm",
+        "url": "https://runescape.wiki/w/Shadow_of_the_Storm",
+        "quest_requirements": [
+            "Demon Slayer",
+            "The Golem"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                30
+            ]
+        ],
+        "rewards": [],
+        "released": "14 November 2005",
+        "members": true,
+        "series": "Delrith #2",
+        "difficulty": "Intermediate",
+        "start": [
+            "3158",
+            "3270"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "A Shadow over Ashdale",
+        "url": "https://runescape.wiki/w/A_Shadow_over_Ashdale",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "22 April 2014",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3229",
+            "3029"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Sheep Herder",
+        "url": "https://runescape.wiki/w/Sheep_Herder",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "15 August 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3300",
+            "2616"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Shield of Arrav",
+        "url": "https://runescape.wiki/w/Shield_of_Arrav",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "4 January 2001",
+        "members": false,
+        "series": "Mahjarrat Mysteries #1",
+        "difficulty": "Novice",
+        "start": [
+            "3494",
+            "3208"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Shilo Village",
+        "url": "https://runescape.wiki/w/Shilo_Village",
+        "quest_requirements": [
+            "Jungle Potion"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                32
+            ],
+            [
+                "Crafting",
+                20
+            ]
+        ],
+        "rewards": [],
+        "released": "27 January 2003",
+        "members": true,
+        "series": "None",
+        "difficulty": "Experienced",
+        "start": [
+            "2954",
+            "2885"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Sins of the Father",
+        "url": "https://runescape.wiki/w/Sins_of_the_Father",
+        "quest_requirements": [
+            "Desperate Measures",
+            "Desperate Times",
+            "The Needle Skips",
+            "You Are It"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                85
+            ],
+            [
+                "Runecraft",
+                85
+            ],
+            [
+                "Smithing",
+                85
+            ]
+        ],
+        "rewards": [],
+        "released": "14 September 2020",
+        "members": true,
+        "series": "The Elder God Wars #13",
+        "difficulty": "Grandmaster",
+        "start": [
+            "2338",
+            "5466"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Sliske's Endgame",
+        "url": "https://runescape.wiki/w/Sliske%27s_Endgame",
+        "quest_requirements": [
+            "Children of Mah",
+            "The Death of Chivalry",
+            "Dishonour among Thieves",
+            "Heart of Stone",
+            "Hero's Welcome",
+            "Holy Grail",
+            "Kindred Spirits",
+            "The Light Within",
+            "Lunar Diplomacy",
+            "The Mighty Fall",
+            "Missing Presumed Death",
+            "Nomad's Elegy",
+            "Nomad's Requiem",
+            "One of a Kind",
+            "A Tail of Two Cats",
+            "Throne of Miscellania",
+            "The Void Stares Back",
+            "The World Wakes"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "19 December 2016",
+        "members": true,
+        "series": "Sliske's Game #15",
+        "difficulty": "Grandmaster",
+        "start": [
+            "3263",
+            "3093"
+        ],
+        "length": "Very Long",
+        "combat": true
+    },
+    {
+        "name": "The Slug Menace",
+        "url": "https://runescape.wiki/w/The_Slug_Menace",
+        "quest_requirements": [
+            "Recruitment Drive",
+            "Sea Slug",
+            "Wanted!"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                30
+            ],
+            [
+                "Runecraft",
+                30
+            ],
+            [
+                "Slayer",
+                30
+            ],
+            [
+                "Thieving",
+                30
+            ]
+        ],
+        "rewards": [],
+        "released": "20 September 2006",
+        "members": true,
+        "series": "Temple Knight #4",
+        "difficulty": "Intermediate",
+        "start": [
+            "3374",
+            "2997"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Smoking Kills",
+        "url": "https://runescape.wiki/w/Smoking_Kills",
+        "quest_requirements": [
+            "Diamond in the Rough",
+            "Gertrude's Cat",
+            "Icthlarin's Little Helper",
+            "The Restless Ghost",
+            "Stolen Hearts"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                25
+            ],
+            [
+                "Slayer",
+                35
+            ]
+        ],
+        "rewards": [],
+        "released": "5 June 2008",
+        "members": true,
+        "series": "Desert #5",
+        "difficulty": "Intermediate",
+        "start": [
+            "2993",
+            "3359"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Some Like It Cold",
+        "url": "https://runescape.wiki/w/Some_Like_It_Cold",
+        "quest_requirements": [
+            "Cold War",
+            "Hunt for Red Raktuber",
+            "Sea Slug"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                50
+            ],
+            [
+                "Crafting",
+                56
+            ],
+            [
+                "Fishing",
+                65
+            ],
+            [
+                "Thieving",
+                50
+            ]
+        ],
+        "rewards": [],
+        "released": "7 August 2012",
+        "members": true,
+        "series": "Penguin #3",
+        "difficulty": "Experienced",
+        "start": [
+            "3258",
+            "2615"
+        ],
+        "length": "Long to Very Long",
+        "combat": false
+    },
+    {
+        "name": "Song from the Depths",
+        "url": "https://runescape.wiki/w/Song_from_the_Depths",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "22 May 2012",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3207",
+            "2946"
+        ],
+        "length": "Short to Medium",
+        "combat": true
+    },
+    {
+        "name": "A Soul's Bane",
+        "url": "https://runescape.wiki/w/A_Soul%27s_Bane",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "3 April 2006",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3453",
+            "3308"
+        ],
+        "length": "Short to Medium",
+        "combat": true
+    },
+    {
+        "name": "Spirit of Summer",
+        "url": "https://runescape.wiki/w/Spirit_of_Summer",
+        "quest_requirements": [
+            "The Restless Ghost"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                40
+            ],
+            [
+                "Farming",
+                26
+            ],
+            [
+                "Prayer",
+                35
+            ]
+        ],
+        "rewards": [],
+        "released": "29 July 2008",
+        "members": true,
+        "series": "Summer #1",
+        "difficulty": "Intermediate",
+        "start": [
+            "3519",
+            "3257"
+        ],
+        "length": "Long",
+        "combat": false
+    },
+    {
+        "name": "The Spirit of War",
+        "url": "https://runescape.wiki/w/The_Spirit_of_War",
+        "quest_requirements": [
+            "Ghosts Ahoy",
+            "Necromancy!",
+            "The Restless Ghost",
+            "Rune Mythos",
+            "Vessel of the Harbinger"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "7 August 2023",
+        "members": true,
+        "series": "The First Necromancer #4",
+        "difficulty": "Experienced",
+        "start": [
+            "1810",
+            "1080"
+        ],
+        "length": "Short to Medium",
+        "combat": true
+    },
+    {
+        "name": "Spirits of the Elid",
+        "url": "https://runescape.wiki/w/Spirits_of_the_Elid",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Magic",
+                33
+            ],
+            [
+                "Mining",
+                37
+            ],
+            [
+                "Ranged",
+                37
+            ],
+            [
+                "Thieving",
+                37
+            ]
+        ],
+        "rewards": [],
+        "released": "5 December 2005",
+        "members": true,
+        "series": "Desert #2",
+        "difficulty": "Intermediate",
+        "start": [
+            "2910",
+            "3441"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Stolen Hearts",
+        "url": "https://runescape.wiki/w/Stolen_Hearts",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "26 September 2012",
+        "members": false,
+        "series": "Ozan #1",
+        "difficulty": "Novice",
+        "start": [
+            "3275",
+            "3094"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Succession",
+        "url": "https://runescape.wiki/w/Succession",
+        "quest_requirements": [
+            "Daughter of Chaos"
+        ],
+        "skill_requirements": [
+            [
+                "Mining",
+                60
+            ],
+            [
+                "Smithing",
+                60
+            ]
+        ],
+        "rewards": [],
+        "released": "5 December 2022",
+        "members": true,
+        "series": "Legacy of Zamorak #5",
+        "difficulty": "Experienced",
+        "start": [
+            "3335",
+            "2985"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Summer's End",
+        "url": "https://runescape.wiki/w/Summer%27s_End",
+        "quest_requirements": [
+            "The Restless Ghost",
+            "Spirit of Summer"
+        ],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                47
+            ],
+            [
+                "Hunter",
+                35
+            ],
+            [
+                "Mining",
+                45
+            ],
+            [
+                "Prayer",
+                55
+            ],
+            [
+                "Woodcutting",
+                37
+            ]
+        ],
+        "rewards": [],
+        "released": "15 September 2008",
+        "members": true,
+        "series": "Summer #2",
+        "difficulty": "Experienced",
+        "start": [
+            "3519",
+            "3257"
+        ],
+        "length": "Medium to Long",
+        "combat": false
+    },
+    {
+        "name": "Swan Song",
+        "url": "https://runescape.wiki/w/Swan_Song",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Cooking",
+                62
+            ],
+            [
+                "Crafting",
+                40
+            ],
+            [
+                "Firemaking",
+                42
+            ],
+            [
+                "Fishing",
+                62
+            ],
+            [
+                "Magic",
+                66
+            ],
+            [
+                "Smithing",
+                45
+            ]
+        ],
+        "rewards": [],
+        "released": "2 May 2006",
+        "members": true,
+        "series": "Wise Old Man #1",
+        "difficulty": "Master",
+        "start": [
+            "3648",
+            "2348"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Swept Away",
+        "url": "https://runescape.wiki/w/Swept_Away",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "28 October 2008",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3297",
+            "3082"
+        ],
+        "length": "Short to Medium",
+        "combat": false
+    },
+    {
+        "name": "Tai Bwo Wannai Trio",
+        "url": "https://runescape.wiki/w/Tai_Bwo_Wannai_Trio",
+        "quest_requirements": [
+            "Jungle Potion"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                15
+            ],
+            [
+                "Cooking",
+                30
+            ],
+            [
+                "Fishing",
+                5
+            ],
+            [
+                "Fishing",
+                65
+            ],
+            [
+                "Herblore",
+                34
+            ],
+            [
+                "Attack",
+                99
+            ]
+        ],
+        "rewards": [],
+        "released": "14 September 2004",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3089",
+            "2779"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "A Tail of Two Cats",
+        "url": "https://runescape.wiki/w/A_Tail_of_Two_Cats",
+        "quest_requirements": [
+            "Diamond in the Rough",
+            "Gertrude's Cat",
+            "Icthlarin's Little Helper",
+            "Stolen Hearts"
+        ],
+        "skill_requirements": [
+            [
+                "Cooking",
+                50
+            ]
+        ],
+        "rewards": [],
+        "released": "26 September 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3539",
+            "2929"
+        ],
+        "length": "Long",
+        "combat": false
+    },
+    {
+        "name": "The Tale of the Muspah",
+        "url": "https://runescape.wiki/w/The_Tale_of_the_Muspah",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Firemaking",
+                6
+            ],
+            [
+                "Magic",
+                10
+            ],
+            [
+                "Mining",
+                8
+            ],
+            [
+                "Woodcutting",
+                10
+            ]
+        ],
+        "rewards": [],
+        "released": "21 April 2009",
+        "members": true,
+        "series": "Mahjarrat Mysteries #3",
+        "difficulty": "Novice",
+        "start": [
+            "3731",
+            "2736"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Tears of Guthix",
+        "url": "https://runescape.wiki/w/Tears_of_Guthix_(quest)",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Crafting",
+                20
+            ],
+            [
+                "Firemaking",
+                49
+            ],
+            [
+                "Mining",
+                20
+            ],
+            [
+                "Smithing",
+                20
+            ],
+            [
+                "Crafting",
+                49
+            ],
+            [
+                "Crafting",
+                49
+            ]
+        ],
+        "rewards": [],
+        "released": "4 May 2005",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "9517",
+            "3251"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "The Temple at Senntisten",
+        "url": "https://runescape.wiki/w/The_Temple_at_Senntisten",
+        "quest_requirements": [
+            "The Curse of Arrav",
+            "Death Plateau",
+            "Defender of Varrock",
+            "Desert Treasure",
+            "Devious Minds",
+            "Diamond in the Rough",
+            "The Dig Site",
+            "Family Crest",
+            "Gertrude's Cat",
+            "The Golem",
+            "Icthlarin's Little Helper",
+            "The Knight's Sword",
+            "Missing My Mummy",
+            "Recruitment Drive",
+            "Shield of Arrav",
+            "Stolen Hearts",
+            "The Tale of the Muspah",
+            "Temple of Ikov",
+            "Troll Stronghold",
+            "What Lies Below",
+            "What's Mine is Yours"
+        ],
+        "skill_requirements": [
+            [
+                "Prayer",
+                50
+            ]
+        ],
+        "rewards": [],
+        "released": "3 December 2009",
+        "members": true,
+        "series": "Mahjarrat Mysteries #14",
+        "difficulty": "Master",
+        "start": [
+            "2938",
+            "3420"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Temple of Ikov",
+        "url": "https://runescape.wiki/w/Temple_of_Ikov",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Ranged",
+                40
+            ],
+            [
+                "Thieving",
+                42
+            ]
+        ],
+        "rewards": [],
+        "released": "17 June 2002",
+        "members": true,
+        "series": "Mahjarrat Mysteries #6",
+        "difficulty": "Experienced",
+        "start": [
+            "3320",
+            "2576"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "That Old Black Magic",
+        "url": "https://runescape.wiki/w/That_Old_Black_Magic",
+        "quest_requirements": [
+            "Necromancy!"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "7 August 2023",
+        "members": true,
+        "series": "City of Um #2",
+        "difficulty": "Experienced",
+        "start": [
+            "1776",
+            "1114"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Throne of Miscellania",
+        "url": "https://runescape.wiki/w/Throne_of_Miscellania",
+        "quest_requirements": [
+            "The Fremennik Trials"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "29 November 2004",
+        "members": true,
+        "series": "Fremennik #4",
+        "difficulty": "Experienced",
+        "start": [
+            "3860",
+            "2504"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "TokTz-Ket-Dill",
+        "url": "https://runescape.wiki/w/TokTz-Ket-Dill",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Construction",
+                50
+            ],
+            [
+                "Crafting",
+                43
+            ],
+            [
+                "Mining",
+                40
+            ],
+            [
+                "Strength",
+                45
+            ]
+        ],
+        "rewards": [],
+        "released": "13 May 2008",
+        "members": true,
+        "series": "TzHaar #1",
+        "difficulty": "Experienced",
+        "start": [
+            "5115",
+            "4752"
+        ],
+        "length": "Long to Very Long",
+        "combat": true
+    },
+    {
+        "name": "Tomes of the Warlock",
+        "url": "https://runescape.wiki/w/Tomes_of_the_Warlock",
+        "quest_requirements": [
+            "Diamond in the Rough",
+            "Ghosts Ahoy",
+            "The Jack of Spades",
+            "Necromancy!",
+            "The Restless Ghost",
+            "Rune Mythos",
+            "The Spirit of War",
+            "Stolen Hearts",
+            "Vessel of the Harbinger"
+        ],
+        "skill_requirements": [
+            [
+                "Magic",
+                66
+            ]
+        ],
+        "rewards": [],
+        "released": "7 August 2023",
+        "members": true,
+        "series": "The First Necromancer #5",
+        "difficulty": "Master",
+        "start": [
+            "1776",
+            "1103"
+        ],
+        "length": "Long",
+        "combat": false
+    },
+    {
+        "name": "The Tourist Trap",
+        "url": "https://runescape.wiki/w/The_Tourist_Trap",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Fletching",
+                10
+            ],
+            [
+                "Smithing",
+                20
+            ]
+        ],
+        "rewards": [],
+        "released": "14 April 2003",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3112",
+            "3302"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Tower of Life",
+        "url": "https://runescape.wiki/w/Tower_of_Life",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Construction",
+                10
+            ]
+        ],
+        "rewards": [],
+        "released": "19 February 2007",
+        "members": true,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3215",
+            "2640"
+        ],
+        "length": "Medium to Long",
+        "combat": false
+    },
+    {
+        "name": "Tree Gnome Village",
+        "url": "https://runescape.wiki/w/Tree_Gnome_Village",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "23 July 2002",
+        "members": true,
+        "series": "Gnome #1",
+        "difficulty": "Intermediate",
+        "start": [
+            "3167",
+            "2543"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Tribal Totem",
+        "url": "https://runescape.wiki/w/Tribal_Totem",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Thieving",
+                21
+            ]
+        ],
+        "rewards": [],
+        "released": "30 April 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3182",
+            "2791"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Troll Romance",
+        "url": "https://runescape.wiki/w/Troll_Romance",
+        "quest_requirements": [
+            "Death Plateau",
+            "Troll Stronghold"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                28
+            ],
+            [
+                "Woodcutting",
+                45
+            ],
+            [
+                "Mining",
+                10
+            ],
+            [
+                "Smithing",
+                10
+            ]
+        ],
+        "rewards": [],
+        "released": "5 January 2005",
+        "members": true,
+        "series": "Troll #4",
+        "difficulty": "Experienced",
+        "start": [
+            "10065",
+            "2826"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Troll Stronghold",
+        "url": "https://runescape.wiki/w/Troll_Stronghold",
+        "quest_requirements": [
+            "Death Plateau"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                15
+            ],
+            [
+                "Thieving",
+                30
+            ]
+        ],
+        "rewards": [],
+        "released": "24 August 2004",
+        "members": true,
+        "series": "Troll #2",
+        "difficulty": "Experienced",
+        "start": [
+            "3561",
+            "2918"
+        ],
+        "length": "Short to Medium",
+        "combat": true
+    },
+    {
+        "name": "Twilight of the Gods",
+        "url": "https://runescape.wiki/w/Twilight_of_the_Gods",
+        "quest_requirements": [
+            "Battle of the Monolith",
+            "Broken Home",
+            "City of Senntisten",
+            "Desperate Measures",
+            "Desperate Times",
+            "Extinction",
+            "Eye of Het I",
+            "Eye of Het II",
+            "The Needle Skips",
+            "Sins of the Father",
+            "You Are It"
+        ],
+        "skill_requirements": [
+            [
+                "Thieving",
+                60
+            ]
+        ],
+        "rewards": [],
+        "released": "6 June 2022",
+        "members": true,
+        "series": "The Elder God Wars #15",
+        "difficulty": "Master",
+        "start": [
+            "3446",
+            "3329"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Underground Pass",
+        "url": "https://runescape.wiki/w/Underground_Pass",
+        "quest_requirements": [
+            "Biohazard",
+            "Plague City"
+        ],
+        "skill_requirements": [
+            [
+                "Ranged",
+                25
+            ]
+        ],
+        "rewards": [],
+        "released": "3 March 2003",
+        "members": true,
+        "series": "Elf (Prifddinas) #3",
+        "difficulty": "Experienced",
+        "start": [
+            "3297",
+            "2575"
+        ],
+        "length": "Long to Very Long",
+        "combat": true
+    },
+    {
+        "name": "Unwelcome Guests",
+        "url": "https://runescape.wiki/w/Unwelcome_Guests",
+        "quest_requirements": [
+            "Murder on the Border",
+            "New Foundations"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                50
+            ],
+            [
+                "Slayer",
+                10
+            ],
+            [
+                "Woodcutting",
+                40
+            ]
+        ],
+        "rewards": [],
+        "released": "11 April 2023",
+        "members": true,
+        "series": "Fort Forinthry #3",
+        "difficulty": "Intermediate",
+        "start": [
+            "3541",
+            "3319"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Vampyre Slayer",
+        "url": "https://runescape.wiki/w/Vampyre_Slayer",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "28 January 2001",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3268",
+            "3097"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "The Vault of Shadows",
+        "url": "https://runescape.wiki/w/The_Vault_of_Shadows",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "25 January 2021",
+        "members": true,
+        "series": "The Elder God Wars #7",
+        "difficulty": "Experienced",
+        "start": [
+            "3195",
+            "3352"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "Vessel of the Harbinger",
+        "url": "https://runescape.wiki/w/Vessel_of_the_Harbinger",
+        "quest_requirements": [
+            "Ghosts Ahoy",
+            "Necromancy!",
+            "The Restless Ghost",
+            "Rune Mythos"
+        ],
+        "skill_requirements": [
+            [
+                "Prayer",
+                40
+            ]
+        ],
+        "rewards": [],
+        "released": "7 August 2023",
+        "members": true,
+        "series": "The First Necromancer #3",
+        "difficulty": "Intermediate",
+        "start": [
+            "1776",
+            "1103"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Violet is Blue",
+        "url": "https://runescape.wiki/w/Violet_is_Blue",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "17 December 2018",
+        "members": false,
+        "series": "Violet Tendencies #1",
+        "difficulty": "Novice",
+        "start": [
+            "3458",
+            "2855"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Violet is Blue Too",
+        "url": "https://runescape.wiki/w/Violet_is_Blue_Too",
+        "quest_requirements": [
+            "Violet is Blue"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "14 December 2020",
+        "members": false,
+        "series": "Violet Tendencies #2",
+        "difficulty": "Novice",
+        "start": [
+            "3457",
+            "2854"
+        ],
+        "length": "Medium",
+        "combat": false
+    },
+    {
+        "name": "A Void Dance",
+        "url": "https://runescape.wiki/w/A_Void_Dance",
+        "quest_requirements": [
+            "Imp Catcher",
+            "Quiet Before the Swarm",
+            "Recruitment Drive",
+            "Wanted!"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                47
+            ],
+            [
+                "Herblore",
+                49
+            ],
+            [
+                "Hunter",
+                46
+            ],
+            [
+                "Mining",
+                47
+            ],
+            [
+                "Thieving",
+                54
+            ],
+            [
+                "Woodcutting",
+                52
+            ]
+        ],
+        "rewards": [],
+        "released": "10 August 2010",
+        "members": true,
+        "series": "Void Knight #2",
+        "difficulty": "Experienced",
+        "start": [
+            "2667",
+            "2676"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "The Void Stares Back",
+        "url": "https://runescape.wiki/w/The_Void_Stares_Back",
+        "quest_requirements": [
+            "Imp Catcher",
+            "Quiet Before the Swarm",
+            "Recruitment Drive",
+            "A Void Dance",
+            "Wanted!"
+        ],
+        "skill_requirements": [
+            [
+                "Attack",
+                78
+            ],
+            [
+                "Construction",
+                70
+            ],
+            [
+                "Crafting",
+                70
+            ],
+            [
+                "Defence",
+                25
+            ],
+            [
+                "Firemaking",
+                71
+            ],
+            [
+                "Magic",
+                80
+            ],
+            [
+                "Smithing",
+                70
+            ],
+            [
+                "Strength",
+                78
+            ]
+        ],
+        "rewards": [],
+        "released": "6 October 2010",
+        "members": true,
+        "series": "Void Knight #3",
+        "difficulty": "Grandmaster",
+        "start": [
+            "3374",
+            "2996"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Wanted!",
+        "url": "https://runescape.wiki/w/Wanted!",
+        "quest_requirements": [
+            "Recruitment Drive"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "17 October 2005",
+        "members": true,
+        "series": "Temple Knight #2",
+        "difficulty": "Intermediate",
+        "start": [
+            "3374",
+            "2997"
+        ],
+        "length": "Medium to Long",
+        "combat": true
+    },
+    {
+        "name": "Watchtower",
+        "url": "https://runescape.wiki/w/Watchtower",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Agility",
+                25
+            ],
+            [
+                "Herblore",
+                14
+            ],
+            [
+                "Magic",
+                14
+            ],
+            [
+                "Mining",
+                40
+            ],
+            [
+                "Thieving",
+                15
+            ]
+        ],
+        "rewards": [],
+        "released": "7 May 2003",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3113",
+            "2547"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Waterfall Quest",
+        "url": "https://runescape.wiki/w/Waterfall_Quest",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "24 September 2002",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3495",
+            "2521"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "What Lies Below",
+        "url": "https://runescape.wiki/w/What_Lies_Below",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Runecraft",
+                35
+            ]
+        ],
+        "rewards": [],
+        "released": "27 March 2007",
+        "members": true,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3334",
+            "3267"
+        ],
+        "length": "Short to Medium",
+        "combat": true
+    },
+    {
+        "name": "What's Mine is Yours",
+        "url": "https://runescape.wiki/w/What%27s_Mine_is_Yours",
+        "quest_requirements": [],
+        "skill_requirements": [
+            [
+                "Smithing",
+                5
+            ]
+        ],
+        "rewards": [],
+        "released": "17 October 2012",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3439",
+            "2959"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "While Guthix Sleeps",
+        "url": "https://runescape.wiki/w/While_Guthix_Sleeps",
+        "quest_requirements": [
+            "Defender of Varrock",
+            "Dream Mentor",
+            "The Eyes of Glouphrie",
+            "Family Crest",
+            "Heroes' Quest",
+            "Jungle Potion",
+            "The Knight's Sword",
+            "Legends' Quest",
+            "Lunar Diplomacy",
+            "The Path of Glouphrie",
+            "Recruitment Drive",
+            "Shield of Arrav",
+            "Shilo Village",
+            "Tears of Guthix",
+            "Temple of Ikov",
+            "Tree Gnome Village",
+            "Wanted!",
+            "Waterfall Quest",
+            "What Lies Below"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                25
+            ],
+            [
+                "Defence",
+                40
+            ],
+            [
+                "Farming",
+                65
+            ],
+            [
+                "Herblore",
+                65
+            ],
+            [
+                "Hunter",
+                55
+            ],
+            [
+                "Magic",
+                75
+            ],
+            [
+                "Thieving",
+                60
+            ],
+            [
+                "Attack",
+                99
+            ]
+        ],
+        "rewards": [],
+        "released": "26 November 2008",
+        "members": true,
+        "series": "Mahjarrat Mysteries #15",
+        "difficulty": "Grandmaster",
+        "start": [
+            "3376",
+            "2724"
+        ],
+        "length": "Very, Very Long",
+        "combat": true
+    },
+    {
+        "name": "Witch's House",
+        "url": "https://runescape.wiki/w/Witch%27s_House",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "27 February 2002",
+        "members": false,
+        "series": "None",
+        "difficulty": "Intermediate",
+        "start": [
+            "3355",
+            "2924"
+        ],
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Within the Light",
+        "url": "https://runescape.wiki/w/Within_the_Light",
+        "quest_requirements": [
+            "Big Chompy Bird Hunting",
+            "Mourning's End Part I",
+            "Mourning's End Part II",
+            "Regicide",
+            "Roving Elves",
+            "Sheep Herder",
+            "Underground Pass",
+            "Waterfall Quest"
+        ],
+        "skill_requirements": [
+            [
+                "Agility",
+                69
+            ],
+            [
+                "Fletching",
+                70
+            ],
+            [
+                "Ranged",
+                75
+            ],
+            [
+                "Woodcutting",
+                75
+            ]
+        ],
+        "rewards": [],
+        "released": "13 October 2009",
+        "members": true,
+        "series": "Elf (Prifddinas) #8",
+        "difficulty": "Master",
+        "start": [
+            "3171",
+            "2352"
+        ],
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Wolf Whistle",
+        "url": "https://runescape.wiki/w/Wolf_Whistle",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "31 January 2012",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "3448",
+            "2930"
+        ],
+        "length": "Short to Medium",
+        "combat": false
+    },
+    {
+        "name": "The World Wakes",
+        "url": "https://runescape.wiki/w/The_World_Wakes",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "4 March 2013",
+        "members": true,
+        "series": "Sliske's Game #1",
+        "difficulty": "Grandmaster",
+        "start": [
+            "3373",
+            "2700"
+        ],
+        "length": "Long to Very Long",
+        "combat": true
+    },
+    {
+        "name": "You Are It",
+        "url": "https://runescape.wiki/w/You_Are_It",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "8 May 2018",
+        "members": true,
+        "series": "The Elder God Wars #1",
+        "difficulty": "Intermediate",
+        "start": [
+            "3480",
+            "2644"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Zogre Flesh Eaters",
+        "url": "https://runescape.wiki/w/Zogre_Flesh_Eaters",
+        "quest_requirements": [
+            "Big Chompy Bird Hunting"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "17 May 2005",
+        "members": true,
+        "series": "Ogre #2",
+        "difficulty": "Intermediate",
+        "start": [
+            "3050",
+            "2444"
+        ],
+        "length": "Medium",
+        "combat": true
+    }
+]

@@ -1,4 +1,5 @@
-from wiki_quest_parser import load_quest_data
+from osrs_wiki_quest_parser import load_quest_data as load_osrs_data
+from rs3_wiki_quest_parser import load_quest_data as load_rs3_data
 from osrsmath.general.skills import level as calculate_level
 from osrsmath.general.skills import experience as calculate_experience
 from osrsmath.general.skills import get_skills
@@ -84,21 +85,27 @@ class Quest:
 	"""
 
 	def __init__(self, quest_data, name=None, url=None, released=None, members=None, developer=None, combat=None, series=None, length=None, difficulty=None, skill_requirements=None, quest_requirements=None, rewards=None, completed=False, start=None):
-		self.__dict__.update(locals())
+		parameters = locals().copy()  # Create a copy of local variables
+		del parameters['self']
+		self.__dict__.update(parameters)
 		self.skill_requirements = {skill: level for skill, level in skill_requirements} if skill_requirements is not None else {}
 		self.quest_requirements = set(quest_requirements) if quest_requirements is not None else set()
 		self.rewards = {skill: level for skill, level in rewards} if rewards is not None else {}
 
+		lookup = {q['name']: q for q in self.quest_data}
+
 		# Recursively crawl through all prerequisites
 		prereqs = stored_quest_requirements = set(self.quest_requirements)
 		while True:  # Keep iterating until no more prereqs are found.
-			for i, name in enumerate(prereqs):
-				prereq_data = self.quest_data[i]
+			for name in prereqs:
+				prereq_data = lookup[name]
 				prereq = Quest(self.quest_data, **prereq_data)
 
 				# For each prereq, accumulate the skill and quest requirements into this quest.
 				for skill in list(self.skill_requirements) + list(prereq.skill_requirements):
 					self.skill_requirements[skill] = max(self.skill_requirements.get(skill, 0), prereq.skill_requirements.get(skill, 0))
+				
+				assert name not in prereq.quest_requirements
 				self.quest_requirements.union(prereq.quest_requirements)
 
 			if stored_quest_requirements == self.quest_requirements:  # No more prereqs found.
@@ -153,9 +160,13 @@ class Quest:
 
 class QuestBook:
 	@staticmethod
-	def from_wiki_parser():
+	def from_wiki_parser(rs3: bool=False):
+		if rs3:
+			quest_data = load_rs3_data(rename={'Recipe for Disaster/': 'RFD/'})
+		else:
+			quest_data = load_osrs_data(rename={'Recipe for Disaster/': 'RFD/'})
+		
 		quests = {}
-		quest_data = load_quest_data(rename={'Recipe for Disaster/': 'RFD/'})
 		for quest in quest_data:
 			quests[quest['name']] = Quest(quest_data, **quest)
 		return QuestBook(quests)
@@ -208,12 +219,12 @@ class QuestBook:
 
 class Player:
 	@staticmethod
-	def create_maxed():
-		return Player(Skills.create_uniform_level(99), QuestBook.from_wiki_parser())
+	def create_maxed(rs3: bool=False):
+		return Player(Skills.create_uniform_level(99), QuestBook.from_wiki_parser(rs3=rs3))
 
 	@staticmethod
-	def create_new_player():
-		return Player(Skills.create_new_player(), QuestBook.from_wiki_parser())
+	def create_new_player(rs3: bool=False):
+		return Player(Skills.create_new_player(), QuestBook.from_wiki_parser(rs3=rs3))
 
 	@staticmethod
 	def create_from_other(other):

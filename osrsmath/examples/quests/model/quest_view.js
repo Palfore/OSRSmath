@@ -69,20 +69,13 @@ window.animate_quests = function(show) {
         quest = nodes.get(name);
         quest.show = show;
         color_node(quest);
-        network.fit({"animation": {"duration": duration, "easingFunction": "easeInOutCubic"} });
+        network.fit({"animation": {"duration": duration, "easingFunction": "easeInOutCubic"}});
         $('#output').html(`Animating: ${quest.id} | Series: ${quest.series} | Year: ${quest.year}<hr>`);
         index += 1
     }
     add($('#animation_speed').val());
     requestAnimationFrame(update);
 };
-
-/* Toggles */
-window.toggle_tiered = function() {};
-$('#toggle_physics').click(function() {network.setOptions({physics: this.checked});});
-$('#toggle_completed').click(window.changeColor);
-$('#show_names').click(window.changeColor);
-
 
 /* Helper Functions */
 color_node = function(node) {
@@ -190,9 +183,13 @@ network.on('afterDrawing', add_output_div);
 network.on("hold", remove_selected);
 network.on("doubleClick", remove_selected);
 
+/* Connect Click Event Listeners */
+// window.toggle_tiered = function() {};
+$('#toggle_physics').click(function() {network.setOptions({physics: this.checked});});
+$('#toggle_completed').click(window.changeColor);
+$('#show_names').click(window.changeColor);
+
 /* Execute */
-window.swapDirections();
-$('#color_scheme').val("series");
 nodes.forEach(function(node) {
     nodes.update({id: node.id, show: true});
 });

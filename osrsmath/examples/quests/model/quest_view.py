@@ -3,10 +3,11 @@ from matplotlib.lines import Line2D
 from matplotlib import pyplot as plt
 from pyvis.network import Network
 from datetime import datetime
+from pathlib import Path
 import networkx as nx
 import numpy as np
 import webbrowser
-import pathlib
+import shutil
 import os
 
 
@@ -70,7 +71,7 @@ class QuestViewer:
 		self.graph = nx.MultiDiGraph()
 		all_quest_names = sum(self.shells, [])
 		all_quests = [self.player.quest_book[name] for name in all_quest_names]
-		sorted_quests = sorted(all_quests, key=lambda quest: datetime.strptime(quest.released, "%d %B %Y"))
+		sorted_quests = sorted(all_quests, key=lambda quest: datetime.strptime(quest.released, "%d %B %Y") if quest.released else 0)
 		for i, quest in enumerate(sorted_quests, 1):
 			shell = self.shell_lookup[quest.name]	
 			print(f"Loading Quest #{i}: {quest.name} ({quest.released})")
@@ -86,17 +87,24 @@ class QuestViewer:
 				f"<i>Length:</i> {quest.length}",
 				f"<i>Released:</i> {quest.released}",
 				f"<i>Start Coordinates:</i> {quest.start}",
-				f"<i>Developer(s):</i> {', '.join(quest.developer)}",
+				f"<i>Developer(s):</i> {', '.join(quest.developer) if quest.developer else "TBD"}",
 				"<hr style='padding:0;margin:0;'>" +  # Append to avoid <br> from the .join() call.
 				"<b>Requires:</b>", *[Formatter.format(prereqs, 'requires') for prereqs in chunk(list(quest.quest_requirements), 2)],
 				"<b>Progresses:</b>", *[Formatter.format(prereqs, 'progresses') for prereqs in chunk(list(self.player.quest_book.get_quests_requiring(quest.name)), 2)],
 				"<b>Needs:</b>", *[Formatter.format(prereqs, 'needs') for prereqs in chunk(list(quest.skill_requirements.items()), 2)],
 				"<b>Rewards:</b>", *[Formatter.format(prereqs, 'rewards') for prereqs in chunk(list(quest.rewards.items()), 2)],
 			])
+
+			# Normalize quest lengths: Assume longest length.
+			quest.length = quest.length.replace("Medium to Long", "Long")
+			quest.length = quest.length.replace("Short to Medium", "Medium")
+			quest.length = quest.length.replace("Very, Very Long", "Very Long")
+			quest.length = quest.length.replace("Long to Very Long", "Very Long")
+
 			self.graph.add_node(quest.name, title=hover_details, url=quest.url, start=quest.start, start_x=quest.start[0] if quest.start else None, start_y=quest.start[1] if quest.start else None, 
-				shell=shell, tier=shell, difficulty=quest.difficulty, length=quest.length, series=quest.series.split(', #')[0], 
-				released=quest.released, combat=quest.combat, members=quest.members,
-				main_developer=quest.developer[0], year=int(quest.released.split(' ')[-1]),
+				shell=shell, tier=shell, difficulty=quest.difficulty, length=quest.length,
+				series=quest.series.rstrip('#, 0123456789'), released=quest.released, combat=quest.combat, members=quest.members,
+				main_developer=quest.developer[0] if quest.developer else "TBD", year=int(quest.released.split(' ')[-1]) if quest.released else "Unknown",
 				level=shell+1, group=quest.series, size=25 + 90*list(self.colors['length']).index(quest.length)/len(self.colors['length']),  # Size by quest length
 			)
 
@@ -107,9 +115,13 @@ class QuestViewer:
 				
 				# As long as this_prereq isn't required by another prereq, you can add it.
 				if not any(this_prereq in opr for opr in other_prereqs):
-					self.graph.add_edge(quest.name, this_prereq)
+					self.graph.add_edge(quest.name, this_prereq, weight=12, arrowsize=50)
 
-	def save_pdf(self, connections_are_quest_color=False):
+	def save_pdf(self, folder, rs3: bool, connections_are_quest_color=False):
+		game_name = "Runescape3" if rs3 else "Old School Runescape"
+		file_prefix = "rs3_" if rs3 else "osrs_"
+
+
 		label_dict = {quest: quest.replace("Recipe for Disaster", "RFD") for quest in self.graph}
 		node_colors = [self.colors['shell'][self.shell_lookup[quest]] for quest in self.graph]
 		edge_colors = []
@@ -125,7 +137,7 @@ class QuestViewer:
 			layout[quest] = np.array([x, y])
 
 		plt.figure(figsize=(60, 80))
-		plt.title("Old School Runescape Quest Tree\n"+("(colored by quest)" if connections_are_quest_color else "(colored by requirement)"),
+		plt.title(f"{game_name} Quest Tree\n"+("(colored by quest)" if connections_are_quest_color else "(colored by requirement)"),
 			fontsize=150, fontweight="bold"
 		)
 		nx.draw_networkx(self.graph,
@@ -134,7 +146,7 @@ class QuestViewer:
 			node_size=1200,
 			font_size=40,
 			verticalalignment='bottom',
-			width=2,
+			# width=2,
 			arrowsize=50,
 			arrowstyle='-|>' if connections_are_quest_color else '<|-',
 			edge_color=edge_colors,
@@ -149,21 +161,29 @@ class QuestViewer:
 		)
 		plt.axis('off')
 		plt.tight_layout()
-		plt.savefig(f"output/by_{'quest' if connections_are_quest_color else 'requirement'}.pdf", format="pdf")
+		folder.mkdir(parents=False, exist_ok=True)
+		plt.savefig(folder / f"{file_prefix}by_{'quest' if connections_are_quest_color else 'requirement'}.pdf", format="pdf")
 
+	def save_graph(self, folder, rs3: bool, show=True):
+		# The graph hard codes a giant json into the javascript page. It would be hard to extract.
+		# Instead, we minify the file to reduce loading time.
+		
+		game_name = "Runescape3" if rs3 else "Old School Runescape"
+		file_prefix = "rs3_" if rs3 else "osrs_"
 
-	def save_graph(self, file='quest_viewer.html', title="The Old School Runescape Universe", show=True):
-		dates = {quest: datetime.strptime(self.graph.nodes.get(quest)['released'], '%d %B %Y').timestamp() for quest in self.graph.nodes}
+		dates = {quest: datetime.strptime(self.graph.nodes.get(quest)['released'], '%d %B %Y').timestamp() if self.graph.nodes.get(quest)['released'] else "Unknown" for quest in self.graph.nodes}
 		quests_by_release = [k for k, v in sorted(dates.items(), key=lambda x: x[1])]
-		temp_file = file.split('.')[0] + '-temp.html'
+		file = folder / f'{file_prefix}quest_viewer.html'
+		folder.mkdir(parents=False, exist_ok=True)
+		temp_file = file.with_suffix(".temp.html")
 		nt = Network('90%', '100%')
 		nt.from_nx(self.graph)
 		nt.set_options("{}")
-		nt.save_graph(temp_file)
+		nt.save_graph(str(temp_file))
 
 		## We will take the default graph, and apply replacements and add new code.
 		with open(temp_file, "r") as f:
-			contents =  [
+			contents =  ["<!-- This file is AUTOMATICALLY GENERATED. Please modify the generating code, or post process this file. -->\n"] + [
 				l.strip(  # Spaces make it harder to match by exact line
 					' '
 				).replace(  # We need full height
@@ -186,6 +206,9 @@ class QuestViewer:
 
 		contents.insert(contents.index("<html>\n")+1, '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n')
 		contents.insert(contents.index("<head>\n")+1, '\n'.join([
+			f'<title>{game_name} Quest Viewer</title>',
+			'<link rel="shortcut icon" type="image/png" href="/favicon.ico"/>',
+			'',
 			'<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>', 
 			'',
 			'<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>', 
@@ -199,7 +222,7 @@ class QuestViewer:
 			'',
 		]))
 		contents.insert(contents.index("</center>\n"), 
-			f'<h1><span style="font-family: RuneScape UF Regular;color:yellow;">The Old School Runescape Universe</span> | <a href="https://github.com/Palfore/OSRSmath" target="_blank" style="font-size:50%;">by&nbsp;OSRSmath&nbsp;-&nbsp;Palfore</a> <a href="https://www.youtube.com/watch?v=yXP04J3Rc8g&ab_channel=Palfore" target="_blank" style="font-size:50%;">Explanation</a> <a href="https://www.youtube.com/watch?v=x90-35Bu2lo&t=38s&ab_channel=Palfore" target="_blank" style="font-size:50%;">Animation</a> </h1>'+"""
+			f'<h1><span style="font-family: RuneScape UF Regular;color:yellow;">The {game_name} Universe</span> | <a href="https://github.com/Palfore/OSRSmath" target="_blank" style="font-size:50%;">by&nbsp;OSRSmath&nbsp;-&nbsp;Palfore</a> <a href="https://www.youtube.com/watch?v=yXP04J3Rc8g&ab_channel=Palfore" target="_blank" style="font-size:50%;">Explanation</a> <a href="https://www.youtube.com/watch?v=x90-35Bu2lo&t=38s&ab_channel=Palfore" target="_blank" style="font-size:50%;">Animation</a> </h1>'+"""
 			<div class="w3-row-padding">
 				<div class="w3-quarter">
 					<button class="btn btn-info btn-lg" onclick="help()"><i class="bi bi-info-circle"></i></button>
@@ -212,7 +235,7 @@ class QuestViewer:
 							'\n\t\t'.join(f"  <option value={option}>{option.replace('_', ' ').title()}</option>" for option in self.colors.keys() if option != 'background') + """
 					</select>
 					<label for="toggle_reverse" data-toggle="tooltip" title="Reverse the directions of the arrows.">Reverse</label>
-                    <input type="checkbox" id="toggle_reverse" onclick="swapDirections()", class="btn btn-success" ></input>
+                    <input type="checkbox" id="toggle_reverse" onclick="swapDirections()", class="btn btn-success"></input>
                     
                     <label for="toggle_physics" data-toggle="tooltip" title="Turn the physics on.">Physics</label>
                     <input type="checkbox" id="toggle_physics" checked class="btn btn-light" style="color:white;background-color:orangered;"></input>
@@ -283,25 +306,55 @@ class QuestViewer:
 		os.remove(temp_file)
 		with open(file, "w") as f:
 		    f.writelines(contents)
+
 		if show:
 			start = os.getcwd()
 			try:
-				os.chdir(pathlib.Path(file).parent)  # Apparently opening a "folder/file" path uses internet explorer?
-				webbrowser.open(pathlib.Path(file).name)  # So split and cd, then open it.
+				os.chdir(Path(file).parent)  # Apparently opening a "folder/file" path uses internet explorer?
+				webbrowser.open(Path(file).name)  # So split and cd, then open it.
 			finally:
 				os.chdir(start)
 
 
 if __name__ == '__main__':
-	qb = QuestBook.from_wiki_parser()
-	colors = {
-		'background': '#d8ccb4',
+	import argparse
+	parser = argparse.ArgumentParser(description="Example script with a boolean flag.")
+	parser.add_argument('--rs3', action='store_true', help='Set this flag to enable RS3 mode')
+	args = parser.parse_args()
 
-		'shell': ['black', 'indigo', 'blue', 'green', 'olive', 'yellow', 'orange', 'red'],
-		'series': {s: c for s, c in zip(
+	player = Player.create_maxed(rs3=args.rs3)
+
+
+	if args.rs3:
+	 	series_colors = {s: c for s, c in zip(
+			[
+			    'Delrith', 'Camelot', 'Fairy', 'Gnome', 'Ogre', 'Troll', 'Fremennik', 
+			    'Elemental Workshop', 'Enchanted Key', 'Cave Goblin', 'Temple Knight', 
+			    'Odd Old Man', 'Wise Old Man', 'Summer', 'Thieves\' Guild', 'Void Knight', 
+			    'Fremennik Sagas', 'Doric\'s Tasks', 'Boric\'s Tasks', 'Ariane', 'Ozan', 
+			    'Desert', 'TzHaar', 'Dwarf (Red Axe)', 'Elf (Prifddinas)', 'Myreque', 
+			    'Pirate', 'Penguin', 'Tales of the Arc', 'Violet Tendencies', 
+			    'Mahjarrat Mysteries', 'Sliske\'s Game', 'The Elder God Wars', 
+			    'Legacy of Zamorak', 'Fort Forinthry', 'The First Necromancer', 'City of Um'
+			], [
+			    'indigo', 'blue', 'green', 'olive', 'yellow', 'orange', 'red',
+			    'purple', 'pink', 'cyan', 'teal', 'maroon', 'navy', 'lavender', 'silver',
+			    'gold', 'darkorchid', 'mediumvioletred', 'aquamarine', 'mediumspringgreen',
+			    'coral', 'royalblue', 'mediumslateblue', 'mediumaquamarine', 'orchid',
+			    'mediumturquoise', 'sienna', 'cadetblue', 'cornflowerblue', 'darkslategray',
+			    'rosybrown', 'slategray', 'peru', 'mediumseagreen'
+			]
+		)}
+	else:
+		series_colors = {s: c for s, c in zip(
 			["Camelot", "Demon Slayer", "Dorgeshuun", "Dragonkin", "Elemental Workshop", "Elf", "Fairytale", "Fremennik", "Gnome", "Kharidian", "Great Kourend", "Mahjarrat", "Miscellania", "Myreque", "Order of Wizards", "Penguin", "Pirate", "Rag and Bone Man", "Red Axe", "Temple Knight", "Troll",],
 			["#d3d3d3", "#556b2f", "#b22222", "#008000", "#008080", "#b8860b", "#9acd32", "#800080", "#ff0000", "#ffff00", "#7cfc00", "#9400d3", "#00fa9a", "#4169e1", "#00ffff", "#00bfff", "#0000ff", "#db7093", "#f0e68c", "#ff1493", "#ffa07a", "#ee82ee"]
-		)},
+		)}
+
+	colors = {
+		'background': '#d8ccb4',
+		'series': series_colors,
+		'shell': ['black', 'indigo', 'blue', 'green', 'olive', 'yellow', 'orange', 'red', 'purple', 'pink', 'cyan', 'teal', 'maroon', 'navy', 'lavender', 'silver', 'gold'],
 		'difficulty': {
 			"Novice": "green",
 			"Intermediate": "gold",
@@ -317,13 +370,46 @@ if __name__ == '__main__':
 			"Long": "red",
 			"Very Long": "black",
 		},
-		'main_developer': {s: c for s, c in zip(list(set([node.developer[0] for node in qb])), ["#808080", "#c0c0c0", "#2f4f4f", "#556b2f", "#8b4513", "#228b22", "#7f0000", "#191970", "#808000", "#3cb371", "#b8860b", "#008b8b", "#d2691e", "#9acd32", "#cd5c5c", "#00008b", "#32cd32", "#8fbc8f", "#8b008b", "#b03060", "#9932cc", "#ff4500", "#ffa500", "#6a5acd", "#0000cd", "#00ff00", "#00fa9a", "#e9967a", "#dc143c", "#00ffff", "#adff2f", "#ff6347", "#da70d6", "#ff00ff", "#f0e68c", "#ffff54", "#6495ed", "#dda0dd", "#90ee90", "#afeeee", "#87cefa", "#7fffd4", "#ff69b4", "#ffe4c4", "#ffc0cb",])},
+		'main_developer': {s: c for s, c in zip(
+			list(set([node.developer[0] if node.developer else "TBD" for node in player.quest_book])),
+			["#808080", "#c0c0c0", "#2f4f4f", "#556b2f", "#8b4513", "#228b22", "#7f0000", "#191970", "#808000", "#3cb371", "#b8860b", "#008b8b", "#d2691e", "#9acd32", "#cd5c5c", "#00008b", "#32cd32", "#8fbc8f", "#8b008b", "#b03060", "#9932cc", "#ff4500", "#ffa500", "#6a5acd", "#0000cd", "#00ff00", "#00fa9a", "#e9967a", "#dc143c", "#00ffff", "#adff2f", "#ff6347", "#da70d6", "#ff00ff", "#f0e68c", "#ffff54", "#6495ed", "#dda0dd", "#90ee90", "#afeeee", "#87cefa", "#7fffd4", "#ff69b4", "#ffe4c4", "#ffc0cb",]
+		)},
 		'combat': {True: 'red', 'True': 'red', 'true': 'red'},
 		'members': {True: 'red', 'True': 'red', 'true': 'red'},
-		'year': {y: c for y, c in zip(
-			list(reversed(sorted(list(set([int(node.released.split()[-1]) for node in qb]))))),
-			["#04f2ff", "#12e4f0", "#19d6e1", "#1ec8d2", "#21bac3", "#23acb5", "#249fa7", "#259299", "#25858b", "#24787e", "#236b70", "#225f63", "#205357", "#1e474a", "#1b3c3e", "#183133", "#152627", "#111c1d", "#0a1112", "#000000"]
-		)},
+		'year': {
+				2001: "#8BC34A",  # Light Green
+				2002: "#66BB6A",  # Green Light
+				2003: "#4CAF50",  # Green
+				2004: "#43A047",   # Green Dark
+
+				2005: "#0000FF",  # Blue
+				2006: "#1E90FF",  # Dodger Blue
+				2007: "#4169E1",  # Royal Blue
+				2008: "#6495ED",  # Cornflower Blue
+				2009: "#87CEEB",  # Sky Blue
+				2010: "#ADD8E6",  # Light Blue
+				2011: "#B0E0E6",  # Powder Blue
+				2012: "#B0C4DE",  # Light Steel Blue
+				2013: "#4682B4",   # Steel Blue
+
+				2014: "#FF0000",  # Red
+				2015: "#FF4500",  # Orange Red
+				2016: "#FF6347",  # Tomato
+				2017: "#FF7F50",  # Coral
+				2018: "#FFA07A",  # Light Salmon
+				2019: "#FA8072",  # Salmon
+				2020: "#E9967A",  # Dark Salmon
+				2021: "#CD5C5C",  # Indian Red
+				2022: "#DC143C",  # Crimson
+				2023: "#B22222",  # Fire Brick
+				2024: "#8B0000",  # Dark Red
+				2025: "#800000",  # Maroon
+				2026: "#8B4513",  # Saddle Brown
+				2027: "#A52A2A",  # Brown
+				2028: "#D2691E",  # Chocolate
+				2029: "#CD853F",  # Peru
+				2030: "#DEB887",   # Burlywood
+		}
 	}
 	options = {
 	  # "custom-background_color": background_color,
@@ -342,18 +428,20 @@ if __name__ == '__main__':
 	  "edges": {
 	    "arrows": {
 	      "from": {
-	        "enabled": False
+	      	"scaleFactor": 6,
+	        "enabled": True
 	      },
 	      "to": {
-	        "enabled": True
+	      	"scaleFactor": 6,
+	        "enabled": False
 	      }
 	    },
 	    "font": {
 	      "size": 0, # Hide
 	    },
-	    "hoverWidth": 30,
-	    "selectionWidth": 40,
-	    "width": 8
+	    "hoverWidth": 60,
+	    "selectionWidth": 80,
+	    # "width": 20
 	  },
 	  "interaction": {
 	    "hover": True,
@@ -377,13 +465,14 @@ if __name__ == '__main__':
 	};
 
 
-	player = Player.create_maxed()
 	# player.quest_book.blocked.extend(player.quest_book.get_quests_with_level_req("Hitpoints", 10, "greater"))
 	# for quest in player.quest_book.get_quests_with_level_req("Hitpoints", 10, "greater"):
 	# 	player.quest_book.blocked.extend(player.quest_book[quest].unlocks)
 	# player.quest_book.blocked.extend([q.name for q in player.quest_book if q.combat]) # block quest and anything that needs it.
 	# for quest in [q.name for q in player.quest_book if q.combat]:
 	# 	player.quest_book.blocked.extend(player.quest_book[quest].unlocks)
-	QuestViewer(player, colors, options).save_graph(file="output/quest_viewer.html", show=True)
-	QuestViewer(player, colors, options).save_pdf(True)
-	QuestViewer(player, colors, options).save_pdf(False)
+	# TODO: Move rs3 parameter to __init__.
+	output = Path(__file__).parent / "output" / ("rs3" if args.rs3 else "osrs")
+	QuestViewer(player, colors, options).save_graph(folder=output, rs3=args.rs3, show=True)
+	QuestViewer(player, colors, options).save_pdf(folder=output, rs3=args.rs3, connections_are_quest_color=True)
+	QuestViewer(player, colors, options).save_pdf(folder=output, rs3=args.rs3, connections_are_quest_color=False)
