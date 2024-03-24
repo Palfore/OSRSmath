@@ -173,6 +173,37 @@ remove_selected = function(info) {
         network.releaseNode();
     }
 };
+remove_selected_prereqs = function() {
+    // We get the selected node. This is always a single quest, but we support future lists.
+    quests = network.getSelectedNodes()
+
+    // Hidden quests are those in the text box.
+    // The set of quests to hide is (already hidden (x), the selected quest (y), and the prereqs (z).
+    hidden_quests = get_quests_to_hide()  // Toggle via symmetric difference.
+
+
+    // Determine the nodes that are prerequisites.
+    var prereq_nodes = [];
+    quests.forEach(function(questId) {
+        var node = nodes.get(questId);
+        if (node && node.prereqs && Array.isArray(node.prereqs)) {  // Check if the node has a "prereqs" attribute
+            node.prereqs.forEach(function(prereqNodeId) {  // Iterate over the list of prerequisites
+                prereq_nodes.push(prereqNodeId);  // Add the prerequisite node ID to the list of prerequisite nodes
+            });
+        }
+    });
+
+
+    const x = hidden_quests.filter(x => !quests.includes(x));
+    const y = quests.filter(x => !hidden_quests.includes(x));
+    const z = prereq_nodes.filter(x => !hidden_quests.includes(x));
+    document.getElementById("quests_to_hide").value = x.concat(y).concat(z).join(', ');
+
+    // Hide the quests, and release all selections.
+    hideQuests();
+    network.unselectAll();
+    network.releaseNode();
+};
 
 /* Event Bindings */
 add_output_div = function() { // https://stackoverflow.com/questions/43135777/vis-js-callback-when-the-network-finishes-loading

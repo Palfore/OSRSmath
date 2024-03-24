@@ -105,6 +105,7 @@ class QuestViewer:
 				shell=shell, tier=shell, difficulty=quest.difficulty, length=quest.length,
 				series=quest.series.rstrip('#, 0123456789'), released=quest.released, combat=quest.combat, members=quest.members,
 				main_developer=quest.developer[0] if quest.developer else "TBD", year=int(quest.released.split(' ')[-1]) if quest.released else "Unknown",
+				prereqs=list(quest.quest_requirements),
 				level=shell+1, group=quest.series, size=25 + 90*list(self.colors['length']).index(quest.length)/len(self.colors['length']),  # Size by quest length
 			)
 
@@ -229,6 +230,7 @@ class QuestViewer:
 					|
 					<button class="btn btn-secondary" onclick="openWiki()" data-toggle="tooltip" title="Lookup the selected quest on the wiki.">Lookup</button>
                     <button class="btn btn-warning" style="color:white;" onclick="remove_selected()" data-toggle="tooltip" title="Completed the selected quest.">Complete</button>
+                    <button class="btn btn-warning" style="color:white;" onclick="remove_selected_prereqs()" data-toggle="tooltip" title="Completed the selected quest and its prerequisites.">Finish</button>
 				</div>
 				<div class="w3-quarter">
 					<select class="btn btn-primary" id="color_scheme" onchange="changeColor()" data-toggle="tooltip" title="Change the color scheme.">\n"""+
@@ -318,161 +320,166 @@ class QuestViewer:
 
 if __name__ == '__main__':
 	import argparse
-	parser = argparse.ArgumentParser(description="Example script with a boolean flag.")
-	parser.add_argument('--rs3', action='store_true', help='Set this flag to enable RS3 mode')
+	parser = argparse.ArgumentParser(description="Example script with boolean flags.")
+	parser.add_argument('--osrs', action='store_true', help='Set this flag to compile the OSRS visualizations.')
+	parser.add_argument('--rs3', action='store_true', help='Set this flag to compile the RS3 visualizations.')
 	args = parser.parse_args()
+	modes = {}
+	if args.osrs or not (args.osrs or args.rs3):
+		modes['osrs'] = False  # False means not rs3.
+	if args.rs3 or not (args.osrs or args.rs3):
+		modes['rs3'] = True  # True means rs3.
 
-	player = Player.create_maxed(rs3=args.rs3)
+	for game_name, compiling_rs3 in modes.items():
+		player = Player.create_maxed(rs3=compiling_rs3)
+		if compiling_rs3:
+		 	series_colors = {s: c for s, c in zip(
+				[
+				    'Delrith', 'Camelot', 'Fairy', 'Gnome', 'Ogre', 'Troll', 'Fremennik',
+				    'Elemental Workshop', 'Enchanted Key', 'Cave Goblin', 'Temple Knight',
+				    'Odd Old Man', 'Wise Old Man', 'Summer', 'Thieves\' Guild', 'Void Knight',
+				    'Fremennik Sagas', 'Doric\'s Tasks', 'Boric\'s Tasks', 'Ariane', 'Ozan',
+				    'Desert', 'TzHaar', 'Dwarf (Red Axe)', 'Elf (Prifddinas)', 'Myreque',
+				    'Pirate', 'Penguin', 'Tales of the Arc', 'Violet Tendencies',
+				    'Mahjarrat Mysteries', 'Sliske\'s Game', 'The Elder God Wars',
+				    'Legacy of Zamorak', 'Fort Forinthry', 'The First Necromancer', 'City of Um'
+				], [
+				    'indigo', 'blue', 'green', 'olive', 'yellow', 'orange', 'red',
+				    'purple', 'pink', 'cyan', 'teal', 'maroon', 'navy', 'lavender', 'silver',
+				    'gold', 'darkorchid', 'mediumvioletred', 'aquamarine', 'mediumspringgreen',
+				    'coral', 'royalblue', 'mediumslateblue', 'mediumaquamarine', 'orchid',
+				    'mediumturquoise', 'sienna', 'cadetblue', 'cornflowerblue', 'darkslategray',
+				    'rosybrown', 'slategray', 'peru', 'mediumseagreen'
+				]
+			)}
+		else:
+			series_colors = {s: c for s, c in zip(
+				["Camelot", "Demon Slayer", "Dorgeshuun", "Dragonkin", "Elemental Workshop", "Elf", "Fairytale", "Fremennik", "Gnome", "Kharidian", "Great Kourend", "Mahjarrat", "Miscellania", "Myreque", "Order of Wizards", "Penguin", "Pirate", "Rag and Bone Man", "Red Axe", "Temple Knight", "Troll",],
+				["#d3d3d3", "#556b2f", "#b22222", "#008000", "#008080", "#b8860b", "#9acd32", "#800080", "#ff0000", "#ffff00", "#7cfc00", "#9400d3", "#00fa9a", "#4169e1", "#00ffff", "#00bfff", "#0000ff", "#db7093", "#f0e68c", "#ff1493", "#ffa07a", "#ee82ee"]
+			)}
 
-
-	if args.rs3:
-	 	series_colors = {s: c for s, c in zip(
-			[
-			    'Delrith', 'Camelot', 'Fairy', 'Gnome', 'Ogre', 'Troll', 'Fremennik', 
-			    'Elemental Workshop', 'Enchanted Key', 'Cave Goblin', 'Temple Knight', 
-			    'Odd Old Man', 'Wise Old Man', 'Summer', 'Thieves\' Guild', 'Void Knight', 
-			    'Fremennik Sagas', 'Doric\'s Tasks', 'Boric\'s Tasks', 'Ariane', 'Ozan', 
-			    'Desert', 'TzHaar', 'Dwarf (Red Axe)', 'Elf (Prifddinas)', 'Myreque', 
-			    'Pirate', 'Penguin', 'Tales of the Arc', 'Violet Tendencies', 
-			    'Mahjarrat Mysteries', 'Sliske\'s Game', 'The Elder God Wars', 
-			    'Legacy of Zamorak', 'Fort Forinthry', 'The First Necromancer', 'City of Um'
-			], [
-			    'indigo', 'blue', 'green', 'olive', 'yellow', 'orange', 'red',
-			    'purple', 'pink', 'cyan', 'teal', 'maroon', 'navy', 'lavender', 'silver',
-			    'gold', 'darkorchid', 'mediumvioletred', 'aquamarine', 'mediumspringgreen',
-			    'coral', 'royalblue', 'mediumslateblue', 'mediumaquamarine', 'orchid',
-			    'mediumturquoise', 'sienna', 'cadetblue', 'cornflowerblue', 'darkslategray',
-			    'rosybrown', 'slategray', 'peru', 'mediumseagreen'
-			]
-		)}
-	else:
-		series_colors = {s: c for s, c in zip(
-			["Camelot", "Demon Slayer", "Dorgeshuun", "Dragonkin", "Elemental Workshop", "Elf", "Fairytale", "Fremennik", "Gnome", "Kharidian", "Great Kourend", "Mahjarrat", "Miscellania", "Myreque", "Order of Wizards", "Penguin", "Pirate", "Rag and Bone Man", "Red Axe", "Temple Knight", "Troll",],
-			["#d3d3d3", "#556b2f", "#b22222", "#008000", "#008080", "#b8860b", "#9acd32", "#800080", "#ff0000", "#ffff00", "#7cfc00", "#9400d3", "#00fa9a", "#4169e1", "#00ffff", "#00bfff", "#0000ff", "#db7093", "#f0e68c", "#ff1493", "#ffa07a", "#ee82ee"]
-		)}
-
-	colors = {
-		'background': '#d8ccb4',
-		'series': series_colors,
-		'shell': ['black', 'indigo', 'blue', 'green', 'olive', 'yellow', 'orange', 'red', 'purple', 'pink', 'cyan', 'teal', 'maroon', 'navy', 'lavender', 'silver', 'gold'],
-		'difficulty': {
-			"Novice": "green",
-			"Intermediate": "gold",
-			"Experienced": "orange",
-			"Master": "red",
-			"Grandmaster": "black",
-			"Special": "blue",
-		},
-		'length': {
-			"Very Short": "green",
-			"Short": "yellow",
-			"Medium": "orange",
-			"Long": "red",
-			"Very Long": "black",
-		},
-		'main_developer': {s: c for s, c in zip(
-			list(set([node.developer[0] if node.developer else "TBD" for node in player.quest_book])),
-			["#808080", "#c0c0c0", "#2f4f4f", "#556b2f", "#8b4513", "#228b22", "#7f0000", "#191970", "#808000", "#3cb371", "#b8860b", "#008b8b", "#d2691e", "#9acd32", "#cd5c5c", "#00008b", "#32cd32", "#8fbc8f", "#8b008b", "#b03060", "#9932cc", "#ff4500", "#ffa500", "#6a5acd", "#0000cd", "#00ff00", "#00fa9a", "#e9967a", "#dc143c", "#00ffff", "#adff2f", "#ff6347", "#da70d6", "#ff00ff", "#f0e68c", "#ffff54", "#6495ed", "#dda0dd", "#90ee90", "#afeeee", "#87cefa", "#7fffd4", "#ff69b4", "#ffe4c4", "#ffc0cb",]
-		)},
-		'combat': {True: 'red', 'True': 'red', 'true': 'red'},
-		'members': {True: 'red', 'True': 'red', 'true': 'red'},
-		'year': {
-				2001: "#8BC34A",  # Light Green
-				2002: "#66BB6A",  # Green Light
-				2003: "#4CAF50",  # Green
-				2004: "#43A047",   # Green Dark
-
-				2005: "#0000FF",  # Blue
-				2006: "#1E90FF",  # Dodger Blue
-				2007: "#4169E1",  # Royal Blue
-				2008: "#6495ED",  # Cornflower Blue
-				2009: "#87CEEB",  # Sky Blue
-				2010: "#ADD8E6",  # Light Blue
-				2011: "#B0E0E6",  # Powder Blue
-				2012: "#B0C4DE",  # Light Steel Blue
-				2013: "#4682B4",   # Steel Blue
-
-				2014: "#FF0000",  # Red
-				2015: "#FF4500",  # Orange Red
-				2016: "#FF6347",  # Tomato
-				2017: "#FF7F50",  # Coral
-				2018: "#FFA07A",  # Light Salmon
-				2019: "#FA8072",  # Salmon
-				2020: "#E9967A",  # Dark Salmon
-				2021: "#CD5C5C",  # Indian Red
-				2022: "#DC143C",  # Crimson
-				2023: "#B22222",  # Fire Brick
-				2024: "#8B0000",  # Dark Red
-				2025: "#800000",  # Maroon
-				2026: "#8B4513",  # Saddle Brown
-				2027: "#A52A2A",  # Brown
-				2028: "#D2691E",  # Chocolate
-				2029: "#CD853F",  # Peru
-				2030: "#DEB887",   # Burlywood
-		}
-	}
-	options = {
-	  # "custom-background_color": background_color,
-	  "configure": {
-	    "enabled": False
-	  },
-	  "nodes": {
-	    # "borderWidth": 10,
-	    "borderWidthSelected": 50,
-	    "font": {
-	      "size": 120,
-	      "strokeWidth": 11,
-	      "strokeColor": colors['background'],
-	    }
-	  },
-	  "edges": {
-	    "arrows": {
-	      "from": {
-	      	"scaleFactor": 6,
-	        "enabled": True
-	      },
-	      "to": {
-	      	"scaleFactor": 6,
-	        "enabled": False
-	      }
-	    },
-	    "font": {
-	      "size": 0, # Hide
-	    },
-	    "hoverWidth": 60,
-	    "selectionWidth": 80,
-	    # "width": 20
-	  },
-	  "interaction": {
-	    "hover": True,
-	    "multiselect": False,
-	    "navigationButtons": False,
-	  },
-	  'physics': {
-			'repulsion': {
-		  'centralGravity': 0.3,
-		  'springLength': 1200,
-		  'springConstant': 0.1,
-		  'nodeDistance': 4000,
-		  'damping': 0.15
-		},
-		'solver': 'repulsion',
-			'stabilization': {
-				'iterations': 800
+		colors = {
+			'background': '#d8ccb4',
+			'series': series_colors,
+			'shell': ['black', 'indigo', 'blue', 'green', 'olive', 'yellow', 'orange', 'red', 'purple', 'pink', 'cyan', 'teal', 'maroon', 'navy', 'lavender', 'silver', 'gold'],
+			'difficulty': {
+				"Novice": "green",
+				"Intermediate": "gold",
+				"Experienced": "orange",
+				"Master": "red",
+				"Grandmaster": "black",
+				"Special": "blue",
 			},
-			'minVelocity': 0.35
+			'length': {
+				"Very Short": "green",
+				"Short": "yellow",
+				"Medium": "orange",
+				"Long": "red",
+				"Very Long": "black",
+			},
+			'main_developer': {s: c for s, c in zip(
+				list(set([node.developer[0] if node.developer else "TBD" for node in player.quest_book])),
+				["#808080", "#c0c0c0", "#2f4f4f", "#556b2f", "#8b4513", "#228b22", "#7f0000", "#191970", "#808000", "#3cb371", "#b8860b", "#008b8b", "#d2691e", "#9acd32", "#cd5c5c", "#00008b", "#32cd32", "#8fbc8f", "#8b008b", "#b03060", "#9932cc", "#ff4500", "#ffa500", "#6a5acd", "#0000cd", "#00ff00", "#00fa9a", "#e9967a", "#dc143c", "#00ffff", "#adff2f", "#ff6347", "#da70d6", "#ff00ff", "#f0e68c", "#ffff54", "#6495ed", "#dda0dd", "#90ee90", "#afeeee", "#87cefa", "#7fffd4", "#ff69b4", "#ffe4c4", "#ffc0cb",]
+			)},
+			'combat': {True: 'red', 'True': 'red', 'true': 'red'},
+			'members': {True: 'red', 'True': 'red', 'true': 'red'},
+			'year': {
+					2001: "#8BC34A",  # Light Green
+					2002: "#66BB6A",  # Green Light
+					2003: "#4CAF50",  # Green
+					2004: "#43A047",   # Green Dark
+
+					2005: "#0000FF",  # Blue
+					2006: "#1E90FF",  # Dodger Blue
+					2007: "#4169E1",  # Royal Blue
+					2008: "#6495ED",  # Cornflower Blue
+					2009: "#87CEEB",  # Sky Blue
+					2010: "#ADD8E6",  # Light Blue
+					2011: "#B0E0E6",  # Powder Blue
+					2012: "#B0C4DE",  # Light Steel Blue
+					2013: "#4682B4",   # Steel Blue
+
+					2014: "#FF0000",  # Red
+					2015: "#FF4500",  # Orange Red
+					2016: "#FF6347",  # Tomato
+					2017: "#FF7F50",  # Coral
+					2018: "#FFA07A",  # Light Salmon
+					2019: "#FA8072",  # Salmon
+					2020: "#E9967A",  # Dark Salmon
+					2021: "#CD5C5C",  # Indian Red
+					2022: "#DC143C",  # Crimson
+					2023: "#B22222",  # Fire Brick
+					2024: "#8B0000",  # Dark Red
+					2025: "#800000",  # Maroon
+					2026: "#8B4513",  # Saddle Brown
+					2027: "#A52A2A",  # Brown
+					2028: "#D2691E",  # Chocolate
+					2029: "#CD853F",  # Peru
+					2030: "#DEB887",   # Burlywood
+			}
 		}
-	};
+		options = {
+		  # "custom-background_color": background_color,
+		  "configure": {
+		    "enabled": False
+		  },
+		  "nodes": {
+		    # "borderWidth": 10,
+		    "borderWidthSelected": 50,
+		    "font": {
+		      "size": 120,
+		      "strokeWidth": 11,
+		      "strokeColor": colors['background'],
+		    }
+		  },
+		  "edges": {
+		    "arrows": {
+		      "from": {
+		      	"scaleFactor": 6,
+		        "enabled": True
+		      },
+		      "to": {
+		      	"scaleFactor": 6,
+		        "enabled": False
+		      }
+		    },
+		    "font": {
+		      "size": 0, # Hide
+		    },
+		    "hoverWidth": 60,
+		    "selectionWidth": 80,
+		    # "width": 20
+		  },
+		  "interaction": {
+		    "hover": True,
+		    "multiselect": False,
+		    "navigationButtons": False,
+		  },
+		  'physics': {
+				'repulsion': {
+			  'centralGravity': 0.3,
+			  'springLength': 1200,
+			  'springConstant': 0.1,
+			  'nodeDistance': 4000,
+			  'damping': 0.15
+			},
+			'solver': 'repulsion',
+				'stabilization': {
+					'iterations': 800
+				},
+				'minVelocity': 0.35
+			}
+		};
 
 
-	# player.quest_book.blocked.extend(player.quest_book.get_quests_with_level_req("Hitpoints", 10, "greater"))
-	# for quest in player.quest_book.get_quests_with_level_req("Hitpoints", 10, "greater"):
-	# 	player.quest_book.blocked.extend(player.quest_book[quest].unlocks)
-	# player.quest_book.blocked.extend([q.name for q in player.quest_book if q.combat]) # block quest and anything that needs it.
-	# for quest in [q.name for q in player.quest_book if q.combat]:
-	# 	player.quest_book.blocked.extend(player.quest_book[quest].unlocks)
-	# TODO: Move rs3 parameter to __init__.
-	output = Path(__file__).parent / "output" / ("rs3" if args.rs3 else "osrs")
-	QuestViewer(player, colors, options).save_graph(folder=output, rs3=args.rs3, show=True)
-	QuestViewer(player, colors, options).save_pdf(folder=output, rs3=args.rs3, connections_are_quest_color=True)
-	QuestViewer(player, colors, options).save_pdf(folder=output, rs3=args.rs3, connections_are_quest_color=False)
+		# player.quest_book.blocked.extend(player.quest_book.get_quests_with_level_req("Hitpoints", 10, "greater"))
+		# for quest in player.quest_book.get_quests_with_level_req("Hitpoints", 10, "greater"):
+		# 	player.quest_book.blocked.extend(player.quest_book[quest].unlocks)
+		# player.quest_book.blocked.extend([q.name for q in player.quest_book if q.combat]) # block quest and anything that needs it.
+		# for quest in [q.name for q in player.quest_book if q.combat]:
+		# 	player.quest_book.blocked.extend(player.quest_book[quest].unlocks)
+		# TODO: Move rs3 parameter to __init__.
+		output = Path(__file__).parent / "output" / game_name
+		QuestViewer(player, colors, options).save_graph(folder=output, rs3=compiling_rs3, show=True)
+		QuestViewer(player, colors, options).save_pdf(folder=output, rs3=compiling_rs3, connections_are_quest_color=True)
+		QuestViewer(player, colors, options).save_pdf(folder=output, rs3=compiling_rs3, connections_are_quest_color=False)
