@@ -71,7 +71,13 @@ class QuestViewer:
 		self.graph = nx.MultiDiGraph()
 		all_quest_names = sum(self.shells, [])
 		all_quests = [self.player.quest_book[name] for name in all_quest_names]
-		sorted_quests = sorted(all_quests, key=lambda quest: datetime.strptime(quest.released, "%d %B %Y") if quest.released else 0)
+		sorted_quests = sorted(all_quests, key=lambda quest: datetime.strptime(quest.released, "%d %B %Y") if quest.released else datetime.min)
+		
+		# Fix q.series
+		for q in all_quests:
+			if q.series is None:
+				q.series = 'None'
+		
 		for i, quest in enumerate(sorted_quests, 1):
 			shell = self.shell_lookup[quest.name]	
 			print(f"Loading Quest #{i}: {quest.name} ({quest.released})")
@@ -172,7 +178,8 @@ class QuestViewer:
 		game_name = "Runescape3" if rs3 else "Old School Runescape"
 		file_prefix = "rs3_" if rs3 else "osrs_"
 
-		dates = {quest: datetime.strptime(self.graph.nodes.get(quest)['released'], '%d %B %Y').timestamp() if self.graph.nodes.get(quest)['released'] else "Unknown" for quest in self.graph.nodes}
+		DEFAULT_DATE = datetime.today()  # We assume quests without dates are yet to be released (most recent). datetime.max doesn't work here.
+		dates = {quest: datetime.strptime(self.graph.nodes.get(quest)['released'], '%d %B %Y').timestamp() if self.graph.nodes.get(quest)['released'] else DEFAULT_DATE.timestamp() for quest in self.graph.nodes}
 		quests_by_release = [k for k, v in sorted(dates.items(), key=lambda x: x[1])]
 		file = folder / f'{file_prefix}quest_viewer.html'
 		folder.mkdir(parents=False, exist_ok=True)

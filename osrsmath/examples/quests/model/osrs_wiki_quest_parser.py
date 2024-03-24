@@ -25,6 +25,10 @@ class WikiQuestListParser:
 				x = quest_row.findAll('td')[name_column].contents[0]
 				self.quest_links[x.contents[0]] = WIKI_BASE + x.get('href')
 
+		if "While Guthix Sleeps" not in self.quest_links:  # TEMP
+			print("Hardcoding in While Guthix Sleeps (it is on wiki, but not yet released as a quest).")
+			self.quest_links["While Guthix Sleeps"] = "https://oldschool.runescape.wiki/w/While_Guthix_Sleeps"
+
 		del self.quest_links['Recipe for Disaster']
 
 
@@ -51,7 +55,7 @@ class WikiQuestParser:
 
 		end_time = time.time()
 		elapsed_time = end_time - start_time
-		print(f"Scraped and Parsed {len(self.quest_links)} in {elapsed_time:.2f} seconds.")
+		print(f"Scraped and Parsed {len(self.quest_links)} Quests in {elapsed_time:.2f} seconds.")
 
 		return parsed
 
