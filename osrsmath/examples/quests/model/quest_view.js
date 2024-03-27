@@ -205,6 +205,31 @@ remove_selected_prereqs = function() {
     network.releaseNode();
 };
 
+remove_selected_if_prereqs = function() {
+    // Get the selected node. This is always a single quest, but support future lists.
+    var selectedQuest = network.getSelectedNodes()[0];
+
+    remaining_quests = new Set()
+    network.getConnectedNodes(selectedQuest).forEach(function(possible_prereq) {
+        if (nodes.get(selectedQuest).prereqs.includes(possible_prereq)) {
+            prereq = possible_prereq  // Yes, this is a prereq.
+            if (nodes.get(prereq).show) { // If it is showing, 
+                remaining_quests.add(prereq) // we need to tell the user to complete it.
+            }
+        } else {
+            unlock = possible_prereq // No, not a prereq; an unlock. Do nothing.
+        }
+    });
+
+    if (remaining_quests.size == 0) {
+        remove_selected({nodes: [selectedQuest]})
+    } else {
+        alert("You still need to complete: " + Array.from(remaining_quests).join(", "))
+    }
+};
+
+
+
 /* Event Bindings */
 add_output_div = function() { // https://stackoverflow.com/questions/43135777/vis-js-callback-when-the-network-finishes-loading
     $('<div id="output"><hr></div>').insertAfter('.vis-network');  // Add an output div after loading

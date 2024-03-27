@@ -236,8 +236,9 @@ class QuestViewer:
 					<button class="btn btn-info btn-lg" onclick="help()"><i class="bi bi-info-circle"></i></button>
 					|
 					<button class="btn btn-secondary" onclick="openWiki()" data-toggle="tooltip" title="Lookup the selected quest on the wiki.">Lookup</button>
-                    <button class="btn btn-warning" style="color:white;" onclick="remove_selected()" data-toggle="tooltip" title="Completed the selected quest.">Complete</button>
+                    <button class="btn btn-warning" style="color:white;" onclick="remove_selected()" data-toggle="tooltip" title="Completed the selected quest.">Force</button>
                     <button class="btn btn-warning" style="color:white;" onclick="remove_selected_prereqs()" data-toggle="tooltip" title="Completed the selected quest and its prerequisites.">Finish</button>
+                    <button class="btn btn-warning" style="color:white;" onclick="remove_selected_if_prereqs()" data-toggle="tooltip" title="Completed the selected quest if its prerequisites are completed.">Complete</button>
 				</div>
 				<div class="w3-quarter">
 					<select class="btn btn-primary" id="color_scheme" onchange="changeColor()" data-toggle="tooltip" title="Change the color scheme.">\n"""+
@@ -289,18 +290,20 @@ class QuestViewer:
 				replace("BACKGROUND_COLOR", f'''"{self.colors['background']}"''').\
 				replace("HELP", "'"+str(
 					'<ul style="text-align:left;">'+
-	                '<li>To <b>View Quest Details</b>:<ul><li>Hover over a quest</li></ul></li>'+
+	                '<li>To <b>View Quest Details</b>:<ul><li>Hover over a quest.</li></ul></li>'+
 	                '<li>To <b>Complete a Quest</b>:'+
 	                        '<ul>'+
-	                            '<li>Double click or hold it, or</li>'+
-	                            '<li>Select it and press "Complete", or</li>'+
-	                            '<li>Add the name to the completed quest list</li>'+
+	                            '<li>Double click or hold it.</li>'+
+	                            '<li>"Force" completes it.</li>'+
+	                            '<li>"Finish" completes all prereqs.</li>'+
+	                            '<li>"Complete" validates prereqs first.</li>'+
+	                            '<li>Add the name to the completed quest textbox.</li>'+
 	                        '</ul>'+
 	                    '</li>'+
 	                '<li>To <b>Lookup a Quest</b> on the Wiki: <ul><li>Select a quest and press "Lookup"</li></ul></li>'+
 	                '<li><b>Animations</b> can be stopped by double clicking on the background.</li>'+
 	                '<hr>'+
-	                'Tips:'+
+	                '<b>Tips</b>:'+
 	                '<ul style="text-align:left;">'+
 	                '<li>To highlight a node and its neighbors, click once to highlight the node (on mobile, drag the node).</li>'+
 	                '<li>You must press enter within the "Completed" text box to update it. [bug]</li>'+
