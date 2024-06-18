@@ -8,7 +8,7 @@
 	Get a player P to (at least) state G in the least amount of training possible.
 	Since both of these are vectors, the problem is P_i+1 = T_iP_i | min sum_i_training T_i.
 """
-from osrsmath.examples.quests.quest import Player, Skills
+from osrsmath.examples.quests.model.quest import Player, Skills
 import numpy as np
 import textwrap
 
@@ -30,7 +30,7 @@ def get_questcape():
 			The sum of experience is the cost of the algorithm, multiplying by an average xp rate could yield a time cost. 
 	"""
 
-	def find_nearest_quest(player):
+	def find_nearest_quest(player) -> tuple[str, list[float], float]:
 		def prerequisites_are_satisfied(player, quest):  # Should move to quest/player class.
 			# Q00100101 (The encoding for the quest requirements)
 			# P11001001 (The encoding for the player's completed quests)
@@ -73,6 +73,7 @@ def get_questcape():
 	# Get a quest cape by only training when you need to and by using the nearest quest as the training target.
 	player = Player.create_new_player()
 	cost = 0
+	iteration = 0
 	while not player.quest_book.is_complete():
 		player.complete_possible()
 		
@@ -81,9 +82,31 @@ def get_questcape():
 		player.complete_if_possible(nearest)
 		cost += penalty
 
-		print(nearest, f"{penalty:,}", f"{cost:,}")
-		print(textwrap.fill(str(player.skills.as_dict()), initial_indent='\t', subsequent_indent='\t', width=130))
+		# print("Completed Quests")
+		print(iteration, len(player.quest_book.get_completed(True)), f"{penalty:,}", f"{cost:,}", nearest)
+		# print(textwrap.fill(str(player.skills.as_dict()), initial_indent='\t', subsequent_indent='\t', width=130))
+
+		iteration += 1
 
 
 if __name__ == '__main__':
+	player = Player.create_new_player()
+	# remaining_count = player.quest_book.get_completed(False)
+	# while not player.quest_book.is_complete():
+	# print("Completing", len(player.quest_book.get_completed(True)))
+	# player.complete_possible()
+	# print("Completing", len(player.quest_book.get_completed(True)))
+	# player.complete_possible()
+	# print(player.skills)
+	# for q in player.quest_book.get_completed(False):
+	# 	print(q)
+
+		
+		# if player.quest_book.get_completed(False) == remaining_count:
+		# 	break
+
+
+		
+
+
 	get_questcape()

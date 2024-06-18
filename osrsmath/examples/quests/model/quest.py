@@ -1,5 +1,5 @@
-from osrs_wiki_quest_parser import load_quest_data as load_osrs_data
-from rs3_wiki_quest_parser import load_quest_data as load_rs3_data
+from osrsmath.examples.quests.model.osrs_wiki_quest_parser import load_quest_data as load_osrs_data
+from osrsmath.examples.quests.model.rs3_wiki_quest_parser import load_quest_data as load_rs3_data
 from osrsmath.general.skills import level as calculate_level
 from osrsmath.general.skills import experience as calculate_experience
 from osrsmath.general.skills import get_skills
@@ -74,6 +74,9 @@ class Skills:
 
 	def as_xp_vector(self):
 		return [skill.experience for skill in self.skills.values()]
+
+	def __str__(self):
+		return str({k: v.level for k, v in self.skills.items()})
 
 
 class Quest:

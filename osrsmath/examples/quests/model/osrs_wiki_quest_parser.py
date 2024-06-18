@@ -4,6 +4,7 @@
 from osrsmath.general.skills import get_skills
 from bs4 import BeautifulSoup
 from urllib.parse import quote
+from pathlib import Path
 import pandas as pd
 import time
 import requests
@@ -133,9 +134,15 @@ class WikiQuestParser:
 							skill_requirement_matches = re.findall(fR"(\d+)(\s+)({'|'.join(get_skills())})", possible_skill_requirement)
 							if not skill_requirement_matches:
 								continue
+
 							
 							requirement = first_requirement_in_line = skill_requirement_matches[0]
 							level, _, skill,  = requirement
+
+							if (quest_link["name"] == 'While Guthix Sleeps'):  # Warrior guild access is read as 99attack.
+								if (level == 99) and (skill.lower() == 'attack'):
+									continue
+							
 							details["skill_requirements"].append((skill, int(level)))  # Could also capture "(boostable)".
 
 		## Rewards
@@ -168,15 +175,28 @@ class WikiQuestParser:
 
 
 def load_quest_data(rename: dict, force: bool=False):  # rename {from1: to1, ...}
-	file_name = "parser_files/osrs_quest_data.json"
+	file_name = Path(__file__).parent / "parser_files" / "osrs_quest_data.json"
 	if force or (not os.path.exists(file_name)):
 		json.dump(WikiQuestParser().get_quest_data(), open(file_name, 'w'), indent=4)
-		return load_quest_data(rename, force)
+		return load_quest_data(rename, force)  # TODO: by passing force, can this cause infinite loop?
 	else:
 		text = open(file_name).read()
 		for k, v in rename.items():
 			text = text.replace(k, v)
-		return json.loads(text)
+		quest_json = json.loads(text)
+
+		for q in quest_json:
+			if (q["name"] == 'While Guthix Sleeps'):  # Warrior guild access is read as 99attack.
+				q['skill_requirements'].pop(q['skill_requirements'].index([
+                "Attack",
+	                99
+	            ]))
+		# quest_json["While_Guthix_Sleeps"]
+
+		return quest_json
+
+
+
 
 
 if __name__ == '__main__':

@@ -1,6 +1,7 @@
 from osrsmath.general.skills import get_skills
 from bs4 import BeautifulSoup
 from urllib.parse import quote
+from pathlib import Path
 import pandas as pd
 import requests
 import json
@@ -259,7 +260,7 @@ class WikiQuestParser:
 
 
 def load_quest_data(rename: dict, force: bool=False):  # rename {from1: to1, ...}
-	file_name = "parser_files/rs3_quest_data.json"
+	file_name = Path(__file__).parent / "parser_files" / "rs3_quest_data.json"
 	if force or (not os.path.exists(file_name)):
 		json.dump(WikiQuestParser().get_quest_data(), open(file_name, 'w'), indent=4)
 		return load_quest_data(rename, force)
