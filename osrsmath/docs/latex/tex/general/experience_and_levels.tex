@@ -7,4 +7,16 @@ The level of a skill with $E$ experience is defined as:
 \begin{align}\label{eq:level_given_xp}
 	\mathcal{L}(E).
 \end{align}
-No analytic form has been found for this equation, however it can be straightforwardly evaluated by numerically inverting Eq.~(\ref{eq:xp_given_level}).
+No analytic form has been found for this equation, however it can be straightforwardly evaluated by numerically inverting Eq.~(\ref{eq:xp_given_level}) or by building lookup tables.
+
+The level equation itself is exponentially slow, and this effect extends to the overall time to max all skills. For example, one youtuber, WildMudKip provides total level and date stamps through their \href{https://www.youtube.com/watch?v=MiTp-06zJHk&list=PL4Ct8chrkvPgti4HYTZFo7FSfxlLlptbN&ab_channel=WildMudkip}{HCIM youtube series}, by scraping this data, Fig.~\ref{fig:maxing_time} now shows that the total level over time is also logarithmic.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{img/general/wildmudkip_maxing.png}
+	\caption{
+		Youtuber WildMudKip's hardcore ironman levels over time reveal an logarithmically slow progression. Near optimal play and consistent upload and play time are all reasonable assumptions.
+	}
+	\label{fig:maxing_time}
+\end{figure}

@@ -1,60 +1,64 @@
-\contentsline {section}{Introduction}{4}{Doc-Start}%
-\contentsline {part}{I\hspace {1em}General}{6}{part.1}%
-\contentsline {chapter}{\numberline {1}Experience and Levels}{7}{chapter.1.1}%
-\contentsline {part}{II\hspace {1em}Combat}{8}{part.2}%
-\contentsline {chapter}{\numberline {1}Overview}{10}{chapter.2.1}%
-\contentsline {section}{\numberline {1.1}Autonomous Mechanics}{10}{section.2.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Combat Skills, Combat Triangle and Attack Styles}{10}{subsection.2.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Equipment Bonuses}{11}{subsection.2.1.1.2}%
-\contentsline {subsection}{\numberline {1.1.3}Max Hits and Accuracy}{12}{subsection.2.1.1.3}%
-\contentsline {subsection}{\numberline {1.1.4}Ticks and Attack Speed}{12}{subsection.2.1.1.4}%
-\contentsline {subsection}{\numberline {1.1.5}Summary}{13}{subsection.2.1.1.5}%
-\contentsline {section}{\numberline {1.2}Agency \& Decisions}{13}{section.2.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Actions}{14}{subsection.2.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Machine Learning}{15}{subsection.2.1.2.2}%
-\contentsline {subsection}{\numberline {1.2.3}Genetic Algorithm}{15}{subsection.2.1.2.3}%
-\contentsline {chapter}{\numberline {2}Models}{16}{chapter.2.2}%
-\contentsline {section}{\numberline {2.1}Crude Model}{17}{section.2.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Health after $n$ attacks}{17}{subsection.2.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Attacks until $h$ health}{17}{subsection.2.2.1.2}%
-\contentsline {section}{\numberline {2.2}Average}{17}{section.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Average Damage}{17}{subsection.2.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Attacks to kill}{18}{subsection.2.2.2.2}%
-\contentsline {section}{\numberline {2.3}Recursive Model}{18}{section.2.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Expected Damage per Hit}{18}{subsection.2.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Health after $n$ attacks}{19}{subsection.2.2.3.2}%
-\contentsline {subsubsection}{Approximate Solution}{21}{equation.2.2.3.33}%
-\contentsline {subsection}{\numberline {2.3.3}Attacks until $h$ health}{22}{subsection.2.2.3.3}%
-\contentsline {section}{\numberline {2.4}Approximately Analytic Recursion}{22}{section.2.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Health after $n$ attacks}{22}{subsection.2.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Attacks until $h$ health}{22}{subsection.2.2.4.2}%
-\contentsline {section}{\numberline {2.5}Health Regeneration}{22}{section.2.2.5}%
-\contentsline {section}{\numberline {2.6}Comparisons}{24}{section.2.2.6}%
-\contentsline {chapter}{\numberline {3}Markov Chain Solutions}{27}{chapter.2.3}%
-\contentsline {section}{\numberline {3.1}Damage Distributions}{27}{section.2.3.1}%
-\contentsline {section}{\numberline {3.2}Recursive Equation}{27}{section.2.3.2}%
-\contentsline {section}{\numberline {3.3}Solution}{28}{section.2.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Interior}{29}{subsection.2.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Obtaining Power Series}{32}{subsection.2.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Applying Boundary Conditions}{34}{subsection.2.3.3.3}%
-\contentsline {section}{\numberline {3.4}Fight Outcomes}{34}{section.2.3.4}%
-\contentsline {chapter}{\numberline {4}Optimizing Player Equipment}{35}{chapter.2.4}%
-\contentsline {section}{\numberline {4.1}The Projection Vector}{35}{section.2.4.1}%
-\contentsline {section}{\numberline {4.2}Set Reduction}{36}{section.2.4.2}%
-\contentsline {chapter}{\numberline {5}Optimizing Training Order}{38}{chapter.2.5}%
-\contentsline {section}{\numberline {5.1}Dijkstra's algorithm}{38}{section.2.5.1}%
-\contentsline {chapter}{Appendices}{39}{section*.8}%
-\contentsline {chapter}{\numberline {A}Justifying the Recursive Model Approximation}{40}{appendix.1.A}%
-\contentsline {chapter}{\numberline {B}Power Reduction in the Piecewise Recursive Model}{42}{appendix.1.B}%
-\contentsline {section}{\numberline {B.1}Power Reduction}{43}{section.1.B.1}%
-\contentsline {section}{\numberline {B.2}Simplifying}{44}{section.1.B.2}%
-\contentsline {part}{III\hspace {1em}Woodcutting}{45}{part.3}%
-\contentsline {part}{IV\hspace {1em}Firemaking}{46}{part.4}%
-\contentsline {chapter}{\numberline {1}Wintertodt}{47}{appendix.4.1}%
-\contentsline {section}{\numberline {1.1}Large groups}{48}{section.4.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Within a Fight}{49}{subsection.4.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Across Fights}{49}{subsection.4.1.1.2}%
-\contentsline {subsection}{\numberline {1.1.3}Kill Count, Time to Level, and Reward Value}{50}{subsection.4.1.1.3}%
-\contentsline {section}{\numberline {1.2}Future Work}{52}{section.4.1.2}%
-\contentsline {part}{V\hspace {1em}Mining}{54}{part.5}%
-\contentsline {part}{VI\hspace {1em}Quests}{55}{part.6}%
+\contentsline {section}{Introduction}{5}{Item.3}%
+\contentsline {part}{I\hspace {1em}General}{7}{part.1}%
+\contentsline {chapter}{\numberline {1}Experience and Levels}{8}{chapter.1.1}%
+\contentsline {part}{II\hspace {1em}Combat}{10}{part.2}%
+\contentsline {chapter}{\numberline {1}Overview}{12}{chapter.2.1}%
+\contentsline {section}{\numberline {1.1}Autonomous Mechanics}{12}{section.2.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Combat Skills, Combat Triangle and Attack Styles}{12}{subsection.2.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Equipment Bonuses}{13}{subsection.2.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Max Hits and Accuracy}{14}{subsection.2.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Ticks and Attack Speed}{14}{subsection.2.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.5}Summary}{15}{subsection.2.1.1.5}%
+\contentsline {section}{\numberline {1.2}Agency \& Decisions}{15}{section.2.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Actions}{16}{subsection.2.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Machine Learning}{17}{subsection.2.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Genetic Algorithm}{17}{subsection.2.1.2.3}%
+\contentsline {chapter}{\numberline {2}Models}{18}{chapter.2.2}%
+\contentsline {section}{\numberline {2.1}Crude Model}{19}{section.2.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Health after $n$ attacks}{19}{subsection.2.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Attacks until $h$ health}{19}{subsection.2.2.1.2}%
+\contentsline {section}{\numberline {2.2}Average}{19}{section.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Average Damage}{19}{subsection.2.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Attacks to kill}{20}{subsection.2.2.2.2}%
+\contentsline {section}{\numberline {2.3}Recursive Model}{20}{section.2.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Expected Damage per Hit}{20}{subsection.2.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Health after $n$ attacks}{21}{subsection.2.2.3.2}%
+\contentsline {subsubsection}{Approximate Solution}{23}{equation.2.2.3.33}%
+\contentsline {subsection}{\numberline {2.3.3}Attacks until $h$ health}{24}{subsection.2.2.3.3}%
+\contentsline {section}{\numberline {2.4}Approximately Analytic Recursion}{24}{section.2.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Health after $n$ attacks}{24}{subsection.2.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Attacks until $h$ health}{24}{subsection.2.2.4.2}%
+\contentsline {section}{\numberline {2.5}Health Regeneration}{24}{section.2.2.5}%
+\contentsline {section}{\numberline {2.6}Comparisons}{26}{section.2.2.6}%
+\contentsline {chapter}{\numberline {3}Markov Chain Solutions}{29}{chapter.2.3}%
+\contentsline {section}{\numberline {3.1}Damage Distributions}{29}{section.2.3.1}%
+\contentsline {section}{\numberline {3.2}Recursive Equation}{29}{section.2.3.2}%
+\contentsline {section}{\numberline {3.3}Solution}{31}{section.2.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Interior}{32}{subsection.2.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Obtaining Power Series}{35}{subsection.2.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Applying Boundary Conditions}{37}{subsection.2.3.3.3}%
+\contentsline {section}{\numberline {3.4}Fight Outcomes}{37}{section.2.3.4}%
+\contentsline {chapter}{\numberline {4}Optimizing Player Equipment}{40}{chapter.2.4}%
+\contentsline {section}{\numberline {4.1}The Projection Vector}{40}{section.2.4.1}%
+\contentsline {section}{\numberline {4.2}Set Reduction}{41}{section.2.4.2}%
+\contentsline {section}{\numberline {4.3}Gear Optimization Implementation \& GUI}{42}{section.2.4.3}%
+\contentsline {chapter}{\numberline {5}Optimizing Training Order}{44}{chapter.2.5}%
+\contentsline {section}{\numberline {5.1}Dijkstra's algorithm}{44}{section.2.5.1}%
+\contentsline {chapter}{Appendices}{48}{section*.19}%
+\contentsline {chapter}{\numberline {A}Justifying the Recursive Model Approximation}{49}{appendix.1.A}%
+\contentsline {chapter}{\numberline {B}Power Reduction in the Piecewise Recursive Model}{51}{appendix.1.B}%
+\contentsline {section}{\numberline {B.1}Power Reduction}{52}{section.1.B.1}%
+\contentsline {section}{\numberline {B.2}Simplifying}{53}{section.1.B.2}%
+\contentsline {part}{III\hspace {1em}Woodcutting}{54}{part.3}%
+\contentsline {chapter}{\numberline {1}Traditional Woodcutting}{55}{appendix.3.1}%
+\contentsline {part}{IV\hspace {1em}Firemaking}{57}{part.4}%
+\contentsline {chapter}{\numberline {1}Wintertodt}{58}{appendix.4.1}%
+\contentsline {section}{\numberline {1.1}Large groups}{59}{section.4.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Within a Fight}{60}{subsection.4.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Across Fights}{60}{subsection.4.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Kill Count, Time to Level, and Reward Value}{61}{subsection.4.1.1.3}%
+\contentsline {section}{\numberline {1.2}Future Work}{63}{section.4.1.2}%
+\contentsline {part}{V\hspace {1em}Mining}{65}{part.5}%
+\contentsline {chapter}{\numberline {1}Motherload Mine}{66}{appendix.5.1}%
+\contentsline {part}{VI\hspace {1em}Quests}{68}{part.6}%
+\contentsline {chapter}{\numberline {1}Graph/Network Analysis}{69}{appendix.6.1}%

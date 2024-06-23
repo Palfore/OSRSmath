@@ -1,3 +1,6 @@
+% Compile this with "pdflatex main.tex".
+% The allow the date to be fixed, compile the title page with "pdflatex tex/title.tex".
+
 \documentclass[10pt,a4paper]{report}
 \usepackage{mystyle}
 \usepackage[margin=1.5in]{geometry}
@@ -21,6 +24,14 @@
 	\tableofcontents
 	\newpage
 
+This text accompanies several additional resources:
+\begin{enumerate}
+	\item Python open-source codebase, \textit{OSRSmath}: \url{https://github.com/Palfore/OSRSmath}.
+	\item Video Series, \textit{Optimizing Runescape}: \url{https://www.youtube.com/watch?v=7N9UJX70Z5I&list=PLm3INE_scU5s8NQWmw0fxKtA_6SVxDOc7&ab_channel=Palfore}.
+	\item Discord Chatroom: \url{https://discord.gg/4SXcKQh}
+\end{enumerate}
+
+\newpage
 	\section*{Introduction}
 	\addcontentsline{toc}{section}{Introduction}
 		\input{tex/introduction.tex}
@@ -37,7 +48,7 @@
 		\chapter{Optimizing Player Equipment}
 			\input{tex/combat/optimizing_player_equipment}
 		\chapter{Optimizing Training Order}
-			\section{Dijkstra's algorithm}
+			\input{tex/combat/optimal_training_order}
 		
 		\begin{appendices}
 			\chapter{Justifying the Recursive Model Approximation}\label{combat-app:recursive_justification}
@@ -47,11 +58,20 @@
 		\end{appendices}
 
 	\part{Woodcutting}
+		\chapter{Traditional Woodcutting}
+			\input{tex/woodcutting/woodcutting}
+	
 	\part{Firemaking}
 		\chapter{Wintertodt}
 			\input{tex/firemaking/wintertodt}
+	
 	\part{Mining}
+		\chapter{Motherload Mine}
+				\input{tex/mining/mining}
+	
 	\part{Quests}
+		\chapter{Graph/Network Analysis}
+			\input{tex/quests/quests}
 
 \bibliographystyle{unsrt}
 \bibliography{main}

@@ -245,7 +245,7 @@ def graardor(praying=None):
 
 if __name__ == '__main__':
 
-	from osrsmath.skills.combat.temp.probabilities import Solution2
+	# from osrsmath.skills.combat.temp.probabilities import Solution2
 	import matplotlib.pyplot as plt
 	# c = scythe(10, 0.6)
 	# dd = DamageDistribution(c)
@@ -279,7 +279,7 @@ if __name__ == '__main__':
 	Dr = DamageDistribution(graardor('ranged'))
 	Dn = DamageDistribution(graardor(None))
 
-	Dm.plot()
+	# Dm.plot()
 	plt.title('Probability of taking damage against General Graardor if piled')
 	plt.xlabel('Damage')
 	plt.ylabel('Damage Probability')

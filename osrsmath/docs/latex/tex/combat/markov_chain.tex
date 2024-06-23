@@ -9,6 +9,18 @@
 		&\text{No healing allowed.}
 		\end{align}
 
+		Damage distributions are generally defined as any probability distribution, although in practice the in-game distributions come from a fixed set, as described in Fig.~\ref{fig:damage_distributions}. The suggestion here is that damage distributions constitute an additional dimension for the developers to use (previously only max hit and accuracy were the only parameters). Since this suggestion several items have emerged with special damage distributions (eg: \href{https://oldschool.runescape.wiki/w/Osmumten%27s_fang}{Osmumten's fang}). The math further suggests variable weapon attack speeds as a way of generalizing the integer time steps. This is reflected in new weapons which strike twice (\href{https://oldschool.runescape.wiki/w/Dual_macuahuitl}{eg: Dual Macuahuitl}), and in which delays are added. 
+
+
+		\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{img/combat/damage_distributions.png}
+		\caption{
+			The standard damage distribution is shown on top, which consists of a portion to hit successfully and a chance to miss (both based on the accuracy roll). Although the developers modified this distribution in 2024 to enforce that successful hits do at least 1 damage, thankfully all the mathematics still follows (showcasing the benefit of a general solution!). In the bottom are theoretical distributions of hypothetical weapons. On the left, a quick firing weapon has a high chance to do low damage. On the right, a huge maul misses very often but when it hits the damage is very high. Other distributions already exist in-game like the scythe which has a Gaussian distribution and Keras which are considered as two merged distributions. 
+		}
+		\label{fig:damage_distributions}
+	\end{figure}
+
 	\section{Recursive Equation}
 	In one attack, the opponent can be brought to a given health $i$, from their initial health $h$ according to the transition probability, \cite{nukelawe:osrs-markov}
 	\begin{align}
@@ -235,7 +247,7 @@
 			P_{h, L} &= \theta(Lm-h)\sum_{j=\max(1, h+m-mL)}^{\min(h, m)} t_j d_{h-j}^{L-1}
 		\end{align}
 		And so we end with:
-		\begin{equation}
+		\begin{equation}\label{eq:p_h_l}
 			\boxed{\therefore P_{h, L} = \theta(Lm-h)\sum_{j=\max(1, h+m-mL)}^{\min(h, m)} P_{j, 1} d_{h-j}^{L-1} }
 		\end{equation}
 		This describes the probability that an opponent with $h$ health is killing on the $L$'th attack, given some boundary conditions (assuming there is no healing).
@@ -316,3 +328,34 @@
 		% \section{Comments}
 		% 	It would be useful to compute the time complexity required for evaluation. There is an infinite sum in both $P_\text{win}$ and $P_\text{lose}$ that must simply be truncated during evaluation. It would be nice to either find analytic solutions or determine appropriate cutoffs.
 		
+
+
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{img/combat/fight_outcome_probabilities.png}
+		\caption{
+			The probability of the player winning, losing, and drawing during their fight with an opponent. Both are using the standard weapon distribution. The player's accuracy is varied which shows that the player needs at least 55\% accuracy to have a higher chance of winning than their opponent. With 0\% accuracy the player is guaranteed to lose, but with 100\% accuracy there is still a chance the opponent wins.
+		}
+		\label{fig:fight_outcome_probabilities}
+	\end{figure}
+
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{img/combat/bandos_slim.png}
+		\caption{
+			The damage distribution of \href{https://oldschool.runescape.wiki/w/General_Graardor}{General Graardor} (plus minions) assuming protect from melee (the average is in red). Under the mechanics of Eq.~(\ref{eq:p_h_l}), the probability of dying after L attacks is shown for different starting hitpoints. Near 0hp the player is expected to loss immediately. After about 50hp, it becomes impossible to get killed in one shot, and we get a Gaussian survival probability.
+		}
+		\label{fig:bandos}
+	\end{figure}
+
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{img/combat/bandos_one_shot.png}
+		\caption{
+			The best protection is melee regardless of player health. Over 80hp, it doesn't matter what you pray - you cannot be one shot. Just below that, if you are not praying melee you might get one-shot and range pray doesn't help you. If you are below 50hp, then you might get one-shot by ranged and so that prayer starts to matter again.
+		}
+		\label{fig:bandos_one_shot}
+	\end{figure}
