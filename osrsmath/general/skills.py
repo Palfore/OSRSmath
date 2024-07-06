@@ -1,5 +1,8 @@
 """ This module provides useful information about the skills. """
 
+from math import floor
+
+
 EXPERIENCE_TABLE = {
 	1: 0, 2: 83, 3: 174, 4: 276, 5: 388, 6: 512, 7: 650, 8: 801, 9: 969, 10: 1_154, 11: 1_358, 12: 1_584, 13: 1_833, 
 	14: 2_107, 15: 2_411, 16: 2_746, 17: 3_115, 18: 3_523, 19: 3_973, 20: 4_470, 21: 5_018, 22: 5_624, 23: 6_291, 
@@ -116,3 +119,14 @@ def get_combat_skills(lower: bool=False):
 	]
 	return [s.lower() for s in skills] if lower else skills
 
+def combat_level(stats: dict, integer=True):
+	required_stats = ('attack', 'strength', 'defence', 'hitpoints', 'prayer', 'ranged', 'magic')
+	for s in required_stats:
+		if s not in stats:
+			raise ValueError(f"You must provide the {s} level to be able to calculate combat level.")
+	base = 0.25 * (stats['defence'] + stats['hitpoints'] + floor(stats['prayer'] / 2))
+	melee = 0.325 * (stats['attack'] + stats['strength'])
+	ranged = 0.325 * floor(3*stats['ranged']/2)
+	mage = 0.325 * floor(3*stats['magic']/2)
+	level = base + max(melee, ranged, mage)
+	return floor(level) if integer else level

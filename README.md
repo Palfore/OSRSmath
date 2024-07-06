@@ -14,7 +14,10 @@ Furthermore, this  project is connected to the broader concept of [Game Theory](
 
 ### Content Directory
 
-If you are looking for content please consider these:
+If you are looking for content, check these out:
+
+##### e) You can read the full [Mathematical Solution (pdf)](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/main.pdf) for all the detail. 
+
 ##### a) You can check out the [Runescape Universe Interactive Visualization](https://osrsmath.palfore.com/) of all the quests.
 1. See Acknowledgements below for the [community progress on this](https://github.com/Palfore/OSRSmath?tab=readme-ov-file#quest-tree).
 
@@ -30,12 +33,12 @@ If you are looking for content please consider these:
 
 ##### d) You can join the [Discord](https://discord.gg/4SXcKQh) to discuss anything! 
 
-##### e) You can read the [Mathematical Solutions (pdf/Latex)](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/main.pdf) if you want more detail. 
+##### d) Explore the codebase for existing solutions, implementations, and attempted problems.
 
 ##### f) You can see more on the OSRSmath page on [My Website](https://palfore.com/).
 
 ---
-_Please note that a simplification of the remaining information is pending..._
+_Please note that some of the following information is outdated, some maintenance is required..._
 
 There are three components to this project:
 
@@ -46,7 +49,7 @@ These applications provide useful functionalities for players. Once installed, t
 | Application        | Module Location           | Description  |
 | ------------- |:-------------:| :-----|
 | Optimize | `osrsmath.apps.optimize` | (Currently disabled) What is the most efficient equipment to wear when fighting a given opponent? |
-| Wintertodt | `osrsmath.firemaking.wintertodt` | How many kills are required to reach a given firemaking level? |
+| Wintertodt | `osrsmath.skills.firemaking.wintertodt` | How many kills are required to reach a given firemaking level? |
 
 [//]: # (| Path | `osrsmath.apps.path` | What is the most mathematically efficient way to get from a set of starting attack, strength, and defence levels, to a final set of levels? This is currently not user-friendly. |)
 
@@ -58,7 +61,7 @@ For developers, they can use the basic functionalities to build their own applic
 
 ### 3. Documentation
 
-Documentation doesn't really exist regarding the math behind osrs. This project aims to provide a [document](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/main.pdf) that attempts to fill this gap.
+This project attempts to maintain a [Main Manuscript](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/main.pdf) that outlines the mathematics of OSRS. 
 
 ## Installing
 
@@ -75,7 +78,7 @@ This application was written in the programming language [`Python`](https://www.
 
 1. Download the github source code, unzip it, and place it anywhere.
 2. Open a terminal in that directory (which contains setup.py).
-3. Make sure pip is Run `pip3 install -e .`
+3. Make sure pip is Run `pip3 install -r requirements.txt -e .`
 
 ### GUI Development:
 These are instructions for creating & modifying the graphical interface in the apps:
@@ -91,7 +94,7 @@ To compile the latex document a latex compiler needs to be installed. [MiKTeX](h
 
 ### Tests
 
-The `unittest` module is used for testing. Navigate to the `tests` directory and run the command `python3 -m unittest`. If you are knowledgeable about combat game mechanics (max hit & accuracy calculations, tick manipulation, etc), and you are interested consider joining the discord to help out with tests/validation.
+The `unittest` module is used for testing. Navigate to the `tests` directory and run the command `python3 -m unittest`. If you are knowledgeable about combat game mechanics (max hit & accuracy calculations, tick manipulation, etc), consider joining the discord to help out with tests/validation.
 
 ## Authors
 

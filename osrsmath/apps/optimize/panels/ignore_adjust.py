@@ -1,6 +1,6 @@
 from osrsmath.apps.GUI.optimize.ignore_adjust_skeleton import Ui_IgnoreAdjustPanel
 from osrsmath.apps.GUI.shared.widgets import Savable
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 import ast
 import re
 

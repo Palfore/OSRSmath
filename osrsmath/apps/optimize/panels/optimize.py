@@ -1,16 +1,111 @@
 from osrsmath.apps.GUI.optimize.optimize_skeleton import Ui_Form
 from osrsmath.apps.GUI.shared.widgets import Savable
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
-from osrsmath.combat.spells import STANDARD, ANCIENT
-from osrsmath.combat.equipment import EquipmentPoolFiltered
-import osrsmath.combat.boosts as boosts
+from osrsmath.skills.combat.spells import Spells
+# from osrsmath.skills.combat.equipment import EquipmentPoolFiltered
+# import osrsmath.combat.boosts as boosts  # TODO: uncomment
 import inspect
 import webbrowser
 import os
 from urllib.parse import quote
 from pathlib import Path
 from pprint import pprint
+
+
+##############################################################
+# This code was removed in earlier versions, it is pasted here to make this module work.
+# from osrsmath.combat.equipment import EquipmentPoolFiltered
+class GenericPool(object):
+	SLOTS = ['2h', 'ammo', 'body', 'cape', 'feet', 'hands', 'head', 'legs', 'neck', 'ring', 'shield', 'weapon']
+
+	def __init__(self):
+		self.equipment = EquipmentPool.get_equipment()
+
+	def force_update(self):
+		self.get_equipment(force_update=True)
+
+	def by_id(self, ID, slot=None):
+		if slot and not slot in self.SLOTS:
+			raise ValueError(f"slot is {slot} but must be one of: {SLOTS}")
+
+		for equipment_slot, equipment_slot_data in self.equipment.items():
+			if slot is not None and (equipment_slot != slot):
+				continue
+			for item_id, data in equipment_slot_data.items():
+				if item_id == ID:
+					return data
+		raise ValueError(f"Equipment with id {ID} could not be found.")
+
+	def by_name(self, name, slot=None):
+		if slot and not slot in self.SLOTS:
+			raise ValueError(f"slot is {slot} but must be one of: {SLOTS}")
+
+		for equipment_slot, equipment_slot_data in self.equipment.items():
+			if slot is not None and (equipment_slot != slot):
+				continue
+			for item_id, data in equipment_slot_data.items():
+				if name.lower() == data['name'].lower():
+					return data
+		raise ValueError(f"Equipment with name '{name}' could not be found.")
+
+	@staticmethod
+	def get_equipment(force_update=False):
+		equipment = {}
+		for slot in EquipmentPool.SLOTS:
+			file_name = f'items-{slot}.json'
+			file_path = config.resource_path(Path(f"combat/data/{file_name}"))
+			if not file_path.exists() or force_update:
+				r = requests.get(SLOT_BASE_URL+'/'+file_name)
+
+				with open(file_path, 'w') as f:
+					f.write(r.text)
+
+			with open(file_path, 'r') as f:
+				equipment[slot] = json.load(f)
+		return equipment
+
+
+class EquipmentPool(GenericPool):
+	# Singleton https://python-3-patterns-idioms-test.readthedocs.io/en/latest/Singleton.html
+	__instance = None
+	def __new__(cls):
+		if EquipmentPool.__instance is None:
+			EquipmentPool.__instance = object.__new__(cls)
+		return EquipmentPool.__instance
+
+class EquipmentPoolFiltered(GenericPool):
+	# Singleton https://python-3-patterns-idioms-test.readthedocs.io/en/latest/Singleton.html
+	__instance = None
+	def __new__(cls):
+		if EquipmentPoolFiltered.__instance is None:
+			EquipmentPoolFiltered.__instance = object.__new__(cls)
+		return EquipmentPoolFiltered.__instance
+
+	def __init__(self):
+		super().__init__()
+		self.equipment = {
+			slot: {
+				k: self.filter(v) for k, v in equipment.items()
+			} for slot, equipment in self.equipment.items()
+		}
+
+	@staticmethod
+	def filter(data):
+		if data is None:
+			return None
+		if not all((data['equipable_by_player'], data['equipable'], )):
+			# raise ValueError(f"Equipment not equipable by player: {data['name']}, {data['id']}\n{data}")
+			return None
+		filtered_data = {'name': data['name'], 'id': data['id'], 'wiki_url': data['wiki_url']}
+		filtered_data.update(data['equipment'])
+		if data['weapon'] is not None:
+			filtered_data.update(data['weapon'])
+			filtered_data['attack_speed'] *= 0.6  # Convert attack_speed into [attacks/second]
+		filtered_data['weight'] = data['weight'] if data['weight'] is not None else 0.0
+		return filtered_data
+
+#####################################################
 
 class Data:
 	pass
@@ -109,7 +204,7 @@ class OptimizePanel(QtWidgets.QWidget, Ui_Form, Savable):
 		shortcut.activated.connect(self.remove_selected_monster)
 
 		# Populate spells
-		spells = list(STANDARD.keys()) + list(ANCIENT.keys())
+		spells = list(Spells.STANDARD.keys()) + list(Spells.ANCIENT.keys())
 		completer = QtWidgets.QCompleter(spells)
 		self.spell.clear()
 		self.spell.addItems(spells)
