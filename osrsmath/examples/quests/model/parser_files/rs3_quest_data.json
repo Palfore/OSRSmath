@@ -179,6 +179,7 @@
         "name": "As a First Resort",
         "url": "https://runescape.wiki/w/As_a_First_Resort",
         "quest_requirements": [
+            "Big Chompy Bird Hunting",
             "Dragon Slayer",
             "Haunted Mine",
             "The Lost Tribe",
@@ -1009,7 +1010,6 @@
             "Creature of Fenkenstrain",
             "The Great Brain Robbery",
             "Pirate's Treasure",
-            "Priest in Peril",
             "The Restless Ghost",
             "Rocking Out",
             "Rum Deal"
@@ -1137,7 +1137,6 @@
         "name": "Creature of Fenkenstrain",
         "url": "https://runescape.wiki/w/Creature_of_Fenkenstrain",
         "quest_requirements": [
-            "Priest in Peril",
             "The Restless Ghost"
         ],
         "skill_requirements": [
@@ -1175,13 +1174,16 @@
         "url": "https://runescape.wiki/w/Crocodile_Tears",
         "quest_requirements": [
             "Contact!",
+            "Creature of Fenkenstrain",
             "Dealing with Scabaras",
             "Diamond in the Rough",
+            "Garden of Tranquillity",
             "Gertrude's Cat",
             "The Golem",
             "Icthlarin's Little Helper",
             "The Jack of Spades",
             "Missing My Mummy",
+            "The Restless Ghost",
             "Spirits of the Elid",
             "Stolen Hearts"
         ],
@@ -1219,15 +1221,18 @@
         "name": "The Curse of Arrav",
         "url": "https://runescape.wiki/w/The_Curse_of_Arrav",
         "quest_requirements": [
+            "Creature of Fenkenstrain",
             "Defender of Varrock",
             "Diamond in the Rough",
             "Family Crest",
+            "Garden of Tranquillity",
             "Gertrude's Cat",
             "The Golem",
             "Icthlarin's Little Helper",
             "The Knight's Sword",
             "The Lost Tribe",
             "Missing My Mummy",
+            "The Restless Ghost",
             "Shield of Arrav",
             "Stolen Hearts",
             "The Tale of the Muspah",
@@ -1922,7 +1927,16 @@
                 20
             ]
         ],
-        "rewards": [],
+        "rewards": [
+            [
+                "Strength",
+                18650
+            ],
+            [
+                "Defence",
+                18650
+            ]
+        ],
         "released": "23 September 2001",
         "members": false,
         "series": "None",
@@ -2848,7 +2862,6 @@
         "url": "https://runescape.wiki/w/Garden_of_Tranquillity",
         "quest_requirements": [
             "Creature of Fenkenstrain",
-            "Priest in Peril",
             "The Restless Ghost"
         ],
         "skill_requirements": [
@@ -3085,7 +3098,6 @@
             "Cook's Assistant",
             "Creature of Fenkenstrain",
             "Pirate's Treasure",
-            "Priest in Peril",
             "The Restless Ghost",
             "Rum Deal"
         ],
@@ -3114,6 +3126,25 @@
         ],
         "length": "Medium to Long",
         "combat": true
+    },
+    {
+        "name": "Great Egg-spectations",
+        "url": "https://runescape.wiki/w/Great_Egg-spectations",
+        "quest_requirements": [
+            "Chef's Assistant"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "18 March 2024",
+        "members": false,
+        "series": "None",
+        "difficulty": "Novice",
+        "start": [
+            "4987",
+            "3811"
+        ],
+        "length": "Short",
+        "combat": false
     },
     {
         "name": "Grim Tales",
@@ -4762,6 +4793,7 @@
             "The Chosen Commander",
             "Death to the Dorgeshuun",
             "Dishonour among Thieves",
+            "Druidic Ritual",
             "Fishing Contest",
             "The Fremennik Trials",
             "The Giant Dwarf",
@@ -4876,6 +4908,53 @@
             "2439"
         ],
         "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Ode of the Devourer",
+        "url": "https://runescape.wiki/w/Ode_of_the_Devourer",
+        "quest_requirements": [
+            "Ancient Awakening",
+            "Battle of Forinthry",
+            "Dead and Buried",
+            "Diamond in the Rough",
+            "Ghosts Ahoy",
+            "The Jack of Spades",
+            "Kili Row",
+            "Necromancy!",
+            "Requiem for a Dragon",
+            "Rune Mythos",
+            "Soul Searching",
+            "The Spirit of War",
+            "Stolen Hearts",
+            "Tomes of the Warlock",
+            "Unwelcome Guests",
+            "Vessel of the Harbinger"
+        ],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Mining",
+                50000
+            ],
+            [
+                "Agility",
+                50000
+            ],
+            [
+                "Crafting",
+                50000
+            ]
+        ],
+        "released": "16 September 2024",
+        "members": true,
+        "series": "Fort Forinthry #8",
+        "difficulty": "Master",
+        "start": [
+            "3558",
+            "3286"
+        ],
+        "length": "Medium to Long",
         "combat": true
     },
     {
@@ -5034,6 +5113,23 @@
         "combat": true
     },
     {
+        "name": "Osseous Rex",
+        "url": "https://runescape.wiki/w/Osseous_Rex",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "28 May 2024",
+        "members": true,
+        "series": "None",
+        "difficulty": "Experienced",
+        "start": [
+            "4310",
+            "3975"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
         "name": "Our Man in the North",
         "url": "https://runescape.wiki/w/Our_Man_in_the_North",
         "quest_requirements": [
@@ -5181,7 +5277,6 @@
             "Gertrude's Cat",
             "The Great Brain Robbery",
             "Pirate's Treasure",
-            "Priest in Peril",
             "The Restless Ghost",
             "Rocking Out",
             "Rum Deal"
@@ -5537,6 +5632,40 @@
         "combat": true
     },
     {
+        "name": "Requiem for a Dragon",
+        "url": "https://runescape.wiki/w/Requiem_for_a_Dragon",
+        "quest_requirements": [
+            "Ancient Awakening",
+            "Battle of Forinthry",
+            "Dead and Buried",
+            "Diamond in the Rough",
+            "Ghosts Ahoy",
+            "The Jack of Spades",
+            "Kili Row",
+            "Murder on the Border",
+            "Necromancy!",
+            "The Restless Ghost",
+            "Rune Mythos",
+            "The Spirit of War",
+            "Stolen Hearts",
+            "Tomes of the Warlock",
+            "Unwelcome Guests",
+            "Vessel of the Harbinger"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "22 April 2024",
+        "members": true,
+        "series": "Fort Forinthry #7",
+        "difficulty": "Master",
+        "start": [
+            "3570",
+            "3302"
+        ],
+        "length": "Medium",
+        "combat": true
+    },
+    {
         "name": "The Restless Ghost",
         "url": "https://runescape.wiki/w/The_Restless_Ghost",
         "quest_requirements": [],
@@ -5677,7 +5806,6 @@
             "Creature of Fenkenstrain",
             "The Great Brain Robbery",
             "Pirate's Treasure",
-            "Priest in Peril",
             "The Restless Ghost",
             "Rum Deal"
         ],
@@ -6295,6 +6423,25 @@
         "combat": true
     },
     {
+        "name": "Soul Searching",
+        "url": "https://runescape.wiki/w/Soul_Searching",
+        "quest_requirements": [
+            "Necromancy!"
+        ],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "22 July 2024",
+        "members": true,
+        "series": "None",
+        "difficulty": "Experienced",
+        "start": [
+            "1817",
+            "1081"
+        ],
+        "length": "Short",
+        "combat": false
+    },
+    {
         "name": "A Soul's Bane",
         "url": "https://runescape.wiki/w/A_Soul%27s_Bane",
         "quest_requirements": [],
@@ -6696,6 +6843,7 @@
         "name": "The Temple at Senntisten",
         "url": "https://runescape.wiki/w/The_Temple_at_Senntisten",
         "quest_requirements": [
+            "Creature of Fenkenstrain",
             "The Curse of Arrav",
             "Death Plateau",
             "Defender of Varrock",
@@ -6704,12 +6852,14 @@
             "Diamond in the Rough",
             "The Dig Site",
             "Family Crest",
+            "Garden of Tranquillity",
             "Gertrude's Cat",
             "The Golem",
             "Icthlarin's Little Helper",
             "The Knight's Sword",
             "Missing My Mummy",
             "Recruitment Drive",
+            "The Restless Ghost",
             "Shield of Arrav",
             "Stolen Hearts",
             "The Tale of the Muspah",
@@ -6967,7 +7117,7 @@
             ],
             [
                 "Woodcutting",
-                45
+                40
             ],
             [
                 "Mining",
@@ -7211,6 +7361,7 @@
         "name": "A Void Dance",
         "url": "https://runescape.wiki/w/A_Void_Dance",
         "quest_requirements": [
+            "Druidic Ritual",
             "Imp Catcher",
             "Quiet Before the Swarm",
             "Recruitment Drive",
@@ -7258,6 +7409,7 @@
         "name": "The Void Stares Back",
         "url": "https://runescape.wiki/w/The_Void_Stares_Back",
         "quest_requirements": [
+            "Druidic Ritual",
             "Imp Catcher",
             "Quiet Before the Swarm",
             "Recruitment Drive",
@@ -7433,13 +7585,17 @@
         "url": "https://runescape.wiki/w/While_Guthix_Sleeps",
         "quest_requirements": [
             "Defender of Varrock",
+            "Dragon Slayer",
             "Dream Mentor",
             "The Eyes of Glouphrie",
             "Family Crest",
+            "The Fremennik Trials",
+            "The Grand Tree",
             "Heroes' Quest",
             "Jungle Potion",
             "The Knight's Sword",
             "Legends' Quest",
+            "Lost City",
             "Lunar Diplomacy",
             "The Path of Glouphrie",
             "Recruitment Drive",

@@ -111,7 +111,7 @@ class WikiQuestParser:
 		parsed = []
 		for i, (name, url) in enumerate(self.quest_links.items(), 1):
 			# if i < 250: continue;
-			# print(f"Parsing Quest #{i} {name}: {url}")
+			print(f"Parsing Quest #{i} {name}: {url}")
 			result = self.parse_link({'name': name, 'url': url}) 
 			parsed.append(result)
 
@@ -140,7 +140,7 @@ class WikiQuestParser:
 				details['members'] = get_value() == 'Yes'
 			if find_term('official series'):
 				details['series'] = get_value()
-				print(get_value())
+				# print(get_value())
 			if find_term('difficulty'):
 				details['difficulty'] = get_value()
 			if find_term('developer'):  # We just want the raw names.
@@ -263,7 +263,7 @@ def load_quest_data(rename: dict, force: bool=False):  # rename {from1: to1, ...
 	file_name = Path(__file__).parent / "parser_files" / "rs3_quest_data.json"
 	if force or (not os.path.exists(file_name)):
 		json.dump(WikiQuestParser().get_quest_data(), open(file_name, 'w'), indent=4)
-		return load_quest_data(rename, force)
+		return load_quest_data(rename, force=False)
 	else:
 		text = open(file_name).read()
 		for k, v in rename.items():
@@ -279,6 +279,11 @@ if __name__ == '__main__':
 	# print(WikiQuestParser().parse_url("https://oldschool.runescape.wiki/w/The_Great_Brain_Robbery"))
 	# for quest in QUEST_URLS:
 	# 	WikiQuestParser(quest["Name"]).parse_url(quest["URL"])
-	load_quest_data()
+
+	import argparse
+	parser = argparse.ArgumentParser(description='Scrape and Parse the Wiki Quest Data.')
+	parser.add_argument('--overwrite', action='store_true', help='Overwrite existing .json.')
+	args = parser.parse_args()
+	load_quest_data(rename={}, force=args.overwrite)
 
 

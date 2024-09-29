@@ -26,9 +26,9 @@ class WikiQuestListParser:
 				x = quest_row.findAll('td')[name_column].contents[0]
 				self.quest_links[x.contents[0]] = WIKI_BASE + x.get('href')
 
-		if "While Guthix Sleeps" not in self.quest_links:  # TEMP
-			print("Hardcoding in While Guthix Sleeps (it is on wiki, but not yet released as a quest).")
-			self.quest_links["While Guthix Sleeps"] = "https://oldschool.runescape.wiki/w/While_Guthix_Sleeps"
+		# if "While Guthix Sleeps" not in self.quest_links:  # TEMP
+		# 	print("Hardcoding in While Guthix Sleeps (it is on wiki, but not yet released as a quest).")
+		# 	self.quest_links["While Guthix Sleeps"] = "https://oldschool.runescape.wiki/w/While_Guthix_Sleeps"
 
 		del self.quest_links['Recipe for Disaster']
 
@@ -139,6 +139,7 @@ class WikiQuestParser:
 							requirement = first_requirement_in_line = skill_requirement_matches[0]
 							level, _, skill,  = requirement
 
+							# Exceptions
 							if (quest_link["name"] == 'While Guthix Sleeps'):  # Warrior guild access is read as 99attack.
 								if (level == 99) and (skill.lower() == 'attack'):
 									continue
@@ -178,13 +179,14 @@ def load_quest_data(rename: dict, force: bool=False):  # rename {from1: to1, ...
 	file_name = Path(__file__).parent / "parser_files" / "osrs_quest_data.json"
 	if force or (not os.path.exists(file_name)):
 		json.dump(WikiQuestParser().get_quest_data(), open(file_name, 'w'), indent=4)
-		return load_quest_data(rename, force)  # TODO: by passing force, can this cause infinite loop?
+		return load_quest_data(rename, force=False)  # TODO: by passing force, can this cause infinite loop?
 	else:
 		text = open(file_name).read()
 		for k, v in rename.items():
 			text = text.replace(k, v)
 		quest_json = json.loads(text)
 
+		# Exceptions
 		for q in quest_json:
 			if (q["name"] == 'While Guthix Sleeps'):  # Warrior guild access is read as 99attack.
 				q['skill_requirements'].pop(q['skill_requirements'].index([

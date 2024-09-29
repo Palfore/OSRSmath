@@ -13,7 +13,7 @@ This package implements an interactive quest graph.
 
 - To use this implementation run `python quest_view.py`, which will generate the output files. Add the flag `--rs3` to compile the runescape3 graph instead of the osrs graph.
 - The output files are "by_quest.pdf", "by_requirement.pdf", and "quest_viewer.html".
-- To host quest_viewer.html, you should replace the javascript contents of the `<script>` tag with [a minified version](https://www.toptal.com/developers/javascript-minifier). Please note that this file is generated, so modifications may get deleted, instead modify the generating code or template.js files.
+- Note: To host quest_viewer.html, you could replace the javascript contents of the `<script>` tag with [a minified version](https://www.toptal.com/developers/javascript-minifier). Please note that this file is generated, so modifications may get deleted, instead modify the generating code or template.js files.
 
 ## Next Steps
 
