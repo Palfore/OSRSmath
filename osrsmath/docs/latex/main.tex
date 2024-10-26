@@ -5,6 +5,7 @@
 \usepackage{mystyle}
 \usepackage[margin=1.5in]{geometry}
 \usepackage{amsmath}
+\usepackage{pdfpages}
 \usepackage[toc,page]{appendix}
 \graphicspath{{../../}} % examples/ will reference results.
 \usepackage{xr}
@@ -72,6 +73,13 @@ This text accompanies several additional resources:
 	\part{Quests}
 		\chapter{Graph/Network Analysis}
 			\input{tex/quests/quests}
+
+
+	\part{Chunks}
+		\chapter{Solving the Lumbridge Chunk}
+		\includepdf[pages=-]{tex/chunks/ChunkSolver.pdf}
+		% 	\markdownInput{{tex/chunks/ChunkSolver.md}
+
 
 \bibliographystyle{unsrt}
 \bibliography{main}

@@ -62,3 +62,5 @@
 \contentsline {chapter}{\numberline {1}Motherload Mine}{66}{appendix.5.1}%
 \contentsline {part}{VI\hspace {1em}Quests}{68}{part.6}%
 \contentsline {chapter}{\numberline {1}Graph/Network Analysis}{69}{appendix.6.1}%
+\contentsline {part}{VII\hspace {1em}Chunks}{72}{part.7}%
+\contentsline {chapter}{\numberline {1}Solving the Lumbridge Chunk}{73}{appendix.7.1}%
