@@ -1,3 +1,11 @@
+[![Website](https://img.shields.io/badge/Website-Palfore.com-brightgreen)](https://www.palfore.com/projects/OSRSmath/osrsmath.php)
+[![YouTube](https://img.shields.io/badge/YouTube-Playlist-red?logo=youtube)](https://www.youtube.com/playlist?list=PLm3INE_scU5s8NQWmw0fxKtA_6SVxDOc7)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?logo=discord)](https://discord.gg/4SXcKQh)
+[![Paper](https://img.shields.io/badge/Paper-PDF-red)](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/main.pdf)
+![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
+[![PyPI version](https://img.shields.io/badge/pypi-v0.0.3.3-blue)](https://pypi.org/project/osrsmath/)
+
+
 # The Mathematical Optimization of OSRS
 
 ### Project Overview
