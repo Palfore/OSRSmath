@@ -11,6 +11,7 @@
 ### Project Overview
 Discover the secrets hidden deep within the intricate complexity of the renowned video game [Old School Runescape (OSRS)](https://oldschool.runescape.com/). This project is dedicated to exploring the Massively Multiplayer Online (MMO) Role-Playing Game (RPG) with a totally different perspective. Join us on a tough but rewarding journey as we dive deep into the Mathematics of OldSchool Runescape. Whether it is modeling the game mechanics, optimizing player decisions, or creating powerful visuals, there is something interesting for everyone. 
 
+![test](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/img/quests/universe.png)
 ---
 
 Video games serve as large bodies of complex problems that are heuristically solved by human players. Since this is a game that is played over months, years, and now literally decades, players have devised optimal strategies for nearly every piece of content in this iconic video game. ["The Butterfly Technique"](https://oldschool.runescape.wiki/w/Tombs_of_Amascut/Strategies#Akkha,_Guardian_of_Het), ["Red-X'ing"](https://www.reddit.com/r/2007scape/comments/1ay2opj/new_interactive_quest_visualizer_osrs_the/), and ["Tick Manipulation"](https://oldschool.runescape.wiki/w/Tick_manipulation) are all techniques developed by players manipulating the programming of the game to complete content in a way that the developers didn't directly intend or foresee in their implementations. 
@@ -19,6 +20,9 @@ These developments by players effectively match technological advancements, in t
 
 
 Furthermore, this  project is connected to the broader concept of [Game Theory](https://en.wikipedia.org/wiki/Game_theory). For example, we modeled the player's progression through their combat skills (`Attack` and `Strength`) as a square grid where players start in one corner, say at level (60, 60), and the question is how does the player get to (99, 99) as fast as possible? After [modelling the governing combat equations](https://www.reddit.com/r/2007scape/comments/mwvjzc/a_physicists_guide_to_rebalancing_combat_damage/), [Dijkstra's shortest path  algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm) was used to obtain an exact solution: [the order the player should train their skills](https://www.reddit.com/r/2007scape/comments/ffctp0/mathematically_optimal_order_to_train_melee_combat/). 
+
+![](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/img/combat/bandos.png)
+![](https://github.com/Palfore/OSRSmath/blob/master/osrsmath/docs/latex/img/combat/defence_training.png)
 
 ### Content Directory
 
@@ -39,11 +43,14 @@ If you are looking for content, check these out:
 
 ##### c) You can watch the [Video Series](https://www.youtube.com/watch?v=7N9UJX70Z5I&list=PLm3INE_scU5s8NQWmw0fxKtA_6SVxDOc7) if you would prefer watching a video.
 
+[![Video Title](https://img.youtube.com/vi/7N9UJX70Z5I/0.jpg)](https://www.youtube.com/watch?v=7N9UJX70Z5I)
+
 ##### d) You can join the [Discord](https://discord.gg/4SXcKQh) to discuss anything! 
 
 ##### d) Explore the codebase for existing solutions, implementations, and attempted problems.
 
 ##### f) You can see more on the OSRSmath page on [My Website](https://palfore.com/).
+
 
 ---
 _Please note that some of the following information is outdated, some maintenance is required..._
