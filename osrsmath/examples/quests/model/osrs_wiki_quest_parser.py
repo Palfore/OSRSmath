@@ -81,9 +81,23 @@ class WikiQuestParser:
 			if find_term('difficulty'):
 				details['difficulty'] = get_value()
 			if find_term('developer'):  # We just want the raw names.
-				# Remove spaces, periods (used in abbreviations), text on left of : is the developers role which is discarded. Then remove text in [] or ().
-				details['developer'] = [re.sub(R"[\(\[].*?[\)\]]", "", d.replace('.', '').split(':')[-1]).strip() for d in get_value().split(',')]
-					
+				# Drop dispute notes after newlines; drop (...) / [...] credits; role left of ':' is discarded.
+				# Credits may separate people with ',' or ';' (e.g. "Paul Gower; Mod Stu (...)").
+				raw = get_value().split('\n', 1)[0].strip()
+				raw = re.sub(r'\([^)]*\)|\[[^\]]*\]', '', raw)
+				developers = []
+				for part in re.split(r'[;,]', raw):
+					name = part.replace('.', '').split(':')[-1].strip()
+					name = re.sub(r'\s+feat\b.*', '', name, flags=re.IGNORECASE).strip()
+					name = {
+						'Unknown': None,
+						'Vincent M': 'Vincent van M',
+						'Vincent Van M': 'Vincent van M',
+					}.get(name, name)
+					if name and name not in developers:
+						developers.append(name)
+				details['developer'] = developers
+
 		## This is the large main table: "Details".
 		# Find the Requirements in the questdetails table.
 		table = soup.find("table", {"class": "questdetails"}).find('tbody')

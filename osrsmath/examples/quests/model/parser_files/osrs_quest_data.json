@@ -1,5 +1,43 @@
 [
     {
+        "name": "The Ides of Milk",
+        "url": "https://oldschool.runescape.wiki/w/The_Ides_of_Milk",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "25 February 2026",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Mod Other"
+        ],
+        "start": [
+            "3277",
+            "3168"
+        ],
+        "difficulty": "Novice",
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Learning the Ropes",
+        "url": "https://oldschool.runescape.wiki/w/Learning_the_Ropes",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "22 October 2025",
+        "members": false,
+        "series": "None",
+        "developer": [],
+        "start": [
+            "3109",
+            "3094"
+        ],
+        "difficulty": "Novice",
+        "length": "Very Short",
+        "combat": true
+    },
+    {
         "name": "Below Ice Mountain",
         "url": "https://oldschool.runescape.wiki/w/Below_Ice_Mountain",
         "quest_requirements": [],
@@ -21,45 +59,20 @@
         "combat": true
     },
     {
-        "name": "Black Knights' Fortress",
-        "url": "https://oldschool.runescape.wiki/w/Black_Knights%27_Fortress",
+        "name": "X Marks the Spot",
+        "url": "https://oldschool.runescape.wiki/w/X_Marks_the_Spot",
         "quest_requirements": [],
         "skill_requirements": [],
         "rewards": [],
-        "released": "6 April 2001",
+        "released": "7 February 2019",
         "members": false,
-        "series": "None",
+        "series": "Great Kourend, #1",
         "developer": [
-            "Paul Gower"
+            "Mod Ed"
         ],
         "start": [
-            "3338",
-            "2959"
-        ],
-        "difficulty": "Intermediate",
-        "length": "Very Short",
-        "combat": false
-    },
-    {
-        "name": "Cook's Assistant",
-        "url": "https://oldschool.runescape.wiki/w/Cook%27s_Assistant",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [
-            [
-                "Cooking",
-                300
-            ]
-        ],
-        "released": "4 January 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Paul Gower"
-        ],
-        "start": [
-            "3216",
-            "3208"
+            "3244",
+            "3228"
         ],
         "difficulty": "Novice",
         "length": "Very Short",
@@ -86,48 +99,49 @@
         "combat": true
     },
     {
-        "name": "Demon Slayer",
-        "url": "https://oldschool.runescape.wiki/w/Demon_Slayer",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [],
-        "released": "4 January 2001",
-        "members": false,
-        "series": "Demon Slayer, #1",
-        "developer": [
-            "Paul Gower"
-        ],
-        "start": [
-            "3426",
-            "3203"
-        ],
-        "difficulty": "Novice",
-        "length": "Short",
-        "combat": true
-    },
-    {
-        "name": "Doric's Quest",
-        "url": "https://oldschool.runescape.wiki/w/Doric%27s_Quest",
+        "name": "Misthalin Mystery",
+        "url": "https://oldschool.runescape.wiki/w/Misthalin_Mystery",
         "quest_requirements": [],
         "skill_requirements": [],
         "rewards": [
             [
-                "Mining",
-                1300
+                "Crafting",
+                600
             ]
         ],
-        "released": "6 April 2001",
+        "released": "26 January 2017",
         "members": false,
         "series": "None",
         "developer": [
-            "Rob Law"
+            "Mod Jed",
+            "Mod TomH"
         ],
         "start": [
-            "3453",
-            "2952"
+            "3157",
+            "3236"
         ],
         "difficulty": "Novice",
-        "length": "Very Short",
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Rune Mysteries",
+        "url": "https://oldschool.runescape.wiki/w/Rune_Mysteries",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "29 March 2004",
+        "members": false,
+        "series": "Order of Wizards, #1",
+        "developer": [
+            "James B"
+        ],
+        "start": [
+            "3224",
+            "3210"
+        ],
+        "difficulty": "Novice",
+        "length": "Short",
         "combat": false
     },
     {
@@ -160,24 +174,24 @@
         "combat": true
     },
     {
-        "name": "Ernest the Chicken",
-        "url": "https://oldschool.runescape.wiki/w/Ernest_the_Chicken",
+        "name": "Pirate's Treasure",
+        "url": "https://oldschool.runescape.wiki/w/Pirate%27s_Treasure",
         "quest_requirements": [],
         "skill_requirements": [],
         "rewards": [],
-        "released": "21 January 2001",
+        "released": "11 June 2001",
         "members": false,
         "series": "None",
         "developer": [
             "Paul Gower"
         ],
         "start": [
-            "3332",
-            "3110"
+            "3254",
+            "3052"
         ],
         "difficulty": "Novice",
         "length": "Very Short",
-        "combat": false
+        "combat": true
     },
     {
         "name": "Goblin Diplomacy",
@@ -203,31 +217,6 @@
         "difficulty": "Novice",
         "length": "Very Short",
         "combat": false
-    },
-    {
-        "name": "Imp Catcher",
-        "url": "https://oldschool.runescape.wiki/w/Imp_Catcher",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [
-            [
-                "Magic",
-                875
-            ]
-        ],
-        "released": "16 February 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Paul Gower"
-        ],
-        "start": [
-            "3166",
-            "3103"
-        ],
-        "difficulty": "Novice",
-        "length": "Short",
-        "combat": true
     },
     {
         "name": "The Knight's Sword",
@@ -260,52 +249,74 @@
         "combat": false
     },
     {
-        "name": "Misthalin Mystery",
-        "url": "https://oldschool.runescape.wiki/w/Misthalin_Mystery",
+        "name": "Witch's Potion",
+        "url": "https://oldschool.runescape.wiki/w/Witch%27s_Potion",
         "quest_requirements": [],
         "skill_requirements": [],
         "rewards": [
             [
-                "Crafting",
-                600
+                "Magic",
+                325
             ]
         ],
-        "released": "26 January 2017",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Mod Jed",
-            "Mod TomH",
-            "Mod West",
-            "Mod Ash"
-        ],
-        "start": [
-            "3157",
-            "3236"
-        ],
-        "difficulty": "Novice",
-        "length": "Short",
-        "combat": false
-    },
-    {
-        "name": "Pirate's Treasure",
-        "url": "https://oldschool.runescape.wiki/w/Pirate%27s_Treasure",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [],
-        "released": "11 June 2001",
+        "released": "6 April 2001",
         "members": false,
         "series": "None",
         "developer": [
             "Paul Gower"
         ],
         "start": [
-            "3254",
-            "3052"
+            "3207",
+            "2967"
         ],
         "difficulty": "Novice",
         "length": "Very Short",
         "combat": true
+    },
+    {
+        "name": "Black Knights' Fortress",
+        "url": "https://oldschool.runescape.wiki/w/Black_Knights%27_Fortress",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "6 April 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Paul Gower"
+        ],
+        "start": [
+            "3338",
+            "2959"
+        ],
+        "difficulty": "Intermediate",
+        "length": "Very Short",
+        "combat": false
+    },
+    {
+        "name": "Doric's Quest",
+        "url": "https://oldschool.runescape.wiki/w/Doric%27s_Quest",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Mining",
+                1300
+            ]
+        ],
+        "released": "6 April 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Rob Law"
+        ],
+        "start": [
+            "3453",
+            "2952"
+        ],
+        "difficulty": "Novice",
+        "length": "Very Short",
+        "combat": false
     },
     {
         "name": "Prince Ali Rescue",
@@ -327,6 +338,76 @@
         "difficulty": "Novice",
         "length": "Short",
         "combat": true
+    },
+    {
+        "name": "Imp Catcher",
+        "url": "https://oldschool.runescape.wiki/w/Imp_Catcher",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Magic",
+                875
+            ]
+        ],
+        "released": "16 February 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Paul Gower"
+        ],
+        "start": [
+            "3166",
+            "3103"
+        ],
+        "difficulty": "Novice",
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Vampyre Slayer",
+        "url": "https://oldschool.runescape.wiki/w/Vampyre_Slayer",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Attack",
+                4825
+            ]
+        ],
+        "released": "28 January 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Paul Gower"
+        ],
+        "start": [
+            "3270",
+            "3098"
+        ],
+        "difficulty": "Intermediate",
+        "length": "Very Short",
+        "combat": true
+    },
+    {
+        "name": "Ernest the Chicken",
+        "url": "https://oldschool.runescape.wiki/w/Ernest_the_Chicken",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "21 January 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Paul Gower"
+        ],
+        "start": [
+            "3332",
+            "3110"
+        ],
+        "difficulty": "Novice",
+        "length": "Very Short",
+        "combat": false
     },
     {
         "name": "The Restless Ghost",
@@ -352,47 +433,6 @@
         "difficulty": "Novice",
         "length": "Short",
         "combat": true
-    },
-    {
-        "name": "Romeo & Juliet",
-        "url": "https://oldschool.runescape.wiki/w/Romeo_%26_Juliet",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [],
-        "released": "4 January 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Rob L",
-            "Paul Gower"
-        ],
-        "start": [
-            "3425",
-            "3211"
-        ],
-        "difficulty": "Novice",
-        "length": "Short",
-        "combat": false
-    },
-    {
-        "name": "Rune Mysteries",
-        "url": "https://oldschool.runescape.wiki/w/Rune_Mysteries",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [],
-        "released": "29 March 2004",
-        "members": false,
-        "series": "Order of Wizards, #1",
-        "developer": [
-            "James B"
-        ],
-        "start": [
-            "3224",
-            "3210"
-        ],
-        "difficulty": "Novice",
-        "length": "Short",
-        "combat": false
     },
     {
         "name": "Sheep Shearer",
@@ -429,7 +469,7 @@
         "members": false,
         "series": "None",
         "developer": [
-            "Greg V"
+            "Paul Gower"
         ],
         "start": [
             "3497",
@@ -440,70 +480,66 @@
         "combat": true
     },
     {
-        "name": "Vampyre Slayer",
-        "url": "https://oldschool.runescape.wiki/w/Vampyre_Slayer",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [
-            [
-                "Attack",
-                4825
-            ]
-        ],
-        "released": "28 January 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Paul Gower"
-        ],
-        "start": [
-            "3270",
-            "3098"
-        ],
-        "difficulty": "Intermediate",
-        "length": "Very Short",
-        "combat": true
-    },
-    {
-        "name": "Witch's Potion",
-        "url": "https://oldschool.runescape.wiki/w/Witch%27s_Potion",
-        "quest_requirements": [],
-        "skill_requirements": [],
-        "rewards": [
-            [
-                "Magic",
-                325
-            ]
-        ],
-        "released": "6 April 2001",
-        "members": false,
-        "series": "None",
-        "developer": [
-            "Paul Gower"
-        ],
-        "start": [
-            "3207",
-            "2967"
-        ],
-        "difficulty": "Novice",
-        "length": "Very Short",
-        "combat": true
-    },
-    {
-        "name": "X Marks the Spot",
-        "url": "https://oldschool.runescape.wiki/w/X_Marks_the_Spot",
+        "name": "Demon Slayer",
+        "url": "https://oldschool.runescape.wiki/w/Demon_Slayer",
         "quest_requirements": [],
         "skill_requirements": [],
         "rewards": [],
-        "released": "7 February 2019",
+        "released": "4 January 2001",
         "members": false,
-        "series": "Great Kourend, #1",
+        "series": "Demon Slayer, #1",
         "developer": [
-            "Mod Ed"
+            "Paul Gower"
         ],
         "start": [
-            "3244",
-            "3228"
+            "3426",
+            "3203"
+        ],
+        "difficulty": "Novice",
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Romeo & Juliet",
+        "url": "https://oldschool.runescape.wiki/w/Romeo_%26_Juliet",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "4 January 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Rob L",
+            "Paul Gower"
+        ],
+        "start": [
+            "3425",
+            "3211"
+        ],
+        "difficulty": "Novice",
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Cook's Assistant",
+        "url": "https://oldschool.runescape.wiki/w/Cook%27s_Assistant",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [
+            [
+                "Cooking",
+                300
+            ]
+        ],
+        "released": "4 January 2001",
+        "members": false,
+        "series": "None",
+        "developer": [
+            "Paul Gower"
+        ],
+        "start": [
+            "3216",
+            "3208"
         ],
         "difficulty": "Novice",
         "length": "Very Short",
@@ -532,7 +568,7 @@
         ],
         "difficulty": "Novice",
         "length": "Very Short",
-        "combat": false
+        "combat": true
     },
     {
         "name": "Lost City",
@@ -1269,7 +1305,7 @@
         "members": true,
         "series": "None",
         "developer": [
-            "James B"
+            "Ian T"
         ],
         "start": [
             "3189",
@@ -1733,7 +1769,7 @@
         ],
         "released": "29 June 2004",
         "members": true,
-        "series": "Myreque",
+        "series": "None",
         "developer": [
             "James B"
         ],
@@ -1859,7 +1895,6 @@
         "name": "Shades of Mort'ton",
         "url": "https://oldschool.runescape.wiki/w/Shades_of_Mort%27ton",
         "quest_requirements": [
-            "The Restless Ghost",
             "Priest in Peril"
         ],
         "skill_requirements": [
@@ -1908,20 +1943,7 @@
         "name": "The Fremennik Trials",
         "url": "https://oldschool.runescape.wiki/w/The_Fremennik_Trials",
         "quest_requirements": [],
-        "skill_requirements": [
-            [
-                "Fletching",
-                25
-            ],
-            [
-                "Woodcutting",
-                40
-            ],
-            [
-                "Crafting",
-                40
-            ]
-        ],
+        "skill_requirements": [],
         "rewards": [],
         "released": "2 November 2004",
         "members": true,
@@ -2019,7 +2041,6 @@
         "name": "Haunted Mine",
         "url": "https://oldschool.runescape.wiki/w/Haunted_Mine",
         "quest_requirements": [
-            "The Restless Ghost",
             "Priest in Peril"
         ],
         "skill_requirements": [
@@ -2311,7 +2332,7 @@
         "members": true,
         "series": "None",
         "developer": [
-            "Vincent Van M"
+            "Vincent van M"
         ],
         "start": [
             "3674",
@@ -2360,7 +2381,7 @@
         "members": true,
         "series": "None",
         "developer": [
-            "Vincent Van M"
+            "Vincent van M"
         ],
         "start": [
             "10170",
@@ -2448,7 +2469,6 @@
             "The Tourist Trap",
             "The Dig Site",
             "Death Plateau",
-            "Nature Spirit",
             "Priest in Peril",
             "Troll Stronghold"
         ],
@@ -2562,8 +2582,8 @@
         "name": "The Lost Tribe",
         "url": "https://oldschool.runescape.wiki/w/The_Lost_Tribe",
         "quest_requirements": [
-            "Goblin Diplomacy",
-            "Rune Mysteries"
+            "Rune Mysteries",
+            "Goblin Diplomacy"
         ],
         "skill_requirements": [
             [
@@ -2651,7 +2671,7 @@
         "members": true,
         "series": "Red Axe, #1",
         "developer": [
-            "Vincent M"
+            "Vincent van M"
         ],
         "start": [
             "10131",
@@ -2833,9 +2853,9 @@
         "name": "Wanted!",
         "url": "https://oldschool.runescape.wiki/w/Wanted!",
         "quest_requirements": [
-            "Black Knights' Fortress",
-            "Goblin Diplomacy",
             "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Black Knights' Fortress",
             "Druidic Ritual",
             "Priest in Peril",
             "The Lost Tribe",
@@ -2915,10 +2935,6 @@
                 42
             ],
             [
-                "Fishing",
-                50
-            ],
-            [
                 "Farming",
                 40
             ],
@@ -2929,6 +2945,10 @@
             [
                 "Slayer",
                 42
+            ],
+            [
+                "Fishing",
+                50
             ]
         ],
         "rewards": [
@@ -3088,7 +3108,7 @@
         "members": true,
         "series": "None",
         "developer": [
-            "Paul G"
+            "Paul Gower"
         ],
         "start": [
             "2919",
@@ -3102,10 +3122,10 @@
         "name": "Devious Minds",
         "url": "https://oldschool.runescape.wiki/w/Devious_Minds",
         "quest_requirements": [
+            "Rune Mysteries",
+            "Goblin Diplomacy",
             "Black Knights' Fortress",
             "Doric's Quest",
-            "Goblin Diplomacy",
-            "Rune Mysteries",
             "Druidic Ritual",
             "Death Plateau",
             "Priest in Peril",
@@ -3145,7 +3165,7 @@
         ],
         "released": "19 December 2005",
         "members": true,
-        "series": "Mahjarrat, #10",
+        "series": "Mahjarrat, #11",
         "developer": [
             "Graham B"
         ],
@@ -3466,8 +3486,8 @@
         "name": "Swan Song",
         "url": "https://oldschool.runescape.wiki/w/Swan_Song",
         "quest_requirements": [
-            "The Restless Ghost",
             "Rune Mysteries",
+            "The Restless Ghost",
             "Druidic Ritual",
             "Jungle Potion",
             "Priest in Peril",
@@ -3584,8 +3604,8 @@
         "name": "Death to the Dorgeshuun",
         "url": "https://oldschool.runescape.wiki/w/Death_to_the_Dorgeshuun",
         "quest_requirements": [
-            "Goblin Diplomacy",
             "Rune Mysteries",
+            "Goblin Diplomacy",
             "The Lost Tribe"
         ],
         "skill_requirements": [
@@ -3856,9 +3876,9 @@
         "name": "The Slug Menace",
         "url": "https://oldschool.runescape.wiki/w/The_Slug_Menace",
         "quest_requirements": [
-            "Black Knights' Fortress",
-            "Goblin Diplomacy",
             "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Black Knights' Fortress",
             "Druidic Ritual",
             "Sea Slug",
             "Priest in Peril",
@@ -4274,8 +4294,8 @@
         "name": "The Great Brain Robbery",
         "url": "https://oldschool.runescape.wiki/w/The_Great_Brain_Robbery",
         "quest_requirements": [
-            "Cook's Assistant",
             "Pirate's Treasure",
+            "Cook's Assistant",
             "Druidic Ritual",
             "Jungle Potion",
             "Big Chompy Bird Hunting",
@@ -4285,8 +4305,7 @@
             "Cabin Fever",
             "Zogre Flesh Eaters",
             "Recipe for Disaster/Another Cook's Quest",
-            "Recipe for Disaster/Freeing Pirate Pete",
-            "Recipe for Disaster/Defeating the Culinaromancer"
+            "Recipe for Disaster/Freeing Pirate Pete"
         ],
         "skill_requirements": [
             [
@@ -4406,8 +4425,8 @@
         "name": "Another Slice of H.A.M.",
         "url": "https://oldschool.runescape.wiki/w/Another_Slice_of_H.A.M.",
         "quest_requirements": [
-            "Goblin Diplomacy",
             "Rune Mysteries",
+            "Goblin Diplomacy",
             "The Dig Site",
             "The Lost Tribe",
             "The Giant Dwarf",
@@ -4559,8 +4578,8 @@
         "name": "King's Ransom",
         "url": "https://oldschool.runescape.wiki/w/King%27s_Ransom",
         "quest_requirements": [
-            "Black Knights' Fortress",
             "Rune Mysteries",
+            "Black Knights' Fortress",
             "Druidic Ritual",
             "Merlin's Crystal",
             "Holy Grail",
@@ -4705,7 +4724,6 @@
             "Horror from the Deep",
             "Creature of Fenkenstrain",
             "Rag and Bone Man I",
-            "Zogre Flesh Eaters",
             "Skippy and the Mogres"
         ],
         "skill_requirements": [
@@ -4742,8 +4760,8 @@
         "name": "Land of the Goblins",
         "url": "https://oldschool.runescape.wiki/w/Land_of_the_Goblins",
         "quest_requirements": [
-            "Goblin Diplomacy",
             "Rune Mysteries",
+            "Goblin Diplomacy",
             "Fishing Contest",
             "The Dig Site",
             "The Lost Tribe",
@@ -4807,13 +4825,13 @@
         "url": "https://oldschool.runescape.wiki/w/While_Guthix_Sleeps",
         "quest_requirements": [
             "Below Ice Mountain",
-            "Black Knights' Fortress",
-            "Demon Slayer",
-            "Goblin Diplomacy",
-            "The Restless Ghost",
-            "Romeo & Juliet",
             "Rune Mysteries",
+            "Goblin Diplomacy",
+            "Black Knights' Fortress",
+            "The Restless Ghost",
             "Shield of Arrav",
+            "Demon Slayer",
+            "Romeo & Juliet",
             "Druidic Ritual",
             "Lost City",
             "Family Crest",
@@ -4830,10 +4848,12 @@
             "Priest in Peril",
             "Troll Stronghold",
             "The Fremennik Trials",
+            "Creature of Fenkenstrain",
             "Icthlarin's Little Helper",
             "Tears of Guthix",
             "The Lost Tribe",
             "Recruitment Drive",
+            "Garden of Tranquillity",
             "A Tail of Two Cats",
             "Wanted!",
             "The Hand in the Sand",
@@ -4873,6 +4893,10 @@
                 62
             ],
             [
+                "Firemaking",
+                49
+            ],
+            [
                 "Attack",
                 99
             ]
@@ -4897,7 +4921,7 @@
         ],
         "released": "10 July 2024",
         "members": true,
-        "series": "Mahjarrat, #14",
+        "series": "Mahjarrat, #15",
         "developer": [
             "Mod Ed"
         ],
@@ -5117,12 +5141,12 @@
         "name": "Dragon Slayer II",
         "url": "https://oldschool.runescape.wiki/w/Dragon_Slayer_II",
         "quest_requirements": [
+            "X Marks the Spot",
+            "Rune Mysteries",
             "Dragon Slayer I",
             "Ernest the Chicken",
             "The Restless Ghost",
-            "Rune Mysteries",
             "Shield of Arrav",
-            "X Marks the Spot",
             "Druidic Ritual",
             "Lost City",
             "Merlin's Crystal",
@@ -5279,8 +5303,8 @@
         "name": "Recipe for Disaster/Freeing the Goblin generals",
         "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_the_Goblin_generals",
         "quest_requirements": [
-            "Cook's Assistant",
             "Goblin Diplomacy",
+            "Cook's Assistant",
             "Recipe for Disaster/Another Cook's Quest"
         ],
         "skill_requirements": [],
@@ -5343,19 +5367,14 @@
         "name": "Recipe for Disaster/Freeing Evil Dave",
         "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_Evil_Dave",
         "quest_requirements": [
-            "Cook's Assistant",
             "Demon Slayer",
+            "Cook's Assistant",
             "Gertrude's Cat",
             "The Golem",
             "Shadow of the Storm",
             "Recipe for Disaster/Another Cook's Quest"
         ],
-        "skill_requirements": [
-            [
-                "Cooking",
-                25
-            ]
-        ],
+        "skill_requirements": [],
         "rewards": [
             [
                 "Cooking",
@@ -5368,7 +5387,10 @@
         "developer": [
             "James B"
         ],
-        "start": null,
+        "start": [
+            "3224",
+            "3208"
+        ],
         "difficulty": "Special",
         "length": "Medium",
         "combat": false
@@ -5410,7 +5432,10 @@
         "developer": [
             "James B"
         ],
-        "start": null,
+        "start": [
+            "5349",
+            "1862"
+        ],
         "difficulty": "Special",
         "length": "Medium",
         "combat": true
@@ -5419,9 +5444,9 @@
         "name": "Recipe for Disaster/Freeing the Lumbridge Guide",
         "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_the_Lumbridge_Guide",
         "quest_requirements": [
-            "Cook's Assistant",
-            "Demon Slayer",
             "The Restless Ghost",
+            "Demon Slayer",
+            "Cook's Assistant",
             "Witch's House",
             "Plague City",
             "Murder Mystery",
@@ -5462,9 +5487,9 @@
         "name": "Recipe for Disaster/Freeing Sir Amik Varze",
         "url": "https://oldschool.runescape.wiki/w/Recipe_for_Disaster/Freeing_Sir_Amik_Varze",
         "quest_requirements": [
-            "Cook's Assistant",
             "Dragon Slayer I",
             "Shield of Arrav",
+            "Cook's Assistant",
             "Druidic Ritual",
             "Lost City",
             "Merlin's Crystal",
@@ -5537,7 +5562,10 @@
         "developer": [
             "James B"
         ],
-        "start": null,
+        "start": [
+            "5345",
+            "1865"
+        ],
         "difficulty": "Special",
         "length": "Long",
         "combat": true
@@ -5584,10 +5612,13 @@
         "developer": [
             "James B"
         ],
-        "start": null,
+        "start": [
+            "3227",
+            "3208"
+        ],
         "difficulty": "Special",
         "length": "Medium",
-        "combat": false
+        "combat": true
     },
     {
         "name": "A Taste of Hope",
@@ -5674,9 +5705,9 @@
         "name": "Making Friends with My Arm",
         "url": "https://oldschool.runescape.wiki/w/Making_Friends_with_My_Arm",
         "quest_requirements": [
+            "Rune Mysteries",
             "The Restless Ghost",
             "Romeo & Juliet",
-            "Rune Mysteries",
             "Druidic Ritual",
             "Jungle Potion",
             "Death Plateau",
@@ -5961,8 +5992,8 @@
         "name": "The Fremennik Exiles",
         "url": "https://oldschool.runescape.wiki/w/The_Fremennik_Exiles",
         "quest_requirements": [
-            "Dragon Slayer I",
             "Rune Mysteries",
+            "Dragon Slayer I",
             "Shield of Arrav",
             "Druidic Ritual",
             "Lost City",
@@ -5995,6 +6026,10 @@
             [
                 "Runecraft",
                 55
+            ],
+            [
+                "Mining",
+                60
             ]
         ],
         "rewards": [
@@ -6027,15 +6062,92 @@
         "combat": true
     },
     {
+        "name": "The Curse of Arrav",
+        "url": "https://oldschool.runescape.wiki/w/The_Curse_of_Arrav",
+        "quest_requirements": [
+            "Below Ice Mountain",
+            "Rune Mysteries",
+            "The Restless Ghost",
+            "Shield of Arrav",
+            "Demon Slayer",
+            "Romeo & Juliet",
+            "Family Crest",
+            "Temple of Ikov",
+            "Death Plateau",
+            "Priest in Peril",
+            "Troll Stronghold",
+            "Troll Romance",
+            "Creature of Fenkenstrain",
+            "Garden of Tranquillity",
+            "What Lies Below",
+            "Defender of Varrock"
+        ],
+        "skill_requirements": [
+            [
+                "Mining",
+                64
+            ],
+            [
+                "Ranged",
+                62
+            ],
+            [
+                "Thieving",
+                62
+            ],
+            [
+                "Agility",
+                61
+            ],
+            [
+                "Strength",
+                58
+            ],
+            [
+                "Slayer",
+                37
+            ]
+        ],
+        "rewards": [
+            [
+                "Mining",
+                40000
+            ],
+            [
+                "Thieving",
+                40000
+            ],
+            [
+                "Agility",
+                40000
+            ]
+        ],
+        "released": "6 November 2024",
+        "members": true,
+        "series": "Mahjarrat, #10",
+        "developer": [
+            "Paul Gower",
+            "Mod Ed",
+            "Mod Lenny"
+        ],
+        "start": [
+            "3040",
+            "3505"
+        ],
+        "difficulty": "Master",
+        "length": "Medium",
+        "combat": true
+    },
+    {
         "name": "Defender of Varrock",
         "url": "https://oldschool.runescape.wiki/w/Defender_of_Varrock",
         "quest_requirements": [
             "Below Ice Mountain",
-            "Demon Slayer",
-            "The Restless Ghost",
-            "Romeo & Juliet",
             "Rune Mysteries",
+            "The Restless Ghost",
             "Shield of Arrav",
+            "Demon Slayer",
+            "Romeo & Juliet",
             "Family Crest",
             "Temple of Ikov",
             "Priest in Peril",
@@ -6082,8 +6194,8 @@
         "name": "Sins of the Father",
         "url": "https://oldschool.runescape.wiki/w/Sins_of_the_Father",
         "quest_requirements": [
-            "The Restless Ghost",
             "Vampyre Slayer",
+            "The Restless Ghost",
             "Nature Spirit",
             "Priest in Peril",
             "In Search of the Myreque",
@@ -6474,12 +6586,12 @@
         "url": "https://oldschool.runescape.wiki/w/Desert_Treasure_II_-_The_Fallen_Empire",
         "quest_requirements": [
             "Below Ice Mountain",
+            "Rune Mysteries",
+            "Goblin Diplomacy",
             "Black Knights' Fortress",
             "Doric's Quest",
-            "Goblin Diplomacy",
             "The Restless Ghost",
             "Romeo & Juliet",
-            "Rune Mysteries",
             "Druidic Ritual",
             "Temple of Ikov",
             "Fight Arena",
@@ -6544,7 +6656,7 @@
         "rewards": [],
         "released": "26 July 2023",
         "members": true,
-        "series": "Mahjarrat, #13",
+        "series": "Mahjarrat, #14",
         "developer": [
             "Mod Ed"
         ],
@@ -6560,12 +6672,12 @@
         "name": "Secrets of the North",
         "url": "https://oldschool.runescape.wiki/w/Secrets_of_the_North",
         "quest_requirements": [
+            "Rune Mysteries",
+            "Goblin Diplomacy",
             "Black Knights' Fortress",
             "Doric's Quest",
-            "Goblin Diplomacy",
             "The Restless Ghost",
             "Romeo & Juliet",
-            "Rune Mysteries",
             "Druidic Ritual",
             "Fight Arena",
             "Hazeel Cult",
@@ -6622,7 +6734,7 @@
         ],
         "released": "11 January 2023",
         "members": true,
-        "series": "Mahjarrat, #12",
+        "series": "Mahjarrat, #13",
         "developer": [
             "Mod Ed"
         ],
@@ -6643,9 +6755,7 @@
         "released": "10 January 2024",
         "members": true,
         "series": "Twilight Emissaries, #1",
-        "developer": [
-            "Unknown"
-        ],
+        "developer": [],
         "start": [
             "3430",
             "3225"
@@ -6705,7 +6815,7 @@
         "members": true,
         "series": "None",
         "developer": [
-            "Unknown"
+            "Mod Rice"
         ],
         "start": [
             "3124",
@@ -6737,7 +6847,7 @@
         "members": true,
         "series": "None",
         "developer": [
-            "Mod Ed\nPartial naming credit claimed by Mod Lenny \nDisputed by Mod Ed )\nDispute disputed by Mod Lenny \nDisputed dispution is disputed by Mod Ed"
+            "Mod Ed"
         ],
         "start": [
             "2975",
@@ -6763,9 +6873,7 @@
         "released": "20 March 2024",
         "members": true,
         "series": "Twilight Emissaries, #2",
-        "developer": [
-            "Unknown"
-        ],
+        "developer": [],
         "start": [
             "3143",
             "1686"
@@ -6812,9 +6920,7 @@
         "released": "20 March 2024",
         "members": true,
         "series": "None",
-        "developer": [
-            "Unknown"
-        ],
+        "developer": [],
         "start": [
             "3035",
             "1555"
@@ -6827,6 +6933,7 @@
         "name": "The Heart of Darkness",
         "url": "https://oldschool.runescape.wiki/w/The_Heart_of_Darkness",
         "quest_requirements": [
+            "Children of the Sun",
             "Twilight's Promise"
         ],
         "skill_requirements": [
@@ -6868,9 +6975,7 @@
         "released": "25 September 2024",
         "members": true,
         "series": "Twilight Emissaries, #3",
-        "developer": [
-            "Unknown"
-        ],
+        "developer": [],
         "start": [
             "3175",
             "1453"
@@ -6913,7 +7018,7 @@
         "members": true,
         "series": "None",
         "developer": [
-            "Unknown"
+            "Mod Other"
         ],
         "start": [
             "2939",
@@ -6940,7 +7045,7 @@
         "members": true,
         "series": "None",
         "developer": [
-            "Unknown"
+            "Runescape devs"
         ],
         "start": [
             "3076",
@@ -6972,9 +7077,7 @@
         "released": "25 September 2024",
         "members": true,
         "series": "None",
-        "developer": [
-            "Unknown"
-        ],
+        "developer": [],
         "start": [
             "3167",
             "1720"
@@ -6982,6 +7085,427 @@
         "difficulty": "Novice",
         "length": "Short",
         "combat": false
+    },
+    {
+        "name": "The Blood Moon Rises",
+        "url": "https://oldschool.runescape.wiki/w/The_Blood_Moon_Rises",
+        "quest_requirements": [
+            "Vampyre Slayer",
+            "The Restless Ghost",
+            "Nature Spirit",
+            "Priest in Peril",
+            "In Search of the Myreque",
+            "In Aid of the Myreque",
+            "Darkness of Hallowvale",
+            "A Taste of Hope",
+            "Sins of the Father",
+            "A Night at the Theatre"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                74
+            ],
+            [
+                "Woodcutting",
+                74
+            ],
+            [
+                "Smithing",
+                72
+            ],
+            [
+                "Cooking",
+                72
+            ],
+            [
+                "Fletching",
+                70
+            ],
+            [
+                "Mining",
+                66
+            ],
+            [
+                "Hunter",
+                65
+            ],
+            [
+                "Crafting",
+                64
+            ],
+            [
+                "Herblore",
+                64
+            ],
+            [
+                "Magic",
+                57
+            ]
+        ],
+        "rewards": [],
+        "released": "30 June 2026",
+        "members": true,
+        "series": "Myreque, #6",
+        "developer": [
+            "Mod Ed",
+            "Mod Lenny",
+            "Mod Rice",
+            "Mod Mack"
+        ],
+        "start": [
+            "3186",
+            "3696"
+        ],
+        "difficulty": "Grandmaster",
+        "length": "Very Long",
+        "combat": true
+    },
+    {
+        "name": "The Final Dawn",
+        "url": "https://oldschool.runescape.wiki/w/The_Final_Dawn",
+        "quest_requirements": [
+            "Children of the Sun",
+            "Perilous Moons",
+            "Twilight's Promise",
+            "The Heart of Darkness"
+        ],
+        "skill_requirements": [
+            [
+                "Thieving",
+                66
+            ],
+            [
+                "Runecraft",
+                52
+            ],
+            [
+                "Fletching",
+                52
+            ]
+        ],
+        "rewards": [],
+        "released": "23 July 2025",
+        "members": true,
+        "series": "Twilight Emissaries, #4",
+        "developer": [],
+        "start": [
+            "3170",
+            "1678"
+        ],
+        "difficulty": "Master",
+        "length": "Long",
+        "combat": true
+    },
+    {
+        "name": "Pandemonium",
+        "url": "https://oldschool.runescape.wiki/w/Pandemonium",
+        "quest_requirements": [],
+        "skill_requirements": [],
+        "rewards": [],
+        "released": "19 November 2025",
+        "members": true,
+        "series": "None",
+        "developer": [],
+        "start": [
+            "3211",
+            "3025"
+        ],
+        "difficulty": "Novice",
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Prying Times",
+        "url": "https://oldschool.runescape.wiki/w/Prying_Times",
+        "quest_requirements": [
+            "The Knight's Sword",
+            "Pandemonium"
+        ],
+        "skill_requirements": [
+            [
+                "Smithing",
+                30
+            ]
+        ],
+        "rewards": [
+            [
+                "Smithing",
+                1000
+            ]
+        ],
+        "released": "19 November 2025",
+        "members": true,
+        "series": "None",
+        "developer": [],
+        "start": [
+            "2968",
+            "3050"
+        ],
+        "difficulty": "Intermediate",
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Current Affairs",
+        "url": "https://oldschool.runescape.wiki/w/Current_Affairs",
+        "quest_requirements": [
+            "Pandemonium"
+        ],
+        "skill_requirements": [
+            [
+                "Fishing",
+                10
+            ]
+        ],
+        "rewards": [
+            [
+                "Fishing",
+                1000
+            ]
+        ],
+        "released": "19 November 2025",
+        "members": true,
+        "series": "None",
+        "developer": [],
+        "start": [
+            "3434",
+            "2803"
+        ],
+        "difficulty": "Novice",
+        "length": "Short",
+        "combat": false
+    },
+    {
+        "name": "Troubled Tortugans",
+        "url": "https://oldschool.runescape.wiki/w/Troubled_Tortugans",
+        "quest_requirements": [
+            "Pandemonium"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                51
+            ],
+            [
+                "Construction",
+                48
+            ],
+            [
+                "Hunter",
+                45
+            ],
+            [
+                "Woodcutting",
+                40
+            ],
+            [
+                "Crafting",
+                34
+            ]
+        ],
+        "rewards": [
+            [
+                "Slayer",
+                8000
+            ]
+        ],
+        "released": "19 November 2025",
+        "members": true,
+        "series": "Tortugan, #1",
+        "developer": [
+            "Mod Ed",
+            "Mod Elena"
+        ],
+        "start": [
+            "2608",
+            "2958"
+        ],
+        "difficulty": "Experienced",
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "The Red Reef",
+        "url": "https://oldschool.runescape.wiki/w/The_Red_Reef",
+        "quest_requirements": [
+            "Pandemonium",
+            "Troubled Tortugans"
+        ],
+        "skill_requirements": [
+            [
+                "Smithing",
+                48
+            ]
+        ],
+        "rewards": [
+            [
+                "Smithing",
+                5000
+            ]
+        ],
+        "released": "20 May 2026",
+        "members": true,
+        "series": "Tortugan, #2",
+        "developer": [
+            "Mod Ed",
+            "Mod Elena"
+        ],
+        "start": [
+            "2407",
+            "3188"
+        ],
+        "difficulty": "Experienced",
+        "length": "Medium",
+        "combat": true
+    },
+    {
+        "name": "Shadows of Custodia",
+        "url": "https://oldschool.runescape.wiki/w/Shadows_of_Custodia",
+        "quest_requirements": [
+            "Children of the Sun"
+        ],
+        "skill_requirements": [
+            [
+                "Slayer",
+                54
+            ],
+            [
+                "Fishing",
+                45
+            ],
+            [
+                "Construction",
+                41
+            ],
+            [
+                "Hunter",
+                36
+            ]
+        ],
+        "rewards": [
+            [
+                "Slayer",
+                10000
+            ],
+            [
+                "Hunter",
+                4000
+            ],
+            [
+                "Fishing",
+                3000
+            ],
+            [
+                "Construction",
+                3000
+            ]
+        ],
+        "released": "23 July 2025",
+        "members": true,
+        "series": "None",
+        "developer": [],
+        "start": [
+            "3358",
+            "1396"
+        ],
+        "difficulty": "Experienced",
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Scrambled!",
+        "url": "https://oldschool.runescape.wiki/w/Scrambled!",
+        "quest_requirements": [
+            "Children of the Sun"
+        ],
+        "skill_requirements": [
+            [
+                "Construction",
+                38
+            ],
+            [
+                "Cooking",
+                36
+            ],
+            [
+                "Smithing",
+                35
+            ]
+        ],
+        "rewards": [
+            [
+                "Construction",
+                5000
+            ],
+            [
+                "Cooking",
+                5000
+            ],
+            [
+                "Smithing",
+                5000
+            ]
+        ],
+        "released": "23 July 2025",
+        "members": true,
+        "series": "None",
+        "developer": [
+            "The Hutnuts"
+        ],
+        "start": [
+            "3168",
+            "1247"
+        ],
+        "difficulty": "Intermediate",
+        "length": "Short",
+        "combat": true
+    },
+    {
+        "name": "Fallen From Grace",
+        "url": "https://oldschool.runescape.wiki/w/Fallen_From_Grace",
+        "quest_requirements": [
+            "Pandemonium"
+        ],
+        "skill_requirements": [
+            [
+                "Crafting",
+                60
+            ],
+            [
+                "Runecraft",
+                47
+            ],
+            [
+                "Mining",
+                53
+            ]
+        ],
+        "rewards": [
+            [
+                "Crafting",
+                10000
+            ],
+            [
+                "Mining",
+                5000
+            ],
+            [
+                "Runecraft",
+                5000
+            ]
+        ],
+        "released": "29 July 2026",
+        "members": true,
+        "series": "None",
+        "developer": [],
+        "start": [
+            "2255",
+            "2575"
+        ],
+        "difficulty": "Experienced",
+        "length": "Short",
+        "combat": true
     },
     {
         "name": "Alfred Grimhand's Barcrawl",
@@ -7260,9 +7784,7 @@
         "released": "22 September 2003",
         "members": true,
         "series": "None",
-        "developer": [
-            "Unknown"
-        ],
+        "developer": [],
         "start": [
             "4718",
             "2538"
@@ -7282,9 +7804,7 @@
         "released": "1 September 2016",
         "members": true,
         "series": "None",
-        "developer": [
-            "Unknown"
-        ],
+        "developer": [],
         "start": [
             "3406",
             "3279"
@@ -7397,9 +7917,7 @@
         "released": "16 December 2021",
         "members": true,
         "series": "None",
-        "developer": [
-            "Unknown"
-        ],
+        "developer": [],
         "start": null,
         "difficulty": "Master",
         "length": "Short",
@@ -7440,6 +7958,10 @@
         "name": "Into the Tombs",
         "url": "https://oldschool.runescape.wiki/w/Into_the_Tombs",
         "quest_requirements": [
+            "Prince Ali Rescue",
+            "Gertrude's Cat",
+            "Icthlarin's Little Helper",
+            "Contact!",
             "Beneath Cursed Sands"
         ],
         "skill_requirements": [],
@@ -7447,9 +7969,7 @@
         "released": "24 August 2022",
         "members": true,
         "series": "Kharidian, #5",
-        "developer": [
-            "Unknown"
-        ],
+        "developer": [],
         "start": [
             "2720",
             "3351"
@@ -7473,7 +7993,7 @@
         ],
         "released": "14 June 2023",
         "members": true,
-        "series": "Mahjarrat, #11",
+        "series": "Mahjarrat, #12",
         "developer": [
             "Mod Ed"
         ],
@@ -7482,7 +8002,34 @@
             "3565"
         ],
         "difficulty": "Experienced",
-        "length": "Short",
+        "length": "Very Short",
         "combat": true
+    },
+    {
+        "name": "Vale Totems",
+        "url": "https://oldschool.runescape.wiki/w/Vale_Totems_(miniquest)",
+        "quest_requirements": [
+            "Children of the Sun"
+        ],
+        "skill_requirements": [
+            [
+                "Fletching",
+                20
+            ]
+        ],
+        "rewards": [],
+        "released": "23 July 2025",
+        "members": true,
+        "series": "None",
+        "developer": [
+            "Mod Squid"
+        ],
+        "start": [
+            "3370",
+            "1367"
+        ],
+        "difficulty": "Novice",
+        "length": "Very Short",
+        "combat": false
     }
 ]

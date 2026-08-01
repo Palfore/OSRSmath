@@ -95,6 +95,10 @@ class Quest:
 		self.quest_requirements = set(quest_requirements) if quest_requirements is not None else set()
 		self.rewards = {skill: level for skill, level in rewards} if rewards is not None else {}
 
+		# RFD subquests have series "None" on the wiki; assign them by name.
+		if self.name and self.name.startswith(('RFD/', 'Recipe for Disaster')):
+			self.series = 'Recipe for Disaster'
+
 		lookup = {q['name']: q for q in self.quest_data}
 
 		# Recursively crawl through all prerequisites

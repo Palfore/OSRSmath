@@ -121,6 +121,47 @@ class WikiQuestParser:
 
 		return parsed
 
+	def parse_developer_names(self, raw):
+		"""Normalize a developer cell into a list of names (main first).
+
+		Credits often use ';' between people, e.g.
+		'Paul Gower; Mod Stu (2017 single player version & improvements)'.
+		"""
+		raw = raw.split('\n', 1)[0].strip()
+		raw = re.sub(r'\([^)]*\)|\[[^\]]*\]', '', raw)
+		developers = []
+		for part in re.split(r'[;,]', raw):
+			name = part.replace('.', '').split(':')[-1].strip()
+			name = re.sub(r'\s+feat\b.*', '', name, flags=re.IGNORECASE).strip()
+			name = {
+				'Unknown': None,
+				'Vincent M': 'Vincent van M',
+				'Vincent Van M': 'Vincent van M',
+			}.get(name, name)
+			if name and name not in developers:
+				developers.append(name)
+		return developers
+
+	def parse_credits_main_developer(self, soup):
+		"""Main developer from the Credits section (first/Original table)."""
+		def is_credits_table(classes):
+			if not classes:
+				return False
+			parts = classes if isinstance(classes, list) else str(classes).split()
+			return 'infobox-credits' in parts
+
+		for table in soup.find_all('table', class_=is_credits_table):
+			td = table.find('td', attrs={'data-attr-param': 'developer'})
+			if td is None:
+				for row in table.find_all('tr'):
+					th = row.find('th')
+					if th and th.get_text(strip=True).lower() == 'developer':
+						td = row.find('td')
+						break
+			if td is not None:
+				return self.parse_developer_names(td.get_text())
+		return []
+
 	def parse_link(self, quest_link):
 		def find_term(term):
 			return x.find("th") and term in x.find("th").get_text().lower()
@@ -143,9 +184,17 @@ class WikiQuestParser:
 				# print(get_value())
 			if find_term('difficulty'):
 				details['difficulty'] = get_value()
-			if find_term('developer'):  # We just want the raw names.
-				# Remove spaces, periods (used in abbreviations), text on left of : is the developers role which is discarded. Then remove text in [] or ().
-				details['developer'] = [re.sub(R"[\(\[].*?[\)\]]", "", d.replace('.', '').split(':')[-1]).strip() for d in get_value().split(',')]
+			if find_term('developer'):  # Rare on RS3; Credits section is preferred below.
+				details['developer'] = self.parse_developer_names(get_value())
+			if find_term('combat'):  # Infobox: "Combat[?]" → None / enemy summary
+				details['combat'] = get_value() != 'None'
+
+		# Credits section (prefer Original / first switch-infobox table).
+		credits_devs = self.parse_credits_main_developer(soup)
+		if credits_devs:
+			details['developer'] = credits_devs
+		elif 'developer' not in details:
+			details['developer'] = []
 					
 		## This is the large main table: "Details".
 		# Find the Requirements in the questdetails table.
@@ -202,7 +251,7 @@ class WikiQuestParser:
 				details['length'] = get_value()
 			if find_term('difficulty'):
 				details['difficulty'] = get_value()
-			if find_term('enemies'):
+			if find_term('enemies') and 'combat' not in details:
 				details['combat'] = x.find('td').get_text().strip() != 'None'
 			if find_term('requirements'):
 				requirements_text = x.get_text().strip()  # Plaintext
