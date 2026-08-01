@@ -208,6 +208,7 @@ class WikiQuestParser:
 						if ("data-lat" in str(anchor)) and ("data-lon" in str(anchor)):
 							start_location = anchor
 							lat, lon = start_location["data-lat"], start_location["data-lon"]
+							# Stored as [y, x] (wiki lat/lon == game northing/easting).
 							details['start'] = (lat, lon)
 							break
 					else:

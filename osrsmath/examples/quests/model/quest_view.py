@@ -1,4 +1,7 @@
-""" Quest Viewer """
+""" Quest Viewer 
+
+TODO: Add Tier View Support for the Graph (alternative to physics and map views).
+"""
 from osrsmath.examples.quests.model.quest import Player
 from matplotlib.lines import Line2D
 from matplotlib import pyplot as plt
@@ -8,6 +11,7 @@ from pathlib import Path
 import networkx as nx
 import numpy as np
 import webbrowser
+import shutil
 import os
 import re
 
@@ -133,7 +137,10 @@ class QuestViewer:
 			# Normalize quest lengths: Assume longest length.
 			quest.length = normalize_length(quest.length)
 
-			self.graph.add_node(quest.name, title=hover_details, url=quest.url, start=quest.start, start_x=quest.start[0] if quest.start else None, start_y=quest.start[1] if quest.start else None, 
+			self.graph.add_node(quest.name, title=hover_details, url=quest.url, start=quest.start,
+				# Wiki data-lat/data-lon are stored as [y, x] (northing, easting).
+				start_x=quest.start[1] if quest.start else None,
+				start_y=quest.start[0] if quest.start else None, 
 				shell=shell, tier=shell, difficulty=quest.difficulty, length=quest.length,
 				series=normalize_series(quest.series), released=quest.released, combat=quest.combat, members=quest.members,
 				main_developer=normalize_main_developer(quest.developer), year=int(quest.released.split(' ')[-1]) if quest.released else "Unknown",
@@ -270,15 +277,18 @@ class QuestViewer:
 					<select class="btn btn-primary" id="color_scheme" onchange="changeColor()" data-toggle="tooltip" title="Change the color scheme.">\n"""+
 							'\n\t\t'.join(f"  <option value={option}>{( 'Tier' if option == 'shell' else option.replace('_', ' ').title() )}</option>" for option in self.colors.keys() if option != 'background') + """
 					</select>
-					<label for="toggle_reverse" data-toggle="tooltip" title="Reverse the directions of the arrows.">Reverse</label>
-                    <input type="checkbox" id="toggle_reverse" onclick="swapDirections()", class="btn btn-success"></input>
+					<select class="btn btn-primary" id="display_mode" onchange="setDisplayMode(this.value)" data-toggle="tooltip" title="Layout / display mode.">
+					  <option value="physics" selected>Physics</option>
+					  <option value="no_physics">Physics (disabled)</option>
+""" + ("""					  <option value="map">Map</option>
+					  <option value="map_simple">Map (simple)</option>
+					  <option value="map_edgeless">Map (edgeless)</option>
+""" if not rs3 else "") + """					</select>
+					<label for="toggle_reverse" data-toggle="tooltip" title="Reverse the directions of the arrows." aria-label="Reverse"><i class="bi bi-arrow-repeat"></i></label>
+                    <input type="checkbox" id="toggle_reverse" onclick="swapDirections()" class="btn btn-success" data-toggle="tooltip" title="Reverse the directions of the arrows." aria-label="Reverse"></input>
                     
-                    <label for="toggle_physics" data-toggle="tooltip" title="Turn the physics on.">Physics</label>
-                    <input type="checkbox" id="toggle_physics" checked class="btn btn-light" style="color:white;background-color:orangered;"></input>
-                    
-                    <label for="show_names" data-toggle="tooltip" title="Show quest names.">Names</label>
-                    <input type="checkbox" id="show_names" checked class="btn btn-light" style="color:white;background-color:orangered;"></input>
-                    
+                    <label for="show_names" data-toggle="tooltip" title="Show quest names." aria-label="Names"><i class="bi bi-tag"></i></label>
+                    <input type="checkbox" id="show_names" checked class="btn btn-light" style="color:white;background-color:orangered;" data-toggle="tooltip" title="Show quest names." aria-label="Names"></input>
                     <!--
                     <label for="toggle_tiered" data-toggle="tooltip" title="Diplay the quests in tiers.">Tiered</label>
                     //<input type="checkbox" id="toggle_tiered" class="btn btn-light" style="color:white;background-color:orangered;" onclick="toggle_tiered()" data-toggle="tooltip" title="Animate quests in order of release."></input>
@@ -364,18 +374,19 @@ class QuestViewer:
 					'<ul style="text-align:left;">'+
 	                '<li>To <b>View Quest Details</b>:<ul><li>Hover over a quest.</li></ul></li>'+
 	                '<li>To <b>Search</b>:<ul><li>Click the magnifying glass (top-right), or Ctrl/Cmd+F.</li><li>Enter / Down cycles matches; Shift+Enter / Up goes backward. Esc closes.</li></ul></li>'+
-	                '<li>To <b>Legend</b>:<ul><li>Click the info icon (top-left) for colors of the active scheme.</li><li>Click a legend entry to frame those quests.</li></ul></li>'+
+	                '<li>To <b>Legend</b>:<ul><li>Click the menu icon (top-left) for colors of the active scheme.</li><li>Click a legend entry to frame those quests.</li></ul></li>'+
 	                '<li>To <b>Complete a Quest</b>:'+
 	                        '<ul>'+
-	                            '<li>Hold a quest, or use Force / Finish / Complete (also via right-click).</li>'+
-	                            '<li>Double click opens the wiki.</li>'+
+	                            '<li>Right-click or long-press a quest for Lookup / Force / Finish / Complete.</li>'+
+	                            '<li>Double click (or double-tap) opens the wiki.</li>'+
 	                            '<li>"Force" completes it.</li>'+
 	                            '<li>"Finish" completes all prereqs.</li>'+
 	                            '<li>"Complete" validates prereqs first.</li>'+
 	                            '<li>Add the name to the completed quest textbox.</li>'+
 	                        '</ul>'+
 	                    '</li>'+
-	                '<li>To <b>Lookup a Quest</b> on the Wiki: <ul><li>Select a quest and press "Lookup", double click, or right-click → Lookup</li></ul></li>'+
+	                '<li>To <b>Lookup a Quest</b> on the Wiki: <ul><li>Select a quest and press "Lookup", double click/tap, or right-click / long-press → Lookup</li></ul></li>'+
+	                '<li>To <b>Display</b>:<ul><li><b>Physics</b> layout: Physics / Physics (disabled) (freeze).</li><li><b>Map</b> layout (OSRS): Map / Map (simple) / Map (edgeless) — simple hides edges that leave the image; edgeless hides all edges. Leaving map resets nodes to the center.</li></ul></li>'+
 	                '<li><b>Animations</b> can be stopped by double clicking on the background.</li>'+
 	                '<hr>'+
 	                '<b>Tips</b>:'+
@@ -387,8 +398,16 @@ class QuestViewer:
 	            "'",
 			    )).\
 				replace("True", "true").\
-				replace("False", "false")
+				replace("False", "false").\
+				replace("__WORLD_MAP_AVAILABLE__", "true" if not rs3 else "false").\
+				replace("__MAP_IMAGE_URL__", "map.png").\
+				replace("__LAST_UPDATED__", datetime.now().strftime("%d %B %Y, %H:%M"))
 		)
+
+		if not rs3:
+			map_src = Path(__file__).parent / "output" / "map.png"
+			if map_src.exists():
+				shutil.copy2(map_src, Path(folder) / "map.png")
 
 		os.remove(temp_file)
 		with open(file, "w", encoding="utf-8") as f:
@@ -569,8 +588,8 @@ if __name__ == '__main__':
 		    "font": {
 		      "size": 0, # Hide
 		    },
-		    "hoverWidth": 60,
-		    "selectionWidth": 80,
+		    "hoverWidth": 160,
+		    "selectionWidth": 160,
 		    # "width": 20
 		  },
 		  "interaction": {

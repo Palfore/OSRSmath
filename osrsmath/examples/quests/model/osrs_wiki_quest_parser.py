@@ -108,6 +108,7 @@ class WikiQuestParser:
 				try:
 					start_location = x.findAll("a")[-1]
 					lat, lon = start_location["data-lat"], start_location["data-lon"]
+					# Stored as [y, x] (wiki lat/lon == game northing/easting).
 					details['start'] = (lat, lon)
 				except (KeyError, IndexError):
 

@@ -2,15 +2,50 @@
 NORMAL_COLOR = 'RGBA(0, 0, 0, 1)'
 FADED_COLOR = 'RGBA(0, 0, 0, 0.1)'
 DISABLED_EDGE_COLOR = '#A9A9A9'
-DEFAULT_NODE_COLOR = "BLACK"
+DEFAULT_NODE_COLOR = '#000000'
 HIDDEN_FONT = {color: 'RGBA(0, 0, 0, 0)', strokeWidth: 0}
+
+function vis_node_color(cssColor) {
+    const c = cssColor || DEFAULT_NODE_COLOR;
+    return {
+        background: c,
+        border: c,
+        highlight: { background: c, border: c },
+        hover: { background: c, border: c },
+    };
+}
+
+function current_color_scheme() {
+    return (($('#color_scheme').val() || 'shell') + '').toLowerCase().replace(/ /g, '_');
+}
 
 /* Window Functions */
 window.help = function() {
     Swal.fire({
-        title: 'Welcome to the Quest Explorer!',
-        icon: 'info',
-        html: HELP
+        title: '<div style="display:flex;align-items:center;gap:0.75rem;text-align:left;">'
+            + '<div class="swal2-icon swal2-info swal2-icon-show" style="display:flex;flex-shrink:0;margin:0;width:3.5em;height:3.5em;">'
+            + '<div class="swal2-icon-content" style="font-size:2em;">i</div></div>'
+            + '<span>Welcome to the Quest Explorer!</span></div>',
+        html: HELP,
+        width: 'min(90vw, 720px)',
+        showCloseButton: true,
+        didOpen: function(popup) {
+            var actions = popup.querySelector('.swal2-actions');
+            if (!actions || actions.querySelector('.quest-help-updated')) {
+                return;
+            }
+            actions.style.width = '100%';
+            actions.style.justifyContent = 'space-between';
+            actions.style.alignItems = 'center';
+            actions.style.paddingLeft = '1.25em';
+            actions.style.paddingRight = '1.25em';
+            actions.style.boxSizing = 'border-box';
+            var stamp = document.createElement('span');
+            stamp.className = 'quest-help-updated';
+            stamp.style.cssText = 'color:#545454;font-size:0.875em;';
+            stamp.textContent = 'Last updated: __LAST_UPDATED__';
+            actions.prepend(stamp);
+        }
     });
 };
 window.openWiki = function() {
@@ -34,10 +69,74 @@ window.swapDirections = function() {
 	window.changeColor();
 };
 window.changeColor = function() {
-    nodes.forEach(function(node) {
-        node.style = $('#color_scheme').val().toLowerCase().replace(' ', '_');
-        color_node(node);
+    const scheme = current_color_scheme();
+    const mapOn = typeof WORLD_MAP !== 'undefined' && WORLD_MAP.enabled;
+    const toggle_completed = document.getElementById('toggle_completed').checked;
+    const show_names = document.getElementById('show_names').checked;
+
+    const nodeUpdates = nodes.get().map(function(node) {
+        let css = scheme_color_for(node, scheme);
+        let physics = !mapOn;
+        let hidden = false;
+        if (!node.show) {
+            if (toggle_completed) {
+                css = BACKGROUND_COLOR;
+            } else {
+                physics = false;
+                hidden = true;
+            }
+        }
+        if (mapOn) physics = false;
+        return {
+            id: node.id,
+            style: scheme,
+            color: vis_node_color(css),
+            font: show_names
+                ? {
+                    color: node.show ? NORMAL_COLOR : FADED_COLOR,
+                    size: mapOn ? MAP_FONT_SIZE : 120,
+                    strokeWidth: mapOn ? MAP_FONT_STROKE : 11,
+                    strokeColor: BACKGROUND_COLOR,
+                }
+                : Object.assign({}, HIDDEN_FONT, {
+                    size: mapOn ? MAP_FONT_SIZE : 120,
+                }),
+            physics: physics,
+            hidden: hidden,
+            fixed: mapOn ? { x: true, y: true } : { x: false, y: false },
+            show: node.show,
+        };
     });
+    if (nodeUpdates.length) nodes.update(nodeUpdates);
+
+    const edgeUpdates = edges.get().map(function(edge) {
+        if (mapOn && should_hide_map_edge(edge)) {
+            return { id: edge.id, physics: false, hidden: true, width: MAP_EDGE_WIDTH };
+        }
+        const endpointsHidden = network.getConnectedNodes(edge.id).some(function(n) {
+            const cn = nodes.get(n);
+            return !cn || !cn.show;
+        });
+        if (endpointsHidden && !toggle_completed) {
+            return {
+                id: edge.id,
+                physics: false,
+                hidden: true,
+                width: mapOn ? MAP_EDGE_WIDTH : 24,
+            };
+        }
+        const fromNode = nodes.get(edge.from);
+        const fromCss = scheme_color_for(fromNode, scheme);
+        return {
+            id: edge.id,
+            color: (endpointsHidden && toggle_completed) ? DISABLED_EDGE_COLOR : fromCss,
+            physics: !mapOn,
+            hidden: false,
+            width: mapOn ? MAP_EDGE_WIDTH : 24,
+        };
+    });
+    if (edgeUpdates.length) edges.update(edgeUpdates);
+
     if (typeof refresh_quest_legend === 'function') {
         refresh_quest_legend();
     }
@@ -87,56 +186,100 @@ window.animate_quests = function(show) {
 };
 
 /* Helper Functions */
+function scheme_color_for(node, scheme) {
+    if (!node) return DEFAULT_NODE_COLOR;
+    const style = scheme || node.style || 'shell';
+    const colors = COLORS;
+    if (!colors[style]) return DEFAULT_NODE_COLOR;
+    const bucket = colors[style];
+    let key = node[style];
+    if (style === 'combat' || style === 'members') {
+        key = (key === true || key === 'true' || key === 'True') ? true : false;
+        if (bucket[key] != null) return bucket[key];
+        if (bucket[String(key)] != null) return bucket[String(key)];
+        return DEFAULT_NODE_COLOR;
+    }
+    if (bucket[key] != null) return bucket[key];
+    if (key != null && bucket[String(key)] != null) return bucket[String(key)];
+    if (key != null && !isNaN(Number(key)) && bucket[Number(key)] != null) {
+        return bucket[Number(key)];
+    }
+    return DEFAULT_NODE_COLOR;
+}
+
 color_node = function(node) {
-    colors = COLORS
+    // Keep single-node updates working for animations; full refresh uses changeColor().
+    node.style = current_color_scheme();
+    const mapOn = typeof WORLD_MAP !== 'undefined' && WORLD_MAP.enabled;
     const toggle_completed = document.getElementById('toggle_completed').checked;
     const show_names = document.getElementById('show_names').checked;
 
-    selected_color = colors[node.style][node[node.style]] || DEFAULT_NODE_COLOR;
-
+    let css = scheme_color_for(node);
+    let physics = !mapOn;
+    let hidden = false;
     if (!node.show) {
-        if (toggle_completed) {
-            selected_color = BACKGROUND_COLOR;
-            node.physics = true;
-            node.hidden = false;
-        } else {
-            node.physics = false;
-            node.hidden = true;
-        }
-    } else {
-        node.physics = true;
-        node.hidden = false;
+        if (toggle_completed) css = BACKGROUND_COLOR;
+        else { physics = false; hidden = true; }
     }
+    if (mapOn) physics = false;
 
-    node.color = selected_color;
-    node.font = show_names
-        ? {color: node.show ? NORMAL_COLOR : FADED_COLOR}
-        : HIDDEN_FONT;
-    nodes.update(node);
+    nodes.update({
+        id: node.id,
+        style: node.style,
+        color: vis_node_color(css),
+        font: show_names
+            ? {
+                color: node.show ? NORMAL_COLOR : FADED_COLOR,
+                size: mapOn ? MAP_FONT_SIZE : 120,
+                strokeWidth: mapOn ? MAP_FONT_STROKE : 11,
+                strokeColor: BACKGROUND_COLOR,
+            }
+            : Object.assign({}, HIDDEN_FONT, { size: mapOn ? MAP_FONT_SIZE : 120 }),
+        physics: physics,
+        hidden: hidden,
+        fixed: mapOn ? { x: true, y: true } : { x: false, y: false },
+        show: node.show,
+    });
 
     const edge_updates = [];
     network.getConnectedEdges(node.id).forEach(function(id) {
-        edge = edges.get(id);
-        // As long as there are no other connected nodes that are hidden
-        if (network.getConnectedNodes(id).some(function(n) { return !nodes.get(n).show; })) {
+        const edge = edges.get(id);
+        if (mapOn && should_hide_map_edge(edge)) {
+            edge_updates.push({ id: edge.id, physics: false, hidden: true, width: MAP_EDGE_WIDTH });
+            return;
+        }
+        if (network.getConnectedNodes(id).some(function(n) {
+            const cn = nodes.get(n);
+            return !cn || !cn.show;
+        })) {
             if (toggle_completed) {
-                edge.color = DISABLED_EDGE_COLOR;
-                edge.physics = true;
-                edge.hidden = false;
+                edge_updates.push({
+                    id: edge.id,
+                    color: DISABLED_EDGE_COLOR,
+                    physics: !mapOn,
+                    hidden: false,
+                    width: mapOn ? MAP_EDGE_WIDTH : 24,
+                });
             } else {
-                edge.physics = false;
-                edge.hidden = true;
+                edge_updates.push({
+                    id: edge.id,
+                    physics: false,
+                    hidden: true,
+                    width: mapOn ? MAP_EDGE_WIDTH : 24,
+                });
             }
         } else {
-           	edge.color = nodes.get(edge.from).color; // Always "from" since swapDirections() swaps the from node when called.
-            edge.physics = true;
-            edge.hidden = false;
+            const fromNode = nodes.get(edge.from);
+            edge_updates.push({
+                id: edge.id,
+                color: scheme_color_for(fromNode, node.style),
+                physics: !mapOn,
+                hidden: false,
+                width: mapOn ? MAP_EDGE_WIDTH : 24,
+            });
         }
-        edge_updates.push(edge);
     });
-    if (edge_updates.length) {
-        edges.update(edge_updates);
-    }
+    if (edge_updates.length) edges.update(edge_updates);
 }
 get_all_quests = function() {
 	return nodes.get().map(obj => obj.id);
@@ -282,6 +425,8 @@ install_quest_search = function() {
             align-items: flex-end;
         }
         #quest-search-panel.expanded {
+            /* Clear left hamburger: 12 inset + 40 button + 12 gap; panel already has right: 12. */
+            width: min(320px, calc(100% - 76px));
             max-height: calc(100% - 24px);
             overflow: hidden;
             align-items: stretch;
@@ -304,7 +449,13 @@ install_quest_search = function() {
         #quest-search-panel.expanded #quest_search_toggle { display: none; }
         #quest_search_body {
             display: none;
-            width: min(320px, calc(100vw - 48px));
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background: rgba(43, 43, 43, 0.96);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+            color: #fff;
             min-height: 0;
         }
         #quest-search-panel.expanded #quest_search_body {
@@ -314,18 +465,39 @@ install_quest_search = function() {
             min-height: 0;
             overflow: hidden;
         }
+        #quest_search_header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 8px 10px;
+            border-bottom: 1px solid #555;
+            font-weight: 600;
+            flex: 0 0 auto;
+        }
+        #quest_search_close {
+            background: transparent;
+            border: none;
+            color: #bbb;
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 1;
+            padding: 0 4px;
+        }
+        #quest_search_close:hover { color: #fff; }
         #quest_search {
             width: 100%;
             box-sizing: border-box;
             padding: 8px 36px 8px 12px;
-            border: 1px solid #555;
-            border-radius: 4px;
-            background: rgba(43, 43, 43, 0.92);
+            border: none;
+            border-bottom: 1px solid #555;
+            border-radius: 0;
+            background: transparent;
             color: #fff;
             outline: none;
             flex: 0 0 auto;
         }
-        #quest_search:focus { border-color: #ffc107; }
+        #quest_search:focus { border-bottom-color: #ffc107; }
         #quest_search_meta {
             position: absolute;
             right: 10px;
@@ -340,11 +512,7 @@ install_quest_search = function() {
             flex: 0 1 auto;
             min-height: 0;
             overflow-y: auto;
-            margin-top: 4px;
-            background: rgba(43, 43, 43, 0.96);
-            border: 1px solid #555;
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+            background: transparent;
         }
         #quest_search_results.open { display: block; }
         .quest-search-item {
@@ -367,6 +535,10 @@ install_quest_search = function() {
             <i class="bi bi-search"></i>
         </button>
         <div id="quest_search_body">
+            <div id="quest_search_header">
+                <span>Search</span>
+                <button type="button" id="quest_search_close" title="Close" aria-label="Close">&times;</button>
+            </div>
             <div id="quest_search_wrap">
                 <input id="quest_search" type="search" placeholder="Search quests..." autocomplete="off" spellcheck="false" />
                 <span id="quest_search_meta"></span>
@@ -381,6 +553,7 @@ install_quest_search = function() {
     panel.addEventListener('wheel', function(e) { e.stopPropagation(); });
 
     const toggle = document.getElementById('quest_search_toggle');
+    const closeBtn = document.getElementById('quest_search_close');
     const input = document.getElementById('quest_search');
     const results = document.getElementById('quest_search_results');
     const meta = document.getElementById('quest_search_meta');
@@ -406,6 +579,11 @@ install_quest_search = function() {
     toggle.addEventListener('click', function(e) {
         e.preventDefault();
         expand_search();
+    });
+    closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        collapse_search();
     });
 
     function find_quests(query) {
@@ -667,7 +845,7 @@ install_quest_legend = function() {
     panel.id = 'quest-legend-panel';
     panel.innerHTML = `
         <button type="button" id="quest_legend_toggle" title="Color legend" aria-label="Color legend">
-            <i class="bi bi-info-circle"></i>
+            <i class="bi bi-list"></i>
         </button>
         <div id="quest_legend_body">
             <div id="quest_legend_header">
@@ -768,9 +946,16 @@ install_quest_legend = function() {
     }
 
     function frame_legend_group(scheme, key) {
+        const restrictToMap = WORLD_MAP && WORLD_MAP.enabled
+            && (WORLD_MAP.simple || WORLD_MAP.edgeless);
         const ids = nodes.get().filter(function(node) {
             if (node.hidden) return false;
-            return node_matches_legend_key(node, scheme, key);
+            if (!node_matches_legend_key(node, scheme, key)) return false;
+            if (restrictToMap && typeof node_on_map_image === 'function'
+                    && !node_on_map_image(node)) {
+                return false;
+            }
+            return true;
         }).map(function(node) { return node.id; });
         if (!ids.length) return;
         network.selectNodes(ids);
@@ -922,11 +1107,21 @@ if (window.jQuery && $.fn.tooltip) {
 }
 
 hide_quest_infobox = function() {
+    // vis popup show() only sets visibility — never clear display/opacity or the
+    // tooltip stays dead after a context-menu open.
     document.querySelectorAll('.vis-tooltip').forEach(function(el) {
         el.style.visibility = 'hidden';
-        el.style.display = 'none';
-        el.style.opacity = '0';
+        el.style.removeProperty('display');
+        el.style.removeProperty('opacity');
     });
+    try {
+        if (network.interactionHandler) {
+            if (network.interactionHandler.popup) {
+                network.interactionHandler.popup.hide();
+            }
+            network.interactionHandler.popupObj = undefined;
+        }
+    } catch (e) {}
 };
 hide_context_menu = function() {
     quest_context_menu.style.display = 'none';
@@ -958,34 +1153,660 @@ document.addEventListener('click', hide_context_menu);
 document.addEventListener('scroll', hide_context_menu, true);
 
 network.on('afterDrawing', add_output_div);
-network.on('hold', remove_selected);
-network.on('doubleClick', function(params) {
-    if (params.nodes.length) {
-        lookup_nodes(params.nodes);
+function open_quest_context_from_pointer(params) {
+    if (params.event) {
+        if (params.event.preventDefault) params.event.preventDefault();
+        if (params.event.stopPropagation) params.event.stopPropagation();
     }
-});
-network.on('oncontext', function(params) {
-    params.event.preventDefault();
-    params.event.stopPropagation();
     hide_quest_infobox();
-    const nodeId = network.getNodeAt(params.pointer.DOM);
+    const dom = params.pointer && params.pointer.DOM;
+    const nodeId = (params.nodes && params.nodes.length && params.nodes[0])
+        || (dom ? network.getNodeAt(dom) : null);
     if (!nodeId) {
         hide_context_menu();
         return;
     }
     network.selectNodes([nodeId]);
     hide_quest_infobox();
-    show_context_menu(params.event.clientX, params.event.clientY);
+    const ev = params.event;
+    let x, y;
+    if (ev && ev.center && ev.center.x != null) {
+        x = ev.center.x;
+        y = ev.center.y;
+    } else if (ev && ev.clientX != null) {
+        x = ev.clientX;
+        y = ev.clientY;
+    } else if (ev && ev.srcEvent && ev.srcEvent.clientX != null) {
+        x = ev.srcEvent.clientX;
+        y = ev.srcEvent.clientY;
+    } else if (dom && network.canvas && network.canvas.frame) {
+        const rect = network.canvas.frame.getBoundingClientRect();
+        x = rect.left + dom.x;
+        y = rect.top + dom.y;
+    } else {
+        return;
+    }
+    show_context_menu(x, y);
+}
+network.on('hold', open_quest_context_from_pointer);
+network.on('doubleClick', function(params) {
+    if (params.nodes.length) {
+        lookup_nodes(params.nodes);
+    }
 });
+network.on('oncontext', open_quest_context_from_pointer);
 
 /* Connect Click Event Listeners */
 // window.toggle_tiered = function() {};
-$('#toggle_physics').click(function() {network.setOptions({physics: this.checked});});
 $('#toggle_completed').click(window.changeColor);
 $('#show_names').click(window.changeColor);
+
+/* OSRS map mode: pin nodes at start coords + map.png background.
+ *
+ * MAP_COORD_SCALE — game tiles → vis-network units (tune node/edge spacing).
+ * MAP_ANCHORS — two (game x/y ↔ image pixel x/y) pairs calibrate the PNG.
+ * Image pixels are top-left origin; game Y increases north.
+ *
+ * Display modes (dropdown):
+ *   physics / no_physics  — physics layout (no_physics freezes it)
+ *   map / map_simple / map_edgeless — map layout
+ *     simple: hide off-image edges; edgeless: hide all edges
+ * Physics sizes are snapshotted when entering map; leaving map resets all
+ * nodes to the origin (physics re-spreads from there).
+ */
+const WORLD_MAP_AVAILABLE = __WORLD_MAP_AVAILABLE__;
+const MAP_COORD_SCALE = 50;
+const MAP_NODE_SIZE_FACTOR = 4.95;
+const MAP_NODE_SIZE_MIN = 198;
+const MAP_EDGE_WIDTH = 72;
+const MAP_EDGE_EMPHASIS = MAP_EDGE_WIDTH * 3;
+const PHYSICS_EDGE_EMPHASIS = 160;
+const NODE_BORDER_EMPHASIS = 50;
+const NODE_HOVER_SIZE_FACTOR = 2;
+
+function match_hover_select_node(values, id, selected, hovering) {
+    if (!(selected || hovering)) return;
+    const node = nodes.get(id);
+    let fill = DEFAULT_NODE_COLOR;
+    if (node && node.color != null) {
+        fill = (typeof node.color === 'object')
+            ? (node.color.background || node.color.border || fill)
+            : node.color;
+    } else if (values.color) {
+        fill = values.color;
+    }
+    // vis applies borderWidth/scale (screen px); node size is in world units.
+    const scale = (network.body && network.body.view && network.body.view.scale) || 1;
+    const size = values.size || (node && node.size) || 25;
+    values.size = size * NODE_HOVER_SIZE_FACTOR;
+    values.color = fill;
+    values.borderColor = '#ffffff';
+    values.borderWidth = Math.max(2, values.size * scale * 0.2);
+}
+
+// Hover and select use the same emphasis sizes (nodes + edges).
+network.setOptions({
+    nodes: {
+        borderWidthSelected: NODE_BORDER_EMPHASIS,
+        chosen: { node: match_hover_select_node },
+    },
+    edges: {
+        hoverWidth: PHYSICS_EDGE_EMPHASIS,
+        selectionWidth: PHYSICS_EDGE_EMPHASIS,
+    },
+});
+
+/**
+ * vis hit-tests edges with a fixed 10px world threshold and nodes with their
+ * un-hovered shape. Hover visuals are much larger, so the cursor falls off the
+ * hit box, hover drops, the visual shrinks, and it stutters. Match hit areas to
+ * the enlarged hover geometry.
+ */
+function edge_hover_hit_radius(edge) {
+    const w = (edge.options && edge.options.width != null) ? edge.options.width : 1;
+    let hoverAdd = edge.options && edge.options.hoverWidth;
+    if (hoverAdd == null) {
+        hoverAdd = (typeof WORLD_MAP !== 'undefined' && WORLD_MAP.enabled)
+            ? MAP_EDGE_EMPHASIS
+            : PHYSICS_EDGE_EMPHASIS;
+    }
+    const hoveredWidth = (typeof hoverAdd === 'function')
+        ? hoverAdd(w)
+        : (w + hoverAdd);
+    return Math.max(10, hoveredWidth / 2);
+}
+
+function install_stable_hover_hits() {
+    const sh = network.selectionHandler;
+    if (!sh || sh._osrsStableHover) return;
+    sh._osrsStableHover = true;
+
+    // Tooltip show/hide uses node.isOverlappingWith (base shape), while hover
+    // visuals use 2× size — patch overlap to the same circle as getNodeAt.
+    const firstId = network.body && network.body.nodeIndices && network.body.nodeIndices[0];
+    if (firstId != null) {
+        const proto = Object.getPrototypeOf(network.body.nodes[firstId]);
+        if (proto && !proto._osrsOverlapPatched) {
+            proto._osrsOverlapPatched = true;
+            proto.isOverlappingWith = function(obj) {
+                if (!this.shape) return false;
+                const baseR = (this.shape.width > 0)
+                    ? (this.shape.width / 2)
+                    : ((this.options && this.options.size) || 25);
+                const hitR = baseR * NODE_HOVER_SIZE_FACTOR;
+                const px = (obj.left + obj.right) / 2;
+                const py = (obj.top + obj.bottom) / 2;
+                if (Math.abs(obj.right - obj.left) <= 2 && Math.abs(obj.bottom - obj.top) <= 2) {
+                    const dx = px - this.x;
+                    const dy = py - this.y;
+                    return dx * dx + dy * dy <= hitR * hitR;
+                }
+                return (this.x - hitR) < obj.right && (this.x + hitR) > obj.left
+                    && (this.y - hitR) < obj.bottom && (this.y + hitR) > obj.top;
+            };
+        }
+    }
+
+    sh.getEdgeAt = function(pointer) {
+        const returnObj = !(arguments.length > 1 && arguments[1] !== undefined) || arguments[1];
+        const canvasPos = this.canvas.DOMtoCanvas(pointer);
+        let bestId = null;
+        let bestDist = Infinity;
+        const edgeObjs = this.body.edges;
+        for (let i = 0; i < this.body.edgeIndices.length; i++) {
+            const id = this.body.edgeIndices[i];
+            const edge = edgeObjs[id];
+            if (!edge || !edge.connected) continue;
+            if (edge.options && edge.options.hidden) continue;
+            if (!edge.edgeType || typeof edge.edgeType.getDistanceToEdge !== 'function') continue;
+            const dist = edge.edgeType.getDistanceToEdge(
+                edge.from.x, edge.from.y, edge.to.x, edge.to.y,
+                canvasPos.x, canvasPos.y
+            );
+            const hitR = edge_hover_hit_radius(edge);
+            if (dist < hitR && dist < bestDist) {
+                bestDist = dist;
+                bestId = id;
+            }
+        }
+        if (bestId == null) return undefined;
+        return returnObj ? this.body.edges[bestId] : bestId;
+    };
+
+    sh.getNodeAt = function(pointer) {
+        const returnObj = !(arguments.length > 1 && arguments[1] !== undefined) || arguments[1];
+        const canvasPos = this.canvas.DOMtoCanvas(pointer);
+        const overlapping = [];
+        const nodeObjs = this.body.nodes;
+        for (let i = 0; i < this.body.nodeIndices.length; i++) {
+            const id = this.body.nodeIndices[i];
+            const node = nodeObjs[id];
+            if (!node || !node.shape) continue;
+            if (node.options && node.options.hidden) continue;
+            const baseR = (node.shape.width > 0) ? (node.shape.width / 2) : (node.options.size || 25);
+            const hitR = baseR * NODE_HOVER_SIZE_FACTOR;
+            const dx = canvasPos.x - node.x;
+            const dy = canvasPos.y - node.y;
+            if (dx * dx + dy * dy <= hitR * hitR) {
+                overlapping.push(id);
+            }
+        }
+        if (!overlapping.length) return undefined;
+        const id = overlapping[overlapping.length - 1];
+        return returnObj ? this.body.nodes[id] : id;
+    };
+}
+
+install_stable_hover_hits();
+
+const MAP_FONT_SIZE = Math.round(120 * MAP_NODE_SIZE_FACTOR);
+const MAP_FONT_STROKE = Math.round(11 * MAP_NODE_SIZE_FACTOR);
+const MAP_IMAGE_URL = '__MAP_IMAGE_URL__';
+const MAP_ANCHORS = [
+    // The Great Brain Robbery
+    { game: { x: 3682, y: 2963 }, img: { x: 8166, y: 3781 } },
+    // The Forsaken Tower
+    { game: { x: 1483, y: 3748 }, img: { x: 1569, y: 1425 } },
+];
+
+let DISPLAY_MODE = 'physics';
+// Two layouts: physics | map.  no_physics / map_simple / map_edgeless are variants.
+let LAYOUT = 'physics';
+// Snapshot of physics-layout positions/sizes, taken when entering map.
+let PHYSICS_LAYOUT_SAVE = null;
+
+const WORLD_MAP = {
+    enabled: false,
+    simple: false,    // Map (simple): hide edges with endpoints off the image
+    edgeless: false,  // Map (edgeless): hide all edges
+    available: WORLD_MAP_AVAILABLE,
+    image: null,
+    calib: null,  // { sx, sy, ox, oy, imgW, imgH }
+    saved: null,  // edge width/hidden while map is active
+};
+
+function node_start_xy(node) {
+    // Wiki start is [data-lat, data-lon] == [y, x].
+    if (Array.isArray(node.start) && node.start.length >= 2) {
+        const gx = Number(node.start[1]);
+        const gy = Number(node.start[0]);
+        if (Number.isFinite(gx) && Number.isFinite(gy)) return { x: gx, y: gy };
+    }
+    const gx = Number(node.start_x);
+    const gy = Number(node.start_y);
+    if (!Number.isFinite(gx) || !Number.isFinite(gy)) return null;
+    return { x: gx, y: gy };
+}
+
+function world_map_bounds() {
+    let xMin = Infinity, xMax = -Infinity, yMin = Infinity, yMax = -Infinity;
+    nodes.get().forEach(function(node) {
+        const s = node_start_xy(node);
+        if (!s) return;
+        if (s.x < xMin) xMin = s.x;
+        if (s.x > xMax) xMax = s.x;
+        if (s.y < yMin) yMin = s.y;
+        if (s.y > yMax) yMax = s.y;
+    });
+    if (!Number.isFinite(xMin)) {
+        return { xMin: 0, xMax: 0, yMin: 0, yMax: 0 };
+    }
+    return { xMin: xMin, xMax: xMax, yMin: yMin, yMax: yMax };
+}
+
+function game_to_vis_xy(gx, gy) {
+    // vis-network y grows downward; flip so higher game Y is toward the top.
+    return { x: gx * MAP_COORD_SCALE, y: -gy * MAP_COORD_SCALE };
+}
+
+function game_on_map_image(gx, gy) {
+    const c = WORLD_MAP.calib;
+    if (!c) return true;
+    const ix = c.sx * gx + c.ox;
+    const iy = c.sy * gy + c.oy;
+    return ix >= 0 && iy >= 0 && ix <= c.imgW && iy <= c.imgH;
+}
+
+function node_on_map_image(node) {
+    if (!node) return false;
+    const s = node_start_xy(node);
+    // Missing start coords are pinned to the quest bbox center (usually on-map).
+    if (!s) return true;
+    return game_on_map_image(s.x, s.y);
+}
+
+function should_hide_map_edge(edge) {
+    if (WORLD_MAP.edgeless) return true;
+    if (WORLD_MAP.simple && !edge_on_map_image(edge)) return true;
+    return false;
+}
+
+function apply_map_mode_flags(mode) {
+    WORLD_MAP.simple = mode === 'map_simple';
+    WORLD_MAP.edgeless = mode === 'map_edgeless';
+}
+
+function edge_on_map_image(edge) {
+    return node_on_map_image(nodes.get(edge.from)) && node_on_map_image(nodes.get(edge.to));
+}
+
+function set_network_physics(on) {
+    network.setOptions({ physics: { enabled: !!on } });
+}
+
+function calibrate_world_map(imgW, imgH) {
+    const a = MAP_ANCHORS[0];
+    const b = MAP_ANCHORS[1];
+    const sx = (a.img.x - b.img.x) / (a.game.x - b.game.x);
+    const sy = (a.img.y - b.img.y) / (a.game.y - b.game.y);
+    const ox = a.img.x - sx * a.game.x;
+    const oy = a.img.y - sy * a.game.y;
+    WORLD_MAP.calib = { sx: sx, sy: sy, ox: ox, oy: oy, imgW: imgW, imgH: imgH };
+}
+
+function prepare_world_map_image(img) {
+    calibrate_world_map(img.naturalWidth, img.naturalHeight);
+    // Keep the full-res Image; downscaling here made the map blurry when stretched.
+    WORLD_MAP.image = img;
+    if (WORLD_MAP.enabled) fit_to_world_map();
+}
+
+function world_map_draw(ctx) {
+    if (!WORLD_MAP.enabled || !WORLD_MAP.image || !WORLD_MAP.calib) return;
+    const S = MAP_COORD_SCALE;
+    const c = WORLD_MAP.calib;
+    // Image pixel (0,0) → game (-ox/sx, -oy/sy) → vis.
+    const left = (-c.ox / c.sx) * S;
+    const top = (c.oy / c.sy) * S;           // = -(-oy/sy)*S
+    const w = (c.imgW / c.sx) * S;
+    const h = (-c.imgH / c.sy) * S;          // sy is negative (image y down)
+    ctx.save();
+    ctx.globalAlpha = 1;
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(WORLD_MAP.image, left, top, w, h);
+    ctx.restore();
+}
+
+function world_map_vis_rect() {
+    if (!WORLD_MAP.calib) return null;
+    const S = MAP_COORD_SCALE;
+    const c = WORLD_MAP.calib;
+    const left = (-c.ox / c.sx) * S;
+    const top = (c.oy / c.sy) * S;
+    const w = (c.imgW / c.sx) * S;
+    const h = (-c.imgH / c.sy) * S;
+    return { left: left, top: top, width: w, height: h };
+}
+
+function fit_to_world_map() {
+    const rect = world_map_vis_rect();
+    if (!rect || !(rect.width > 0) || !(rect.height > 0)) {
+        network.fit({ animation: { duration: 600, easingFunction: 'easeInOutQuad' } });
+        return;
+    }
+    const frame = (network.canvas && network.canvas.frame)
+        || (network.body && network.body.container)
+        || document.getElementById('mynetwork');
+    const viewW = Math.max(1, frame.clientWidth || frame.offsetWidth || 800);
+    const viewH = Math.max(1, frame.clientHeight || frame.offsetHeight || 600);
+    const pad = 0.92;
+    const scale = Math.min(viewW / Math.abs(rect.width), viewH / Math.abs(rect.height)) * pad;
+    network.moveTo({
+        position: {
+            x: rect.left + rect.width / 2,
+            y: rect.top + rect.height / 2,
+        },
+        scale: scale,
+        animation: { duration: 600, easingFunction: 'easeInOutQuad' },
+    });
+}
+
+// Captured after initial stabilization (vis zooms out via physics.stabilization.fit).
+// Fallback is a typical zoomed-out scale for this large repulsion graph.
+let PHYSICS_VIEW_SCALE = 0.05;
+
+function fit_to_physics_origin() {
+    zero_all_body_nodes();
+    network.moveTo({
+        position: { x: 0, y: 0 },
+        scale: PHYSICS_VIEW_SCALE,
+        animation: { duration: 600, easingFunction: 'easeInOutQuad' },
+    });
+}
+
+function save_physics_layout() {
+    // Keep sizes for map node scaling; positions are not restored (reset to origin).
+    const sizes = {};
+    nodes.get().forEach(function(node) {
+        sizes[node.id] = node.size;
+    });
+    PHYSICS_LAYOUT_SAVE = { sizes: sizes };
+}
+
+function zero_all_body_nodes() {
+    // Includes invisible dynamic-smooth support nodes that are NOT in the DataSet.
+    const bodyNodes = network.body && network.body.nodes;
+    if (!bodyNodes) return;
+    Object.keys(bodyNodes).forEach(function(id) {
+        const bn = bodyNodes[id];
+        if (!bn) return;
+        bn.x = 0;
+        bn.y = 0;
+        if (bn.vx != null) bn.vx = 0;
+        if (bn.vy != null) bn.vy = 0;
+    });
+}
+
+function snap_quest_nodes_to_origin() {
+    const sizes = (PHYSICS_LAYOUT_SAVE && PHYSICS_LAYOUT_SAVE.sizes) || {};
+    const ids = nodes.getIds();
+    const updates = ids.map(function(id) {
+        const u = {
+            id: id,
+            x: 0,
+            y: 0,
+            fixed: { x: false, y: false },
+        };
+        if (sizes[id] != null) u.size = sizes[id];
+        return u;
+    });
+    if (updates.length) nodes.update(updates);
+    ids.forEach(function(id) {
+        try { network.moveNode(id, 0, 0); } catch (e) {}
+    });
+    zero_all_body_nodes();
+}
+
+function restore_graph_edge_options() {
+    network.setOptions({
+        nodes: {
+            font: {
+                size: 120,
+                strokeWidth: 11,
+                strokeColor: BACKGROUND_COLOR,
+            },
+            borderWidthSelected: NODE_BORDER_EMPHASIS,
+            chosen: { node: match_hover_select_node },
+        },
+        edges: {
+            smooth: { enabled: true, type: 'dynamic' },
+            hoverWidth: PHYSICS_EDGE_EMPHASIS,
+            selectionWidth: PHYSICS_EDGE_EMPHASIS,
+        },
+    });
+}
+
+function disable_world_map(opts) {
+    opts = opts || {};
+    const restorePhysics = opts.restorePhysics !== false;
+    const edgeWidths = (WORLD_MAP.saved && WORLD_MAP.saved.edgeWidths) || {};
+    const edgeHidden = (WORLD_MAP.saved && WORLD_MAP.saved.edgeHidden) || {};
+    WORLD_MAP.enabled = false;
+    WORLD_MAP.simple = false;
+    WORLD_MAP.edgeless = false;
+    WORLD_MAP.saved = null;
+    LAYOUT = 'physics';
+
+    set_network_physics(false);
+    // Straight edges first so we do not spawn dynamic supports at map coords.
+    network.setOptions({
+        nodes: {
+            font: { size: 120, strokeWidth: 11, strokeColor: BACKGROUND_COLOR },
+            borderWidthSelected: NODE_BORDER_EMPHASIS,
+            chosen: { node: match_hover_select_node },
+        },
+        edges: { smooth: false, hoverWidth: PHYSICS_EDGE_EMPHASIS, selectionWidth: PHYSICS_EDGE_EMPHASIS },
+    });
+
+    // Restore pre-map edge widths/visibility (colors come from changeColor next).
+    const edgeRestores = edges.get().map(function(edge) {
+        const w = edgeWidths[edge.id];
+        return {
+            id: edge.id,
+            width: w == null ? 24 : w,
+            hidden: edgeHidden[edge.id] == null ? false : edgeHidden[edge.id],
+        };
+    });
+    if (edgeRestores.length) edges.update(edgeRestores);
+
+    snap_quest_nodes_to_origin();
+    restore_graph_edge_options();
+    snap_quest_nodes_to_origin();
+
+    set_network_physics(!!restorePhysics);
+    // Colors MUST be last among data updates — later nodes.update wiped them before.
+    window.changeColor();
+    fit_to_physics_origin();
+}
+
+function sync_map_edges() {
+    if (!WORLD_MAP.enabled) return;
+    const updates = edges.get().map(function(edge) {
+        if (should_hide_map_edge(edge)) {
+            return {
+                id: edge.id,
+                hidden: true,
+                physics: false,
+                width: MAP_EDGE_WIDTH,
+            };
+        }
+        const endpointsHidden = network.getConnectedNodes(edge.id).some(function(n) {
+            const cn = nodes.get(n);
+            return !cn || !cn.show;
+        });
+        const toggle_completed = document.getElementById('toggle_completed')
+            && document.getElementById('toggle_completed').checked;
+        if (endpointsHidden && !toggle_completed) {
+            return { id: edge.id, hidden: true, physics: false, width: MAP_EDGE_WIDTH };
+        }
+        const fromNode = nodes.get(edge.from);
+        const scheme = (($('#color_scheme').val() || 'shell') + '').toLowerCase().replace(/ /g, '_');
+        return {
+            id: edge.id,
+            hidden: false,
+            physics: false,
+            width: MAP_EDGE_WIDTH,
+            color: endpointsHidden ? DISABLED_EDGE_COLOR : scheme_color_for(fromNode, scheme),
+        };
+    });
+    if (updates.length) edges.update(updates);
+}
+
+function enable_world_map(opts) {
+    opts = opts || {};
+    if (!WORLD_MAP.available) return;
+    apply_map_mode_flags(opts.mode || (opts.simple ? 'map_simple' : 'map'));
+    // Capture physics-layout sizes once when entering map (kept across map variants).
+    if (LAYOUT === 'physics' || !PHYSICS_LAYOUT_SAVE) {
+        save_physics_layout();
+    }
+    const bounds = world_map_bounds();
+    const center = game_to_vis_xy(
+        (bounds.xMin + bounds.xMax) / 2,
+        (bounds.yMin + bounds.yMax) / 2
+    );
+    const scheme = (($('#color_scheme').val() || 'shell') + '').toLowerCase().replace(/ /g, '_');
+    const updates = [];
+    const savedEdgeWidths = {};
+    const savedEdgeHidden = {};
+    nodes.get().forEach(function(node) {
+        const start = node_start_xy(node);
+        const xy = start ? game_to_vis_xy(start.x, start.y) : center;
+        const baseSize = (PHYSICS_LAYOUT_SAVE && PHYSICS_LAYOUT_SAVE.sizes[node.id] != null)
+            ? PHYSICS_LAYOUT_SAVE.sizes[node.id]
+            : (node.size || 25);
+        updates.push({
+            id: node.id,
+            x: xy.x,
+            y: xy.y,
+            size: Math.max(MAP_NODE_SIZE_MIN, baseSize * MAP_NODE_SIZE_FACTOR),
+            color: scheme_color_for(node, scheme),
+            style: scheme,
+            fixed: { x: true, y: true },
+            physics: false,
+        });
+    });
+    edges.get().forEach(function(edge) {
+        savedEdgeWidths[edge.id] = edge.width;
+        savedEdgeHidden[edge.id] = !!edge.hidden;
+    });
+    WORLD_MAP.saved = {
+        edgeWidths: savedEdgeWidths,
+        edgeHidden: savedEdgeHidden,
+    };
+    WORLD_MAP.enabled = true;
+    LAYOUT = 'map';
+    set_network_physics(false);
+    network.setOptions({
+        nodes: {
+            font: { size: MAP_FONT_SIZE, strokeWidth: MAP_FONT_STROKE },
+            borderWidthSelected: NODE_BORDER_EMPHASIS,
+            chosen: { node: match_hover_select_node },
+        },
+        edges: {
+            smooth: false,
+            hoverWidth: MAP_EDGE_EMPHASIS,
+            selectionWidth: MAP_EDGE_EMPHASIS,
+        },
+    });
+    nodes.update(updates);
+    updates.forEach(function(u) {
+        try { network.moveNode(u.id, u.x, u.y); } catch (e) {}
+    });
+    if (!WORLD_MAP._drawBound) {
+        network.on('beforeDrawing', world_map_draw);
+        WORLD_MAP._drawBound = true;
+    }
+    if (typeof window.changeColor === 'function') window.changeColor();
+    network.redraw();
+    fit_to_world_map();
+}
+
+function is_map_display_mode(mode) {
+    return mode === 'map' || mode === 'map_simple' || mode === 'map_edgeless';
+}
+
+window.setDisplayMode = function(mode) {
+    const next = mode || 'physics';
+    const prev = DISPLAY_MODE;
+    if (next === prev) return;
+
+    if (!WORLD_MAP.available && is_map_display_mode(next)) {
+        const sel = document.getElementById('display_mode');
+        if (sel) sel.value = prev;
+        return;
+    }
+
+    const wasMap = is_map_display_mode(prev);
+    const willMap = is_map_display_mode(next);
+
+    if (wasMap && willMap) {
+        // Map variants: same layout/view; only toggle edge visibility.
+        apply_map_mode_flags(next);
+        window.changeColor();
+        network.redraw();
+    } else if (!wasMap && willMap) {
+        enable_world_map({ mode: next });
+    } else if (wasMap && !willMap) {
+        disable_world_map({ restorePhysics: next === 'physics' });
+    } else {
+        // Physics <-> No physics: same layout, freeze/resume without moving nodes.
+        set_network_physics(next === 'physics');
+    }
+
+    DISPLAY_MODE = next;
+    const sel = document.getElementById('display_mode');
+    if (sel && sel.value !== next) sel.value = next;
+};
+
+function install_display_mode() {
+    if (WORLD_MAP.available) {
+        const img = new Image();
+        img.onload = function() { prepare_world_map_image(img); };
+        img.onerror = function() {
+            console.error('Failed to load world map image:', MAP_IMAGE_URL);
+        };
+        img.src = MAP_IMAGE_URL;
+        if (img.complete && img.naturalWidth) {
+            prepare_world_map_image(img);
+        }
+    }
+    const sel = document.getElementById('display_mode');
+    if (sel) DISPLAY_MODE = sel.value || 'physics';
+}
+install_display_mode();
 
 /* Execute */
 nodes.forEach(function(node) {
     nodes.update({id: node.id, show: true});
 });
 window.changeColor();
+
+// Record the post-stabilization camera scale (same zoom the app starts with).
+network.once('stabilizationIterationsDone', function() {
+    setTimeout(function() {
+        const s = network.getScale();
+        if (s && s > 0) PHYSICS_VIEW_SCALE = s;
+    }, 550);
+});
